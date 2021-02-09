@@ -1,0 +1,33 @@
+digraph G {
+subgraph cluster0 {
+1 [label="assert" a="32" s="2880,2891" l="11,-16" shape="box"];
+3 [label="{}" a="4" s="2689,2690" l="1,-1" shape="box"];
+4 [label="StringLiteral" a="45" s="2690" l="0" shape="ellipse"];
+5 [label="settings" a="32" s="2668,2703" l="9,-40" shape="box"];
+6 [label="process_request" a="32" s="2729,2745" l="16,-27" shape="box"];
+8 [label="PyWithStatement" a="104" s="2653,2663" l="10,47" shape="diamond"];
+9 [label="BooleanLiteral" a="9" s="2703" l="0" shape="ellipse"];
+10 [label="assert" a="32" s="2766,2778" l="12,-17" shape="box"];
+12 [label="SimpleName" a="42" s="2663" l="0" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="assert" a="32" s="2809,2820" l="11,-16" shape="box"];
+7 [label="process_request" a="32" s="2664,2680" l="16,-27" shape="box"];
+11 [label="assert" a="32" s="2699,2711" l="12,-17" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 2 [label="_map_"];
+3 -> 5 [label="_para_"];
+4 -> 3 [label="_para_"];
+5 -> 8 [label="_cond_"];
+6 -> 7 [label="_map_"];
+8 -> 1 [label="_control_"];
+8 -> 10 [label="_control_"];
+8 -> 6 [label="_control_"];
+9 -> 5 [label="_para_"];
+10 -> 11 [label="_map_"];
+12 -> 5 [label="_recv_"];
+}
