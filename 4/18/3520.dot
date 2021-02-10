@@ -1,0 +1,16 @@
+digraph G {
+subgraph cluster0 {
+1 [label="isspmatrix" a="32" s="693,704" l="11,-24" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="isspmatrix" a="32" s="818,829" l="11,-24" shape="box"];
+3 [label="is_pydata_spmatrix" a="32" s="835,854" l="19,-19" shape="box"];
+4 [label="SimpleName" a="42" s="854" l="0" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 2 [label="_map_"];
+4 -> 3 [label="_para_"];
+}

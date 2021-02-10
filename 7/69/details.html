@@ -1,0 +1,23 @@
+<html><h3>945b56ec8dc3ec4a85b2f4d3a97486c69bc04c4c,yellowbrick/model_selection/cross_validation.py,,cv_scores,#,195
+</h3><link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    # Fit and show the visualizer
+    visualizer.fit(X, y)
+    <a id="change">visualizer.show(**kwargs)</a>
+
+    return visualizer
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    # Fit and show the visualizer
+    visualizer.fit(X, y)
+
+    <a id="change">if show:
+        visualizer.show()
+    else:
+        visualizer.finalize()
+
+    # Return the visualizer object
+   </a> return visualizer
+</code></pre><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/DistrictDataLabs/yellowbrick/commit/945b56ec8dc3ec4a85b2f4d3a97486c69bc04c4c#diff-c2a1608df36a8922170af4e3b0cfe2b70a78685f6032dd161af29b314bd97868L262' target='_blank'>Link</a></div><div id='project'> Project Name: DistrictDataLabs/yellowbrick</div><div id='commit'> Commit Name: 945b56ec8dc3ec4a85b2f4d3a97486c69bc04c4c</div><div id='time'> Time: 2019-11-12</div><div id='author'> Author: gautampiyus@gmail.com</div><div id='file'> File Name: yellowbrick/model_selection/cross_validation.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: cv_scores</div><BR><BR><div id='link'><a href='https://github.com/DistrictDataLabs/yellowbrick/commit/a0e281ec3bdf753aa025b38547b829f145797373#diff-48c8e3db42a65a3fe48c163f924c55813beb0883eac340e363d37af4678c8e03L262' target='_blank'>Link</a></div><div id='project'> Project Name: DistrictDataLabs/yellowbrick</div><div id='commit'> Commit Name: a0e281ec3bdf753aa025b38547b829f145797373</div><div id='time'> Time: 2020-02-08</div><div id='author'> Author: pdamodaran@users.noreply.github.com</div><div id='file'> File Name: yellowbrick/model_selection/learning_curve.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: learning_curve</div><BR><BR><div id='link'><a href='https://github.com/DistrictDataLabs/yellowbrick/commit/4f615fe01104f7ffea0b37ed0ff33fa08a8800b2#diff-0c5f8435325fc870656bf19bc7db421317c1a1e19c6745ef99c309cae002f58cL262' target='_blank'>Link</a></div><div id='project'> Project Name: DistrictDataLabs/yellowbrick</div><div id='commit'> Commit Name: 4f615fe01104f7ffea0b37ed0ff33fa08a8800b2</div><div id='time'> Time: 2020-01-07</div><div id='author'> Author: gautampiyus@gmail.com</div><div id='file'> File Name: yellowbrick/model_selection/rfecv.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rfecv</div><BR>

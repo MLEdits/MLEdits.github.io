@@ -1,0 +1,20 @@
+<html><h3>d3ab82cfafb8cd95818375f8cd5fdd7a47833e98,tests/keras/backend/backend_test.py,TestBackend,test_gradient,#TestBackend#,631
+</h3><link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            grad = k.gradients(loss, [exp])
+            zero_grad = k.gradients(loss + zero_loss, [exp])
+            z_list.append(k.eval(grad[0]))
+            zero_list.append(<a id="change">k.eval(zero_grad[0])</a>)
+
+        assert_list_pairwise(z_list)
+        assert_list_pairwise(zero_list)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+            zero_grad = k.gradients(loss + zero_loss, [exp])
+            grad_eval_fn = k.function([x], [grad[0]])
+            zero_grad_eval_fn = <a id="change">k.function([x], [zero_grad[0]])</a>
+            z_list.append(grad_eval_fn([val])[0])
+            zero_list.append(zero_grad_eval_fn([val])[0])
+
+        assert_list_pairwise(z_list)</code></pre><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/d3ab82cfafb8cd95818375f8cd5fdd7a47833e98#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L632' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: d3ab82cfafb8cd95818375f8cd5fdd7a47833e98</div><div id='time'> Time: 2019-03-22</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_gradient</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/d3ab82cfafb8cd95818375f8cd5fdd7a47833e98#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L632' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: d3ab82cfafb8cd95818375f8cd5fdd7a47833e98</div><div id='time'> Time: 2019-03-22</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_gradient</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/d3ab82cfafb8cd95818375f8cd5fdd7a47833e98#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L632' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: d3ab82cfafb8cd95818375f8cd5fdd7a47833e98</div><div id='time'> Time: 2019-03-22</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_gradient</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/d3ab82cfafb8cd95818375f8cd5fdd7a47833e98#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L632' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: d3ab82cfafb8cd95818375f8cd5fdd7a47833e98</div><div id='time'> Time: 2019-03-22</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_gradient</div><BR>

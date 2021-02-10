@@ -1,0 +1,19 @@
+<html><h3>bb21defad12ee0ab0654d87b0654d484f46050bf,example/urls.py,,,#,5
+</h3><link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+urlpatterns = patterns('',                                              # noqa
+    (r'^$', TemplateView.as_view(template_name='index.html')),
+    (r'^jquery/$', TemplateView.as_view(template_name='jquery/index.html')),
+    <a id="change">(r'^mootools/$', TemplateView.as_view(template_name='mootools/index.html'))</a>,
+    (r'^prototype/$', TemplateView.as_view(template_name='prototype/index.html')),
+    (r'^admin/', include(admin.site.urls)),
+)</code></pre><h3>After Change</h3><pre><code class='java'>
+urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^jquery/$', TemplateView.as_view(template_name='jquery/index.html')),
+    <a id="change">url(r'^mootools/$', TemplateView.as_view(template_name='mootools/index.html'))</a>,
+    url(r'^prototype/$', TemplateView.as_view(template_name='prototype/index.html')),
+    url(r'^admin/', include(admin.site.urls)),
+]</code></pre><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/jazzband/django-debug-toolbar/commit/bb21defad12ee0ab0654d87b0654d484f46050bf#diff-71b39a5f13c07411e2bbae665e0f777cda7e38e9a4ce5f069db9a86e72bf2337L5' target='_blank'>Link</a></div><div id='project'> Project Name: jazzband/django-debug-toolbar</div><div id='commit'> Commit Name: bb21defad12ee0ab0654d87b0654d484f46050bf</div><div id='time'> Time: 2015-10-06</div><div id='author'> Author: aymeric.augustin@m4x.org</div><div id='file'> File Name: example/urls.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/jazzband/django-debug-toolbar/commit/bb21defad12ee0ab0654d87b0654d484f46050bf#diff-71b39a5f13c07411e2bbae665e0f777cda7e38e9a4ce5f069db9a86e72bf2337L5' target='_blank'>Link</a></div><div id='project'> Project Name: jazzband/django-debug-toolbar</div><div id='commit'> Commit Name: bb21defad12ee0ab0654d87b0654d484f46050bf</div><div id='time'> Time: 2015-10-06</div><div id='author'> Author: aymeric.augustin@m4x.org</div><div id='file'> File Name: example/urls.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/jazzband/django-debug-toolbar/commit/bb21defad12ee0ab0654d87b0654d484f46050bf#diff-71b39a5f13c07411e2bbae665e0f777cda7e38e9a4ce5f069db9a86e72bf2337L5' target='_blank'>Link</a></div><div id='project'> Project Name: jazzband/django-debug-toolbar</div><div id='commit'> Commit Name: bb21defad12ee0ab0654d87b0654d484f46050bf</div><div id='time'> Time: 2015-10-06</div><div id='author'> Author: aymeric.augustin@m4x.org</div><div id='file'> File Name: example/urls.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/jazzband/django-debug-toolbar/commit/bb21defad12ee0ab0654d87b0654d484f46050bf#diff-71b39a5f13c07411e2bbae665e0f777cda7e38e9a4ce5f069db9a86e72bf2337L5' target='_blank'>Link</a></div><div id='project'> Project Name: jazzband/django-debug-toolbar</div><div id='commit'> Commit Name: bb21defad12ee0ab0654d87b0654d484f46050bf</div><div id='time'> Time: 2015-10-06</div><div id='author'> Author: aymeric.augustin@m4x.org</div><div id='file'> File Name: example/urls.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

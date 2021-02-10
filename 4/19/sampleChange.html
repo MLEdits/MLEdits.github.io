@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        desired_fun = 36.0000000000
+
+        with suppress_warnings() as sup:
+            <a id="change">if has_umfpack:
+                sup.filter(RuntimeWarning, "(almost) singular matrix...")
+           </a> sup.filter(RuntimeWarning, "invalid value encountered")
+            sup.filter(LinAlgWarning)
+            res1 = linprog(c, A_ub, b_ub, A_eq, b_eq, bounds,
+                           method=self.method, options=self.options)</code></pre><h3>After Change</h3><pre><code class='java'>
+        desired_fun = 36.0000000000
+
+        with suppress_warnings() as sup:
+            <a id="change">sup.filter(RuntimeWarning, "(almost) singular matrix...")</a>
+            sup.filter(RuntimeWarning, "invalid value encountered")
+            sup.filter(LinAlgWarning)
+            res1 = linprog(c, A_ub, b_ub, A_eq, b_eq, bounds,
+                           method=self.method, options=self.options)</code></pre>

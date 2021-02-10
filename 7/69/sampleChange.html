@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    # Fit and show the visualizer
+    visualizer.fit(X, y)
+    <a id="change">visualizer.show(**kwargs)</a>
+
+    return visualizer
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    # Fit and show the visualizer
+    visualizer.fit(X, y)
+
+    <a id="change">if show:
+        visualizer.show()
+    else:
+        visualizer.finalize()
+
+    # Return the visualizer object
+   </a> return visualizer
+</code></pre>

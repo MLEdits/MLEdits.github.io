@@ -1,0 +1,23 @@
+digraph G {
+subgraph cluster0 {
+1 [label="list" a="32" s="2575,2580" l="5,-5" shape="box"];
+4 [label="SimpleName" a="42" s="2591" l="0" shape="ellipse"];
+5 [label="everygrams" a="32" s="2580,2608" l="11,-28" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="iter" a="32" s="2348,2353" l="5,-5" shape="box"];
+3 [label="SimpleName" a="42" s="2353" l="0" shape="ellipse"];
+6 [label="everygrams" a="32" s="2337,2371" l="11,-34" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 2 [label="_map_"];
+2 -> 6 [label="_para_"];
+3 -> 2 [label="_para_"];
+4 -> 5 [label="_para_"];
+4 -> 3 [label="_map_"];
+5 -> 1 [label="_para_"];
+5 -> 6 [label="_map_"];
+}

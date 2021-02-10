@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                elif getattr(receiver, 'im_class', None) is not None:
+                    text = "method %s on %s" % (receiver.__name__, receiver.im_class.__name__)
+                else:
+                    text = "function %s" % <a id="change">getattr(receiver, '__name__', str(receiver))</a>
+                receivers.append(text)
+            signals.append((name, signal, receivers))
+
+        self.record_stats({'signals': signals})</code></pre><h3>After Change</h3><pre><code class='java'>
+                if receiver is None:
+                    continue
+
+                <a id="change">receiver</a> = getattr(receiver, '__wraps__', receiver)
+                receiver_name = <a id="change">getattr(receiver, '__name__', str(receiver))</a>
+                if getattr(receiver, 'im_self', None) is not None:
+                    text = "%s.%s" % (getattr(receiver.im_self, '__class__', type).__name__, receiver_name)
+                elif getattr(receiver, 'im_class', None) is not None:
+                    text = "%s.%s" % (receiver.im_class.__name__, receiver_name)</code></pre>

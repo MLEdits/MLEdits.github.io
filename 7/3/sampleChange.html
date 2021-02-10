@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            grad = k.gradients(loss, [exp])
+            zero_grad = k.gradients(loss + zero_loss, [exp])
+            z_list.append(k.eval(grad[0]))
+            zero_list.append(<a id="change">k.eval(zero_grad[0])</a>)
+
+        assert_list_pairwise(z_list)
+        assert_list_pairwise(zero_list)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+            zero_grad = k.gradients(loss + zero_loss, [exp])
+            grad_eval_fn = k.function([x], [grad[0]])
+            zero_grad_eval_fn = <a id="change">k.function([x], [zero_grad[0]])</a>
+            z_list.append(grad_eval_fn([val])[0])
+            zero_list.append(zero_grad_eval_fn([val])[0])
+
+        assert_list_pairwise(z_list)</code></pre>

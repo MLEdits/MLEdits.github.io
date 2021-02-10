@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../default.css">
+<script src="../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        ax.spines['top'].set_visible(True)
+    if ax.is_last_row():
+        ax.spines['bottom'].set_visible(True)
+    <a id="change">if ax.is_first_col():
+        ax.spines['left'].set_visible(True)
+   </a> <a id="change">if ax.is_last_col():
+        ax.spines['right'].set_visible(True)
+
+</a>plt.show()
+
+#############################################################################
+#</code></pre><h3>After Change</h3><pre><code class='java'>
+for ax in fig11.get_axes():
+    ax.spines['top'].set_visible(ax.is_first_row())
+    ax.spines['bottom'].set_visible(ax.is_last_row())
+    <a id="change">ax.spines['left'].set_visible(ax.is_first_col())</a>
+    <a id="change">ax.spines['right'].set_visible(ax.is_last_col())</a>
+
+plt.show()
+
+#############################################################################</code></pre>
