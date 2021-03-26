@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Extract Method</i> : Total - <i>3</i> : Precision -<i>100.0%</i></H2>
+<body><HTML><H2> Refactoring Type : <i>Extract Method</i> | Total : <i>68</i> | Precision : <i>90.0%</i>  | True Positives :9 | Evaluated : 10 | Not Evaluated  : 58 </H2>
 
 <table>
  <tr>
@@ -42,6 +42,396 @@
 <td><a href="https://github.com/keras-team/keras/commit/ba7ab2ffe62143949b9730a55291c474352f31e5#diff-82a00d696c1b61a9c41c63929d18083634ee4ac8574ea066c576f47bf0ea7b96L634">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/ba7ab2ffe62143949b9730a55291c474352f31e5">CommitLink</a></td><td>Yes</td>
 <td>Extract Method	package _set_keras_shape_for_reduction(x Any, y Any, axis Any, keepdims Any) : void extracted from package all(x Any, axis Any, keepdims Any) : void in class org.keras.backend.theano_backend.PyDummyClass1</td>
 <td>keras/backend/theano_backend.py</td>
+</tr>
+<tr><td>Kamnitsask/deepmedic</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Kamnitsask/deepmedic/commit/201fb751c76de9e407507d472f21a23f86c79b2e#diff-39343b7dfe6166b5be713346d557f533288ab127ed6af26c6d8ce01021f7edd7L591">RefactoringLink</a></td><td><a href="https://github.com/Kamnitsask/deepmedic/commit/201fb751c76de9e407507d472f21a23f86c79b2e">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package comp_valid_sampling_mask_excluding_edges(dims_of_segment Any, shape Any) : void extracted from package sample_idxs_of_segments(log Any, job_id Any, n_samples Any, dims_of_segment Any, dims_of_scan Any, sampling_map Any) : void in class org.deepmedic.dataManagement.sampling.PyDummyClass1</td>
+<td>deepmedic/dataManagement/sampling.py</td>
+</tr>
+<tr><td>IDSIA/sacred</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/IDSIA/sacred/commit/28fb1c102e2cf4e1b337b6e4a3450ea05b3bc5ac#diff-47f2ae961223a7100038c9eb01539a0536288def006eef26eb73ab497eeebf49L93">RefactoringLink</a></td><td><a href="https://github.com/IDSIA/sacred/commit/28fb1c102e2cf4e1b337b6e4a3450ea05b3bc5ac">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package _get_cpu_by_pycpuinfo() : void extracted from package _cpu() : void in class org.sacred.host_info.PyDummyClass1</td>
+<td>sacred/host_info.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/47c41fcd8f5eec1cb38b8709472b5356a3092588#diff-a049e12bb4a0916876dafe207b2943bcb904796584478f19a2a350f0f979bcf1L173">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/47c41fcd8f5eec1cb38b8709472b5356a3092588">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package __audioread_load(path Any, offset Any, duration Any, dtype Any) : void extracted from package load(path Any, sr Any, mono Any, offset Any, duration Any, dtype Any, res_type Any) : void in class org.librosa.core.audio.PyDummyClass1</td>
+<td>librosa/core/audio.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/c4fa01fc08914b22944815ca1d1803777954cb73#diff-f766f6ba40be26b15524686cab272a013b6e5e4da726bf95c4bd62776397820eL686">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/c4fa01fc08914b22944815ca1d1803777954cb73">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package __set_current_image(ax Any, img Any) : void extracted from package specshow(data Any, x_coords Any, y_coords Any, x_axis Any, y_axis Any, sr Any, hop_length Any, fmin Any, fmax Any, bins_per_octave Any, ax Any) : void in class org.librosa.display.PyDummyClass1</td>
+<td>librosa/display.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/c8280cd73ec4782188ab1d8d4d7f4ce349a07f6a#diff-b340cff81f3cd1696a79e258b208502a7218ade596ac7a64108924425176dc63L437">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/c8280cd73ec4782188ab1d8d4d7f4ce349a07f6a">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package _signal_to_frame_nonsilent(y Any, frame_length Any, hop_length Any, top_db Any, ref_power Any) : void extracted from package trim(y Any, top_db Any, ref_power Any, n_fft Any, hop_length Any, index Any) : void in class org.librosa.effects.PyDummyClass1</td>
+<td>librosa/effects.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/1cdfcfa8a884ffb5f670812ee4b528a76f367be9#diff-759fc8756ea781dada268562049019ca993108dfac4d687c4c97a830d1c4e7afL23">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/1cdfcfa8a884ffb5f670812ee4b528a76f367be9">CommitLink</a></td><td>No</td>
+<td>Extract Method	package __fft_response(y Any, n_fft Any, hop_length Any, fft_basis Any) : void extracted from package cqt(y Any, sr Any, hop_length Any, fmin Any, n_bins Any, bins_per_octave Any, tuning Any, filter_scale Any, aggregate Any, norm Any, sparsity Any, real Any, resolution Any) : void in class org.librosa.core.constantq.PyDummyClass1</td>
+<td>librosa/core/constantq.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/1cdfcfa8a884ffb5f670812ee4b528a76f367be9#diff-759fc8756ea781dada268562049019ca993108dfac4d687c4c97a830d1c4e7afL23">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/1cdfcfa8a884ffb5f670812ee4b528a76f367be9">CommitLink</a></td><td></td>
+<td>Extract Method	package __fft_response(y Any, n_fft Any, hop_length Any, fft_basis Any) : void extracted from package cqt(y Any, sr Any, hop_length Any, fmin Any, n_bins Any, bins_per_octave Any, tuning Any, filter_scale Any, aggregate Any, norm Any, sparsity Any, real Any, resolution Any) : void in class org.librosa.core.constantq.PyDummyClass1</td>
+<td>librosa/core/constantq.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/594e504f822a1c8d094ac24f4ef76cb306914e26#diff-759fc8756ea781dada268562049019ca993108dfac4d687c4c97a830d1c4e7afL600">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/594e504f822a1c8d094ac24f4ef76cb306914e26">CommitLink</a></td><td>Yes</td>
+<td>Extract Method	package __early_downsample_count(nyquist Any, filter_cutoff Any, hop_length Any, n_octaves Any) : void extracted from package __early_downsample(y Any, sr Any, hop_length Any, res_type Any, n_octaves Any, nyquist Any, filter_cutoff Any) : void in class org.librosa.core.constantq.PyDummyClass1</td>
+<td>librosa/core/constantq.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/01af2ab25c4d3f40191ce255750a3cd196ea8671#diff-c563295221637cd185ffad4213ba15b18af223d9a21c646b65ab7b8dc29c7062L270">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/01af2ab25c4d3f40191ce255750a3cd196ea8671">CommitLink</a></td><td></td>
+<td>Extract Method	package recurrence_to_lag(rec Any, pad Any) : void extracted from package structure_feature(rec Any, pad Any, inverse Any) : void in class org.librosa.segment.PyDummyClass1</td>
+<td>librosa/segment.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/16d7600b3235b65a29d975ae728395a808562f37#diff-759fc8756ea781dada268562049019ca993108dfac4d687c4c97a830d1c4e7afL233">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/16d7600b3235b65a29d975ae728395a808562f37">CommitLink</a></td><td></td>
+<td>Extract Method	package __fft_filters(sr Any, fmin Any, bins_per_octave Any, tuning Any, resolution Any, norm Any, sparsity Any) : void extracted from package cqt(y Any, sr Any, hop_length Any, fmin Any, n_bins Any, bins_per_octave Any, tuning Any, resolution Any, aggregate Any, norm Any, sparsity Any) : void in class org.librosa.core.constantq.PyDummyClass1</td>
+<td>librosa/core/constantq.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/16d7600b3235b65a29d975ae728395a808562f37#diff-759fc8756ea781dada268562049019ca993108dfac4d687c4c97a830d1c4e7afL191">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/16d7600b3235b65a29d975ae728395a808562f37">CommitLink</a></td><td></td>
+<td>Extract Method	package __fft_filters(sr Any, fmin Any, bins_per_octave Any, tuning Any, resolution Any, norm Any, sparsity Any) : void extracted from package cqt(y Any, sr Any, hop_length Any, fmin Any, n_bins Any, bins_per_octave Any, tuning Any, resolution Any, aggregate Any, norm Any, sparsity Any) : void in class org.librosa.core.constantq.PyDummyClass1</td>
+<td>librosa/core/constantq.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6#diff-06fedf3d1acac628402da782d1d37a85448be4c71b3368f8ea8e8f5d0001a998L616">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6">CommitLink</a></td><td></td>
+<td>Extract Method	package __get_spec(y Any, sr Any, S Any, n_fft Any, hop_length Any, power Any) : void extracted from package logfsgram(y Any, sr Any, S Any, n_fft Any, hop_length Any) : void in class org.librosa.feature.spectral.PyDummyClass1</td>
+<td>librosa/feature/spectral.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6#diff-06fedf3d1acac628402da782d1d37a85448be4c71b3368f8ea8e8f5d0001a998L707">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6">CommitLink</a></td><td></td>
+<td>Extract Method	package __get_spec(y Any, sr Any, S Any, n_fft Any, hop_length Any, power Any) : void extracted from package chromagram(y Any, sr Any, S Any, norm Any, n_fft Any, hop_length Any, tuning Any) : void in class org.librosa.feature.spectral.PyDummyClass1</td>
+<td>librosa/feature/spectral.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6#diff-06fedf3d1acac628402da782d1d37a85448be4c71b3368f8ea8e8f5d0001a998L860">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/5fcaac3beb4fd536604b7d99b02165a8919978d6">CommitLink</a></td><td></td>
+<td>Extract Method	package __get_spec(y Any, sr Any, S Any, n_fft Any, hop_length Any, power Any) : void extracted from package melspectrogram(y Any, sr Any, S Any, n_fft Any, hop_length Any) : void in class org.librosa.feature.spectral.PyDummyClass1</td>
+<td>librosa/feature/spectral.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L240">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc">CommitLink</a></td><td></td>
+<td>Extract Method	package __normalize_onsets(onsets Any) : void extracted from package __beat_tracker(onset_envelope Any, bpm Any, fft_res Any, tightness Any, trim Any) : void in class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L352">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc">CommitLink</a></td><td></td>
+<td>Extract Method	package __beat_local_score(onset_envelope Any, period Any) : void extracted from package __beat_tracker(onset_envelope Any, bpm Any, fft_res Any, tightness Any, trim Any) : void in class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L370">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc">CommitLink</a></td><td></td>
+<td>Extract Method	package __beat_track_dp(localscore Any, period Any, tightness Any) : void extracted from package __beat_tracker(onset_envelope Any, bpm Any, fft_res Any, tightness Any, trim Any) : void in class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L240">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/700c178e2645498228927d01583ab672ea2858bc">CommitLink</a></td><td></td>
+<td>Extract Method	package __last_beat(cumscore Any) : void extracted from package __beat_tracker(onset_envelope Any, bpm Any, fft_res Any, tightness Any, trim Any) : void in class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/4515da99519d8aab8c0fd0eabd28e9a332fb92b7#diff-c49b8660958f8ae6f4b060c6f2f98e7d1a003103974c4434d7673d538f3480e8L1648">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/4515da99519d8aab8c0fd0eabd28e9a332fb92b7">CommitLink</a></td><td></td>
+<td>Extract Method	package frames_to_samples(frames Any, hop_length Any, n_fft Any) : void extracted from package frames_to_time(frames Any, sr Any, hop_length Any, n_fft Any) : void in class org.librosa.core.PyDummyClass1</td>
+<td>librosa/core.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/4515da99519d8aab8c0fd0eabd28e9a332fb92b7#diff-c49b8660958f8ae6f4b060c6f2f98e7d1a003103974c4434d7673d538f3480e8L1689">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/4515da99519d8aab8c0fd0eabd28e9a332fb92b7">CommitLink</a></td><td></td>
+<td>Extract Method	package samples_to_frames(samples Any, hop_length Any, n_fft Any) : void extracted from package time_to_frames(times Any, sr Any, hop_length Any, n_fft Any) : void in class org.librosa.core.PyDummyClass1</td>
+<td>librosa/core.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/librosa/librosa/commit/ab90cffb561414d6d157a7b221baffa67eb7bc55#diff-3cb8a08f8ebafdecd7c0436b39b9b3907f40055b6f0c13c431b3585fbf29b3a8L340">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/ab90cffb561414d6d157a7b221baffa67eb7bc55">CommitLink</a></td><td></td>
+<td>Extract Method	package mel_frequencies(nfilts Any, fmin Any, fmax Any, use_htk Any) : void extracted from package melfb(sr Any, nfft Any, nfilts Any, width Any, fmin Any, fmax Any, use_htk Any) : void in class org.librosa.__init__.PyDummyClass1</td>
+<td>librosa/__init__.py</td>
+</tr>
+<tr><td>KrishnaswamyLab/PHATE</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/KrishnaswamyLab/PHATE/commit/e5a98adc53c682047bd6873c127c9c94588b28ab#diff-33d42cc50fe1b3acd3aed401816f031af5727849c68091181736865a5019f05eL96">RefactoringLink</a></td><td><a href="https://github.com/KrishnaswamyLab/PHATE/commit/e5a98adc53c682047bd6873c127c9c94588b28ab">CommitLink</a></td><td></td>
+<td>Extract Method	package classic(D Any, n_components Any, random_state Any) : void extracted from package embed_MDS(X Any, ndim Any, how Any, distance_metric Any, n_jobs Any, seed Any, verbose Any) : void in class org.Python.phate.mds.PyDummyClass1</td>
+<td>Python/phate/mds.py</td>
+</tr>
+<tr><td>KrishnaswamyLab/PHATE</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/KrishnaswamyLab/PHATE/commit/10343f6d91058f732225d4f099e62cf2e5263ca4#diff-1f9f56a0ba46be62032c47745a62e4fae4c9b833e54f5f459aa1f54d93dc42f4L84">RefactoringLink</a></td><td><a href="https://github.com/KrishnaswamyLab/PHATE/commit/10343f6d91058f732225d4f099e62cf2e5263ca4">CommitLink</a></td><td></td>
+<td>Extract Method	package _to_numpy(data Any) : void extracted from package _auto_params(data Any, c Any, discrete Any, cmap Any, legend Any) : void in class org.Python.phate.plot.PyDummyClass1</td>
+<td>Python/phate/plot.py</td>
+</tr>
+<tr><td>jindongwang/transferlearning</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/jindongwang/transferlearning/commit/1411a1c92f3fce385babe7b3785ee943f34c77b8#diff-53b14ee04fb53d2a8337f8c50a6f4267a612fef641e9afda1fb5385a2623d715L63">RefactoringLink</a></td><td><a href="https://github.com/jindongwang/transferlearning/commit/1411a1c92f3fce385babe7b3785ee943f34c77b8">CommitLink</a></td><td></td>
+<td>Extract Method	package test(model Any, target_test_loader Any) : void extracted from package train(source_loader Any, target_train_loader Any, target_test_loader Any, model Any, optimizer Any, CFG Any) : void in class org.code.deep.DDC_DeepCoral.main.PyDummyClass1</td>
+<td>code/deep/DDC_DeepCoral/main.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/19d033a92294727dec6e8ad4965e754f9ae64c5f#diff-126155a0be0195833b5f47089b6a126ba995390f808a0865a0573ebb998c7585L101">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/19d033a92294727dec6e8ad4965e754f9ae64c5f">CommitLink</a></td><td></td>
+<td>Extract Method	package _apply_clustering_n_clusters(X Any, n_clusters Any) : void extracted from package _apply_clustering(X Any, max_num_clusters Any) : void in class org.nilmtk.feature_detectors.cluster.PyDummyClass1</td>
+<td>nilmtk/feature_detectors/cluster.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/f0622cc5c1d6fc5c81b588a9c365731188fb5cae#diff-fd825d578460d9c089182e61851749dd68be9d626972f22a4772ae28358788adL499">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/f0622cc5c1d6fc5c81b588a9c365731188fb5cae">CommitLink</a></td><td></td>
+<td>Extract Method	package load_series(self Electric) : void extracted from package power_series(self Electric) : void in class org.nilmtk.electric.Electric</td>
+<td>nilmtk/electric.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/68d56b30e50858751d9248332d20be844031fff0#diff-fc86def40746fa8f783acc7fa20483452a0bca19c211d2c932c2603ffc3e8ddaL1340">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/68d56b30e50858751d9248332d20be844031fff0">CommitLink</a></td><td></td>
+<td>Extract Method	package _load_and_reindex_chunk(generator Any, timeframe Any, index Any) : void extracted from package combine_chunks_from_generators(generators Any, sample_period Any) : void in class org.nilmtk.metergroup.PyDummyClass1</td>
+<td>nilmtk/metergroup.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/fb62cf7fa1ae6d5382ba0c3aafc75893f4fa6444#diff-fc86def40746fa8f783acc7fa20483452a0bca19c211d2c932c2603ffc3e8ddaL589">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/fb62cf7fa1ae6d5382ba0c3aafc75893f4fa6444">CommitLink</a></td><td></td>
+<td>Extract Method	package _meter_generators(self MeterGroup) : void extracted from package load(self MeterGroup, sample_period Any) : void in class org.nilmtk.metergroup.MeterGroup</td>
+<td>nilmtk/metergroup.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/fb62cf7fa1ae6d5382ba0c3aafc75893f4fa6444#diff-fc86def40746fa8f783acc7fa20483452a0bca19c211d2c932c2603ffc3e8ddaL848">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/fb62cf7fa1ae6d5382ba0c3aafc75893f4fa6444">CommitLink</a></td><td></td>
+<td>Extract Method	package _meter_generators(self MeterGroup) : void extracted from package dataframe_of_meters(self MeterGroup, rule Any) : void in class org.nilmtk.metergroup.MeterGroup</td>
+<td>nilmtk/metergroup.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/b48e8b58f5abf3e496f41ad83b86c9ff91d722ba#diff-a971749d15e3650612d931071655e1aaa68f3744097600135ec5c2b5fe3f0732L362">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/b48e8b58f5abf3e496f41ad83b86c9ff91d722ba">CommitLink</a></td><td></td>
+<td>Extract Method	package load(self ElecMeter) : void extracted from package power_series(self ElecMeter) : void in class org.nilmtk.elecmeter.ElecMeter</td>
+<td>nilmtk/elecmeter.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/462237e9be3f614386400062039429a18a1e5836#diff-a971749d15e3650612d931071655e1aaa68f3744097600135ec5c2b5fe3f0732L233">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/462237e9be3f614386400062039429a18a1e5836">CommitLink</a></td><td></td>
+<td>Extract Method	package get_source_node(self ElecMeter) : void extracted from package total_energy(self ElecMeter) : void in class org.nilmtk.elecmeter.ElecMeter</td>
+<td>nilmtk/elecmeter.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/462237e9be3f614386400062039429a18a1e5836#diff-a971749d15e3650612d931071655e1aaa68f3744097600135ec5c2b5fe3f0732L247">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/462237e9be3f614386400062039429a18a1e5836">CommitLink</a></td><td></td>
+<td>Extract Method	package get_source_node(self ElecMeter) : void extracted from package good_sections(self ElecMeter) : void in class org.nilmtk.elecmeter.ElecMeter</td>
+<td>nilmtk/elecmeter.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/2c16357cf3b2a5b1265caf7d89703ef253e39df3#diff-91d53a3411e771b51fd7b1b0cb2fff4d4b5990c2b5cb37b9b959c655dd4db268L180">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/2c16357cf3b2a5b1265caf7d89703ef253e39df3">CommitLink</a></td><td></td>
+<td>Extract Method	package reframe_index(index Any, window_start Any, window_end Any) : void extracted from package get_gap_starts_and_gap_ends(data Any, max_sample_period Any, window_start Any, window_end Any) : void in class org.nilmtk.stats.electricity.single.PyDummyClass1</td>
+<td>nilmtk/stats/electricity/single.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/2e779f9823e3f19d102c754757f952f1447e1638#diff-91d53a3411e771b51fd7b1b0cb2fff4d4b5990c2b5cb37b9b959c655dd4db268L125">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/2e779f9823e3f19d102c754757f952f1447e1638">CommitLink</a></td><td></td>
+<td>Extract Method	package get_gap_starts_and_gap_ends(data Any, max_sample_period Any, window_start Any, window_end Any) : void extracted from package plot_missing_samples(data Any, ax Any, fig Any, max_sample_period Any, bottom Any, height Any, color Any) : void in class org.nilmtk.stats.electricity.single.PyDummyClass1</td>
+<td>nilmtk/stats/electricity/single.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/b349746bd895bcef32ea3d95b61a9bf591918130#diff-91d53a3411e771b51fd7b1b0cb2fff4d4b5990c2b5cb37b9b959c655dd4db268L33">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/b349746bd895bcef32ea3d95b61a9bf591918130">CommitLink</a></td><td></td>
+<td>Extract Method	package _get_index(data Any) : void extracted from package sample_period(data Any) : void in class org.nilmtk.stats.electricity.single.PyDummyClass1</td>
+<td>nilmtk/stats/electricity/single.py</td>
+</tr>
+<tr><td>coala/coala-bears</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/coala/coala-bears/commit/b864b6c2fb100beac26176117305df5d3bb57b6e#diff-88f8edf2d89a93c849401d27406094b0fd030efa3f189ea443ead299f6107210L14">RefactoringLink</a></td><td><a href="https://github.com/coala/coala-bears/commit/b864b6c2fb100beac26176117305df5d3bb57b6e">CommitLink</a></td><td></td>
+<td>Extract Method	package get_testfile_path(filename Any) : void extracted from package load_testdata(filename Any) : void in class org.tests.xml2.XMLBearTest.PyDummyClass1</td>
+<td>tests/xml2/XMLBearTest.py</td>
+</tr>
+<tr><td>kkroening/ffmpeg-python</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/kkroening/ffmpeg-python/commit/19555472029f57ce2c9caabe757425d8201c0324#diff-acbf39e687a101ffcea7a6a973326d5a54272ead30a8f7f4aa9c6a9fae091224L46">RefactoringLink</a></td><td><a href="https://github.com/kkroening/ffmpeg-python/commit/19555472029f57ce2c9caabe757425d8201c0324">CommitLink</a></td><td></td>
+<td>Extract Method	package _get_node_color(node Any) : void extracted from package view() : void in class org.ffmpeg._view.PyDummyClass1</td>
+<td>ffmpeg/_view.py</td>
+</tr>
+<tr><td>kkroening/ffmpeg-python</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/kkroening/ffmpeg-python/commit/637a2a5bc3d2ac3ee2edb9b6a4ec9aa635998f27#diff-6f17ba101feb8222b64d4ccbbbd34582616cb33385f741d7fe79ea5ab9131a77L95">RefactoringLink</a></td><td><a href="https://github.com/kkroening/ffmpeg-python/commit/637a2a5bc3d2ac3ee2edb9b6a4ec9aa635998f27">CommitLink</a></td><td></td>
+<td>Extract Method	package filter_(parent_node Any, filter_name Any) : void extracted from package hflip(parent_node Any) : void in class org.ffmpeg._filters.PyDummyClass1</td>
+<td>ffmpeg/_filters.py</td>
+</tr>
+<tr><td>kkroening/ffmpeg-python</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/kkroening/ffmpeg-python/commit/637a2a5bc3d2ac3ee2edb9b6a4ec9aa635998f27#diff-6f17ba101feb8222b64d4ccbbbd34582616cb33385f741d7fe79ea5ab9131a77L104">RefactoringLink</a></td><td><a href="https://github.com/kkroening/ffmpeg-python/commit/637a2a5bc3d2ac3ee2edb9b6a4ec9aa635998f27">CommitLink</a></td><td></td>
+<td>Extract Method	package filter_(parent_node Any, filter_name Any) : void extracted from package vflip(parent_node Any) : void in class org.ffmpeg._filters.PyDummyClass1</td>
+<td>ffmpeg/_filters.py</td>
+</tr>
+<tr><td>mathurinm/celer</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/mathurinm/celer/commit/ceb335817a5168c5c78c2887e03fac58087bbf96#diff-920a837fb38acf4017a067704a8a50e2a8beea27d8eb1d85d6ef41e03e096719L214">RefactoringLink</a></td><td><a href="https://github.com/mathurinm/celer/commit/ceb335817a5168c5c78c2887e03fac58087bbf96">CommitLink</a></td><td></td>
+<td>Extract Method	package _sparse_and_dense(X Any) : void extracted from package celer_path(X Any, y Any, pb Any, eps Any, n_alphas Any, alphas Any, coef_init Any, max_iter Any, gap_freq Any, max_epochs Any, p0 Any, verbose Any, verbose_inner Any, tol Any, prune Any, groups Any, return_thetas Any, use_PN Any, X_offset Any, X_scale Any, return_n_iter Any, positive Any) : void in class org.celer.homotopy.PyDummyClass1</td>
+<td>celer/homotopy.py</td>
+</tr>
+<tr><td>mathurinm/celer</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/mathurinm/celer/commit/ceb335817a5168c5c78c2887e03fac58087bbf96#diff-920a837fb38acf4017a067704a8a50e2a8beea27d8eb1d85d6ef41e03e096719L361">RefactoringLink</a></td><td><a href="https://github.com/mathurinm/celer/commit/ceb335817a5168c5c78c2887e03fac58087bbf96">CommitLink</a></td><td></td>
+<td>Extract Method	package _sparse_and_dense(X Any) : void extracted from package PN_solver(X Any, y Any, alpha Any, w_init Any, max_iter Any, verbose Any, verbose_inner Any, tol Any, prune Any, p0 Any, use_accel Any, K Any, growth Any, blitz_sc Any) : void in class org.celer.homotopy.PyDummyClass1</td>
+<td>celer/homotopy.py</td>
+</tr>
+<tr><td>dgasmith/opt_einsum</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/dgasmith/opt_einsum/commit/89997c33639c7a7802bd53f1d6298e09085d3fbb#diff-854efc7adf395e6d55f401243c1c2efa3784734e6b502cb855722e78b4730dc8L38">RefactoringLink</a></td><td><a href="https://github.com/dgasmith/opt_einsum/commit/89997c33639c7a7802bd53f1d6298e09085d3fbb">CommitLink</a></td><td></td>
+<td>Extract Method	package _add_sharing_cache(cache Any) : void extracted from package shared_intermediates(cache Any) : void in class org.opt_einsum.sharing.PyDummyClass1</td>
+<td>opt_einsum/sharing.py</td>
+</tr>
+<tr><td>mozilla/TTS</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/mozilla/TTS/commit/660d61aeebb0a28e89b2e485a61f8949407e2e88#diff-fc14ae339327cf7355806aa7fd81fc410a201d04f9731bda3863b992d5a70227L49">RefactoringLink</a></td><td><a href="https://github.com/mozilla/TTS/commit/660d61aeebb0a28e89b2e485a61f8949407e2e88">CommitLink</a></td><td></td>
+<td>Extract Method	package maximum_path_cython(value Any, mask Any) : void extracted from package maximum_path(value Any, mask Any) : void in class org.TTS.tts.layers.glow_tts.monotonic_align.__init__.PyDummyClass1</td>
+<td>TTS/tts/layers/glow_tts/monotonic_align/__init__.py</td>
+</tr>
+<tr><td>mozilla/TTS</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/mozilla/TTS/commit/ea39715305b2b835757bc45b7bc1e64d82516a48#diff-841671f532a96bb54eb2564d498bc13455848a93c2d19c5d256d56d6254ecdccL42">RefactoringLink</a></td><td><a href="https://github.com/mozilla/TTS/commit/ea39715305b2b835757bc45b7bc1e64d82516a48">CommitLink</a></td><td></td>
+<td>Extract Method	package read_json_with_comments(json_path Any) : void extracted from package load_config(config_path Any) : void in class org.TTS.utils.io.PyDummyClass1</td>
+<td>TTS/utils/io.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/dc0696d7d48586992ea3cab12ad5ff5aa5f059a2#diff-0bec637cd35556779fb0c31aee6a55cb6b23a83aae9748523e42a788542abf9dL76">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/dc0696d7d48586992ea3cab12ad5ff5aa5f059a2">CommitLink</a></td><td></td>
+<td>Extract Method	package ellipse_axes(bwimage Any) : void extracted from package eccentricity(bwimage Any) : void in class org.mahotas.features.shape.PyDummyClass1</td>
+<td>mahotas/features/shape.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/65a620443c1f2db4f80362f748035084a7eaaaf8#diff-12dba3fa4977469cbbd30ffa07bd1abbc90255013f65c92249fc8c9144a79b57L63">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/65a620443c1f2db4f80362f748035084a7eaaaf8">CommitLink</a></td><td></td>
+<td>Extract Method	package bbox(img Any, border Any) : void extracted from package croptobbox(img Any, border Any) : void in class org.mahotas.bbox.PyDummyClass1</td>
+<td>mahotas/bbox.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666#diff-1ddd3490b321bca5f3450f750acefae467e664792349a9cf3aa4410d2d14b2f2L494">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666">CommitLink</a></td><td></td>
+<td>Extract Method	package _daubechies_code(c Any) : void extracted from package daubechies(f Any, code Any, inline Any) : void in class org.mahotas.convolve.PyDummyClass1</td>
+<td>mahotas/convolve.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666#diff-1ddd3490b321bca5f3450f750acefae467e664792349a9cf3aa4410d2d14b2f2L523">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666">CommitLink</a></td><td></td>
+<td>Extract Method	package _daubechies_code(c Any) : void extracted from package idaubechies(f Any, code Any, inline Any) : void in class org.mahotas.convolve.PyDummyClass1</td>
+<td>mahotas/convolve.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/a90badddc61b7b290fc75c857fa567644a529912#diff-e4b12bd8b68633c0c8162c8e5b937ba19005e3770a3124729475abb9ef330e27L181">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/a90badddc61b7b290fc75c857fa567644a529912">CommitLink</a></td><td></td>
+<td>Extract Method	package gbernsen(f Any, se Any, contrast_threshold Any, gthresh Any) : void extracted from package bernsen(f Any, radius Any, contrast_threshold Any, gthresh Any) : void in class org.mahotas.thresholding.PyDummyClass1</td>
+<td>mahotas/thresholding.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/6dc14d1168e4dfd1c37cdf65ac0e17c4a3cf17c9#diff-bec5653b962a2825b7e9b823c58a2ef79a81ce03e79f323e41df4595750d4360L181">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/6dc14d1168e4dfd1c37cdf65ac0e17c4a3cf17c9">CommitLink</a></td><td></td>
+<td>Extract Method	package haralick_features(cmats Any, ignore_zeros Any, preserve_haralick_bug Any, compute_14th_feature Any) : void extracted from package haralick(f Any, ignore_zeros Any, preserve_haralick_bug Any, compute_14th_feature Any) : void in class org.mahotas.features.texture.PyDummyClass1</td>
+<td>mahotas/features/texture.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/717bcdec4f7376bc54f8651b9f8829c9bad33fd2#diff-974bd528f843a4788c31745fb5c27e8de171ad51c6c3d5ada1f852d79cf0cd6aL103">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/717bcdec4f7376bc54f8651b9f8829c9bad33fd2">CommitLink</a></td><td></td>
+<td>Extract Method	package zernike_moments(im Any, radius Any, degree Any, cm Any) : void extracted from package zernike(img Any, degree Any, radius Any, cm Any) : void in class org.mahotas.zernike.PyDummyClass1</td>
+<td>mahotas/zernike.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80#diff-2547d012aa59f5d9db847542db1dd2f24103a28d392d5de85f969ba5ef1b130dL21">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80">CommitLink</a></td><td></td>
+<td>Extract Method	package brute_force(f Any, dy Any, dx Any) : void extracted from package test_cooccurence() : void in class org.tests.test_texture.PyDummyClass1</td>
+<td>tests/test_texture.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80#diff-2547d012aa59f5d9db847542db1dd2f24103a28d392d5de85f969ba5ef1b130dL32">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80">CommitLink</a></td><td></td>
+<td>Extract Method	package brute_force(f Any, dy Any, dx Any) : void extracted from package test_cooccurence() : void in class org.tests.test_texture.PyDummyClass1</td>
+<td>tests/test_texture.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80#diff-2547d012aa59f5d9db847542db1dd2f24103a28d392d5de85f969ba5ef1b130dL12">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80">CommitLink</a></td><td></td>
+<td>Extract Method	package brute_force(f Any, dy Any, dx Any) : void extracted from package test_cooccurence() : void in class org.tests.test_texture.PyDummyClass1</td>
+<td>tests/test_texture.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80#diff-2547d012aa59f5d9db847542db1dd2f24103a28d392d5de85f969ba5ef1b130dL24">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/93663c2cc8c0c8bc3c6f28c27679707305948c80">CommitLink</a></td><td></td>
+<td>Extract Method	package brute_force(f Any, dy Any, dx Any) : void extracted from package test_cooccurence() : void in class org.tests.test_texture.PyDummyClass1</td>
+<td>tests/test_texture.py</td>
+</tr>
+<tr><td>thoughtworksarts/EmoPy</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/0dc2f93d4adee6d99f061767aa0d83544ab3785f#diff-eee67d44760cdb7d2d677250e7c6f08386f02a9ea8f4848f0ec6dd4f751d2cd8L57">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/0dc2f93d4adee6d99f061767aa0d83544ab3785f">CommitLink</a></td><td></td>
+<td>Extract Method	package get_training_labels() : void extracted from package prepare_training_labels() : void in class org.riot_neuralnet.main.PyDummyClass1</td>
+<td>riot_neuralnet/main.py</td>
+</tr>
+<tr><td>thoughtworksarts/EmoPy</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/756a91b5f2dae552cbeab794624ff2b024a3f356#diff-eee67d44760cdb7d2d677250e7c6f08386f02a9ea8f4848f0ec6dd4f751d2cd8L23">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/756a91b5f2dae552cbeab794624ff2b024a3f356">CommitLink</a></td><td></td>
+<td>Extract Method	package prepare_training_labels(count Any) : void extracted from package main() : void in class org.riot_neuralnet.main.PyDummyClass1</td>
+<td>riot_neuralnet/main.py</td>
+</tr>
+<tr><td>brilee/MuGo</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/brilee/MuGo/commit/452ba701d7d365c22764cbdf0dca46e0df5b6d8a#diff-17598d8c85edda0407c1daa190387dd29fa7908451b67812c4d04e9a94db55cdL50">RefactoringLink</a></td><td><a href="https://github.com/brilee/MuGo/commit/452ba701d7d365c22764cbdf0dca46e0df5b6d8a">CommitLink</a></td><td></td>
+<td>Extract Method	package get_next_move(node Any) : void extracted from package handle_play_stones(pos Any, node Any) : void in class org.sgf_wrapper.PyDummyClass1</td>
+<td>sgf_wrapper.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/6080dc6038ce4f412e140261f8bf7f6892575496#diff-4fbf17ba10aa46e1dade6ec038118fddd68230d3a1c91664cf8d3649383327d9L75">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/6080dc6038ce4f412e140261f8bf7f6892575496">CommitLink</a></td><td></td>
+<td>Extract Method	package __hdfs_read_funciton(hdfs_client Any) : void extracted from package construct_all_from_folder(string_tokenizer Any, case_sensitive Any, dictionaries_folder Any, hdfs_url Any, hdfs_user Any, stop_words Any, accepted_extensions Any) : void in class org.nalaf.features.dictionaries.DictionaryFeatureGenerator</td>
+<td>nalaf/features/dictionaries.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/63ff10a82ba8677152748bc7a8ab12ce41b3a8e6#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL189">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/63ff10a82ba8677152748bc7a8ab12ce41b3a8e6">CommitLink</a></td><td></td>
+<td>Extract Method	package _create_instances(num_features Any, corpus Any, preprocess Any, setting_function Any) : void extracted from package _convert_edges_features_anew(corpus Any, preprocess Any, final_allowed_key_mapping Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/63ff10a82ba8677152748bc7a8ab12ce41b3a8e6#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL107">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/63ff10a82ba8677152748bc7a8ab12ce41b3a8e6">CommitLink</a></td><td></td>
+<td>Extract Method	package _create_instances(num_features Any, corpus Any, preprocess Any, setting_function Any) : void extracted from package gen_vector_instances(self SklSVM, corpus Any, global_feature_set Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL80">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc">CommitLink</a></td><td></td>
+<td>Extract Method	package _vector_instances_already_computed(corpus Any) : void extracted from package _convert_edges_features_to_vector_instances(corpus Any, preprocess Any, final_allowed_key_mapping Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL120">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc">CommitLink</a></td><td></td>
+<td>Extract Method	package _convert_edges_features_reusing_computed_vector_instances(corpus Any) : void extracted from package _convert_edges_features_to_vector_instances(corpus Any, preprocess Any, final_allowed_key_mapping Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL118">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/fd8ae410a28961a5370fa1f388d4587ff98bafdc">CommitLink</a></td><td></td>
+<td>Extract Method	package _convert_edges_features_anew(corpus Any, preprocess Any, final_allowed_key_mapping Any) : void extracted from package _convert_edges_features_to_vector_instances(corpus Any, preprocess Any, final_allowed_key_mapping Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
+</tr>
+<tr><td>Rostlab/nalaf</td>
+<td>Extract Method</td>
+<td><a href="https://github.com/Rostlab/nalaf/commit/edf49b4c7137e902763477f634da90fe038d6364#diff-c5dc64fe9b61afd2a311868250c0c7f4bd7ff0308ef3bf9c8826d118884a881aL48">RefactoringLink</a></td><td><a href="https://github.com/Rostlab/nalaf/commit/edf49b4c7137e902763477f634da90fe038d6364">CommitLink</a></td><td></td>
+<td>Extract Method	package _gen_allowed_and_final_mapping_features_keys(corpus Any) : void extracted from package train(self SklSVM, training_corpus Any, feature_set Any) : void in class org.nalaf.learning.lib.sklsvm.SklSVM</td>
+<td>nalaf/learning/lib/sklsvm.py</td>
 </tr>
 </table>
 

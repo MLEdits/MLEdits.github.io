@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Parameterize Variable</i> : Total - <i>1</i> : Precision -<i>100.0%</i></H2>
+<body><HTML><H2> Refactoring Type : <i>Parameterize Variable</i> | Total : <i>20</i> | Precision : <i>80.0%</i>  | True Positives :8 | Evaluated : 10 | Not Evaluated  : 10 </H2>
 
 <table>
  <tr>
@@ -30,6 +30,120 @@
 <td><a href="https://github.com/keras-team/keras/commit/d789bd94a3a1bdc18390b8bff742936dcc70c54f#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L2023">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/d789bd94a3a1bdc18390b8bff742936dcc70c54f">CommitLink</a></td><td>Yes</td>
 <td>Parameterize Variable	initial : String to dtype : Any in method package test_setfloatx_correct_values(self TestBackend, dtype Any) : void from class org.tests.keras.backend.backend_test.TestBackend</td>
 <td>tests/keras/backend/backend_test.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/d35509ef4fed2e588adb9285ee1c9bd0eb16582a#diff-bc6dfc56aa8b44ee8042804012c8fdb4edc74853c5b439ae6e722dddf2c98875L31">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/d35509ef4fed2e588adb9285ee1c9bd0eb16582a">CommitLink</a></td><td>No</td>
+<td>Parameterize Variable	Q : Any to Qs : Any in method package __init__(self SQL, env Any, pool Any, Qs Any, policy Any, plotter Any, policy_lr Any, Q_lr Any, value_n_particles Any, td_target_update_interval Any, kernel_fn Any, kernel_n_particles Any, kernel_update_ratio Any, discount Any, tau Any, reward_scale Any, use_saved_Q Any, use_saved_policy Any, save_full_state Any, train_Q Any, train_policy Any) : void from class org.softlearning.algorithms.sql.SQL</td>
+<td>softlearning/algorithms/sql.py</td>
+</tr>
+<tr><td>Kamnitsask/deepmedic</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/Kamnitsask/deepmedic/commit/a032685ff55c04c156ceafcbbd37a373463991ec#diff-39343b7dfe6166b5be713346d557f533288ab127ed6af26c6d8ce01021f7edd7L566">RefactoringLink</a></td><td><a href="https://github.com/Kamnitsask/deepmedic/commit/a032685ff55c04c156ceafcbbd37a373463991ec">CommitLink</a></td><td>No</td>
+<td>Parameterize Variable	sampling_map_excl_near_edges : Any to sampling_map : Any in method package sample_idxs_of_segments(log Any, job_id Any, n_samples Any, sampling_map Any) : void from class org.deepmedic.dataManagement.sampling.PyDummyClass1</td>
+<td>deepmedic/dataManagement/sampling.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/librosa/librosa/commit/66a07ab9931156b46ee5d7ce0071a9adfaca94d5#diff-260ae01b06042016564c9ee1694681c899dffdcb1452b5b2c2ee8217066b3cf0L170">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/66a07ab9931156b46ee5d7ce0071a9adfaca94d5">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	n_filters : int to n_bins : Any in method package logfrequency(sr Any, n_fft Any, n_bins Any, bins_per_octave Any, tuning Any, fmin Any, spread Any) : void from class org.librosa.filters.PyDummyClass1</td>
+<td>librosa/filters.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/librosa/librosa/commit/66a07ab9931156b46ee5d7ce0071a9adfaca94d5#diff-260ae01b06042016564c9ee1694681c899dffdcb1452b5b2c2ee8217066b3cf0L250">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/66a07ab9931156b46ee5d7ce0071a9adfaca94d5">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	n_filters : int to n_bins : Any in method package constant_q(sr Any, fmin Any, n_bins Any, bins_per_octave Any, tuning Any, window Any, resolution Any, pad Any) : void from class org.librosa.filters.PyDummyClass1</td>
+<td>librosa/filters.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/librosa/librosa/commit/7dd5f35936840a35698304cc695d076cddf5da8c#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L105">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/7dd5f35936840a35698304cc695d076cddf5da8c">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	bpm_std : float to std_bpm : Any in method package estimate_tempo(onsets Any, sr Any, hop_length Any, start_bpm Any, std_bpm Any, ac_size Any, duration Any, offset Any) : void from class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>librosa/librosa</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/librosa/librosa/commit/aa078dec874002ec936bd83f389e9132e49528c7#diff-69a745ce12456dd0916aacf90eddd70574d70f0fde630ea5d435e5c68f020f30L18">RefactoringLink</a></td><td><a href="https://github.com/librosa/librosa/commit/aa078dec874002ec936bd83f389e9132e49528c7">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	sampling_rate : int to sr : Any in method package beat_track(y Any, sr Any, hop_length Any, start_bpm Any, tightness Any) : void from class org.librosa.beat.PyDummyClass1</td>
+<td>librosa/beat.py</td>
+</tr>
+<tr><td>xinntao/BasicSR</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/xinntao/BasicSR/commit/8df14f06793fe1a04aa1e18179ad46420e2c028c#diff-2449192dbc77b728fb248a5b7fb871763b5531ef7f3b496da5fd79facdf8309dL106">RefactoringLink</a></td><td><a href="https://github.com/xinntao/BasicSR/commit/8df14f06793fe1a04aa1e18179ad46420e2c028c">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	state_idx : Any to resume_iter : Any in method package check_resume(opt Any, resume_iter Any) : void from class org.codes.options.options.PyDummyClass2</td>
+<td>codes/options/options.py</td>
+</tr>
+<tr><td>xinntao/BasicSR</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/xinntao/BasicSR/commit/29ab5e1965503be3ffe87462e973edf1d457af6e#diff-aa0090b83308c091628d9d5fb29397ba5e5a6c25c4ba7cf95b8ef8d6d2993676L43">RefactoringLink</a></td><td><a href="https://github.com/xinntao/BasicSR/commit/29ab5e1965503be3ffe87462e973edf1d457af6e">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	GT_path : Any to path : Any in method package worker(path Any, save_folder Any, crop_sz Any, step Any, thres_sz Any, compression_level Any) : void from class org.codes.scripts.extract_subimgs_single.PyDummyClass1</td>
+<td>codes/scripts/extract_subimgs_single.py</td>
+</tr>
+<tr><td>xinntao/BasicSR</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/xinntao/BasicSR/commit/09f89a438d11b7ddb81bdd560c4de5d6a860fd3e#diff-8dc56d35d3add546e01fac3e9ff7065b25a9cd1a12cd77faed15efea73c5f1b1L35">RefactoringLink</a></td><td><a href="https://github.com/xinntao/BasicSR/commit/09f89a438d11b7ddb81bdd560c4de5d6a860fd3e">CommitLink</a></td><td>Yes</td>
+<td>Parameterize Variable	GT_path : Any to path : Any in method package worker(path Any, save_folder Any, mode Any, compression_level Any) : void from class org.codes.scripts.color2gray.PyDummyClass1</td>
+<td>codes/scripts/color2gray.py</td>
+</tr>
+<tr><td>sepandhaghighi/pycm</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/sepandhaghighi/pycm/commit/8a6c07326950e2a27f668135cb4ade91ecc094a0#diff-7b5175eb4aec7ed6636d7f45cdd5b93b09e9bba47d8df0100c6a7338b6387135L698">RefactoringLink</a></td><td><a href="https://github.com/sepandhaghighi/pycm/commit/8a6c07326950e2a27f668135cb4ade91ecc094a0">CommitLink</a></td><td></td>
+<td>Parameterize Variable	cm : Any to self : ConfusionMatrix in method package weighted_kappa(self ConfusionMatrix, weight Any) : void from class org.pycm.pycm_obj.ConfusionMatrix</td>
+<td>pycm/pycm_obj.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/f27570922241b6b8b918099f51996b5275377124#diff-c025ccf006371a59e3fafbd5946e392da0e03b48587138441437e8f4feb1b59eL50">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/f27570922241b6b8b918099f51996b5275377124">CommitLink</a></td><td></td>
+<td>Parameterize Variable	CHUNKSIZE : int to chunksize : Any in method package load(self HDFDataStore, key Any, cols Any, periods Any, n_look_ahead_rows Any, chunksize Any) : void from class org.nilmtk.datastore.HDFDataStore</td>
+<td>nilmtk/datastore.py</td>
+</tr>
+<tr><td>nilmtk/nilmtk</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/nilmtk/nilmtk/commit/229248199bfdc68cee1922d9140fa90b8a56fedf#diff-d697df1df740809c18791c795bb55f52d0e3438b22c17b9b19a039c1d5a955a5L73">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/229248199bfdc68cee1922d9140fa90b8a56fedf">CommitLink</a></td><td></td>
+<td>Parameterize Variable	full_directory : Any to output_filepath : Any in method package download_dataset(self WikiEnergy, database_username Any, database_password Any, output_filepath Any, periods_to_load Any) : void from class org.nilmtk.dataset_converters.wikienergy.WikiEnergy</td>
+<td>nilmtk/dataset_converters/wikienergy.py</td>
+</tr>
+<tr><td>akanimax/pro_gan_pytorch</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/akanimax/pro_gan_pytorch/commit/62f4968d587910fc618501879e5a840271328e5c#diff-43b7476e35ef975f8705f877185db69243fbddae220bfab0e11a09c1ce9a723cL274">RefactoringLink</a></td><td><a href="https://github.com/akanimax/pro_gan_pytorch/commit/62f4968d587910fc618501879e5a840271328e5c">CommitLink</a></td><td></td>
+<td>Parameterize Variable	averaging : String to group_size : Any in method package __init__(self MinibatchStdDev, group_size Any) : void from class org.pro_gan_pytorch.CustomLayers.MinibatchStdDev</td>
+<td>pro_gan_pytorch/CustomLayers.py</td>
+</tr>
+<tr><td>dgasmith/opt_einsum</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/dgasmith/opt_einsum/commit/3fc4d81927bdc8b8a64941ef5902a5b0ae0303d2#diff-a2dad6992c6930687cac26d56572e18e954604c353cb61abf8f9f3cced5266f2L44">RefactoringLink</a></td><td><a href="https://github.com/dgasmith/opt_einsum/commit/3fc4d81927bdc8b8a64941ef5902a5b0ae0303d2">CommitLink</a></td><td></td>
+<td>Parameterize Variable	out_set : Set&lt;Any> to output_set : Any in method package _path_optimal(input_sets Any, output_set Any, ind_dict Any, memory Any) : void from class org.opt_einsum.PyDummyClass1</td>
+<td>opt_einsum.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666#diff-1ddd3490b321bca5f3450f750acefae467e664792349a9cf3aa4410d2d14b2f2L469">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666">CommitLink</a></td><td></td>
+<td>Parameterize Variable	code : int to c : Any in method package _daubechies_code(c Any) : void from class org.mahotas.convolve.PyDummyClass1</td>
+<td>mahotas/convolve.py</td>
+</tr>
+<tr><td>luispedro/mahotas</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666#diff-1ddd3490b321bca5f3450f750acefae467e664792349a9cf3aa4410d2d14b2f2L500">RefactoringLink</a></td><td><a href="https://github.com/luispedro/mahotas/commit/1cc50e6e0142cfb759483d382efec7e13f7fc666">CommitLink</a></td><td></td>
+<td>Parameterize Variable	code : int to c : Any in method package _daubechies_code(c Any) : void from class org.mahotas.convolve.PyDummyClass1</td>
+<td>mahotas/convolve.py</td>
+</tr>
+<tr><td>kenshohara/3D-ResNets-PyTorch</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/kenshohara/3D-ResNets-PyTorch/commit/dc83da1abf2009c36603af3fa5c719cbccd10d59#diff-da62ce430302dcb6718b9a6a36a17d97e7ef64d1ecba8920e816a058c59c6816L99">RefactoringLink</a></td><td><a href="https://github.com/kenshohara/3D-ResNets-PyTorch/commit/dc83da1abf2009c36603af3fa5c719cbccd10d59">CommitLink</a></td><td></td>
+<td>Parameterize Variable	first_t_stride : int to conv1_t_stride : Any in method package __init__(self ResNet, block Any, layers Any, block_inplanes Any, conv1_t_size Any, conv1_t_stride Any, shortcut_type Any, n_classes Any) : void from class org.models.resnet.ResNet</td>
+<td>models/resnet.py</td>
+</tr>
+<tr><td>openeventdata/mordecai</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/openeventdata/mordecai/commit/834340875d6baae452eaf527443025c356a621d2#diff-aa69da5cdb5088bbac44897826d3106c1c8c7700d29932c12e0c657e853faf54L731">RefactoringLink</a></td><td><a href="https://github.com/openeventdata/mordecai/commit/834340875d6baae452eaf527443025c356a621d2">CommitLink</a></td><td></td>
+<td>Parameterize Variable	top : Any to entry : Any in method package format_geonames(self Geoparse, entry Any, searchterm Any) : void from class org.mordecai.geoparse.Geoparse</td>
+<td>mordecai/geoparse.py</td>
+</tr>
+<tr><td>brilee/MuGo</td>
+<td>Parameterize Variable</td>
+<td><a href="https://github.com/brilee/MuGo/commit/8ba5518dfb0f3e8add920e4a0701fb7eec13876b#diff-b10564ab7d2c520cdd0243874879fb0a782862c3c902ab535faabe57d5a505e1L16">RefactoringLink</a></td><td><a href="https://github.com/brilee/MuGo/commit/8ba5518dfb0f3e8add920e4a0701fb7eec13876b">CommitLink</a></td><td></td>
+<td>Parameterize Variable	policy_network : policy.PolicyNetwork to read_file : Any in method package gtp(strategy Any, read_file Any) : void from class org.main.PyDummyClass1</td>
+<td>main.py</td>
 </tr>
 </table>
 

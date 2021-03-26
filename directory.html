@@ -1,13 +1,88 @@
-<HTML><H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1><body><HTML><H2>Patterns That Have Been Found:</H1><body><link rel="stylesheet" href="../../jquery.dataTables.min.css" />
- <script src="../../jquery-2.2.3.min.js"></script>
-<script src="../../jquery.dataTables.min.js"></script><table id="sorttable" class="sortable-theme-minimal" data-sortable>
-<thead><tr><th class="sort" data-sort="id">ID</th><th class="sort" data-sort="size">Pattern Size</th><th class="sort" data-sort="numFound">NumberFound</th><th class="sort" data-sort="details">details</th><th class="sort" data-sort="nodeTypes">NodeTypes</th></tr></thead><tr><td class="id">5</td><td class="size">6</td><td class="numFound">3</td></td><td class="details"><a href='6/5/details.html'>locations</a></td><td class="nodeTypes">[MethodInvocation, StringLiteral, ThrowStatement]</td></td></tr><tr><td class="id">12</td><td class="size">6</td><td class="numFound">4</td></td><td class="details"><a href='6/12/details.html'>locations</a></td><td class="nodeTypes">[MethodInvocation, PyTupleExpression, StringLiteral]</td></td></tr><tr><td class="id">13</td><td class="size">9</td><td class="numFound">3</td></td><td class="details"><a href='9/13/details.html'>locations</a></td><td class="nodeTypes">[MethodInvocation, ReturnStatement, SimpleName, StringLiteral]</td></td></tr><tr><td class="id">16</td><td class="size">9</td><td class="numFound">15</td></td><td class="details"><a href='9/16/details.html'>locations</a></td><td class="nodeTypes">[MethodInvocation, SimpleName, StringLiteral]</td></td></tr><tr><td class="id">6</td><td class="size">12</td><td class="numFound">24</td></td><td class="details"><a href='12/6/details.html'>locations</a></td><td class="nodeTypes">[ArrayInitializer, BooleanLiteral, MethodInvocation, PyWithStatement, SimpleName, StringLiteral]</td></td></tr><tr><td class="id">1</td><td class="size">28</td><td class="numFound">16</td></td><td class="details"><a href='28/1/details.html'>locations</a></td><td class="nodeTypes">[IfStatement, InfixExpression, MethodInvocation, PrefixExpression, PyInExpression, ReturnStatement, SimpleName, StringLiteral, ThrowStatement]</td></td></tr></table>
-<script>
-$(document).ready(function(){
-    $('#myTable').DataTable(
-    	{
-        "lengthMenu": [[-1, 25, 50, 100], ["All", 25, 50, 100]]
-    } 
-    	);
-});
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+     table, th, td {
+         border: 1px solid black;
+     }
+
+ </style>
+</head>
+<body>
+
+<H1>An Empirical Study of Frequent Code Change Patterns In Machine Learning Systems</H1>
+<body><HTML><H2> Refactorings Detected by Py-RefactoringMiner</H2>
+<table>
+ <tr>
+  <th>Refactoring Kind</th>
+  <th>Evidences</th>
+  <th>Precision</th>
+ </tr>
+ <tr>
+     <td>Add_Parameter</td>
+     <td><a href="./Add_Parameter.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+ <tr>
+     <td>Change_Parameter_Type</td>
+     <td><a href="./Change_Parameter_Type.html">Link</a></td>
+     <td></td>
+ </tr>
+  <tr>
+     <td>Change_Variable_Type</td>
+     <td><a href="./Change_Variable_Type.html">Link</a></td>
+     <td></td>
+ </tr>
+    <tr>
+     <td>Extract_Method</td>
+     <td><a href="./Extract_Method.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+ <tr>
+     <td>Extract_Superclass</td>
+     <td><a href="./Extract_Superclass.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+ <tr>
+     <td>Extract_Variable</td>
+     <td><a href="./Extract_Variable.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+     <tr>
+     <td>Move_Class</td>
+     <td><a href="./Move_Class.html">Link</a></td>
+     <td></td>
+ </tr>
+  <tr>
+     <td>Move_Method</td>
+     <td><a href="./Move_Method.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+      <tr>
+     <td>Parameterize_Variable</td>
+     <td><a href="./Parameterize_Variable.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+      <tr>
+     <td>Rename_Method</td>
+     <td><a href="./Rename_Method.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+  <tr>
+     <td>Rename_Parameter</td>
+     <td><a href="./Rename_Parameter.html">Link</a></td>
+     <td>100%</td>
+ </tr>
+    <tr>
+     <td>Rename_Variable</td>
+     <td><a href="./Rename_Variable.html">Link</a></td>
+     <td>62.5%</td>
+ </tr>
+</table>
+
+
+
+
+
+</body>
+</html>
