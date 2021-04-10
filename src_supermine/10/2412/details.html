@@ -1,0 +1,72 @@
+<html><h3>ee8ff00a2a8a307c952fb8e7bef241188c7fb12b,keras/backend/tensorflow_backend.py,,pool2d,#Any#Any#Any#Any#Any#Any#,1048
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        pool_mode: one of "max", "avg".
+    &quot&quot&quot
+    if border_mode == &quotsame&quot:
+        <a id="change">padding = &quotSAME&quot</a>
+    elif border_mode == &quotvalid&quot:
+        padding = &quotVALID&quot
+    else:
+        raise Exception(&quotInvalid border mode: &quot + str(border_mode))
+
+    strides = (1,) + strides + (1,)
+    pool_size = (1,) + pool_size + (1,)
+
+    if _FLOATX == &quotfloat64&quot:
+        &#47&#47 tf max_pool only supports float32
+        <a id="change">x = tf.cast(x, &quotfloat32&quot)</a>
+
+    if dim_ordering in {&quottf&quot, &quotth&quot}:
+        if dim_ordering == &quotth&quot:
+            &#47&#47 TF uses the last dimension as channel dimension,
+            &#47&#47 instead of the 2nd one.
+            &#47&#47 TH input shape: (samples, input_depth, rows, cols)
+            &#47&#47 TF input shape: (samples, rows, cols, input_depth)
+            &#47&#47 TH kernel shape: (depth, input_depth, rows, cols)
+            &#47&#47 TF kernel shape: (rows, cols, input_depth, depth)
+            <a id="change">x = tf.transpose(x, (0, 2, 3, 1))</a>
+        if pool_mode == &quotmax&quot:
+            x = tf.nn.max_pool(x, pool_size, strides, padding=padding)
+        elif pool_mode == &quotavg&quot:
+            x = tf.nn.avg_pool(x, pool_size, strides, padding=padding)
+        else:
+            raise Exception(&quotInvalid pooling mode: &quot + str(pool_mode))
+        if dim_ordering == &quotth&quot:
+            x = <a id="change">tf.transpose(x, (0, 3, 1, 2))</a>
+    else:
+        raise Exception(&quotUnknown dim_ordering: &quot + str(dim_ordering))
+
+    if _FLOATX == &quotfloat64&quot:
+        x = tf.cast(x, &quotfloat64&quot)
+    <a id="change">return x</a>
+
+
+&#47&#47 RANDOMNESS
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        dim_ordering: one of "th", "tf".
+        pool_mode: one of "max", "avg".
+    &quot&quot&quot
+    <a id="change">if dim_ordering not in {&quotth&quot, &quottf&quot}:
+        raise Exception(&quotUnknown dim_ordering &quot + str(dim_ordering))
+
+   </a> padding = _preprocess_border_mode(border_mode)
+    strides = (1,) + strides + (1,)
+    pool_size = (1,) + pool_size + (1,)
+
+    <a id="change">x = _preprocess_conv2d_input(x, dim_ordering)</a>
+
+    if pool_mode == &quotmax&quot:
+        x = tf.nn.max_pool(x, pool_size, strides, padding=padding)
+    elif pool_mode == &quotavg&quot:
+        x = tf.nn.avg_pool(x, pool_size, strides, padding=padding)
+    else:
+        raise Exception(&quotInvalid pooling mode: &quot + str(pool_mode))
+
+    <a id="change">return _postprocess_conv2d_output(x, dim_ordering)</a>
+
+
+def pool3d(x, pool_size, strides=(1, 1, 1), border_mode=&quotvalid&quot,
+           dim_ordering=_IMAGE_DIM_ORDERING, pool_mode=&quotmax&quot):</code></pre><img src="12600192.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 9</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/ee8ff00a2a8a307c952fb8e7bef241188c7fb12b#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L1059' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: ee8ff00a2a8a307c952fb8e7bef241188c7fb12b</div><div id='time'> Time: 2016-07-03</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: pool2d</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/bb099e4c5b48329b842dbf9884f086f7b514bc0a#diff-7460b2b9b0f96f35d0814cca388a2a99ebcf0d032efcf674cd1b3cdba8448bc2L122' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: bb099e4c5b48329b842dbf9884f086f7b514bc0a</div><div id='time'> Time: 2020-03-16</div><div id='author'> Author: dutordoirv@gmail.com</div><div id='file'> File Name: gpflow/models/model.py</div><div id='class'> Class Name: GPModel</div><div id='method'> Method Name: predict_f_samples</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08#diff-962f898c379d54fa0e380920b8dafbf53e499289c195aa5e55624c4dfb470492L142' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08</div><div id='time'> Time: 2020-01-31</div><div id='author'> Author: st--@users.noreply.github.com</div><div id='file'> File Name: gpflow/kernels/misc.py</div><div id='class'> Class Name: Coregion</div><div id='method'> Method Name: K</div><BR>

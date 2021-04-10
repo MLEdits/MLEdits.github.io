@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+            &#47&#47 FIXME: multilayer
+            hidden = self.rnn(emb_t, hidden)
+            <a id="change">output = hidden[0]</a>
+            output = self.attn(output, context.t())
+            output = self.dropout(output)
+            outputs += [output]
+
+        <a id="change">outputs = torch.cat([x.unsqueeze(0) for x in outputs])</a>
+        return outputs
+
+
+class NMTModel(nn.Container):</code></pre><h3>After Change</h3><pre><code class='java'>
+            output = self.dropout(output)
+            outputs += [output]
+
+        outputs = <a id="change">torch.stack(outputs)</a>
+        return outputs
+
+
+class NMTModel(nn.Container):</code></pre>

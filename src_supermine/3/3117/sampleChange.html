@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        if sline == "" or tline == "":
+            print(&quotWARNING: ignoring an empty line&quot)
+            <a id="change">continue</a>
+
+        srcWords = sline.split()
+        tgtWords = tline.split()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            break
+
+        sline = sline.strip()
+        <a id="change">tline = tline.strip()</a>
+
+        if sline == "" or tline == "":
+            print(&quotWARNING: ignoring an empty line (&quot+str(count)+&quot)&quot)
+            <a id="change">continue</a>
+
+        srcWords = sline.split()
+        tgtWords = tline.split()
+</code></pre>

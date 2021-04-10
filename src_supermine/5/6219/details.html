@@ -1,0 +1,25 @@
+<html><h3>a1e55d9cc2cc4efa7ef2f5245e866d8645d66c77,libs/utils.py,,,#,129
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    image = Image.open(&quot&quot)
+    no_alpha_image = image.convert(&quotRGB&quot)
+    draw = ImageDraw.Draw(no_alpha_image)
+    <a id="change">for region in find_regions(no_alpha_image, [0,255,0]):
+        draw.rectangle(expand_bounding(no_alpha_image, region), outline=(0, 255, 0))
+   </a> no_alpha_image.show()</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47&#47&#47&#47&#47 END OF ORIGINAL
+
+    &#47&#47&#47&#47&#47&#47 With new mask region finder
+    ori_array = <a id="change">np.asarray(no_alpha_image)</a>
+    ori_array = np.array(ori_array / 255.0)
+    ori_array = np.expand_dims(ori_array, axis=0)
+    mask = get_mask(ori_array, [0.0, 1.0, 0.0])
+    regions = region_by_mask(mask)
+    <a id="change">for region in regions:
+        draw.rectangle(expand_bounding_mk2(no_alpha_image, region), outline=(0, 255, 0))
+   </a> no_alpha_image.show()
+    &#47&#47&#47&#47&#47&#47 END OF NEW MASK REGION FINDER
+
+    &#47&#47&#47&#47&#47&#47 Using big boxes and new region finder</code></pre><img src="25598661.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deeppomf/DeepCreamPy/commit/a1e55d9cc2cc4efa7ef2f5245e866d8645d66c77#diff-a5d2da433cebd01859f6e8cf19e93ef70749cdf087a0a0a958e1bc80566ae3f3L130' target='_blank'>Link</a></div><div id='project'> Project Name: deeppomf/DeepCreamPy</div><div id='commit'> Commit Name: a1e55d9cc2cc4efa7ef2f5245e866d8645d66c77</div><div id='time'> Time: 2019-06-17</div><div id='author'> Author: donald.carlsson@paranta.se</div><div id='file'> File Name: libs/utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/b95fcf7f52aca8ad0b1afb3cfc64c8eed534fafe#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L783' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: b95fcf7f52aca8ad0b1afb3cfc64c8eed534fafe</div><div id='time'> Time: 2017-07-29</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_nn_operations</div><BR><BR><div id='link'><a href='https://github.com/tflearn/tflearn/commit/45e0e9f57cd6aa0253ef45ecd9044dbdb329c8f0#diff-27d6df51aac978d6cf88ac1bcce4485fd7a77a1f3f95571b28ad795bea8987efL72' target='_blank'>Link</a></div><div id='project'> Project Name: tflearn/tflearn</div><div id='commit'> Commit Name: 45e0e9f57cd6aa0253ef45ecd9044dbdb329c8f0</div><div id='time'> Time: 2017-05-22</div><div id='author'> Author: aymeric.damien@gmail.com</div><div id='file'> File Name: examples/images/dcgan.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

@@ -1,0 +1,21 @@
+<html><h3>640e7bbf476a89fd09bdbc2898f85d71bb8ecf77,examples/trials/mnist-smartparam/mnist.py,,main,#Any#,157
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    test_acc = 0.0
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+        <a id="change">batch_num = nni.choice(50, 250, 500, name=&quotbatch_num&quot)</a>
+        for i in range(batch_num):
+            batch = mnist.train.next_batch(batch_num)
+            dropout_rate = nni.choice(1, 5, name=&quotdropout_rate&quot)
+            mnist_network.train_step.run(feed_dict={mnist_network.images: batch[0],</code></pre><h3>After Change</h3><pre><code class='java'>
+    test_acc = 0.0
+    with tf.Session() as sess:
+        sess.run(tf.global_variables_initializer())
+        <a id="change">batch_size = nni.choice(1, 4, 8, 16, 32, name=&quotbatch_size&quot)</a>
+        for i in range(2000):
+            batch = mnist.train.next_batch(batch_size)
+            dropout_rate = nni.choice(0.5, 0.9, name=&quotdropout_rate&quot)
+            mnist_network.train_step.run(feed_dict={mnist_network.images: batch[0],</code></pre><img src="39165124.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/640e7bbf476a89fd09bdbc2898f85d71bb8ecf77#diff-6e521e3a989d6621f388b63d52c91e0af24e12bc3b4bd0462a2c2283f3e6de2bL183' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 640e7bbf476a89fd09bdbc2898f85d71bb8ecf77</div><div id='time'> Time: 2018-11-07</div><div id='author'> Author: z.quanluzhang@gmail.com</div><div id='file'> File Name: examples/trials/mnist-smartparam/mnist.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: main</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c3f62292951d971607561821d6cdd67bfe77fb27#diff-e29ef8d1f1237d1e2b7fe73144b8ea5364fa404af22659acb8964fac9c6df2e9L436' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c3f62292951d971607561821d6cdd67bfe77fb27</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/evolution_param_generator.py</div><div id='class'> Class Name: ParamsEvolution</div><div id='method'> Method Name: sample_params</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/89d58cff936536b94f74021635412650b56e22e5#diff-e29ef8d1f1237d1e2b7fe73144b8ea5364fa404af22659acb8964fac9c6df2e9L436' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 89d58cff936536b94f74021635412650b56e22e5</div><div id='time'> Time: 2018-06-20</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/evolution_param_generator.py</div><div id='class'> Class Name: ParamsEvolution</div><div id='method'> Method Name: sample_params</div><BR>

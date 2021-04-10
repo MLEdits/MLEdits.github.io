@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    See DeltaGenerator.deck_gl_chart for docs.
+    
+    <a id="change">if layers is None:
+        layers = []
+
+    &#47&#47 Syntax sugar: if no layers defined and data is passed at the top
+    &#47&#47 level, created a scatterplot layer with the top-level data by default.
+   </a> if data is not None and not layers:
+        layers.append({
+            &quotdata&quot: data,
+            &quottype&quot: &quotScatterplotLayer&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
+        data = pd.DataFrame([])
+
+    elif type(data) is not pd.DataFrame:
+        <a id="change">data = pd.DataFrame(data)</a>
+
+    if spec is None:
+        spec = dict()
+</code></pre>

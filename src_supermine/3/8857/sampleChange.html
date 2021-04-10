@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        word_vecs, vector_size = embedding.load_word2vec(w2v_file.name)
+
+        self.assertEqual(len(word_vecs), 2)
+        <a id="change">self.assertEqual(set(word_vecs.keys()),
+                         set(["word", "词".encode(&quotutf8&quot)]))</a>
+        self.assertEqual(vector_size, 3)
+        np.testing.assert_array_equal(word_vecs["word"], vec)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            w2v_file.write(vec.tostring() + b&quot\n&quot)
+        w2v_file.flush()
+        vocab = {"word": 0, "词".encode(&quotutf8&quot): 1}
+        <a id="change">word_vecs = np.zeros([2, 3])</a>
+
+        word_vecs = embedding.load_word2vec(w2v_file.name, vocab, word_vecs)
+
+        self.assertEqual(word_vecs.shape[0], 2)</code></pre>

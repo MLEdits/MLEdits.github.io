@@ -1,0 +1,81 @@
+<html><h3>d314a48ed4a95926aece62f554cecb4544b5acd5,onmt/trainer.py,Trainer,validate,#Trainer#Any#Any#,287
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            :obj:`nmt.Statistics`: validation loss statistics
+        
+        if moving_average:
+            <a id="change">valid_model = deepcopy(self.model)</a>
+            for avg, param in zip(self.moving_average,
+                                  valid_model.parameters()):
+                param.data = avg.data.half() if self.optim._fp16 == "legacy" \
+                    else avg.data
+        else:
+            valid_model = self.model
+
+        &#47&#47 Set model in validating mode.
+        valid_model.eval()
+
+        with torch.no_grad():
+            stats = onmt.utils.Statistics()
+
+            for batch in valid_iter:
+                src, src_lengths = batch.src if isinstance(batch.src, tuple) \
+                                   else (batch.src, None)
+                tgt = batch.tgt
+
+                &#47&#47 F-prop through the model.
+                outputs, attns = valid_model(src, tgt, src_lengths)
+
+                &#47&#47 Compute loss.
+                _, batch_stats = self.valid_loss(batch, outputs, attns)
+
+                &#47&#47 Update statistics.
+                stats.update(batch_stats)
+
+        if moving_average:
+            <a id="change">del valid_model</a>
+        else:
+            &#47&#47 Set model back to training mode.
+            valid_model.train()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        if moving_average:
+            &#47&#47 swap model params w/ moving average
+            &#47&#47 (and keep the original parameters)
+            <a id="change">model_params_data = []</a>
+            for avg, param in zip(self.moving_average,
+                                  valid_model.parameters()):
+                model_params_data.append(param.data)
+                param.data = avg.data.half() if self.optim._fp16 == "legacy" \
+                    else avg.data
+
+        &#47&#47 Set model in validating mode.
+        valid_model.eval()
+
+        with torch.no_grad():
+            stats = onmt.utils.Statistics()
+
+            for batch in valid_iter:
+                src, src_lengths = batch.src if isinstance(batch.src, tuple) \
+                                   else (batch.src, None)
+                tgt = batch.tgt
+
+                &#47&#47 F-prop through the model.
+                outputs, attns = valid_model(src, tgt, src_lengths)
+
+                &#47&#47 Compute loss.
+                _, batch_stats = self.valid_loss(batch, outputs, attns)
+
+                &#47&#47 Update statistics.
+                stats.update(batch_stats)
+        if moving_average:
+            <a id="change">for param_data, param in zip(model_params_data,
+                                         self.model.parameters()):
+                param.data = param_data
+
+        &#47&#47 Set model back to training mode.
+       </a> valid_model.train()
+
+        return stats
+</code></pre><img src="15609838.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/d314a48ed4a95926aece62f554cecb4544b5acd5#diff-cd47b13ccb2eb3735f690db6d5ddc6404e398fae2d18c52104e783b37da49f55L292' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: d314a48ed4a95926aece62f554cecb4544b5acd5</div><div id='time'> Time: 2019-11-12</div><div id='author'> Author: pltrdy@gmail.com</div><div id='file'> File Name: onmt/trainer.py</div><div id='class'> Class Name: Trainer</div><div id='method'> Method Name: validate</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/23dffb96ac95827a3af89f6ff027d254284ba93c#diff-c61bfe8788306098fb82b484c5a6438deecf5ebc239f9e0fd4aeeaca7333b023L528' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 23dffb96ac95827a3af89f6ff027d254284ba93c</div><div id='time'> Time: 2019-02-08</div><div id='author'> Author: guillaumekln@users.noreply.github.com</div><div id='file'> File Name: onmt/inputters/inputter.py</div><div id='class'> Class Name: DatasetLazyIter</div><div id='method'> Method Name: __iter__</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/d314a48ed4a95926aece62f554cecb4544b5acd5#diff-d5c184e918bc43183b2136b554fb6162a0b1fa96f8ec851da872bb576f7187c3L40' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: d314a48ed4a95926aece62f554cecb4544b5acd5</div><div id='time'> Time: 2019-11-12</div><div id='author'> Author: pltrdy@gmail.com</div><div id='file'> File Name: onmt/models/model_saver.py</div><div id='class'> Class Name: ModelSaverBase</div><div id='method'> Method Name: save</div><BR>

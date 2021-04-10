@@ -1,0 +1,20 @@
+<html><h3>df7332c3ba49e782f14414639e537f37a19133a8,catalyst/utils/plotly.py,,get_tensorboard_scalars,#Any#Any#Any#,18
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            if step in n and any(m in n for m in metrics)
+        ]
+    else:
+        scalar_names = [n for n in <a id="change">event_acc.Tags()["scalars"]</a> if step in n]
+
+    scalars = {sn: event_acc.Scalars(sn) for sn in scalar_names}
+    return scalars</code></pre><h3>After Change</h3><pre><code class='java'>
+) -&gt; Dict[str, List]:
+    summary_reader = SummaryReader(logdir, type_filter=&quotscalar&quot)
+
+    <a id="change">items = defaultdict(list)</a>
+    for item in summary_reader:
+        if step in item.tag and (metrics is None or any(m in item.tag for m in metrics)):
+            items[item.tag].append(item.value)
+    return items</code></pre><img src="38594527.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/catalyst-team/catalyst/commit/df7332c3ba49e782f14414639e537f37a19133a8#diff-3d61b0fada43e3b1155b6f92d5e452cb362ca85929493670ce4513fece92487fL18' target='_blank'>Link</a></div><div id='project'> Project Name: catalyst-team/catalyst</div><div id='commit'> Commit Name: df7332c3ba49e782f14414639e537f37a19133a8</div><div id='time'> Time: 2019-05-13</div><div id='author'> Author: vvelicodnii@snapchat.com</div><div id='file'> File Name: catalyst/utils/plotly.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_tensorboard_scalars</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/4cef1ee591648f289a4e6f00d70e03625e252594#diff-54e55bf0689c8c7731bd35eab91b5c5f844324c727427ffe3d1d7c04b5a11212L111' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 4cef1ee591648f289a4e6f00d70e03625e252594</div><div id='time'> Time: 2020-06-01</div><div id='author'> Author: xmo@berkeley.edu</div><div id='file'> File Name: python/ray/serve/router.py</div><div id='class'> Class Name: Router</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/5cb2c457a72a0edd0b9b79508c2bdea02eea7fa8#diff-558ca4931132816b0ce24ff40d67dd059a535ce6b3b01571b732e49b2f64c94fL108' target='_blank'>Link</a></div><div id='project'> Project Name: AKSHAYUBHAT/DeepVideoAnalytics</div><div id='commit'> Commit Name: 5cb2c457a72a0edd0b9b79508c2bdea02eea7fa8</div><div id='time'> Time: 2018-08-04</div><div id='author'> Author: akshayubhat@gmail.com</div><div id='file'> File Name: server/dvaui/views.py</div><div id='class'> Class Name: TEventList</div><div id='method'> Method Name: get_context_data</div><BR>

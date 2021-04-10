@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        mask = transforms.resize(
+            mask.astype(np.int), (H, W),
+            interpolation=PIL.Image.NEAREST)
+        <a id="change">mask = mask.astype(np.bool)</a>
+        indices = self._get_keep_indices(mask)
+        <a id="change">mask = mask[indices]</a>
+        label = label[indices]
+
+        img, params = transforms.random_flip(
+            img, x_random=True, return_param=True)</code></pre><h3>After Change</h3><pre><code class='java'>
+        _, H, W = img.shape
+        scale = H / orig_H
+        mask = transforms.resize(mask.astype(np.float32), (H, W))
+        <a id="change">bbox = transforms.resize_bbox(bbox, (orig_H, orig_W), (H, W))</a>
+
+        img, params = transforms.random_flip(
+            img, x_random=True, return_param=True)
+        mask = transforms.flip(mask, x_flip=params[&quotx_flip&quot])</code></pre>

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            self._non_trainable_weights = []
+        if not hasattr(self, &quotlosses&quot):
+            self.losses = []
+        if not <a id="change">hasattr(self, &quotconstraints&quot)</a>:
+            self.constraints = {}  &#47&#47 dict {tensor: constraint instance}
+        self.built = False
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            if &quotbatch_input_shape&quot in kwargs:
+                batch_input_shape = tuple(kwargs[&quotbatch_input_shape&quot])
+            elif &quotinput_shape&quot in kwargs:
+                if <a id="change">&quotbatch_size&quot in kwargs</a>:
+                    batch_size = kwargs[&quotbatch_size&quot]
+                else:
+                    batch_size = None</code></pre>

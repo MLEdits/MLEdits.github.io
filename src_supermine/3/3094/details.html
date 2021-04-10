@@ -1,0 +1,21 @@
+<html><h3>d37d08d9b2a806b3345fba41711c0d517b92a65c,chainercv/links/model/vgg/vgg16.py,VGG16Layers,predict,#VGG16Layers#Any#,215
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+            if self.do_ten_crop:
+                n = y.shape[0] // 10
+                y_shape = <a id="change">y.shape[1:]</a>
+                y = y.reshape((n, 10) + y_shape)
+                y = self.xp.sum(y, axis=1) / 10
+        return cuda.to_cpu(y)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                    activation = self._gather_ten_crop(activation)
+                activations[name] = cuda.to_cpu(activations)
+        else:
+            activations = <a id="change">cuda.to_cpu(activations.data)</a>
+            if self.do_ten_crop:
+                activations = self._gather_ten_crop(activations)
+
+        return activations</code></pre><img src="14969540.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 2</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/d37d08d9b2a806b3345fba41711c0d517b92a65c#diff-bf7d79234d2c93f45b9614f63aa2897fdb74c66a38b384c95f78412bc17e369fL215' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: d37d08d9b2a806b3345fba41711c0d517b92a65c</div><div id='time'> Time: 2017-06-15</div><div id='author'> Author: yuyuniitani@gmail.com</div><div id='file'> File Name: chainercv/links/model/vgg/vgg16.py</div><div id='class'> Class Name: VGG16Layers</div><div id='method'> Method Name: predict</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/5b36f836715758d83733531ad2253775b476a764#diff-3f3b0060db063805b1533299fe932772bab9fdd3299258e13076a319e1358276L113' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: 5b36f836715758d83733531ad2253775b476a764</div><div id='time'> Time: 2017-05-08</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: chainercv/links/ssd/ssd.py</div><div id='class'> Class Name: SSD</div><div id='method'> Method Name: _suppress</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/fa77503653547fbc02164c56b34f7c55cf35ee9f#diff-3f3b0060db063805b1533299fe932772bab9fdd3299258e13076a319e1358276L113' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: fa77503653547fbc02164c56b34f7c55cf35ee9f</div><div id='time'> Time: 2017-05-07</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: chainercv/links/ssd/ssd.py</div><div id='class'> Class Name: SSD</div><div id='method'> Method Name: _suppress</div><BR>

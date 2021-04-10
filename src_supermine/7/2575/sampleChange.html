@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        return tf.placeholder(dtype, shape=None, name=name)
+
+    def _parameter_name(self):
+        <a id="change">return &quot/&quot.join([self.full_name, &quotformlessdata&quot])</a>
+
+
+class Minibatch(DataHolder):
+    def __init__(self, value, batch_size=1, shuffle=True, seed=None, name=None):</code></pre><h3>After Change</h3><pre><code class='java'>
+        return tf.placeholder(dtype, shape=None, name=name)
+
+    def _parameter_name(self):
+        <a id="change">name = &quotformlessdata&quot</a>
+        if self.parent is self:
+            <a id="change">return misc.tensor_name(self.full_name, name)</a>
+        return name
+
+
+class Minibatch(DataHolder):</code></pre>

@@ -1,0 +1,32 @@
+digraph G {
+subgraph cluster0 {
+1 [label="NotImplementedError" a="32" s="5418,5482" l="20,1" shape="box"];
+3 [label="StringLiteral" a="45" s="5438" l="44" shape="ellipse"];
+4 [label="throw" a="53" s="5412" l="6" shape="box"];
+5 [label="IfStatement" a="25" s="5330,5398" l="4,2" shape="diamond"];
+6 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+9 [label="Assignment:=" a="7" s="5785" l="16" shape="box"];
+10 [label="Assignment:=" a="7" s="5507" l="1" shape="box"];
+11 [label="Assignment:=" a="7" s="5607" l="1" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="IfStatement" a="25" s="6562,6605" l="4,2" shape="diamond"];
+7 [label="Assignment:=" a="7" s="6628" l="1" shape="box"];
+8 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 4 [label="_para_"];
+2 -> 7 [label="_control_"];
+3 -> 1 [label="_para_"];
+5 -> 10 [label="_control_"];
+5 -> 4 [label="_control_"];
+5 -> 9 [label="_control_"];
+5 -> 11 [label="_control_"];
+5 -> 1 [label="_control_"];
+6 -> 5 [label="_cond_"];
+8 -> 2 [label="_cond_"];
+11 -> 9 [label="_para_"];
+}

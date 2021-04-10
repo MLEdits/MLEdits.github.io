@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        with tf.name_scope(&quotOptimizer&quot):
+            self.optimizer = tf.train.AdamOptimizer(
+                learning_rate=self._param.lr)
+        <a id="change">is_training = training_grads_collector is not None</a>
+
+        if is_training:
+            &#47&#47 a new pop_batch_op for each gpu tower
+            device_id = training_grads_collector.current_tower_id
+            data_dict = self._sampler.pop_batch_op(device_id)
+
+            <a id="change">noise = data_dict[&quotSampling/noise&quot]</a>
+            images = data_dict[&quotSampling/images&quot]
+            conditioning = data_dict.get(&quotSampling/conditioning&quot, None)
+            net_output = self._net(noise, images, conditioning, is_training)</code></pre><h3>After Change</h3><pre><code class='java'>
+            images = data_dict[&quotimage&quot]
+            noise_shape = [self.net_param.batch_size,
+                           self.gan_param.noise_size]
+            <a id="change">noise = tf.Variable(tf.random_normal(shape=noise_shape,
+                                                 mean=0.0,
+                                                 stddev=1.0,
+                                                 dtype=tf.float32))</a>
+            tf.stop_gradient(noise)
+            conditioning = None
+            net_output = self._net(noise,</code></pre>

@@ -1,0 +1,24 @@
+<html><h3>a12ebae433a4d1b3e9132650333a4685f7c5110d,tests/links_tests/ssd_tests/test_ssd.py,TestSSD,setUp,#TestSSD#,18
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        if self.insize == 300:
+            self.link = SSD300(n_classes=self.n_classes, pretrained_model=None)
+            self.n_bbox = 8732
+        elif <a id="change">self</a>.insize == 512:
+            <a id="change">self.link = SSD512(n_classes=self.n_classes, pretrained_model=None)</a>
+            self.n_bbox = 24564
+
+    def _random_array(self, shape):
+        return self.link.xp.array(</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def setUp(self):
+        self.link = DummySSD(n_class=self.n_class)
+        <a id="change">self.n_bbox = sum(
+            grid * grid * ((len(ar) + 1) * 2)
+            for grid, ar in zip(self.link.grids, self.link.aspect_ratios))</a>
+
+    def _check_default_bbox(self):
+        self.assertIsInstance(self.link._default_bbox, self.link.xp.ndarray)
+        self.assertEqual(self.link._default_bbox.shape, (self.n_bbox, 4))</code></pre><img src="10248413.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 5</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/a12ebae433a4d1b3e9132650333a4685f7c5110d#diff-1ce142c05d4539b7c4225f54a77dc50fc9edc5c60b7f83a1af437d88f589a5edL18' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: a12ebae433a4d1b3e9132650333a4685f7c5110d</div><div id='time'> Time: 2017-05-07</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: tests/links_tests/ssd_tests/test_ssd.py</div><div id='class'> Class Name: TestSSD</div><div id='method'> Method Name: setUp</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/90e5b974a7173ab0bba0990a690e32f25f5b725a#diff-13ecba99e9167dda5b061757ce2c57a5ffcc7b0b407068ac90e0dfc016850e24L14' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 90e5b974a7173ab0bba0990a690e32f25f5b725a</div><div id='time'> Time: 2019-01-14</div><div id='author'> Author: benzurdopeters@gmail.com</div><div id='file'> File Name: tools/embeddings_to_torch.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_vocabs</div><BR><BR><div id='link'><a href='https://github.com/catalyst-team/catalyst/commit/2275ea902a701cc5b55e72a98f61acbbec4ed4c8#diff-0a97aceebead8f8424258a1927e976c58ec73761ae1daacc077a3496e19e84ffL517' target='_blank'>Link</a></div><div id='project'> Project Name: catalyst-team/catalyst</div><div id='commit'> Commit Name: 2275ea902a701cc5b55e72a98f61acbbec4ed4c8</div><div id='time'> Time: 2020-09-06</div><div id='author'> Author: scitator@gmail.com</div><div id='file'> File Name: catalyst/dl/experiment/config.py</div><div id='class'> Class Name: ConfigExperiment</div><div id='method'> Method Name: get_callbacks</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/594f66417cf0a2abaead1ce6e5f15a2100441682#diff-66250920430e997129bc22675aac60b21312f9d938458356b32f18af3a3e54d8L112' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 594f66417cf0a2abaead1ce6e5f15a2100441682</div><div id='time'> Time: 2017-09-21</div><div id='author'> Author: srush@seas.harvard.edu</div><div id='file'> File Name: onmt/IO.py</div><div id='class'> Class Name: ONMTDataset</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/hanxiao/bert-as-service/commit/f0d581c071f14682c46f7917e11592c189382f53#diff-44ace16cb718aadd24b1c32a628113844418f650ac5fcc606d7a88c3fdb393f1L82' target='_blank'>Link</a></div><div id='project'> Project Name: hanxiao/bert-as-service</div><div id='commit'> Commit Name: f0d581c071f14682c46f7917e11592c189382f53</div><div id='time'> Time: 2018-12-17</div><div id='author'> Author: hanhxiao@tencent.com</div><div id='file'> File Name: server/bert_serving/server/__init__.py</div><div id='class'> Class Name: BertServer</div><div id='method'> Method Name: _run</div><BR>

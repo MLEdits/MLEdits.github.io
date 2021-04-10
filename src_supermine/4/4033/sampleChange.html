@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        assert len(layer.losses) == 3
+    if layer_class == recurrent.GRU:
+        assert len(layer.losses) == 9
+    <a id="change">if layer_class == recurrent.LSTM:
+        assert len(layer.losses) == 12
+
+
+</a>@keras_test
+def test_masking_layer():
+    &quot&quot&quot This test based on a previously failing issue here:
+    https://github.com/fchollet/keras/issues/1567</code></pre><h3>After Change</h3><pre><code class='java'>
+                        bias_regularizer=&quotl2&quot)
+    layer.build((None, None, 2))
+    assert len(layer.losses) == 3
+    layer(K.variable(<a id="change">np.ones((2, 3, 2))</a>))
+    assert len(layer.losses) == 3
+
+</code></pre>

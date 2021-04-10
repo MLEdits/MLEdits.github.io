@@ -1,0 +1,29 @@
+<html><h3>85f0448feec3843b587c8674a660462d8b25e1e2,keras/engine/topology.py,,merge,#Any#Any#Any#Any#Any#Any#,1376
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    input_layers = []
+    node_indices = []
+    tensor_indices = []
+    <a id="change">for x in inputs:
+        assert hasattr(x, &quot_keras_history&quot), &quotInput tensor to "merge" was not a Keras tensor: &quot + str(x)
+        input_layer, node_index, tensor_index = x._keras_history
+        input_layers.append(input_layer)
+        node_indices.append(node_index)
+        tensor_indices.append(tensor_index)
+   </a> merge_layer = Merge(input_layers, mode=mode, concat_axis=concat_axis,
+                        dot_axes=dot_axes, output_shape=output_shape,
+                        node_indices=node_indices, tensor_indices=tensor_indices,
+                        name=name)</code></pre><h3>After Change</h3><pre><code class='java'>
+            (in case some input layer node returns multiple tensors).
+    &quot&quot&quot
+    all_keras_tensors = True
+    <a id="change">for x in inputs:
+        if not hasattr(x, &quot_keras_history&quot):
+            all_keras_tensors = False
+            break
+   </a> if all_keras_tensors:
+        input_layers = []
+        node_indices = []
+        tensor_indices = []</code></pre><img src="8380494.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/85f0448feec3843b587c8674a660462d8b25e1e2#diff-b08f8eb68f1020decc0addd2758a1b71e202215b4d9756bda4e422e8a35e243cL1408' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 85f0448feec3843b587c8674a660462d8b25e1e2</div><div id='time'> Time: 2016-04-19</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/topology.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: merge</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L40' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_two_tensor_operation</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L24' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_single_tensor_operation</div><BR>

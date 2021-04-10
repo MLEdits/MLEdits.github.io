@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                    window_loc = np.concatenate([window[w],
+                                                np.tile(location_init[
+                                                            batch_id,...],
+                                                        <a id="change">[window[w].shape[0],1]</a>)],1)
+                    self.csv_out[w] = self._initialise_empty_csv(
+                        n_channel=window[w][0].shape[-1] +
+                                                     location_init[0, :].shape[</code></pre><h3>After Change</h3><pre><code class='java'>
+            for w in window:
+                if &quotwindow&quot in w:
+
+                    <a id="change">while window[w].ndim &lt; 5:
+                        window[w] = window[w][..., np.newaxis, :]
+                   </a> resize_to_shape = self._initialise_image_shape(
+                        image_id=self.image_id,
+                        n_channels=window[w].shape[-1])
+                    self.image_out[w] = window[w][batch_id, ...]</code></pre>

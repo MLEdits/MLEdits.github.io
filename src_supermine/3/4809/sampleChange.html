@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.registered_buffers = {}
+        for name in self.quantizer.buffers:
+            self.register_buffer(name, self.quantizer.buffers[name].clone())
+            <a id="change">self.registered_buffers[name] = getattr(self, name)</a>
+
+    def forward(self, *inputs):
+        if &quotinput&quot in self.config[&quotquant_types&quot]:
+            inputs = self.quantizer.quant_grad.apply(</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 config and pruner
+        self.config = config
+        self.quantizer = quantizer
+        self.registered_buffers = <a id="change">[]</a>
+
+        &#47&#47 register buffer and parameter
+        &#47&#47 old_weight is used to store origin weight and weight is used to store quantized weight
+        &#47&#47 the reason why weight is buffer instead of parameter is because in pytorch parameter is used as leaf</code></pre>

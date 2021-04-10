@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        if self.amsgrad:
+            vhats = [K.zeros(K.int_shape(p), dtype=K.dtype(p)) for p in params]
+        else:
+            <a id="change">vhats = [K.zeros(1) for _ in params]</a>
+        self.weights = [self.iterations] + ms + vs + vhats
+
+        for p, g, m, v, vhat in zip(params, grads, ms, vs, vhats):
+            m_t = (self.beta_1 * m) + (1. - self.beta_1) * g</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.weights = [self.iterations] + ms + vs
+        if self.amsgrad:
+            vhats = [K.zeros(K.int_shape(p), dtype=K.dtype(p)) for p in params]
+            <a id="change">self.weights.extend(vhats)</a>
+        else:
+            vhats = [None] * len(params)
+        for p, g, m, v, vhat in zip(params, grads, ms, vs, vhats):
+            m_t = (self.beta_1 * m) + (1. - self.beta_1) * g</code></pre>

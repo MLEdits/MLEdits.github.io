@@ -1,0 +1,19 @@
+<html><h3>a1172cf54f3a14fb57e6b6405ce58f29ef543334,niftynet/network/dense_vnet.py,DenseVNet,layer_op,#DenseVNet#Any#Any#Any#,70
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            skip,down = sd(down,
+                           is_training=is_training,
+                           keep_prob=hp[&quotp_channels_selected&quot])
+            tf.summary.scalar(&quotskip{}&quot.format(idx),tf.reduce_mean(tf.square(skip)),<a id="change">[tf.GraphKeys.SUMMARIES]</a>)
+            if not down is None:
+                tf.summary.scalar(&quotdown{}&quot.format(idx),tf.reduce_mean(tf.square(down)),[tf.GraphKeys.SUMMARIES])
+            all_segmentation_features.append(image_resize(skip,output_shape))</code></pre><h3>After Change</h3><pre><code class='java'>
+            segmentation = segmentation + \
+                           SpatialPriorBlock([12] * spatial_rank, output_shape)
+        segmentation = image_resize(segmentation, input_size[1:-1])
+        image3_axial(&quotseg&quot, <a id="change">tf.nn.softmax(segmentation)[:, :, :, :, 1:] * 255.</a>,
+                     3, [tf.GraphKeys.SUMMARIES])
+        image3_axial(&quotimg&quot,
+                     tf.minimum(255., tf.maximum(0.,</code></pre><img src="27525925.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/a1172cf54f3a14fb57e6b6405ce58f29ef543334#diff-d8c18b5676c4b49c8d9b105ad2d5f1bbed4b1ff66832ea89398cafedf9fae418L92' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: a1172cf54f3a14fb57e6b6405ce58f29ef543334</div><div id='time'> Time: 2017-08-24</div><div id='author'> Author: eli.gibson@gmail.com</div><div id='file'> File Name: niftynet/network/dense_vnet.py</div><div id='class'> Class Name: DenseVNet</div><div id='method'> Method Name: layer_op</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/4421754f9886233e90563eb8088348bb36024095#diff-023d37a8c76fa73084ec27927d67d215e2eba9f0bc6e99a32ee9d11a4d647fb2L69' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 4421754f9886233e90563eb8088348bb36024095</div><div id='time'> Time: 2018-01-12</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/loss_segmentation.py</div><div id='class'> Class Name: LossFunction</div><div id='method'> Method Name: layer_op</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/3a5ace850931e91c55a692ae7ec716a57e66f4e6#diff-023d37a8c76fa73084ec27927d67d215e2eba9f0bc6e99a32ee9d11a4d647fb2L69' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 3a5ace850931e91c55a692ae7ec716a57e66f4e6</div><div id='time'> Time: 2018-01-26</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/loss_segmentation.py</div><div id='class'> Class Name: LossFunction</div><div id='method'> Method Name: layer_op</div><BR>

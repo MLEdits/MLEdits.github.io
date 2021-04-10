@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 compute some normalization count, except batch-size
+        denorm = F.cast(
+            F.shape_array(objness_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)
+        obj_loss = <a id="change">F.broadcast_mul(self._sigmoid_ce(objness, objness_t, objness_t &gt;= 0), denorm)</a>
+        center_loss = F.broadcast_mul(self._sigmoid_ce(box_centers, center_t, weight_t), denorm * 2)
+        scale_loss = F.broadcast_mul(self._l1_loss(box_scales, scale_t, weight_t), denorm * 2)
+        denorm_class = F.cast(
+            F.shape_array(class_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+        denorm = F.cast(
+            F.shape_array(objness_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)
+        weight_t = F.broadcast_mul(weight_t, objness_t)
+        <a id="change">hard_objness_t = F.where(objness_t &gt; 0, F.ones_like(objness_t), objness_t)</a>
+        new_objness_mask = F.where(objness_t &gt; 0, objness_t, objness_t &gt;= 0)
+        <a id="change">obj_loss = F.broadcast_mul(
+            self._sigmoid_ce(objness, hard_objness_t, new_objness_mask), denorm)</a>
+        center_loss = F.broadcast_mul(self._sigmoid_ce(box_centers, center_t, weight_t), denorm * 2)
+        scale_loss = F.broadcast_mul(self._l1_loss(box_scales, scale_t, weight_t), denorm * 2)
+        denorm_class = F.cast(
+            F.shape_array(class_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)</code></pre>

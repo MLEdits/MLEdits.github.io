@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        bssid = None
+        logging.error("api: %s" % e)
+
+    <a id="change">return essid, bssid</a>
+
+
+def api_report_ap(token, essid, bssid):
+    logging.info("api: reporting %s (%s)" % (essid, bssid))</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 /root/handshakes/BSSID.pcap
+        essid, bssid = &quot&quot, net_id
+
+    <a id="change">it = iter(bssid)</a>
+    bssid = <a id="change">&quot:&quot.join([a + b for a, b in zip(it, it)])</a>
+
+    info = {
+        &quotessid&quot: essid,
+        &quotbssid&quot: bssid
+    }
+
+    try:
+        from scapy.all import rdpcap
+
+        for pkt in rdpcap(filename):
+            info = parse_packet(pkt, info)
+
+    except Exception as e:
+        logging.error("api: %s" % e)
+
+    <a id="change">return info[&quotessid&quot], info[&quotbssid&quot]</a>
+
+
+def api_report_ap(log, keys, token, essid, bssid):
+    while True:</code></pre>

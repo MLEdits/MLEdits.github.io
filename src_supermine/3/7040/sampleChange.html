@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    try:
+        from scapy.all import rdpcap
+
+        <a id="change">for pkt in rdpcap(filename):
+            info = parse_packet(pkt, info)
+
+   </a> except Exception as e:
+        logging.error("api: %s" % e)
+
+    return info[&quotessid&quot], info[&quotbssid&quot]</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    info = {
+        WifiInfo.ESSID: essid,
+        <a id="change">WifiInfo.BSSID</a>: bssid,
+    }
+
+    try:</code></pre>

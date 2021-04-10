@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                policy_out, self.stochastic, self.noise_scale,
+                self.pure_exploration_phase, action_space)
+
+        <a id="change">if self.config["smooth_target_policy"]:
+            self.reset_noise_op = tf.no_op()
+        else:
+            with tf.variable_scope(ACTION_SCOPE, reuse=True):
+                exploration_sample = tf.get_variable(name="ornstein_uhlenbeck")
+                self.reset_noise_op = tf.assign(exploration_sample,
+                                                self.dim_actions * [.0])
+
+        &#47&#47 Replay inputs
+       </a> self.obs_t = tf.placeholder(
+            tf.float32,
+            shape=(None, ) + observation_space.shape,
+            name="observation")</code></pre><h3>After Change</h3><pre><code class='java'>
+        explore = tf.placeholder_with_default(True, (), name="is_exploring")
+        &#47&#47 Action outputs
+        with tf.variable_scope(ACTION_SCOPE):
+            <a id="change">self</a>.output_actions, _ = self.exploration.get_exploration_action(
+                policy_out, Deterministic, self.policy_model, explore,
+                timestep)
+</code></pre>

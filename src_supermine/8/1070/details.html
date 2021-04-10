@@ -1,0 +1,25 @@
+<html><h3>acdff8764ec8a477f0ba8177c019deab52550e3e,open_seq2seq/models/text2speech.py,Text2Speech,maybe_print_logs,#Text2Speech#Any#Any#Any#,180
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+      return loss, [decoder_out, final_spectrogram, attention_mask, inputs]
+
+  def maybe_print_logs(self, input_values, output_values, step):
+    <a id="change">y</a>, y_length = input_values[&quottarget_tensors&quot]
+    predicted_decoder_spectrograms = output_values[0]
+    predicted_final_spectrograms = output_values[1]
+    attention_mask = output_values[2]</code></pre><h3>After Change</h3><pre><code class='java'>
+                     self.params["logdir"], step,
+                     append="train")
+
+    <a id="change">if "spectrogram" in self.get_data_layer().params[&quotoutput_type&quot]:
+      save_audio(predicted_final_spectrogram_sample, self.params["logdir"], step)
+    elif "mel" in self.get_data_layer().params[&quotoutput_type&quot]:
+      predicted_final_spectrogram_sample = inverse_mel(predicted_final_spectrogram_sample)
+      save_audio(predicted_final_spectrogram_sample, self.params["logdir"], step)
+    
+   </a> return {}
+
+  def finalize_evaluation(self, results_per_batch, step):
+    sample = results_per_batch[-1]</code></pre><img src="5839753.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/acdff8764ec8a477f0ba8177c019deab52550e3e#diff-fa5a5d968f70899ad0c7f6d00c3467c8f24a7d56f626a78a090a69a37aaa6f13L179' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: acdff8764ec8a477f0ba8177c019deab52550e3e</div><div id='time'> Time: 2018-06-19</div><div id='author'> Author: jasoli@nvidia.com</div><div id='file'> File Name: open_seq2seq/models/text2speech.py</div><div id='class'> Class Name: Text2Speech</div><div id='method'> Method Name: maybe_print_logs</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/6d3e4bdc22cc89fb7ecf188ccf0479632012026f#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 6d3e4bdc22cc89fb7ecf188ccf0479632012026f</div><div id='time'> Time: 2018-04-18</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/4fca544205a55010e8959bb760aece5be80dc3a5#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 4fca544205a55010e8959bb760aece5be80dc3a5</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR>

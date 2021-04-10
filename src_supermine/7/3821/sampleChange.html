@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            os.environ["CUDA_VISIBLE_DEVICES"] = self.local_device
+
+            if self.local_device:
+                <a id="change">try:
+                    torch.cuda.set_device(int(self.local_device))
+                except RuntimeError:
+                    logger.error("This happens if cuda is not initialized.")
+                    raise
+
+       </a> super(LocalDistributedRunner, self).__init__(*args, **kwargs)
+
+    def get_device_ids(self):
+        return [int(self.local_device)]</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 TODO: we should make sure this NEVER dies.
+        self.local_device = "0"
+        self._is_set = False
+        <a id="change">if num_gpus:
+            assert num_gpus == 1, "Does not support multi-gpu workers"
+
+       </a> if not self.is_actor() and num_gpus &gt; 0:
+            self._try_reserve_and_set_cuda()
+
+        super(LocalDistributedRunner, self).__init__(*args, **kwargs)</code></pre>

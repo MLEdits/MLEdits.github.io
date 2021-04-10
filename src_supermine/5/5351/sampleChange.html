@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+def row_selected_callback(attr, old, new):
+    global clear_flag, all_selected_phrases
+    if not clear_flag and expand_table_source.data != empty_table:
+        logger.info(<a id="change">&quotrow selected callback. old indices=&quot + str(old.indices) + &quot. new indices=&quot + str(new.indices)</a>)
+        &#47&#47 sync phrases lists:
+        old_phrases = [expand_table_source.data[&quotres&quot][p] for p in old.indices]
+        new_phrases = [expand_table_source.data[&quotres&quot][p] for p in new.indices]</code></pre><h3>After Change</h3><pre><code class='java'>
+    global clear_flag, all_selected_phrases
+    if not clear_flag and expand_table_source.data != empty_table:
+        logger.info(&quotrow selected callback. old indices=%s. new indices=%s&quot,
+                    <a id="change">str(old.indices)</a>, str(new.indices))
+        &#47&#47 sync phrases lists:
+        old_phrases = [expand_table_source.data[&quotres&quot][p] for p in old.indices]
+        new_phrases = [expand_table_source.data[&quotres&quot][p] for p in new.indices]</code></pre>

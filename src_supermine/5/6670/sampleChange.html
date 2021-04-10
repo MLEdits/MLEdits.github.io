@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self._last_resize = float("-inf")
+
+        self.local_worker = DeactivatedRunner()
+        self.remote_workers = <a id="change">[]</a>
+
+        if scheduler_step_freq:
+            _validate_scheduler_step_freq(scheduler_step_freq)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                "model_creator, ...) and pass in CustomOperator into "
+                "TorchTrainer.")
+
+        <a id="change">if use_local and log_once("use_local"):
+            logger.warning("use_local is set to True. This could lead to "
+                           "issues with Cuda devices. If you are seeing this "
+                           "issue, try setting use_local to False. For more "
+                           "information, see "
+                           "https://github.com/ray-project/ray/issues/9202.")
+
+       </a> if num_workers &gt; 1 and not dist.is_available():
+            raise ValueError(
+                ("Distributed PyTorch is not supported on macOS. "
+                 "To run without distributed PyTorch, set &quotnum_workers=1&quot. "</code></pre>

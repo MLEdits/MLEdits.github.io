@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+logger = logging.getLogger(__name__)
+
+<a id="change">try:
+    import pyarrow
+    PYARROW_ENABLED = True
+except ImportError:
+    logger.warning(
+        "pyarrow not available, switching to pickle. "
+        "To install pyarrow, run `pip install pyarrow`."
+    )
+    PYARROW_ENABLED = False
+
+
+</a>def pyarrow_serialize(data):
+    
+    Serialize the data into bytes using pyarrow
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+logger = logging.getLogger(__name__)
+
+<a id="change">if os.environ.get("USE_PYARROW", "1") == "1":
+    try:
+        import pyarrow
+        PYARROW_ENABLED = True
+    except ImportError:
+        logger.warning(
+            "pyarrow not available, switching to pickle. "
+            "To install pyarrow, run `pip install pya</a>rrow`."
+        )
+        PYARROW_ENABLED = False
+else:
+    <a id="change">PYARROW_ENABLED = False</a>
+
+
+def pyarrow_serialize(data):
+    </code></pre>

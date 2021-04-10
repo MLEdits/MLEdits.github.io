@@ -1,0 +1,23 @@
+<html><h3>a07af63ecee69b5d48ff973b5c61c76f0c8ba33e,niftynet/layer/binary_masking.py,,,#,17
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+The binary image can be used as an automatic foreground selector, so that later
+processing layers can only operate on the `True` locations within the image.
+
+SUPPORTED_MASK_TYPES = <a id="change">{&quotthreshold_plus&quot, &quotthreshold_minus&quot,
+                        &quototsu_plus&quot, &quototsu_minus&quot, &quotmean_plus&quot}</a>
+
+SUPPORTED_MULTIMOD_MASK_TYPES = {&quotor&quot, &quotand&quot, &quotmulti&quot}
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+The binary image can be used as an automatic foreground selector, so that later
+processing layers can only operate on the `True` locations within the image.
+
+SUPPORTED_MASK_TYPES = <a id="change">set([&quotthreshold_plus&quot, &quotthreshold_minus&quot,
+                            &quototsu_plus&quot, &quototsu_minus&quot, &quotmean_plus&quot])</a>
+
+SUPPORTED_MULTIMOD_MASK_TYPES = set([&quotor&quot, &quotand&quot, &quotmulti&quot])
+
+</code></pre><img src="39452632.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/a07af63ecee69b5d48ff973b5c61c76f0c8ba33e#diff-ac2fef77f875e7d677d927ca01b3b1fe9af64c14e74ec3c123387a23a5952074L17' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: a07af63ecee69b5d48ff973b5c61c76f0c8ba33e</div><div id='time'> Time: 2017-11-24</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/binary_masking.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/a07af63ecee69b5d48ff973b5c61c76f0c8ba33e#diff-30ee55ffacfcb677278b40ae1b0b72bf843ac0b9035a44dbc65144e2af1c8230L28' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: a07af63ecee69b5d48ff973b5c61c76f0c8ba33e</div><div id='time'> Time: 2017-11-24</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/application/regression_application.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/a07af63ecee69b5d48ff973b5c61c76f0c8ba33e#diff-d8e520586ad048af79d6ff89f6b861e143f512901e02109f5201798d57923699L289' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: a07af63ecee69b5d48ff973b5c61c76f0c8ba33e</div><div id='time'> Time: 2017-11-24</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/resampler.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/a07af63ecee69b5d48ff973b5c61c76f0c8ba33e#diff-73a8c4cc65d49e3b8afd6d829c764ee82a8f8e8bf8d43473328c27f044c442b9L31' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: a07af63ecee69b5d48ff973b5c61c76f0c8ba33e</div><div id='time'> Time: 2017-11-24</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/application/segmentation_application.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

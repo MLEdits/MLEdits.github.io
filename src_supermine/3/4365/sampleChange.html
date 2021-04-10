@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    def is_ready(self):
+        mod_to_train = self.__check_modalities_to_train()
+        if mod_to_train:
+            <a id="change">tf.logging.info(&quothistogram normalisation, &quot
+                            &quotlooking for reference histogram...&quot)</a>
+            return False
+        return True
+
+    def train(self, image_list):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def is_ready(self):
+        mod_to_train = self.__check_modalities_to_train()
+        <a id="change">return False if mod_to_train else True</a>
+
+    def train(self, image_list):
+        &#47&#47 check modalities to train, using the first subject in subject list
+        &#47&#47 to find input modality list</code></pre>

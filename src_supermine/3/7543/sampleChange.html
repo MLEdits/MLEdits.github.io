@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+class AvailActionsTestEnv(MultiAgentEnv):
+    action_space = Discrete(10)
+    observation_space = Dict({
+        "obs": <a id="change">Discrete(3)</a>,
+        "action_mask": Box(0, 1, (10, )),
+    })
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        "obs": Dict({
+            "test": Dict({
+                "a": Discrete(2),
+                "b": MultiDiscrete(<a id="change">[2, 3, 4]</a>)
+            }),
+            "state": MultiDiscrete([2, 2, 2])
+        }),</code></pre>

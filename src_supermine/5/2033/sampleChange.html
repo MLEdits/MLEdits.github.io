@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    def test_same_shape(self):
+        new_X = self.rng.randn(2, 2)
+        self.m.X = new_X
+        <a id="change">fd = {}</a>
+        <a id="change">self.m.update_feed_dict(self.m.get_feed_dict_keys(), fd)</a>
+        assert np.all(fd[self.m.X._tf_array] == new_X)
+        self.assertFalse(self.m._needs_recompile)
+
+        new_Y = self.rng.randn(2, 2)</code></pre><h3>After Change</h3><pre><code class='java'>
+            new_X = rng.randn(2, 2)
+            m.X = new_X
+            assert_array_equal(m.X.shape, new_X.shape)
+            <a id="change">assert_array_equal(m.X.read_value(), new_X)</a>
+
+            new_Y = rng.randn(2, 2)
+            m.Y = new_Y
+            assert_array_equal(m.Y.shape, new_Y.shape)</code></pre>

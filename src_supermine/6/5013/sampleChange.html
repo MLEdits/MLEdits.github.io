@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Send message to browser with client configuration settings.
+        msg = protobuf.ForwardMsg()
+
+        <a id="change">msg.new_connection.sharing_enabled</a> = <a id="change">(
+            config.get_option(&quots3.sharingEnabled&quot))</a>
+        LOGGER.debug(
+            &quotNew browser connection: sharing_enabled=%s&quot %
+            msg.new_connection.sharing_enabled)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        Send message to browser with client configuration settings.
+        msg = protobuf.ForwardMsg()
+
+        <a id="change">msg.new_connection.sharing_enabled</a> = (
+            <a id="change">config.get_option(&quots3.settingsInternal&quot)</a> is not None)
+        LOGGER.debug(
+            &quotNew browser connection: sharing_enabled=%s&quot %
+            msg.new_connection.sharing_enabled)</code></pre>

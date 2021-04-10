@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def _resource(name, config):
+    <a id="change">boto_config = Config(retries={"max_attempts": BOTO_MAX_RETRIES})</a>
+    aws_credentials = config["provider"].get("aws_credentials", {})
+    <a id="change">return boto3.resource(
+        name,
+        config["provider"]["region"],
+        config=boto_config,
+        **aws_credentials)</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def _resource(name, config):
+    <a id="change">region = config["provider"]["region"]</a>
+    aws_credentials = config["provider"].get("aws_credentials", {})
+    <a id="change">return _resource_cache(name, region, **aws_credentials)</a>
+
+
+@lru_cache()
+def _resource_cache(name, region, **kwargs):</code></pre>

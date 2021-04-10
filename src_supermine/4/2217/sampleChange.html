@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 pylint: disable=broad-except
+    except Exception:
+        if name not in mx_tensors:
+            <a id="change">logging.info(&quotcannot initialize %s from tf checkpoint&quot, name)</a>
+        else:
+            logging.info(&quotcannot initialize %s. Expect shape = %s, but found %s&quot,
+                         name, params[name].shape, arr.shape)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 pylint: disable=broad-except
+    except Exception:
+        if name not in mx_tensors:
+            <a id="change">raise RuntimeError(&quotcannot initialize %s from tf checkpoint&quot%name)</a>
+        else:
+            raise RuntimeError(&quotcannot initialize %s. Expect shape = %s, but found %s&quot%\
+                               name, params[name].shape, arr.shape)
+</code></pre>

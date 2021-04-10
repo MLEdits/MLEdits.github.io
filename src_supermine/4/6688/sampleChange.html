@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    @tornado.gen.coroutine
+    def loop_coroutine(self):
+        <a id="change">self._set_state(State.WAITING_FOR_FIRST_BROWSER)</a>
+
+        self._on_server_start_callback(self)
+
+        while not self._must_stop.is_set():</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    @tornado.gen.coroutine
+    def loop_coroutine(self):
+        <a id="change">if self._state == State.INITIAL:
+            self._set_state(State.WAITING_FOR_FIRST_BROWSER)
+        elif self._state == State.ONE_OR_MORE_BROWSERS_CONNECTED:
+            pass
+        else:
+            raise RuntimeError(&quotBad server state at start: %s&quot % self._state)
+
+       </a> self._on_server_start_callback(self)
+
+        while not self._must_stop.is_set():
+            if self._state == State.WAITING_FOR_FIRST_BROWSER:</code></pre>

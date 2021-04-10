@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                kept_nodes = 0
+            for original_node_index, node in enumerate(layer.inbound_nodes):
+                <a id="change">node_key = layer.name + &quot_ib-&quot + str(original_node_index)</a>
+                if node_key in self.container_nodes:
+                    node_conversion_map[node_key] = kept_nodes
+                    kept_nodes += 1
+        layer_configs = []</code></pre><h3>After Change</h3><pre><code class='java'>
+            else:
+                kept_nodes = 0
+            for original_node_index, node in enumerate(layer.inbound_nodes):
+                <a id="change">node_key = self._node_key(layer, original_node_index)</a>
+                if node_key in self.container_nodes:
+                    &#47&#47 i.e. we mark it to be saved
+                    node_conversion_map[node_key] = kept_nodes
+                    kept_nodes += 1</code></pre>

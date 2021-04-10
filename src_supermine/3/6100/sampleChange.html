@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        a = params[&quotaspect_ratio&quot]
+        expected_H_crop = int(math.floor(
+            np.sqrt(s * self.H * self.W * a)))
+        expected_W_crop = <a id="change">int(math.floor(
+            np.sqrt(s * self.H * self.W / a)))</a>
+        self.assertEqual(H_crop, expected_H_crop)
+        self.assertEqual(W_crop, expected_W_crop)
+
+        self.assertTrue(</code></pre><h3>After Change</h3><pre><code class='java'>
+            (aspect_ratio &lt;= aspect_ratio_interval[1]))
+        self.assertTrue(
+            scale_ratio &lt;= scale_ratio_interval[1])
+        <a id="change">scale_ratio_max = min((scale_ratio_interval[1],
+                               self.H / (self.W * aspect_ratio),
+                               (aspect_ratio * self.W) / self.H))</a>
+        self.assertTrue(
+            min((scale_ratio_max, scale_ratio_interval[0])) &lt;= scale_ratio)
+
+</code></pre>

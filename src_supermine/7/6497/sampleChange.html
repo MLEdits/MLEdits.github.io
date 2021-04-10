@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    de.video_id = v.pk
+    de.operation = e.get(&quotoperation&quot, "")
+    de.created = e[&quotcreated&quot]
+    <a id="change">if &quotseconds&quot in e:
+        de.duration = e.get(&quotseconds&quot, -1)
+    else:
+        de.duration = e.get(&quotduration&quot, -1)
+   </a> de.arguments = e.get(&quotarguments&quot, {})
+    de.task_id = e.get(&quottask_id&quot, "")
+    return de
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    de.video_id = v.pk
+    de.operation = e.get(&quotoperation&quot, "")
+    de.created = e[&quotcreated&quot]
+    de.min_frame_index = <a id="change">e.get(&quotmin_frame_index&quot, None)</a>
+    de.max_frame_index = e.get(&quotmax_frame_index&quot, None)
+    de.duration = e.get(&quotduration&quot, -1)
+    de.arguments = e.get(&quotarguments&quot, {})
+    de.task_id = e.get(&quottask_id&quot, "")</code></pre>

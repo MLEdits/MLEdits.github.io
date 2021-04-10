@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+from urllib import request
+
+url = "https://www.w3schools.com/html/mov_bbb.mp4"
+<a id="change">file = request.urlopen(url).read()</a>
+st.video(file)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+import requests
+
+url = "https://www.w3schools.com/html/mov_bbb.mp4"
+file = <a id="change">requests</a>.get(url).content
+st.video(file)
+</code></pre>

@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        images = batch.images
+
+        <a id="change">iadt.gate_dtypes(
+            images,
+            allowed=["uint8"],
+            disallowed=["bool",
+                        "uint16", "uint32", "uint64", "uint128", "uint256",
+                        "int8", "int16", "int32", "int64", "int128", "int256",
+                        "float16", "float32", "float64", "float96", "float128",
+                        "float256"],
+            augmenter=self)</a>
+
+        def _augment_all_channels_histogram_equalization(images_normalized,
+                                                         random_state_derived):
+            &#47&#47 pylint: disable=protected-access</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        images = batch.images
+
+        <a id="change">iadt.allow_only_uint8(images, augmenter=self)</a>
+
+        def _augment_all_channels_histogram_equalization(images_normalized,
+                                                         random_state_derived):
+            &#47&#47 pylint: disable=protected-access</code></pre>

@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        spatial_shape = window_shape[1:-1]
+        n_spatial = len(spatial_shape)
+        &#47&#47 import pdb; pdb.set_trace()
+        <a id="change">assert all([win_size &gt; 2 * border_size
+                    for (win_size, border_size)
+                    in zip(spatial_shape, border[:n_spatial])]), \
+            "window sizes should be larger than inference border size * 2" \
+            " received: {}: {}".format(spatial_shape, border[:n_spatial])</a>
+        if n_spatial == 1:
+            window = window[:,
+                            border[0]:spatial_shape[0] - border[0],
+                            np.newaxis, np.newaxis, ...]</code></pre><h3>After Change</h3><pre><code class='java'>
+            return window, location
+
+        cropped_shape = np.max(location[:, 4:7] - location[:, 1:4], axis=0)
+        <a id="change">left = np.floor(
+            (spatial_shape - cropped_shape[:n_spatial])/2.0).astype(np.int)</a>
+        if np.any(left &lt; 0):
+            tf.logging.fatal(
+                &quotnetwork output window can be &quot
+                &quotcropped by specifying the border parameter in config file, &quot</code></pre>

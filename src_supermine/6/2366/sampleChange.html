@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            dtype=float
+        )
+
+        for i in <a id="change">range(len(column))</a>:
+            col_counter = Counter(set_str_to_idx(
+                <a id="change">column[i]</a>,
+                metadata[&quotstr2idx&quot],
+                preprocessing_parameters[&quottokenizer&quot])
+            )</code></pre><h3>After Change</h3><pre><code class='java'>
+            dtype=float
+        )
+
+        for i, set_str in <a id="change">enumerate(column)</a>:
+            col_counter = Counter(set_str_to_idx(
+                set_str,
+                metadata[&quotstr2idx&quot],</code></pre>

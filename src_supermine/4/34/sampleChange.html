@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        (986, 742),
+        (1184, 102),
+    ]
+    shape = <a id="change">label</a>, points, None, None, &quotpolygon&quot, {}
+    <a id="change">shapes = [shape]</a>
+    win.loadLabels(shapes)
+    win.saveFile()
+
+    labelme.testing.assert_labelfile_sanity(output_file)</code></pre><h3>After Change</h3><pre><code class='java'>
+        (986, 742),
+        (1184, 102),
+    ]
+    <a id="change">shapes = [dict(
+        label=label,
+        points=points,
+        line_color=None,
+        fill_color=None,
+        shape_type=&quotpolygon&quot,
+        flags={}
+    )]</a>
+    win.loadLabels(shapes)
+    win.saveFile()
+
+    labelme.testing.assert_labelfile_sanity(output_file)</code></pre>

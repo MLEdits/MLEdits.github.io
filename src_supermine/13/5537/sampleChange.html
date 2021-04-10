@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    
+
+    def __init__(self, size=(2, 2, 2), data_format=&quotdefault&quot, **kwargs):
+        <a id="change">if data_format == &quotdefault&quot:
+            data_format = K.image_data_format()
+       </a> <a id="change">self.size = tuple(size)</a>
+        if data_format not in {&quotchannels_last&quot, &quotchannels_first&quot}:
+            raise ValueError(&quotdata_format must be in {"channels_last", "channels_first"}.&quot)
+        <a id="change">self.data_format</a> = data_format
+        self.input_spec = [InputSpec(ndim=5)]
+        super(UpSampling3D, self).__init__(**kwargs)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    
+
+    def __init__(self, size=(2, 2, 2), data_format=None, **kwargs):
+        <a id="change">self.data_format</a> = <a id="change">conv_utils.normalize_data_format(data_format)</a>
+        self.input_spec = [InputSpec(ndim=5)]
+        super(UpSampling3D, self).__init__(**kwargs)
+
+    def get_output_shape_for(self, input_shape):</code></pre>

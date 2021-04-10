@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def random_normal_variable(shape, mean, scale, dtype=_FLOATX, name=None):
+    shape = <a id="change">map(int, shape)</a>
+    tf_dtype = _convert_string_dtype(dtype)
+    value = tf.random_normal_initializer(mean, scale, dtype=tf_dtype)(shape)
+    return variable(value, dtype=dtype, name=name)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def random_normal_variable(shape, mean, scale, dtype=_FLOATX, name=None):
+    shape = <a id="change">tuple(map(int, shape))</a>
+    tf_dtype = _convert_string_dtype(dtype)
+    value = tf.random_normal_initializer(mean, scale, dtype=tf_dtype)(shape)
+    return variable(value, dtype=dtype, name=name)
+</code></pre>

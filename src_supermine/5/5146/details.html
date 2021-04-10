@@ -1,0 +1,21 @@
+<html><h3>7dcc162114ac1d3c3846150d5c600f4d8683fa73,onmt/Models.py,RNNDecoderBase,forward,#RNNDecoderBase#Any#Any#Any#Any#,234
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 Update the state with the result.
+        final_output = outputs[-1]
+        state.update_state(hidden, final_output.unsqueeze(0),
+                           <a id="change">coverage.unsqueeze(0)
+                           if coverage is not None else None</a>)
+
+        &#47&#47 Concatenates sequence of tensors along a new dimension.
+        outputs = torch.stack(outputs)</code></pre><h3>After Change</h3><pre><code class='java'>
+        final_output = decoder_outputs[-1]
+        coverage = None
+        if "coverage" in attns:
+            <a id="change">coverage = attns["coverage"][-1].unsqueeze(0)</a>
+        state.update_state(decoder_final, final_output.unsqueeze(0), coverage)
+
+        &#47&#47 Concatenates sequence of tensors along a new dimension.
+        decoder_outputs = torch.stack(decoder_outputs)</code></pre><img src="21590065.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/7dcc162114ac1d3c3846150d5c600f4d8683fa73#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL255' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 7dcc162114ac1d3c3846150d5c600f4d8683fa73</div><div id='time'> Time: 2018-02-16</div><div id='author'> Author: srush@seas.harvard.edu</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: RNNDecoderBase</div><div id='method'> Method Name: forward</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/ba164c0dbb3d8171004380956a88431f4e8248ba#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL52' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: ba164c0dbb3d8171004380956a88431f4e8248ba</div><div id='time'> Time: 2017-08-01</div><div id='author'> Author: bpeters@coli.uni-saarland.de</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: Embeddings</div><div id='method'> Method Name: make_positional_encodings</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/08184fbbb9248ebe53350f71f6f43be859fd838e#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL244' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 08184fbbb9248ebe53350f71f6f43be859fd838e</div><div id='time'> Time: 2017-06-30</div><div id='author'> Author: sasha.rush@gmail.com</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: Decoder</div><div id='method'> Method Name: forward</div><BR>

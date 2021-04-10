@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.brackets = dict()            &#47&#47 dict of Bracket
+        self.generated_hyper_configs = [] &#47&#47 all the configs waiting for run
+        self.completed_hyper_configs = [] &#47&#47 all the completed configs
+        self.s_max = math.floor(<a id="change">math.log(self.R, self.eta)</a>)
+        self.curr_s = self.s_max
+
+        self.searchspace_json = None</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.brackets = dict()            &#47&#47 dict of Bracket
+        self.generated_hyper_configs = [] &#47&#47 all the configs waiting for run
+        self.completed_hyper_configs = [] &#47&#47 all the completed configs
+        self.s_max = math.floor(<a id="change">math.log(self.R, self.eta) + _epsilon</a>)
+        self.curr_s = self.s_max
+
+        self.searchspace_json = None</code></pre>

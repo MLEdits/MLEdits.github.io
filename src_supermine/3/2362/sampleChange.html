@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            if return_sequences:
+                output_shape.insert(1, sequence_len)
+
+            <a id="change">assert output.shape == tuple(output_shape)</a>
+
+            &#47&#47 No need to check following tests for both data formats
+            if data_format == &quotchannels_first&quot or return_sequences:
+                continue</code></pre><h3>After Change</h3><pre><code class='java'>
+
+            &#47&#47 train once so that the states change
+            model.train_on_batch(np.ones_like(inputs),
+                                 <a id="change">np.random.random(out1.shape)</a>)
+            out2 = model.predict(np.ones_like(inputs))
+
+            &#47&#47 if the state is not reset, output should be different</code></pre>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                yield batch
+        except StopIteration:
+            self.cur_iter = self._next_dataset_iterator()
+            <a id="change">if self.cur_iter is None:
+                raise StopIteration
+            else:
+                for batch in self.cur_iter:
+                    yield batch
+
+   </a> def __len__(self):
+        &#47&#47 We return the len of cur_dataset, otherwise we need to load
+        &#47&#47 all datasets to determine the real len, which loses the benefit
+        &#47&#47 of lazy loading.</code></pre><h3>After Change</h3><pre><code class='java'>
+        assert self.cur_iter is not None
+
+    def __iter__(self):
+        <a id="change">while self.cur_iter is not None:
+            for batch in self.cur_iter:
+                yield batch
+            self.cur_iter = self._next_dataset_iterator()
+
+   </a> def __len__(self):
+        &#47&#47 We return the len of cur_dataset, otherwise we need to load
+        &#47&#47 all datasets to determine the real len, which loses the benefit
+        &#47&#47 of lazy loading.</code></pre>

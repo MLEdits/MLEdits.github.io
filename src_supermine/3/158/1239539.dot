@@ -1,0 +1,14 @@
+digraph G {
+subgraph cluster0 {
+1 [label="callable" a="32" s="2015,2037" l="9,1" shape="box"];
+3 [label="IfStatement" a="25" s="2009,2070" l="4,2" shape="diamond"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="IfStatement" a="25" s="1778,1869" l="4,2" shape="diamond"];
+label = "New";
+style="dotted";
+}
+1 -> 3 [label="_cond_"];
+}

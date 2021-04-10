@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                &#47&#47 Special string since hashes change between sessions.
+                &#47&#47 We don&quott use Python&quots `hash` since hashes are not consistent
+                &#47&#47 across runs.
+                <a id="change">return b"none:"</a>
+            elif obj is True:
+                return b"bool:1"
+            elif obj is False:
+                return b"bool:0"</code></pre><h3>After Change</h3><pre><code class='java'>
+                &#47&#47 Special string since hashes change between sessions.
+                &#47&#47 We don&quott use Python&quots `hash` since hashes are not consistent
+                &#47&#47 across runs.
+                <a id="change">return NONESENSE</a>
+            elif obj is True:
+                return b"bool:1"
+            elif obj is False:
+                return b"bool:0"</code></pre>

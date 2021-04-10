@@ -1,0 +1,38 @@
+<html><h3>09b97e951a0d47e7d5f31a66804a8e76f389315b,keras/backend/cntk_backend.py,,rnn,#Any#Any#Any#Any#Any#Any#Any#Any#,1187
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        final_output, final_states = _recurrence(inputs, states)
+        last_output = C.sequence.last(final_output)
+        <a id="change">last_states = final_states</a>
+
+    if need_convert:
+        final_output = C.sequence.unpack(final_output, 0, no_mask_output=True)
+        last_states = [
+            C.sequence.unpack(
+                s, 0, no_mask_output=True) for <a id="change">s</a> in last_states]
+        if num_time_step is not None and num_time_step is not C.FreeDimension:
+            final_output = _reshape_sequence(final_output, num_time_step)
+            <a id="change">last_states = [
+                _reshape_sequence(
+                    _, num_time_step) for _ in last_states]</a>
+
+    return last_output, final_output, last_states
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    if num_time_step is None and not has_seq_axis(inputs):
+        num_time_step = inputs.shape[0]
+
+    <a id="change">initial = []</a>
+    <a id="change">for s in initial_states:
+        if _get_dynamic_axis_num(s) == 0:
+            initial.append(C.user_function(ConvertToBatch(s)))
+        else:
+            initial.append(s)
+
+   </a> need_convert = not has_seq_axis(inputs)
+    if need_convert:
+        inputs = C.to_sequence(inputs)
+</code></pre><img src="26724452.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 10</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/09b97e951a0d47e7d5f31a66804a8e76f389315b#diff-ed1178f3a38747717b4f5d25ca681329e55794e6a03ce198cd1c59a80c443dc7L1215' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 09b97e951a0d47e7d5f31a66804a8e76f389315b</div><div id='time'> Time: 2017-07-08</div><div id='author'> Author: souptc@gmail.com</div><div id='file'> File Name: keras/backend/cntk_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rnn</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/bc763baf9ea16e6a01c3803f9d180baface0a943#diff-60f61ab7a8d1910d86d9fda2261620314edcae5894d5aaa236b821c7256badd7L29' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: bc763baf9ea16e6a01c3803f9d180baface0a943</div><div id='time'> Time: 2018-03-14</div><div id='author'> Author: bushkov@phystech.edu</div><div id='file'> File Name: setup.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: read_requirements</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/284c2d94c6b50f7f1f3091d0c4bec62e7f54dd73#diff-60f61ab7a8d1910d86d9fda2261620314edcae5894d5aaa236b821c7256badd7L29' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 284c2d94c6b50f7f1f3091d0c4bec62e7f54dd73</div><div id='time'> Time: 2018-03-15</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: setup.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: read_requirements</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/37e2656912c22d8aefe94a1bab2eefa7c4f54ccc#diff-7b98e556d38bb0f12f45db1328b3410606f9a989cd82054459246b3d29ba62d6L41' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 37e2656912c22d8aefe94a1bab2eefa7c4f54ccc</div><div id='time'> Time: 2018-03-23</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/deconvolution.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: infer_output_dims</div><BR>

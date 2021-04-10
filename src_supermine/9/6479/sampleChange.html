@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        x_dense_2 = x_sparse_2.toarray()
+
+        &#47&#47 cntk not support it yet
+        <a id="change">backends = [KTF]</a>
+        if KTH.th_sparse_module:
+            &#47&#47 Theano has some dependency issues for sparse
+            <a id="change">backends.append(KTH)</a>
+
+        <a id="change">for k in backends:
+            k_s = k.concatenate([k.variable(x_sparse_1), k.variable(x_sparse_2)])
+            assert k.is_sparse(k_s)
+
+            k_s_d = k.eval(k_s)
+
+            k_d = k.eval(k.concatenate([k.variable(x_dense_1),
+                                        k.variable(x_dense_2)]))
+
+            assert k_s_d.shape == k_d.shape
+            assert_allclose(k_s_d, k_d, atol=1e-05)
+
+   </a> @pytest.mark.skipif(K.backend() == &quotcntk&quot, reason=&quotNot supported.&quot)
+    def test_map(self):
+        x = np.random.rand(10, 3).astype(np.float32)
+        vx = K.variable(x)</code></pre><h3>After Change</h3><pre><code class='java'>
+        x_dense_2 = x_sparse_2.toarray()
+
+        k_s = K.concatenate([K.variable(x_sparse_1), K.variable(x_sparse_2)])
+        <a id="change">assert K.is_sparse(k_s)</a>
+
+        k_s_d = K.eval(k_s)
+
+        k_d = K.eval(K.concatenate([K.variable(x_dense_1), K.variable(x_dense_2)]))</code></pre>

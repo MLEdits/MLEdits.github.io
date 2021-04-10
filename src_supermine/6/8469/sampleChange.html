@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    for strval in strings_to_match:
+        matched_str = regex.match(strval)
+        if matched_str:
+            <a id="change">filtered_groups</a> = <a id="change">filter(None, matched_str.groups())</a>
+            if filtered_groups:
+                <a id="change">values</a> = [v.strip() for v in list(filtered_groups)[0].split(&quot,&quot)]
+            else:
+                values = []
+            print(&quotString:&quot, strval, &quotMatched!&quot, values)</code></pre><h3>After Change</h3><pre><code class='java'>
+    for strval in strings_to_match:
+        matched_str = regex.match(strval)
+        if matched_str:
+            <a id="change">filtered_groups</a> = list(<a id="change">filter(None, matched_str.groups())</a>)
+            if filtered_groups:
+                <a id="change">values</a> = [v.strip() for v in filtered_groups[0].split(&quot,&quot)]
+            else:
+                values = []
+            print(&quotString:&quot, strval, &quotMatched!&quot, values)</code></pre>

@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        MakeLabeledImage(DataCombined,ind,cfg["pcutoff"],cfg["project_path"],[cfg["scorer"],DLCscorer],comparisonbodyparts,colors,cfg)
+
+        if ind in trainIndices:
+            plt.savefig(<a id="change">os.path.join(foldername,&quotTraining-&quot+imfoldername+&quot-&quot+imagename)</a>) &#47&#47create filename comprising videofolder + imagename
+        else:
+            plt.savefig(os.path.join(foldername,&quotTest-&quot+imfoldername+&quot-&quot+imagename))
+        plt.close("all")</code></pre><h3>After Change</h3><pre><code class='java'>
+        MakeLabeledImage(DataCombined,ind,cfg["pcutoff"],cfg["project_path"],[cfg["scorer"],DLCscorer],comparisonbodyparts,colors,cfg)
+
+        if ind in trainIndices:
+            <a id="change">full_path = os.path.join(foldername,&quotTraining-&quot+imfoldername+&quot-&quot+imagename)</a>
+        else:
+            full_path = os.path.join(foldername,&quotTest-&quot+imfoldername+&quot-&quot+imagename)
+
+        &#47&#47 windows throws error if file path is &gt; 260 characters, can fix with prefix. see https://docs.microsoft.com/en-us/windows/desktop/fileio/naming-a-file&#47&#47maximum-path-length-limitation
+        <a id="change">if (len(full_path) &gt;= 260) and (os.name == &quotnt&quot):
+            full_path = &quot\\\\?\\&quot+full_path
+       </a> plt.savefig(full_path)
+
+        plt.close("all")
+</code></pre>

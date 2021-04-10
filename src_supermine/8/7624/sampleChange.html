@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    else:
+        feat1 = None
+
+    <a id="change">if isinstance(obj2, tuple):
+        obj2, feat2 = obj2
+    else:
+        feat2 = None
+
+   </a> return _quadrature_expectation(p, obj1, feat1, obj2, feat2, num_gauss_hermite_points)
+
+
+def get_eval_func(obj, feature, slice=np.s_[...]):</code></pre><h3>After Change</h3><pre><code class='java'>
+                                         the number of Gauss-Hermite points used
+    :return: a 1-D, 2-D, or 3-D tensor containing the expectation
+    
+    <a id="change">p</a>, obj1, feat1, obj2, feat2 = _init_expectation(p, obj1, obj2)
+    return dispatch.quadrature_expectation(p, obj1, feat1, obj2, feat2, nghp=nghp)
+
+</code></pre>

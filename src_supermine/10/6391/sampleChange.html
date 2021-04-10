@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    def reset_states(self, states_value=None):
+        if not self.stateful:
+            raise AttributeError(&quotLayer must be stateful.&quot)
+        <a id="change">if not self.input_spec:
+            raise RuntimeError(&quotLayer has never been called &quot
+                               &quotand thus has no states.&quot)
+       </a> batch_size = self.input_spec.shape[0]
+        if not batch_size:
+            raise ValueError(&quotIf a RNN is stateful, it needs to know &quot
+                             &quotits batch size. Specify the batch size &quot</code></pre><h3>After Change</h3><pre><code class='java'>
+        if self.states[0] is None:
+            self.states = [K.zeros((batch_size, self.units))
+                           for _ in self.states]
+        elif <a id="change">states is None:
+</a>            <a id="change">for state in self.states:
+                K.set_value(state, np.zeros((batch_size, self.units)))
+       </a> else:
+            if not isinstance(states, (list, tuple)):
+                states = [states]
+            if len(states) != len(self.states):</code></pre>

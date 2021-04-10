@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            embedded sentence
+        
+        embedded_sentence = []
+        <a id="change">for word in instance.split(" "):
+            embedded_sentence.append(self.tok2emb[word])
+       </a> return embedded_sentence
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        Returns:
+            embedded sentence
+        
+        return <a id="change">[self.tok2emb[t] for t in sentence.split()]</a>
+</code></pre>

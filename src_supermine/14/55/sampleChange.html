@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        param.requires_grad = requires_grad
+
+
+<a id="change">__all__</a> = <a id="change">[
+    "get_optimizable_params",
+    "get_optimizer_momentum",
+    "set_optimizer_momentum",
+    "get_device",
+    "get_available_gpus",
+    "get_activation_fn",
+    "any2device",
+    "prepare_cudnn",
+    "process_model_params",
+    "set_requires_grad",
+]</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    return output_t
+
+
+<a id="change">__all__</a> = <a id="change">[
+    "get_optimizable_params",
+    "get_optimizer_momentum",
+    "set_optimizer_momentum",
+    "get_device",
+    "get_available_gpus",
+    "get_activation_fn",
+    "any2device",
+    "prepare_cudnn",
+    "process_model_params",
+    "set_requires_grad",
+    "get_network_output",
+]</a>
+</code></pre>

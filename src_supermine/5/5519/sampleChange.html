@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                get_path_to_file(path, "temp.json")
+                path = &quottemp.json&quot
+            try:
+                jspec = <a id="change">json.load(file(path))</a>
+            except:
+                logging.exception("could not load : {}".format(path))
+            else:
+                p = DVAPQLProcess()</code></pre><h3>After Change</h3><pre><code class='java'>
+        try:
+            jspec = json.loads(base64.decodestring(os.environ[&quotINIT_PROCESS&quot]))
+        except:
+            logging.exception("could not decode : {}".format(<a id="change">os.environ[&quotINIT_PROCESS&quot]</a>))
+        else:
+            p = DVAPQLProcess()
+            if DVAPQL.objects.count() == 0:</code></pre>

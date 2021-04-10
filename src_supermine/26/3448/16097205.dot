@@ -1,0 +1,68 @@
+digraph G {
+subgraph cluster0 {
+1 [label="of" a="32" s="63394,63402" l="3,1" shape="box"];
+3 [label="NumberLiteral" a="34" s="63401" l="1" shape="ellipse"];
+4 [label="[]" a="2" s="63777,63829" l="51,1" shape="box"];
+5 [label="{}" a="4" s="63808,63819" l="1,1" shape="box"];
+6 [label="NumberLiteral" a="34" s="63828" l="1" shape="ellipse"];
+7 [label="Affine" a="32" s="63383,63403" l="7,1" shape="box"];
+8 [label="of" a="32" s="63354,63362" l="3,1" shape="box"];
+9 [label="NumberLiteral" a="34" s="63361" l="1" shape="ellipse"];
+10 [label="FieldAccess" a="22" s="63365" l="17" shape="box"];
+11 [label="Affine" a="32" s="63343,63363" l="7,1" shape="box"];
+13 [label="StringLiteral" a="45" s="63397" l="3" shape="ellipse"];
+14 [label="StringLiteral" a="45" s="63357" l="3" shape="ellipse"];
+15 [label="FieldAccess" a="22" s="63325" l="17" shape="box"];
+16 [label="FieldAccess" a="22" s="63286" l="17" shape="box"];
+18 [label="FieldAccess" a="22" s="63809" l="10" shape="box"];
+19 [label="Assignment:=" a="7" s="63728" l="1" shape="box"];
+20 [label="Assignment:=" a="7" s="63776" l="1" shape="box"];
+21 [label="Assignment:=" a="7" s="63285" l="1" shape="box"];
+22 [label="HooksKeypoints" a="32" s="63736,63761" l="15,1" shape="box"];
+23 [label="FieldAccess" a="22" s="63751" l="10" shape="box"];
+25 [label="SimpleName" a="42" s="63729" l="6" shape="ellipse"];
+26 [label="SimpleName" a="42" s="63365" l="6" shape="ellipse"];
+27 [label="SimpleName" a="42" s="63286" l="6" shape="ellipse"];
+28 [label="SimpleName" a="42" s="63325" l="6" shape="ellipse"];
+29 [label="SimpleName" a="42" s="63350" l="3" shape="ellipse"];
+30 [label="SimpleName" a="42" s="63390" l="3" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="_test_cba_hooks_limit_propagation" a="32" s="61576,61640" l="34,1" shape="box"];
+12 [label="StringLiteral" a="45" s="61610" l="19" shape="ellipse"];
+17 [label="FieldAccess" a="22" s="61630" l="10" shape="box"];
+24 [label="SimpleName" a="42" s="61571" l="4" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 7 [label="_para_"];
+3 -> 1 [label="_para_"];
+4 -> 20 [label="_para_"];
+5 -> 4 [label="_qual_"];
+6 -> 4 [label="_para_"];
+7 -> 21 [label="_para_"];
+8 -> 11 [label="_para_"];
+9 -> 8 [label="_para_"];
+10 -> 7 [label="_recv_"];
+11 -> 21 [label="_para_"];
+12 -> 2 [label="_para_"];
+13 -> 1 [label="_para_"];
+14 -> 8 [label="_para_"];
+15 -> 11 [label="_recv_"];
+17 -> 2 [label="_para_"];
+18 -> 17 [label="_map_"];
+18 -> 5 [label="_para_"];
+19 -> 4 [label="_qual_"];
+21 -> 4 [label="_qual_"];
+22 -> 19 [label="_para_"];
+23 -> 22 [label="_para_"];
+24 -> 2 [label="_recv_"];
+25 -> 22 [label="_recv_"];
+26 -> 10 [label="_qual_"];
+27 -> 16 [label="_qual_"];
+28 -> 15 [label="_qual_"];
+29 -> 8 [label="_recv_"];
+30 -> 1 [label="_recv_"];
+}

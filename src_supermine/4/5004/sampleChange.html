@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+ml_predictor = Predictor(type_of_algo=&quotclassifier&quot, column_descriptions={&quottarget&quot: &quotoutput&quot})
+
+ml_predictor.train(training_data)
+<a id="change">ml_predictor.predict(new_data)</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    training_rows = csv.DictReader(input_file)
+
+    training_data = []
+    <a id="change">testing_data = []</a>
+
+    for row in training_rows:
+        if random.random() &gt; 0.8:
+            <a id="change">testing_data.append(row)</a>
+        else:
+            training_data.append(row)
+
+</code></pre>

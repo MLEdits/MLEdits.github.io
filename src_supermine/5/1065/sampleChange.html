@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    test_score = ml_predictor.score(df_boston_test, df_boston_test.MEDV)
+
+    <a id="change">print(&quottest_score&quot)</a>
+    print(test_score)
+
+    &#47&#47 Bumping this up since without these features our score drops
+    lower_bound = -4.0</code></pre><h3>After Change</h3><pre><code class='java'>
+        , &quotCHAS&quot: &quotcategorical&quot
+    }
+
+    <a id="change">df_boston_train, uncertainty_data = train_test_split(df_boston_train, test_size=0.5)</a>
+
+    ml_predictor = Predictor(type_of_estimator=&quotregressor&quot, column_descriptions=column_descriptions)
+
+    ml_predictor.train(df_boston_train, perform_feature_selection=True, model_names=model_name, train_uncertainty_model=True, uncertainty_data=uncertainty_data)</code></pre>

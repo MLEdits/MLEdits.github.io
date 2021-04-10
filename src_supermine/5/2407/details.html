@@ -1,0 +1,21 @@
+<html><h3>67d3685e757a5a2fd5b0c63ed28d8f61b15e9220,anago/tagger.py,Tagger,get_entities,#Tagger#Any#,51
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        words = self._tokenizer(sent)
+        words = [&quotPresident&quot, &quotObama&quot, &quotis&quot, &quotspeaking&quot, &quotat&quot, &quotthe&quot, &quotWhite&quot, &quotHouse&quot, &quot.&quot]
+        &#47&#47 pred = self._model.predict(words)
+        <a id="change">pred = [&quotO&quot, &quotB-Person&quot, &quotO&quot, &quotO&quot, &quotO&quot, &quotO&quot, &quotB-Location&quot, &quotI-Location&quot, &quotO&quot]</a>
+        entities = self.get_chunks(words, pred)
+
+        return entities
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        assert isinstance(sent, str)
+
+        words = self._tokenizer(sent)
+        <a id="change">pred = self.predict(words)</a>
+        entities = self.get_chunks(words, pred)
+
+        return entities
+</code></pre><img src="12590080.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/Hironsan/anago/commit/67d3685e757a5a2fd5b0c63ed28d8f61b15e9220#diff-cd9267e4620bfb4731a9c7c5ba24ac0a04e4950b933e20219dd4880ca3434deaL58' target='_blank'>Link</a></div><div id='project'> Project Name: Hironsan/anago</div><div id='commit'> Commit Name: 67d3685e757a5a2fd5b0c63ed28d8f61b15e9220</div><div id='time'> Time: 2017-08-23</div><div id='author'> Author: light.tree.1.13@gmail.com</div><div id='file'> File Name: anago/tagger.py</div><div id='class'> Class Name: Tagger</div><div id='method'> Method Name: get_entities</div><BR><BR><div id='link'><a href='https://github.com/deepchem/deepchem/commit/8a015062717a7eee6d6325e06ed9fc4d369fedc6#diff-026f6aae764985bc4c69f6874c57e7cf1674d564125491eb0be4f2a30ef5b167L973' target='_blank'>Link</a></div><div id='project'> Project Name: deepchem/deepchem</div><div id='commit'> Commit Name: 8a015062717a7eee6d6325e06ed9fc4d369fedc6</div><div id='time'> Time: 2020-10-20</div><div id='author'> Author: bharath@Bharaths-MBP.zyxel.com</div><div id='file'> File Name: deepchem/models/tests/test_reload.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: test_smiles2vec_reload</div><BR><BR><div id='link'><a href='https://github.com/Hironsan/anago/commit/67d3685e757a5a2fd5b0c63ed28d8f61b15e9220#diff-cd9267e4620bfb4731a9c7c5ba24ac0a04e4950b933e20219dd4880ca3434deaL34' target='_blank'>Link</a></div><div id='project'> Project Name: Hironsan/anago</div><div id='commit'> Commit Name: 67d3685e757a5a2fd5b0c63ed28d8f61b15e9220</div><div id='time'> Time: 2017-08-23</div><div id='author'> Author: light.tree.1.13@gmail.com</div><div id='file'> File Name: anago/tagger.py</div><div id='class'> Class Name: Tagger</div><div id='method'> Method Name: tag</div><BR>

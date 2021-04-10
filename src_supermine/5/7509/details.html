@@ -1,0 +1,25 @@
+<html><h3>0b2fd0f6ac45feda4eb2ccd92cc7b15b279a448a,onmt/Models.py,Embeddings,__init__,#Embeddings#Any#Any#Any#,14
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                &#47&#47 sum feature merge (for now, the same as the old option
+                &#47&#47 for merging features in OpenNMT-py)
+                feat_sizes = (opt.feat_vec_size <a id="change">for</a> feat_dict in feature_dicts)
+                &#47&#47 apply a layer of mlp to get it down to the right dim
+                self.mlp = nn.Sequential(onmt.modules.BottleLinear(
+                                        opt.word_vec_size +</code></pre><h3>After Change</h3><pre><code class='java'>
+                &#47&#47 Derive embedding sizes from each feature&quots vocab size
+                emb_sizes.extend([int(feat_dict.size() ** feat_exp)
+                                  for feat_dict in feature_dicts])
+            elif <a id="change">opt.feat_merge == &quotsum&quot:</a>
+                &#47&#47 All embeddings to be summed must be the same size
+                emb_sizes.extend([opt.word_vec_size] * len(feature_dicts))
+            else:
+                &#47&#47 mlp feature merge
+                <a id="change">emb_sizes.extend([opt.feat_vec_size] * len(feature_dicts))</a>
+                &#47&#47 apply a layer of mlp to get it down to the correct dim
+                self.mlp = nn.Sequential(onmt.modules.BottleLinear(
+                                        sum(emb_sizes),
+                                        opt.word_vec_size),</code></pre><img src="31753124.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/0b2fd0f6ac45feda4eb2ccd92cc7b15b279a448a#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL30' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 0b2fd0f6ac45feda4eb2ccd92cc7b15b279a448a</div><div id='time'> Time: 2017-08-10</div><div id='author'> Author: benzurdopeters@gmail.com</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: Embeddings</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/OpenMined/PySyft/commit/3053647783990ddcdbe91c2e37ea245c591e9c8e#diff-9b6784e2976f48d1e098c4909235f3f345b0e2c12afe7176c1b8fe9c97261eabL81' target='_blank'>Link</a></div><div id='project'> Project Name: OpenMined/PySyft</div><div id='commit'> Commit Name: 3053647783990ddcdbe91c2e37ea245c591e9c8e</div><div id='time'> Time: 2021-02-12</div><div id='author'> Author: xvtongye1986@163.com</div><div id='file'> File Name: src/syft/core/node/common/action/run_class_method_action.py</div><div id='class'> Class Name: RunClassMethodAction</div><div id='method'> Method Name: execute_action</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/a7706fbde22887909db42f96a696437c084c05db#diff-a5a141fea0742b4f7abfd896158a6e1b237220346c1e2600b2aca10b5c49c402L89' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: a7706fbde22887909db42f96a696437c084c05db</div><div id='time'> Time: 2017-05-31</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: chainercv/evaluations/eval_detection_voc.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: eval_detection_voc</div><BR><BR><div id='link'><a href='https://github.com/deepchem/deepchem/commit/744fedeb6d6aa38b4064380cb7e42e4f783eede6#diff-6959c92eed13049850ed08d423ac054a0f3781b89ba52eceaf68523bbc0cde89L370' target='_blank'>Link</a></div><div id='project'> Project Name: deepchem/deepchem</div><div id='commit'> Commit Name: 744fedeb6d6aa38b4064380cb7e42e4f783eede6</div><div id='time'> Time: 2020-07-29</div><div id='author'> Author: bharath@Bharaths-MBP.zyxel.com</div><div id='file'> File Name: deepchem/models/keras_model.py</div><div id='class'> Class Name: KerasModel</div><div id='method'> Method Name: fit_generator</div><BR>

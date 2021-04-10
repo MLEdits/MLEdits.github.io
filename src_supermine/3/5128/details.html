@@ -1,0 +1,40 @@
+<html><h3>07e28eea3cb0e3d9f1eec7aeee0f2f0630411d57,tensorpack/utils/gpu.py,,get_num_gpu,#,29
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    if code == 0:
+        output = output.decode(&quotutf-8&quot)
+        return warn_return(len(output.strip().split(&quot\n&quot)), "Found nvidia-smi. ")
+    <a id="change">try:
+        &#47&#47 Use NVML to query device properties
+        with NVMLContext() as ctx:
+            return warn_return(ctx.num_devices(), "NVML found nvidia devices. ")
+    except Exception:
+        &#47&#47 Fallback
+        logger.info("Loading local devices by TensorFlow ...")
+
+        try:
+            import tensorflow as tf
+            &#47&#47 available since TF 1.14
+            gpu_devices = tf.config.experimental.list_physical_devices(&quotGPU&quot)
+        except AttributeError:
+            from tensorflow.python.client import device_lib
+            local_device_protos = device_lib.list_local_devices()
+            &#47&#47 Note this will initialize all GPUs and therefore has side effect
+            &#47&#47 https://github.com/tensorflow/tensorflow/issues/8136
+            gpu_devices = [x.name for x in local_device_protos if x.device_type == &quotGPU&quot]
+        return len(gpu_devices)
+
+
+</a>get_nr_gpu = get_num_gpu
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    env = os.environ.get(&quotCUDA_VISIBLE_DEVICES&quot, None)
+    if env:
+        num_dev = len(env.split(&quot,&quot))
+        <a id="change">assert num_dev &lt;= nvml_num_dev, \
+            "Only {} GPU(s) available, but CUDA_VISIBLE_DEVICES is set to {}".format(nvml_num_dev, env)</a>
+        return warn_return(num_dev, "Found non-empty CUDA_VISIBLE_DEVICES. ")
+
+    output, code = subproc_call("nvidia-smi -L", timeout=5)
+    if code == 0:</code></pre><img src="21201073.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorpack/tensorpack/commit/07e28eea3cb0e3d9f1eec7aeee0f2f0630411d57#diff-be0e45b896fdddc094e89940bfd5a8dbdd721700107f46692756125dfa435262L46' target='_blank'>Link</a></div><div id='project'> Project Name: tensorpack/tensorpack</div><div id='commit'> Commit Name: 07e28eea3cb0e3d9f1eec7aeee0f2f0630411d57</div><div id='time'> Time: 2020-07-15</div><div id='author'> Author: ppwwyyxxc@gmail.com</div><div id='file'> File Name: tensorpack/utils/gpu.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_num_gpu</div><BR><BR><div id='link'><a href='https://github.com/aleju/imgaug/commit/2a1bd4c93a998d16516d82893401b346d66a95e9#diff-3770d15d6be8e0da08d829631f093d432b1040da99069f562a0d25b02cae8eeeL59' target='_blank'>Link</a></div><div id='project'> Project Name: aleju/imgaug</div><div id='commit'> Commit Name: 2a1bd4c93a998d16516d82893401b346d66a95e9</div><div id='time'> Time: 2019-07-19</div><div id='author'> Author: kontakt@ajung.name</div><div id='file'> File Name: imgaug/dtypes.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_minimal_dtype</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/8cf598deab3158239e96ae193d1e42315ecb007e#diff-bcbbc871d3b955a0ea6b42e6dbc2213e0b847688efae523c35d5ab5b3ee175e9L204' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 8cf598deab3158239e96ae193d1e42315ecb007e</div><div id='time'> Time: 2020-04-27</div><div id='author'> Author: nflu@users.noreply.github.com</div><div id='file'> File Name: python/ray/util/sgd/torch/distributed_torch_runner.py</div><div id='class'> Class Name: LocalDistributedRunner</div><div id='method'> Method Name: __init__</div><BR>

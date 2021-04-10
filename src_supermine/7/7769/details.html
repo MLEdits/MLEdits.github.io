@@ -1,0 +1,32 @@
+<html><h3>2e530e78c78c3f9f899143c437f55618d3038951,deeppavlov/core/models/tf_model.py,TFModel,load,#TFModel#,116
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Load session from checkpoint
+        
+        ckpt = self.get_checkpoint_state()
+        <a id="change">if ckpt and ckpt.model_checkpoint_path:
+            log.info(&quot[restoring checkpoint from {}]&quot.format(ckpt.model_checkpoint_path))
+            self._saver().restore(self.sess, ckpt.model_checkpoint_path)
+            log.info(&quotsession restored&quot)
+        else:
+            log.error(&quotcheckpoint not found!&quot)
+
+
+</a>class SimpleTFModel(NNModel, metaclass=TfModelMeta):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        Load model parameters from self.load_path
+        path = str(self.load_path.resolve())
+        &#47&#47 Check presence of the model files
+        <a id="change">if tf.train.checkpoint_exists(path):
+            print(&quot[loading model from {}]&quot.format(path), file=sys.stderr)
+            saver = tf.train.Saver()
+            saver.restore(self.sess, path)
+
+   </a> def save(self):
+        Save model parameters to self.save_path
+        path = str(self.save_path.resolve())
+        print(&quot[saving model to {}]&quot.format(path), file=sys.stderr)</code></pre><img src="36148006.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/2e530e78c78c3f9f899143c437f55618d3038951#diff-e9b0a450f9257d421c72c999d72bb7eaedb00c09aaea8f9fcf33b8e4af25bf7dL49' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 2e530e78c78c3f9f899143c437f55618d3038951</div><div id='time'> Time: 2018-02-18</div><div id='author'> Author: arkhipov@yahoo.com</div><div id='file'> File Name: deeppavlov/core/models/tf_model.py</div><div id='class'> Class Name: TFModel</div><div id='method'> Method Name: load</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/0d36e4c025e7c8f208c126709a33730aef1c3600#diff-46c1c56bb9faf180d3779512da9bab8b31568007795c660e730c298d38bfbb48L42' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 0d36e4c025e7c8f208c126709a33730aef1c3600</div><div id='time'> Time: 2020-09-28</div><div id='author'> Author: ameerh@berkeley.edu</div><div id='file'> File Name: python/ray/autoscaler/_private/resource_demand_scheduler.py</div><div id='class'> Class Name: ResourceDemandScheduler</div><div id='method'> Method Name: get_nodes_to_launch</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/2de52a8976971da4836727ba9242fedcc7474878#diff-865376fc1665360e73ce4a363969f6f10706a34184447b541361f664ee39e407L213' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 2de52a8976971da4836727ba9242fedcc7474878</div><div id='time'> Time: 2020-01-16</div><div id='author'> Author: 656569648@qq.com</div><div id='file'> File Name: src/sdk/pynni/nni/compression/torch/compressor.py</div><div id='class'> Class Name: Pruner</div><div id='method'> Method Name: export_model</div><BR>

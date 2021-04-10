@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+  for var in var_to_shape_map:
+    if var.endswith(&quotdense/kernel&quot) and var_to_shape_map[var] == tf.transpose(embed_var).shape:
+      print(&quotAssigning&quot, var, &quotto&quot, embed_var.name)
+      return <a id="change">embed_var.assign(reader.get_tensor(var).T)</a>, True
+  return None, False
+
+def restore_certain_variables(sess, filename):</code></pre><h3>After Change</h3><pre><code class='java'>
+        and var_to_shape_map[var] == tf.transpose(embed_var).shape):
+      print(&quotAssigning&quot, var, &quotto&quot, embed_var.name)
+      tensor = reader.get_tensor(var).T
+      <a id="change">if tensor.dtype != var.dtype.as_numpy_dtype():
+        return embed_var.assign(tf.cast(tensor, embed_var.dtype)), True
+     </a> return embed_var, False
+  return None, None
+
+def get_assign_ops_and_restore_dict(filename, restore_all=False):</code></pre>

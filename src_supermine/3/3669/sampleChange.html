@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            if not path:
+                print(f&quotCurrent DeepPavlov settings path: {get_settings_path()}&quot)
+            else:
+                path = <a id="change">Path</a>(os.getcwd(), path).resolve()
+                set_settings_path(path)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    if args.default:
+        if populate_settings_dir(force=True):
+            <a id="change">print(f&quotPopulated {path} with default settings files&quot)</a>
+        else:
+            print(f&quot{path} is already a default settings directory&quot)
+    else:
+        print(f&quotCurrent DeepPavlov settings path: {path}&quot)</code></pre>

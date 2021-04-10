@@ -1,0 +1,28 @@
+<html><h3>d3bdc5449964423387861c78edd9d890a81a5466,tests/layers/test_layers_recurrent.py,Layer_RNN_Test,setUpClass,#Any#,18
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        print(cls.rnn_model)
+
+
+        cls.keras_net_in = <a id="change">tf.keras.Input(shape=[cls.num_steps, cls.embedding_size], batch_size=cls.batch_size)</a>
+        <a id="change">cls.keras_net_rnn = tf.keras.layers.SimpleRNN(
+            cls.hidden_size, return_sequences=True, return_state=True,
+            kernel_initializer=tf.keras.initializers.Constant(value=0.1),
+            recurrent_initializer=tf.keras.initializers.Identity(),
+            use_bias=False,
+            bias_initializer=None,
+        )(cls.keras_net_in)</a>
+        <a id="change">cls.keras_rnn_model = tf.keras.Model(inputs=cls.keras_net_in, outputs=cls.keras_net_rnn)</a>
+        cls.keras_rnn_model.compile(optimizer=&quotadam&quot,
+              loss=&quotcategorical_crossentropy&quot,
+              metrics=[&quotaccuracy&quot])
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        map1 = np.random.random([1, cls.num_steps])
+        map2 = np.random.random([cls.embedding_size, 1])
+        for i in range(cls.batch_size):
+            cls.data_y[i] = np.matmul(map1, np.matmul(<a id="change">cls.data_x[i]</a>, map2))
+
+    @classmethod
+    def tearDownClass(cls):</code></pre><img src="27222031.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/d3bdc5449964423387861c78edd9d890a81a5466#diff-fb1c6ac2ad00e1f3d1579c89877dd3952e7b500c8d05dc1da13fcd5c2c77d938L20' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: d3bdc5449964423387861c78edd9d890a81a5466</div><div id='time'> Time: 2019-03-31</div><div id='author'> Author: jingqing.zhang15@imperial.ac.uk</div><div id='file'> File Name: tests/layers/test_layers_recurrent.py</div><div id='class'> Class Name: Layer_RNN_Test</div><div id='method'> Method Name: setUpClass</div><BR><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/7ab8bc6a70982aa79c36c20678c98becb7f291b1#diff-c0d0afbed82c0652dc33a87826d286a261c60d98b11b0751d62b27310e488e50L145' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: 7ab8bc6a70982aa79c36c20678c98becb7f291b1</div><div id='time'> Time: 2020-09-11</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: deepctr/models/dien.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: DIEN</div><BR><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/16474aee0c575e615c78d32f2a170c3d7f8f0082#diff-c5c31de724f6d82045a7f0cc212b41d3e5c7c6b858cd144a19ac734502da62cfL76' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: 16474aee0c575e615c78d32f2a170c3d7f8f0082</div><div id='time'> Time: 2017-12-30</div><div id='author'> Author: jhfjhfj1@gmail.com</div><div id='file'> File Name: autokeras/graph.py</div><div id='class'> Class Name: Graph</div><div id='method'> Method Name: produce_model</div><BR>

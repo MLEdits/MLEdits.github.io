@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        foo_bar -&gt; fooBar
+        fooBar -&gt; foobar
+    
+    titleCaseWords = [w for w in <a id="change">snake_case_str.title().split(&quot_&quot)</a>]
+    if titleCaseWords:
+        return <a id="change">titleCaseWords</a>[<a id="change">0</a>].lower() + &quot&quot.join(titleCaseWords[1:])
+    else:
+        return &quot&quot
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        fooBar -&gt; foobar
+    
+    words = snake_case_str.split(&quot_&quot)
+    if <a id="change">len(words)</a> &gt; 1:
+        capitalized = [w.title() for w in words]
+        capitalized[0] = words[0]
+        return &quot&quot.join(capitalized)</code></pre>

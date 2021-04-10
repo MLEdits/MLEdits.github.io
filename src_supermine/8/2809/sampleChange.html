@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    author_email=&quotpetrochukm@gmail.com&quot,
+    url=&quothttps://github.com/Deepblue129/PytorchNLP&quot,
+    description=&quotText utilities and datasets for PyTorch&quot,
+    long_description=<a id="change">read(&quotREADME.md&quot)</a>,
+    license=&quotBSD&quot,
+    install_requires=[&quotnumpy&quot, &quotpandas&quot, &quottqdm&quot, &quotujson&quot, &quotrequests&quot],
+    classifiers=[</code></pre><h3>After Change</h3><pre><code class='java'>
+    raise RuntimeError("Unable to find version string.")
+
+
+<a id="change">with open(&quotREADME.md&quot) as f:
+    long_description = f.read()
+
+</a>VERSION = find_version(&quottorchnlp&quot, &quot__init__.py&quot)
+
+setup_info = dict(
+    &#47&#47 Metadata</code></pre>

@@ -1,0 +1,25 @@
+<html><h3>89b081ed3659557e75c8d95a30d1170ddf53cc88,texar/modules/embedders/embedders.py,WordEmbedder,_build,#WordEmbedder#Any#Any#,103
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        embedding = self._embedding
+        if self._dropout_layer is not None:
+            is_training = utils.is_train_mode(mode)
+            embedding = <a id="change">self._dropout_layer.apply(
+                inputs=embedding, training=is_training)</a>
+        outputs = tf.nn.embedding_lookup(embedding, inputs, **kwargs)
+        return outputs
+
+    @property</code></pre><h3>After Change</h3><pre><code class='java'>
+        dropout_layer = self._get_dropout_layer(self._hparams, inputs)
+        if dropout_layer:
+            is_training = utils.is_train_mode(mode)
+            <a id="change">if self._hparams.dropout_strategy == &quotitem_type&quot:
+                embedding = dropout_layer.apply(
+                    inputs=embedding, training=is_training)
+
+       </a> outputs = tf.nn.embedding_lookup(embedding, inputs, **kwargs)
+
+        if dropout_layer and self._hparams.dropout_strategy != &quotitem_type&quot:
+            outputs = dropout_layer.apply(</code></pre><img src="15954082.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/asyml/texar/commit/89b081ed3659557e75c8d95a30d1170ddf53cc88#diff-ce130c02c77d7f708f268b0412ab4e86ca4910cb318b2e076e8a34e08e2773ccL103' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 89b081ed3659557e75c8d95a30d1170ddf53cc88</div><div id='time'> Time: 2018-05-28</div><div id='author'> Author: zhitinghu@gmail.com</div><div id='file'> File Name: texar/modules/embedders/embedders.py</div><div id='class'> Class Name: WordEmbedder</div><div id='method'> Method Name: _build</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/bc0ac45c0bf4f66d56df6c54f5230c6c4281daf1#diff-a6ee4fbb2b932113cbea6cbf0efb1fb763a70c3f68bacb21aac4ea4235123c36L78' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: bc0ac45c0bf4f66d56df6c54f5230c6c4281daf1</div><div id='time'> Time: 2017-05-31</div><div id='author'> Author: srush@sum1gpu02.rc.fas.harvard.edu</div><div id='file'> File Name: onmt/Translator.py</div><div id='class'> Class Name: Translator</div><div id='method'> Method Name: translateBatch</div><BR><BR><div id='link'><a href='https://github.com/asyml/texar/commit/89b081ed3659557e75c8d95a30d1170ddf53cc88#diff-e7decfde76a7d23ecff2b9492ec0779684dd534634a6c20071452423dd77e3edL102' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 89b081ed3659557e75c8d95a30d1170ddf53cc88</div><div id='time'> Time: 2018-05-28</div><div id='author'> Author: zhitinghu@gmail.com</div><div id='file'> File Name: texar/modules/embedders/position_embedders.py</div><div id='class'> Class Name: PositionEmbedder</div><div id='method'> Method Name: _build</div><BR>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            &#47&#47 Test with sample weights
+            for x, y, w in generator.flow(images, np.arange(images.shape[0]),
+                                          shuffle=False,
+                                          sample_weight=<a id="change">np.arange(images.shape[0])</a> + 1,
+                                          save_to_dir=str(tmpdir),
+                                          batch_size=3):
+                assert x.shape == images[:3].shape</code></pre><h3>After Change</h3><pre><code class='java'>
+                vertical_flip=True)
+            generator.fit(images, augment=True)
+
+            <a id="change">num_samples = images.shape[0]</a>
+            for x, y in generator.flow(images, np.arange(num_samples),
+                                       shuffle=False, save_to_dir=str(tmpdir),
+                                       batch_size=3):
+                assert x.shape == images[:3].shape
+                assert list(y) == [0, 1, 2]
+                break
+
+            &#47&#47 Test with sample weights
+            for x, y, w in generator.flow(images, np.arange(num_samples),
+                                          shuffle=False,
+                                          sample_weight=<a id="change">np.arange(num_samples) + 1</a>,
+                                          save_to_dir=str(tmpdir),
+                                          batch_size=3):
+                assert x.shape == images[:3].shape</code></pre>

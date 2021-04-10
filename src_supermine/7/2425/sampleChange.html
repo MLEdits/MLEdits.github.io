@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def get_state(self):
+        config = super().get_state()
+        <a id="change">config.update({&quotfeature_engineering&quot: self.feature_engineering,
+                       &quotmodule_type&quot: self.module_type,
+                       &quotheads&quot: self.heads,
+                       &quotseed&quot: self.seed})</a>
+        return config
+
+    def set_state(self, state):
+        super().set_state(state)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def get_state(self):
+        state = super().get_state()
+        state.update(<a id="change">{&quotnum_heads&quot: self.num_heads}</a>)
+        return state
+
+    def set_state(self, state):</code></pre>

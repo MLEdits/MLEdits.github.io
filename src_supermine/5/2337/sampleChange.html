@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+    def K_diag(self, X, presliced=False):
+        <a id="change">return reduce(self._reduction, [k.K_diag(X) for k in self.kernels])</a>
+
+
+class Sum(Combination):
+    _reduction = tf.add</code></pre><h3>After Change</h3><pre><code class='java'>
+        return self.__class__._reduce(res)
+
+    def K_diag(self, X, presliced=False):
+        <a id="change">res = [k.K_diag(X, presliced=presliced) for k in self.kernels]</a>
+        <a id="change">return self.__class__._reduce(res)</a>
+
+
+class Sum(Combination):
+    _reduce = tf.add_n</code></pre>

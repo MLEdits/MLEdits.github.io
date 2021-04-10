@@ -1,0 +1,28 @@
+<html><h3>12f976730dbfe9a5bc60bbb0c8933f60098de038,niftynet/layer/resampler.py,ResamplerLayer,_resample_bspline,#ResamplerLayer#Any#Any#,131
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        offset_shape = [1, -1] + [1] * out_spatial_rank + [in_spatial_rank]
+        offsets = tf.reshape(tf.stack(grid, 3), offset_shape)
+        spatial_coords = \
+            offsets + tf.expand_dims(<a id="change">tf.cast(floor_coords, tf.int32)</a>, 1)
+        spatial_coords = self.boundary_func(spatial_coords, in_spatial_size)
+        knot_size = spatial_coords.get_shape().as_list()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        floor_coords = tf.floor(sample_coords)
+
+        &#47&#47 Compute voxels to use for interpolation
+        grid = tf.meshgrid(<a id="change">[-1., 0., 1., 2.]</a>,
+                           [-1., 0., 1., 2.],
+                           [-1., 0., 1., 2.],
+                           indexing=&quotij&quot)
+        offset_shape = [1, -1] + [1] * out_spatial_rank + [in_spatial_rank]
+        offsets = tf.reshape(tf.stack(grid, 3), offset_shape)
+        spatial_coords = offsets + tf.expand_dims(floor_coords, 1)
+        spatial_coords = self.boundary_func(spatial_coords, in_spatial_size)
+        <a id="change">spatial_coords = tf.cast(spatial_coords, COORDINATES_TYPE)</a>
+        knot_size = spatial_coords.get_shape().as_list()
+
+        &#47&#47 Compute weights for each voxel
+        def build_coef(u, d):</code></pre><img src="2242606.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/12f976730dbfe9a5bc60bbb0c8933f60098de038#diff-d8e520586ad048af79d6ff89f6b861e143f512901e02109f5201798d57923699L141' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 12f976730dbfe9a5bc60bbb0c8933f60098de038</div><div id='time'> Time: 2017-10-26</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/resampler.py</div><div id='class'> Class Name: ResamplerLayer</div><div id='method'> Method Name: _resample_bspline</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08#diff-962f898c379d54fa0e380920b8dafbf53e499289c195aa5e55624c4dfb470492L142' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08</div><div id='time'> Time: 2020-01-31</div><div id='author'> Author: st--@users.noreply.github.com</div><div id='file'> File Name: gpflow/kernels/misc.py</div><div id='class'> Class Name: Coregion</div><div id='method'> Method Name: K</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08#diff-962f898c379d54fa0e380920b8dafbf53e499289c195aa5e55624c4dfb470492L152' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: bd1e9c04b48dd5ccca9619d5eaa2595a358bdb08</div><div id='time'> Time: 2020-01-31</div><div id='author'> Author: st--@users.noreply.github.com</div><div id='file'> File Name: gpflow/kernels/misc.py</div><div id='class'> Class Name: Coregion</div><div id='method'> Method Name: K_diag</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/12f976730dbfe9a5bc60bbb0c8933f60098de038#diff-d8e520586ad048af79d6ff89f6b861e143f512901e02109f5201798d57923699L141' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 12f976730dbfe9a5bc60bbb0c8933f60098de038</div><div id='time'> Time: 2017-10-26</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/layer/resampler.py</div><div id='class'> Class Name: ResamplerLayer</div><div id='method'> Method Name: _resample_bspline</div><BR>

@@ -1,0 +1,25 @@
+<html><h3>cafa2860a311171fbebde938d14d11bcbb2a5755,keras/layers/convolutional_recurrent.py,ConvRecurrent2D,compute_output_shape,#ConvRecurrent2D#Any#,111
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                        rows, cols, self.filters)
+        else:
+            if self.data_format == &quotchannels_first&quot:
+                <a id="change">return (input_shape[0], self.filters, rows, cols)</a>
+            elif self.data_format == &quotchannels_last&quot:
+                return (input_shape[0], rows, cols, self.filters)
+
+    def get_config(self):</code></pre><h3>After Change</h3><pre><code class='java'>
+                output_shape = (input_shape[0], rows, cols, self.filters)
+
+        if self.return_state:
+            <a id="change">if self.data_format == &quotchannels_first&quot:
+                output_shape = [output_shape] + [(input_shape[0], self.filters, rows, cols) for _ in range(2)]
+            elif self.data_format == &quotchannels_last&quot:
+                output_shape = [output_shape] + [(input_shape[0], rows, cols, self.filters) for _ in range(2)]
+
+       </a> return output_shape
+
+    def get_config(self):
+        config = {&quotfilters&quot: self.filters,</code></pre><img src="1361940.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/cafa2860a311171fbebde938d14d11bcbb2a5755#diff-8b47b9e5e34b597a82753dfe9c63351565768304f9de4bf6dade062804a5cc8bL111' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: cafa2860a311171fbebde938d14d11bcbb2a5755</div><div id='time'> Time: 2017-07-26</div><div id='author'> Author: ericwu09@gmail.com</div><div id='file'> File Name: keras/layers/convolutional_recurrent.py</div><div id='class'> Class Name: ConvRecurrent2D</div><div id='method'> Method Name: compute_output_shape</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/75bef59016a8a230823a04836e1ab6e5bf0079dc#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L107' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 75bef59016a8a230823a04836e1ab6e5bf0079dc</div><div id='time'> Time: 2016-04-01</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: dot</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/d165905d0ba24cfba414b8e0c20fa8d7c8ab6a6e#diff-f671a070bfa775fd0c416a37a22d1f9728e215f9e4fbd2fe1a440786f28cb8a8L107' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: d165905d0ba24cfba414b8e0c20fa8d7c8ab6a6e</div><div id='time'> Time: 2020-12-10</div><div id='author'> Author: Quanlu.Zhang@microsoft.com</div><div id='file'> File Name: nni/retiarii/operation.py</div><div id='class'> Class Name: PyTorchOperation</div><div id='method'> Method Name: to_forward_code</div><BR>

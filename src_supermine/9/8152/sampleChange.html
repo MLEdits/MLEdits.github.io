@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            new_ch = ch[-1] + conditioning_channels * self.with_shortcuts[i]
+            new_ch = round(new_ch / 2)
+            ch.append(new_ch)
+            sz = <a id="change">[[int(round(i / 2)) for i in sz[0]]]</a> + sz
+
+        &#47&#47 resizing utilities
+        spatial_rank = len(image_size) - 1
+        if spatial_rank == 3:
+            def resize_func(x, sz):
+                sz_x = x.get_shape().as_list()
+                r1 = tf.image.resize_images(
+                    tf.reshape(x, sz_x[:3] + [-1]), sz[0:2])
+                r2 = tf.image.resize_images(
+                    tf.reshape(r1, [sz_x[0], sz[0] * sz[1], sz_x[3], -1]),
+                    [sz[0] * sz[1], sz[2]])
+                resized_3d = tf.reshape(r2, [sz_x[0]] + sz + [sz_x[-1]])
+                return resized_3d
+        elif spatial_rank == 2:
+            resize_func = tf.image.resize_bilinear
+
+        def concat_cond(x, i):
+            if add_noise:
+                feature_shape = x.get_shape().as_list()[0:-1]
+                noise_shape = feature_shape + [add_noise]
+                noise = [tf.random_normal(noise_shape, 0.0, 0.1)]
+            else:
+                noise = []
+            if conditioning is not None and self.with_shortcuts[i]:
+                with tf.name_scope(&quotconcat_conditioning&quot):
+                    spatial_shape = x.get_shape().as_list()[1:-1]
+                    resized_cond = resize_func(conditioning,
+                                               spatial_shape)
+                    return tf.concat([x, resized_cond] + noise, axis=-1)
+            return x
+
+        def conv(ch, x):
+            with tf.name_scope(&quotconv&quot):
+                conv_layer = ConvolutionalLayer(
+                    n_output_chns=ch,
+                    kernel_size=3,
+                    acti_func=&quotrelu&quot,
+                    w_initializer=self.initializers[&quotw&quot])
+                return conv_layer(x, is_training=is_training)
+
+        def up(ch, x):
+            with tf.name_scope(&quotup&quot):
+                deconv_layer = DeconvolutionalLayer(
+                    n_output_chns=ch,
+                    kernel_size=3,
+                    stride=2,
+                    acti_func=&quotrelu&quot,
+                    w_initializer=self.initializers[&quotw&quot])
+                return deconv_layer(x, is_training=is_training)
+
+        def up_block(ch, x, i):
+            with tf.name_scope(&quotup_block&quot):
+                u = up(ch, x)
+                cond = concat_cond(u, i)
+                return conv(cond.get_shape().as_list()[-1], cond)
+
+        def noise_to_image(sz, ch, rand_tensor):
+            batch_size = rand_tensor.get_shape().as_list()[0]
+            with tf.name_scope(&quotnoise_to_image&quot):
+                g_no_0 = np.prod(sz) * ch
+                fc_layer = FullyConnectedLayer(
+                    n_output_nodes=g_no_0,
+                    with_bn=False,
+                    with_bias=True,
+                    w_initializer=self.initializers[&quotw&quot],
+                    b_initializer=self.initializers[&quotb&quot])
+                g_h1p = fc_layer(rand_tensor, keep_prob=keep_prob_ph)
+                g_h1p = tf.reshape(g_h1p, [batch_size] + sz + [ch])
+                g_h1p = concat_cond(g_h1p, 0)
+                return conv(ch + conditioning_channels, g_h1p)
+
+        <a id="change">g_h1 = noise_to_image(sz[0], ch[0], random_source)</a>
+        g_h2 = up_block(ch[1], g_h1, 1)
+        <a id="change">g_h3 = up_block(ch[2], g_h2, 2)</a>
+        g_h4 = up_block(ch[3], g_h3, 3)
+        <a id="change">g_h5 = up_block(ch[4], g_h4, 4)</a>  &#47&#47 did not implement different epsilon
+        with tf.name_scope(&quotfinal_image&quot):
+            if add_noise:
+                feature_shape = g_h5.get_shape().as_list()[0:-1]</code></pre><h3>After Change</h3><pre><code class='java'>
+                return tf.image.resize_images(x_sample, image_size[:-1])
+
+        &#47&#47 let the tensors flow...
+        <a id="change">flow = random_source</a>
+        <a id="change">for (idx, chns) in enumerate(ch):
+            if idx == 0:  &#47&#47 first layer fully-connected
+                flow = noise_to_image(
+                    sz, chns, flow, self.with_conditionings[idx])
+            elif idx == len(ch) - 1:  &#47&#47 final conv without bn
+                return final_image(chns, flow)
+            else:  &#47&#47 upsampling block
+                flow = up_block(chns, flow, self.with_conditionings[idx])
+
+
+</a>class ImageDiscriminator(BaseDiscriminator):
+    def __init__(self, name):
+        super(ImageDiscriminator, self).__init__(name=name)
+</code></pre>

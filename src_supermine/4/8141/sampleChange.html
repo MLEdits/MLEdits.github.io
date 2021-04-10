@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                return id[:length]
+
+    def save_cloud(self, _data):
+        keys = <a id="change">list(self._connections)</a>
+        <a id="change">master = self._connections[keys[0]]._master_queue</a>
+
+        self._cloud.local_save(master.get_serialized_deltas())
+        &#47&#47 return
+        &#47&#47 client = storage.Client()</code></pre><h3>After Change</h3><pre><code class='java'>
+                return id[:length]
+
+    async def save_cloud(self, _data):
+        <a id="change">print(&quotsave_cloud&quot)</a>
+
+        &#47&#47 keys = list(self._connections)
+        &#47&#47 master = self._connections[keys[0]]._master_queue
+        &#47&#47</code></pre>

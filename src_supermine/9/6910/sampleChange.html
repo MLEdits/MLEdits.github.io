@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+  Raises:
+    ValueError: If variant doesn&quott have exactly one variant.call record.
+  
+  <a id="change">if len(variant.calls) != 1:
+    raise ValueError(&quotVariant must have exactly one VariantCall record&quot,
+                     variant)
+ </a> n_alleles = len(variant.alternate_bases) + 1
+  index, genotype = most_likely_genotype(predictions, n_alleles=n_alleles)
+  gq, variant.quality = compute_quals(predictions, index)
+  call = variant.calls[0]</code></pre><h3>After Change</h3><pre><code class='java'>
+  Raises:
+    ValueError: If variant doesn&quott have exactly one variant.call record.
+  
+  call = <a id="change">variant_utils.only_call(variant)</a>
+  n_alleles = len(variant.alternate_bases) + 1
+  index, genotype = most_likely_genotype(predictions, n_alleles=n_alleles)
+  gq, variant.quality = compute_quals(predictions, index)
+  call.call_set_name = sample_name</code></pre>

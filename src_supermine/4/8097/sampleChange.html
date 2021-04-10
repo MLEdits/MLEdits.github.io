@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            references = [_split_compound_word(reference) for reference in references]
+            translation = _split_compound_word(translation)
+        if lower_case:
+            references = [<a id="change">list(map(str.lower, reference))</a> for reference in references]
+            translation = list(map(str.lower, translation))
+        trans_len = len(translation)
+        trans_length += trans_len</code></pre><h3>After Change</h3><pre><code class='java'>
+            references = [_split_compound_word(reference) for reference in references]
+            translation = _split_compound_word(translation)
+        if lower_case:
+            references = [[w.lower() <a id="change">for</a> w in reference] for reference in references]
+            translation = [w.lower() for w in translation]
+        trans_len = len(translation)
+        trans_length += trans_len</code></pre>

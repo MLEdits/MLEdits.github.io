@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            image_id = annotation[&quotimage_id&quot]
+
+            &#47&#47 Checks that the image is valid using the "only images" filter.
+            if <a id="change">not self._is_valid(image_id)</a>:
+                continue
+
+            try:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+            image_id = annotation[&quotimage_id&quot]
+
+            if <a id="change">self._should_skip(image_id=image_id)</a>:
+                continue
+
+            try:
+                image = read_image(annotation[&quotpath&quot])
+            except tf.errors.NotFoundError:
+                tf.logging.debug(
+                    &quotError reading image or annotation for "{}".&quot.format(
+                        image_id))
+                self.errors += 1
+                continue
+
+            &#47&#47 Parse image bytes with PIL to get width and height.
+            image_pil = Image.open(six.BytesIO(image))
+            img_width = image_pil.width
+            img_height = image_pil.height
+
+            gt_boxes = []
+            for b in annotation[&quotgt_boxes&quot]:
+                try:
+                    label_id = self.classes.index(
+                        b.get(&quotlabel&quot, self._default_class)
+                    )
+                except ValueError:
+                    continue
+
+                <a id="change">if self._should_skip(label=label_id):
+                    continue
+               </a> <a id="change">self._per_class_counter[label_id] += 1</a>
+
+                if &quotheight&quot in b and &quotwidth&quot in b and &quotx&quot in b and &quoty&quot in b:
+                    gt_boxes.append({
+                        &quotlabel&quot: label_id,</code></pre>

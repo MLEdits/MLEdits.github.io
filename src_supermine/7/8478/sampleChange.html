@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        print(cls.rnn_model)
+
+
+        cls.keras_net_in = <a id="change">tf.keras.Input(shape=[cls.num_steps, cls.embedding_size], batch_size=cls.batch_size)</a>
+        cls.keras_net_rnn = tf.keras.layers.SimpleRNN(
+            cls.hidden_size, return_sequences=True, return_state=True,
+            kernel_initializer=tf.keras.initializers.Constant(value=0.1),
+            recurrent_initializer=tf.keras.initializers.Identity(),
+            use_bias=False,
+            bias_initializer=None,
+        )(cls.keras_net_in)
+        <a id="change">cls.keras_rnn_model = tf.keras.Model(inputs=cls.keras_net_in, outputs=cls.keras_net_rnn)</a>
+        cls.keras_rnn_model.compile(optimizer=&quotadam&quot,
+              loss=&quotcategorical_crossentropy&quot,
+              metrics=[&quotaccuracy&quot])
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        cls.data_y = np.zeros([cls.batch_size, 1]).astype(np.float32)
+
+        map1 = np.random.random([1, cls.num_steps])
+        <a id="change">map2 = np.random.random([cls.embedding_size, 1])</a>
+        <a id="change">for i in range(cls.batch_size):
+            cls.data_y[i] = np.matmul(map1, np.matmul(cls.data_x[i], map2))
+
+   </a> @classmethod
+    def tearDownClass(cls):
+        pass
+</code></pre>

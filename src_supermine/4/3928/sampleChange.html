@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    import ray.rllib.agents.ppo as ppo
+    trainer = ppo.PPOTrainer(config=config)
+    <a id="change">for _ in range(100):
+        results = trainer.train()
+        print(results)
+        if results["episode_reward_mean"] &gt; args.stop:
+            sys.exit(0)  &#47&#47 Learnt, exit gracefully.
+   </a> sys.exit(1)  &#47&#47 Done, but did not learn, exit with error.
+</code></pre><h3>After Change</h3><pre><code class='java'>
+parser = argparse.ArgumentParser()
+parser.add_argument("--run", type=str, default="PPO")
+parser.add_argument("--torch", action="store_true")
+<a id="change">parser.add_argument("--as-test", action="store_true")</a>
+parser.add_argument("--stop-reward", type=float, default=0.0)
+parser.add_argument("--stop-iters", type=int, default=100)
+parser.add_argument("--stop-timesteps", type=int, default=100000)
+parser.add_argument("--num-cpus", type=int, default=0)</code></pre>

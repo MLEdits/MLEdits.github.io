@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                warn(&quotProvided `load_path` is incorrect!&quot)
+        else:
+            <a id="change">warn(&quotNo `load_path` is provided for {}".format(self.__class__.__name__)&quot)</a>
+
+    @overrides
+    def load(self):
+        </code></pre><h3>After Change</h3><pre><code class='java'>
+            else:
+                warn(&quotProvided `load_path` is incorrect!&quot)
+        else:
+            warn(<a id="change">"No `load_path` is provided for {}".format(self.__class__.__name__)</a>)
+
+    @overrides
+    def load(self):</code></pre>

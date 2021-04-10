@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        super(UpSampling2D, self).__init__(**kwargs)
+        self.data_format = conv_utils.normalize_data_format(data_format)
+        self.size = conv_utils.normalize_tuple(size, 2, &quotsize&quot)
+        <a id="change">self.input_spec</a> = <a id="change">[InputSpec(ndim=4)]</a>
+
+    def get_output_shape_for(self, input_shape):
+        if self.data_format == &quotchannels_first&quot:
+            width = self.size[0] * input_shape[2] if input_shape[2] is not None else None</code></pre><h3>After Change</h3><pre><code class='java'>
+        super(UpSampling2D, self).__init__(**kwargs)
+        self.data_format = conv_utils.normalize_data_format(data_format)
+        self.size = conv_utils.normalize_tuple(size, 2, &quotsize&quot)
+        <a id="change">self.input_spec</a> = <a id="change">InputSpec(ndim=4)</a>
+
+    def get_output_shape_for(self, input_shape):
+        if self.data_format == &quotchannels_first&quot:
+            width = self.size[0] * input_shape[2] if input_shape[2] is not None else None</code></pre>

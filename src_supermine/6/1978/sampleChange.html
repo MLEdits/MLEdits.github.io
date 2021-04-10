@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def input_layer(features, feature_columns):
+    <a id="change">if tf.__version__ &lt; "2.0.0":
+        return tf.feature_column.input_layer(features, feature_columns)
+    else:
+        return tf.compat.v1.feature_column.input_layer(features, feature_columns)
+
+
+</a>def get_metrics():
+    if tf.__version__ &lt; "2.0.0":
+        return tf.metrics
+    else:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def input_layer(features, feature_columns):
+    <a id="change">try:
+        return tf.feature_column.input_layer(features, feature_columns)
+    except AttributeError:
+        return tf.compat.v1.feature_column.input_layer(features, feature_columns)
+
+
+</a>def get_metrics():
+    try:
+        return tf.compat.v1.metrics
+    except AttributeError:</code></pre>

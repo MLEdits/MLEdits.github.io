@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def setup_function(func):
+    <a id="change">os.mkdir(&quottest_images&quot)</a>
+    os.mkdir(&quottest_images/rgb&quot)
+    os.mkdir(&quottest_images/gsc&quot)
+
+    img_w = img_h = 20</code></pre><h3>After Change</h3><pre><code class='java'>
+def setup_function(func):
+    paths = [&quottest_images&quot, &quottest_images/rgb&quot, &quottest_images/gsc&quot]
+    for path in paths:
+        <a id="change">if not os.path.exists(path):
+            os.mkdir(path)
+
+   </a> img_w = img_h = 20
+    for n in range(8):
+        bias = np.random.rand(img_w, img_h, 1) * 64
+        variance = np.random.rand(img_w, img_h, 1) * (255-64)</code></pre>

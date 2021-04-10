@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    def __init__(self, padding=1, **kwargs):
+        super(ZeroPadding1D, self).__init__(**kwargs)
+        self.padding = padding
+        <a id="change">self.input</a> = <a id="change">T.tensor3()
+
+</a>    @property
+    def output_shape(self):
+        input_shape = self.input_shape
+        return (input_shape[0], input_shape[1] + self.padding * 2, input_shape[2])</code></pre><h3>After Change</h3><pre><code class='java'>
+    def __init__(self, padding=1, **kwargs):
+        super(ZeroPadding1D, self).__init__(**kwargs)
+        self.padding = padding
+        <a id="change">self.input</a> = <a id="change">K.placeholder(ndim=3)</a>
+
+    @property
+    def output_shape(self):
+        input_shape = self.input_shape</code></pre>

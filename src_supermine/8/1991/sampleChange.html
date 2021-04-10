@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.loss_keys = loss_keys
+
+        self.multiplier = multiplier
+        <a id="change">if loss_aggregate_fn == "sum":
+            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
+        elif loss_aggregate_fn == "weighted_sum":
+            if loss_keys is None or not isinstance(loss_keys, dict):
+                raise ValueError(
+                    "For `weighted_sum` mode the loss_keys must be specified "
+                    "and must be a dict"
+                )
+            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
+        elif loss_aggregate_fn == "mean":
+            self.loss_fn = lambda x: torch.mean(torch.stack(x)) * multiplier
+        else:
+            raise ValueError(
+                "loss_aggregate_fn must be `sum`, `mean` or weighted_sum`"
+            )
+
+       </a> self.loss_aggregate_name = loss_aggregate_fn
+
+    def _preprocess_loss(self, loss: Any) -&gt; List[torch.Tensor]:
+        if isinstance(loss, list):</code></pre><h3>After Change</h3><pre><code class='java'>
+        if loss_aggregate_fn in ("sum", "weighted_sum", "weighted_mean"):
+            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
+            if loss_aggregate_fn == "weighted_mean":
+                <a id="change">weights_sum = sum(loss_keys.items())</a>
+                <a id="change">self.loss_keys = {
+                    key: weight / weights_sum
+                    for key, weight in loss_keys.items()
+                }</a>
+        elif loss_aggregate_fn == "mean":
+            self.loss_fn = lambda x: torch.mean(torch.stack(x)) * multiplier
+        else:
+            raise ValueError(</code></pre>

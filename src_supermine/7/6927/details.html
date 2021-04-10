@@ -1,0 +1,36 @@
+<html><h3>e3d1e6dfd06c35dec767c53b930fa69fc2ff7b12,ludwig/utils/visualization_utils.py,,hyperopt_pair_plot,#Any#Any#Any#,1292
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    params = list(hyperopt_results_df.keys())
+    params.remove(score_name)
+    num_param = len(params)
+    <a id="change">pairs_params = {(param1, param2) for param1 in params for param2 in params}</a>
+
+    fig = plt.figure()
+    fig.subplots_adjust(hspace=0.4, wspace=0.4)
+    for i, param_pair in enumerate(pairs_params):</code></pre><h3>After Change</h3><pre><code class='java'>
+    gs = fig.add_gridspec(num_param, num_param)
+
+    for i, param1 in enumerate(params):
+        <a id="change">for j, param2 in enumerate(params):
+            if i != j:
+                ax = fig.add_subplot(gs[i, j])
+                heatmap = hyperopt_results_df.pivot_table(
+                    index=param1,
+                    columns=param2,
+                    values=score_name,
+                    aggfunc=&quotmean&quot
+                )
+                sns.heatmap(
+                    heatmap,
+                    linewidths=1,
+                    cmap="viridis",
+                    ax=ax,
+                )
+
+   </a> plt.tight_layout(pad=5)
+
+    if filename:
+        plt.savefig(filename)</code></pre><img src="27934890.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/e3d1e6dfd06c35dec767c53b930fa69fc2ff7b12#diff-23899fa3ed9e446ef03b450ed75f6e996abbfcb489e74edae21b0878bfc7bdf2L1297' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: e3d1e6dfd06c35dec767c53b930fa69fc2ff7b12</div><div id='time'> Time: 2020-04-14</div><div id='author'> Author: w4nderlust@gmail.com</div><div id='file'> File Name: ludwig/utils/visualization_utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: hyperopt_pair_plot</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/f19ace982075ea009af81f5e9f687cc2276f50ea#diff-978189d71446b5d60c49613b692de0fa5d50ae07bd06f3d620526f814c3a677eL64' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: f19ace982075ea009af81f5e9f687cc2276f50ea</div><div id='time'> Time: 2020-01-20</div><div id='author'> Author: 50716238+MoisesHer@users.noreply.github.com</div><div id='file'> File Name: scripts/bert/fp16_utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: grad_global_norm</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/0fd13ccd7e61c9186127993080240c07b7ad905e#diff-89937597e1798785f5603262ee37bb747dd0ddd18ce876a08b67f390bb358adbL67' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 0fd13ccd7e61c9186127993080240c07b7ad905e</div><div id='time'> Time: 2019-10-28</div><div id='author'> Author: yizhu59@gmail.com</div><div id='file'> File Name: docs/tutorials/action_recognition/dive_deep_ucf101.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/bbf4350363dc25cb9cdabb9d8fb635e96a617f32#diff-24b6bd3b80815aab4fcacb777a1ba0f9cb3e45373ae8c856bf5262d462394bc7L216' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: bbf4350363dc25cb9cdabb9d8fb635e96a617f32</div><div id='time'> Time: 2017-08-28</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/io/image_type.py</div><div id='class'> Class Name: SpatialImage3D</div><div id='method'> Method Name: shape</div><BR>

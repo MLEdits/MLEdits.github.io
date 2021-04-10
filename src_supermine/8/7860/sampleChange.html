@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            Y = z + self.b
+            Y = self.activation(Y)
+            return Y
+        elif <a id="change">K._BACKEND == &quottensorflow&quot</a>:
+            <a id="change">shape = self.input_shape</a>
+            X = K.reshape(X, (-1, shape[-1]))
+            Y = K.dot(X, self.W) + self.b
+            Y = K.reshape(Y, (-1, shape[1], shape[2]))
+            Y = self.activation(Y)</code></pre><h3>After Change</h3><pre><code class='java'>
+        input_length = self.input_shape[1]
+        &#47&#47 Note: input_length will always be provided when using tensorflow backend.
+        if not input_length:
+            <a id="change">input_length = K.shape(X)[1]</a>
+        Y = K.reshape(Y, (-1, input_length, self.output_shape[-1]))  &#47&#47 (samples, timesteps, output_dim)
+        Y = self.activation(Y)
+        return Y
+</code></pre>

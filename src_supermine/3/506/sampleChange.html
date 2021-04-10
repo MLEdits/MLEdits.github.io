@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        return self.optimizer
+
+    def _get_output_target(self, ):
+        <a id="change">return self.pred_prob</a>
+
+    def _build_graph(self,):
+
+        with self.graph.as_default():  &#47&#47 , tf.device(&quot/cpu:0&quot):</code></pre><h3>After Change</h3><pre><code class='java'>
+        return self.optimizer
+
+    def _get_output_target(self, ):
+        <a id="change">return tf.sigmoid(self.logit)</a>
+
+    def _build_graph(self,):
+
+        with self.graph.as_default():  &#47&#47 , tf.device(&quot/cpu:0&quot):</code></pre>

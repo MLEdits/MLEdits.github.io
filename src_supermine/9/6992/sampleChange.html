@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        if &quotoutputs&quot not in graph:
+            graph[&quotoutputs&quot] = None
+        for node_name, node in graph[&quotnodes&quot].items():
+            <a id="change">if &quottype&quot not in node and &quotcell&quot in node:
+                node[&quottype&quot] = &quot_cell&quot
+
+   </a> assert orig_ir == dump_ir
+
+
+if __name__ == &quot__main__&quot:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    &#47&#47 add default values to JSON, so we can compare with `==`
+    for graph_name, graph in orig_ir.items():
+        <a id="change">if graph_name == &quot_training_config&quot:
+            continue
+       </a> if &quotinputs&quot not in graph:
+            graph[&quotinputs&quot] = None
+        if &quotoutputs&quot not in graph:
+            graph[&quotoutputs&quot] = None
+        for node_name, node in graph[&quotnodes&quot].items():
+            if &quotparameters&quot not in node:
+                <a id="change">node[&quotparameters&quot] = {}</a>
+
+    &#47&#47 debug output
+    &#47&#47json.dump(orig_ir, open(&quot_orig.json&quot, &quotw&quot), indent=4)
+    &#47&#47json.dump(dump_ir, open(&quot_dump.json&quot, &quotw&quot), indent=4)</code></pre>

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    if check_file is not None and os.path.isfile(os.path.join(directory, check_file)):
+        return
+
+    if not <a id="change">os.path.isdir(directory)</a>:
+        os.makedirs(directory)
+
+    for url in urls:</code></pre><h3>After Change</h3><pre><code class='java'>
+    Returns:
+        None:
+    
+    check_file = <a id="change">None if check_file is None else os.path.join(directory, check_file)</a>
+    if check_file is None or not os.path.isfile(check_file):
+        for file_url in file_urls:
+            compressed_filename = download(file_url, directory)
+            maybe_extract(compressed_filename, directory)</code></pre>

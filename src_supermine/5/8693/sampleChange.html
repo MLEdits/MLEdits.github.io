@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 side == "tgt"
+        data_file = opt.train_tgt
+
+    <a id="change">if data_file is not None:
+        with codecs.open(data_file, "r", "utf-8") as df:
+            f_line = df.readline().strip().split()
+            _, _, n_features = onmt.io.extract_features(f_line)
+    else:
+        n_features = 0
+
+   </a> return n_features
+
+
+def build_save_text_dataset_in_shards(src_corpus, tgt_corpus, fields,</code></pre><h3>After Change</h3><pre><code class='java'>
+
+def get_num_features(side, opt):
+    corpus_file = opt.train_src if side == "src" else opt.train_tgt
+    <a id="change">return onmt.io.get_num_features(opt.data_type, corpus_file, side)</a>
+
+
+def build_save_text_dataset_in_shards(src_corpus, tgt_corpus, fields,
+                                      corpus_type, opt, save=True):</code></pre>

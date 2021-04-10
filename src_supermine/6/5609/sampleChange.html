@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        norm_ = 0
+        if self.label_smoothing &gt; 0:
+            mask = target_feed.unsqueeze(1).eq(self.padding_idx) \
+                              .repeat(1, <a id="change">scores.size(1)</a>)
+            target_ = Variable(self.one_hot.repeat(target_feed.size(0), 1),
+                               requires_grad=False)
+            target_.scatter_(1, target_feed.unsqueeze(1),
+                             1 - self.label_smoothing)
+            target_.masked_fill_(mask, 0)
+            target_feed = target_
+            <a id="change">norm_ = self.normalizing * target.data.ne(self.padding_idx).sum()</a>
+
+        loss = self.criterion(scores, target_feed)
+        loss_data = loss.data.clone() + norm_
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            if mask.dim() &gt; 0:
+                likelihood.index_fill_(0, mask, 0)
+                tmp_.index_fill_(0, mask, 0)
+            <a id="change">gtruth = Variable(tmp_, requires_grad=False)</a>
+
+        loss = self.criterion(scores, gtruth)
+        if self.confidence &lt; 1:
+            loss_data = - likelihood.sum(0)</code></pre>

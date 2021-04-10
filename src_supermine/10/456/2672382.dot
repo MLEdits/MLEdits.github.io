@@ -1,0 +1,29 @@
+digraph G {
+subgraph cluster0 {
+1 [label="throw" a="53" s="37676" l="6" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="len" a="32" s="37695,37711" l="4,1" shape="box"];
+3 [label="InfixExpression:r" a="27" s="37712" l="4" shape="box"];
+4 [label="IfStatement" a="25" s="37689,37754" l="4,2" shape="diamond"];
+5 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+6 [label="throw" a="53" s="37764" l="6" shape="box"];
+7 [label="ValueError" a="32" s="37770,37834" l="11,1" shape="box"];
+8 [label="StringLiteral" a="45" s="37781" l="53" shape="ellipse"];
+9 [label="len" a="32" s="37716,37725" l="4,1" shape="box"];
+10 [label="InfixExpression:c" a="27" s="37726" l="4" shape="box"];
+label = "New";
+style="dotted";
+}
+2 -> 3 [label="_para_"];
+3 -> 10 [label="_para_"];
+4 -> 7 [label="_control_"];
+4 -> 6 [label="_control_"];
+5 -> 4 [label="_cond_"];
+7 -> 6 [label="_para_"];
+8 -> 7 [label="_para_"];
+9 -> 3 [label="_para_"];
+10 -> 5 [label="_def_"];
+}

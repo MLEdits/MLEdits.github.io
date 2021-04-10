@@ -1,0 +1,78 @@
+digraph G {
+subgraph cluster0 {
+1 [label="test_session" a="32" s="8852" l="14" shape="box"];
+6 [label="global_variables_initializer" a="32" s="8912" l="30" shape="box"];
+7 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+8 [label="PyWithStatement" a="104" s="8837,8866" l="10,2" shape="diamond"];
+11 [label="run" a="32" s="8897,8942" l="4,1" shape="box"];
+12 [label="Assignment:=" a="7" s="8957" l="1" shape="box"];
+13 [label="run" a="32" s="8963,8979" l="4,1" shape="box"];
+14 [label="SimpleName" a="42" s="8880" l="4" shape="ellipse"];
+18 [label="Assignment:=" a="7" s="8880" l="4" shape="box"];
+19 [label="Assignment:=" a="7" s="8652" l="1" shape="box"];
+20 [label="Assignment:=" a="7" s="8795" l="1" shape="box"];
+24 [label="get_2d_input" a="32" s="8658" l="14" shape="box"];
+28 [label="assert" a="32" s="8993,9075" l="22,1" shape="box"];
+29 [label="SimpleName" a="42" s="8958" l="4" shape="ellipse"];
+30 [label="SimpleName" a="42" s="8892" l="4" shape="ellipse"];
+31 [label="SimpleName" a="42" s="8847" l="4" shape="ellipse"];
+32 [label="SimpleName" a="42" s="8653" l="4" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="_test_deconv_output_shape" a="32" s="8389,8480" l="26,2" shape="box"];
+3 [label="()" a="106" s="8434" l="46" shape="box"];
+4 [label="NumberLiteral" a="34" s="8448" l="2" shape="ellipse"];
+5 [label="NumberLiteral" a="34" s="8415" l="1" shape="ellipse"];
+9 [label="of" a="32" s="8188,8377" l="3,1" shape="box"];
+10 [label="NumberLiteral" a="34" s="8207" l="2" shape="ellipse"];
+15 [label="StringLiteral" a="45" s="8280" l="15" shape="ellipse"];
+16 [label="StringLiteral" a="45" s="8263" l="11" shape="ellipse"];
+17 [label="StringLiteral" a="45" s="8191" l="15" shape="ellipse"];
+21 [label="{}" a="4" s="8257,8261" l="1,1" shape="box"];
+22 [label="NumberLiteral" a="34" s="8260" l="1" shape="ellipse"];
+23 [label="NumberLiteral" a="34" s="8258" l="1" shape="ellipse"];
+25 [label="{}" a="4" s="8233,8237" l="1,1" shape="box"];
+26 [label="NumberLiteral" a="34" s="8236" l="1" shape="ellipse"];
+27 [label="NumberLiteral" a="34" s="8234" l="1" shape="ellipse"];
+33 [label="SimpleName" a="42" s="8384" l="4" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 7 [label="_def_"];
+3 -> 2 [label="_para_"];
+4 -> 3 [label="_para_"];
+5 -> 2 [label="_para_"];
+6 -> 11 [label="_para_"];
+7 -> 8 [label="_cond_"];
+8 -> 11 [label="_control_"];
+8 -> 6 [label="_control_"];
+8 -> 12 [label="_control_"];
+8 -> 28 [label="_control_"];
+8 -> 13 [label="_control_"];
+8 -> 18 [label="_control_"];
+9 -> 2 [label="_para_"];
+10 -> 9 [label="_para_"];
+13 -> 12 [label="_para_"];
+14 -> 29 [label="_ref_"];
+14 -> 30 [label="_ref_"];
+15 -> 9 [label="_para_"];
+16 -> 9 [label="_para_"];
+17 -> 9 [label="_para_"];
+18 -> 14 [label="_def_"];
+19 -> 20 [label="_para_"];
+20 -> 13 [label="_para_"];
+21 -> 9 [label="_para_"];
+22 -> 21 [label="_para_"];
+23 -> 21 [label="_para_"];
+24 -> 19 [label="_para_"];
+25 -> 9 [label="_para_"];
+26 -> 25 [label="_para_"];
+27 -> 25 [label="_para_"];
+29 -> 13 [label="_recv_"];
+30 -> 11 [label="_recv_"];
+31 -> 1 [label="_recv_"];
+32 -> 24 [label="_recv_"];
+33 -> 2 [label="_recv_"];
+}

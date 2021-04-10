@@ -1,0 +1,33 @@
+<html><h3>5226e0bcdcb42b2d2d8806134599b70a5249d8a1,tools/test_rouge.py,,test_rouge,#Any#Any#,8
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        os.mkdir(tmp_dir)
+        os.mkdir(tmp_dir + "/candidate")
+        os.mkdir(tmp_dir + "/reference")
+    <a id="change">for i, line in enumerate(f_cand):
+        with open(tmp_dir + "/candidate/cand.{}.txt".format(
+                str(i).zfill(3)), "w", encoding="utf-8") as f:
+            f.write(line)
+   </a> for i, line in enumerate(f_ref):
+        with open(tmp_dir + "/reference/ref.{}.txt".format(
+                str(i).zfill(3)), "w", encoding="utf-8") as f:
+            f.write(line)</code></pre><h3>After Change</h3><pre><code class='java'>
+        candidates = [line.strip() for line in f_cand]
+        references = [line.strip() for line in f_ref]
+        assert len(candidates) == len(references)
+        <a id="change">cnt = len(candidates)</a>
+        <a id="change">for i in range(cnt):
+            if len(references[i]) &lt; 1:
+                continue
+            with open(tmp_dir + "/candidate/cand.{}.txt".format(i), "w",
+                      encoding="utf-8") as f:
+                f.write(candidates[i])
+            with open(tmp_dir + "/reference/ref.{}.txt".format(i), "w",
+                      encoding="utf-8") as f:
+                f.write(references[i])
+       </a> f_cand.close()
+        f_ref.close()
+        r = pyrouge.Rouge155()
+        r.model_dir = tmp_dir + "/reference/"</code></pre><img src="11910333.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/5226e0bcdcb42b2d2d8806134599b70a5249d8a1#diff-6505f148ada3a603b5dc8f6f41e1c5d69f1dca165c0982da7a2167cacdba9c7dL9' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 5226e0bcdcb42b2d2d8806134599b70a5249d8a1</div><div id='time'> Time: 2017-12-29</div><div id='author'> Author: myscarlet@sina.com</div><div id='file'> File Name: tools/test_rouge.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: test_rouge</div><BR><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/41c99fbf385a8c875fb6181ce7301e4bc218535b#diff-7d3c5d47b437009b7b0740388ce862dba633b885a47c4dce69399450d11dbb94L58' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: 41c99fbf385a8c875fb6181ce7301e4bc218535b</div><div id='time'> Time: 2020-04-18</div><div id='author'> Author: jhfjhfj1@gmail.com</div><div id='file'> File Name: autokeras/keras_layers.py</div><div id='class'> Class Name: CategoricalEncoding</div><div id='method'> Method Name: call</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/e258ef3ea167b86d6680bfcc513dd207586b90f4#diff-60f61ab7a8d1910d86d9fda2261620314edcae5894d5aaa236b821c7256badd7L30' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: e258ef3ea167b86d6680bfcc513dd207586b90f4</div><div id='time'> Time: 2018-07-03</div><div id='author'> Author: yoptar@gmail.com</div><div id='file'> File Name: setup.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: read_requirements</div><BR>

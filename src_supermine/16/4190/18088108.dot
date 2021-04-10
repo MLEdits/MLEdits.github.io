@@ -1,0 +1,47 @@
+digraph G {
+subgraph cluster0 {
+1 [label="len" a="32" s="2203,2220" l="4,1" shape="box"];
+3 [label="InfixExpression:a" a="27" s="2200" l="3" shape="box"];
+4 [label="InfixExpression:r" a="27" s="2175" l="3" shape="box"];
+5 [label="InfixExpression:r" a="27" s="2157" l="4" shape="box"];
+6 [label="NumberLiteral" a="34" s="2178" l="1" shape="ellipse"];
+7 [label="InfixExpression:c" a="27" s="2166" l="4" shape="box"];
+8 [label="IfStatement" a="25" s="2148,2180" l="4,2" shape="diamond"];
+10 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+11 [label="get_shape" a="32" s="2209" l="11" shape="box"];
+13 [label="Assignment:=" a="7" s="2194" l="1" shape="box"];
+14 [label="Assignment:=" a="7" s="2127" l="1" shape="box"];
+15 [label="SimpleName" a="42" s="2196" l="4" shape="ellipse"];
+16 [label="SimpleName" a="42" s="2153" l="4" shape="ellipse"];
+17 [label="SimpleName" a="42" s="2171" l="4" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="normalize_axis" a="32" s="2587,2614" l="15,1" shape="box"];
+9 [label="ndim" a="32" s="2607,2613" l="5,1" shape="box"];
+12 [label="Assignment:=" a="7" s="2586" l="1" shape="box"];
+18 [label="SimpleName" a="42" s="2602" l="4" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 3 [label="_para_"];
+2 -> 12 [label="_para_"];
+3 -> 13 [label="_para_"];
+4 -> 7 [label="_para_"];
+5 -> 7 [label="_para_"];
+6 -> 4 [label="_para_"];
+7 -> 10 [label="_def_"];
+8 -> 13 [label="_control_"];
+8 -> 11 [label="_control_"];
+8 -> 3 [label="_control_"];
+8 -> 1 [label="_control_"];
+9 -> 2 [label="_para_"];
+10 -> 8 [label="_cond_"];
+11 -> 1 [label="_para_"];
+14 -> 11 [label="_recv_"];
+15 -> 3 [label="_para_"];
+16 -> 5 [label="_para_"];
+17 -> 4 [label="_para_"];
+18 -> 2 [label="_para_"];
+}

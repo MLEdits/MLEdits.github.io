@@ -1,0 +1,18 @@
+digraph G {
+subgraph cluster0 {
+1 [label="variable_scope" a="32" s="3404,3423" l="15,1" shape="box"];
+3 [label="PyWithStatement" a="104" s="3383,3424" l="10,2" shape="diamond"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="IfStatement" a="25" s="1176,1198" l="4,2" shape="diamond"];
+4 [label="InfixExpression:r" a="27" s="1190" l="4" shape="box"];
+5 [label="FieldAccess" a="22" s="1180" l="10" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 3 [label="_cond_"];
+4 -> 2 [label="_cond_"];
+5 -> 4 [label="_para_"];
+}

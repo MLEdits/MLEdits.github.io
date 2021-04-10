@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                         model_name=&quotsingle_model&quot)
+
+
+<a id="change">model.close()</a>
+
+
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+&#47&#47 initiate model training
+<a id="change">(
+    train_stats,  &#47&#47training statistics
+    _,
+    output_directory  &#47&#47 location for training results saved to disk
+)</a> = model.train(
+    training_set=&quot./data/mnist_dataset_training.csv&quot,
+    test_set=&quot./data/mnist_dataset_testing.csv&quot,
+    experiment_name=&quotsimple_image_experiment&quot,</code></pre>

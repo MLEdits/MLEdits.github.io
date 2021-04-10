@@ -1,0 +1,32 @@
+digraph G {
+subgraph cluster0 {
+1 [label="tuple" a="32" s="41930,41944" l="6,1" shape="box"];
+5 [label="Assignment:=" a="7" s="41929" l="1" shape="box"];
+10 [label="FieldAccess" a="22" s="41916" l="13" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="normalize_tuple" a="32" s="29633,29686" l="16,1" shape="box"];
+3 [label="NumberLiteral" a="34" s="29661" l="1" shape="ellipse"];
+4 [label="StringLiteral" a="45" s="29663" l="23" shape="ellipse"];
+6 [label="normalize_data_format" a="32" s="29292,29325" l="22,1" shape="box"];
+7 [label="normalize_tuple" a="32" s="29721,29774" l="16,1" shape="box"];
+8 [label="NumberLiteral" a="34" s="29749" l="1" shape="ellipse"];
+9 [label="StringLiteral" a="45" s="29751" l="23" shape="ellipse"];
+11 [label="SimpleName" a="42" s="29281" l="10" shape="ellipse"];
+12 [label="SimpleName" a="42" s="29622" l="10" shape="ellipse"];
+13 [label="SimpleName" a="42" s="29710" l="10" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 5 [label="_para_"];
+3 -> 2 [label="_para_"];
+4 -> 2 [label="_para_"];
+5 -> 10 [label="_def_"];
+8 -> 7 [label="_para_"];
+9 -> 7 [label="_para_"];
+11 -> 6 [label="_recv_"];
+12 -> 2 [label="_recv_"];
+13 -> 7 [label="_recv_"];
+}

@@ -1,0 +1,38 @@
+digraph G {
+subgraph cluster0 {
+1 [label="PyDictComprehension" a="110" s="1649" l="152" shape="diamond"];
+4 [label="PyComparator" a="113" s="1764" l="29" shape="diamond"];
+12 [label="Assignment:=" a="7" s="1764" l="29" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="isinstance" a="32" s="3853,3872" l="11,1" shape="box"];
+3 [label="FieldAccess" a="22" s="3868" l="4" shape="box"];
+5 [label="IfStatement" a="25" s="3849,3873" l="4,2" shape="diamond"];
+6 [label="EnhancedForStatement" a="70" s="3646,3734" l="53,2" shape="diamond"];
+7 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+8 [label="Assignment:=" a="7" s="3926" l="1" shape="box"];
+9 [label="[]" a="2" s="3914,3925" l="7,1" shape="box"];
+10 [label="of" a="32" s="3636" l="4" shape="box"];
+11 [label="Assignment:=" a="7" s="3631" l="1" shape="box"];
+13 [label="Assignment:=" a="7" s="3384" l="6" shape="box"];
+label = "New";
+style="dotted";
+}
+2 -> 7 [label="_def_"];
+3 -> 2 [label="_para_"];
+4 -> 1 [label="_para_"];
+5 -> 8 [label="_control_"];
+6 -> 2 [label="_control_"];
+6 -> 5 [label="_control_"];
+7 -> 5 [label="_cond_"];
+8 -> 9 [label="_def_"];
+10 -> 11 [label="_para_"];
+11 -> 9 [label="_qual_"];
+12 -> 4 [label="_cond_"];
+13 -> 8 [label="_para_"];
+13 -> 6 [label="_cond_"];
+13 -> 2 [label="_para_"];
+13 -> 9 [label="_para_"];
+}

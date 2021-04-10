@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                                             stride=cell.strides[1],
+                                             dilation=cell.dilation_rate[1])
+
+        <a id="change">if cell.data_format == &quotchannels_first&quot:
+            output_shape = input_shape[:2] + (cell.filters, rows, cols)
+        elif cell.data_format == &quotchannels_last&quot:
+            output_shape = input_shape[:2] + (rows, cols, cell.filters)
+
+       </a> if not self.return_sequences:
+            output_shape = output_shape[:1] + output_shape[2:]
+
+        if self.return_state:</code></pre><h3>After Change</h3><pre><code class='java'>
+                                             stride=cell.strides[1],
+                                             dilation=cell.dilation_rate[1])
+
+        <a id="change">output_shape = input_shape[:2] + (rows, cols, cell.filters)</a>
+        <a id="change">output_shape = transpose_shape(output_shape, cell.data_format,
+                                       spatial_axes=(2, 3))</a>
+
+        if not self.return_sequences:
+            output_shape = output_shape[:1] + output_shape[2:]
+</code></pre>

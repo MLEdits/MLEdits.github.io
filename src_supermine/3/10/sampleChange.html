@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+  See  Jacobi&quots formula: https://en.wikipedia.org/wiki/Jacobi%27s_formula
+  
+  adjugate = np.linalg.det(x) * np.linalg.pinv(x)
+  <a id="change">d[x]</a> = adjugate.T
+&#47&#47
+&#47&#47 Tangent adjoints
+&#47&#47</code></pre><h3>After Change</h3><pre><code class='java'>
+  See  Jacobi&quots formula: https://en.wikipedia.org/wiki/Jacobi%27s_formula
+  
+  adjugate = numpy.linalg.det(x) * numpy.linalg.pinv(x)
+  <a id="change">d[x]</a> = <a id="change">d[z] * numpy.transpose(adjugate)</a>
+
+
+&#47&#47
+&#47&#47 Tangent adjoints</code></pre>

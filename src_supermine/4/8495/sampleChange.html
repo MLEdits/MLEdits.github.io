@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 query for nearest neighbors to the given embeddings
+        dnd_embeddings = []
+        dnd_values = []
+        for i, action in <a id="change">enumerate(actions)</a>:
+            embedding, value = self.dicts[action].query([embeddings[i]], k)
+            dnd_embeddings.append(embedding[0])
+            dnd_values.append(value[0])</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 query for nearest neighbors to the given embeddings
+        dnd_embeddings = []
+        dnd_values = []
+        <a id="change">dnd_indices = []</a>
+        for i in range(len(embeddings)):
+            embedding, value, indices = self.dicts[action].query([embeddings[i]], k)
+            dnd_embeddings.append(embedding[0])
+            dnd_values.append(value[0])
+            <a id="change">dnd_indices.append(indices[0])</a>
+
+        return dnd_embeddings, dnd_values, dnd_indices
+
+    def has_enough_entries(self, k):</code></pre>

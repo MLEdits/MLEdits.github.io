@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        output_img_array = ori_array[0].copy()
+
+        for region_counter, region in enumerate(regions, 1):
+            <a id="change">self.signals.update_progress_LABEL.emit("\"Decensoring regions in image\"","Decensoring censor {}/{}".format(region_counter,len(regions)))</a>
+            bounding_box = expand_bounding(ori, region, expand_factor=1.5)
+            crop_img = ori.crop(bounding_box)
+            &#47&#47 crop_img.show()
+            &#47&#47convert mask back to image</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        if len(regions) == 0 and not self.is_mosaic:
+            print("No green (0,255,0) regions detected! Make sure you&quotre using exactly the right color.")
+            <a id="change">self.signals.insertText_progressCursor.emit("No green (0,255,0) regions detected! Make sure you&quotre using exactly the right color.\n")</a>
+            return
+
+        &#47&#47 self.signals.signal_ProgressBar_update_MAX_VALUE.emit("Found {} masked regions".format(len(regions)), len(regions))
+        print("Found {} masked regions".format(len(regions)))</code></pre>

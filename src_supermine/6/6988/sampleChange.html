@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    y_list = [k.variable(yval) for k in backend_list]
+
+    z_list = []
+    <a id="change">for x, y, k in zip(x_list, y_list, backend_list):
+        z_list.append(k.eval(getattr(k, function_name)(x, y, **kwargs)))
+
+   </a> for i in range(len(z_list) - 1):
+        assert z_list[i].shape == z_list[i + 1].shape
+        assert_allclose(z_list[i], z_list[i + 1], atol=1e-05)
+        if hasattr(z_list[i], &quot_keras_shape&quot):</code></pre><h3>After Change</h3><pre><code class='java'>
+                                     y=y_input_shape, **kwargs)([xval, yval])[0]
+        else:
+            z = k.eval(getattr(k, function_name)(k.variable(xval), k.variable(yval), **kwargs))
+        <a id="change">if hasattr(z, &quot_keras_shape&quot):
+            assert z._keras_shape == z.shape
+       </a> z_list += [z]
+
+    for (z1, z2) in zip(z_list[1:], z_list[:-1]):
+        assert z1.shape == z2.shape</code></pre>

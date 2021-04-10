@@ -1,0 +1,58 @@
+digraph G {
+subgraph cluster0 {
+1 [label="draw_samples" a="32" s="53012,53072" l="18,1" shape="box"];
+3 [label="()" a="106" s="53030" l="33" shape="box"];
+4 [label="FieldAccess" a="22" s="52999" l="12" shape="box"];
+5 [label="Assignment:=" a="7" s="52998" l="1" shape="box"];
+6 [label="InfixExpression:a" a="27" s="52876" l="3" shape="box"];
+7 [label="NumberLiteral" a="34" s="52879" l="1" shape="ellipse"];
+8 [label="[]" a="2" s="53065,53071" l="4,1" shape="box"];
+9 [label="SimpleName" a="42" s="52837" l="3" shape="ellipse"];
+10 [label="[]" a="2" s="52969,52975" l="4,1" shape="box"];
+11 [label="draw_samples" a="32" s="52916,52976" l="18,1" shape="box"];
+12 [label="()" a="106" s="52934" l="33" shape="box"];
+13 [label="FieldAccess" a="22" s="52903" l="12" shape="box"];
+14 [label="Assignment:=" a="7" s="52902" l="1" shape="box"];
+15 [label="PrefixExpression:-" a="38" s="52973" l="1" shape="box"];
+16 [label="NumberLiteral" a="34" s="52974" l="1" shape="ellipse"];
+17 [label="PrefixExpression:-" a="38" s="53069" l="1" shape="box"];
+18 [label="NumberLiteral" a="34" s="53070" l="1" shape="ellipse"];
+22 [label="SimpleName" a="42" s="52969" l="3" shape="ellipse"];
+23 [label="SimpleName" a="42" s="53065" l="3" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="()" a="106" s="53611" l="122" shape="box"];
+19 [label="Assignment:=" a="7" s="53272" l="13" shape="box"];
+20 [label="Assignment:=" a="7" s="53539" l="13" shape="box"];
+21 [label="Assignment:=" a="7" s="53227" l="14" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 5 [label="_para_"];
+3 -> 1 [label="_para_"];
+4 -> 1 [label="_recv_"];
+6 -> 5 [label="_para_"];
+6 -> 9 [label="_def_"];
+6 -> 11 [label="_para_"];
+7 -> 6 [label="_para_"];
+8 -> 1 [label="_para_"];
+9 -> 22 [label="_ref_"];
+9 -> 23 [label="_ref_"];
+10 -> 11 [label="_para_"];
+11 -> 14 [label="_para_"];
+12 -> 11 [label="_para_"];
+13 -> 11 [label="_recv_"];
+15 -> 10 [label="_para_"];
+15 -> 14 [label="_para_"];
+16 -> 15 [label="_para_"];
+17 -> 8 [label="_para_"];
+17 -> 5 [label="_para_"];
+18 -> 17 [label="_para_"];
+19 -> 2 [label="_para_"];
+20 -> 2 [label="_para_"];
+21 -> 2 [label="_para_"];
+22 -> 10 [label="_qual_"];
+23 -> 8 [label="_qual_"];
+}

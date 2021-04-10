@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    default_sampler_cls = _CallSampler
+
+    def __init__(self, func: Callable):
+        <a id="change">if len(signature(func).parameters) &gt; 1:
+            raise ValueError(
+                "The function passed to a `Function` parameter must accept "
+                "either 0 or 1 parameters.")
+
+       </a> self.func = func
+
+    def is_function(self):
+        return True</code></pre><h3>After Change</h3><pre><code class='java'>
+            pass_spec = False
+
+        if not pass_spec:
+            <a id="change">try:
+                sig.bind()
+            except TypeError as exc:
+                raise ValueError(
+                    "The function passed to a `Function` parameter must be "
+                    "callable with either 0 or 1 parameters.") from exc
+
+       </a> self.pass_spec = pass_spec
+        self.func = func
+
+    def is_function(self):</code></pre>

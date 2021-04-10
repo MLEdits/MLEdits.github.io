@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    if horovod is not None and gpus is None:
+        gpus = [horovod.local_rank()]
+    gpus = <a id="change">[gpus] if isinstance(gpus, int) else gpus</a>
+
+    if gpus is not None:
+        gpu_devices = tf.config.list_physical_devices(&quotGPU&quot)
+        for gpu in gpu_devices:</code></pre><h3>After Change</h3><pre><code class='java'>
+    if horovod is not None and gpus is None:
+        gpus = [horovod.local_rank()]
+
+    <a id="change">if isinstance(gpus, int):
+        gpus = [gpus]
+    else:
+        gpus = gpus.strip()
+        gpus = [int(g) for g in gpus.split(",")]
+
+   </a> if gpus is not None:
+        gpu_devices = tf.config.list_physical_devices(&quotGPU&quot)
+        for gpu in gpu_devices:
+            tf.config.experimental.set_memory_growth(gpu, True)</code></pre>

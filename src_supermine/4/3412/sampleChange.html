@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    @property
+    def full_conditioning_shape(self):
+        if self.has_conditioning:
+            <a id="change">return self.conditioning_size</a>
+        return None
+
+    @property
+    def full_info_shape(self):</code></pre><h3>After Change</h3><pre><code class='java'>
+    @property
+    def full_conditioning_shape(self):
+        if self.has_conditioning:
+            spatial_dims = <a id="change">(self._conditioning_size,)</a> * <a id="change">int(np.floor(self.spatial_rank))</a>
+            spatial_dims = spatial_dims + (self._num_conditioning_modality,)
+            <a id="change">return spatial_dims</a>
+        return None
+
+    @property
+    def full_info_shape(self):</code></pre>

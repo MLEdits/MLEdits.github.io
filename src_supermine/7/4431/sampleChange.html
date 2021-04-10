@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            it&quots a restartable actor.
+    
+    if not isinstance(actor, ray.actor.ActorHandle):
+        <a id="change">raise ValueError("ray.kill() only supported for actors. "
+                         "Got: {}.".format(type(actor)))</a>
+    worker = ray.worker.global_worker
+    worker.check_connected()
+    worker.core_worker.kill_actor(actor._ray_actor_id, no_restart)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            it&quots a restartable actor.
+    
+    if not isinstance(actor, ray.actor.ActorHandle):
+        <a id="change">raise ValueError("ray.kill() only supported for actors. "
+                         f"Got: {type(actor)}.")</a>
+    worker = ray.worker.global_worker
+    worker.check_connected()
+    worker.core_worker.kill_actor(actor._ray_actor_id, no_restart)
+</code></pre>

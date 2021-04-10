@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        self._train_func(b_o, b_index, b_m)
+
+        <a id="change">self.niter</a> += 1
+        if self.niter % target_q_update_freq == 0:
+            sync(self.qnet, self.targetqnet)
+            <a id="change">path = os.path.join(args.save_path, &quot{}.npz&quot.format(self.niter))</a>
+            <a id="change">tl.files.save_npz(self.qnet.trainable_weights, name=path)</a>
+
+    @tf.function
+    def _train_func(self, b_o, b_index, b_m):
+        with tf.GradientTape() as tape:</code></pre><h3>After Change</h3><pre><code class='java'>
+    def _qvalues_func(self, obv):
+        return self.qnet(obv)
+
+    def train(<a id="change">self</a>, b_o, b_a, b_r, b_o_, b_d):
+        &#47&#47 TODO: move q_estimation in tf.function
+        b_dist_ = np.exp(self.targetqnet(b_o_).numpy())
+        b_a_ = (b_dist_ * vrange).sum(-1).argmax(1)
+        b_tzj = np.clip(reward_gamma * (1 - b_d[:, None]) * vrange[None, :] + b_r[:, None], min_value, max_value)
+        b_i = (b_tzj - min_value) / deltaz
+        b_l = np.floor(b_i).astype(&quotint64&quot)
+        b_u = np.ceil(b_i).astype(&quotint64&quot)
+        templ = b_dist_[range(batch_size), b_a_, :] * (b_u - b_i)
+        tempu = b_dist_[range(batch_size), b_a_, :] * (b_i - b_l)
+        b_m = np.zeros((batch_size, atom_num))
+        &#47&#47 TODO: aggregate value by index and batch update (scatter_add)
+        for j in range(batch_size):
+            for k in range(atom_num):
+                b_m[j][b_l[j][k]] += templ[j][k]
+                b_m[j][b_u[j][k]] += tempu[j][k]
+        b_m = tf.convert_to_tensor(b_m, dtype=&quotfloat32&quot)
+        b_index = np.stack([range(batch_size), b_a], 1)
+        b_index = tf.convert_to_tensor(b_index, &quotint64&quot)
+
+        self._train_func(b_o, b_index, b_m)
+
+        self.niter += 1
+        if self.niter % target_q_update_freq == 0:
+            sync(self.qnet, self.targetqnet)
+            <a id="change">self.save(args.save_path)</a>
+
+    def save(self, path):
+        if path is None:</code></pre>

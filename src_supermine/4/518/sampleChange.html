@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def call(self, x, mask=None):
+        transform_weight = activations.sigmoid(K.dot(x, self.W_carry) + self.b_carry)
+        act = <a id="change">self.activation(K.dot(x, self.W) + self.b)</a>
+        act *= transform_weight
+        output = act + (1 - transform_weight) * x
+        return output
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def call(self, x, mask=None):
+        y = K.dot(x, self.W_carry)
+        <a id="change">if self.bias:
+            y += self.b_carry
+       </a> transform_weight = activations.sigmoid(y)
+        y = K.dot(x, self.W)
+        if self.bias:
+            y += self.b</code></pre>

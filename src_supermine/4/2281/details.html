@@ -1,0 +1,24 @@
+<html><h3>5af01545fce906a682f44741b4f6b6bd2b1d2585,src/sdk/pynni/nni/hyperopt_tuner/hyperopt_tuner.py,,json2parameter,#Any#Any#Any#,88
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        for i, x_i in enumerate(in_x):
+            out_y.append(json2parameter(x_i, parameter, name + &quot[%d]&quot % i))
+    else:
+        logger.info(&quotin_x is not a dict or a list in json2space fuinction %s&quot, <a id="change">str(in_x)</a>)
+    return out_y
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    elif isinstance(in_x, list):
+        out_y = list()
+        for i, x_i in enumerate(in_x):
+            <a id="change">if isinstance(x_i, dict):
+                if NodeType.NAME not in x_i.keys():
+                    raise RuntimeError(
+                        &quot\&quot_name\&quot key is not found in this nested search space.&quot
+                    )
+           </a> out_y.append(json2parameter(x_i, parameter, name + &quot[%d]&quot % i))
+    return out_y
+
+</code></pre><img src="11919661.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/5af01545fce906a682f44741b4f6b6bd2b1d2585#diff-d5fe98acab66b6ab002a28d9f66acdc0c61f3a912502a833887bef35668ebc19L80' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 5af01545fce906a682f44741b4f6b6bd2b1d2585</div><div id='time'> Time: 2019-05-15</div><div id='author'> Author: zhulifei@riseup.net</div><div id='file'> File Name: src/sdk/pynni/nni/hyperopt_tuner/hyperopt_tuner.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: json2parameter</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/5af01545fce906a682f44741b4f6b6bd2b1d2585#diff-d5fe98acab66b6ab002a28d9f66acdc0c61f3a912502a833887bef35668ebc19L52' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 5af01545fce906a682f44741b4f6b6bd2b1d2585</div><div id='time'> Time: 2019-05-15</div><div id='author'> Author: zhulifei@riseup.net</div><div id='file'> File Name: src/sdk/pynni/nni/hyperopt_tuner/hyperopt_tuner.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: json2space</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/4b8716fd4bd6f462a9db9eee958f2508576ec019#diff-4c9ef61d1317e4b9ff5c6d9c7791c0309add3024cfdea6085a14821df7a18ca0L32' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 4b8716fd4bd6f462a9db9eee958f2508576ec019</div><div id='time'> Time: 2018-06-15</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/utils/metrics/coco_detection.py</div><div id='class'> Class Name: COCODetectionMetric</div><div id='method'> Method Name: __init__</div><BR>

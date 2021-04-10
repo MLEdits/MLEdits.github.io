@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        super(RPN, self).__init__(name=name)
+        self._anchor_scales = anchor_scales
+        self._anchor_ratios = anchor_ratios
+        self._num_anchors = <a id="change">len(anchor_scales) * len(anchor_ratios)</a>
+
+        self._num_channels = num_channels
+        self._kernel_shape = kernel_shape
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        if not anchor_scales:
+            raise ValueError("anchor_scales must not be empty")
+        <a id="change">if not anchor_ratios:
+            raise ValueError("anchor_ratios must not be empty")
+
+       </a> self._anchor_scales = anchor_scales
+        self._anchor_ratios = anchor_ratios
+        &#47&#47 TODO: Do we need the anchors? Can&quott we just use len(self._anchor_scales) * len(self._anchor_ratios)
+        self._num_anchors = self.anchors.shape[0]</code></pre>

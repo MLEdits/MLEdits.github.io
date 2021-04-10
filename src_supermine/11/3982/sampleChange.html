@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    def get_config(self, ):
+        config = {&quotbilinear_type&quot: self.bilinear_type, &quotseed&quot: self.seed}
+        base_config = super(BilinearInteraction, self).get_config()
+        <a id="change">return dict(list(base_config.items()) + list(config.items()))</a>
+
+
+class FieldWiseBiInteraction(Layer):
+    Field-Wise Bi-Interaction Layer used in FLEN,compress the</code></pre><h3>After Change</h3><pre><code class='java'>
+    def get_config(self, ):
+        config = {&quotbilinear_type&quot: self.bilinear_type, &quotseed&quot: self.seed}
+        base_config = super(BilinearInteraction, self).get_config()
+        <a id="change">base_config.update(config)</a>
+        <a id="change">return base_config</a>
+
+
+class FieldWiseBiInteraction(Layer):
+    Field-Wise Bi-Interaction Layer used in FLEN,compress the</code></pre>

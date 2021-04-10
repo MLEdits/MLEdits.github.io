@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            w[:, :, :, 0].mul_((1-self.dropout)**0.5)
+
+        if self.is_input_normalized:
+            <a id="change">w.mul_(0.25)</a>
+            self.weight_c.data.mul_(0.25)
+
+    def forward(self, input, h0=None, mask_pad=None):
+        </code></pre><h3>After Change</h3><pre><code class='java'>
+            w[:, :, :, 0].mul_((1-self.dropout)**0.5)
+
+        if self.layer_norm:
+            <a id="change">w.mul_(0.1)</a>
+            &#47&#47self.weight_c.data.mul_(0.25)
+
+    def forward(self, input, h0=None, mask_pad=None):
+        </code></pre>

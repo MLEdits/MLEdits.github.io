@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    Return:
+        dict: A patched dictionary.
+    
+    <a id="change">patched_dict = copy.deepcopy(tgt_dict)</a>
+    for key, value in src_dict.items():
+        if key not in patched_dict:
+            patched_dict[key] = copy.deepcopy(value)
+        elif isinstance(value, dict) and isinstance(patched_dict[key], dict):</code></pre><h3>After Change</h3><pre><code class='java'>
+        dict: The new :attr:`tgt_dict` that is patched.
+    
+    if src_dict is None:
+        <a id="change">return tgt_dict</a>
+
+    for key, value in src_dict.items():
+        if key not in tgt_dict:
+            tgt_dict[key] = copy.deepcopy(value)</code></pre>

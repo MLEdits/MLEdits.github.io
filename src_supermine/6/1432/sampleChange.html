@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    &#47&#47 Normalizing constant is the best cross-entropy value with soft targets.
+    &#47&#47 We subtract it just for readability, makes no difference on learning.
+    normalizing = -<a id="change">(
+        confidence * tf.log(confidence) + tf.to_float(vocab_size - 1) *
+        low_confidence * tf.log(low_confidence + 1e-20))</a>
+
+    if gaussian and confidence &gt; 0.0:
+      labels = tf.cast(labels, tf.float32)
+      normal_dist = tf.distributions.Normal(loc=labels, scale=confidence)</code></pre><h3>After Change</h3><pre><code class='java'>
+          on_value=confidence,
+          off_value=low_confidence,
+          dtype=logits.dtype)
+    <a id="change">if hasattr(tf.nn, "softmax_cross_entropy_with_logits_v2"):
+        cross_entropy_fn = tf.nn.softmax_cross_entropy_with_logits_v2
+    else:
+        cross_entropy_fn = tf.nn.softmax_cross_entropy_with_logits
+   </a> return cross_entropy_fn(
+        logits=logits, labels=soft_targets)
+</code></pre>

@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                         if type(t) is not gpflow.transforms.LowerTriangular]
+
+            for j1, j2 in zip(tf_jacs, hand_jacs):
+                <a id="change">self.assertTrue(np.allclose(
+                    sess.run(j1, feed_dict={self.x: self.x_np}),
+                    sess.run(j2, feed_dict={self.x: self.x_np})))</a>
+
+
+class TestOverflow(GPflowTestCase):
+    </code></pre><h3>After Change</h3><pre><code class='java'>
+
+            for j1, j2 in zip(tf_jacs, hand_jacs):
+                j1_res = sess.run(j1, feed_dict={x: x_np})
+                <a id="change">j2_res = sess.run(j2, feed_dict={x: x_np})</a>
+                assert_allclose(j1_res, j2_res)
+
+
+class TestOverflow(GPflowTestCase):</code></pre>

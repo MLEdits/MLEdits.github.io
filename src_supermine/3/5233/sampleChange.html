@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        try:
+            predictions = self.model.predict_proba(X)
+            <a id="change">if X.shape[0] == 1:
+                return predictions[0]
+            else:
+                return predictions
+       </a> except AttributeError as e:
+            &#47&#47 print(&quotThis model has no predict_proba method. Returning results of .predict instead.&quot)
+            raw_predictions = self.model.predict(X)
+            tupled_predictions = []</code></pre><h3>After Change</h3><pre><code class='java'>
+        except TypeError as e:
+            if scipy.sparse.issparse(X):
+                X = X.todense()
+            <a id="change">predictions = self.model.predict(X)</a>
+
+        &#47&#47 If this model does not have predict_proba, and we have fallen back on predict, we want to make sure we give results back in the same format the user would expect for predict_proba, namely each prediction is a list of predicted probabilities for each class.
+        &#47&#47 Note that this DOES NOT WORK for multi-label problems, or problems that are not reduced to 0,1
+        if isinstance(predictions[0], int):</code></pre>

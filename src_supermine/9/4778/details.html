@@ -1,0 +1,47 @@
+<html><h3>dc42abb2f5f7dd059cf6fac3eae2832931925573,python/ray/tune/config_parser.py,,create_trial_from_spec,#Any#Any#Any#,150
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        args, _ = parser.parse_known_args(to_argv(spec))
+    except SystemExit:
+        raise TuneError("Error parsing args, see above message", spec)
+    <a id="change">if "resources_per_trial" in spec:
+        trial_kwargs["resources"] = json_to_resources(
+            spec["resources_per_trial"])
+   </a> return Trial(
+        &#47&#47 Submitting trial via server in py2.7 creates Unicode, which does not
+        &#47&#47 convert to string in a straightforward manner.
+        trainable_name=spec["run"],</code></pre><h3>After Change</h3><pre><code class='java'>
+    global _cached_pgf
+
+    spec = spec.copy()
+    <a id="change">resources = spec.pop("resources_per_trial", None)</a>
+
+    try:
+        args, _ = parser.parse_known_args(to_argv(spec))
+    except SystemExit:
+        raise TuneError("Error parsing args, see above message", spec)
+
+    <a id="change">if resources:
+        if isinstance(resources, PlacementGroupFactory):
+            trial_kwargs["placement_group_factory"] = resources
+        elif callable(resources):
+            if resources in _cached_pgf:
+                trial_kwargs["placement_group_factory"] = _cached_pgf[
+                    resources]
+            else:
+                pgf = PlacementGroupFactory(resources)
+                _cached_pgf[resources] = pgf
+                trial_kwargs["placement_group_factory"] = pgf
+        else:
+            try:
+                trial_kwargs["resources"] = json_to_resources(resources)
+            except (TuneError, ValueError) as exc:
+                raise TuneError("Error parsing resources_per_trial",
+                                resources) from exc
+
+   </a> return Trial(
+        &#47&#47 Submitting trial via server in py2.7 creates Unicode, which does not
+        &#47&#47 convert to string in a straightforward manner.
+        trainable_name=spec["run"],</code></pre><img src="20133169.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/dc42abb2f5f7dd059cf6fac3eae2832931925573#diff-644fb8139e23d5f26c63c0cf67604c0b1de16918552e17e1987ef05b304c8ad3L170' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: dc42abb2f5f7dd059cf6fac3eae2832931925573</div><div id='time'> Time: 2021-01-18</div><div id='author'> Author: krfricke@users.noreply.github.com</div><div id='file'> File Name: python/ray/tune/config_parser.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: create_trial_from_spec</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/dc42abb2f5f7dd059cf6fac3eae2832931925573#diff-644fb8139e23d5f26c63c0cf67604c0b1de16918552e17e1987ef05b304c8ad3L170' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: dc42abb2f5f7dd059cf6fac3eae2832931925573</div><div id='time'> Time: 2021-01-18</div><div id='author'> Author: krfricke@users.noreply.github.com</div><div id='file'> File Name: python/ray/tune/config_parser.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: create_trial_from_spec</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/bff50cfc37380140d53debfb140e262a38668db0#diff-2545ecf4895ea68a36abeadd269ebd292822feb364caf75ae3ecf001101c2b07L103' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: bff50cfc37380140d53debfb140e262a38668db0</div><div id='time'> Time: 2020-12-18</div><div id='author'> Author: 62982571+Gekho457@users.noreply.github.com</div><div id='file'> File Name: python/ray/autoscaler/_private/kubernetes/config.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _get_resource</div><BR><BR><div id='link'><a href='https://github.com/PetrochukM/PyTorch-NLP/commit/6a5916968838686e332fb68a10cb30222843fbd9#diff-a350d27403fbeadcaee196ff838d84e1ae06ef14d82e4e969b41ff8c07d87953L77' target='_blank'>Link</a></div><div id='project'> Project Name: PetrochukM/PyTorch-NLP</div><div id='commit'> Commit Name: 6a5916968838686e332fb68a10cb30222843fbd9</div><div id='time'> Time: 2018-04-26</div><div id='author'> Author: florian.joh.schaefer@gmail.com</div><div id='file'> File Name: torchnlp/word_to_vector/pretrained_word_vectors.py</div><div id='class'> Class Name: _PretrainedWordVectors</div><div id='method'> Method Name: __getitem__</div><BR>

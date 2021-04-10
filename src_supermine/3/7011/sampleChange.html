@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        arr_padded = ia.pad(self.arr, top=top, right=right, bottom=bottom, left=left, mode=mode, cval=cval)
+        segmap = SegmentationMapOnImage(arr_padded, shape=self.shape)
+        segmap.input_was = self.input_was
+        <a id="change">return segmap</a>
+
+    def pad_to_aspect_ratio(self, aspect_ratio, mode="constant", cval=0.0, return_pad_amounts=False):
+        
+        Pad the segmentation map on its sides so that its matches a target aspect ratio.</code></pre><h3>After Change</h3><pre><code class='java'>
+        
+        arr_padded = ia.pad(self.arr, top=top, right=right, bottom=bottom,
+                            left=left, mode=mode, cval=cval)
+        <a id="change">return self.deepcopy(arr=arr_padded)</a>
+
+    def pad_to_aspect_ratio(self, aspect_ratio, mode="constant", cval=0.0, return_pad_amounts=False):
+        
+        Pad the segmentation map on its sides so that its matches a target aspect ratio.</code></pre>

@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    import re
+    with open(filepath) as csvfile:
+        output = <a id="change">" ".join(csvfile.readlines())</a>
+        assert len(re.findall(&quotepoch&quot, output)) == 1
+
+    os.remove(filepath)
+    assert not tmpdir.listdir()</code></pre><h3>After Change</h3><pre><code class='java'>
+    with open(filepath) as csvfile:
+        list_lines = csvfile.readlines()
+        for line in list_lines:
+            <a id="change">assert line.count(sep) == 4</a>
+        assert len(list_lines) == 5
+        output = " ".join(list_lines)
+        assert len(re.findall(&quotepoch&quot, output)) == 1
+</code></pre>

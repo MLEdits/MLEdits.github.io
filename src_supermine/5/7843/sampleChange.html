@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    act_dim = act_space.n
+    actor = mlp(obs_space, list(hidden_sizes) + [act_dim], activation, None, name=&quotactor&quot)
+
+    <a id="change">critic = mlp(obs_space, list(hidden_sizes) + [1], activation, None, name=&quotcritic&quot)</a>
+
+    def cal(s, a=None, old_logp_all=None):
+        s = s.astype(np.float32)
+        logits = actor(s)</code></pre><h3>After Change</h3><pre><code class='java'>
+def mlp_categorical_policy(x, a, hidden_sizes, activation, output_activation):
+    act_dim = a.n
+
+    <a id="change">x = input_layer_from_space(x)</a>
+    logits = mlp(x, list(hidden_sizes) + [act_dim], activation, None)
+    <a id="change">actor = tl.models.Model(x, logits)</a>
+
+    def cal_outputs_0(states):
+        states = states.astype(np.float32)
+        logits = actor(states)</code></pre>

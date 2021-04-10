@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+def read_examples(lst_strs):
+    Read a list of `InputExample`s from a list of strings.
+    <a id="change">examples = []</a>
+    unique_id = 0
+    for ss in lst_strs:
+        line = tokenization.convert_to_unicode(ss)
+        if not line:
+            continue
+        line = line.strip()
+        text_a = None
+        text_b = None
+        m = re.match(r"^(.*) \|\|\| (.*)$", line)
+        if m is None:
+            text_a = line
+        else:
+            text_a = m.group(1)
+            text_b = m.group(2)
+        <a id="change">examples.append(
+            InputExample(unique_id=unique_id, text_a=text_a, text_b=text_b))</a>
+        unique_id += 1
+    <a id="change">return examples</a>
+
+
+def build_model(model_dir):
+    tf.logging.set_verbosity(tf.logging.INFO)</code></pre><h3>After Change</h3><pre><code class='java'>
+        else:
+            text_a = m.group(1)
+            text_b = m.group(2)
+        <a id="change">yield InputExample(unique_id=unique_id, text_a=text_a, text_b=text_b)</a>
+        unique_id += 1
+
+
+def build_model(model_dir):</code></pre>

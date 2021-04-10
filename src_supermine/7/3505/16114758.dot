@@ -1,0 +1,22 @@
+digraph G {
+subgraph cluster0 {
+1 [label="[]" a="2" s="742,768" l="9,1" shape="box"];
+4 [label="StringLiteral" a="45" s="751" l="17" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="print" a="32" s="1191,1239" l="6,1" shape="box"];
+3 [label="StringLiteral" a="45" s="1197" l="42" shape="ellipse"];
+5 [label="IfStatement" a="25" s="898,955" l="4,2" shape="diamond"];
+6 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+7 [label="Assignment:=" a="7" s="1704,1795" l="61,2" shape="box"];
+label = "New";
+style="dotted";
+}
+3 -> 2 [label="_para_"];
+4 -> 1 [label="_para_"];
+5 -> 7 [label="_control_"];
+5 -> 2 [label="_control_"];
+6 -> 5 [label="_cond_"];
+}

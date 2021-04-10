@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                match_indices[max_idx] = max_gt_idx
+                gt_pool.remove(max_gt_idx)
+
+        <a id="change">for i in range(len(self._default_bbox)):
+            if match_indices[i] != -1:
+                continue
+            j = iou[i].argmax()
+            if iou[i, j] &gt;= iou_thresh:
+                match_indices[i] = j
+
+       </a> mb_bbox = bbox[match_indices]
+        mb_loc = xp.hstack((
+            ((mb_bbox[:, :2] + mb_bbox[:, 2:]) / 2
+             - self._default_bbox[:, :2]) /</code></pre><h3>After Change</h3><pre><code class='java'>
+                gt_pool.remove(max_gt_idx)
+
+        mask = match_indices &lt; 0
+        <a id="change">match_indices[mask] = iou[mask].argmax(axis=1)</a>
+
+        mb_bbox = bbox[match_indices]
+        mb_loc = xp.hstack((
+            ((mb_bbox[:, :2] + mb_bbox[:, 2:]) / 2</code></pre>

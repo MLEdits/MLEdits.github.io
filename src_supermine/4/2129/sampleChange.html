@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        elif isinstance(value, syft.ReplicatedSharingTensor):
+            return private_function(value)
+        else:
+            <a id="change">raise NotImplementedError(
+                "ReplicatedSharingTensor can only be added to"
+                " int, float, torch tensor, or ReplicatedSharingTensor"
+            )</a>
+
+    def private_linear_operation(self, secret, operator):
+        if not self.verify_matching_players(secret):
+            raise ValueError("Shares must be distributed among same parties")</code></pre><h3>After Change</h3><pre><code class='java'>
+        elif isinstance(value, syft.ReplicatedSharingTensor):
+            return private_function(value, *args, **kwargs)
+        else:
+            <a id="change">raise ValueError(
+                "expected int, float, torch tensor, or ReplicatedSharingTensor"
+                "but got {}".format(type(value))
+            )</a>
+
+    def conv2d(self, image, padding=0):
+        filters = self
+        image_batches, image_channels, image_width, image_height = image.shape</code></pre>

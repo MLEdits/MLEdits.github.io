@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &quotxla&quot: False,
+    &quotcpu&quot: False,
+    &quotverbose&quot: False,
+    &quotdevice_map&quot: <a id="change">[]</a>
+}
+args = namedtuple(&quotargs_namedtuple&quot, &quot,&quot.join(common.keys()))
+for k, v in common.items():
+    setattr(args, k, v)</code></pre><h3>After Change</h3><pre><code class='java'>
+stacked_subset_vec_all_layers = np.stack(subset_vec_all_layers)
+np.save(&quotexample7_5k_2&quot,stacked_subset_vec_all_layers)
+np_subset_label = np.array(subset_label)
+<a id="change">np.save(&quotexample7_5k_2_subset_label&quot,np_subset_label)</a>
+
+&#47&#47load bert vectors and labels
+subset_vec_all_layers = np.load(&quotexample7_5k_mxnet.npy&quot)
+np_subset_label = np.load(&quotexample7_5k_mxnet_subset_label.npy&quot)</code></pre>

@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 jh.setFormatter(json_formatter)
+
+        &#47&#47 add the handlers to the logger
+        <a id="change">logger.addHandler(fh)</a>
+        logger.addHandler(ch)
+        &#47&#47 logger.addHandler(jh)
+        return logger
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 add the handlers to the logger
+        logger.addHandler(ch)
+
+        <a id="change">if logdir:
+            fh = logging.FileHandler(f"{logdir}/log.txt")
+            fh.setLevel(logging.INFO)
+            fh.setFormatter(txt_formatter)
+            logger.addHandler(fh)
+
+        &#47&#47 logger.addHandler(jh)
+       </a> return logger
+
+    def on_stage_start(self, state: RunnerState):
+        Prepare ``state.logdir`` for the current stage</code></pre>

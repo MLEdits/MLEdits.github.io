@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47  grad_x = x.new(*x.size()) if k_ == 3 else x.new(*size).zero_()
+
+        &#47&#47  Normal use
+        grad_x = <a id="change">x.new(*x.size())</a> if skip_type &gt; 0 and k_ == 3 else None
+
+        if skip_type &gt; 0 and k_ == 3:
+            x_ptr = x.contiguous()*scale_x if scale_x != 1 else x.contiguous()</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47  grad_x = x.new(*x.size()) if k_ == 3 else x.new(*size).zero_()
+
+        &#47&#47  Normal use
+        grad_x = <a id="change">x.new(*x.size()).zero_()</a> if skip_type &gt; 0 and k_ == 3 else None
+
+        if skip_type &gt; 0 and k_ == 3:
+            x_ptr = x.contiguous()*scale_x if scale_x != 1 else x.contiguous()</code></pre>

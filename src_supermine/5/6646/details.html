@@ -1,0 +1,27 @@
+<html><h3>8a600f790ba68880e9a76a5eda33a3f4fccd22c4,luminoth/utils/config.py,,to_dict,#Any#,23
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+def to_dict(config):
+    return {
+        k: (to_dict(v) if type(v) is EasyDict else v)
+        <a id="change">for</a> k, v in config.items()
+    }
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def to_dict(config):
+    <a id="change">if type(config) is list:
+        return [to_dict(c) for c in config]
+    elif type(config) is EasyDict:
+        return dict([(k, to_dict(v)) for k, v in config.items()])
+    else:
+        return config
+
+
+</a>def dump_config(config):
+    config = to_dict(config)
+    return yaml.dump(config, default_flow_style=False)
+</code></pre><img src="27002204.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tryolabs/luminoth/commit/8a600f790ba68880e9a76a5eda33a3f4fccd22c4#diff-cef7a91a583ec32efd8765a10154b110a680fb7f89617bc5f1e021544f32c093L24' target='_blank'>Link</a></div><div id='project'> Project Name: tryolabs/luminoth</div><div id='commit'> Commit Name: 8a600f790ba68880e9a76a5eda33a3f4fccd22c4</div><div id='time'> Time: 2017-11-17</div><div id='author'> Author: javirey@gmail.com</div><div id='file'> File Name: luminoth/utils/config.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: to_dict</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/cc0e60c1012b7c72eeb5ea0c41b8a2045177ae5e#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L755' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: cc0e60c1012b7c72eeb5ea0c41b8a2045177ae5e</div><div id='time'> Time: 2016-07-19</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: Function</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/ebea5c41110303523045f46a0f08bd03101b51d5#diff-d2f27d8fa7bed75a161bedfb076fc5133f3ea3fea3c42a6281d91588e163c21dL144' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: ebea5c41110303523045f46a0f08bd03101b51d5</div><div id='time'> Time: 2020-05-29</div><div id='author'> Author: suquark@gmail.com</div><div id='file'> File Name: python/ray/cloudpickle/cloudpickle_fast.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _class_getstate</div><BR>

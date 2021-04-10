@@ -1,0 +1,30 @@
+<html><h3>9c1ac6dd944bd81508612b14c5ae12bd1ecab487,labelme/widgets/unique_label_qlist_widget.py,UniqueLabelQListWidget,setItemLabel,#UniqueLabelQListWidget#Any#Any#Any#,22
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def setItemLabel(self, item, label, color):
+        qlabel = QtWidgets.QLabel()
+        <a id="change">qlabel.setText(
+            &quot{} &lt;font color="&#47&#47{:02x}{:02x}{:02x}"&gt;●&lt;/font&gt;&quot
+            .format(label, *color)
+        )</a>
+        qlabel.setAlignment(Qt.AlignBottom)
+
+        item.setSizeHint(qlabel.sizeHint())
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def setItemLabel(self, item, label, color=None):
+        qlabel = QtWidgets.QLabel()
+        <a id="change">if color is None:
+            qlabel.setText(&quot{}&quot.format(label))
+        else:
+            qlabel.setText(
+                &quot{} &lt;font color="&#47&#47{:02x}{:02x}{:02x}"&gt;●&lt;/font&gt;&quot
+                .format(label, *color)
+            )
+       </a> qlabel.setAlignment(Qt.AlignBottom)
+
+        item.setSizeHint(qlabel.sizeHint())
+</code></pre><img src="18817215.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/wkentaro/labelme/commit/9c1ac6dd944bd81508612b14c5ae12bd1ecab487#diff-7b04d17815ef0375466c70d68d5cccee332fff0cbf5753a866df82b9b5b92700L23' target='_blank'>Link</a></div><div id='project'> Project Name: wkentaro/labelme</div><div id='commit'> Commit Name: 9c1ac6dd944bd81508612b14c5ae12bd1ecab487</div><div id='time'> Time: 2020-02-05</div><div id='author'> Author: www.kentaro.wada@gmail.com</div><div id='file'> File Name: labelme/widgets/unique_label_qlist_widget.py</div><div id='class'> Class Name: UniqueLabelQListWidget</div><div id='method'> Method Name: setItemLabel</div><BR><BR><div id='link'><a href='https://github.com/wkentaro/labelme/commit/2e7f1101eb56cea62761dd3917574d98ab97677c#diff-04077f5cb5a08cee228f6f5aeca79e2e61c5c7dfeb2809d8f48bb301d81211ffL97' target='_blank'>Link</a></div><div id='project'> Project Name: wkentaro/labelme</div><div id='commit'> Commit Name: 2e7f1101eb56cea62761dd3917574d98ab97677c</div><div id='time'> Time: 2018-03-31</div><div id='author'> Author: martijn.buijs@gmail.com</div><div id='file'> File Name: labelme/labelDialog.py</div><div id='class'> Class Name: LabelDialog</div><div id='method'> Method Name: popUp</div><BR><BR><div id='link'><a href='https://github.com/wkentaro/labelme/commit/a560f67a6cf0ee9aab2f103bfbb92c10764b6f67#diff-04077f5cb5a08cee228f6f5aeca79e2e61c5c7dfeb2809d8f48bb301d81211ffL112' target='_blank'>Link</a></div><div id='project'> Project Name: wkentaro/labelme</div><div id='commit'> Commit Name: a560f67a6cf0ee9aab2f103bfbb92c10764b6f67</div><div id='time'> Time: 2018-03-31</div><div id='author'> Author: www.kentaro.wada@gmail.com</div><div id='file'> File Name: labelme/labelDialog.py</div><div id='class'> Class Name: LabelDialog</div><div id='method'> Method Name: popUp</div><BR>

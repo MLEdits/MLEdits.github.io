@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        save trained weights
+        :return: None
+        
+        if not <a id="change">os.path.exists(os.path.join(&quotmodel&quot, &quotpg&quot))</a>:
+            <a id="change">os.makedirs(os.path.join(&quotmodel&quot, &quotpg&quot))</a>
+        tl.files.save_weights_to_hdf5(os.path.join(&quotmodel&quot, &quotpg&quot, &quotpg_policy.hdf5&quot), self.model)
+
+    def load(self):</code></pre><h3>After Change</h3><pre><code class='java'>
+        save trained weights
+        :return: None
+        
+        <a id="change">path = os.path.join(&quotmodel&quot, &quot_&quot.join([ALG_NAME, ENV_ID]))</a>
+        if not <a id="change">os.path.exists(path)</a>:
+            <a id="change">os.makedirs(path)</a>
+        tl.files.save_weights_to_hdf5(os.path.join(path, &quotpg_policy.hdf5&quot), self.model)
+
+    def load(self):</code></pre>

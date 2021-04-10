@@ -1,0 +1,29 @@
+digraph G {
+subgraph cluster0 {
+1 [label="NASNetLarge" a="32" s="16336,16370" l="12,1" shape="box"];
+7 [label="Assignment:=" a="7" s="16322" l="1" shape="box"];
+8 [label="BooleanLiteral" a="9" s="16353" l="5" shape="ellipse"];
+9 [label="SimpleName" a="42" s="16323" l="12" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="seed" a="32" s="16811,16827" l="5,1" shape="box"];
+3 [label="time" a="32" s="16821" l="6" shape="box"];
+4 [label="choice" a="32" s="16867,16885" l="7,1" shape="box"];
+5 [label="Assignment:=" a="7" s="16858" l="2" shape="box"];
+6 [label="Assignment:=" a="7" s="16761" l="4" shape="box"];
+10 [label="SimpleName" a="42" s="16860" l="6" shape="ellipse"];
+11 [label="SimpleName" a="42" s="16804" l="6" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 7 [label="_para_"];
+3 -> 2 [label="_para_"];
+4 -> 5 [label="_para_"];
+6 -> 3 [label="_recv_"];
+8 -> 1 [label="_para_"];
+9 -> 1 [label="_recv_"];
+10 -> 4 [label="_recv_"];
+11 -> 2 [label="_recv_"];
+}

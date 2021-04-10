@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    prediction = tf.cast(prediction, tf.float32)
+    n_classes = prediction.shape[1].value
+    one_hot = labels_to_one_hot(ground_truth, <a id="change">tf.shape(prediction)</a>)
+
+    one_hot = tf.sparse_tensor_to_dense(one_hot)
+    &#47&#47 M = tf.cast(M, dtype=tf.float64)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    prediction = tf.cast(prediction, tf.float32)
+    n_classes = prediction.shape[1].value
+    one_hot = labels_to_one_hot(ground_truth, <a id="change">tf.shape(prediction)[-1]</a>)
+
+    one_hot = tf.sparse_tensor_to_dense(one_hot)
+    &#47&#47 M = tf.cast(M, dtype=tf.float64)</code></pre>

@@ -1,0 +1,32 @@
+<html><h3>68fbfd1876c367323acf830736bae1af499cc0fe,onmt/modules/Transformer.py,TransformerDecoder,forward,#TransformerDecoder#Any#Any#Any#Any#,262
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 Process the result and update the attentions.
+        outputs = output.transpose(0, 1).contiguous()
+        if state.previous_input is not None:
+            outputs = <a id="change">outputs[state.previous_input.size(0):]</a>
+            attn = attn[:, state.previous_input.size(0):].squeeze()
+            attn = torch.stack([attn])
+        attns["std"] = attn
+        if self._copy:</code></pre><h3>After Change</h3><pre><code class='java'>
+        tgt_pad_mask = tgt_words.data.eq(padding_idx).unsqueeze(1) \
+            .expand(tgt_batch, tgt_len, tgt_len)
+
+        <a id="change">saved_inputs = []</a>
+        for i in range(self.num_layers):
+            prev_layer_input = None
+            if state.previous_input is not None:
+                prev_layer_input = state.previous_layer_inputs[i]
+            output, attn, all_input \
+                = self.transformer_layers[i](output, src_memory_bank,
+                                             src_pad_mask, tgt_pad_mask,
+                                             previous_input=prev_layer_input)
+            saved_inputs.append(all_input)
+
+        <a id="change">saved_inputs = torch.stack(saved_inputs)</a>
+        output = self.layer_norm(output)
+        
+        &#47&#47 Process the result and update the attentions.
+        outputs = output.transpose(0, 1).contiguous()</code></pre><img src="38598415.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/68fbfd1876c367323acf830736bae1af499cc0fe#diff-ddc9a22e1f7ac3bba1afe68bb2934687c850ec654820ee7d7c8438901a1c957eL272' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 68fbfd1876c367323acf830736bae1af499cc0fe</div><div id='time'> Time: 2018-03-07</div><div id='author'> Author: dengyuntian@gmail.com</div><div id='file'> File Name: onmt/modules/Transformer.py</div><div id='class'> Class Name: TransformerDecoder</div><div id='method'> Method Name: forward</div><BR><BR><div id='link'><a href='https://github.com/aleju/imgaug/commit/1d09e5c9057e26598e01fcf08d9be53eeeab4733#diff-e8c74071da43b285d69ff6e7fec28ffeb67996ddcf43e206fb97c68b25cf81eeL81' target='_blank'>Link</a></div><div id='project'> Project Name: aleju/imgaug</div><div id='commit'> Commit Name: 1d09e5c9057e26598e01fcf08d9be53eeeab4733</div><div id='time'> Time: 2019-11-23</div><div id='author'> Author: kontakt@ajung.name</div><div id='file'> File Name: imgaug/augmenters/contrast.py</div><div id='class'> Class Name: _ContrastFuncWrapper</div><div id='method'> Method Name: _augment_batch</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/cfb1491c3d172927794d6dffc60048ee56330bd2#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL188' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: cfb1491c3d172927794d6dffc60048ee56330bd2</div><div id='time'> Time: 2017-06-15</div><div id='author'> Author: srush@seas.harvard.edu</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: Decoder</div><div id='method'> Method Name: forward</div><BR>

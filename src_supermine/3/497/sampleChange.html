@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def get_checkpoints(self):
+        Returns a copy of mapping of the trial ID to pickled metadata.
+        return <a id="change">self._cached_trial_state.copy()</a>
+
+    def has_resources(self, resources):
+        Returns whether this runner has at least the specified resources.
+        raise NotImplementedError("Subclasses of TrialExecutor must provide "</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def get_checkpoints(self):
+        Returns a copy of mapping of the trial ID to pickled metadata.
+        <a id="change">for trial in self._trials_to_cache:
+            self._cached_trial_state[trial.trial_id] = trial.get_json_state()
+       </a> self._trials_to_cache.clear()
+        return self._cached_trial_state
+
+    def has_resources(self, resources):</code></pre>
