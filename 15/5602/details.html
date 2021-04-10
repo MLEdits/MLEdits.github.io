@@ -1,0 +1,26 @@
+<html><h3>9c7c69fe2769fc536db267694055e1514d6e53b9,solutions/set_expansion/set_expand.py,SetExpand,get_vocab,#SetExpand#,104
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Returns:
+            the list of terms.
+        
+        <a id="change">return [self.__id2term(id) for id in self.np2vec_model.vocab]</a>
+
+    def in_vocab(self, term):
+        id = self.__term2id(term)
+        if id is None:</code></pre><h3>After Change</h3><pre><code class='java'>
+        Returns:
+            the list of terms.
+        
+        <a id="change">vocab = []</a>
+        <a id="change">for id in self.np2vec_model.vocab:
+            term = self.__id2term(id)
+            if term is not None:
+                vocab.append(term)
+       </a> <a id="change">return vocab</a>
+
+    def in_vocab(self, term):
+        id = self.term2id(term)
+        if id is None:</code></pre><img src="23472418.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 12</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NervanaSystems/nlp-architect/commit/9c7c69fe2769fc536db267694055e1514d6e53b9#diff-f4935d9f5487211c333696d8d62d6c997b576c56d4502da29d4c28449adfec86L111' target='_blank'>Link</a></div><div id='project'> Project Name: NervanaSystems/nlp-architect</div><div id='commit'> Commit Name: 9c7c69fe2769fc536db267694055e1514d6e53b9</div><div id='time'> Time: 2018-10-31</div><div id='author'> Author: jonathan.mamou@intel.com</div><div id='file'> File Name: solutions/set_expansion/set_expand.py</div><div id='class'> Class Name: SetExpand</div><div id='method'> Method Name: get_vocab</div><BR><BR><div id='link'><a href='https://github.com/google/deepvariant/commit/698f96a89c6f384c2ff11d67f44ec51d2c4a15a7#diff-b702b630712d279b4cd8d9155ea6a559618faaa8d4d85bde54fb4e835f0bc071L488' target='_blank'>Link</a></div><div id='project'> Project Name: google/deepvariant</div><div id='commit'> Commit Name: 698f96a89c6f384c2ff11d67f44ec51d2c4a15a7</div><div id='time'> Time: 2020-08-11</div><div id='author'> Author: pichuan@google.com</div><div id='file'> File Name: deepvariant/pileup_image.py</div><div id='class'> Class Name: PileupImageCreator</div><div id='method'> Method Name: create_pileup_images</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/693cf20fad2fdd6649c962c66d570a2f78d3d8ca#diff-cf9e69dd8c487a286fb616dfa5454e264f24955b09ca0881f26b3754e934b556L45' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 693cf20fad2fdd6649c962c66d570a2f78d3d8ca</div><div id='time'> Time: 2018-09-14</div><div id='author'> Author: xuehui@microsoft.com</div><div id='file'> File Name: src/sdk/pynni/nni/tuner.py</div><div id='class'> Class Name: Tuner</div><div id='method'> Method Name: generate_multiple_parameters</div><BR>

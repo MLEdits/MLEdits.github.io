@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def test_no_route(serve_instance):
+    <a id="change">serve.create_endpoint("noroute-endpoint")</a>
+
+    def func(_, i=1):
+        return 1
+
+    serve.create_backend("backend:1", func)
+    <a id="change">serve.set_traffic("noroute-endpoint", {"backend:1": 1.0})</a>
+    service_handle = serve.get_handle("noroute-endpoint")
+    result = ray.get(service_handle.remote(i=1))
+    assert result == 1
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        return 1
+
+    serve.create_backend("backend:1", func)
+    <a id="change">serve.create_endpoint("noroute-endpoint", backend="backend:1")</a>
+    service_handle = serve.get_handle("noroute-endpoint")
+    result = ray.get(service_handle.remote(i=1))
+    assert result == 1
+</code></pre>

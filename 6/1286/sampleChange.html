@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                "Try getting client.get_handle(.., sync=False) to get better "
+                "performance.")
+
+        <a id="change">if endpoint_name not in self._handle_cache:
+            handle = RayServeHandle(self._controller, endpoint_name, sync=sync)
+            self._handle_cache[endpoint_name] = handle
+       </a> return self._handle_cache[endpoint_name]
+
+
+def start(detached: bool = False,</code></pre><h3>After Change</h3><pre><code class='java'>
+                "performance. Learn more at https://docs.ray.io/en/master/"
+                "serve/advanced.html&#47&#47sync-and-async-handles")
+
+        <a id="change">if not asyncio.get_event_loop().is_running() and not sync:
+            logger.warning(
+                "You are retrieving an async handle outside an asyncio loop. "
+                "You should make sure client.get_handle is called inside a "
+                "running event loop. Or call client.get_handle(.., sync=True) "
+                "to create sync handle. Learn more at https://docs.ray.io/en/"
+                "master/serve/advanced.html&#47&#47sync-and-async-handles")
+
+       </a> if sync:
+            handle = RayServeSyncHandle(
+                self._get_proxied_router(sync=sync), endpoint_name)
+        else:</code></pre>

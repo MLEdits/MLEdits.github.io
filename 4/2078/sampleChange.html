@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    one_hot_vec = np.zeros((vocab_size, len(txt)), dtype=np.float32)
+    &#47&#47 run through txt and "switch on" relevant positions in one-hot vector
+    for idx, char in enumerate(txt):
+        <a id="change">try:
+            vocab_idx = vocab_hash[char]
+            one_hot_vec[vocab_idx, idx] = 1
+        &#47&#47 raised if character is out of vocabulary
+        except:
+            pass
+   </a> return one_hot_vec
+
+
+def balance(df):</code></pre><h3>After Change</h3><pre><code class='java'>
+    one_hot_vec = np.zeros((vocab_size + 1, len(txt)), dtype=np.float32)
+    &#47&#47 run through txt and "switch on" relevant positions in one-hot vector
+    for idx, char in enumerate(txt):
+        <a id="change">if char in vocab_hash:
+            vocab_idx = vocab_hash[char]
+            one_hot_vec[vocab_idx, idx] = 1
+        &#47&#47 raised if character is out of vocabulary
+        else:
+            pass
+   </a> return one_hot_vec
+
+
+def balance(df):</code></pre>

@@ -1,0 +1,42 @@
+<html><h3>6bf3f51cd0a312da842157665663c2dad9983248,tensorflow_ranking/python/losses_impl.py,ClickEMLoss,_compute_latent_prob,#ClickEMLoss#Any#Any#Any#,914
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+      P(examination | click) and P(relevance | click).
+    
+    with tf.compat.v1.name_scope(name=&quotcompute_latent_prob&quot):
+      <a id="change">exam_prob = tf.math.sigmoid(tf.cast(exam_logits, tf.float32))</a>
+      <a id="change">rel_prob = tf.math.sigmoid(tf.cast(rel_logits, tf.float32))</a>
+      is_clicked = tf.greater_equal(tf.cast(clicks, tf.float32), 1.0)
+
+      <a id="change">prob_non_clicks = 1 - exam_prob * rel_prob + 1e-6</a>
+      exam_prob_given_non_clicks = exam_prob * (1 - rel_prob) / prob_non_clicks
+      rel_prob_given_non_clicks = (1 - exam_prob) * rel_prob / prob_non_clicks
+
+      exam_prob_given_non_clicks, rel_prob_given_non_clicks = [
+          tf.stop_gradient(
+              tf.compat.v1.where(is_clicked, tf.ones_like(prob), prob))
+          for prob in [exam_prob_given_non_clicks, rel_prob_given_non_clicks]
+      ]
+      <a id="change">return exam_prob_given_non_clicks, rel_prob_given_non_clicks</a>
+
+  def compute_unreduced_loss(self, labels, logits):
+    Computes the loss for each element.
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    with tf.compat.v1.name_scope(name=&quotcompute_latent_prob&quot):
+      is_clicked = tf.greater_equal(tf.cast(clicks, tf.float32), 1.0)
+      exam_logits_posterior = exam_logits - tf.math.softplus(rel_logits)
+      <a id="change">rel_logits_posterior = rel_logits - tf.math.softplus(exam_logits)</a>
+      <a id="change">exam_prob_posterior = tf.compat.v1.where(
+          is_clicked, tf.ones_like(exam_logits_posterior),
+          tf.sigmoid(exam_logits_posterior))</a>
+      <a id="change">rel_prob_posterior = tf.compat.v1.where(
+          is_clicked, tf.ones_like(rel_logits_posterior),
+          tf.sigmoid(rel_logits_posterior))</a>
+      <a id="change">return tf.stop_gradient(exam_prob_posterior), tf.stop_gradient(
+          rel_prob_posterior)</a>
+
+  def compute_unreduced_loss(self, labels, logits):
+    Computes the loss for each element.
+</code></pre><img src="10733474.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 10</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorflow/ranking/commit/6bf3f51cd0a312da842157665663c2dad9983248#diff-ac0a8b23265c0fdd56da5d2709bf0e7dfce716e2713c8c9fd8d44f4fd9461ff7L930' target='_blank'>Link</a></div><div id='project'> Project Name: tensorflow/ranking</div><div id='commit'> Commit Name: 6bf3f51cd0a312da842157665663c2dad9983248</div><div id='time'> Time: 2021-01-29</div><div id='author'> Author: xuanhui@google.com</div><div id='file'> File Name: tensorflow_ranking/python/losses_impl.py</div><div id='class'> Class Name: ClickEMLoss</div><div id='method'> Method Name: _compute_latent_prob</div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/cb556a585da0b65d28d2fc7d52c3851ac1a7d369#diff-ba487d493f314cbf59f2b42358ce36518ba42fb36ec0d3531eec95addfbbb63cL208' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: cb556a585da0b65d28d2fc7d52c3851ac1a7d369</div><div id='time'> Time: 2018-05-30</div><div id='author'> Author: igor.a.gitman@gmail.com</div><div id='file'> File Name: open_seq2seq/utils/utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_results_for_epoch</div><BR><BR><div id='link'><a href='https://github.com/asyml/texar/commit/ecbe066e40882b166401b70ae9c4f1d535c93b12#diff-352df499dbc50fc952705aee8e5345263615dbb7ecef8d0ed09f46b9aef0b572L38' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: ecbe066e40882b166401b70ae9c4f1d535c93b12</div><div id='time'> Time: 2017-12-21</div><div id='author'> Author: zichaoy@cs.cmu.edu</div><div id='file'> File Name: texar/losses/adv_losses.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: binary_adversarial_losses</div><BR>

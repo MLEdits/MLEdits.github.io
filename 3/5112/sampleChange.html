@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    seq.compile(&quotrmsprop&quot, &quotmse&quot)
+
+    <a id="change">history = seq.fit(X_train_graph, y_train_graph, batch_size=10, nb_epoch=10)</a>
+    loss = seq.evaluate(X_test_graph, y_test_graph)
+    assert(loss &lt; 2.5)
+
+    loss = seq.evaluate(X_test_graph, y_test_graph, show_accuracy=True)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    seq.compile(&quotrmsprop&quot, &quotmse&quot)
+
+    <a id="change">seq.fit(X_train_graph, y_train_graph, batch_size=10, nb_epoch=10)</a>
+    loss = seq.evaluate(X_test_graph, y_test_graph)
+    assert(loss &lt; 2.5)
+
+    loss = seq.evaluate(X_test_graph, y_test_graph, show_accuracy=True)</code></pre>

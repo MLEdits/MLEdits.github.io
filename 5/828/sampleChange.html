@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        if epoch &gt; 0:
+            self.now_epoch = epoch
+            <a id="change">for k in self.if_init_list.keys():
+                self.if_init_list[k] = True
+
+
+</a>class SlimPruner(Pruner):
+    
+    A structured pruning algorithm that prunes channels by pruning the weights of BN layers.
+    Zhuang Liu, Jianguo Li, Zhiqiang Shen, Gao Huang, Shoumeng Yan and Changshui Zhang</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        if epoch &gt; 0:
+            self.now_epoch = epoch
+            <a id="change">for wrapper in self.get_modules_wrapper():
+                wrapper.registered_buffers[&quotif_calculated&quot].copy_(torch.tensor(0)) &#47&#47 pylint: disable=not-callable
+
+</a>class SlimPruner(Pruner):
+    
+    A structured pruning algorithm that prunes channels by pruning the weights of BN layers.
+    Zhuang Liu, Jianguo Li, Zhiqiang Shen, Gao Huang, Shoumeng Yan and Changshui Zhang</code></pre>

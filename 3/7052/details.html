@@ -1,0 +1,21 @@
+<html><h3>82f9e2358c35c5bbff8714280174617ba29cf92b,keras/engine/topology.py,Layer,_add_inbound_node,#Layer#Any#Any#Any#Any#Any#Any#,509
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                assert len(input_tensors) == 1
+                inbound_layers = []
+                node_indices = <a id="change">[]</a>
+                tensor_indices = []
+                break
+
+        &#47&#47 Create node, add it to inbound nodes.</code></pre><h3>After Change</h3><pre><code class='java'>
+        for i in range(len(output_tensors)):
+            output_tensors[i]._keras_shape = output_shapes[i]
+            uses_lp = any([getattr(x, &quot_uses_learning_phase&quot, False) for x in input_tensors])
+            <a id="change">uses_lp = getattr(self, &quotuses_learning_phase&quot, False) or uses_lp</a>
+            output_tensors[i]._uses_learning_phase = getattr(output_tensors[i], &quot_uses_learning_phase&quot, False) or uses_lp
+            output_tensors[i]._keras_history = (self,
+                                                len(self.inbound_nodes) - 1,
+                                                i)</code></pre><img src="28393137.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/82f9e2358c35c5bbff8714280174617ba29cf92b#diff-b08f8eb68f1020decc0addd2758a1b71e202215b4d9756bda4e422e8a35e243cL519' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 82f9e2358c35c5bbff8714280174617ba29cf92b</div><div id='time'> Time: 2017-02-17</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/topology.py</div><div id='class'> Class Name: Layer</div><div id='method'> Method Name: _add_inbound_node</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/22ccc43670dac93eb7fe81520a84cf3979d05693#diff-eb17a1293e88aa3c014db9d25a782040771c1c2c4ebc971376f54a925c71cffeL107' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 22ccc43670dac93eb7fe81520a84cf3979d05693</div><div id='time'> Time: 2020-04-06</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/agents/dqn/tests/test_dqn.py</div><div id='class'> Class Name: TestDQN</div><div id='method'> Method Name: test_dqn_parameter_noise_exploration</div><BR><BR><div id='link'><a href='https://github.com/streamlit/streamlit/commit/92dba5a4d8aa1f531674370ded7d4ebaffbc979d#diff-f4b143d038865610703f38f6401d27ef987101daa66e04121522c1e12a6b689aL6' target='_blank'>Link</a></div><div id='project'> Project Name: streamlit/streamlit</div><div id='commit'> Commit Name: 92dba5a4d8aa1f531674370ded7d4ebaffbc979d</div><div id='time'> Time: 2018-04-06</div><div id='author'> Author: adrien.g.treuille@gmail.com</div><div id='file'> File Name: local/server/streamlit/local/io.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

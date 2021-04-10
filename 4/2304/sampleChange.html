@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                resources_batch_data.placement_group_load.placement_group_data)
+
+            ip = resource_message.node_manager_address
+            <a id="change">self.load_metrics.update(
+                ip, total_resources, available_resources, resource_load,
+                waiting_bundles, infeasible_bundles, pending_placement_groups)</a>
+
+    def update_resource_requests(self):
+        Fetches resource requests from the internal KV and updates load.
+        if not _internal_kv_initialized():</code></pre><h3>After Change</h3><pre><code class='java'>
+            &#47&#47 Update the load metrics for this raylet.
+            node_id = ray.utils.binary_to_hex(resource_message.node_id)
+            ip = self.raylet_id_to_ip_map.get(node_id)
+            <a id="change">if ip:
+                self.load_metrics.update(ip, total_resources,
+                                         available_resources, resource_load,
+                                         waiting_bundles, infeasible_bundles,
+                                         pending_placement_groups)
+            else:
+                logger.warning(
+                    f"Monitor: could not find ip for node {node_id}")
+
+   </a> def update_resource_requests(self):
+        Fetches resource requests from the internal KV and updates load.
+        if not _internal_kv_initialized():
+            return</code></pre>

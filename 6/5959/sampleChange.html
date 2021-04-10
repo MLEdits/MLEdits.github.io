@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    while time.time() - start_time &lt; Def.TimeOuts.test_time_limit \
+            and wait_and_find:
+        <a id="change">with open(log_path, &quotr&quot) as fr:
+            if str in fr.read():
+                return True
+            fr.close()
+   </a> return False
+
+
+def get_csv_path(clres, tries_for_csv=Def.TimeOuts.wait_for_csv,</code></pre><h3>After Change</h3><pre><code class='java'>
+            fr.close()
+
+        if not wait_and_find:
+            <a id="change">break</a>
+
+    return False
+
+</code></pre>

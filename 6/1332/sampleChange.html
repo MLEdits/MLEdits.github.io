@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        set_default_value(output_feature[LOSS],
+                          &quotclass_similarities_temperature&quot, 0)
+        set_default_value(output_feature[LOSS], &quotweight&quot, 1)
+        <a id="change">set_default_value(output_feature[LOSS], &quottype&quot, &quotsoftmax_cross_entropy&quot)</a>
+
+        if output_feature[LOSS][&quottype&quot] == &quotsampled_softmax_cross_entropy&quot:
+            set_default_value(output_feature[LOSS], &quotsampler&quot, &quotlog_uniform&quot)
+            set_default_value(output_feature[LOSS], &quotnegative_samples&quot, 25)</code></pre><h3>After Change</h3><pre><code class='java'>
+        if output_feature[LOSS][&quottype&quot] == &quotsampled_softmax_cross_entropy&quot:
+            set_default_values(
+                output_feature[LOSS],
+                <a id="change">{
+                    &quotsampler&quot: &quotlog_uniform&quot,
+                    &quotnegative_samples&quot: 25,
+                    &quotdistortion&quot: 0.75
+                }</a>
+            )
+        else:
+            set_default_values(
+                output_feature[LOSS],</code></pre>

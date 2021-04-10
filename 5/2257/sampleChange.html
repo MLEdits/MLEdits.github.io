@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        rpn_cls_loss = F.softmax_cross_entropy(rpn_score, gt_rpn_label)
+
+        &#47&#47 Losses for outputs of the head.
+        <a id="change">gt_roi_cls_loc</a>, roi_loc_weight = _loc2cls_loc(
+            gt_roi_loc, gt_roi_label, self.n_class)
+        loc_loss = _smooth_l1_loss(
+            roi_cls_loc, gt_roi_cls_loc,</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 Losses for outputs of the head.
+        n_sample = roi_cls_loc.shape[0]
+        roi_cls_loc = roi_cls_loc.reshape(n_sample, -1, 4)
+        <a id="change">roi_loc = roi_cls_loc[self.xp.arange(n_sample), gt_roi_label]</a>
+        in_weight = self.xp.zeros_like(roi_loc)
+        in_weight[gt_roi_label &gt; 0] = 1
+        loc_loss = _smooth_l1_loss(
+            roi_loc, gt_roi_loc, in_weight, self.sigma)</code></pre>

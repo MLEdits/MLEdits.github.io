@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 TODO(zhiting): fix it
+    @property
+    def output_dtype(self):
+        <a id="change">return AttentionRNNDecoderOutput(
+            logits=dtypes.float32,
+            sample_id=dtypes.int32,
+            cell_output=dtypes.float32,
+            attention_scores=dtypes.float32,
+            attention_context=dtypes.float32)</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 containing the input_state&quots first component&quots dtype.
+        &#47&#47 Return that structure and the sample_ids_dtype from the helper.
+        dtype = nest.flatten(self._initial_state)[0].dtype
+        <a id="change">return AttentionRNNDecoderOutput(
+            logits=nest.map_structure(lambda _: dtype, self._rnn_output_size()),
+            sample_id=self._helper.sample_ids_dtype,
+            cell_output=nest.map_structure(
+                lambda _: dtype, self._cell.output_size),
+            attention_scores=nest.map_structure(
+                lambda _: dtype, self._cell.state_size.alignments),
+            attention_context=nest.map_structure(
+                lambda _: dtype, self._cell.state_size.attention))</a>
+
+</code></pre>

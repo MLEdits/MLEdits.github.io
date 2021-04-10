@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                mask.drop("single", axis=1, inplace=True)
+        except KeyError:
+            mask = self.all_visible(self.df).to_frame()
+        valid = <a id="change">mask</a>[mask].stack().index.to_list()
+        if not valid:
+            raise ValueError("No fully labeled animal was found.")
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                count.drop("single", axis=1, inplace=True)
+        except KeyError:
+            count = self.df.count(axis=1).to_frame()
+        <a id="change">mask = count.where(count == count.max())</a>
+        kept = mask.stack().index.to_list()
+        np.random.shuffle(kept)
+        row, col = kept.pop()
+        return row, col</code></pre>

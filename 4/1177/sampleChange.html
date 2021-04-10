@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            inputs = inputs.T
+        &#47&#47 Following the Official electra to deal with duplicate positions as
+        &#47&#47 https://github.com/google-research/electra/issues/41
+        <a id="change">original_data</a>, updates_mask = updated_vectors_by_position(F,
+            inputs, unmasked_tokens, masked_positions)
+        fake_data, _ = updated_vectors_by_position(F,
+            inputs, corrupted_tokens, masked_positions)</code></pre><h3>After Change</h3><pre><code class='java'>
+            inputs, unmasked_tokens, masked_positions)
+        fake_data = updated_vectors_by_position(F,
+            inputs, corrupted_tokens, masked_positions)
+        <a id="change">updates_mask = add_vectors_by_position(F, F.np.zeros_like(inputs),
+                F.np.ones_like(masked_positions), masked_positions)</a>
+        &#47&#47 Dealing with multiple zeros in masked_positions which
+        &#47&#47 results in a non-zero value in the first index [CLS]
+        <a id="change">updates_mask = F.np.minimum(updates_mask, 1)</a>
+        labels = updates_mask * F.np.not_equal(fake_data, original_data)
+        if self.disc_backbone.layout == &quotTN&quot:
+            return corrupted_tokens, fake_data.T, labels.T
+        else:</code></pre>

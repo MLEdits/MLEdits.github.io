@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        mIoU = IoU.mean()
+
+        &#47&#47 np predicition
+        pred = mx.nd.squeeze(<a id="change">mx.nd.argmax(pred, 1)</a>).asnumpy() + 1
+        mask = mask.squeeze().asnumpy() + 1
+        _, correct2, labeled2 = pixelAccuracy(pred, mask)
+        inter2, union2 = intersectionAndUnion(pred, mask, dataset.num_class)</code></pre><h3>After Change</h3><pre><code class='java'>
+        mIoU = IoU.mean()
+
+        &#47&#47 np predicition
+        pred2 = np.argmax(<a id="change">pred.asnumpy().astype(&quotint64&quot)</a>, 1) + 1
+        mask2 = mask.squeeze().asnumpy().astype(&quotint64&quot) + 1
+        _, correct2, labeled2 = pixelAccuracy(pred2, mask2)
+        inter2, union2 = intersectionAndUnion(pred2, mask2, dataset.num_class)</code></pre>

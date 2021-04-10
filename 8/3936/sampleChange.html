@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.layers.pop()
+        if not self.layers:
+            self.outputs = []
+            <a id="change">self._inbound_nodes</a> = []
+            self._outbound_nodes = []
+        else:
+            self.layers[-1]._outbound_nodes = []
+            self.outputs = [self.layers[-1].output]
+            &#47&#47 update self._inbound_nodes
+            self._inbound_nodes[0].output_tensors = self.outputs
+            self._inbound_nodes[0].output_shapes = [
+                <a id="change">self</a>.outputs[<a id="change">0</a>]._keras_shape]
+        self.built = False
+
+    def get_layer(self, name=None, index=None):</code></pre><h3>After Change</h3><pre><code class='java'>
+        else:
+            self._layers.append(layer)
+
+    def pop(<a id="change">self</a>):
+        Removes the last layer in the model.
+
+        &#47&#47 Raises
+            TypeError: if there are no layers in the model.
+        
+        if not self.layers:
+            raise TypeError(&quotThere are no layers in the model.&quot)
+
+        self._layers.pop()
+        self.built = False
+        if not self.layers:
+            self.outputs = None
+            self.inputs = None
+        elif <a id="change">self</a>.outputs:
+            self.layers[-1]._outbound_nodes = []
+            self.outputs = [self.layers[-1].output]
+            <a id="change">self.build()</a>
+
+    def build(self, input_shape=None):
+        if input_shape and not self.inputs:
+            batch_shape = tuple(input_shape)</code></pre>

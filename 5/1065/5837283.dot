@@ -1,0 +1,18 @@
+digraph G {
+subgraph cluster0 {
+1 [label="print" a="32" s="1041,1059" l="6,1" shape="box"];
+5 [label="StringLiteral" a="45" s="1047" l="12" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="train_test_split" a="32" s="881,917" l="17,1" shape="box"];
+3 [label="NumberLiteral" a="34" s="914" l="3" shape="ellipse"];
+4 [label="Assignment:=" a="7" s="879" l="2" shape="box"];
+label = "New";
+style="dotted";
+}
+2 -> 4 [label="_para_"];
+3 -> 2 [label="_para_"];
+5 -> 1 [label="_para_"];
+}

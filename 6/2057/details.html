@@ -1,0 +1,23 @@
+<html><h3>55d342a0d0e44f3420877a8e9452adba7933ae72,gpflow/conditionals/util.py,,base_conditional,#Any#Any#Any#Any#,11
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    &#47&#47 get the leadings dims in Kmn to the front of the tensor
+    &#47&#47 if Kmn has rank two, i.e. [M, N], this is the identity op.
+    Kmn = leading_transpose(Kmn, <a id="change">[..., 0, -1]</a>)  &#47&#47 [..., M, N]
+
+    leading_dims = Kmn.shape[:-2]
+    Lm = tf.linalg.cholesky(Kmm)  &#47&#47 [M, M]</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    &#47&#47 get the leadings dims in Kmn to the front of the tensor
+    &#47&#47 if Kmn has rank two, i.e. [M, N], this is the identity op.
+    <a id="change">K = tf.rank(Kmn)</a>
+    perm = <a id="change">tf.concat([tf.reshape(tf.range(1, K - 1), [K - 2]),  &#47&#47 leading dims (...)
+                      tf.reshape(0, [1]),  &#47&#47 [M]
+                      tf.reshape(K - 1, [1])], 0)</a>  &#47&#47 [N]
+    <a id="change">Kmn = tf.transpose(Kmn, perm)</a>  &#47&#47 [..., M, N]
+
+    leading_dims = Kmn.shape[:-2]
+    Lm = tf.linalg.cholesky(Kmm)  &#47&#47 [M, M]</code></pre><img src="10741733.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/55d342a0d0e44f3420877a8e9452adba7933ae72#diff-71207977c6d6e8e6bcba6035bf24bc4ca250aa956d596478cec3ed9d8a07972cL46' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: 55d342a0d0e44f3420877a8e9452adba7933ae72</div><div id='time'> Time: 2019-04-11</div><div id='author'> Author: art.art.v@gmail.com</div><div id='file'> File Name: gpflow/conditionals/util.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: base_conditional</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/e164c3574da160fb72fc962947a783fa299424e3#diff-d4c5c5222b0fcf0f37fb18463f022741550e684176e3ccf29200d135567213feL105' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: e164c3574da160fb72fc962947a783fa299424e3</div><div id='time'> Time: 2019-07-07</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/src/batch_apply.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: merge_leading_dims</div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/3dd89618e1d07a9d2d605ddd32ccfe36b29b3af3#diff-252bf5ba3aede84fd7afc36b3c63f58fb6491f32bb5558cc381f13475a9f3143L41' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: 3dd89618e1d07a9d2d605ddd32ccfe36b29b3af3</div><div id='time'> Time: 2018-07-11</div><div id='author'> Author: jasoli@nvidia.com</div><div id='file'> File Name: open_seq2seq/losses/tacotron_loss.py</div><div id='class'> Class Name: TacotronLoss</div><div id='method'> Method Name: _compute_loss</div><BR><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/99754e7c704346c025a21ee61efeda2f7c02a3b3#diff-c9939725f3db666ea558a390c6beae039a2f53db3ecf738c5ca12c5ca1667094L134' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: 99754e7c704346c025a21ee61efeda2f7c02a3b3</div><div id='time'> Time: 2020-05-09</div><div id='author'> Author: jimthompson5802@gmail.com</div><div id='file'> File Name: ludwig/models/modules/sequence_decoders.py</div><div id='class'> Class Name: SequenceGeneratorDecoder</div><div id='method'> Method Name: decoder_training</div><BR>

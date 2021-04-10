@@ -1,0 +1,21 @@
+<html><h3>bb494a3be8387467d892f10a8dbba4d2e1a68a3b,python/ray/serve/policy.py,FixedPackingPolicyQueue,__init__,#FixedPackingPolicyQueue#Any#,142
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    async def __init__(self, packing_num=3):
+        &#47&#47 Saves the information about last assigned
+        &#47&#47 backend for every endpoint
+        self.fixed_packing_iterator_map = <a id="change">{}</a>
+        self.packing_num = packing_num
+        await super().__init__()
+
+    async def set_traffic(self, endpoint, traffic_dict):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def __init__(self, traffic_dict):
+        self.backend_names = list(traffic_dict.keys())
+        <a id="change">self.backend_weights = list(traffic_dict.values())</a>
+
+    async def flush(self, endpoint_queue, backend_queues):
+        if len(self.backend_names) == 0:
+            logger.info("No backends to assign traffic to.")</code></pre><img src="17924839.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/bb494a3be8387467d892f10a8dbba4d2e1a68a3b#diff-a64fa65b0d4b986aba62dcdca417aa80486c03660bb3991e65305974c682d0c7L48' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: bb494a3be8387467d892f10a8dbba4d2e1a68a3b</div><div id='time'> Time: 2020-05-12</div><div id='author'> Author: ed.nmi.oakes@gmail.com</div><div id='file'> File Name: python/ray/serve/policy.py</div><div id='class'> Class Name: FixedPackingPolicyQueue</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/fd28f45bd6c2d0c5693026b4f6f75f50a8a917bf#diff-2f11dea09eb6ba7b65b3e906e793717e7b565c820de98f30dbb1fc6903d76434L50' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: fd28f45bd6c2d0c5693026b4f6f75f50a8a917bf</div><div id='time'> Time: 2018-02-19</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: chainercv/chainer_experimental/datasets/sliceable/getter_dataset.py</div><div id='class'> Class Name: GetterDataset</div><div id='method'> Method Name: get_example_by_keys</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/400354a88d32db7230380138b30db3d6240542bf#diff-008dcb3426febd767787b1521f1fe33086313b927ea37eaab86df5fa88a51698L88' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: 400354a88d32db7230380138b30db3d6240542bf</div><div id='time'> Time: 2017-09-14</div><div id='author'> Author: Hakuyume@users.noreply.github.com</div><div id='file'> File Name: docs/source/conf.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

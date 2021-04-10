@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    --------
+
+    
+    <a id="change">del os.environ[&quotTF_CUDNN_USE_AUTOTUNE&quot]</a> &#47&#47was potentially set during training
+    tf.reset_default_graph()
+    
+    cfg = auxiliaryfunctions.read_config(config)</code></pre><h3>After Change</h3><pre><code class='java'>
+    --------
+
+    
+    <a id="change">if &quotTF_CUDNN_USE_AUTOTUNE&quot in os.environ:
+        del os.environ[&quotTF_CUDNN_USE_AUTOTUNE&quot] &#47&#47was potentially set during training
+    
+   </a> tf.reset_default_graph()
+    
+    cfg = auxiliaryfunctions.read_config(config)
+    trainFraction = cfg[&quotTrainingFraction&quot][trainingsetindex]</code></pre>

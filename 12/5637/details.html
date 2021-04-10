@@ -1,0 +1,28 @@
+<html><h3>bc1351d47d9fe83bc6c7830a8563ddb874953ed4,tools/extract_embeddings.py,,main,#,30
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    for vocab in checkpoint[&quotvocab&quot]:
+        if vocab[0] == &quotsrc&quot:
+            src_dict = vocab[1]
+        <a id="change">if vocab[0] == &quottgt&quot:
+            tgt_dict = vocab[1]
+   </a> assert src_dict is not None and tgt_dict is not None
+
+    fields = onmt.inputters.load_fields_from_vocab(checkpoint[&quotvocab&quot])
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                            map_location=lambda storage, loc: storage)
+    model_opt = checkpoint[&quotopt&quot]
+
+    <a id="change">vocab = checkpoint[&quotvocab&quot]</a>
+    if inputters.old_style_vocab(vocab):
+        fields = onmt.inputters.load_fields_from_vocab(vocab)
+    else:
+        <a id="change">fields</a> = vocab
+    src_dict = <a id="change">fields</a>[<a id="change">&quotsrc&quot</a>][0][1].vocab
+    <a id="change">tgt_dict = fields[&quottgt&quot][0][1].vocab</a>
+
+    model_opt = checkpoint[&quotopt&quot]
+    for arg in dummy_opt.__dict__:
+        if arg not in model_opt:</code></pre><img src="23600480.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/bc1351d47d9fe83bc6c7830a8563ddb874953ed4#diff-50e6b1fb5406e08bfc5f5ee4570d33cae666a8ddbb1f1d26177d3a28e5563379L40' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: bc1351d47d9fe83bc6c7830a8563ddb874953ed4</div><div id='time'> Time: 2019-01-09</div><div id='author'> Author: benzurdopeters@gmail.com</div><div id='file'> File Name: tools/extract_embeddings.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: main</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/636ca9b5b655136fa12332654d73bc22c76108f6#diff-bda7749498fa18c1d4ff9705c1ac27d56f350ef4a295df3d17f52689ebabf95aL6' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 636ca9b5b655136fa12332654d73bc22c76108f6</div><div id='time'> Time: 2021-03-19</div><div id='author'> Author: 33053116+J-shang@users.noreply.github.com</div><div id='file'> File Name: interim_vision_patch.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/tryolabs/luminoth/commit/35999e65a83c8b9f67b833623a5b9ce47af7cc71#diff-38b7ec78c92d10533a50f565133c4ce2b0a8c2334d28f6c478aa302ce91ee4a8L28' target='_blank'>Link</a></div><div id='project'> Project Name: tryolabs/luminoth</div><div id='commit'> Commit Name: 35999e65a83c8b9f67b833623a5b9ce47af7cc71</div><div id='time'> Time: 2017-09-19</div><div id='author'> Author: javirey@gmail.com</div><div id='file'> File Name: luminoth/utils/training.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_learning_rate</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/bc1351d47d9fe83bc6c7830a8563ddb874953ed4#diff-50e6b1fb5406e08bfc5f5ee4570d33cae666a8ddbb1f1d26177d3a28e5563379L40' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: bc1351d47d9fe83bc6c7830a8563ddb874953ed4</div><div id='time'> Time: 2019-01-09</div><div id='author'> Author: benzurdopeters@gmail.com</div><div id='file'> File Name: tools/extract_embeddings.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: main</div><BR>

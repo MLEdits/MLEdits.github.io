@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        if images_were_array:
+            &#47&#47 note here that NO_RESIZE can have led to different shapes
+            nb_shapes = len(<a id="change">set([image.shape for image in result])</a>)
+            if nb_shapes == 1:
+                result = np.array(result, dtype=images.dtype)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        if images_were_array:
+            &#47&#47 note here that NO_RESIZE can have led to different shapes
+            nb_shapes = len(<a id="change">{image.shape for image in result}</a>)
+            if nb_shapes == 1:
+                result = np.array(result, dtype=images.dtype)
+</code></pre>

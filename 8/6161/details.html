@@ -1,0 +1,46 @@
+<html><h3>57544b1ff9f97d4da9f64d25c8ea5a3d8d247ffc,rllib/examples/custom_env.py,,,#,70
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    ModelCatalog.register_custom_model("my_model", CustomModel)
+    tune.run(
+        "PPO",
+        stop=<a id="change">{
+            "timesteps_total": 10000,
+        }</a>,
+        config={
+            "env": SimpleCorridor,  &#47&#47 or "corridor" if registered above
+            "model": {</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+if __name__ == "__main__":
+    <a id="change">args = parser.parse_args()</a>
+    ray.init()
+
+    &#47&#47 Can also register the env creator function explicitly with:
+    &#47&#47 register_env("corridor", lambda config: SimpleCorridor(config))
+    ModelCatalog.register_custom_model(
+        "my_model", TorchCustomModel if args.torch else CustomModel)
+
+    config = {
+        "env": SimpleCorridor,  &#47&#47 or "corridor" if registered above
+        "env_config": {
+            "corridor_length": 5,
+        },
+        "model": {
+            "custom_model": "my_model",
+        },
+        "vf_share_layers": True,
+        "lr": grid_search([1e-2, 1e-4, 1e-6]),  &#47&#47 try different lrs
+        "num_workers": 1,  &#47&#47 parallelism
+        "use_pytorch": args.torch
+    }
+
+    stop = {
+        "training_iteration": <a id="change">args</a>.stop_iters,
+        "timesteps_total": args.stop_timesteps,
+        "episode_reward_mean": <a id="change">args</a>.stop_reward,
+    }
+
+    results = tune.run(args.run, config=config, stop=stop)</code></pre><img src="25475628.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/57544b1ff9f97d4da9f64d25c8ea5a3d8d247ffc#diff-0e0d403cc2d88bd7c939d024855d7f973bef28e9b879206e365ca50b007c8051L73' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 57544b1ff9f97d4da9f64d25c8ea5a3d8d247ffc</div><div id='time'> Time: 2020-05-11</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/examples/custom_env.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/42991d723fad1d1b698e895969908105ca22f72c#diff-08c5d9267dc95a3b766800d33a74de9067b3f12d95ccb971e22c1abc7afa73dbL60' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 42991d723fad1d1b698e895969908105ca22f72c</div><div id='time'> Time: 2020-05-01</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/tests/test_env_with_subprocess.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/hanxiao/bert-as-service/commit/6ac655533f3faede22d4e44d41a6b6f4b1891ff4#diff-95c886c4c3a64881051e8eb5604d8ba7364b3094226313d752fe2e3c9ab4eaa1L13' target='_blank'>Link</a></div><div id='project'> Project Name: hanxiao/bert-as-service</div><div id='commit'> Commit Name: 6ac655533f3faede22d4e44d41a6b6f4b1891ff4</div><div id='time'> Time: 2019-01-18</div><div id='author'> Author: hanhxiao@tencent.com</div><div id='file'> File Name: benchmark.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

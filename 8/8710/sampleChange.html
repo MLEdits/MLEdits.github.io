@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self._seed = None
+
+    def _parameter_name(self):
+        <a id="change">return &quot/&quot.join([self.full_name, &quotminibatch&quot])</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def _parameter_name(self):
+        name = &quotminibatch&quot
+        <a id="change">if self.parent is self:
+            return misc.tensor_name(self.full_name, name)
+       </a> <a id="change">return name</a>
+</code></pre>

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        exec(line, g)
+        base = g[&quot__version__&quot]
+        &#47&#47 nightly version string .devYearMonthDayHourMinute
+        return <a id="change">base if IS_RELEASE else \
+          base + time.strftime("%Y%m%d%H%M%S")</a>
+
+    raise ValueError(&quot`__version__` not defined in `deepchem/__init__.py`&quot)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+          return base
+        else:
+          &#47&#47 nightly version : .devYearMonthDayHourMinute
+          <a id="change">if base.endswith(&quot.dev&quot) is False:
+            &#47&#47 Force to add `.dev` if `--release` option isn&quott passed when building
+            base += &quot.dev&quot
+         </a> return base + time.strftime("%Y%m%d%H%M%S")
+
+    raise ValueError(&quot`__version__` not defined in `deepchem/__init__.py`&quot)
+</code></pre>

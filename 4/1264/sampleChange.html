@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+
+<a id="change">if __name__ == &quot__main__&quot:
+    _test_ngram()</a>
+    &#47&#47_test_hist()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+
+<a id="change">if __name__ == &quot__main__&quot:
+    &#47&#47_test_ngram()
+    &#47&#47_test_hist()
+    path = &quot/home/fanyixing/dataset/marco/&quot
+    infile_path = path + &quotdid.test.txt&quot
+    outfile_path = path + &quotdid.test.processed.txt&quot
+    &#47&#47infile_path = &quot./did.train.txt&quot
+    &#47&#47outfile_path = &quotdid.train.processed.txt&quot
+    dictfile_path = path + &quotword_dict.txt&quot
+    dffile_path = path + &quotword_df.txt&quot
+    preprocessor = Preprocess(min_freq = 5)
+    preprocessor.load_word_dict(dictfile_path)
+    preprocessor.load_words_df(dffile_path)
+    dids, docs = preprocessor.run(infile_path)
+
+    fout = open(outfile_path,&quotw&quot)
+    for inum,did in enumerate(dids):
+        fout.write(&quot%s\t%s\n&quot%(did, &quot &quot.join(map(str,docs[inum]))))
+    fout.close()
+    print(&quotDone ...&quot)</a>
+</code></pre>

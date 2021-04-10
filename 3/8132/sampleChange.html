@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            config, "_config_options", new=copy.deepcopy(CONFIG_OPTIONS)
+        )
+        self.patch1.start()
+        <a id="change">self.patch2.start()</a>
+
+    def tearDown(self):
+        self.patch1.stop()
+        self.patch2.stop()</code></pre><h3>After Change</h3><pre><code class='java'>
+            patch.object(config, "_config_options", new=copy.deepcopy(CONFIG_OPTIONS)),
+        ]
+
+        <a id="change">for p in self.patches:
+            p.start()
+
+   </a> def tearDown(self):
+        for p in self.patches:
+            p.stop()
+</code></pre>

@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    except OSError:
+        pass  &#47&#47 It could have been removed by Ray.
+    cluster = Cluster(True)
+    <a id="change">cluster.add_node(plasma_store_socket_name="/tmp/i_am_a_temp_socket_2")</a>
+    assert os.path.exists(
+        "/tmp/i_am_a_temp_socket_2"), "Specified socket path not found."
+    cluster.shutdown()
+    try:</code></pre><h3>After Change</h3><pre><code class='java'>
+    except OSError:
+        pass  &#47&#47 It could have been removed by Ray.
+    cluster = Cluster(True)
+    <a id="change">cluster.add_node(
+        plasma_store_socket_name=os.path.join(ray.utils.get_user_temp_dir(),
+                                              "i_am_a_temp_socket_2"))</a>
+    assert os.path.exists(
+        os.path.join(
+            ray.utils.get_user_temp_dir(),
+            "i_am_a_temp_socket_2")), "Specified socket path not found."</code></pre>

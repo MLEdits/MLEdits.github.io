@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+      return
+
+    nextit = heap[0]
+    <a id="change">yield nextit.value</a>
+    nextit.advance()
+    &#47&#47 Because nextit.advance() mutates the first entry in the heap, the heap
+    &#47&#47 invariant may not be satisfied at this point. If the iterator is exhausted
+    &#47&#47 we should just pop it off. Otherwise, we call heapreplace and replace the</code></pre><h3>After Change</h3><pre><code class='java'>
+  else:
+    paths = [path]
+
+  <a id="change">keyed_iterables = []</a>
+  for path in paths:
+    protos = (
+        proto.FromString(buf)
+        for buf in python_io.tf_record_iterator(path, options))
+    <a id="change">keyed_iterables.append(((key(elem), elem) for elem in protos))</a>
+
+  for i, (_, value) in enumerate(heapq.merge(*keyed_iterables)):
+    if max_records is not None and i &gt;= max_records:
+      return</code></pre>

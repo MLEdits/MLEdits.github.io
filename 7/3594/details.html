@@ -1,0 +1,39 @@
+<html><h3>5406774989ecbc6ccb528ac1b1db25575448bda0,auto_ml/predictor.py,Predictor,score_uncertainty,#Predictor#Any#Any#Any#Any#,1200
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        df_uncertainty_predictions = self.predict_uncertainty(X)
+
+        <a id="change">if advanced_scoring == True:
+            score = utils_scoring.advanced_scoring_classifiers(df_uncertainty_predictions.uncertainty_predictions, y)
+
+       </a> return score
+
+
+    def save(self, file_name=&quotauto_ml_saved_pipeline.dill&quot, verbose=True):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        is_uncertain_predictions = []
+
+        <a id="change">for idx, y_val in enumerate(y):
+
+            base_prediction_for_row = base_predictions[idx]
+            delta = abs(y_val - base_prediction_for_row)
+
+            if self.uncertainty_delta_units == &quotabsolute&quot:
+                if delta &gt; self.uncertainty_delta:
+                    is_uncertain_predictions.append(1)
+                else:
+                    is_uncertain_predictions.append(0)
+            elif self.uncertainty_delta_units == &quotpercentage&quot:
+                if delta / y_val &gt; self.uncertainty_delta:
+                    is_uncertain_predictions.append(1)
+                else:
+                    is_uncertain_predictions.append(0)
+
+        &#47&#47 if advanced_scoring == True:
+       </a> score = utils_scoring.advanced_scoring_classifiers(df_uncertainty_predictions.uncertainty_prediction, is_uncertain_predictions)
+
+        return score
+</code></pre><img src="16700558.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ClimbsRocks/auto_ml/commit/5406774989ecbc6ccb528ac1b1db25575448bda0#diff-893454c3b7604c9e39cf39dfbdd6f1f0b1c6707e4fec48a68ceec16035875121L1204' target='_blank'>Link</a></div><div id='project'> Project Name: ClimbsRocks/auto_ml</div><div id='commit'> Commit Name: 5406774989ecbc6ccb528ac1b1db25575448bda0</div><div id='time'> Time: 2017-05-16</div><div id='author'> Author: ClimbsBytes@gmail.com</div><div id='file'> File Name: auto_ml/predictor.py</div><div id='class'> Class Name: Predictor</div><div id='method'> Method Name: score_uncertainty</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/c8b28432a637a780eed96547260722ff3dede57e#diff-c80cf3e5e643430c5cd08bb5be53934019e8c051fad8ae50eb493f714cf8b495L350' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: c8b28432a637a780eed96547260722ff3dede57e</div><div id='time'> Time: 2017-10-04</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/engine/sampler_selective.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rand_choice_coordinates</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/c4c4fac1aed6ccc84d2f21028ebdfd03213709aa#diff-b08f8eb68f1020decc0addd2758a1b71e202215b4d9756bda4e422e8a35e243cL1873' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: c4c4fac1aed6ccc84d2f21028ebdfd03213709aa</div><div id='time'> Time: 2016-11-15</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/topology.py</div><div id='class'> Class Name: Container</div><div id='method'> Method Name: updates</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/f19ace982075ea009af81f5e9f687cc2276f50ea#diff-978189d71446b5d60c49613b692de0fa5d50ae07bd06f3d620526f814c3a677eL64' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: f19ace982075ea009af81f5e9f687cc2276f50ea</div><div id='time'> Time: 2020-01-20</div><div id='author'> Author: 50716238+MoisesHer@users.noreply.github.com</div><div id='file'> File Name: scripts/bert/fp16_utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: grad_global_norm</div><BR>

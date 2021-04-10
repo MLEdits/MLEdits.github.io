@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                        output_shape[1],
+                        output_shape[2])
+
+    <a id="change">if hasattr(kernel, &quot_keras_shape&quot):
+        kernel_shape = kernel._keras_shape
+    else:
+        &#47&#47 Will only work if `kernel` is a shared variable.
+        kernel_shape = kernel.eval().shape
+
+   </a> if padding == &quotsame&quot and kernel_shape[0] % 2 == 0:
+        raise ValueError(&quotIn `Conv2DTranspose`, with padding mode `same`, &quot
+                         &quoteven kernel sizes are not supported with Theano. &quot
+                         &quotYou can set `kernel_size` to an odd number.&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+                        output_shape[1],
+                        output_shape[2])
+
+    <a id="change">kernel_shape = int_shape(kernel)</a>
+    <a id="change">if kernel_shape is None:
+        kernel_shape = kernel.eval().shape  &#47&#47 in case of a shared variable
+
+   </a> if padding == &quotsame&quot and kernel_shape[0] % 2 == 0:
+        raise ValueError(&quotIn `Conv2DTranspose`, with padding mode `same`, &quot
+                         &quoteven kernel sizes are not supported with Theano. &quot
+                         &quotYou can set `kernel_size` to an odd number.&quot)</code></pre>

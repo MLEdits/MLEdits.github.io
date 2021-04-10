@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            step_size = ratio * step_size
+            if self._support_nan_check:
+                self.fp32_trainer.update(step_size)
+                overflow = not np.isfinite(<a id="change">norm.asscalar()</a>)
+            else:
+                overflow = not np.isfinite(norm.asscalar())
+                if not overflow:</code></pre><h3>After Change</h3><pre><code class='java'>
+            step_size = ratio * step_size
+            if self._support_nan_check:
+                self.fp32_trainer.update(step_size)
+                <a id="change">overflow = is_finite.asscalar() &lt; 1</a>
+            else:
+                overflow = not np.isfinite(norm.asscalar())
+                if not overflow:
+                    self.fp32_trainer.update(step_size)</code></pre>

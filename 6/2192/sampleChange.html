@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 shape: (batch_size, beam_size)
+        cur_backpointers = backpointers[-1]
+
+        for timestep in range(<a id="change">len(predictions)</a> - 2, 0, -1):
+            &#47&#47 shape: (batch_size, beam_size, 1)
+            cur_preds = predictions[timestep].gather(1, cur_backpointers).unsqueeze(2)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        &#47&#47 Set the same state for each element in the beam.
+        for key, state_tensor in state.items():
+            <a id="change">if state_tensor is None:
+                continue
+           </a> _, *last_dims = state_tensor.size()
+            &#47&#47 shape: (batch_size * beam_size, *)
+            state[key] = (
+                state_tensor.unsqueeze(1)</code></pre>

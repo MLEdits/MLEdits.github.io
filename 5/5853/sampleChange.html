@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                    self.assertGreater(
+                        result["info"]["learner"]["default_policy"]["cur_lr"],
+                        0.01)
+                <a id="change">if result["info"]["learner"]["default_policy"]["cur_lr"] &lt; \
+                        0.07:
+                    break
+           </a> self.assertLess(
+                result["info"]["learner"]["default_policy"]["cur_lr"], 0.07)
+            agent.stop()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                print("global_timesteps={}".format(global_timesteps))
+                expected_lr = \
+                    0.1 - ((0.1 - 0.000001) / 100000) * global_timesteps
+                <a id="change">lr = policy.cur_lr</a>
+                if fw == "tf":
+                    <a id="change">lr = policy._sess.run(lr)</a>
+                check(lr, expected_lr, rtol=0.05)
+            agent.stop()
+
+    def test_no_step_on_init(self):</code></pre>

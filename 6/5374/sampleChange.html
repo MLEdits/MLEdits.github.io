@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, &quotmedia&quot)
+
+if DISABLE_NFS:
+    <a id="change">if &quotMEDIA_URL&quot not in os.environ:
+        raise EnvironmentError(&quotIf NFS is disabled please provide S3 or GCS URL to retrieve media assets&quot)
+    else:
+        MEDIA_URL = os.environ[&quotMEDIA_URL&quot]
+   </a> STATIC_URL = os.environ.get(&quotSTATIC_URL&quot, &quot/static/&quot)
+elif HEROKU_DEPLOY:
+    STATIC_URL = os.environ[&quotSTATIC_URL&quot]
+    MEDIA_URL = os.environ[&quotMEDIA_URL&quot]</code></pre><h3>After Change</h3><pre><code class='java'>
+&#47&#47 https://docs.djangoproject.com/en/1.10/howto/static-files/
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, &quotmedia&quot)
+
+if <a id="change">HEROKU_DEPLOY and (&quotMEDIA_URL&quot not in os.environ or &quotSTATIC_URL&quot not in os.environ)</a>:
+    raise EnvironmentError(&quotPlease set STATIC_URL and MEDIA_URL&quot)
+elif DISABLE_NFS and (&quotLAUNCH_SERVER&quot in os.environ or &quotLAUNCH_SERVER_NGINX&quot in os.environ) and &quotMEDIA_URL&quot not in os.environ:
+    raise EnvironmentError(&quotYou must set MEDIA_URL (e.g. http://s3bucketname.s3-website-us-east-1.amazonaws.com/)&quot</code></pre>

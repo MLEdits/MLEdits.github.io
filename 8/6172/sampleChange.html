@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Raises:
+            Exception: Always.
+        
+        <a id="change">raise TypeError("Actors cannot be instantiated directly. "
+                        "Instead of &quot{}()&quot, use &quot{}.remote()&quot.".format(
+                            self.__ray_metadata__.class_name,
+                            self.__ray_metadata__.class_name))</a>
+
+    @classmethod
+    def _ray_from_modified_class(cls, modified_class, class_id, max_restarts,
+                                 max_task_retries, num_cpus, num_gpus, memory,</code></pre><h3>After Change</h3><pre><code class='java'>
+        Raises:
+            Exception: Always.
+        
+        <a id="change">raise TypeError("Actors cannot be instantiated directly. "
+                        f"Instead of &quot{self.__ray_metadata__.class_name}()&quot, "
+                        f"use &quot{self.__ray_metadata__.class_name}.remote()&quot.")</a>
+
+    @classmethod
+    def _ray_from_modified_class(cls, modified_class, class_id, max_restarts,
+                                 max_task_retries, num_cpus, num_gpus, memory,</code></pre>

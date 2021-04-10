@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    else:
+      &#47&#47 if size is not defined we have to process fetches sequentially, so not
+      &#47&#47 to lose data when exception is thrown on one data layer
+      <a id="change">fetches_vals = []</a>
+      for one_fetch in fetches:
+        try:
+          <a id="change">fetches_vals.append(sess.run(one_fetch))</a>
+        except tf.errors.OutOfRangeError:
+          continue
+
+    if step &gt;= bench_start:</code></pre><h3>After Change</h3><pre><code class='java'>
+    tm = time.time()
+    fetches_vals = {}
+    if size_defined:
+      <a id="change">fetches_to_run = {}</a>
+      &#47&#47 removing finished data layers
+      <a id="change">for worker_id in range(model.num_gpus):
+        if total_samples[worker_id] &lt; dl_sizes[worker_id]:
+          fetches_to_run[worker_id] = fetches[worker_id]
+     </a> fetches_vals = sess.run(fetches_to_run)
+    else:
+      &#47&#47 if size is not defined we have to process fetches sequentially, so not
+      &#47&#47 to lose data when exception is thrown on one data layer</code></pre>

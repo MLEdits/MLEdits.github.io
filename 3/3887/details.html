@@ -1,0 +1,20 @@
+<html><h3>c8523b2dc735a1b82ca6170e6ca349defe9f77fc,examples/transformer.py,,,#,22
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    tgt_text = text_data_batch[&quottarget_text&quot]
+    print(&quotsrc_text:{}&quot.format(src_text))
+    sess = tf.Session()
+    src, tgt = sess.run(<a id="change">[src_text, tgt_text]</a>)
+    print(&quotsrc:{}&quot.format(src))
+    print(&quottgt:{}&quot.format(tgt))
+    encoder_output = encoder(src_text[&quottext_ids&quot][:, :-1],</code></pre><h3>After Change</h3><pre><code class='java'>
+    src_text = text_data_batch[&quotsource_text_ids&quot]
+    tgt_text = text_data_batch[&quottarget_text_ids&quot]
+
+    <a id="change">decoder_inputs = tf.concat((tf.ones_like(tgt_text[:, :1]), tgt_text[:, :-1]), -1)</a>
+
+    print(&quotsrc_text:{}&quot.format(src_text))
+    encoder_output = encoder(src_text,
+            sequence_length=text_data_batch[&quotsource_length&quot])</code></pre><img src="17473819.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/asyml/texar/commit/c8523b2dc735a1b82ca6170e6ca349defe9f77fc#diff-43760dfb5c3bab72da19051bc8473cc4a86b5b12ccc0e699c256eb599eb3c42bL44' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: c8523b2dc735a1b82ca6170e6ca349defe9f77fc</div><div id='time'> Time: 2017-11-17</div><div id='author'> Author: shore@pku.edu.cn</div><div id='file'> File Name: examples/transformer.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/tensorflow/ranking/commit/6bf3f51cd0a312da842157665663c2dad9983248#diff-ac0a8b23265c0fdd56da5d2709bf0e7dfce716e2713c8c9fd8d44f4fd9461ff7L930' target='_blank'>Link</a></div><div id='project'> Project Name: tensorflow/ranking</div><div id='commit'> Commit Name: 6bf3f51cd0a312da842157665663c2dad9983248</div><div id='time'> Time: 2021-01-29</div><div id='author'> Author: xuanhui@google.com</div><div id='file'> File Name: tensorflow_ranking/python/losses_impl.py</div><div id='class'> Class Name: ClickEMLoss</div><div id='method'> Method Name: _compute_latent_prob</div><BR><BR><div id='link'><a href='https://github.com/asyml/texar/commit/1a7fa6010b7234bb9efddf761c9bf52af07dc347#diff-e7decfde76a7d23ecff2b9492ec0779684dd534634a6c20071452423dd77e3edL105' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 1a7fa6010b7234bb9efddf761c9bf52af07dc347</div><div id='time'> Time: 2018-07-12</div><div id='author'> Author: zhitinghu@gmail.com</div><div id='file'> File Name: texar/modules/embedders/position_embedders.py</div><div id='class'> Class Name: PositionEmbedder</div><div id='method'> Method Name: _build</div><BR>

@@ -1,0 +1,22 @@
+digraph G {
+subgraph cluster0 {
+1 [label="get_html_theme_path" a="32" s="3632" l="21" shape="box"];
+3 [label="{}" a="4" s="3614,3653" l="1,1" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="of" a="32" s="3589,3779" l="3,1" shape="box"];
+4 [label="StringLiteral" a="45" s="3743" l="12" shape="ellipse"];
+5 [label="StringLiteral" a="45" s="3646" l="23" shape="ellipse"];
+6 [label="FieldAccess" a="22" s="3566" l="18" shape="box"];
+7 [label="Assignment:=" a="7" s="3584" l="1" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 3 [label="_para_"];
+2 -> 7 [label="_para_"];
+4 -> 2 [label="_para_"];
+5 -> 2 [label="_para_"];
+7 -> 6 [label="_def_"];
+}

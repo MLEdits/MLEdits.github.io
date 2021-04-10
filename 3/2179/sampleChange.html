@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    @classmethod
+    async def get_all_node_summary(cls):
+        all_nodes_summary = []
+        <a id="change">for node_id in DataSource.nodes.keys():
+            node_info = await cls.get_node_info(node_id)
+            node_info.pop("workers", None)
+            node_info.pop("actors", None)
+            node_info["raylet"].pop("workersStats", None)
+            node_info["raylet"].pop("viewData", None)
+            all_nodes_summary.append(node_info)
+       </a> return all_nodes_summary
+
+    @classmethod
+    async def get_all_node_details(cls):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    @classmethod
+    async def get_all_node_summary(cls):
+        return <a id="change">[
+            await DataOrganizer.get_node_summary(node_id)
+            for node_id in DataSource.nodes.keys()
+        ]</a>
+
+    @classmethod
+    async def get_all_node_details(cls):
+        return [</code></pre>

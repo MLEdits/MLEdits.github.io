@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+vgg.restore_params(sess)
+
+<a id="change">probs = tf.nn.softmax(vgg.outputs)</a>
+
+vgg.print_params(False)
+
+vgg.print_layers()
+
+img1 = tl.vis.read_image(&quotdata/tiger.jpeg&quot)
+img1 = tl.prepro.imresize(img1, (224, 224))
+&#47&#47 rescale pixels values in the range of 0-1
+img1 = img1 / 255.0
+if ((0 &lt;= img1).all() and (img1 &lt;= 1.0).all()) is False:
+    raise Exception("image value should be [0, 1]")
+
+<a id="change">_ = sess.run(probs, feed_dict={x: [img1]})[0]</a>  &#47&#47 1st time takes time to compile
+start_time = time.time()
+<a id="change">prob = sess.run(probs, feed_dict={x: [img1]})[0]</a>
+print("  End time : %.5ss" % (time.time() - start_time))
+preds = (np.argsort(prob)[::-1])[0:5]
+for p in preds:
+    print(class_names[p], prob[p])</code></pre><h3>After Change</h3><pre><code class='java'>
+
+start_time = time.time()
+vgg.eval()
+<a id="change">output = vgg(img1)</a>
+<a id="change">probs = tf.nn.softmax(output.outputs).eval()[0]</a>
+print("  End time : %.5ss" % (time.time() - start_time))
+preds = (np.argsort(probs)[::-1])[0:5]
+for p in preds:
+    print(class_names[p], probs[p])</code></pre>

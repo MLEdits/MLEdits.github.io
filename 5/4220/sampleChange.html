@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            module.to(self.device)
+
+        self.model_optim = optimizer
+        self.ctrl_optim = torch.optim.Adam(<a id="change">[m.alpha for _, m in self.nas_modules]</a>, arc_learning_rate, betas=(0.5, 0.999),
+                                           weight_decay=1.0E-3)
+        self.unrolled = unrolled
+        self.grad_clip = 5.</code></pre><h3>After Change</h3><pre><code class='java'>
+                m.alpha = ctrl_params[m.name]
+            else:
+                ctrl_params[m.name] = m.alpha
+        self.ctrl_optim = torch.optim.Adam(<a id="change">list(ctrl_params.values())</a>, arc_learning_rate, betas=(0.5, 0.999),
+                                           weight_decay=1.0E-3)
+        self.unrolled = unrolled
+        self.grad_clip = 5.</code></pre>

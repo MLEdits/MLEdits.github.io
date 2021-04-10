@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            keys, self._return_tuple = (keys,), False
+
+        new_keys = []
+        <a id="change">for key in keys:
+            if isinstance(key, int):
+                key_index = key
+                if key_index &gt;= len(self._keys):
+                    raise IndexError(&quotInvalid index of key&quot)
+                if key_index &lt; 0:
+                    key_index += len(self._keys)
+            else:
+                try:
+                    key_index = _as_tuple(self.keys).index(key)
+                except ValueError:
+                    raise KeyError(&quot{} does not exists&quot.format(key))
+            new_keys.append(self._keys[key_index])
+       </a> self._keys = new_keys
+
+    def add_getter(self, keys, getter):
+        Register a getter function</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    @keys.setter
+    def keys(self, keys):
+        <a id="change">self._keys = [self._keys[key_index]
+                      for key_index in _as_indices(keys, self.keys)]</a>
+        self._return_tuple = isinstance(keys, (list, tuple))
+
+    def add_getter(self, keys, getter):
+        Register a getter function</code></pre>

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            colorizer=colorizer
+        )
+        observed = aug.__str__()
+        expected = <a id="change">("Canny(alpha=%s, hysteresis_thresholds=%s, "
+                    "sobel_kernel_size=%s, colorizer=%s, name=UnnamedCanny, "
+                    "deterministic=False)") % (
+                        alpha, hysteresis_thresholds, sobel_kernel_size,
+                        colorizer)</a>
+        assert observed == expected
+
+    def test___str___tuple_as_hysteresis(self):
+        alpha = iap.Deterministic(0.2)</code></pre><h3>After Change</h3><pre><code class='java'>
+                    "sobel_kernel_size=%s, colorizer=%s, name=UnnamedCanny, "
+                    "deterministic=False)") % (
+                        str(aug.alpha),
+                        <a id="change">str(aug.hysteresis_thresholds)</a>,
+                        str(aug.sobel_kernel_size),
+                        colorizer)
+        assert observed == expected</code></pre>

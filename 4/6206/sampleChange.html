@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 make sure Streamlit and its proxy are fully initialized before the timer
+    &#47&#47 below expires. This can take several seconds.
+    status = st.empty()
+    <a id="change">for i in range(secs_to_wait, 0, -1):
+        time.sleep(1)
+        status.text(&quotSleeping %ss...&quot % i)
+
+   </a> status.text(&quotTouching %s&quot % __file__)
+    os.utime(os.path.realpath(__file__), None)
+    status.text(&quotTouched %s&quot % __file__)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+status.text(&quotTouching %s&quot % __file__)
+
+<a id="change">cmd = (
+    &quotsed -i &quot
+    "&quots/^&#47&#47 MODIFIED AT:.*/&#47&#47 MODIFIED AT: %s/&quot %s" % (time.time(), __file__))</a>
+
+os.system(cmd)
+
+status.text(&quotTouched %s&quot % __file__)</code></pre>

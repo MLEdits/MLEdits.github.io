@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def __str__(self):
+        if self.outputs is not None:
+            _outputs_shape = [<a id="change">o.shape.as_list()</a> for o in self.outputs]
+            if len(_outputs_shape) == 1:
+                _outputs_shape = _outputs_shape[0]
+        else:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def __str__(self):
+        if self.outputs is not None:
+            _outputs_shape = [tuple(<a id="change">[&quotbatch_size&quot] + o.shape.as_list()</a>) for o in self.outputs]
+            if len(_outputs_shape) == 1:
+                _outputs_shape = _outputs_shape[0]
+        else:</code></pre>

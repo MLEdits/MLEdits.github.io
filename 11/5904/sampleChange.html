@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+class TestSSD(unittest.TestCase):
+
+    def setUp(self):
+        <a id="change">if self.insize == 300:
+            self.link = SSD300(n_classes=self.n_classes, pretrained_model=None)
+            self.n_bbox = 8732
+        elif self.insize == 512:
+            self.link = SSD512(n_classes=self.n_classes, pretrained_model=None)
+            self.n_bbox = 24564
+
+   </a> def _random_array(self, shape):
+        return self.link.xp.array(
+            np.random.uniform(-1, 1, size=shape), dtype=np.float32)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def setUp(self):
+        self.link = DummySSD(n_class=self.n_class)
+        <a id="change">self.n_bbox = sum(
+            grid * grid * ((len(ar) + 1) * 2)
+            for grid, ar in zip(self.link.grids, self.link.aspect_ratios))</a>
+
+    def _check_default_bbox(self):
+        self.assertIsInstance(self.link._default_bbox, self.link.xp.ndarray)
+        self.assertEqual(self.link._default_bbox.shape, (self.n_bbox, 4))</code></pre>

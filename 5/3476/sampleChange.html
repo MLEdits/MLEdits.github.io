@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            results = []
+            node_id_set = set()
+            for node_info in reply.node_info_list:
+                <a id="change">if node_info.node_id in node_id_set:
+                    continue
+               </a> <a id="change">node_id_set.add(node_info.node_id)</a>
+                node_info_dict = gcs_node_info_to_dict(node_info)
+                results.append(node_info_dict)
+            return results
+        else:</code></pre><h3>After Change</h3><pre><code class='java'>
+        reply = await self._gcs_node_info_stub.GetAllNodeInfo(
+            request, timeout=2)
+        if reply.status.code == 0:
+            <a id="change">result = {}</a>
+            for node_info in reply.node_info_list:
+                node_info_dict = gcs_node_info_to_dict(node_info)
+                result[node_info_dict["nodeId"]] = node_info_dict
+            <a id="change">return result</a>
+        else:
+            logger.error("Failed to GetAllNodeInfo: %s", reply.status.message)
+
+    async def _update_nodes(self):</code></pre>

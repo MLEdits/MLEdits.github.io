@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+ENTROPY_BETA = 0.005
+LR_A = 0.00005  &#47&#47 learning rate for actor
+LR_C = 0.0001  &#47&#47 learning rate for critic
+GLOBAL_RUNNING_R = <a id="change">[]</a>
+GLOBAL_EP = 0  &#47&#47 will increase during training, stop training when it &gt;= MAX_GLOBAL_EP
+
+env = gym.make(GAME)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+&#47&#47 add arguments in command  --train/test
+parser = argparse.ArgumentParser(description=&quotTrain or test neural net motor controller.&quot)
+<a id="change">parser.add_argument(&quot--train&quot, dest=&quottrain&quot, action=&quotstore_true&quot, default=False)</a>
+<a id="change">parser.add_argument(&quot--test&quot, dest=&quottest&quot, action=&quotstore_true&quot, default=True)</a>
+args = parser.parse_args()
+
+&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47  hyper parameters  &#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47&#47
+</code></pre>

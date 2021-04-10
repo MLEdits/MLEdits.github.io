@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        for m in range(0, self.img.shape[4]):
+            shifted_image = []
+            for n in range(0, self.neigh+1):
+                new_img = <a id="change">np.multiply(self.seg, self.img[..., m:m+1, 0:1])</a>
+                new_img = ndimage.shift(new_img, shifts[n], order=0)
+                if np.count_nonzero(new_img) &gt; 0:
+                    flattened_new = np.flatten(new_img)
+                    flattened_seg = np.flatten(self.seg)</code></pre><h3>After Change</h3><pre><code class='java'>
+        for m in range(0, self.img.shape[4]):
+            shifted_image = []
+            for n in range(0, self.neigh+1):
+                new_img = self.seg * self.img[<a id="change">:, :, :, 0, m</a>]
+                new_img = ndimage.shift(new_img, shifts[n], order=0)
+                if np.count_nonzero(new_img) &gt; 0:
+                    flattened_new = new_img.flatten()</code></pre>

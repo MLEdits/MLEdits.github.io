@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            aspect_ratio = random.uniform(3 / 4, 4 / 3)
+
+            w = round(math.sqrt(target_area * aspect_ratio))
+            h = <a id="change">round(math.sqrt(target_area / aspect_ratio))</a>
+
+            if random.random() &lt; 0.5:
+                w, h = h, w
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            aspect_ratio = random.uniform(3 / 4, 4 / 3)
+
+            w = int(round(math.sqrt(target_area * aspect_ratio)))
+            h = <a id="change">int(round(math.sqrt(target_area / aspect_ratio)))</a>
+
+            if random.random() &lt; 0.5:
+                w, h = h, w
+</code></pre>

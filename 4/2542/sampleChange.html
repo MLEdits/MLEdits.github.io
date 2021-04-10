@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def get_garbage_collect_data(self):
+        shares = self.child
+        <a id="change">return {worker: share.garbage_collect_data for worker, share in shares.items()}</a>
+
+    @staticmethod
+    def simplify(worker: AbstractWorker, tensor: "AdditiveSharingTensor") -&gt; tuple:
+        </code></pre><h3>After Change</h3><pre><code class='java'>
+        shares = self.child
+        gc_data = None
+
+        <a id="change">for share in shares.values():
+            assert gc_data is None or gc_data == share.garbage_collect_data
+            gc_data = share.garbage_collect_data
+
+       </a> <a id="change">return gc_data</a>
+
+    @staticmethod
+    def simplify(worker: AbstractWorker, tensor: "AdditiveSharingTensor") -&gt; tuple:
+        </code></pre>

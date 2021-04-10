@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                img_path = os.path.join(src_img_dir, line.strip())
+                if not os.path.exists(img_path):
+                    img_path = line
+                if <a id="change">not os.path.exists(img_path)</a>:
+                    continue
+                img = transforms.ToTensor()(Image.open(img_path))
+                if truncate:</code></pre><h3>After Change</h3><pre><code class='java'>
+                if truncate:
+                    if img.size(1) &gt; truncate[0] or img.size(2) &gt; truncate[1]:
+                        continue
+                yield <a id="change">line.strip(),img</a>
+
+    def _construct_examples(self, lines, side):
+        assert side in ["src", "tgt"]
+        for line in lines:</code></pre>

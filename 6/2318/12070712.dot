@@ -1,0 +1,20 @@
+digraph G {
+subgraph cluster0 {
+1 [label="of" a="32" s="3215,3365" l="3,1" shape="box"];
+3 [label="StringLiteral" a="45" s="3252" l="17" shape="ellipse"];
+4 [label="return" a="41" s="3547" l="7" shape="box"];
+5 [label="FieldAccess" a="22" s="3335" l="30" shape="box"];
+6 [label="Assignment:=" a="7" s="3210" l="1" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="pop" a="32" s="2793,2810" l="4,1" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 6 [label="_para_"];
+3 -> 1 [label="_para_"];
+5 -> 1 [label="_para_"];
+6 -> 4 [label="_para_"];
+}

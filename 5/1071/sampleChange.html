@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    ```
+    &quot&quot&quot
+    if ndim(x) is not None and (ndim(x) &gt; 2 or ndim(y) &gt; 2):
+        <a id="change">x_shape = (-1,) + int_shape(x)[1:]</a>
+        y_shape = int_shape(y)
+        y_permute_dim = list(range(ndim(y)))
+        y_permute_dim = [y_permute_dim.pop(-2)] + y_permute_dim
+        xt = tf.reshape(x, [-1, x_shape[-1]])</code></pre><h3>After Change</h3><pre><code class='java'>
+    ```
+    &quot&quot&quot
+    if ndim(x) is not None and (ndim(x) &gt; 2 or ndim(y) &gt; 2):
+        <a id="change">x_shape = []</a>
+        for i, s in zip(int_shape(x), tf.unpack(tf.shape(x))):
+            if s is None:
+                x_shape.append(i)
+            else:
+                x_shape.append(s)
+        x_shape = <a id="change">tuple(x_shape)</a>
+        y_shape = []
+        for i, s in zip(int_shape(y), tf.unpack(tf.shape(y))):
+            if s is None:
+                y_shape.append(i)</code></pre>

@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        sys.stderr.write("doxygen execution failed: %s" % e)
+
+intersphinx_mapping = {
+    &quotpython&quot: (<a id="change">&quothttps://docs.python.org/{.major}&quot.format(sys.version_info)</a>, None),
+    &quotmxnet&quot: (&quothttps://mxnet.apache.org/&quot, None),
+    &quotnumpy&quot: (&quothttp://docs.scipy.org/doc/numpy/&quot, None),
+    &quotscipy&quot: (&quothttp://docs.scipy.org/doc/scipy/reference&quot, None),</code></pre><h3>After Change</h3><pre><code class='java'>
+    app.add_javascript(&quotcopybutton.js&quot)
+
+
+<a id="change">sphinx_gallery_conf = {
+    &quotbackreferences_dir&quot: &quotgen_modules/backreferences&quot,
+    &quotdoc_module&quot: (&quotgluonnlp&quot, &quotmxnet&quot, &quotnumpy&quot),
+&quotreference_url&quot: {
+    &quotgluonnlp&quot: None,
+    &quotnumpy&quot: &quothttp://docs.scipy.org/doc/numpy-1.9.1&quot},
+    &quotexamples_dirs&quot: examples_dirs,
+    &quotgallery_dirs&quot: gallery_dirs,
+    &quotsubsection_order&quot: subsection_order,
+    &quotfind_mayavi_figures&quot: False,
+    &quotfilename_pattern&quot: &quot.py&quot,
+    &quotexpected_failing_examples&quot: []
+}</a>
+
+&#47&#47 Napoleon settings
+napoleon_use_ivar = True
+</code></pre>

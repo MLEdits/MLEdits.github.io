@@ -1,0 +1,23 @@
+<html><h3>4b2e09598a90ed402baace88a95e74b6440ecdce,niftynet/utilities/user_parameters_regex.py,,,#,68
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    for strval in strings_to_match:
+        matched_str = regex.match(strval)
+        if matched_str:
+            <a id="change">filtered_groups</a> = <a id="change">filter(None, matched_str.groups())</a>
+            if filtered_groups:
+                <a id="change">values</a> = [v.strip() for v in list(filtered_groups)[0].split(&quot,&quot)]
+            else:
+                values = []
+            print(&quotString:&quot, strval, &quotMatched!&quot, values)</code></pre><h3>After Change</h3><pre><code class='java'>
+    for strval in strings_to_match:
+        matched_str = regex.match(strval)
+        if matched_str:
+            <a id="change">filtered_groups</a> = list(<a id="change">filter(None, matched_str.groups())</a>)
+            if filtered_groups:
+                <a id="change">values</a> = [v.strip() for v in filtered_groups[0].split(&quot,&quot)]
+            else:
+                values = []
+            print(&quotString:&quot, strval, &quotMatched!&quot, values)</code></pre><img src="38966818.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/4b2e09598a90ed402baace88a95e74b6440ecdce#diff-fead8e4619c57446e53a3ef1847e6cf6a065278a5abbb047030a1de586395719L102' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 4b2e09598a90ed402baace88a95e74b6440ecdce</div><div id='time'> Time: 2017-08-22</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/utilities/user_parameters_regex.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/36c22f3f6b96cd02d95f436c58186a7acfa4abf0#diff-dac23c5164c415e549e4f199cd773c7c8cc1921e13d5a5b02e0c9846ccb49e61L147' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: 36c22f3f6b96cd02d95f436c58186a7acfa4abf0</div><div id='time'> Time: 2018-05-17</div><div id='author'> Author: okuchaiev@nvidia.com</div><div id='file'> File Name: open_seq2seq/data/text2text/text2text.py</div><div id='class'> Class Name: ParallelTextDataLayer</div><div id='method'> Method Name: build_graph</div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/ca06d634cbd61d7f3c4a38a56351de46e12a675f#diff-319c8ec1119aa1bfefc4fcf6fb516ebc2a4d732ccb1399bdf52ac9e1b4892f80L552' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: ca06d634cbd61d7f3c4a38a56351de46e12a675f</div><div id='time'> Time: 2018-05-08</div><div id='author'> Author: okuchaiev@nvidia.com</div><div id='file'> File Name: open_seq2seq/data/text2text.py</div><div id='class'> Class Name: ParallelTextDataLayer</div><div id='method'> Method Name: build_graph</div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/6f39f48519a3e4fdc3a1e44b86dba00b3fcbbae3#diff-dac23c5164c415e549e4f199cd773c7c8cc1921e13d5a5b02e0c9846ccb49e61L182' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: 6f39f48519a3e4fdc3a1e44b86dba00b3fcbbae3</div><div id='time'> Time: 2018-05-22</div><div id='author'> Author: okuchaiev@nvidia.com</div><div id='file'> File Name: open_seq2seq/data/text2text/text2text.py</div><div id='class'> Class Name: ParallelTextDataLayer</div><div id='method'> Method Name: build_graph</div><BR>

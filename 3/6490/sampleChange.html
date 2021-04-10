@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    for iou, label_name in zip(ious, camvid_label_names):
+        print(&quot{:&gt;23} : {:.4f}&quot.format(label_name, iou))
+    print(&quot=&quot * 34)
+    print(&quot{:&gt;23} : {:.4f}&quot.format(&quotmean IoU&quot, <a id="change">np.nanmean(ious)</a>))
+    print(&quot{:&gt;23} : {:.4f}&quot.format(
+        &quotClass average accuracy&quot, mean_pixel_accuracy))
+    print(&quot{:&gt;23} : {:.4f}&quot.format(</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    result = eval_semantic_segmentation(pred_labels, gt_labels)
+
+    for iu, label_name in zip(<a id="change">result[&quotiou&quot]</a>, camvid_label_names):
+        print(&quot{:&gt;23} : {:.4f}&quot.format(label_name, iu))
+    print(&quot=&quot * 34)
+    print(&quot{:&gt;23} : {:.4f}&quot.format(&quotmean IoU&quot, result[&quotmiou&quot]))</code></pre>

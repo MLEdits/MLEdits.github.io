@@ -1,0 +1,19 @@
+<html><h3>b30cdf3a1a977927345f407a4c25be2884cfee7f,tests/unittests/test_utils_segmentation.py,,test_segmentation_utils,#,13
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        mIoU = IoU.mean()
+
+        &#47&#47 np predicition
+        pred = mx.nd.squeeze(<a id="change">mx.nd.argmax(pred, 1)</a>).asnumpy() + 1
+        mask = mask.squeeze().asnumpy() + 1
+        _, correct2, labeled2 = pixelAccuracy(pred, mask)
+        inter2, union2 = intersectionAndUnion(pred, mask, dataset.num_class)</code></pre><h3>After Change</h3><pre><code class='java'>
+        mIoU = IoU.mean()
+
+        &#47&#47 np predicition
+        pred2 = np.argmax(<a id="change">pred.asnumpy().astype(&quotint64&quot)</a>, 1) + 1
+        mask2 = mask.squeeze().asnumpy().astype(&quotint64&quot) + 1
+        _, correct2, labeled2 = pixelAccuracy(pred2, mask2)
+        inter2, union2 = intersectionAndUnion(pred2, mask2, dataset.num_class)</code></pre><img src="39161173.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 2</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/b30cdf3a1a977927345f407a4c25be2884cfee7f#diff-f47bf888fdbf298d4ee347f998f8735aa560fe2e5ba4040edb8f3a251eac1869L27' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: b30cdf3a1a977927345f407a4c25be2884cfee7f</div><div id='time'> Time: 2018-09-06</div><div id='author'> Author: 8041160+zhanghang1989@users.noreply.github.com</div><div id='file'> File Name: tests/unittests/test_utils_segmentation.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: test_segmentation_utils</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/01d5e7bc4782daafcfa99e035c1bdbe13a985145#diff-c7b96e0e6485d10adc1a6b29b739377dc78072fff8eb02724385b7d6809fa4d2L64' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 01d5e7bc4782daafcfa99e035c1bdbe13a985145</div><div id='time'> Time: 2016-07-16</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: examples/lstm_text_generation.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: sample</div><BR><BR><div id='link'><a href='https://github.com/d2l-ai/d2l-zh/commit/33e80de90362b279744675a48caf9be1110669ab#diff-09d0cbaf891d623ac245ccf84485a687b554217349ca55557c60b33234b969aeL116' target='_blank'>Link</a></div><div id='project'> Project Name: d2l-ai/d2l-zh</div><div id='commit'> Commit Name: 33e80de90362b279744675a48caf9be1110669ab</div><div id='time'> Time: 2018-04-04</div><div id='author'> Author: asv325@gmail.com</div><div id='file'> File Name: utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: evaluate_accuracy</div><BR>

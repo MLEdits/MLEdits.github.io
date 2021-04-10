@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    def hybrid_forward(self, F, x, **kwargs):
+
+        new_weight = compute_weight(<a id="change">kwargs[&quotweight_orig&quot]</a>)
+        self.linear.params[self.weight_key].set_data(new_weight)
+
+        return self.linear(x)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    def hybrid_forward(self, F, x, **kwargs):
+
+        <a id="change">size = kwargs[&quotweight&quot].shape</a>
+        fan_in = <a id="change">prod(size[1:])</a>
+        multiplier = sqrt(2.0 / fan_in)
+
+        out = F.FullyConnected(x, <a id="change">kwargs[&quotweight&quot]*multiplier</a>, kwargs[&quotbias&quot], num_hidden=self.num_hidden)
+
+        <a id="change">return out</a>
+
+
+class AdaptiveInstanceNorm(nn.HybridBlock):
+    def __init__(self, in_channel, style_dim):</code></pre>

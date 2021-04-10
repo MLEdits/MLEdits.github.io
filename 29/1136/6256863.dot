@@ -1,0 +1,75 @@
+digraph G {
+subgraph cluster0 {
+1 [label="calc_mask" a="32" s="10418,10465" l="10,1" shape="box"];
+3 [label="LayerInfo" a="32" s="10373,10398" l="10,1" shape="box"];
+5 [label="[]" a="2" s="10435,10448" l="12,1" shape="box"];
+6 [label="NumberLiteral" a="34" s="10447" l="1" shape="ellipse"];
+8 [label="tensor" a="32" s="10456,10464" l="7,1" shape="box"];
+9 [label="NumberLiteral" a="34" s="10463" l="1" shape="ellipse"];
+10 [label="StringLiteral" a="45" s="10383" l="5" shape="ellipse"];
+11 [label="Assignment:=" a="7" s="10339" l="1" shape="box"];
+17 [label="tensor" a="32" s="9397,9405" l="7,1" shape="box"];
+18 [label="NumberLiteral" a="34" s="9404" l="1" shape="ellipse"];
+21 [label="FieldAccess" a="22" s="10389" l="9" shape="box"];
+23 [label="Assignment:=" a="7" s="10136" l="1" shape="box"];
+26 [label="Assignment:=" a="7" s="10410" l="1" shape="box"];
+29 [label="SimpleName" a="42" s="9391" l="5" shape="ellipse"];
+30 [label="SimpleName" a="42" s="10450" l="5" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="SGD" a="32" s="9479,9510" l="4,1" shape="box"];
+4 [label="NumberLiteral" a="34" s="9507" l="3" shape="ellipse"];
+7 [label="NumberLiteral" a="34" s="9502" l="4" shape="ellipse"];
+12 [label="Assignment:=" a="7" s="9745" l="1" shape="box"];
+13 [label="calc_mask" a="32" s="9826,9845" l="10,1" shape="box"];
+14 [label="SimpleName" a="42" s="9739" l="6" shape="ellipse"];
+15 [label="calc_mask" a="32" s="9865,9884" l="10,1" shape="box"];
+16 [label="FieldAccess" a="22" s="9467" l="11" shape="box"];
+19 [label="parameters" a="32" s="9489" l="12" shape="box"];
+20 [label="FieldAccess" a="22" s="9875" l="9" shape="box"];
+22 [label="Assignment:=" a="7" s="9466" l="1" shape="box"];
+24 [label="Assignment:=" a="7" s="9857" l="1" shape="box"];
+25 [label="Assignment:=" a="7" s="9818" l="1" shape="box"];
+27 [label="SimpleName" a="42" s="9858" l="6" shape="ellipse"];
+28 [label="SimpleName" a="42" s="9819" l="6" shape="ellipse"];
+31 [label="SimpleName" a="42" s="9467" l="5" shape="ellipse"];
+32 [label="SimpleName" a="42" s="9483" l="5" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 26 [label="_para_"];
+2 -> 22 [label="_para_"];
+3 -> 11 [label="_para_"];
+4 -> 2 [label="_para_"];
+5 -> 1 [label="_para_"];
+6 -> 5 [label="_para_"];
+7 -> 2 [label="_para_"];
+8 -> 1 [label="_para_"];
+9 -> 8 [label="_para_"];
+10 -> 3 [label="_para_"];
+11 -> 12 [label="_map_"];
+11 -> 1 [label="_para_"];
+12 -> 14 [label="_def_"];
+12 -> 24 [label="_para_"];
+12 -> 25 [label="_para_"];
+13 -> 25 [label="_para_"];
+14 -> 27 [label="_ref_"];
+14 -> 28 [label="_ref_"];
+15 -> 24 [label="_para_"];
+16 -> 2 [label="_recv_"];
+18 -> 17 [label="_para_"];
+19 -> 2 [label="_para_"];
+20 -> 15 [label="_para_"];
+21 -> 20 [label="_map_"];
+21 -> 3 [label="_para_"];
+22 -> 12 [label="_para_"];
+23 -> 1 [label="_recv_"];
+27 -> 15 [label="_recv_"];
+28 -> 13 [label="_recv_"];
+29 -> 17 [label="_recv_"];
+30 -> 8 [label="_recv_"];
+31 -> 16 [label="_qual_"];
+32 -> 19 [label="_recv_"];
+}

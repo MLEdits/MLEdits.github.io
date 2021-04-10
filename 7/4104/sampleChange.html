@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+    def turn_strings_to_floats(self, X, y=None):
+        <a id="change">for row in X:
+            for key, val in row.items():
+                try:
+                    row[key] = float(val)
+                except:
+                    pass
+
+       </a> return X
+
+
+    def transform(self, X, y=None):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        for key, val in self.column_descriptions.items():
+
+            <a id="change">if val == &quotcategorical&quot:
+                for row in X:
+                    for key, val in row.items():
+                        try:
+                            row[key] = str(val)
+                        except:
+                            pass
+
+            else:
+                for row in X:
+                    for key, val in row.items():
+                        try:
+                            row[key] = float(val)
+                        except:
+                            pass
+
+       </a> return X
+
+
+    def transform(self, X, y=None):</code></pre>

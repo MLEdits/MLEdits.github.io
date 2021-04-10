@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                output = self.context_gate(
+                    emb_t, rnn_output, attn_output
+                )
+                <a id="change">output = self.dropout(output)</a>
+            else:
+                output = self.dropout(attn_output)
+            outputs += [output]
+            attns["std"] += [attn]</code></pre><h3>After Change</h3><pre><code class='java'>
+            decoder_input = torch.cat([emb_t, input_feed], 1)
+
+            rnn_output, hidden = self.rnn(decoder_input, hidden)
+            <a id="change">decoder_output</a>, p_attn = self.attn(
+                rnn_output,
+                memory_bank.transpose(0, 1),
+                memory_lengths=memory_lengths)</code></pre>

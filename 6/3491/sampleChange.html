@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+def process_inceptionv3_output(output, labels):
+    top_inds = output.argsort()[::-1][:5]
+    return <a id="change">[(labels[top_inds[i]], output[top_inds[i]]) for i in range(5)]</a>
+
+
+def print_inceptionv3_output(output, labels):
+    top_inds = output.argsort()[::-1][:5]</code></pre><h3>After Change</h3><pre><code class='java'>
+    decimal_digits = 2
+    tok_k = 5
+    top_inds = output.argsort()[::-1][:top_k]
+    <a id="change">for i in range(top_k):
+        human_string = labels[top_inds[i]]
+        score = round(float(output[top_inds[i]]), decimal_digits)
+        anno = {
+            &quottype&quot: &quotclassification&quot,
+            &quotlabel&quot: human_string,
+            &quotconfidence&quot: score
+        }
+        processed_output[&quotannotations&quot].append(anno)
+   </a> return processed_output
+    &#47&#47return [(labels[top_inds[i]], output[top_inds[i]]) for i in range(5)]
+
+</code></pre>

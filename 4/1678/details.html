@@ -1,0 +1,24 @@
+<html><h3>1775e89f262111791fabfd40f80a24f74738fe54,rllib/models/catalog.py,ModelCatalog,get_action_dist,#Any#Any#Any#Any#,107
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            return partial(dist, input_lens=action_space.nvec), \
+                int(sum(action_space.nvec))
+        &#47&#47 Dict -&gt; TODO(sven)
+        elif <a id="change">isinstance</a>(action_space, gym.spaces.Dict):
+            &#47&#47 TODO(sven): implement
+            raise NotImplementedError(
+                "Dict action spaces are not supported, consider using "</code></pre><h3>After Change</h3><pre><code class='java'>
+        elif dist_type in (MultiActionDistribution,
+                           TorchMultiActionDistribution) or \
+                isinstance(action_space, (gym.spaces.Tuple, gym.spaces.Dict)):
+            <a id="change">flat_action_space = flatten_space(action_space)</a>
+            child_dists_and_in_lens = <a id="change">tree.map_structure(
+                lambda s: ModelCatalog.get_action_dist(
+                    s, config, framework=framework), flat_action_space)</a>
+            <a id="change">child_dists = [e[0] for e in child_dists_and_in_lens]</a>
+            input_lens = [e[1] for e in child_dists_and_in_lens]
+            return partial(
+                (TorchMultiActionDistribution
+                 if framework == "torch" else MultiActionDistribution),</code></pre><img src="7879705.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/1775e89f262111791fabfd40f80a24f74738fe54#diff-54df7a368079fc55ffdc326d708fa338ac32c9532619985a1f63b1c0d6437741L126' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 1775e89f262111791fabfd40f80a24f74738fe54</div><div id='time'> Time: 2020-04-28</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/models/catalog.py</div><div id='class'> Class Name: ModelCatalog</div><div id='method'> Method Name: get_action_dist</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/1775e89f262111791fabfd40f80a24f74738fe54#diff-06e969c95eb9be1ac4a78cb2c5df65e92287cf77e1a84ed54b00f3314b5c85aeL371' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 1775e89f262111791fabfd40f80a24f74738fe54</div><div id='time'> Time: 2020-04-28</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/models/tf/tf_action_dist.py</div><div id='class'> Class Name: MultiActionDistribution</div><div id='method'> Method Name: logp</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/ce11b92597b32bccf9999e94550855e55e02da9b#diff-40327be016aa63044382a9f807e8076a41a935e7c171aaa6ab6e50f5c3eeeab9L340' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: ce11b92597b32bccf9999e94550855e55e02da9b</div><div id='time'> Time: 2018-10-16</div><div id='author'> Author: adriap@google.com</div><div id='file'> File Name: sonnet/python/modules/basic_rnn.py</div><div id='class'> Class Name: DeepRNN</div><div id='method'> Method Name: _build</div><BR>

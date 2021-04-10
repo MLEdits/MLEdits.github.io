@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Returns:
+            tuple(int): error_rate, test_accuracy_rate and precision_recall_rate
+        
+        error_rate = <a id="change">self.model.eval(test_set, metric=Misclassification())</a>
+        test_accuracy_rate = self.model.eval(test_set, metric=Accuracy())
+        precision_recall_rate = self.model.eval(test_set, metric=PrecisionRecall(2))
+        <a id="change">return error_rate, test_accuracy_rate, precision_recall_rate</a>
+
+    def get_outputs(self, test_set):
+        
+        Classify the dataset on the model</code></pre><h3>After Change</h3><pre><code class='java'>
+        Returns:
+            tuple(float): loss, binary_accuracy, precision, recall and f1 messures
+        
+        <a id="change">return self.model.evaluate(test_set[&quotX&quot], test_set[&quoty&quot], batch_size=128, verbose=2)</a>
+
+    def get_outputs(self, test_set):
+        
+        Classify the dataset on the model</code></pre>

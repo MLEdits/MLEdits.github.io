@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            **self.W_init_args
+        )
+        if self.b_init is not None:
+            <a id="change">try:
+                self.b = tf.compat.v1.get_variable(
+                    name=self.name + &quot\b&quot, shape=(self.n_units), initializer=self.b_init, dtype=LayersConfig.tf_dtype,
+                    **self.b_init_args
+                )
+
+            except Exception:  &#47&#47 If initializer is a constant, do not specify shape.
+                self.b = tf.compat.v1.get_variable(
+                    name=self.name + &quot\b&quot, initializer=self.b_init, dtype=LayersConfig.tf_dtype, **self.b_init_args
+                )
+           </a> self.add_weights([self.W, self.b])
+        else:
+            self.add_weights(self.W)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        n_in = int(inputs.get_shape()[-1])
+
+        self._add_weight(scope_name=self.name, var_name="weights", shape=<a id="change">tuple(shape)</a>, init=self.W_init, init_args=self.W_init_args)
+        &#47&#47 self.W = tf.compat.v1.get_variable(
+        &#47&#47     name=self.name + &quot\W&quot, shape=(n_in, self.n_units), initializer=self.W_init, dtype=LayersConfig.tf_dtype,
+        &#47&#47     **self.W_init_args</code></pre>

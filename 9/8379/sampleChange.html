@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                GLOBAL_RUNNING_R.append(GLOBAL_RUNNING_R[-1] * 0.9 + ep_r * 0.1)
+            GLOBAL_EP += 1
+            <a id="change">print(&quot{0:.1f}%&quot.format(GLOBAL_EP / EP_MAX * 100), &quot|W%i&quot % self.wid, &quot|Ep_r: %.2f&quot % ep_r, )</a>
+
+
+if __name__ == &quot__main__&quot:
+    GLOBAL_PPO = PPO()</code></pre><h3>After Change</h3><pre><code class='java'>
+            s = self.env.reset()
+            ep_r = 0
+            buffer_s, buffer_a, buffer_r = [], [], []
+            <a id="change">t0 = time.time()</a>
+            for t in range(EP_LEN):
+                if not ROLLING_EVENT.is_set():  &#47&#47 while global PPO is updating
+                    ROLLING_EVENT.wait()  &#47&#47 wait until PPO is updated
+                    buffer_s, buffer_a, buffer_r = [], [], []  &#47&#47 clear history buffer, use new policy to collect data
+                a = self.ppo.choose_action(s)
+                s_, r, done, _ = self.env.step(a)
+                buffer_s.append(s)
+                buffer_a.append(a)
+                buffer_r.append((r + 8) / 8)  &#47&#47 normalize reward, find to be useful
+                s = s_
+                ep_r += r
+
+                GLOBAL_UPDATE_COUNTER += 1  &#47&#47 count to minimum batch size, no need to wait other workers
+                if t == EP_LEN - 1 or GLOBAL_UPDATE_COUNTER &gt;= MIN_BATCH_SIZE:
+                    v_s_ = self.ppo.get_v(s_)
+                    discounted_r = []  &#47&#47 compute discounted reward
+                    for r in buffer_r[::-1]:
+                        v_s_ = r + GAMMA * v_s_
+                        discounted_r.append(v_s_)
+                    discounted_r.reverse()
+
+                    bs, ba, br = np.vstack(buffer_s), np.vstack(buffer_a), np.array(discounted_r)[:, np.newaxis]
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    QUEUE.put(np.hstack((bs, ba, br)))  &#47&#47 put data in the queue
+                    if GLOBAL_UPDATE_COUNTER &gt;= MIN_BATCH_SIZE:
+                        ROLLING_EVENT.clear()  &#47&#47 stop collecting data
+                        UPDATE_EVENT.set()  &#47&#47 globalPPO update
+
+                    if GLOBAL_EP &gt;= EP_MAX:  &#47&#47 stop training
+                        COORD.request_stop()
+                        break
+
+            &#47&#47 record reward changes, plot later
+            if len(GLOBAL_RUNNING_R) == 0:
+                GLOBAL_RUNNING_R.append(ep_r)
+            else:
+                GLOBAL_RUNNING_R.append(GLOBAL_RUNNING_R[-1] * 0.9 + ep_r * 0.1)
+            GLOBAL_EP += 1
+
+            <a id="change">print(&quotEpisode: {}/{}  | Worker: {} | Episode Reward: {:.4f}  | Running Time: {:.4f}&quot
+                  .format(GLOBAL_EP, EP_MAX, self.wid, ep_r, time.time() - t0))</a>
+
+
+if __name__ == &quot__main__&quot:
+</code></pre>

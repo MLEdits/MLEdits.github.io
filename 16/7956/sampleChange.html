@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    pointwise_kernel = _preprocess_conv2d_kernel(pointwise_kernel, data_format)
+    padding = _preprocess_border_mode(padding)
+
+    <a id="change">if dilation_rate == (1, 1):
+        x = C.convolution(depthwise_kernel, x,
+                          strides=strides,
+                          auto_padding=[False, padding, padding],
+                          groups=x.shape[0])
+        x = C.convolution(pointwise_kernel, x,
+                          strides=(1, 1, 1),
+                          auto_padding=[False])
+    else:
+        if dilation_rate[0] != dilation_rate[1]:
+            raise ValueError(&quotCNTK Backend: non-square dilation_rate is &quot
+                             &quotnot supported.&quot)
+        if strides != (1, 1):
+            raise ValueError(&quotInvalid strides for dilated convolution&quot)
+        x = C.convolution(depthwise_kernel, x,
+                          strides=strides,
+                          auto_padding=[False, padding, padding],
+                          groups=x.shape[0])
+        x = C.convolution(pointwise_kernel, x,
+                          strides=(1, 1, 1),
+                          auto_padding=[False])
+   </a> x = _postprocess_conv2d_output(x, data_format)
+    return squeeze(x, spatial_start_dim)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        raise ValueError(
+            &quotDilated separable 1D convolution is currently not supported &quot
+            &quotby CNTK backend. Please set `dilation_rate` to 1. &quot
+            &quotYou passed: %s&quot % <a id="change">(dilation_rate,)</a>)
+
+    if data_format == &quotchannels_last&quot:
+        spatial_start_dim = 2</code></pre>

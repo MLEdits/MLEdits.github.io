@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    
+    if extract_folder is None:
+        <a id="change">extract_folder = os.path.dirname(file_path)</a>
+    tar = tarfile.open(file_path)
+    tar.extractall(extract_folder)
+    tar.close()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        extract_folder: folder to which the files will be extracted
+
+    
+    file_path = <a id="change">Path(file_path)</a>
+    if extract_folder is None:
+        extract_folder = file_path.parent
+    extract_folder = Path(extract_folder)
+    tar = tarfile.open(file_path)</code></pre>

@@ -1,0 +1,69 @@
+<html><h3>36ce15cd6b8d07cb87e4e416b304d052c343adb5,examples/transformer/hyperparams.py,,load_hyperparams,#,22
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        args.length_bucket_step,
+        drop_long_sequences=True,
+    )
+    <a id="change">print(&quottrain_src:{}&quot.format(args.train_src))</a>
+    print(&quotdev src:{}&quot.format(args.dev_src))
+    train_dataset_hparams = {
+        "num_epochs": args.eval_interval_epoch,
+        &#47&#47"num_epochs": args.max_train_epoch,</code></pre><h3>After Change</h3><pre><code class='java'>
+    
+    For devendra data loader
+    
+    <a id="change">argparser.add_argument(&quot--input&quot, type=str, default=&quottemp/run_en_vi_bpe/data&quot)</a>
+    argparser.add_argument(&quot--data&quot, type=str, default=&quotprocessed&quot)
+    <a id="change">argparser.add_argument(&quot--wbatchsize&quot, type=int, default=3000)</a>
+    <a id="change">argparser.add_argument(&quot--epoch&quot, type=int, default=15)</a>
+    argparser.add_argument(&quot--start_epoch&quot, type=int, default=0)
+    &#47&#47argparser.add_argument(&quot--max_train_size&quot, type=int, default=60)
+    &#47&#47argparser.add_argument(&quot--max_eval_size&quot, type=int, default=30)
+    &#47&#47argparser.add_argument(&quot--max_test_size&quot, type=int, default=10)
+
+    &#47&#47 -------------------------------------------------&#47&#47
+    argparser.add_argument(&quot--max_seq_length&quot, type=int, default=256)
+    argparser.add_argument(&quot--mode&quot, type=str,
+                           default=&quottrain_and_evaluate&quot,
+                           help=&quotcan also be test mode&quot)
+    argparser.add_argument(&quot--src_language&quot, type=str, default=&quoten&quot)
+    argparser.add_argument(&quot--tgt_language&quot, type=str, default=&quotde&quot)
+    argparser.add_argument(&quot--filename_prefix&quot, type=str, default=&quotprocessed.&quot)
+    argparser.add_argument(&quot--debug&quot, type=int, default=0)
+    argparser.add_argument(&quot--draw_for_debug&quot, type=int, default=0)
+    argparser.add_argument(&quot--average_model&quot, type=int, default=0,
+                           help=&quotcurrently not supported&quot)
+    argparser.add_argument(&quot--model_dir&quot, type=str, default=&quotdefault&quot)
+    argparser.add_argument(&quot--model_filename&quot, type=str, default=&quot&quot)
+    argparser.add_argument(&quot--verbose&quot, type=int, default=0)
+    argparser.add_argument(&quot--zero_pad&quot, type=int, default=0)
+    argparser.add_argument(&quot--bos_pad&quot, type=int, default=0,
+                           help=&quotuse all-zero embedding for bos&quot)
+    argparser.add_argument(&quot--data_dir&quot, type=str,
+                           default=&quot/home/shr/t2t_data/&quot)
+    argparser.add_argument(&quot--batch_size&quot, type=int, default=4096)
+    argparser.add_argument(&quot--test_batch_size&quot, type=int, default=32)
+    argparser.add_argument(&quot--eval_steps&quot, type=int, default=1000)
+    argparser.add_argument(&quot--min_length_bucket&quot, type=int, default=9)
+    argparser.add_argument(&quot--length_bucket_step&quot, type=float, default=1.1)
+    argparser.add_argument(&quot--max_training_steps&quot, type=int, default=250000)
+    argparser.add_argument(&quot--warmup_steps&quot, type=int, default=16000)
+    argparser.add_argument(&quot--lr_constant&quot, type=float, default=2)
+    argparser.add_argument(&quot--max_train_epoch&quot, type=int, default=70)
+    argparser.add_argument(&quot--random_seed&quot, type=int, default=1234)
+    argparser.add_argument(&quot--log_disk_dir&quot, type=str)
+    argparser.add_argument(&quot--beam_width&quot, type=int, default=5)
+    argparser.add_argument(&quot--alpha&quot, type=float, default=0.6,\
+        help=&quot length_penalty=(5+len(decode)/6) ^ -\alpha&quot)
+    argparser.add_argument(&quot--save_eval_output&quot, default=1, \
+        help=&quotsave the eval output to file&quot)
+    argparser.add_argument(&quot--eval_interval_epoch&quot, type=int, default=1)
+    argparser.add_argument(&quot--load_from_pytorch&quot, type=str, default=&quot&quot)
+    <a id="change">argparser.add_argument(&quot--affine_bias&quot, type=int, default=1,
+        help="for devendra, it&quots 1; fot t2t , it&quots 0")</a>
+    argparser.add_argument(&quot--eval_criteria&quot, type=str, default=&quotbleu&quot)
+    argparser.add_argument(&quot--pre_encoding&quot, type=str, default=&quotspm&quot)
+    argparser.add_argument(&quot--max_decode_len&quot, type=int, default=256)
+    argparser.parse_args(namespace=args)</code></pre><img src="16729135.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/asyml/texar/commit/36ce15cd6b8d07cb87e4e416b304d052c343adb5#diff-f7b5fd3c03baab30d08039c2731688e2fd542f6afc34c0a75f07e962491b3bcdL27' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 36ce15cd6b8d07cb87e4e416b304d052c343adb5</div><div id='time'> Time: 2018-06-24</div><div id='author'> Author: shore@pku.edu.cn</div><div id='file'> File Name: examples/transformer/hyperparams.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: load_hyperparams</div><BR><BR><div id='link'><a href='https://github.com/asyml/texar/commit/4a327c9e769bc99adc87c9464374523de89fec6c#diff-f7b5fd3c03baab30d08039c2731688e2fd542f6afc34c0a75f07e962491b3bcdL27' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 4a327c9e769bc99adc87c9464374523de89fec6c</div><div id='time'> Time: 2018-08-08</div><div id='author'> Author: shore@pku.edu.cn</div><div id='file'> File Name: examples/transformer/hyperparams.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: load_hyperparams</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/c89e20e360daeaa4f2a99c2ad0c579d503a07952#diff-fea65bbd8ef389fa61076dc592bf360030d4a6395b9fe3373c3d76bbe5b873e8L23' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: c89e20e360daeaa4f2a99c2ad0c579d503a07952</div><div id='time'> Time: 2020-01-18</div><div id='author'> Author: haofeikuang@gmail.com</div><div id='file'> File Name: scripts/segmentation/train.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: parse_args</div><BR>

@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        seq_no = 0
+        while i &lt; samples.count:
+            seq_no_end = seq_no
+            <a id="change">actual_count = 0</a>
+            <a id="change">while actual_count &lt; sgd_minibatch_size and len(
+                    samples.seq_lens) &gt; seq_no_end:
+                actual_count += samples.seq_lens[seq_no_end]
+                seq_no_end += 1
+           </a> slices.append((seq_no, seq_no_end))
+            i += actual_count
+            seq_no = seq_no_end
+    else:</code></pre><h3>After Change</h3><pre><code class='java'>
+            seq_len = samples.seq_lens[idx]
+            minibatch_size += seq_len
+            &#47&#47 Complete minibatch -&gt; Append to slices.
+            if <a id="change">minibatch_size &gt;= sgd_mi</a>nibatch_size:
+                slices.append((start_pos, start_pos + sgd_minibatch_size))
+                <a id="change">start_pos += sgd_minibatch_size</a>
+                <a id="change">if minibatch_size &gt; sgd_minibatch_size:
+                    overhead = minibatch_size - sgd_minibatch_size
+                    start_pos -= (seq_len - overhead)
+                    idx -= 1
+               </a> minibatch_size = 0
+            idx += 1
+    else:
+        while i &lt; samples.count:</code></pre>

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                tf.logging.info(&quotprocessed all batches.&quot)
+                loop_status[&quotall_saved_flag&quot] = True
+                break
+            <a id="change">console = graph_output.get(CONSOLE, {})</a>
+            <a id="change">console_str = &quot, &quot.join(
+                &quot{}={}&quot.format(key, val) for (key, val) in console.items())</a>
+            tf.logging.info(&quot{} ({:.3f}s)&quot.format(
+                console_str, time.time() - local_time))
+
+    def _save_model(self, session, iter_i):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+            &#47&#47 build variables to run
+            vars_to_run = dict()
+            <a id="change">vars_to_run</a>[NETORK_OUTPUT], vars_to_run[CONSOLE] = \
+                self.outputs_collector.variables(NETORK_OUTPUT), \
+                self.outputs_collector.variables(CONSOLE)
+</code></pre>

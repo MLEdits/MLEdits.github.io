@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 Wait until the right checkpoint is saved.
+    &#47&#47 The trainable returns every 0.5 seconds, so this should not miss
+    &#47&#47 the checkpoint.
+    <a id="change">for i in range(50):
+        if TrialRunner.checkpoint_exists(local_checkpoint_dir):
+            &#47&#47 Inspect the internal trialrunner
+            runner = TrialRunner(
+                resume="LOCAL", local_checkpoint_dir=local_checkpoint_dir)
+            trials = runner.get_trials()
+            if trials and len(trials) &gt;= 10:
+                break
+        time.sleep(.5)
+
+   </a> if not TrialRunner.checkpoint_exists(local_checkpoint_dir):
+        raise RuntimeError(
+            f"Checkpoint file didn&quott appear in {local_checkpoint_dir}. "
+            f"Current list: {os.listdir(local_checkpoint_dir)}.")</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 Wait until the right checkpoint is saved.
+    &#47&#47 The trainable returns every 0.5 seconds, so this should not miss
+    &#47&#47 the checkpoint.
+    <a id="change">for i in range(50):
+        if TrialRunner.checkpoint_exists(local_checkpoint_dir):
+            &#47&#47 Inspect the internal trialrunner
+            runner = TrialRunner(
+                resume="LOCAL", local_checkpoint_dir=local_checkpoint_dir)
+            trials = runner.get_trials()
+            if trials and len(trials) &gt;= 10:
+                break
+        time.sleep(.5)
+    else:
+        raise ValueError(f"Didn&quott generate enough trials: {len(trials)}")
+
+   </a> if not TrialRunner.checkpoint_exists(local_checkpoint_dir):
+        raise RuntimeError(
+            f"Checkpoint file didn&quott appear in {local_checkpoint_dir}. "
+            f"Current list: {os.listdir(local_checkpoint_dir)}.")</code></pre>

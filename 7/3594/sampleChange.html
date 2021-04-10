@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        df_uncertainty_predictions = self.predict_uncertainty(X)
+
+        <a id="change">if advanced_scoring == True:
+            score = utils_scoring.advanced_scoring_classifiers(df_uncertainty_predictions.uncertainty_predictions, y)
+
+       </a> return score
+
+
+    def save(self, file_name=&quotauto_ml_saved_pipeline.dill&quot, verbose=True):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        is_uncertain_predictions = []
+
+        <a id="change">for idx, y_val in enumerate(y):
+
+            base_prediction_for_row = base_predictions[idx]
+            delta = abs(y_val - base_prediction_for_row)
+
+            if self.uncertainty_delta_units == &quotabsolute&quot:
+                if delta &gt; self.uncertainty_delta:
+                    is_uncertain_predictions.append(1)
+                else:
+                    is_uncertain_predictions.append(0)
+            elif self.uncertainty_delta_units == &quotpercentage&quot:
+                if delta / y_val &gt; self.uncertainty_delta:
+                    is_uncertain_predictions.append(1)
+                else:
+                    is_uncertain_predictions.append(0)
+
+        &#47&#47 if advanced_scoring == True:
+       </a> score = utils_scoring.advanced_scoring_classifiers(df_uncertainty_predictions.uncertainty_prediction, is_uncertain_predictions)
+
+        return score
+</code></pre>

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+def get_base_config(path, base_config_filename=&quotbase_config.yml&quot):
+    config_path = os.path.join(os.path.dirname(path), base_config_filename)
+    return easydict.EasyDict(<a id="change">yaml.load(open(config_path))</a>)
+
+
+def kwargs_to_config(kwargs):</code></pre><h3>After Change</h3><pre><code class='java'>
+
+def get_base_config(path, base_config_filename=&quotbase_config.yml&quot):
+    config_path = os.path.join(os.path.dirname(path), base_config_filename)
+    <a id="change">return load_config(config_path)</a>
+
+
+def kwargs_to_config(kwargs):
+    return easydict.EasyDict(dict(</code></pre>

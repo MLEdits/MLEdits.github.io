@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.env_id = input_dict["env_id"][0]
+        &#47&#47 Always return (episodeID, envID)
+        return [
+            <a id="change">np.array([self.episode_id, self.env_id])</a> for _ in input_dict["obs"]
+        ], [], {}
+
+    @override(Policy)</code></pre><h3>After Change</h3><pre><code class='java'>
+                                        explore=None,
+                                        timestep=None,
+                                        **kwargs):
+        <a id="change">ts = input_dict["t"]</a>
+        print(ts)
+        &#47&#47 Always return [episodeID, envID] as actions.
+        actions = np.array([[
+            input_dict[SampleBatch.AGENT_INDEX][i],
+            input_dict[SampleBatch.EPS_ID][i], input_dict["env_id"][i]
+        ] for i, _ in enumerate(input_dict["obs"])])
+        states = [
+            np.array([[ts[i]] <a id="change">for</a> i in range(len(input_dict["obs"]))])
+            for _ in range(2)
+        ]
+        <a id="change">return actions, states, {}</a>
+
+    @override(Policy)
+    def postprocess_trajectory(self,
+                               sample_batch,</code></pre>

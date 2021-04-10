@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                               use_bias=False, name=name + &quot_2_conv&quot)(x)
+    x_shape = backend.int_shape(x)[1:-1]
+    x = layers.Reshape(x_shape + (groups, c, c))(x)
+    output_shape = x_shape + <a id="change">(groups, c)</a> if backend.backend() == &quottheano&quot else None
+    x = layers.Lambda(lambda x: sum([x[:, :, :, :, i] for i in range(c)]),
+                      output_shape=output_shape, name=name + &quot_2_reduce&quot)(x)
+    x = layers.Reshape(x_shape + (filters,))(x)</code></pre><h3>After Change</h3><pre><code class='java'>
+    x = layers.DepthwiseConv2D(kernel_size, strides=stride, depth_multiplier=c,
+                               use_bias=False, name=name + &quot_2_conv&quot)(x)
+    kernel = np.zeros((1, 1, filters * c, filters), dtype=np.float32)
+    <a id="change">for i in range(filters):
+        start = (i // c) * c * c + i % c
+        end = start + c * c
+        kernel[:, :, start:end:c, i] = 1.
+   </a> x = layers.Conv2D(filters, 1, use_bias=False, trainable=False,
+                      kernel_initializer={&quotclass_name&quot: &quotConstant&quot,
+                                          &quotconfig&quot: {&quotvalue&quot: kernel}},
+                      name=name + &quot_2_gconv&quot)(x)</code></pre>

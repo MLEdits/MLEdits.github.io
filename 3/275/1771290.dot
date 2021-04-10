@@ -1,0 +1,14 @@
+digraph G {
+subgraph cluster0 {
+1 [label="assert" a="32" s="6012,6042" l="24,1" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="join" a="32" s="5740,5788" l="5,1" shape="box"];
+3 [label="FieldAccess" a="22" s="5732" l="7" shape="box"];
+label = "New";
+style="dotted";
+}
+3 -> 2 [label="_recv_"];
+}

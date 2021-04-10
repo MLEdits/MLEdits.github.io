@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+class TestVisBbox(unittest.TestCase):
+
+    def test_vis_bbox(self):
+        <a id="change">if optional_modules:
+            img = np.random.randint(
+                0, 255, size=(3, 32, 32)).astype(np.float32)
+            bbox = np.random.uniform(size=(3, 4)).astype(np.float32)
+            ax = vis_bbox(img, bbox, self.label, self.label_names)
+
+            self.assertIsInstance(ax, matplotlib.axes.Axes)
+
+
+</a>class TestInvalidVisBbox(unittest.TestCase):
+
+    def setUp(self):
+        self.img = np.random.randint(</code></pre><h3>After Change</h3><pre><code class='java'>
+            self.score = np.array(self.score)
+
+    def test_vis_bbox(self):
+        <a id="change">if not optional_modules:
+            return
+
+       </a> ax = vis_bbox(
+            self.img, self.bbox, self.label, self.score,
+            label_names=self.label_names)
+</code></pre>

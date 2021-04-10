@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        file_path = os.path.abspath(file_path)
+
+        if <a id="change">file_path not in self._watched_files</a>:
+            LOGGER.debug(
+                &quotIgnoring file %s.\nWatched_files: %s&quot,
+                file_path, self._watched_files)
+            return
+
+        file_info = <a id="change">self._watched_files[file_path]</a>
+
+        modification_time = os.stat(file_path).st_mtime
+        if modification_time == file_info.modification_time:
+            LOGGER.debug(&quotFile timestamp did not change: %s&quot, file_path)</code></pre><h3>After Change</h3><pre><code class='java'>
+            LOGGER.debug("Don&quott care about event type %s", event.event_type),
+            return
+
+        <a id="change">file_path</a> = os.path.abspath(file_path)
+
+        file_info = <a id="change">self._watched_files.get(file_path, None)</a>
+        if <a id="change">file_info is None:
+</a>            LOGGER.debug(
+                &quotIgnoring file %s.\nWatched_files: %s&quot,
+                file_path, self._watched_files)
+            return</code></pre>

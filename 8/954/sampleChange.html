@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+&#47&#47 https://github.com/apache/arrow/pull/2329
+&#47&#47 https://groups.google.com/a/tensorflow.org/forum/&#47&#47!topic/developers/TMqRaT-H2bI
+&#47&#47 So we use msgpack as default.
+if <a id="change">os.environ.get(&quotTENSORPACK_SERIALIZE&quot, &quotmsgpack&quot)</a> == &quotpyarrow&quot:
+    try:
+        import pyarrow as pa
+    except ImportError:</code></pre><h3>After Change</h3><pre><code class='java'>
+        return pickle.loads(buf)
+
+
+<a id="change">_DEFAULT_S = os.environ.get(&quotTENSORPACK_SERIALIZE&quot, &quotmsgpack&quot)</a>
+
+<a id="change">if _DEFAULT_S == "pyarrow":
+    dumps = PyarrowSerializer.dumps_bytes
+    loads = PyarrowSerializer.loads
+elif _DEFAULT_S == "pickle":
+    dumps = PickleSerializer.dumps
+    loads = PickleSerializer.loads
+else:
+    dumps = MsgpackSerializer.dumps
+    loads = MsgpackSerializer.loads</a>
+</code></pre>

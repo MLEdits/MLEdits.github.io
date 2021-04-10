@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                        except ValueError:
+                            raise ValueError(
+                                "{} not found in new class names {}".format(k, self.classes))
+                        <a id="change">reuse_weights.pop(k)</a>
+                        <a id="change">reuse_weights[new_idx] = v</a>
+            else:
+                new_map = {}
+                for x in reuse_weights:
+                    try:</code></pre><h3>After Change</h3><pre><code class='java'>
+                            raise ValueError(
+                                "Index {} out of bounds for new class names".format(k))
+                        new_keys.append(k)
+                <a id="change">reuse_weights = dict(zip(new_keys, new_vals))</a>
+            else:
+                new_map = {}
+                for x in reuse_weights:
+                    try:</code></pre>

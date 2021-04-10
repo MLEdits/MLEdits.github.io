@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        save_checkpoint(self.net.module, self.args, False)
+
+    def validation(self, epoch):
+        <a id="change">total_inter</a>, total_union, total_correct, total_label = 0, 0, 0, 0
+        tbar = tqdm(self.eval_data)
+        for i, (data, target) in enumerate(tbar):
+            outputs = self.evaluator(data, target)</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.metric.reset()
+        tbar = tqdm(self.eval_data)
+        for i, (data, target) in enumerate(tbar):
+            outputs = self.evaluator(data.astype(<a id="change">args.dtype</a>, copy=False))
+            <a id="change">outputs = [x[0] for x in outputs]</a>
+            <a id="change">targets = mx.gluon.utils.split_and_load(target, args.ctx)</a>
+            self.metric.update(targets, outputs)
+            pixAcc, mIoU = self.metric.get()
+            tbar.set_description(&quotEpoch %d, validation pixAcc: %.3f, mIoU: %.3f&quot%\
+                (epoch, pixAcc, mIoU))</code></pre>

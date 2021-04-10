@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            "window_size undetermined{}".format(input_mod_list))
+    uniq_window = list(uniq_window.pop())
+    &#47&#47 integer window sizes supported
+    <a id="change">uniq_window = tuple(map(int, uniq_window))</a>
+    <a id="change">return uniq_window</a>
+
+
+def complete_partial_window_sizes(win_size, img_size):
+    img_ndims = len(img_size)</code></pre><h3>After Change</h3><pre><code class='java'>
+        raise ValueError(
+            "window_size undetermined{}".format(input_mod_list))
+    &#47&#47 integer window sizes supported
+    <a id="change">return tuple(map(int, uniq_window_set.pop()))</a>
+
+
+def complete_partial_window_sizes(win_size, img_size):
+    img_ndims = len(img_size)</code></pre>

@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            progress_msg.Clear()
+            progress_msg.report_uploaded = &quotERROR: &quot + str(e)
+            yield ws.write_message(progress_msg.SerializeToString(), binary=True)
+            <a id="change">raise</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            progress_msg.Clear()
+            progress_msg.report_uploaded = &quotERROR: &quot + str(e)
+            yield ws.write_message(progress_msg.SerializeToString(), binary=True)
+            <a id="change">raise e</a>
+</code></pre>

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            {"a": [1, 2, 3, 4, 5]}
+        
+
+        <a id="change">assert self.keys() == other.keys(), "must have same columns"</a>
+        out = {}
+        for k in self.keys():
+            out[k] = concat_aligned([self[k], other[k]])
+        return SampleBatch(out)</code></pre><h3>After Change</h3><pre><code class='java'>
+            {"a": [1, 2, 3, 4, 5]}
+        
+
+        <a id="change">if self.keys() != other.keys():
+            raise ValueError(
+                "SampleBatches to concat must have same columns! {} vs {}".
+                format(list(self.keys()), list(other.keys())))
+       </a> out = {}
+        for k in self.keys():
+            out[k] = concat_aligned([self[k], other[k]])
+        return SampleBatch(out)</code></pre>

@@ -1,0 +1,25 @@
+<html><h3>e36759520ea3342600180aa2818b4b9b8be9de00,auto_ml/predictor.py,Predictor,_print_ml_analytics_results_linear_model,#Predictor#Any#,1103
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        print(&quotThe following is a list of feature names and their coefficients. By default, features are scaled to the range [0,1] in a way that is robust to outliers, so the coefficients are usually directly comparable to each other.&quot)
+        print(&quotThis printed list will contain at most the top 50 features.&quot)
+        <a id="change">for summary in sorted_feature_summary[-50:]:
+
+            print(str(summary[0]) + &quot: &quot + str(round(summary[1], 4)))
+
+
+   </a> def print_training_summary(self, gs):
+        print(&quotThe best CV score from GridSearchCV (by default averaging across k-fold CV) for &quot + self.output_column + &quot is:&quot)
+        if self.took_log_of_y:
+            print(&quot    Note that this score is calculated using the natural logs of the y values.&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        sorted_feature_summary = sorted(feature_summary, key=lambda x: abs(x[1]))
+
+        <a id="change">df_results = pd.DataFrame(sorted_feature_summary)</a>
+
+        df_results.columns = [&quotFeature Name&quot, &quotCoefficients&quot]
+
+        self._join_and_print_analytics_results(feature_responses, df_results)</code></pre><img src="17807177.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ClimbsRocks/auto_ml/commit/e36759520ea3342600180aa2818b4b9b8be9de00#diff-893454c3b7604c9e39cf39dfbdd6f1f0b1c6707e4fec48a68ceec16035875121L1123' target='_blank'>Link</a></div><div id='project'> Project Name: ClimbsRocks/auto_ml</div><div id='commit'> Commit Name: e36759520ea3342600180aa2818b4b9b8be9de00</div><div id='time'> Time: 2017-05-21</div><div id='author'> Author: climbsbytes@gmail.com</div><div id='file'> File Name: auto_ml/predictor.py</div><div id='class'> Class Name: Predictor</div><div id='method'> Method Name: _print_ml_analytics_results_linear_model</div><BR><BR><div id='link'><a href='https://github.com/ClimbsRocks/auto_ml/commit/e6bc2e29b7825e15f4e0e95d74e43910d69875cc#diff-893454c3b7604c9e39cf39dfbdd6f1f0b1c6707e4fec48a68ceec16035875121L1015' target='_blank'>Link</a></div><div id='project'> Project Name: ClimbsRocks/auto_ml</div><div id='commit'> Commit Name: e6bc2e29b7825e15f4e0e95d74e43910d69875cc</div><div id='time'> Time: 2017-05-20</div><div id='author'> Author: climbsbytes@gmail.com</div><div id='file'> File Name: auto_ml/predictor.py</div><div id='class'> Class Name: Predictor</div><div id='method'> Method Name: _get_xgb_feat_importances</div><BR><BR><div id='link'><a href='https://github.com/streamlit/streamlit/commit/2d609c9ef7b41a70cc136ef4b6a7c42800799198#diff-8c3cc21918c16248d007438e436720a7971bd76223c09296dc49a242d2ca96d9L13' target='_blank'>Link</a></div><div id='project'> Project Name: streamlit/streamlit</div><div id='commit'> Commit Name: 2d609c9ef7b41a70cc136ef4b6a7c42800799198</div><div id='time'> Time: 2018-02-13</div><div id='author'> Author: adrien.g.treuille@gmail.com</div><div id='file'> File Name: examples/new.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/streamlit/streamlit/commit/1a6e9154d9a34b957bbea7ce48a6c95c6238b23c#diff-8c3cc21918c16248d007438e436720a7971bd76223c09296dc49a242d2ca96d9L13' target='_blank'>Link</a></div><div id='project'> Project Name: streamlit/streamlit</div><div id='commit'> Commit Name: 1a6e9154d9a34b957bbea7ce48a6c95c6238b23c</div><div id='time'> Time: 2018-03-18</div><div id='author'> Author: adrien.g.treuille@gmail.com</div><div id='file'> File Name: examples/new.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

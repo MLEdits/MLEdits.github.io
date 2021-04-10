@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 TODO: better implementation
+        params = {}
+        for i, _bound in enumerate(self._bounds):
+            if _bound[&quot_type&quot] == "choice" and isinstance(<a id="change">_bound[&quot_value&quot][0]</a>, int):
+                params.update({self.keys[i]: int(x[i])})
+            else:
+                params.update({self.keys[i]:  x[i]})</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 maintain int type if the choices are int
+        params = {}
+        for i, _bound in enumerate(self._bounds):
+            if _bound[&quot_type&quot] == &quotchoice&quot and <a id="change">all(isinstance(val, int) for val in _bound[&quot_value&quot])</a>:
+                params.update({self.keys[i]: int(x[i])})
+            elif _bound[&quot_type&quot] in [&quotrandint&quot, &quotquniform&quot]:
+                params.update({self.keys[i]: int(x[i])})</code></pre>

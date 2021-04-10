@@ -1,0 +1,20 @@
+<html><h3>98f57a0d8781083cbca137fb9d84313b94d9d108,agents/ddpg_agent.py,DDPGAgent,learn_from_batch,#DDPGAgent#Any#,42
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        gradients = self.actor_network.sess.run(actor_online_network.weighted_gradients,
+                                                feed_dict={
+                                                    actor_online_network.gradients_weights_ph: -action_gradients,
+                                                    <a id="change">actor_online_network.inputs[0]</a>: current_states
+                                                })
+        if self.actor_network.has_global:
+            self.actor_network.global_network.apply_gradients(gradients)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        &#47&#47 TD error = r + discount*max(q_st_plus_1) - q_st
+        next_actions = self.actor_network.target_network.predict(next_states)
+        <a id="change">inputs = copy.copy(next_states)</a>
+        <a id="change">inputs[&quotaction&quot]</a> = next_actions
+        q_st_plus_1 = self.critic_network.target_network.predict(inputs)
+        TD_targets = np.expand_dims(rewards, -1) + \
+                     (1.0 - np.expand_dims(game_overs, -1)) * self.tp.agent.discount * q_st_plus_1</code></pre><img src="10855280.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NervanaSystems/coach/commit/98f57a0d8781083cbca137fb9d84313b94d9d108#diff-80390ffc1ccc8f8691622d0e1627d7c6b7f0f7cad0bf2a100c6219aba457997cL46' target='_blank'>Link</a></div><div id='project'> Project Name: NervanaSystems/coach</div><div id='commit'> Commit Name: 98f57a0d8781083cbca137fb9d84313b94d9d108</div><div id='time'> Time: 2018-02-21</div><div id='author'> Author: zach.dwiel@intel.com</div><div id='file'> File Name: agents/ddpg_agent.py</div><div id='class'> Class Name: DDPGAgent</div><div id='method'> Method Name: learn_from_batch</div><BR><BR><div id='link'><a href='https://github.com/asyml/texar/commit/458e0db65dd2e808d34bbb7dbeea5bf48739dd0f#diff-559cf9d3d731a1ee524c836ae18f4347f1571215d85856ee588d99730cd510cfL148' target='_blank'>Link</a></div><div id='project'> Project Name: asyml/texar</div><div id='commit'> Commit Name: 458e0db65dd2e808d34bbb7dbeea5bf48739dd0f</div><div id='time'> Time: 2018-03-20</div><div id='author'> Author: zhitinghu@gmail.com</div><div id='file'> File Name: texar/data/data/paired_text_data.py</div><div id='class'> Class Name: PairedTextData</div><div id='method'> Method Name: _make_processor</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/f7a41e4ddaa12a5cb19d0458431e88a16edd10b6#diff-a9c6f6417846c60c6aef57985e186be6c2221c3de867e43a73000b05defeb57bL58' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: f7a41e4ddaa12a5cb19d0458431e88a16edd10b6</div><div id='time'> Time: 2018-03-26</div><div id='author'> Author: yuyuniitani@gmail.com</div><div id='file'> File Name: chainercv/visualizations/vis_instance_segmentation.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: vis_instance_segmentation</div><BR>

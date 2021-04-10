@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        util.get_external_ip(),
+    ]
+
+    s3_url = <a id="change">config.get_option(&quots3.url&quot)</a>
+
+    <a id="change">if s3_url is not None:
+        parsed = urllib.parse.urlparse(s3_url)
+        allowed_domains.append(parsed.hostname)
+
+   </a> if config.is_manually_set(&quotbrowser.serverAddress&quot):
+        allowed_domains.append(config.get_option(&quotbrowser.serverAddress&quot))
+
+    return any(hostname == d for d in allowed_domains)</code></pre><h3>After Change</h3><pre><code class='java'>
+        if allowed_domain is None:
+            continue
+
+        <a id="change">if hostname == allowed_domain:
+            return True
+
+   </a> return False
+
+
+def _get_server_address_if_manually_set():</code></pre>

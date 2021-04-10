@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    data_type = first_dataset.data_type
+
+    &#47&#47 Load fields generated from preprocess phase.
+    <a id="change">fields = load_fields(first_dataset, opt, checkpoint)</a>
+
+    &#47&#47 Report src/tgt features.
+
+    src_features, tgt_features = _collect_report_features(fields)
+    for j, feat in enumerate(src_features):
+        logger.info(&quot * src feature %d size = %d&quot
+                    % (j, len(fields[feat].vocab)))
+    for j, feat in enumerate(tgt_features):
+        logger.info(&quot * tgt feature %d size = %d&quot
+                    % <a id="change">(j, len(fields[feat].vocab))</a>)
+
+    &#47&#47 Build model.
+    model = build_model(model_opt, opt, fields, checkpoint)</code></pre><h3>After Change</h3><pre><code class='java'>
+    else:
+        checkpoint = None
+        model_opt = opt
+        <a id="change">vocab = torch.load(opt.data + &quot.vocab.pt&quot)</a>
+
+    &#47&#47 Load a shard dataset to determine the data_type.
+    &#47&#47 (All datasets have the same data_type).
+    &#47&#47 this should be refactored out of existence reasonably soon
+    first_dataset = torch.load(glob.glob(opt.data + &quot.train*.pt&quot)[0])
+    data_type = first_dataset.data_type
+
+    &#47&#47 check for code where vocab is saved instead of fields
+    &#47&#47 (in the future this will be done in a smarter way
+    if old_style_vocab(vocab):
+        fields = load_fields_from_vocab(vocab, data_type)
+    else:
+        fields = vocab
+
+    &#47&#47 Report src and tgt vocab sizes, including for features
+    for side in [&quotsrc&quot, &quottgt&quot]:
+        <a id="change">for name, f in fields[side]:
+            if f.use_vocab:
+                logger.info(&quot * %s vocab size = %d&quot % (name, len(f.vocab)))
+
+    &#47&#47 Build model.
+   </a> model = build_model(model_opt, opt, fields, checkpoint)
+    n_params, enc, dec = _tally_parameters(model)
+    logger.info(&quotencoder: %d&quot % enc)
+    logger.info(&quotdecoder: %d&quot % dec)</code></pre>

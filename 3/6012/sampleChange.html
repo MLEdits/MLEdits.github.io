@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                &#47&#47 It is computed in PretrainedTransformerTokenizer.
+                indices.append(token.text_id)
+            else:
+                <a id="change">raise KeyError(
+                    "Using PretrainedTransformerIndexer but field text_id is not set"
+                    f" for the following token: {token.text}"
+                )</a>
+
+            if type_ids is not None and getattr(token, "type_id", None) is not None:
+                type_ids.append(token.type_id)
+            else:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        indices, type_ids = self._extract_token_and_type_ids(tokens)
+        &#47&#47 The mask has 1 for real tokens and 0 for padding tokens. Only real tokens are attended to.
+        output = <a id="change">{"token_ids": indices, "mask": [1] * len(indices)}</a>
+        if type_ids is not None:
+            output["type_ids"] = type_ids
+
+        <a id="change">return self._postprocess_output(output)</a>
+
+    def _extract_token_and_type_ids(
+        self, tokens: List[Token]
+    ) -&gt; Tuple[List[int], Optional[List[int]]]:</code></pre>

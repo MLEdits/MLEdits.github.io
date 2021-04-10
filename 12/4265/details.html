@@ -1,0 +1,31 @@
+<html><h3>b2bcab711d333442c282cf64c66a9fac2c93218f,rllib/utils/sgd.py,,minibatches,#Any#Any#,48
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        seq_no = 0
+        while i &lt; samples.count:
+            seq_no_end = seq_no
+            <a id="change">actual_count = 0</a>
+            <a id="change">while actual_count &lt; sgd_minibatch_size and len(
+                    samples.seq_lens) &gt; seq_no_end:
+                actual_count += samples.seq_lens[seq_no_end]
+                seq_no_end += 1
+           </a> slices.append((seq_no, seq_no_end))
+            i += actual_count
+            seq_no = seq_no_end
+    else:</code></pre><h3>After Change</h3><pre><code class='java'>
+            seq_len = samples.seq_lens[idx]
+            minibatch_size += seq_len
+            &#47&#47 Complete minibatch -&gt; Append to slices.
+            if <a id="change">minibatch_size &gt;= sgd_mi</a>nibatch_size:
+                slices.append((start_pos, start_pos + sgd_minibatch_size))
+                <a id="change">start_pos += sgd_minibatch_size</a>
+                <a id="change">if minibatch_size &gt; sgd_minibatch_size:
+                    overhead = minibatch_size - sgd_minibatch_size
+                    start_pos -= (seq_len - overhead)
+                    idx -= 1
+               </a> minibatch_size = 0
+            idx += 1
+    else:
+        while i &lt; samples.count:</code></pre><img src="18386232.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 9</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/b2bcab711d333442c282cf64c66a9fac2c93218f#diff-fbe4e9b99434e033c5a9fa91e05de9849f0ca6f705dfefc19ad220655dc05027L73' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: b2bcab711d333442c282cf64c66a9fac2c93218f</div><div id='time'> Time: 2020-12-20</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/utils/sgd.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: minibatches</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/93cfd8bd22d6b798b94aead3c8ea75ace2727265#diff-7b972eed9d034fa2e26eef0fc1dec8a9e08b7dba5c18e13f858af09e75b84146L135' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: 93cfd8bd22d6b798b94aead3c8ea75ace2727265</div><div id='time'> Time: 2019-02-18</div><div id='author'> Author: shingogo@hotmail.co.jp</div><div id='file'> File Name: chainercv/functions/ps_roi_max_align_2d.py</div><div id='class'> Class Name: PSROIMaxAlign2D</div><div id='method'> Method Name: forward_cpu</div><BR><BR><div id='link'><a href='https://github.com/NVIDIA/OpenSeq2Seq/commit/42ad0f227fa39fe9b96bc3e08b2e5704dc157e74#diff-25748bd17accb5d25ebc25311278c998f70b7c8f28e587890a332b75d5dde2a1L77' target='_blank'>Link</a></div><div id='project'> Project Name: NVIDIA/OpenSeq2Seq</div><div id='commit'> Commit Name: 42ad0f227fa39fe9b96bc3e08b2e5704dc157e74</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: xravitejax@gmail.com</div><div id='file'> File Name: open_seq2seq/encoders/w2l_encoder.py</div><div id='class'> Class Name: Wave2LetterEncoder</div><div id='method'> Method Name: _encode</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/b2bcab711d333442c282cf64c66a9fac2c93218f#diff-fbe4e9b99434e033c5a9fa91e05de9849f0ca6f705dfefc19ad220655dc05027L73' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: b2bcab711d333442c282cf64c66a9fac2c93218f</div><div id='time'> Time: 2020-12-20</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/utils/sgd.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: minibatches</div><BR>

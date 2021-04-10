@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    if img.ndim == 2:
+        &#47&#47 reshape (H, W) -&gt; (1, H, W)
+        <a id="change">return img[np.newaxis]</a>
+    else:
+        &#47&#47 transpose (H, W, C) -&gt; (C, H, W)
+        return img.transpose((2, 0, 1))
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    if img.ndim == 2:
+        return img
+    elif <a id="change">img.shape[2] == 1:
+   </a>     <a id="change">return img[:, :, 0]</a>
+    else:
+        <a id="change">raise ValueError("Color image can&quott be accepted as label image.")</a>
+</code></pre>

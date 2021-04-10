@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    STSBDataset, BERTDatasetTransform, \
+    QNLIDataset, COLADataset, MNLIDataset, WNLIDataset, SSTDataset
+
+<a id="change">tasks = {
+    &quotMRPC&quot: MRPCDataset,
+    &quotQQP&quot: QQPDataset,
+    &quotQNLI&quot: QNLIDataset,
+    &quotRTE&quot: RTEDataset,
+    &quotSTS-B&quot: STSBDataset,
+    &quotCoLA&quot: COLADataset,
+    &quotMNLI&quot: MNLIDataset,
+    &quotWNLI&quot: WNLIDataset,
+    &quotSST&quot: SSTDataset
+}</a>
+
+parser = argparse.ArgumentParser(
+    description=&quotBERT fine-tune examples for GLUE tasks.&quot)
+parser.add_argument(</code></pre><h3>After Change</h3><pre><code class='java'>
+from dataset import MRPCTask, QQPTask, RTETask, STSBTask, \
+    QNLITask, CoLATask, MNLITask, WNLITask, SSTTask, BERTDatasetTransform
+
+<a id="change">tasks = {
+    &quotMRPC&quot: MRPCTask(),
+    &quotQQP&quot: QQPTask(),
+    &quotQNLI&quot: QNLITask(),
+    &quotRTE&quot: RTETask(),
+    &quotSTS-B&quot: STSBTask(),
+    &quotCoLA&quot: CoLATask(),
+    &quotMNLI&quot: MNLITask(),
+    &quotWNLI&quot: WNLITask(),
+    &quotSST&quot: SSTTask()
+}</a>
+
+parser = argparse.ArgumentParser(
+    description=&quotBERT fine-tune examples for GLUE tasks.&quot)
+parser.add_argument(</code></pre>

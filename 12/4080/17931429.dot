@@ -1,0 +1,36 @@
+digraph G {
+subgraph cluster0 {
+1 [label="name_scope" a="32" s="6480" l="12" shape="box"];
+5 [label="PyWithStatement" a="104" s="6465,6492" l="10,2" shape="diamond"];
+8 [label="FieldAccess" a="22" s="6502" l="12" shape="box"];
+14 [label="SimpleName" a="42" s="6475" l="4" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="Dense" a="32" s="5932,5985" l="6,1" shape="box"];
+3 [label="BooleanLiteral" a="9" s="5944" l="5" shape="ellipse"];
+4 [label="FieldAccess" a="22" s="5902" l="26" shape="box"];
+6 [label="SimpleName" a="42" s="4683" l="4" shape="ellipse"];
+7 [label="FieldAccess" a="22" s="5552" l="12" shape="box"];
+9 [label="FieldAccess" a="22" s="5256" l="15" shape="box"];
+10 [label="Assignment:=" a="7" s="5271" l="1" shape="box"];
+11 [label="Assignment:=" a="7" s="5928" l="1" shape="box"];
+12 [label="SimpleName" a="42" s="5902" l="4" shape="ellipse"];
+13 [label="SimpleName" a="42" s="5256" l="4" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 5 [label="_cond_"];
+2 -> 11 [label="_para_"];
+3 -> 2 [label="_para_"];
+6 -> 13 [label="_ref_"];
+6 -> 7 [label="_qual_"];
+6 -> 12 [label="_ref_"];
+8 -> 7 [label="_map_"];
+10 -> 9 [label="_def_"];
+11 -> 4 [label="_def_"];
+12 -> 4 [label="_qual_"];
+13 -> 9 [label="_qual_"];
+14 -> 1 [label="_recv_"];
+}

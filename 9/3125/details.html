@@ -1,0 +1,31 @@
+<html><h3>8182ea386e6529a1a2294d8e2d33fc040d0cbfb2,deepctr/inputs.py,,get_linear_logit,#Any#Any#Any#Any#Any#Any#Any#,153
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    else:
+        linear_term = None
+
+    <a id="change">if len(dense_input_list) &gt; 0:
+        dense_input__ = dense_input_list[0] if len(
+            dense_input_list) == 1 else Concatenate()(dense_input_list)
+        linear_dense_logit = Dense(
+            units, activation=None, use_bias=False, kernel_regularizer=l2(l2_reg))(dense_input__)
+        if linear_term is not None:
+            linear_term = add([linear_dense_logit, linear_term])
+        else:
+            linear_term = linear_dense_logit
+
+   </a> return linear_term
+
+def embedding_lookup(sparse_embedding_dict,sparse_input_dict,sparse_feature_columns,return_feat_list=(), mask_feat_list=()):
+    embedding_vec_list = []</code></pre><h3>After Change</h3><pre><code class='java'>
+            dense_input = concat_fun(dense_input_list)
+            linear_logit = Linear(l2_reg,mode=2)([sparse_input,dense_input])
+        elif len(linear_emb_list[0])&gt;0:
+            <a id="change">sparse_input = concat_fun(linear_emb_list[i])</a>
+            <a id="change">linear_logit = Linear(l2_reg,mode=0)(sparse_input)</a>
+        elif len(dense_input_list) &gt;0:
+            dense_input = concat_fun(dense_input_list)
+            linear_logit = Linear(l2_reg,mode=1)(dense_input)
+        else:</code></pre><img src="14983844.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/8182ea386e6529a1a2294d8e2d33fc040d0cbfb2#diff-d1d4cce994b0eb5d0c37a7602b14d2590fcfa3a4d2de7376dd541557ad5d3a34L155' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: 8182ea386e6529a1a2294d8e2d33fc040d0cbfb2</div><div id='time'> Time: 2019-07-21</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: deepctr/inputs.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_linear_logit</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/6126960c57919dc71237609c76c2d0449834c24c#diff-83ee4faab921fce2f6a76ad73922a9eb7edd5e8e89eef7df956a346388489773L39' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 6126960c57919dc71237609c76c2d0449834c24c</div><div id='time'> Time: 2020-10-10</div><div id='author'> Author: 38930155+chicm-ms@users.noreply.github.com</div><div id='file'> File Name: examples/model_compress/amc/amc_search.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_model_and_checkpoint</div><BR><BR><div id='link'><a href='https://github.com/allenai/allennlp/commit/700abc65fd2172a2c6809dd9b72cf50fc2407772#diff-72ee7e31870989d3f338643934daa891065889ef15d85ff22ee1e91db8472f5dL48' target='_blank'>Link</a></div><div id='project'> Project Name: allenai/allennlp</div><div id='commit'> Commit Name: 700abc65fd2172a2c6809dd9b72cf50fc2407772</div><div id='time'> Time: 2020-02-03</div><div id='author'> Author: mattg@allenai.org</div><div id='file'> File Name: allennlp/models/encoder_decoders/composed_seq2seq.py</div><div id='class'> Class Name: ComposedSeq2Seq</div><div id='method'> Method Name: __init__</div><BR>

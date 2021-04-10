@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    self.assertEqual(actual.pos_in_fasta, expected.pos_in_fasta)
+
+  def test_iterate(self):
+    <a id="change">with self.assertRaises(NotImplementedError):
+      self.in_mem.iterate()
+
+ </a> @parameterized.parameters(
+      dict(region=ranges.make_range(&quotchr1&quot, 0, 10), expected=True),
+      dict(region=ranges.make_range(&quotchr1&quot, 10, 50), expected=True),
+      dict(region=ranges.make_range(&quotchr1&quot, 10, 500), expected=False),</code></pre><h3>After Change</h3><pre><code class='java'>
+    expected_lengths = [
+        contig.n_bases for contig in self.fasta_reader.header.contigs]
+    in_mem_records = list(self.in_mem.iterate())
+    <a id="change">self.assertLen(in_mem_records, len(self.fasta_reader.header.contigs))</a>
+    self.assertEqual([r[0] for r in in_mem_records], expected_names)
+    self.assertEqual([len(r[1]) for r in in_mem_records], expected_lengths)
+
+    &#47&#47 Check the in-memory fasta file&quots iterable matches that of the indexed</code></pre>

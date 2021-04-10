@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            if self.l1:
+                regularized_loss += self.l1 * K.mean(K.abs(output))
+            if self.l2:
+                regularized_loss += <a id="change">self.l2 * K.mean(K.square(output))</a>
+        return K.in_train_phase(regularized_loss, loss)
+
+    def get_config(self):
+        return {&quotname&quot: self.__class__.__name__,</code></pre><h3>After Change</h3><pre><code class='java'>
+            if self.l1:
+                regularized_loss += K.sum(self.l1 * K.abs(output))
+            if self.l2:
+                regularized_loss += K.sum(<a id="change">self.l2 * K.square(output)</a>)
+        return K.in_train_phase(regularized_loss, loss)
+
+    def get_config(self):</code></pre>

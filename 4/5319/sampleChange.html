@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Calculates the covariance matrix with function values at new points
+        `Xnew` for kernel `kern`.
+        
+        <a id="change">raise NotImplementedError()</a>
+
+
+class InducingPoints(InducingFeature):
+    </code></pre><h3>After Change</h3><pre><code class='java'>
+        M = len(feat)
+        N = len(Xnew)
+        
+        <a id="change">warnings.warn(&quotPlease replace feature.Kuf(kernel, Xnew) with Kuf(feature, kernel, Xnew)&quot,
+                      DeprecationWarning)</a>
+        return Kuf(self, kern, Xnew)
+
+
+class InducingPointsBase(InducingFeature):</code></pre>

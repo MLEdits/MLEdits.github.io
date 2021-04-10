@@ -1,0 +1,33 @@
+<html><h3>bb1b1c6e27b273a66135d02a04232835d5bfc3ca,allennlp/data/token_indexers/pretrained_transformer_indexer.py,PretrainedTransformerIndexer,tokens_to_indices,#PretrainedTransformerIndexer#Any#Any#Any#,59
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        if not self._added_to_vocabulary and hasattr(self.tokenizer, "vocab"):
+            self._add_encoding_to_vocabulary(vocabulary)
+            self._added_to_vocabulary = True
+        <a id="change">token_text = [token.text for token in tokens]</a>
+        <a id="change">indices = self.tokenizer.convert_tokens_to_ids(token_text)</a>
+
+        return {index_name: indices}
+
+    @overrides</code></pre><h3>After Change</h3><pre><code class='java'>
+            self._added_to_vocabulary = True
+
+        indices: List[int] = []
+        <a id="change">for token in tokens:
+            if getattr(token, "text_id", None) is not None:
+                &#47&#47 `text_id` being set on the token means that we aren&quott using the vocab, we just use
+                &#47&#47 this id instead. Id comes from the pretrained vocab.
+                &#47&#47 &#47&#47 It computed in PretrainedTransformerTokenizer.
+                indices.append(token.text_id)
+            else:
+                raise KeyError(
+                    Using PretrainedTransformerIndexer but field text_id is
+                                not set for the following token: {token.text}
+                )
+
+       </a> return {index_name: indices}
+
+    @overrides
+    def get_padding_lengths(self, token: int) -&gt; Dict[str, int]:</code></pre><img src="10579889.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 9</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/allenai/allennlp/commit/bb1b1c6e27b273a66135d02a04232835d5bfc3ca#diff-1531e12f77c625639b9d3cab0a169259a0d92eaa43517738ea569e174d744513L60' target='_blank'>Link</a></div><div id='project'> Project Name: allenai/allennlp</div><div id='commit'> Commit Name: bb1b1c6e27b273a66135d02a04232835d5bfc3ca</div><div id='time'> Time: 2019-11-19</div><div id='author'> Author: max.del.edu@gmail.com</div><div id='file'> File Name: allennlp/data/token_indexers/pretrained_transformer_indexer.py</div><div id='class'> Class Name: PretrainedTransformerIndexer</div><div id='method'> Method Name: tokens_to_indices</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L24' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_single_tensor_operation</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L40' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_two_tensor_operation</div><BR>

@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            return partial(dist, input_lens=action_space.nvec), \
+                int(sum(action_space.nvec))
+        &#47&#47 Dict -&gt; TODO(sven)
+        elif <a id="change">isinstance</a>(action_space, gym.spaces.Dict):
+            &#47&#47 TODO(sven): implement
+            raise NotImplementedError(
+                "Dict action spaces are not supported, consider using "</code></pre><h3>After Change</h3><pre><code class='java'>
+        elif dist_type in (MultiActionDistribution,
+                           TorchMultiActionDistribution) or \
+                isinstance(action_space, (gym.spaces.Tuple, gym.spaces.Dict)):
+            <a id="change">flat_action_space = flatten_space(action_space)</a>
+            child_dists_and_in_lens = <a id="change">tree.map_structure(
+                lambda s: ModelCatalog.get_action_dist(
+                    s, config, framework=framework), flat_action_space)</a>
+            <a id="change">child_dists = [e[0] for e in child_dists_and_in_lens]</a>
+            input_lens = [e[1] for e in child_dists_and_in_lens]
+            return partial(
+                (TorchMultiActionDistribution
+                 if framework == "torch" else MultiActionDistribution),</code></pre>

@@ -1,0 +1,24 @@
+<html><h3>49be01910a8e8424b017ed3df65c4928fc918c67,gluoncv/loss.py,YOLOV3Loss,hybrid_forward,#YOLOV3Loss#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#,182
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 compute some normalization count, except batch-size
+        denorm = F.cast(
+            F.shape_array(objness_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)
+        obj_loss = <a id="change">F.broadcast_mul(self._sigmoid_ce(objness, objness_t, objness_t &gt;= 0), denorm)</a>
+        center_loss = F.broadcast_mul(self._sigmoid_ce(box_centers, center_t, weight_t), denorm * 2)
+        scale_loss = F.broadcast_mul(self._l1_loss(box_scales, scale_t, weight_t), denorm * 2)
+        denorm_class = F.cast(
+            F.shape_array(class_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+        denorm = F.cast(
+            F.shape_array(objness_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)
+        weight_t = F.broadcast_mul(weight_t, objness_t)
+        <a id="change">hard_objness_t = F.where(objness_t &gt; 0, F.ones_like(objness_t), objness_t)</a>
+        new_objness_mask = F.where(objness_t &gt; 0, objness_t, objness_t &gt;= 0)
+        <a id="change">obj_loss = F.broadcast_mul(
+            self._sigmoid_ce(objness, hard_objness_t, new_objness_mask), denorm)</a>
+        center_loss = F.broadcast_mul(self._sigmoid_ce(box_centers, center_t, weight_t), denorm * 2)
+        scale_loss = F.broadcast_mul(self._l1_loss(box_scales, scale_t, weight_t), denorm * 2)
+        denorm_class = F.cast(
+            F.shape_array(class_t).slice_axis(axis=0, begin=1, end=None).prod(), &quotfloat32&quot)</code></pre><img src="4261553.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/49be01910a8e8424b017ed3df65c4928fc918c67#diff-269f18735e06f948ca83717d46f7b5c4357c4ef53d9939c3bd53594c91460b57L182' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 49be01910a8e8424b017ed3df65c4928fc918c67</div><div id='time'> Time: 2018-10-10</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/loss.py</div><div id='class'> Class Name: YOLOV3Loss</div><div id='method'> Method Name: hybrid_forward</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/447c8e87ea3b270d0b3404ad962032752cfbc0ab#diff-cc621e590a19bfc6d89c413e787cc2f17a349c2dee3f2c69f25614e7a0a59848L35' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 447c8e87ea3b270d0b3404ad962032752cfbc0ab</div><div id='time'> Time: 2020-04-22</div><div id='author'> Author: zhangz6@cs.washington.edu</div><div id='file'> File Name: gluoncv/nn/splat.py</div><div id='class'> Class Name: SplitAttentionConv</div><div id='method'> Method Name: hybrid_forward</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/fc3cea17d2a8caaded3319dca1b1ae46468a57c0#diff-7742b29a6ebf1b16f271e81e1fea69a33330e28baf594b26c776b7fcd398b169L143' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: fc3cea17d2a8caaded3319dca1b1ae46468a57c0</div><div id='time'> Time: 2018-07-20</div><div id='author'> Author: 13162287+ijkguo@users.noreply.github.com</div><div id='file'> File Name: gluoncv/nn/coder.py</div><div id='class'> Class Name: NormalizedBoxCenterDecoder</div><div id='method'> Method Name: hybrid_forward</div><BR>

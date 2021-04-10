@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    parser = argparse.ArgumentParser("speedup")
+    parser.add_argument("--example_name", type=str, default="slim", help="the name of pruning example")
+    parser.add_argument("--masks_file", type=str, default=None, help="the path of the masks file")
+    <a id="change">parser.add_argument("--model_checkpoint", type=str, default=None, help="the path of checkpointed model")</a>
+    args = parser.parse_args()
+    
+    if args.example_name == &quotslim&quot:
+        if args.masks_file is None:</code></pre><h3>After Change</h3><pre><code class='java'>
+            raise RuntimeError(msg.format(config[args.example_name][&quotmasks_file&quot]))
+        model_inference(config[args.example_name])
+    else:
+        model_inference(<a id="change">config[&quotfpgm&quot]</a>)
+        model_inference(config[&quotslim&quot])
+        model_inference(config[&quotl1filter&quot])
+        model_inference(config[&quotapoz&quot])</code></pre>

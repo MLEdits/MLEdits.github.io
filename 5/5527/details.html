@@ -1,0 +1,47 @@
+<html><h3>8b68349d43621619fe799ab4afc21da7f1fb2515,examples/reinforcement_learning/tutorial_PPO.py,,,#,233
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    print(
+        &quotEp: %i&quot % ep,
+        "|Ep_r: %i" % ep_r,
+        <a id="change">("|Lam: %.4f" % METHOD[&quotlam&quot]) if METHOD[&quotname&quot] == &quotkl_pen&quot else &quot&quot</a>,
+    )
+
+    plt.ion()</code></pre><h3>After Change</h3><pre><code class='java'>
+            s = env.reset()
+            buffer_s, buffer_a, buffer_r = [], [], []
+            ep_r = 0
+            <a id="change">t0 = time.time()</a>
+            for t in range(EP_LEN):  &#47&#47 in one episode
+                &#47&#47 env.render()
+                a = ppo.choose_action(s)
+                s_, r, done, _ = env.step(a)
+                buffer_s.append(s)
+                buffer_a.append(a)
+                buffer_r.append((r + 8) / 8)  &#47&#47 normalize reward, find to be useful
+                s = s_
+                ep_r += r
+
+                &#47&#47 update ppo
+                if (t + 1) % BATCH == 0 or t == EP_LEN - 1:
+                    v_s_ = ppo.get_v(s_)
+                    discounted_r = []
+                    for r in buffer_r[::-1]:
+                        v_s_ = r + GAMMA * v_s_
+                        discounted_r.append(v_s_)
+                    discounted_r.reverse()
+
+                    bs, ba, br = np.vstack(buffer_s), np.vstack(buffer_a), np.array(discounted_r)[:, np.newaxis]
+                    buffer_s, buffer_a, buffer_r = [], [], []
+                    ppo.update(bs, ba, br)
+            if ep == 0:
+                all_ep_r.append(ep_r)
+            else:
+                all_ep_r.append(all_ep_r[-1] * 0.9 + ep_r * 0.1)
+            print(&quotEpisode: {}/{}  | Episode Reward: {:.4f}  | Running Time: {:.4f}&quot
+                  .format(ep, EP_MAX, ep_r, <a id="change">time.time() - t0</a>))
+
+            plt.ion()
+            plt.cla()</code></pre><img src="23257218.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/8b68349d43621619fe799ab4afc21da7f1fb2515#diff-dddb6cc966e311cee2e9eca4414adb0d05c8fdb6ac8063e99d3ca801f1d7616dL233' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: 8b68349d43621619fe799ab4afc21da7f1fb2515</div><div id='time'> Time: 2019-06-10</div><div id='author'> Author: 34995488+Tokarev-TT-33@users.noreply.github.com</div><div id='file'> File Name: examples/reinforcement_learning/tutorial_PPO.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/b048efa4f956b80266942caea6ee8b4311e1d17a#diff-bde1ba062503d5efbeba8c716fef7355d9c7b9f48d67637f46dcbbd0d03f4970L179' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: b048efa4f956b80266942caea6ee8b4311e1d17a</div><div id='time'> Time: 2018-04-08</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/classifier.py</div><div id='class'> Class Name: ClassifierBase</div><div id='method'> Method Name: fit</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/e5b6566d28bd0215588f5b47d2cf80867d07b65d#diff-343a733dfa596ca7e26380815fbe54973ac008db90a8c04ac106c76aef5664e3L92' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: e5b6566d28bd0215588f5b47d2cf80867d07b65d</div><div id='time'> Time: 2020-05-29</div><div id='author'> Author: krfricke@users.noreply.github.com</div><div id='file'> File Name: python/ray/serve/utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: block_until_http_ready</div><BR>

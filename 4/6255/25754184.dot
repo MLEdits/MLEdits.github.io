@@ -1,0 +1,16 @@
+digraph G {
+subgraph cluster0 {
+1 [label="CatchClause" a="12" s="23197,23219" l="11,2" shape="diamond"];
+4 [label="TryStatement" a="54" s="23139" l="4" shape="diamond"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="not in" a="108" s="23450" l="34" shape="box"];
+3 [label="IfStatement" a="25" s="23440,23484" l="10,2" shape="diamond"];
+label = "New";
+style="dotted";
+}
+2 -> 3 [label="_cond_"];
+4 -> 1 [label="_control_"];
+}

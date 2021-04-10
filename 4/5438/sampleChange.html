@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        bow = np.zeros([len(vocab)], dtype=np.int32)
+        for word in utterance.split(&quot &quot):
+            if word in vocab:
+                idx = <a id="change">vocab.index(word)</a>
+                bow[idx] += 1
+        return bow
+
+    def infer(self, utterance, vocab):</code></pre><h3>After Change</h3><pre><code class='java'>
+        bow = np.zeros([len(vocab)], dtype=np.int32)
+        for word in utterance.split(&quot &quot):
+            if word in vocab:
+                idx = <a id="change">vocab[word]</a>
+                bow[idx] += 1
+        return bow
+
+    def infer(self, utterance, vocab):</code></pre>

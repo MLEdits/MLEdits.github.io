@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        }
+    )
+
+    <a id="change">if hyperopt_params[STRATEGY]["type"] == "grid":
+        set_default_values(
+            hyperopt_params[STRATEGY],
+            {
+                &#47&#47 Put Grid default values
+            },
+        )
+
+   </a> set_default_values(
+        hyperopt_params[EXECUTOR],
+        {
+            "type": "serial"</code></pre><h3>After Change</h3><pre><code class='java'>
+        }
+    )
+
+    strategy = <a id="change">get_from_registry(
+        hyperopt_params[STRATEGY]["type"], strategy_registry
+    )</a>
+    strategy_defaults = {
+        k: v for k, v in strategy.__dict__.items()
+        if k in get_class_attributes(strategy)
+    }</code></pre>

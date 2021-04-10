@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    proposals = pred_dict[&quotrpn_prediction&quot][&quotproposals&quot][:, 1:]
+    gt_boxes = pred_dict[&quotgt_boxes&quot][:, :4]
+
+    overlaps = <a id="change">bbox_overlap(
+        np.ascontiguousarray(proposals, dtype=np.float),
+        np.ascontiguousarray(gt_boxes, dtype=np.float)
+    )</a>
+
+    top_overlap = overlaps.max(axis=1)
+
+    top_overlap_idx = top_overlap &gt;= 0.5</code></pre><h3>After Change</h3><pre><code class='java'>
+    proposals = pred_dict[&quotrpn_prediction&quot][&quotproposals&quot][:, 1:]
+    gt_boxes = pred_dict[&quotgt_boxes&quot][:, :4]
+
+    overlaps = <a id="change">bbox_overlap(proposals, gt_boxes)</a>
+
+    top_overlap = overlaps.max(axis=1)
+
+    top_overlap_idx = top_overlap &gt;= 0.5</code></pre>

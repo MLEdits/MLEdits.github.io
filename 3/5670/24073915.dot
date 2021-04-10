@@ -1,0 +1,14 @@
+digraph G {
+subgraph cluster0 {
+1 [label="()" a="106" s="7375" l="29" shape="box"];
+3 [label="reshape" a="32" s="7362,7404" l="13,2" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="softmax" a="32" s="7862,7882" l="8,1" shape="box"];
+label = "New";
+style="dotted";
+}
+1 -> 3 [label="_para_"];
+}

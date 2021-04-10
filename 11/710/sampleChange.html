@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        is a list, and its length does not match that of `attention_layer_size`.
+    
+    super(AttentionWrapper, self).__init__(name=name)
+    <a id="change">if not rnn_cell_impl._like_rnncell(cell):  &#47&#47 pylint: disable=protected-access
+      raise TypeError(
+          "cell must be an RNNCell, saw type: %s" % type(cell).__name__
+      )
+   </a> if isinstance(attention_mechanism, (list, tuple)):
+      self._is_multi = True
+      attention_mechanisms = attention_mechanism
+      for attention_mechanism in attention_mechanisms:</code></pre><h3>After Change</h3><pre><code class='java'>
+        is a list, and its length does not match that of `attention_layer_size`.
+    
+    super(AttentionWrapper, self).__init__(name=name)
+    <a id="change">rnn_cell_impl.assert_like_rnncell("cell",cell)</a>
+    if isinstance(attention_mechanism, (list, tuple)):
+      self._is_multi = True
+      attention_mechanisms = attention_mechanism
+      for attention_mechanism in attention_mechanisms:</code></pre>

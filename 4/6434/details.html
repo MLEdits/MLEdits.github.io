@@ -1,0 +1,23 @@
+<html><h3>ff0291e54a32fe0fbe071487c82b26f6a60b71e1,autokeras/search.py,Searcher,add_model,#Searcher#Any#Any#Any#Any#Any#,89
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                                      y_test,
+                                      False).train_model(**self.trainer_args)
+
+        accuracy += 0.005 * <a id="change">len(Graph(model, False).extract_descriptor().skip_connections)</a>
+        accuracy = min(accuracy, 1)
+
+        model.save(os.path.join(self.path, str(self.model_count) + &quot.h5&quot))
+        plot_model(model, to_file=os.path.join(self.path, str(self.model_count) + &quot.png&quot), show_shapes=True)</code></pre><h3>After Change</h3><pre><code class='java'>
+                                      x_test,
+                                      y_test,
+                                      False).train_model(**self.trainer_args)
+        <a id="change">if self.verbose:
+            print(&quotSaving model.&quot)
+
+       </a> model.save(os.path.join(self.path, str(self.model_count) + &quot.h5&quot))
+        plot_model(model, to_file=os.path.join(self.path, str(self.model_count) + &quot.png&quot), show_shapes=True)
+
+        model_id = self.model_count</code></pre><img src="26342593.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/ff0291e54a32fe0fbe071487c82b26f6a60b71e1#diff-f0ca8166ffff51f0eba42799069642c2d0a168b771049842b8054a4c58de8b49L89' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: ff0291e54a32fe0fbe071487c82b26f6a60b71e1</div><div id='time'> Time: 2018-05-17</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/search.py</div><div id='class'> Class Name: Searcher</div><div id='method'> Method Name: add_model</div><BR><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f17c111d9b33c07a3a5d0fc00651d0ccfe33aa2a#diff-cfda8c5c5ccbd5e41dd376d4d9cf393b01422d9344305d35d124b08a15d00b05L42' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f17c111d9b33c07a3a5d0fc00651d0ccfe33aa2a</div><div id='time'> Time: 2019-01-18</div><div id='author'> Author: jingqing.zhang15@imperial.ac.uk</div><div id='file'> File Name: tests/1_tutorial_mnist_mlp_eager_mode.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/baecce5a6fbe4576ca8348a93dc56f07e7ba84f6#diff-ee183ef28bfd81e8f8f6ea7005b55a2be7e9b808e6b274a365cde33ddd627f3bL74' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: baecce5a6fbe4576ca8348a93dc56f07e7ba84f6</div><div id='time'> Time: 2019-06-05</div><div id='author'> Author: ucabtmv@ucl.ac.uk</div><div id='file'> File Name: niftynet/contrib/csv_reader/csv_reader.py</div><div id='class'> Class Name: CSVReader</div><div id='method'> Method Name: _parse_csv</div><BR>

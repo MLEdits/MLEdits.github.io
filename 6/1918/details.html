@@ -1,0 +1,17 @@
+<html><h3>0599501151013a97f39081ff5a74b21592e31695,chainercv/links/model/faster_rcnn/utils/proposal_creator.py,ProposalCreator,__call__,#ProposalCreator#Any#Any#Any#Any#Any#Any#,59
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        if xp != np:
+            proposal = cuda.to_gpu(proposal)
+
+        <a id="change">proposals = [proposal]</a>
+        return proposals
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        rois = proposal
+        if xp != np:
+            rois = cuda.to_gpu(rois)
+        <a id="change">batch_indices = xp.zeros((len(rois),), dtype=np.int32)</a>
+        return rois, batch_indices
+</code></pre><img src="9019433.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/0599501151013a97f39081ff5a74b21592e31695#diff-63e1034dddc8c9aee84d4fefc8210448e04b33ddd4faedce2e5c852679cd3a65L109' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: 0599501151013a97f39081ff5a74b21592e31695</div><div id='time'> Time: 2017-05-15</div><div id='author'> Author: yuyuniitani@gmail.com</div><div id='file'> File Name: chainercv/links/model/faster_rcnn/utils/proposal_creator.py</div><div id='class'> Class Name: ProposalCreator</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/tryolabs/luminoth/commit/13de22d42ecbc51ea19bdd571262959eb29804d9#diff-f8edaa05398f1ec65888f628456719f6640a2a0337b0a3b1b7f569e582fd47c0L41' target='_blank'>Link</a></div><div id='project'> Project Name: tryolabs/luminoth</div><div id='commit'> Commit Name: 13de22d42ecbc51ea19bdd571262959eb29804d9</div><div id='time'> Time: 2017-06-18</div><div id='author'> Author: javirey@gmail.com</div><div id='file'> File Name: frcnn/roi_pool.py</div><div id='class'> Class Name: ROIPoolingLayer</div><div id='method'> Method Name: _roi_crop</div><BR><BR><div id='link'><a href='https://github.com/chainer/chainercv/commit/0599501151013a97f39081ff5a74b21592e31695#diff-50ad5004609dc439b64780e1fd168d767e8d41d2761f32245399b124fdbe6a65L72' target='_blank'>Link</a></div><div id='project'> Project Name: chainer/chainercv</div><div id='commit'> Commit Name: 0599501151013a97f39081ff5a74b21592e31695</div><div id='time'> Time: 2017-05-15</div><div id='author'> Author: yuyuniitani@gmail.com</div><div id='file'> File Name: tests/links_tests/model_tests/faster_rcnn_tests/test_faster_rcnn.py</div><div id='class'> Class Name: DummyRegionProposalNetwork</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/62386f9bdb92662267f18fcf766c84ef6d0e7124#diff-d6d32945fc5fae0973a195c7320b5708c6d7a362f2d8c394db76f648bba9c270L185' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: 62386f9bdb92662267f18fcf766c84ef6d0e7124</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: noreply@google.com</div><div id='file'> File Name: sonnet/python/modules/conv_test.py</div><div id='class'> Class Name: SharedConvTest</div><div id='method'> Method Name: SharedConvTest_1</div><BR>

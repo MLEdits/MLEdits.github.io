@@ -1,0 +1,30 @@
+<html><h3>32e87d4d4aa20a6eb658ee90d765ccffbd160571,setup.py,,,#,27
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+VERSION = find_version(&quotsrc&quot, &quotgluonnlp&quot, &quot__init__.py&quot)
+
+requirements = <a id="change">[
+    &quotnumpy&quot,
+    &quotsacremoses&gt;=0.0.38&quot,
+    &quotyacs&gt;=0.1.6&quot,
+    &quotsacrebleu&quot,
+    &quotflake8&quot,
+    &quotregex&quot,
+    &quotcontextvars&quot,
+    &quotpyarrow&quot,
+    &quotpandas&quot
+]</a>
+
+setup(
+    &#47&#47 Metadata
+    name=&quotgluonnlp&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
+    package_dir={"": "src"},
+    package_data={&quot&quot: [os.path.join(&quotmodels&quot, &quotmodel_zoo_checksums&quot, &quot*.txt&quot),
+                       os.path.join(&quotcli&quot, &quotdata&quot, &quoturl_checksums&quot, &quot*.txt&quot),
+                       <a id="change">os.path.join(&quotcli&quot, &quotdata&quot, &quoturl_checksums&quot, &quotmirror&quot, &quot*.json&quot)</a>]},
+    zip_safe=True,
+    include_package_data=True,
+    install_requires=requirements,</code></pre><img src="39326296.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/32e87d4d4aa20a6eb658ee90d765ccffbd160571#diff-60f61ab7a8d1910d86d9fda2261620314edcae5894d5aaa236b821c7256badd7L29' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 32e87d4d4aa20a6eb658ee90d765ccffbd160571</div><div id='time'> Time: 2020-08-14</div><div id='author'> Author: xshiab@connect.ust.hk</div><div id='file'> File Name: setup.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/c29a0cc338926fc5cee287bf1f6596dc3094a3a1#diff-bd9a5c4c8a62116109736de7fcfc3d164b7bb6202525514d3cf0e721c76a642fL31' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: c29a0cc338926fc5cee287bf1f6596dc3094a3a1</div><div id='time'> Time: 2019-03-25</div><div id='author'> Author: shinaiyang@pku.edu.cn</div><div id='file'> File Name: test/remote_docker.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: start_container</div><BR><BR><div id='link'><a href='https://github.com/AlexEMG/DeepLabCut/commit/cb560e17278530c14b74b06fa3f3c718e25c9616#diff-c01c3da6fe61f959f9b7b75f40f4c37a39751fa02c92cee6b559e3a1e307677dL37' target='_blank'>Link</a></div><div id='project'> Project Name: AlexEMG/DeepLabCut</div><div id='commit'> Commit Name: cb560e17278530c14b74b06fa3f3c718e25c9616</div><div id='time'> Time: 2019-09-20</div><div id='author'> Author: amathis@fas.harvard.edu</div><div id='file'> File Name: examples/testscript.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

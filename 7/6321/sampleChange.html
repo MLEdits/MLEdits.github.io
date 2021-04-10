@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    else:  &#47&#47 TF 1.0
+        print(rgb_scaled)
+        red, green, blue = tf.split(rgb_scaled, 3, 3)
+    <a id="change">assert red.get_shape().as_list()[1:] == [224, 224, 1]</a>
+    assert green.get_shape().as_list()[1:] == [224, 224, 1]
+    assert blue.get_shape().as_list()[1:] == [224, 224, 1]
+    if tf.__version__ &lt;= &quot0.11&quot:
+        bgr = tf.concat(3, [</code></pre><h3>After Change</h3><pre><code class='java'>
+        raise Exception("image size unmatch")
+    if green.get_shape().as_list()[1:] != [224, 224, 1]:
+        raise Exception("image size unmatch")
+    <a id="change">if blue.get_shape().as_list()[1:] != [224, 224, 1]:
+        raise Exception("image size unmatch")
+   </a> if tf.__version__ &lt;= &quot0.11&quot:
+        bgr = tf.concat(3, [
+            blue - VGG_MEAN[0],
+            green - VGG_MEAN[1],
+            red - VGG_MEAN[2],
+        ])
+    else:
+        bgr = tf.concat(
+            [
+                blue - VGG_MEAN[0],
+                green - VGG_MEAN[1],
+                red - VGG_MEAN[2],
+            ], axis=3)
+    if bgr.get_shape().as_list()[1:] != [224, 224, 3]:
+        <a id="change">raise Exception("image size unmatch")</a>
+    &#47&#47 input layer
+    net_in = InputLayer(bgr, name=&quotinput&quot)
+    &#47&#47 conv1
+    network = Conv2dLayer(net_in, act=tf.nn.relu, shape=[3, 3, 3, 64], strides=[1, 1, 1, 1], padding=&quotSAME&quot, name=&quotconv1_1&quot)</code></pre>

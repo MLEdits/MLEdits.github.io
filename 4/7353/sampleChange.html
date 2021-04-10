@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+        if is_distributed():
+            dist.all_reduce(_correct_count, op=dist.ReduceOp.SUM)
+            <a id="change">dist.all_reduce(_total_count, op=dist.ReduceOp.SUM)</a>
+
+        self.correct_count += _correct_count.item()
+        self.total_count += _total_count.item()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        _correct_count = correct.sum()
+
+        if is_distributed():
+            <a id="change">device = torch.device("cuda" if dist.get_backend() == "nccl" else "cpu")</a>
+            <a id="change">_correct_count = _correct_count.to(device)</a>
+            _total_count = _total_count.to(device)
+            dist.all_reduce(_correct_count, op=dist.ReduceOp.SUM)
+            <a id="change">dist.all_reduce(_total_count, op=dist.ReduceOp.SUM)</a>
+
+        self.correct_count += _correct_count.item()
+        self.total_count += _total_count.item()
+</code></pre>

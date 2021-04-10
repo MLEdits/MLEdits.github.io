@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            output = self.dropout(output)
+            outputs += [output]
+
+        outputs = torch.cat([<a id="change">x.unsqueeze(0)</a> for x in outputs])
+        return outputs
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            if self.input_feed:
+                emb_t = torch.cat([emb_t, output], 1)
+
+            <a id="change">output</a>, hidden = self.rnn(emb_t, hidden)
+            output = self.attn(output, context.t())
+            output = self.dropout(output)
+            outputs += [output]</code></pre>

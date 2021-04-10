@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    train_dataset_files = build_save_dataset(&quottrain&quot, fields, opt)
+
+    logger.info("Building & saving validation data...")
+    <a id="change">valid_dataset_files = build_save_dataset(&quotvalid&quot, fields, opt)</a>
+
+    logger.info("Building & saving vocabulary...")
+    build_save_vocab(train_dataset_files + valid_dataset_files, fields, opt)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    train_dataset_files = build_save_dataset(&quottrain&quot, fields, opt)
+
+    logger.info("Building & saving validation data...")
+    <a id="change">build_save_dataset(&quotvalid&quot, fields, opt)</a>
+
+    logger.info("Building & saving vocabulary...")
+    build_save_vocab(train_dataset_files, fields, opt)
+</code></pre>

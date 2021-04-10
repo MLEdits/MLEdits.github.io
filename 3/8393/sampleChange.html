@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+torch.manual_seed(args.seed)
+&#47&#47 If the GPU is enabled, do some plumbing.
+
+if <a id="change">torch.cuda.is_available() and not args.cuda</a>:
+    print("WARNING: You have a CUDA device, so you should probably run with -cuda")
+
+with open(args.checkpoint, &quotrb&quot) as f:</code></pre><h3>After Change</h3><pre><code class='java'>
+
+&#47&#47 Set the random seed manually for reproducibility.
+torch.manual_seed(args.seed)
+if <a id="change">torch.cuda.is_available()</a>:
+    if not args.cuda:
+        print("WARNING: You have a CUDA device, so you should probably run with --cuda")
+    else:</code></pre>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+      )
+
+    loss = results[0]
+    <a id="change">deco_print("loss = {:.4f} | ppl = {:.4f} | bpc = {:.4f}".format(loss, math.exp(loss), loss/math.log(2)), start="", end=", ")</a>
+
+    tm = (time.time() - self._last_time) / self._every_steps
+    m, s = divmod(tm, 60)
+    h, m = divmod(m, 60)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    loss = results[0]
+    &#47&#47deco_print("loss = {:.4f} | ppl = {:.4f} | bpc = {:.4f}".format(loss, math.exp(loss/100), loss/math.log(2)), start="", end=", ")
+    <a id="change">if not self._model.on_horovod or self._model.hvd.rank() == 0:
+      if self._print_ppl:
+        deco_print("Validation loss: {:.4f} | ppl = {:.4f} | bpc = {:.4f}"
+                   .format(loss, math.exp(loss),
+                           loss/math.log(2)), offset=4)
+      else:
+        deco_print(
+          "Validation loss: {:.4f} ".format(loss),
+          offset=4)
+
+   </a> tm = (time.time() - self._last_time) / self._every_steps
+    m, s = divmod(tm, 60)
+    h, m = divmod(m, 60)
+</code></pre>

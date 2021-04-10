@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        accumulators = [K.zeros(shape) for shape in shapes]
+        delta_accumulators = [K.zeros(shape) for shape in shapes]
+        self.weights = accumulators + delta_accumulators
+        <a id="change">self.updates</a> = <a id="change">[]</a>
+
+        lr = self.lr
+        if self.initial_decay &gt; 0:
+            lr *= (1. / (1. + self.decay * <a id="change">self.iterations</a>))
+            <a id="change">self.updates.append(K.update_add(self.iterations, 1))</a>
+
+        for p, g, a, d_a in zip(params, grads, accumulators, delta_accumulators):
+            &#47&#47 update accumulator
+            new_a = self.rho * a + (1. - self.rho) * K.square(g)</code></pre><h3>After Change</h3><pre><code class='java'>
+        accumulators = [K.zeros(shape) for shape in shapes]
+        delta_accumulators = [K.zeros(shape) for shape in shapes]
+        self.weights = accumulators + delta_accumulators
+        <a id="change">self.updates</a> = <a id="change">[K.update_add(self.iterations, 1)]</a>
+
+        lr = self.lr
+        if self.initial_decay &gt; 0:
+            lr *= (1. / (1. + self.decay * <a id="change">K.cast(self.iterations,
+                                                  K.dtype(self.decay))</a>))
+
+        for p, g, a, d_a in zip(params, grads, accumulators, delta_accumulators):
+            &#47&#47 update accumulator</code></pre>

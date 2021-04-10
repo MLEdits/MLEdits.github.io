@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 Update the state with the result.
+        final_output = outputs[-1]
+        state.update_state(hidden, final_output.unsqueeze(0),
+                           <a id="change">coverage.unsqueeze(0)
+                           if coverage is not None else None</a>)
+
+        &#47&#47 Concatenates sequence of tensors along a new dimension.
+        outputs = torch.stack(outputs)</code></pre><h3>After Change</h3><pre><code class='java'>
+        final_output = decoder_outputs[-1]
+        coverage = None
+        if "coverage" in attns:
+            <a id="change">coverage = attns["coverage"][-1].unsqueeze(0)</a>
+        state.update_state(decoder_final, final_output.unsqueeze(0), coverage)
+
+        &#47&#47 Concatenates sequence of tensors along a new dimension.
+        decoder_outputs = torch.stack(decoder_outputs)</code></pre>

@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        cls.__name__ = name
+        cls.__qualname__ = name
+
+        <a id="change">return cls(self.function_name, self.traceback_str, self.cause_cls,
+                   self.proctitle, self.pid, self.ip)</a>
+
+    def __str__(self):
+        Format a RayTaskError as a string.
+        lines = self.traceback_str.strip().split("\n")</code></pre><h3>After Change</h3><pre><code class='java'>
+        cls.__name__ = name
+        cls.__qualname__ = name
+
+        <a id="change">return cls()</a>
+
+    def __str__(self):
+        Format a RayTaskError as a string.
+        lines = self.traceback_str.strip().split("\n")</code></pre>

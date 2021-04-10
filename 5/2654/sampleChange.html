@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+def train_model_from_config(config_path: str):
+    config = read_json(config_path)
+    <a id="change">if &quotchainer&quot in config:
+        return train_chainer(config_path)
+
+   </a> reader_config = config[&quotdataset_reader&quot]
+    reader = get_model(reader_config[&quotname&quot])()
+    data_path = expand_path(reader_config.get(&quotdata_path&quot, &quot&quot))
+    data = reader.read(data_path)
+
+    dataset_config = config[&quotdataset&quot]
+    dataset: Dataset = from_params(dataset_config, data=data)
+
+    vocabs = {}
+    for vocab_param_name, vocab_config in config.get(&quotvocabs&quot, {}).items():
+        v: Estimator = from_params(vocab_config, mode=&quottrain&quot)
+        vocabs[vocab_param_name] = _fit(v, dataset)
+
+    model_config = config[&quotmodel&quot]
+    model = from_params(model_config, vocabs=vocabs, mode=&quottrain&quot)
+
+    train_config = {
+        &quotmetrics&quot: [&quotaccuracy&quot],
+
+        &quotvalidate_best&quot: True,
+        &quottest_best&quot: True
+    }
+
+    try:
+        train_config.update(config[&quottrain&quot])
+    except KeyError:
+        log.warning(&quotTrain config is missing. Populating with default values&quot)
+
+    metrics_functions = list(zip(train_config[&quotmetrics&quot], get_metrics_by_names(train_config[&quotmetrics&quot])))
+
+    if callable(getattr(model, &quottrain_on_batch&quot, None)):
+        _train_batches(model, dataset, train_config, metrics_functions)
+    _fit(model, dataset, train_config)
+
+    if train_config[&quotvalidate_best&quot] or train_config[&quottest_best&quot]:
+        try:
+            <a id="change">model_config[&quotload_path&quot] = model_config[&quotsave_path&quot]</a>
+        except KeyError:
+            log.warning(&quotNo "save_path" parameter for the model, so "load_path" will not be renewed&quot)
+        model = from_params(model_config, vocabs=vocabs, mode=&quotinfer&quot)
+        log.info(&quotTesting the best saved model&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    if callable(getattr(model, &quottrain_on_batch&quot, None)):
+        _train_batches(model, dataset, train_config, metrics_functions)
+    elif <a id="change">callable(getattr(model, &quotfit&quot, None))</a>:
+        _fit(model, dataset, train_config)
+    elif not isinstance(model, Chainer):
+        log.warning(&quotNothing to train&quot)</code></pre>

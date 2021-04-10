@@ -1,0 +1,20 @@
+<html><h3>45a10bc6d708fade197a37bfbc62312caf70e6a7,keras/layers/convolutional_recurrent.py,ConvLSTM2D,get_constants,#ConvLSTM2D#Any#Any#,438
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            constants.append([K.cast_to_floatx(1.) for _ in range(4)])
+
+        if 0 &lt; self.recurrent_dropout &lt; 1:
+            <a id="change">ones = K.ones_like(K.reshape(inputs[:, 0, 0], (-1, 1)))</a>
+            ones = K.tile(ones, (1, self.filters))
+
+            def dropped_inputs():
+                return K.dropout(ones, self.recurrent_dropout)</code></pre><h3>After Change</h3><pre><code class='java'>
+            shape[-1] = self.filters
+            ones = K.zeros_like(inputs)
+            ones = K.sum(ones, axis=1)
+            ones = self.input_conv(ones, <a id="change">K.zeros(shape)</a>,
+                                   padding=self.padding)
+            ones += 1.
+</code></pre><img src="25256785.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/45a10bc6d708fade197a37bfbc62312caf70e6a7#diff-8b47b9e5e34b597a82753dfe9c63351565768304f9de4bf6dade062804a5cc8bL438' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 45a10bc6d708fade197a37bfbc62312caf70e6a7</div><div id='time'> Time: 2017-02-17</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/layers/convolutional_recurrent.py</div><div id='class'> Class Name: ConvLSTM2D</div><div id='method'> Method Name: get_constants</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/c1a72b36444c8027c27c2dc02dc03d5b69a5e389#diff-4d94047f25cac795fa62233aae1ee41d5f2f9dc3a7c4d45e27b187d7f455b1bdL482' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: c1a72b36444c8027c27c2dc02dc03d5b69a5e389</div><div id='time'> Time: 2016-10-13</div><div id='author'> Author: jeanmichel.arbona@gmail.com</div><div id='file'> File Name: keras/layers/recurrent_convolutional.py</div><div id='class'> Class Name: LSTMConv2D</div><div id='method'> Method Name: get_constants</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/f4559a3d47510f776b3e38d5aceb07ee4b4b0ea9#diff-a2eb94be17e0e74e0a4ba3828b09ff81cac7ac40bb1eccce1beeb4eaccaf4036L270' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: f4559a3d47510f776b3e38d5aceb07ee4b4b0ea9</div><div id='time'> Time: 2017-11-24</div><div id='author'> Author: james@prowler.io</div><div id='file'> File Name: gpflow/transforms.py</div><div id='class'> Class Name: DiagMatrix</div><div id='method'> Method Name: forward</div><BR>

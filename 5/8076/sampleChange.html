@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    tgtF = open(tgtFile)
+
+    while True:
+        sline = <a id="change">srcF.readline().strip()</a>
+        tline = tgtF.readline().strip()
+
+        if sline == "" and tline == "":
+            break</code></pre><h3>After Change</h3><pre><code class='java'>
+            print(&quotWARNING: source and target do not have the same number of sentences&quot)
+            break
+
+        <a id="change">sline = sline.strip()</a>
+        <a id="change">tline = tline.strip()</a>
+
+        if sline == "" or tline == "":
+            print(&quotWARNING: ignoring an empty line (&quot+str(count)+&quot)&quot)
+            continue</code></pre>

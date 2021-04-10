@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        try:
+            self.parser = spacy.load(model, **kwargs)
+        except OSError:
+            <a id="change">print(&quotSpacy English model was not found&quot)</a>
+            url = &quothttps://spacy.io/models/en&#47&#47en_core_web_sm&quot
+            print(&quotLicense: Creative Commons v3-BY-SA &quot
+                  &quothttps://creativecommons.org/licenses/by-sa/3.0/&quot)
+            response = input(&quotTo download the model from {}, &quot</code></pre><h3>After Change</h3><pre><code class='java'>
+        try:
+            self.parser = spacy.load(model, **kwargs)
+        except OSError:
+            <a id="change">print(&quotSpacy model &quot + str(model) + &quot was not found&quot)</a>
+            url = &quothttps://spacy.io/models&quot
+            print(&quotLicense: Creative Commons v3-BY-SA &quot
+                  &quothttps://creativecommons.org/licenses/by-sa/3.0/&quot)
+            response = input(&quotTo download the model from {}, please type YES: &quot.format(url))</code></pre>

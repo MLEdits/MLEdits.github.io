@@ -1,0 +1,14 @@
+digraph G {
+subgraph cluster0 {
+1 [label="join" a="32" s="14093,14125" l="5,1" shape="box"];
+3 [label="StringLiteral" a="45" s="14088" l="4" shape="ellipse"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="not in" a="108" s="14582" l="23" shape="box"];
+label = "New";
+style="dotted";
+}
+3 -> 1 [label="_recv_"];
+}

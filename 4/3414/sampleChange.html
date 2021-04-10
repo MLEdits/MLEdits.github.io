@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        momentum = tf.cast(self.momentum, update.dtype.base_dtype)
+        &#47&#47 TODO(petebu): Use a tf.CriticalSection for the assignments.
+        accumulated_momentum.assign((momentum * accumulated_momentum) + update)
+        <a id="change">parameter.assign_sub(learning_rate * accumulated_momentum)</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        momentum = tf.cast(self.momentum, update.dtype.base_dtype)
+        &#47&#47 TODO(petebu): Use a tf.CriticalSection for the assignments.
+        accumulated_momentum.assign((momentum * accumulated_momentum) + update)
+        <a id="change">if self.use_nesterov:
+          parameter.assign_sub(learning_rate * update +
+                               learning_rate * momentum * accumulated_momentum)
+        else:
+          parameter.assign_sub(learning_rate * accumulated_momentum)</a>
+</code></pre>

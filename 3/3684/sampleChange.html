@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        try:
+            backend_msg.ParseFromString(payload)
+            command = backend_msg.command
+            if command == <a id="change">protobuf.BackMsg.Command.Value(&quotHELP&quot)</a>:
+                LOGGER.debug(&quotReceived command to display help.&quot)
+                os.system(&quotpython -m streamlit help &&quot)
+            elif command == protobuf.BackMsg.Command.Value(&quotCLOUD_UPLOAD&quot):</code></pre><h3>After Change</h3><pre><code class='java'>
+                os.system(&quotpython -m streamlit help &&quot)
+            elif msg_type == &quotcloud_upload&quot:
+                yield self._save_cloud(connection, ws)
+            elif <a id="change">msg_type</a> == &quotrerun_script&quot:
+                LOGGER.info(&quotRerunning the command "%s".&quot % \
+                    backend_msg.rerun_script)
+            else:</code></pre>

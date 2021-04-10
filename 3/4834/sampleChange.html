@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        h = self.scrollArea.height()
+
+        print("current: ")
+        <a id="change">print(cursor_x, cursor_y)</a>
+        print(w, h)
+        print()
+
+        margin = 0.1</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        &#47&#47 clamp the values form 0 to 1
+        move_x = min(max(move_x, 0), 1)
+        <a id="change">move_y = min(max(move_y, 0), 1)</a>
+
+        &#47&#47 zoom in
+        units = delta / (8 * 15)
+        scale = 10</code></pre>

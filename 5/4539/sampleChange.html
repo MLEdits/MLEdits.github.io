@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &quot&quot&quotinstall requirements.txt&quot&quot&quot
+    cmds = &quotcd &quot + requirements_path + &quot && {0} -m pip install --user -r requirements.txt&quot
+    &#47&#47TODO refactor python logic
+    <a id="change">if sys.platform == "win32":
+        cmds = cmds.format(&quotpython&quot)
+    else:
+        cmds = cmds.format(&quotpython3&quot)
+   </a> call(cmds, shell=True)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    requirements_path: str
+        Path to the directory that contains `requirements.txt`.
+    
+    <a id="change">call(_get_pip_install() + ["-r", os.path.join(requirements_path, "requirements.txt")], shell=False)</a>
+
+
+def _get_pip_install():
+    python = "python" if sys.platform == "win32" else "python3"</code></pre>

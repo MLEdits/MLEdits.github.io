@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+train = get_stories(tar.extractfile(challenge.format(&quottrain&quot)))
+test = get_stories(tar.extractfile(challenge.format(&quottest&quot)))
+
+<a id="change">vocab = sorted(reduce(lambda x, y: x | y, (set(story + q + [answer]) for story, q, answer in train + test)))</a>
+&#47&#47 Reserve 0 for masking via pad_sequences
+vocab_size = len(vocab) + 1
+word_idx = dict((c, i + 1) for i, c in enumerate(vocab))
+story_maxlen = max(map(len, (x for x, _, _ in train + test)))</code></pre><h3>After Change</h3><pre><code class='java'>
+
+vocab = set()
+for story, q, answer in train + test:
+    <a id="change">vocab |= set(story + q + [answer])</a>
+<a id="change">vocab = sorted(vocab)</a>
+
+&#47&#47 Reserve 0 for masking via pad_sequences
+vocab_size = len(vocab) + 1
+word_idx = dict((c, i + 1) for i, c in enumerate(vocab))</code></pre>

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+            if j == BACKTRACK_ITERS - 1:
+                &#47&#47 Line search failed! Keeping old params.
+                <a id="change">kl</a>, pi_l_new = set_and_eval(step=0.)
+
+        &#47&#47 Value function updates
+        for _ in range(TRAIN_V_ITERS):</code></pre><h3>After Change</h3><pre><code class='java'>
+        :return: None
+        
+        states, actions, adv, rewards_to_go, logp_old_ph, old_mu, old_log_std = self.buf.get()
+        <a id="change">g, pi_l_old = self.gradient(states, actions, adv, logp_old_ph)</a>
+
+        Hx = lambda x: self.hvp(states, old_mu, old_log_std, x)
+        x = self.cg(Hx, g)
+</code></pre>

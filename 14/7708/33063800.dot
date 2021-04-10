@@ -1,0 +1,45 @@
+digraph G {
+subgraph cluster0 {
+1 [label="PyComparator" a="113" s="39568" l="32" shape="diamond"];
+3 [label="Assignment:=" a="7" s="39568" l="32" shape="box"];
+4 [label="PyListComprehension" a="109" s="39424" l="184" shape="diamond"];
+5 [label="Assignment:=" a="7" s="39410" l="14" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="IfStatement" a="25" s="39641,39689" l="4,2" shape="diamond"];
+6 [label="Assignment:=" a="7" s="39405,39509" l="75,2" shape="box"];
+7 [label="EnhancedForStatement" a="70" s="39405,39509" l="75,2" shape="diamond"];
+8 [label="append" a="32" s="39780,39793" l="7,1" shape="box"];
+9 [label="Assignment:=" a="7" s="39385" l="1" shape="box"];
+10 [label="{}" a="4" s="39395" l="2" shape="box"];
+11 [label="SimpleName" a="42" s="" l="" shape="ellipse"];
+12 [label="InfixExpression:r" a="27" s="39665" l="3" shape="box"];
+13 [label="SimpleName" a="42" s="39380" l="5" shape="ellipse"];
+14 [label="append" a="32" s="39709,39743" l="7,1" shape="box"];
+15 [label="SimpleName" a="42" s="39774" l="5" shape="ellipse"];
+16 [label="SimpleName" a="42" s="39703" l="5" shape="ellipse"];
+label = "New";
+style="dotted";
+}
+1 -> 4 [label="_para_"];
+2 -> 14 [label="_control_"];
+2 -> 8 [label="_control_"];
+3 -> 1 [label="_cond_"];
+4 -> 5 [label="_para_"];
+6 -> 14 [label="_para_"];
+6 -> 8 [label="_para_"];
+6 -> 7 [label="_cond_"];
+6 -> 12 [label="_para_"];
+7 -> 12 [label="_control_"];
+7 -> 2 [label="_control_"];
+9 -> 13 [label="_def_"];
+10 -> 9 [label="_para_"];
+11 -> 2 [label="_cond_"];
+12 -> 11 [label="_def_"];
+13 -> 16 [label="_ref_"];
+13 -> 15 [label="_ref_"];
+15 -> 8 [label="_recv_"];
+16 -> 14 [label="_recv_"];
+}

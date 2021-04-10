@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+x_decoded = autoencoder.predict(x_test_noisy)
+
+&#47&#47 Display the 1st 8 corrupted and denoised images
+imgs = np.concatenate([<a id="change">x_test_noisy[:8]</a>, x_decoded[:8]])
+imgs = imgs.reshape((4, 4, image_size, image_size))
+imgs = np.vstack([np.hstack(i) for i in imgs])
+plt.figure()</code></pre><h3>After Change</h3><pre><code class='java'>
+num = rows * cols
+imgs = np.concatenate([x_test[:num], x_test_noisy[:num], x_decoded[:num]])
+imgs = imgs.reshape((rows * 3, cols, image_size, image_size))
+imgs = <a id="change">np.vstack(np.split(imgs, rows, axis=1))</a>
+imgs = imgs.reshape((rows * 3, -1, image_size, image_size))
+imgs = np.vstack([np.hstack(i) for i in imgs])
+imgs = (imgs * 255).astype(np.uint8)
+plt.figure()</code></pre>

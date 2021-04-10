@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def softmax(x):
+    <a id="change">return T.nnet.softmax(x.reshape((-1, x.shape[-1]))).reshape(x.shape)</a>
+
+
+def time_distributed_softmax(x):
+    return softmax(x)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def softmax(x):
+    <a id="change">return K.softmax(x)</a>
+
+
+def softplus(x):
+    return K.softplus(x)</code></pre>

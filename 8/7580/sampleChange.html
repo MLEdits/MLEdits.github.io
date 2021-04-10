@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    for border_mode in [&quotvalid&quot, &quotsame&quot]:
+        for pool_size in [(2, 2), (3, 3), (4, 4), (5, 5)]:
+            for strides in [(1, 1), (2, 2)]:
+                <a id="change">layer = convolutional.AveragePooling2D(strides=strides,
+                                                       border_mode=border_mode,
+                                                       pool_size=pool_size)</a>
+                layer.input = K.variable(input)
+                <a id="change">for train in [True, False]:
+                    out = K.eval(layer.get_output(train))
+                    if border_mode == &quotsame&quot and strides == (1, 1):
+                        assert input.shape == out.shape
+               </a> layer.get_config()
+
+
+@pytest.mark.skipif(K._BACKEND != &quottheano&quot, reason="Requires Theano backend")</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+def test_averagepooling_2d():
+    <a id="change">pool_size = (3, 3)</a>
+
+    for border_mode in [&quotvalid&quot, &quotsame&quot]:
+        for pool_size in [(2, 2), (3, 3), (4, 4), (5, 5)]:
+            for strides in [(1, 1), (2, 2)]:</code></pre>

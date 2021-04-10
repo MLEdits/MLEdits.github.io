@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+    logger.info(
+        "From dataset instances, %s will be considered for vocabulary creation.",
+        <a id="change">", ".join(datasets_for_vocab_creation)</a>,
+    )
+
+    instances: Iterable[Instance] = (</code></pre><h3>After Change</h3><pre><code class='java'>
+    else:
+        for dataset_name in datasets_for_vocab_creation:
+            data_path = f"{dataset_name}_data_path"
+            if <a id="change">data_path not in params</a>:
+                raise ConfigurationError(f"invalid &quotdatasets_for_vocab_creation&quot {dataset_name}")
+        datasets = datasets_from_params(
+            params,</code></pre>

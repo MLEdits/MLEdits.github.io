@@ -1,0 +1,15 @@
+digraph G {
+subgraph cluster0 {
+1 [label="getattr" a="32" s="2604,2632" l="8,1" shape="box"];
+3 [label="Assignment:=" a="7" s="2486,2590" l="53,2" shape="box"];
+label = "Old";
+style="dotted";
+}
+subgraph cluster1 {
+2 [label="return" a="41" s="3136" l="7" shape="box"];
+label = "New";
+style="dotted";
+}
+3 -> 1 [label="_control_"];
+3 -> 1 [label="_para_"];
+}

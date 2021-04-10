@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                            uses_learning_phase = computed_tensors[0]._uses_learning_phase or layer.uses_learning_phase
+                        else:
+                            shapes = to_list(layer.get_output_shape_for([x._keras_shape for x in computed_tensors]))
+                            uses_learning_phase = <a id="change">any([x._uses_learning_phase for x in computed_tensors])</a> or layer.uses_learning_phase
+                        for x, s in zip(output_tensors, shapes):
+                            x._keras_shape = s
+                            x._uses_learning_phase = uses_learning_phase</code></pre><h3>After Change</h3><pre><code class='java'>
+                            uses_learning_phase = computed_tensors[0]._uses_learning_phase
+                        else:
+                            shapes = to_list(layer.get_output_shape_for([x._keras_shape for x in computed_tensors]))
+                            uses_learning_phase = <a id="change">any([x._uses_learning_phase for x in computed_tensors])</a>
+                        for x, s in zip(output_tensors, shapes):
+                            x._keras_shape = s
+                            x._uses_learning_phase = <a id="change">getattr(x, &quot_uses_learning_phase&quot, False) or uses_learning_phase</a>
+
+                    &#47&#47 Update tensor_map.
+                    for x, y, mask in zip(reference_output_tensors, output_tensors, output_masks):
+                        tensor_map[str(id(x))] = (y, mask)</code></pre>

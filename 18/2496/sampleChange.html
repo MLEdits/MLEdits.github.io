@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+def G(seed):
+    Pseudo Random Generator λ -&gt; 2(λ + 1)
+
+    <a id="change">assert len(seed.shape) == 2</a>
+    n_values = seed.shape[1]
+    assert seed.shape[0] == λs
+    x = seed
+    x = x.T</code></pre><h3>After Change</h3><pre><code class='java'>
+def G(seed):
+    Pseudo Random Generator λ -&gt; 2(λ + 1)
+
+    <a id="change">if len(seed.shape) != 2:
+        raise ValueError("size of seed shape needs to be 2")
+
+   </a> n_values = seed.shape[1]
+
+    <a id="change">if seed.shape[0] != λs:
+        raise ValueError("check the security parameter and seed shape")
+
+   </a> x = seed
+    x = x.T
+    dt1 = np.dtype((np.uint64, [("uint8", np.uint8, 8)]))
+    x2 = x.view(dtype=dt1)
+    x = x2["uint8"].reshape(*x.shape[:-1], -1)
+
+    <a id="change">if x.shape != (n_values, 2 * 8):
+        raise ValueError(f"shape of x needs to be ({n_values}, 16)")
+
+   </a> out = np.empty((n_values, 4 * 8), dtype=np.uint8)
+
+    shaloop.sha256_loop_func(x, out)
+</code></pre>

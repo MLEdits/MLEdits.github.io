@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
+
+def upscale_image(src, model, cfg):
+    <a id="change">iter = 0</a>
+    <a id="change">while iter &lt; int(np.ceil(cfg.scale_factor / 2)):
+        iter += 1
+        six.print_(&quot2.0x upscaling...&quot, end=&quot &quot, flush=True)
+        if cfg.tta:
+            dst = reconstruct.image_tta(
+                src, model, True,
+                cfg.tta_level, cfg.block_size, cfg.batch_size)
+        else:
+            dst = reconstruct.image(
+                src, model, True, cfg.block_size, cfg.batch_size)
+        six.print_(&quotOK&quot)
+   </a> if np.round(cfg.scale_factor % 2.0, 6) != 0:
+        six.print_(&quotresizing...&quot, end=&quot &quot, flush=True)
+        dst_w = int(np.round(src.size[0] * cfg.scale_factor))
+        dst_h = int(np.round(src.size[1] * cfg.scale_factor))</code></pre><h3>After Change</h3><pre><code class='java'>
+def upscale_image(src, model, cfg):
+    dst = src
+    log_scale = np.log2(cfg.scale_factor)
+    <a id="change">for _ in range(int(np.ceil(log_scale))):
+        six.print_(&quot2.0x upscaling...&quot, end=&quot &quot, flush=True)
+        if cfg.tta:
+            dst = reconstruct.image_tta(
+                dst, model, True,
+                cfg.tta_level, cfg.block_size, cfg.batch_size)
+        else:
+            dst = reconstruct.image(
+                dst, model, True, cfg.block_size, cfg.batch_size)
+        six.print_(&quotOK&quot)
+   </a> if np.round(log_scale % 1.0, 6) != 0:
+        six.print_(&quotResizing...&quot, end=&quot &quot, flush=True)
+        dst_w = int(np.round(src.size[0] * cfg.scale_factor))
+        dst_h = int(np.round(src.size[1] * cfg.scale_factor))</code></pre>

@@ -1,0 +1,28 @@
+<html><h3>908c0c630a6c7c6e35b7bb0e172d41372bfb309d,python/ray/autoscaler/command_runner.py,SSHCommandRunner,run,#SSHCommandRunner#Any#Any#Any#Any#Any#Any#,291
+</h3><link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            else:
+                self.process_runner.check_call(final_cmd)
+        except subprocess.CalledProcessError:
+            <a id="change">if exit_on_fail:
+                quoted_cmd = " ".join(final_cmd[:-1] + [quote(final_cmd[-1])])
+                raise click.ClickException(
+                    "Command failed: \n\n  {}\n".format(quoted_cmd)) from None
+            else:
+                raise click.ClickException(
+                    "SSH command Failed. See above for the output from the"
+                    " failure.") from None
+
+   </a> def run_rsync_up(self, source, target):
+        self._set_ssh_ip_if_required()
+        self.process_runner.check_call([
+            "rsync", "--rsh",</code></pre><h3>After Change</h3><pre><code class='java'>
+        cli_logger.verbose("Running `{}`", cf.bold(cmd))
+        with cli_logger.indented():
+            cli_logger.very_verbose("Full command is `{}`",
+                                    cf.bold(<a id="change">" ".join(final_cmd)</a>))
+
+        def start_process():
+            try:</code></pre><img src="16975243.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/908c0c630a6c7c6e35b7bb0e172d41372bfb309d#diff-4ba238d6a3eeb034b9109abb5a41636f674ba51bbe9e3b4e1ab7a7aa78126e1cL314' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 908c0c630a6c7c6e35b7bb0e172d41372bfb309d</div><div id='time'> Time: 2020-07-22</div><div id='author'> Author: maximsmol@gmail.com</div><div id='file'> File Name: python/ray/autoscaler/command_runner.py</div><div id='class'> Class Name: SSHCommandRunner</div><div id='method'> Method Name: run</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/fdd55d36c05c747643fc98430a7f9b787b6cec16#diff-f257cb9f581c7396d5e053eb026bd0d54567d614e0573456ff4ce76f0afb4c1fL170' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: fdd55d36c05c747643fc98430a7f9b787b6cec16</div><div id='time'> Time: 2019-08-29</div><div id='author'> Author: yizhu59@gmail.com</div><div id='file'> File Name: gluoncv/data/kinetics400/classification.py</div><div id='class'> Class Name: Kinetics400</div><div id='method'> Method Name: _TSN_RGB</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/6955fab0f4f0a38ead24cec84152d82769a0cfa2#diff-b529c91a7fa1a73adfe1defb81e562d2a0001bf67dc9d30d7e119a220f59680dL250' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 6955fab0f4f0a38ead24cec84152d82769a0cfa2</div><div id='time'> Time: 2019-06-21</div><div id='author'> Author: linhaibin.eric@gmail.com</div><div id='file'> File Name: scripts/bert/run_pretraining_hvd.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>
