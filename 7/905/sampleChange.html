@@ -1,18 +1,0 @@
-<link rel="stylesheet" href="../../../../default.css">
-<script src="../../../../highlight.pack.js"></script> 
-<script>hljs.initHighlightingOnLoad();</script>
-<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-import logging
-import deepchem
-
-<a id="change">logger = logging.getLogger(__name__)</a>
-
-DEFAULT_DIR = deepchem.utils.data_utils.get_data_dir()
-LIPO_URL = "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/Lipophilicity.csv"</code></pre><h3>After Change</h3><pre><code class='java'>
-from typing import List, Optional, Tuple, Union
-
-LIPO_URL = "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/Lipophilicity.csv"
-<a id="change">LIPO_TASKS = [&quotexp&quot]</a>
-
-
-class _LipoLoader(_MolnetLoader):</code></pre>
