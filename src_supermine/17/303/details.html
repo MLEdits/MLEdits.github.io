@@ -1,4 +1,4 @@
-<html><h3>f7c759ca562303127a9991574d5a985d4dff99e8,sonnet/python/modules/gated_rnn_test.py,ConvLSTMTest,testDilatedConv,#ConvLSTMTest#Any#Any#Any#Any#Any#,1045
+<html><h3>f7c759ca562303127a9991574d5a985d4dff99e8,sonnet/python/modules/gated_rnn_test.py,ConvLSTMTest,testTraining,#ConvLSTMTest#Any#Any#Any#,996
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
@@ -14,9 +14,37 @@
       sess.run(train_op)
 
  </a> @parameterized.parameters(
-      (snt.Conv1DLSTM, 1, False, False, 2),
-      (snt.Conv1DLSTM, 1, False, True, 4),
-      (snt.Conv1DLSTM, 1, True, False, 4),</code></pre><h3>After Change</h3><pre><code class='java'>
+      (snt.Conv1DLSTM, 1, False, 1, 1),
+      (snt.Conv1DLSTM, 1, False, 1, 5),
+      (snt.Conv1DLSTM, 1, False, 6, 1),</code></pre><h3>After Change</h3><pre><code class='java'>
+      (snt.Conv2DLSTM, 2, False),
+      (snt.Conv2DLSTM, 2, True),
+  )
+  def testTraining(<a id="change">self</a>, lstm_class, dim, trainable_initial_state):
+    Test that training works, with or without trainable initial state.
+    time_steps = 1
+    batch_size = 2
+    input_shape = (8,) * dim
+    input_channels = 3
+    output_channels = 5
+
+    input_shape = (batch_size,) + input_shape + (input_channels,)
+
+    lstm = lstm_class(
+        input_shape=input_shape[1:],
+        output_channels=output_channels,
+        kernel_shape=1)
+    inputs = tf.random_normal((time_steps,) + input_shape, dtype=tf.float32)
+    initial_state = lstm.initial_state(
+        batch_size, tf.float32, trainable_initial_state)
+
+    def loss_fn():
+      output, _ = tf.nn.dynamic_rnn(lstm,
+                                    inputs,
+                                    time_major=True,
+                                    initial_state=initial_state,
+                                    dtype=tf.float32)
+
       return tf.reduce_mean(tf.square(output))
 
     train_op = tf.train.GradientDescentOptimizer(1).minimize(
@@ -26,5 +54,5 @@
     <a id="change">self.evaluate(train_op)</a>
 
   @parameterized.parameters(
-      (snt.Conv1DLSTM, 1, False, False, 2),
-      (snt.Conv1DLSTM, 1, False, True, 4),</code></pre><img src="2072166.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 12</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL1036' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testDilatedConv</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL1121' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testLayerNorm</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL996' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testTraining</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL1045' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testDilatedConv</div><BR>
+      (snt.Conv1DLSTM, 1, False, 1, 1),
+      (snt.Conv1DLSTM, 1, False, 1, 5),</code></pre><img src="2171745.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 12</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL985' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testTraining</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL1121' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testLayerNorm</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL1045' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testDilatedConv</div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/f7c759ca562303127a9991574d5a985d4dff99e8#diff-531b696be93e8421ce017c91ed780effe1d3fa677522d074ddc8282862267abeL996' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: f7c759ca562303127a9991574d5a985d4dff99e8</div><div id='time'> Time: 2018-07-17</div><div id='author'> Author: tomhennigan@google.com</div><div id='file'> File Name: sonnet/python/modules/gated_rnn_test.py</div><div id='class'> Class Name: ConvLSTMTest</div><div id='method'> Method Name: testTraining</div><BR>

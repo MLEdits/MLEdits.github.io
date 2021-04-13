@@ -2,23 +2,24 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            train_sampler.set_epoch(epoch)
+            make_manual_backward(loss_ones_gen, opt_dis, make_optimizer_step=make_dis_optimizer_step)
 
-        base_iter = train_classification(base_iter, model, train_loader, epoch, criterion, optimizer, cfg, writer=writer)
-        <a id="change">scheduler.step()</a>
-        if epoch % cfg.CONFIG.VAL.FREQ == 0 or epoch == cfg.CONFIG.TRAIN.EPOCH_NUM - 1:
-            validation_classification(model, val_loader, epoch, criterion, cfg, writer)
+        &#47&#47 this will accumulate gradients for 2 batches and then call opt_gen.step()
+        <a id="change">opt_gen.step(closure=gen_closure, make_optimizer_step=make_gen_optimizer_step)</a>
 
-        if epoch % cfg.CONFIG.LOG.SAVE_FREQ == 0:</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 update discriminator every 4 baches
+        &#47&#47 therefore, no gradient accumulation for discriminator
+        if make_dis_optimizer_step:</code></pre><h3>After Change</h3><pre><code class='java'>
+            make_manual_backward(loss_ones_gen, opt_dis, make_optimizer_step=make_dis_optimizer_step)
 
-        base_iter = train_classification(base_iter, model, train_loader, epoch, criterion, optimizer, cfg, writer=writer)
+        &#47&#47 this will accumulate gradients for 2 batches and then call opt_gen.step()
+        <a id="change">if make_gen_optimizer_step:
+            opt_gen.step(closure=gen_closure)
+            opt_gen.zero_grad()
 
-        <a id="change">if cfg.CONFIG.TRAIN.LR_POLICY == &quotStep&quot:
-            scheduler.step()
-        elif cfg.CONFIG.TRAIN.LR_POLICY == &quotCosine&quot:
-            scheduler_warmup.step()
+        &#47&#47 update discriminator every 4 baches
+        &#47&#47 therefore, no gradient accumulation for discriminator
+       </a> if make_dis_optimizer_step:
+            opt_dis.step(closure=dis_closure)
 
-       </a> if epoch % cfg.CONFIG.VAL.FREQ == 0 or epoch == cfg.CONFIG.TRAIN.EPOCH_NUM - 1:
-            validation_classification(model, val_loader, epoch, criterion, cfg, writer)
-
-        if epoch % cfg.CONFIG.LOG.SAVE_FREQ == 0:</code></pre>
+    def training_epoch_end(self, outputs) -&gt; None:</code></pre>

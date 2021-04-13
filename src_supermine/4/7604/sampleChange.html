@@ -48,10 +48,17 @@
         self.m_const_set1 = GPflow.gpr.GPR(X, Y, mean_function=const_set1, kern=k)
         self.m_const_set2 = GPflow.gpr.GPR(X, Y, mean_function=const_set2, kern=k)
         
-        <a id="change">self.m_linear_min_linear</a>= GPflow.gpr.GPR(X, Y, mean_function=linear1_minus_linear1, kern=k)
+        self.m_linear_min_linear= GPflow.gpr.GPR(X, Y, mean_function=linear1_minus_linear1, kern=k)
         self.m_const_min_const = GPflow.gpr.GPR(X, Y, mean_function=const1_minus_const1, kern=k)        
         
-        self.m_constituent = GPflow.gpr.GPR(X, Y, mean_function=linear2, kern=k) </code></pre><h3>After Change</h3><pre><code class='java'>
+        self.m_constituent = GPflow.gpr.GPR(X, Y, mean_function=linear2, kern=k) 
+        self.m_zero = GPflow.gpr.GPR(X, Y, mean_function=zero, kern=k)        
+        
+        self.m_comp_minus_constituent1 = GPflow.gpr.GPR(X, Y, mean_function=comp_minus_constituent1, kern=k)
+        <a id="change">self.m_comp_minus_constituent2</a> = GPflow.gpr.GPR(X, Y, mean_function=comp_minus_constituent2, kern=k)
+
+             
+    def test_precedence(self):</code></pre><h3>After Change</h3><pre><code class='java'>
         zero = GPflow.mean_functions.Zero()
         one = GPflow.mean_functions.Constant(np.ones(self.output_dim))
         
@@ -97,7 +104,14 @@
         self.m_const_set1 = GPflow.gpr.GPR(X, Y, mean_function=const_set1, kern=k)
         self.m_const_set2 = GPflow.gpr.GPR(X, Y, mean_function=const_set2, kern=k)
         
-        <a id="change">self.m_linear_min_linear</a>= GPflow.gpr.GPR(X, Y, mean_function=linear1_minus_linear1, kern=k)
+        self.m_linear_min_linear= GPflow.gpr.GPR(X, Y, mean_function=linear1_minus_linear1, kern=k)
         self.m_const_min_const = GPflow.gpr.GPR(X, Y, mean_function=const1_minus_const1, kern=k)        
         
-        self.m_constituent = GPflow.gpr.GPR(X, Y, mean_function=linear2, kern=k) </code></pre>
+        self.m_constituent = GPflow.gpr.GPR(X, Y, mean_function=linear2, kern=k) 
+        self.m_zero = GPflow.gpr.GPR(X, Y, mean_function=zero, kern=k)        
+        
+        self.m_comp_minus_constituent1 = GPflow.gpr.GPR(X, Y, mean_function=comp_minus_constituent1, kern=k)
+        <a id="change">self.m_comp_minus_constituent2</a> = GPflow.gpr.GPR(X, Y, mean_function=comp_minus_constituent2, kern=k)
+
+             
+    def test_precedence(self):</code></pre>

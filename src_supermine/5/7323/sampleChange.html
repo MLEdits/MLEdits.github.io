@@ -9,14 +9,14 @@
         axcodes = tuple(data_param[mod].axcodes for mod in modalities)
         loader = tuple(data_param[mod].loader for mod in modalities)
     except KeyError:</code></pre><h3>After Change</h3><pre><code class='java'>
+                interp_order.append(data_param[mod].interp_order)
+            except AttributeError:
+                interp_order = DEFAULT_INTERP_ORDER
+            <a id="change">try:
                 pixdim.append(data_param[mod].pixdim)
             except AttributeError:
                 pixdim = None
-            <a id="change">try:
+           </a> try:
                 axcodes.append(data_param[mod].axcodes)
             except AttributeError:
-                axcodes = None
-           </a> try:
-                loader.append(data_param[mod].loader)
-            except AttributeError:
-                loader = None</code></pre>
+                axcodes = None</code></pre>

@@ -17,10 +17,10 @@
 def _expectation(p, obj1, obj2, obj3, obj4):
     gauss = Gaussian(p.mu, tf.matrix_diag(p.var))
     return _expectation(gauss, obj1, obj2, obj3, obj4)</code></pre><h3>After Change</h3><pre><code class='java'>
-    with params_as_tensors_for(mean1), params_as_tensors_for(mean2):
         N = tf.shape(p.mu)[0]
         e_xxt = p.cov + (p.mu[:, :, None] * p.mu[:, None, :])  &#47&#47 NxDxD
-        e_xxt_A = tf.matmul(e_xxt, tf.tile(mean2.A[None, ...], <a id="change">(N, 1, 1)</a>))  &#47&#47 NxDxQ
-        e_x_bt = p.mu[:, :, None] * mean2.b[None, None, :]  &#47&#47 NxDxQ
+        e_xxt_A = tf.matmul(e_xxt, tf.tile(mean2.A[None, ...], (N, 1, 1)))  &#47&#47 NxDxQ
+        e_x_bt = p.mu[<a id="change">:, :, None</a>] * mean2.b[None, None, :]  &#47&#47 NxDxQ
 
-        return e_xxt_A + e_x_bt</code></pre>
+        return e_xxt_A + e_x_bt
+</code></pre>

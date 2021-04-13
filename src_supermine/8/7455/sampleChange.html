@@ -8,8 +8,8 @@
   <a id="change">_ = [result.get() for result in results if result]</a>
 
 
-def _run_call_variants(pipeline_args):
-  Runs the call_variants job.</code></pre><h3>After Change</h3><pre><code class='java'>
+def _run_postprocess_variants(pipeline_args):
+  Runs the postprocess_variants job.</code></pre><h3>After Change</h3><pre><code class='java'>
   threads.join()
   &#47&#47 Ensure exceptions are re-thrown (ignore socket.timeout errors from dstat
   &#47&#47 calls).
@@ -21,7 +21,7 @@ def _run_call_variants(pipeline_args):
         logging.warning(&quotIgnoring socket timeout exception.&quot)
 
 
-</a>def _run_call_variants(pipeline_args):
-  Runs the call_variants job.
-  num_workers = min(pipeline_args.call_variants_workers, pipeline_args.shards)
-  shards_per_worker = pipeline_args.shards / num_workers</code></pre>
+</a>def _run_postprocess_variants(pipeline_args):
+  Runs the postprocess_variants job.
+  dsub_args = _get_base_job_args(pipeline_args) + [
+      &quot--name&quot,</code></pre>

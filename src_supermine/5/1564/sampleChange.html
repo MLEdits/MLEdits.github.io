@@ -5,7 +5,7 @@
         &#47&#47 Test invalid use cases
         for k in BACKENDS:
             with pytest.raises(ValueError):
-                k.conv3d(k.variable(xval), <a id="change">k.variable(kernel_val)</a>, data_format=&quotchannels_middle&quot)
+                k.conv3d(<a id="change">k.variable(xval)</a>, k.variable(kernel_val), data_format=&quotchannels_middle&quot)
 
     def test_separable_conv2d(self):
         for (input_shape, data_format) in [((2, 3, 4, 5), &quotchannels_first&quot),</code></pre><h3>After Change</h3><pre><code class='java'>

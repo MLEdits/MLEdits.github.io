@@ -10,10 +10,10 @@
     store = mx.kv.create(args.kvstore)
 
     if args.ckpt_dir:</code></pre><h3>After Change</h3><pre><code class='java'>
-            train(data_train, model, nsp_loss, mlm_loss, len(vocabulary), ctx, store)
 
-    if args.data_eval:
-        logging.info(<a id="change">&quotUsing evaluation data at {}&quot.format(args.data_eval)</a>)
-        data_eval = get_dataset(args.data_eval, args.batch_size_eval, len(ctx), False, store)
-        evaluate(data_eval, model, nsp_loss, mlm_loss, len(vocabulary), ctx)
+    if not args.eval_only:
+        if args.data:
+            logging.info(<a id="change">&quotUsing training data at {}&quot.format(args.data)</a>)
+            data_train = get_dataset(args.data, args.batch_size, len(ctx), True, store)
+            train(data_train, model, nsp_loss, mlm_loss, len(vocabulary), ctx, store)
 </code></pre>

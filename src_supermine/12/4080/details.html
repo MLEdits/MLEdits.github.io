@@ -58,28 +58,6 @@
         &#47&#47 pylint: disable=arguments-differ
         Generate the representation given the inputs.
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        additional_outputs = []
-        for layer_idx in range(self._num_layers):
-            layer = self.all_layers[layer_idx]
-            out, attention_weights = l<a id="change">ayer</a>(out, attn_mask)
-            &#47&#47 out : [batch_size, seq_len, units]
-            &#47&#47 attention_weights : [batch_size, num_heads, seq_len, seq_len]
-            if self._output_all_encodings:
-                out = F.npx.sequence_mask(out,
-                                          sequence_length=valid_length,
-                                          use_sequence_length=True, axis=1)
-                all_encodings_outputs.append(out)
-
-            if self._output_attention:
-                additional_outputs.append(attention_weights)
-
-        if not self._output_all_encodings:
-            &#47&#47 if self._output_all_encodings, SequenceMask is already applied above
-            out = F.npx.sequence_mask(out, sequence_length=valid_length,
-                                      use_sequence_length=True, axis=1)
-            return out, additional_outputs
-        else:
-            return all_encodings_outputs, additional_outputs
 
 
 @use_np
@@ -94,7 +72,7 @@ class BertModel(HybridBloc<a id="change">k):
                  hidden_dropout_prob=0.,
                  attention_dropout_prob=0.,
                  num_token_types=2,
-                 pos_embed_t<a id="change">ype=&quotlearned</a>&quot,
+                 pos_embed_type=&quotlearned&quot,
                  activation=&quotgelu&quot,
                  layer_norm_eps=1E-12,
                  embed_initializer=TruncNorm(stdev=0.02),
@@ -111,7 +89,7 @@ class BertModel(HybridBloc<a id="change">k):
         self.units = units
         self.max_length = max_length
         self.activation = activation
-        self.embed_initializer = embed_initializer
+        self.embed_initialize<a id="change">r = embed_initi</a>alizer
         self.weight_initializer = weight_initializer
         self.bias_initializer = bias_initializer
         self.layer_norm_eps = layer_norm_eps
@@ -128,4 +106,4 @@ class BertModel(HybridBloc<a id="change">k):
             ac</a>tivation=activation,
             layer_norm_eps=layer_norm_eps,
             weight_initializer=weight_initializer,
-            bias_initializer=bias_initializer,</code></pre><img src="17931429.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 9</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L175' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertModel</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L200' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertModel</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L507' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertForPretrain</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-eb9004e43facd91e0014967f61b5002cf65f851fc227180da1a0fe492056636aL516' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/albert.py</div><div id='class'> Class Name: AlbertForPretrain</div><div id='method'> Method Name: __init__</div><BR>
+            bias_initializer=bias_initializer,</code></pre><img src="18624366.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 9</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L175' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertModel</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L200' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertModel</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-b52419a650f497d504f95ff163343a6f59c6b82b25b150f3b9892be8dd007e28L507' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/bert.py</div><div id='class'> Class Name: BertForPretrain</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/70a188776f7470c838dd22b1636462b75573a734#diff-eb9004e43facd91e0014967f61b5002cf65f851fc227180da1a0fe492056636aL516' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 70a188776f7470c838dd22b1636462b75573a734</div><div id='time'> Time: 2020-07-16</div><div id='author'> Author: lausen@amazon.com</div><div id='file'> File Name: src/gluonnlp/models/albert.py</div><div id='class'> Class Name: AlbertForPretrain</div><div id='method'> Method Name: __init__</div><BR>

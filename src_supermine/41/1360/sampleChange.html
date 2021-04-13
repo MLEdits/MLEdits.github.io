@@ -6,7 +6,7 @@
         self.current += batch_size
 
         loss = <a id="change">logs.get(&quotloss&quot)</a>
-        <a id="change">self</a>.log_values.append((&quotloss&quot, loss))
+        self.log_values.append((&quotloss&quot, loss))
         <a id="change">self.tot_loss += loss * batch_size</a>
         <a id="change">if self.params[&quotshow_accuracy&quot]:
             accuracy = logs.get(&quotaccuracy&quot)

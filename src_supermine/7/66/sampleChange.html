@@ -10,11 +10,11 @@
             return tuple(map(float, values))
         if type_str == &quotstr&quot:
             return tuple(values)</code></pre><h3>After Change</h3><pre><code class='java'>
-            raise ValueError(
-                "unrecognised input string {}".format(string_input))
         if type_str == &quotint&quot:
-            <a id="change">return tuple(int(val) for val in values)</a>
+            return tuple(int(val) for val in values)
         if type_str == &quotfloat&quot:
-            return tuple(float(val) for val in values)
+            <a id="change">return tuple(float(val) for val in values)</a>
         if type_str == &quotstr&quot:
-            return tuple(values)</code></pre>
+            return tuple(values)
+        else:
+            raise ValueError("unknown array type_str {}".format(string_input))</code></pre>

@@ -2,13 +2,13 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                if opt.tgt:
-                    tgt_sent = &quot &quot.join(gold_sent)
-                    os.write(1, bytes(&quotGOLD %d: %s\n&quot %
-                             <a id="change">(sent_number, tgt_sent)</a>, &quotUTF-8&quot))
-                    print("GOLD SCORE: %.4f" % gold_score)
+                    src_sent, translator.fields["src"].vocab.itos)
 
-                if len(n_best_preds) &gt; 1:</code></pre><h3>After Change</h3><pre><code class='java'>
+                os.write(1, bytes(&quot\nSENT %d: %s\n&quot %
+                                  <a id="change">(sent_number, words)</a>, &quotUTF-8&quot))
+
+                best_pred = n_best_preds[0]
+                best_score = pred_score[0]</code></pre><h3>After Change</h3><pre><code class='java'>
                 words = get_src_words(
                     src_sent, translator.fields["src"].vocab.itos)
 

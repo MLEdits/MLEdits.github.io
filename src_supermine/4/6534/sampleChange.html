@@ -16,11 +16,11 @@
     &#47&#47 Infer the length of the text left
     &#47&#47 left[&quotlength_left&quot] = left.apply(lambda r: len(r[&quottext_left&quot]), axis=1)
 </code></pre><h3>After Change</h3><pre><code class='java'>
+    if &quotid_left&quot not in df:
+        id_left = _gen_ids(df, &quottext_left&quot, &quotL-&quot)
+    else:
+        id_left = <a id="change">df[&quotid_left&quot]</a>
     if &quotid_right&quot not in df:
         id_right = _gen_ids(df, &quottext_right&quot, &quotR-&quot)
     else:
-        id_right = <a id="change">df[&quotid_right&quot]</a>
-
-    &#47&#47 Build Relation
-    relation = pd.DataFrame(data={&quotid_left&quot: id_left, &quotid_right&quot: id_right})
-    for col in df:</code></pre>
+        id_right = df[&quotid_right&quot]</code></pre>

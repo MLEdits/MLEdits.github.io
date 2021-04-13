@@ -6,24 +6,20 @@
     default_val=False)
 
 <a id="change">_create_option(
-    &quots3.keyPrefix&quot,
-    description=&quot&quot&quotThe "subdirectory" within the S3 bucket where to save
-        reports.
-
-        S3 calls paths "keys" which is why the keyPrefix is like a
-        subdirectory. Use "" to mean the root directory.
-        &quot&quot&quot,
-    default_val=&quot&quot)</a>
-
-_create_option(
-    &quots3.region&quot,
-    description=&quot&quot&quotAWS region where the bucket is located, e.g. "us-west-2".</code></pre><h3>After Change</h3><pre><code class='java'>
-
-&#47&#47 Config Section: S3 &#47&#47
-
-<a id="change">_create_section(
-    &quots3&quot, &quotConfiguration for when global.sharingMode is set to "s3".&quot)</a>
+    &quotclient.proxyAddress&quot,
+    description=&quot&quot&quot
+        Internet address of the proxy server that the client should connect
+        to. Can be IP address or DNS name.&quot&quot&quot,
+    default_val=&quotlocalhost&quot)</a>
 
 
-@_create_option(&quots3.bucket&quot)
-def _s3_bucket():</code></pre>
+@_create_option(&quotclient.proxyPort&quot)
+def _client_proxy_port():</code></pre><h3>After Change</h3><pre><code class='java'>
+
+&#47&#47 Config Section: Proxy &#47&#47
+
+<a id="change">_create_section(&quotproxy&quot, &quotConfiguration of the proxy server.&quot)</a>
+
+&#47&#47 XXX remove
+&#47&#47 _create_option(
+&#47&#47     &quotproxy.autoCloseDelaySecs&quot,</code></pre>

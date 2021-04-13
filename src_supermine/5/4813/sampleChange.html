@@ -3,18 +3,32 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-        &#47&#47 test default setup
-        last_output_list = []
-        <a id="change">outputs_list = []</a>
+        W = np.random.random((5, 4))
+        &#47&#47 cntk not support it yet
+        backends = <a id="change">[KTF]</a>
+        if KTH.th_sparse_module:
+            &#47&#47 Theano has some dependency issues for sparse
+            backends.append(KTH)
 
-        for k in BACKENDS:
-            rnn_fn = rnn_step_fn(k)
-            inputs = k.variable(input_val)</code></pre><h3>After Change</h3><pre><code class='java'>
-        _, wi = parse_shape_or_val((input_dim, output_dim))
+        <a id="change">for k in backends:
+            t_W = k.variable(W)
+            k_s = k.eval(k.dot(k.variable(x_sparse), t_W))
+            k_d = k.eval(k.dot(k.variable(x_dense), t_W))
 
-        x_k = K.variable(x)
-        <a id="change">wi_k = K.variable(wi)</a>
+            assert k_s.shape == k_d.shape
+            assert_allclose(k_s, k_d, atol=1e-05)
 
-        def rnn_fn(x_k, h_k):
-            assert len(h_k) == 0
-            y_k = K.dot(x_k, wi_k)</code></pre>
+   </a> def test_sparse_concat(self):
+        x_d = np.array([0, 7, 2, 3], dtype=np.float32)
+        x_r = np.array([0, 2, 2, 3], dtype=np.int64)
+        x_c = np.array([4, 3, 2, 3], dtype=np.int64)</code></pre><h3>After Change</h3><pre><code class='java'>
+        x_dense = x_sparse.toarray()
+
+        W = np.random.random((5, 4))
+        t_W = <a id="change">K.variable(W)</a>
+        k_s = K.eval(K.dot(K.variable(x_sparse), t_W))
+        <a id="change">k_d = K.eval(K.dot(K.variable(x_dense), t_W))</a>
+
+        assert k_s.shape == k_d.shape
+        assert_allclose(k_s, k_d, atol=1e-05)
+</code></pre>

@@ -1,45 +1,22 @@
-<html><h3>a637960fab61b66848a36e6a5caf0204c155af01,keras/engine/sequential.py,Sequential,pop,#Sequential#,188
+<html><h3>be65ce986a45bf2f35b5494db3fa6e993b905aeb,examples/run_multivalue_movielens_hash.py,,,#,8
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.layers.pop()
-        if not self.layers:
-            self.outputs = []
-            <a id="change">self._inbound_nodes</a> = []
-            self._outbound_nodes = []
-        else:
-            self.layers[-1]._outbound_nodes = []
-            self.outputs = [self.layers[-1].output]
-            &#47&#47 update self._inbound_nodes
-            self._inbound_nodes[0].output_tensors = self.outputs
-            self._inbound_nodes[0].output_shapes = [
-                <a id="change">self</a>.outputs[<a id="change">0</a>]._keras_shape]
-        self.built = False
+              sequence_input  &#47&#47 make sure the order is right
 
-    def get_layer(self, name=None, index=None):</code></pre><h3>After Change</h3><pre><code class='java'>
-        else:
-            self._layers.append(layer)
+&#47&#47 4.Define Model,compile and train
+model = DeepFM(<a id="change">{"sparse": sparse_feat_list,
+                "sequence": sequence_feature}</a>, task=&quotregression&quot)
 
-    def pop(<a id="change">self</a>):
-        Removes the last layer in the model.
+model.compile("adam", "mse", metrics=[&quotmse&quot], )
+history = model.fit(model_input, data[target].values,</code></pre><h3>After Change</h3><pre><code class='java'>
+varlen_feature_columns = [VarLenSparseFeat(&quotgenres&quot, 100, max_len, &quotmean&quot, use_hash=True,
+                                           dtype="string")]  &#47&#47 Notice : value 0 is for padding for sequence input feature
+linear_feature_columns = fixlen_feature_columns + varlen_feature_columns
+<a id="change">dnn_feature_columns = fixlen_feature_columns + varlen_feature_columns</a>
+<a id="change">feature_names = get_fixlen_feature_names(linear_feature_columns + dnn_feature_columns)</a>
 
-        &#47&#47 Raises
-            TypeError: if there are no layers in the model.
-        
-        if not self.layers:
-            raise TypeError(&quotThere are no layers in the model.&quot)
-
-        self._layers.pop()
-        self.built = False
-        if not self.layers:
-            self.outputs = None
-            self.inputs = None
-        elif <a id="change">self</a>.outputs:
-            self.layers[-1]._outbound_nodes = []
-            self.outputs = [self.layers[-1].output]
-            <a id="change">self.build()</a>
-
-    def build(self, input_shape=None):
-        if input_shape and not self.inputs:
-            batch_shape = tuple(input_shape)</code></pre><img src="17742238.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/a637960fab61b66848a36e6a5caf0204c155af01#diff-3f56e791abb6fa7510fc1b987e6ad29cbc042b7e129af906d71be274bdb03e56L188' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: a637960fab61b66848a36e6a5caf0204c155af01</div><div id='time'> Time: 2018-05-01</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/sequential.py</div><div id='class'> Class Name: Sequential</div><div id='method'> Method Name: pop</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/a637960fab61b66848a36e6a5caf0204c155af01#diff-3f56e791abb6fa7510fc1b987e6ad29cbc042b7e129af906d71be274bdb03e56L188' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: a637960fab61b66848a36e6a5caf0204c155af01</div><div id='time'> Time: 2018-05-01</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/sequential.py</div><div id='class'> Class Name: Sequential</div><div id='method'> Method Name: pop</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/a637960fab61b66848a36e6a5caf0204c155af01#diff-3f56e791abb6fa7510fc1b987e6ad29cbc042b7e129af906d71be274bdb03e56L94' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: a637960fab61b66848a36e6a5caf0204c155af01</div><div id='time'> Time: 2018-05-01</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/engine/sequential.py</div><div id='class'> Class Name: Sequential</div><div id='method'> Method Name: add</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/44d558ad7f13251650f40475eef6652df59e4b09#diff-3c24b30b63bf9e6553df3222244517c64b9cec0f939dab64c31c3e85e0033aaeL254' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 44d558ad7f13251650f40475eef6652df59e4b09</div><div id='time'> Time: 2016-02-22</div><div id='author'> Author: Nicholas.Eggert@target.com</div><div id='file'> File Name: keras/layers/containers.py</div><div id='class'> Class Name: Graph</div><div id='method'> Method Name: set_previous</div><BR>
+&#47&#47 3.generate input data for model
+fixlen_input = [data[name].values for name in feature_names]
+varlen_input = [genres_list]</code></pre><img src="18427289.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-4e99341e36aab24c12a1a3c0cd14776fd68ff0e294992f726ce80bbd3a01811aL26' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: be65ce986a45bf2f35b5494db3fa6e993b905aeb</div><div id='time'> Time: 2019-06-30</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: examples/run_multivalue_movielens_hash.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-bb0b577202f37d3d029fefc1c4b2df5e0b4f88e10447d1e4f1d20e08678ed8bcL13' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: be65ce986a45bf2f35b5494db3fa6e993b905aeb</div><div id='time'> Time: 2019-06-30</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: examples/run_classification_criteo.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-fc0bb1f991a0afa4a396bd39ee33349565445d037f476091abcb35fb52978c4aL39' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: be65ce986a45bf2f35b5494db3fa6e993b905aeb</div><div id='time'> Time: 2019-06-30</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: examples/run_multivalue_movielens.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-f491d23d77f8f606e841ec1bf7a95984e90069809b7f23d2bfc867180cab9a0eL13' target='_blank'>Link</a></div><div id='project'> Project Name: shenweichen/DeepCTR</div><div id='commit'> Commit Name: be65ce986a45bf2f35b5494db3fa6e993b905aeb</div><div id='time'> Time: 2019-06-30</div><div id='author'> Author: wcshen1994@163.com</div><div id='file'> File Name: examples/run_classification_criteo_hash.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

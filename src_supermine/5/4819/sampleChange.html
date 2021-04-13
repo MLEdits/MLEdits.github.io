@@ -2,22 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            if isinstance(distribution, Categorical):
-                split_list[i] = tf.cast(
-                    tf.squeeze(split_list[i], axis=-1), tf.int32)
-        <a id="change">log_list = [
-            distribution.logp(split_x) for distribution, split_x in zip(
-                self.child_distributions, split_list)
-        ]</a>
-        return functools.reduce(lambda a, b: a + b, log_list)
+            self.observation_space.original_space,
+            tensorlib=np)
+        if self.has_action_mask:
+            <a id="change">obs = np.concatenate(
+                [o["obs"] for o in unpacked],
+                axis=1).reshape([len(obs_batch), self.n_agents, self.obs_size])</a>
+            action_mask = np.concatenate(
+                [o["action_mask"] for o in unpacked], axis=1).reshape(
+                    [len(obs_batch), self.n_agents, self.n_actions])
+        else:</code></pre><h3>After Change</h3><pre><code class='java'>
 
-    @override(ActionDistribution)
-    def kl(self, other):</code></pre><h3>After Change</h3><pre><code class='java'>
-            split_x = tf.split(x, split_indices, axis=1)
-        &#47&#47 Structured or flattened (by single action component) input.
+        if isinstance(unpacked[0], dict):
+            unpacked_obs = [
+                np.concatenate(<a id="change">tree.flatten(u["obs"])</a>, 1) for u in unpacked
+            ]
         else:
-            split_x = <a id="change">tree.flatten(x)</a>
-
-        def map_(val, dist):
-            &#47&#47 Remove extra categorical dimension.
-            if isinstance(dist, Categorical):</code></pre>
+            unpacked_obs = unpacked</code></pre>

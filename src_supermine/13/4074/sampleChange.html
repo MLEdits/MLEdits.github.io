@@ -8,13 +8,13 @@
     <a id="change">fname = &quottmp_&quot + str(np.random.randint(10000)) + &quot.h5&quot</a>
     save_model(model, fname)
 
-    model = load_model(fname,
-                       custom_objects={&quotcustom_opt&quot: custom_opt,</code></pre><h3>After Change</h3><pre><code class='java'>
+    new_model = load_model(fname)
+    os.remove(fname)</code></pre><h3>After Change</h3><pre><code class='java'>
     model.train_on_batch(x, y)
 
     out = model.predict(x)
     <a id="change">_, fname = tempfile.mkstemp(&quot.h5&quot)</a>
     save_model(model, fname)
 
-    model = load_model(fname,
-                       custom_objects={&quotcustom_opt&quot: custom_opt,</code></pre>
+    new_model = load_model(fname)
+    os.remove(fname)</code></pre>

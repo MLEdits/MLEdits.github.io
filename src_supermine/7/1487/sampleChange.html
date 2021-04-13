@@ -21,9 +21,11 @@ with open(__file__, &quota&quot) as f:
     &#47&#47 make sure Streamlit and its proxy are fully initialized before the timer
     &#47&#47 below expires. This can take several seconds.
     status = st.empty()
-    for i in <a id="change">range(secs_to_wait, 0, -1)</a>:
-        <a id="change">time.sleep(1)</a>
+    <a id="change">for i in range(secs_to_wait, 0, -1):
+        time.sleep(1)
         status.text(&quotSleeping %ss...&quot % i)
 
-    status.text(&quotTouching %s&quot % __file__)
-    os.utime(os.path.realpath(__file__), None)</code></pre>
+   </a> status.text(&quotTouching %s&quot % __file__)
+    os.utime(os.path.realpath(__file__), None)
+    status.text(&quotTouched %s&quot % __file__)
+</code></pre>

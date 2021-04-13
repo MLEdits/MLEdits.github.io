@@ -2,18 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        &#47&#47 Simplified approach: we do not fit the transformation_pipeline on the fl_data. This reduces computation time somewhat, and everything that&quots in fl_data should be a subset of what&quots in our X_df data
-        &#47&#47 We can change this in v2, but this is a conscious design decision for now
-        &#47&#47 FUTURE IMPROVEMENT: just grab our already_transformed fl_data and X_df
-        <a id="change">fl_data = self.transformation_pipeline.transform(fl_data)</a>
+
+def rand_intensity_normalisation(img, irs_model):
+    rand_bin = np.random.randint(0, 20)
+    img = <a id="change">irs_model.transform(img, thr=rand_bin)</a>
+    <a id="change">img = (img - np.mean(img)) / np.std(img)</a>
+    return img
 
 
-        &#47&#47 fit a train_final_estimator
-        feature_learning_step = self.train_ml_estimator(fl_estimator_names, self._scorer, fl_data, fl_y, feature_learning=True)</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 For performance reasons, I believe it is critical to only have one transformation pipeline, no matter how many estimators we eventually build on top. Getting predictions from a trained estimator is typically super quick. We can easily get predictions from 10 trained models in a production-ready amount of time.But the transformation pipeline is not so quick that we can duplicate it 10 times.
-        combined_transformed_data = self.fit_transformation_pipeline(combined_training_data, combined_y, fl_estimator_names[0])
+def __enumerate_step_points(starting, ending, win_size, step_size):</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        fl_indices = [i for i in range(len_X_df, <a id="change">combined_transformed_data.shape[0]</a>)]
-        fl_data_transformed = combined_transformed_data[fl_indices]
-
-        &#47&#47 fit a train_final_estimator</code></pre>
+def rand_intensity_normalisation(img, irs_model):
+    rand_bin = np.random.randint(0, 20)
+    for mod_i in range(<a id="change">img.shape[-1]</a>):
+        img[:,:,:,mod_i] = irs_model.transform(img[:,:,:,mod_i], thr=rand_bin)
+        img[:,:,:,mod_i] = (img[:,:,:,mod_i] - np.mean(img[:,:,:,mod_i])) / np.std(img[:,:,:,mod_i])
+    return img</code></pre>

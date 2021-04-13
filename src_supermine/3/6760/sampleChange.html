@@ -9,12 +9,11 @@
             y_min, x_min = where.min(0)
             y_max, x_max = where.max(0) + 1
         else:</code></pre><h3>After Change</h3><pre><code class='java'>
+        xs_i = xs[instance_index == i]
         if len(ys_i) == 0:
             continue
-        y_min = ys_i.min()
-        x_min = <a id="change">xs_i.min()</a>
+        <a id="change">y_min = ys_i.min()</a>
+        x_min = xs_i.min()
         y_max = ys_i.max() + 1
         x_max = xs_i.max() + 1
-        <a id="change">bbox[i] = xp.array([y_min, x_min, y_max, x_max], dtype=np.float32)</a>
-    return bbox
-</code></pre>
+        bbox[i] = xp.array([y_min, x_min, y_max, x_max], dtype=np.float32)</code></pre>

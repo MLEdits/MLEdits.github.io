@@ -1,35 +1,30 @@
-<html><h3>c672738b39c8f739551da0d88991a2fedfba3e14,deeppavlov/models/ranking/metrics.py,,recall_at_k,#Any#Any#Any#,24
+<html><h3>b95fcf7f52aca8ad0b1afb3cfc64c8eed534fafe,tests/keras/backend/backend_test.py,TestBackend,test_nn_operations,#TestBackend#,783
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    return recall_at_k(labels, predictions, k=10)
+        &#47&#47 dropout
+        val = np.random.random((100, 100))
+        x_list = [k.variable(val) for k in BACKENDS]
+        z_list = <a id="change">[]</a>
+        for x, k in zip(x_list, BACKENDS):
+            z_list.append(k.eval(k.dropout(x, level=0.2)))
 
-def recall_at_k(y_true, y_pred, k):
-    <a id="change">labels = np.array(y_true)</a>
-    predictions = np.array(y_pred)
-    predictions = np.argsort(predictions, -1)[:, :k]
-    flags = np.zeros_like(predictions)
-    for i in range(predictions.shape[0]):
-        for j in range(predictions.shape[1]):
-            <a id="change">if predictions[i][j] in np.arange(labels[i][j]):
-                flags[i][j] = 1.
-   </a> return np.mean((np.sum(flags, -1) &gt;= 1.).astype(float))
+        <a id="change">for i in range(len(z_list) - 1):
+            assert z_list[i].shape == z_list[i + 1].shape
+            &#47&#47 dropout patterns are different, only check mean
+            assert np.abs(z_list[i].mean() - z_list[i + 1].mean()) &lt; 0.05
 
-
-@register_metric(&quotrank_response&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-    return recall_at_k(labels, predictions, k=10)
-
-def recall_at_k(y_true, y_pred, k):
-    num_examples = float(<a id="change">len(y_pred)</a>)
-    predictions = np.array(y_pred)
-    predictions = np.flip(np.argsort(predictions, -1), -1)[:, :k]
-    num_correct = 0
-    for el in predictions:
-        if 0 in el:
-            num_correct += 1
-    return <a id="change">float(num_correct) / num_examples</a>
-
-@register_metric(&quotrank_response&quot)
-def rank_response(y_true, y_pred):
-    num_examples = float(len(y_pred))</code></pre><img src="25600167.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L25' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: recall_at_k</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/5d2a59fd4cf708d285d0db8ff3522c9156d2c4a9#diff-6099676c784652bcce0fdbbe35347ae32823c1498b485077e0e946a26aa0e8a0L538' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 5d2a59fd4cf708d285d0db8ff3522c9156d2c4a9</div><div id='time'> Time: 2020-08-12</div><div id='author'> Author: 49771382+zheng-ningxin@users.noreply.github.com</div><div id='file'> File Name: src/sdk/pynni/nni/_graph_utils.py</div><div id='class'> Class Name: TorchModuleGraph</div><div id='method'> Method Name: unpack_manually</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L38' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rank_response</div><BR>
+       </a> check_two_tensor_operation(&quotbinary_crossentropy&quot, (4, 2), (4, 2), BACKENDS, from_logits=True)
+        &#47&#47 cross_entropy call require the label is a valid probability distribution,
+        &#47&#47 otherwise it is garbage in garbage out...
+        &#47&#47 due to the algo difference, we can&quott guarantee CNTK has the same result on the garbage input.</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 due to the algo difference, we can&quott guarantee CNTK has the same result on the garbage input.
+        &#47&#47 so create a seperate test case for valid lable input
+        check_two_tensor_operation(&quotcategorical_crossentropy&quot, (4, 2), (4, 2), [KTH, KTF], from_logits=True)
+        <a id="change">xval = np.asarray([[0.26157712, 0.0432167], [-0.43380741, 0.30559841],
+                           [0.20225059, -0.38956559], [-0.13805378, 0.08506755]], dtype=np.float32)</a>
+        yval = np.asarray([[0.46221867, 0.53778133], [0.51228984, 0.48771016],
+                           [0.64916514, 0.35083486], [0.47028078, 0.52971922]], dtype=np.float32)
+        check_two_tensor_operation(&quotcategorical_crossentropy&quot, xval, yval,
+                                   BACKENDS, cntk_two_dynamicity=True, from_logits=True)</code></pre><img src="26092554.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/b95fcf7f52aca8ad0b1afb3cfc64c8eed534fafe#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L755' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: b95fcf7f52aca8ad0b1afb3cfc64c8eed534fafe</div><div id='time'> Time: 2017-07-29</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: TestBackend</div><div id='method'> Method Name: test_nn_operations</div><BR><BR><div id='link'><a href='https://github.com/tflearn/tflearn/commit/45e0e9f57cd6aa0253ef45ecd9044dbdb329c8f0#diff-27d6df51aac978d6cf88ac1bcce4485fd7a77a1f3f95571b28ad795bea8987efL72' target='_blank'>Link</a></div><div id='project'> Project Name: tflearn/tflearn</div><div id='commit'> Commit Name: 45e0e9f57cd6aa0253ef45ecd9044dbdb329c8f0</div><div id='time'> Time: 2017-05-22</div><div id='author'> Author: aymeric.damien@gmail.com</div><div id='file'> File Name: examples/images/dcgan.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/deeppomf/DeepCreamPy/commit/a1e55d9cc2cc4efa7ef2f5245e866d8645d66c77#diff-a5d2da433cebd01859f6e8cf19e93ef70749cdf087a0a0a958e1bc80566ae3f3L130' target='_blank'>Link</a></div><div id='project'> Project Name: deeppomf/DeepCreamPy</div><div id='commit'> Commit Name: a1e55d9cc2cc4efa7ef2f5245e866d8645d66c77</div><div id='time'> Time: 2019-06-17</div><div id='author'> Author: donald.carlsson@paranta.se</div><div id='file'> File Name: libs/utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

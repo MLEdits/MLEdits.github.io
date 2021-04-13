@@ -19,8 +19,10 @@
 
         <a id="change">keys = [&quotimg&quot, &quotkeypoint&quot, &quotkp_mask&quot]</a>
         if return_bb:
-            <a id="change">keys.append(&quotbb&quot)</a>
+            keys.append(&quotbb&quot)
         if return_prob_map:
-            keys.append(&quotprob_map&quot)
+            <a id="change">keys.append(&quotprob_map&quot)</a>
         self.keys = keys
-</code></pre>
+
+    def get_kp(self, i):
+        Returns the keypoints and their mask of the i-th example.</code></pre>

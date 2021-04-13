@@ -15,8 +15,9 @@
 
 def get_value_range_of_dtype(dtype):</code></pre><h3>After Change</h3><pre><code class='java'>
 
+
 def increase_array_resolutions_(arrays, factor):
-    dts = normalize_dtypes(arrays)
+    <a id="change">dts = normalize_dtypes(arrays)</a>
     dts = <a id="change">[increase_itemsize_of_dtype(dt, factor) for dt in dts]</a>
     <a id="change">return change_dtypes_(arrays, dts, round=False, clip=False)</a>
 

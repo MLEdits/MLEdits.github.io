@@ -5,15 +5,14 @@
         
 
         super().__init__(model, config_list)
-        <a id="change">self.mask_calculated_ops = set()</a>
-        self.statistics_batch_num = statistics_batch_num
-        self.collected_activation = {}
-        self.hooks = {}
-        assert activation in [&quotrelu&quot, &quotrelu6&quot]</code></pre><h3>After Change</h3><pre><code class='java'>
+        <a id="change">self.mask_calculated_ops = set()</a>  &#47&#47 operations whose mask has been calculated
+
+    def get_mask(self, base_mask, weight, num_prune):
+        raise NotImplementedError(&quot{} get_mask is not implemented&quot.format(self.__class__.__name__))</code></pre><h3>After Change</h3><pre><code class='java'>
         
 
         super().__init__(model, config_list)
         <a id="change">self.register_buffer("if_calculated", torch.tensor(False))</a> &#47&#47 pylint: disable=not-callable
-        self.statistics_batch_num = statistics_batch_num
-        self.collected_activation = {}
-        self.hooks = {}</code></pre>
+
+    def get_mask(self, base_mask, weight, num_prune):
+        raise NotImplementedError(&quot{} get_mask is not implemented&quot.format(self.__class__.__name__))</code></pre>

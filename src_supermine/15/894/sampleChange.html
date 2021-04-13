@@ -50,7 +50,14 @@
     self._w_dw = tf.get_variable(
         "w_dw",
         shape=depthwise_weight_shape,
-        dtype=<a id="change">inputs.dtype</a>,
+        dtype=inputs.dtype,
         initializer=self._initializers["w_dw"],
         partitioner=self._partitioners.get("w_dw", None),
-        regularizer=self._regularizers.get("w_dw", None))</code></pre>
+        regularizer=self._regularizers.get("w_dw", None))
+    self._w_pw = tf.get_variable(
+        "w_pw",
+        shape=pointwise_weight_shape,
+        dtype=<a id="change">inputs.dtype</a>,
+        initializer=self._initializers["w_pw"],
+        partitioner=self._partitioners.get("w_pw", None),
+        regularizer=self._regularizers.get("w_pw", None))</code></pre>

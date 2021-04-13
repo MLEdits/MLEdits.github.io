@@ -12,8 +12,8 @@
         acc_entropy = nan</code></pre><h3>After Change</h3><pre><code class='java'>
             acc_entropy = nan
 
-    elif no_of_items &gt;= 4:
-        if <a id="change">&quotacc&quot in keys</a>:
-            acc_entropy = entropy(history.history[&quotval_acc&quot],
-                                  history.history[&quotacc&quot])
+    elif no_of_items == 2:
+        if &quotacc&quot in keys and <a id="change">&quotloss&quot in keys</a>:
+            loss_entropy = entropy(history.history[&quotloss&quot])
+            acc_entropy = entropy(history.history[&quotacc&quot])
         else:</code></pre>

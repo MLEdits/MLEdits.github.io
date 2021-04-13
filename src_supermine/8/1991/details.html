@@ -1,40 +1,25 @@
-<html><h3>b22f99034d3fbad4606037aedd5c314b166e590b,catalyst/dl/callbacks/criterion.py,CriterionAggregatorCallback,__init__,#CriterionAggregatorCallback#Any#Any#Any#Any#,162
+<html><h3>0ef2bfb1adda578c45e9c56412f86c02b950c0a3,deeplabcut/utils/make_labeled_video.py,,CreateVideoSlow,#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#,175
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.loss_keys = loss_keys
+        Index = range(nframes)
+    else:
+        Index = []
+        <a id="change">for k in Frames2plot:
+            if k &gt;= 0 and k &lt; nframes:
+                Index.append(int(k))
 
-        self.multiplier = multiplier
-        <a id="change">if loss_aggregate_fn == "sum":
-            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
-        elif loss_aggregate_fn == "weighted_sum":
-            if loss_keys is None or not isinstance(loss_keys, dict):
-                raise ValueError(
-                    "For `weighted_sum` mode the loss_keys must be specified "
-                    "and must be a dict"
-                )
-            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
-        elif loss_aggregate_fn == "mean":
-            self.loss_fn = lambda x: torch.mean(torch.stack(x)) * multiplier
-        else:
-            raise ValueError(
-                "loss_aggregate_fn must be `sum`, `mean` or weighted_sum`"
-            )
+    &#47&#47 Prepare figure
+   </a> prev_backend = plt.get_backend()
+    plt.switch_backend("agg")
+    dpi = 100
+    fig = plt.figure(frameon=False, figsize=(nx / dpi, ny / dpi))</code></pre><h3>After Change</h3><pre><code class='java'>
+    if Frames2plot is None:
+        Index = set(range(nframes))
+    else:
+        Index = <a id="change">{int(k) for k in Frames2plot if 0 &lt;= k &lt; nframes}</a>
 
-       </a> self.loss_aggregate_name = loss_aggregate_fn
-
-    def _preprocess_loss(self, loss: Any) -&gt; List[torch.Tensor]:
-        if isinstance(loss, list):</code></pre><h3>After Change</h3><pre><code class='java'>
-        if loss_aggregate_fn in ("sum", "weighted_sum", "weighted_mean"):
-            self.loss_fn = lambda x: torch.sum(torch.stack(x)) * multiplier
-            if loss_aggregate_fn == "weighted_mean":
-                <a id="change">weights_sum = sum(loss_keys.items())</a>
-                <a id="change">self.loss_keys = {
-                    key: weight / weights_sum
-                    for key, weight in loss_keys.items()
-                }</a>
-        elif loss_aggregate_fn == "mean":
-            self.loss_fn = lambda x: torch.mean(torch.stack(x)) * multiplier
-        else:
-            raise ValueError(</code></pre><img src="10381334.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/catalyst-team/catalyst/commit/b22f99034d3fbad4606037aedd5c314b166e590b#diff-3c328415a8570c9e0c4b08c065ec224f51bd3af8eb216225f02d634d2ac2cb51L163' target='_blank'>Link</a></div><div id='project'> Project Name: catalyst-team/catalyst</div><div id='commit'> Commit Name: b22f99034d3fbad4606037aedd5c314b166e590b</div><div id='time'> Time: 2020-01-27</div><div id='author'> Author: scitator@gmail.com</div><div id='file'> File Name: catalyst/dl/callbacks/criterion.py</div><div id='class'> Class Name: CriterionAggregatorCallback</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/3a32d6e84f48d646da3ca1f4c7eeda31850a2968#diff-c93211ee332a89cb647c55e33e1db6c05bff88b723a6fa99d8491f62d72f50c6L810' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: 3a32d6e84f48d646da3ca1f4c7eeda31850a2968</div><div id='time'> Time: 2020-05-04</div><div id='author'> Author: w4nderlust@gmail.com</div><div id='file'> File Name: ludwig/utils/hyperopt_utils.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: update_hyperopt_params_with_defaults</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/0540ba000c084f43b51f46d0b61be79df6e82570#diff-a43a135fb6d3123dae76ad8c5681964e557e05f0d34bb603313938a55e2d007aL10' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 0540ba000c084f43b51f46d0b61be79df6e82570</div><div id='time'> Time: 2017-12-15</div><div id='author'> Author: ol.gure@gmail.com</div><div id='file'> File Name: deeppavlov/core/common/params.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: from_params</div><BR>
+    &#47&#47 Prepare figure
+    prev_backend = plt.get_backend()
+    plt.switch_backend("agg")</code></pre><img src="11295184.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/AlexEMG/DeepLabCut/commit/0ef2bfb1adda578c45e9c56412f86c02b950c0a3#diff-7184ffc0655cc12c00f07d62817ad8dbe7ed01513e0ad2ac44ac6629c241fed4L213' target='_blank'>Link</a></div><div id='project'> Project Name: AlexEMG/DeepLabCut</div><div id='commit'> Commit Name: 0ef2bfb1adda578c45e9c56412f86c02b950c0a3</div><div id='time'> Time: 2020-06-18</div><div id='author'> Author: saveliy.m.yusufov@gmail.com</div><div id='file'> File Name: deeplabcut/utils/make_labeled_video.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: CreateVideoSlow</div><BR><BR><div id='link'><a href='https://github.com/OpenMined/PySyft/commit/0d66931e6da93fda1c07388e6a2ed16d9a129040#diff-aa2996f27f9ab3c2e01aac88d7be70c416166ed8f198491e5c4c2ea4ce7e2987L33' target='_blank'>Link</a></div><div id='project'> Project Name: OpenMined/PySyft</div><div id='commit'> Commit Name: 0d66931e6da93fda1c07388e6a2ed16d9a129040</div><div id='time'> Time: 2020-08-29</div><div id='author'> Author: jason.paumier@gmail.com</div><div id='file'> File Name: src/syft/core/store/store_memory.py</div><div id='class'> Class Name: MemoryStore</div><div id='method'> Method Name: get_objects_of_type</div><BR><BR><div id='link'><a href='https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/bd4146b3f0281bbcd45bfefac7c666168e29ed73#diff-abf85f6356e07e120b80f20b6c599c695051ea796e1e4bc9a645bac326af5a78L29' target='_blank'>Link</a></div><div id='project'> Project Name: AKSHAYUBHAT/DeepVideoAnalytics</div><div id='commit'> Commit Name: bd4146b3f0281bbcd45bfefac7c666168e29ed73</div><div id='time'> Time: 2018-05-31</div><div id='author'> Author: akshayubhat@gmail.com</div><div id='file'> File Name: server/dvaapp/operations/dataset.py</div><div id='class'> Class Name: DatasetCreator</div><div id='method'> Method Name: extract_zip_dataset</div><BR>

@@ -11,21 +11,21 @@
     x_train = x_all[:int(nsample * 0.8), :]
     x_test = x_all[int(nsample * 0.8):, :]
 
-    y_all = np.random.random(nsample)
+    y_all = np.random.randint(0, 2, nsample)
     y_train = y_all[:int(nsample * 0.8)]
     y_test = y_all[int(nsample * 0.8):]
 
-    clf = TabularRegressor()
+    clf = TabularClassifier()
     <a id="change">datainfo = {&quotloaded_feat_types&quot: [ntime, nnum, ncat, nmvc]}</a>
     clf.fit(x_train, y_train, time_limit=12 * 60 * 60, datainfo=datainfo)
 
-    AUC = clf.evaluate(x_test, y_test)
-    print(AUC)</code></pre><h3>After Change</h3><pre><code class='java'>
+    results = clf.evaluate(x_test, y_test)
+    print(results)</code></pre><h3>After Change</h3><pre><code class='java'>
     y_test = y_all[int(nsample * 0.8):]
 
-    clf = TabularRegressor()
+    clf = TabularClassifier()
     <a id="change">datainfo = np.array([&quotTIME&quot] * ntime + [&quotNUM&quot] * nnum + [&quotCAT&quot] * ncat)</a>
     clf.fit(x_train, y_train, time_limit=12 * 60 * 60, data_info=datainfo)
 
-    MSE = clf.evaluate(x_test, y_test)
-    print(MSE)</code></pre>
+    AUC = clf.evaluate(x_test, y_test)
+    print(AUC)</code></pre>

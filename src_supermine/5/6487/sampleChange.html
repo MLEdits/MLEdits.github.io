@@ -3,22 +3,19 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    q_mu = model.mean_function(model.inducing_variable.Z.read_value())
-    q_var = model.kernel(model.inducing_variable.Z.read_value(), full=True)
-    <a id="change">model_qu = [q_mu, tf.reshape(q_var, (1, 20, 20))]</a>
-
-    <a id="change">for v1, v2 in zip(model_qu, model.predict_f(model.inducing_variable.Z.read_value(), full_cov=True)):
-        np.testing.assert_allclose(v1, v2, rtol=0, atol=1e-7)
-
-
-</a>def test_svgp_white():
-    
-    Tests that the SVGP bound on the likelihood is the same when using
-    with and without diagonals when whitening.</code></pre><h3>After Change</h3><pre><code class='java'>
-
-    gpflow.optimizers.Scipy().minimize(closure, variables=model.trainable_variables)
-
-    <a id="change">qu_mean</a>, qu_cov = model.compute_qu()
-    f_at_Z_mean, f_at_Z_cov = model.predict_f(model.inducing_variable.Z, full_cov=True)
-
-    np.testing.assert_allclose(qu_mean, f_at_Z_mean, rtol=1e-5, atol=1e-5)</code></pre>
+    def __call__(self, inputs):
+        assert type(inputs) in {list, tuple}
+        <a id="change">names = [getattr(v, &quotname&quot, None) for v in self.inputs]</a>
+        <a id="change">feed_dict = dict(zip(names, inputs))</a>
+        session = get_session()
+        updated = session.run(self.outputs + [self.updates_op], feed_dict=feed_dict)
+        return updated[:len(self.outputs)]
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        feed_dict = {}
+        for tensor, value in zip(self.inputs, inputs):
+            if is_sparse(tensor):
+                <a id="change">sparse_coo = value.tocoo()</a>
+                indices = np.concatenate(<a id="change">(np.expand_dims(sparse_coo.row, 1), np.expand_dims(sparse_coo.col, 1))</a>, 1)
+                value = (indices, value.data, value.shape)
+            feed_dict[tensor] = value
+        session = get_session()</code></pre>

@@ -9,10 +9,10 @@
         self._add_edge(layer, input_id, self.adj_list[output_id][0][0], False)
 
         self._redirect_edge(output_id, self.adj_list[output_id][0][0], new_node_id)</code></pre><h3>After Change</h3><pre><code class='java'>
-
-        self.pre_vis[old_node_id] = True
-        dim = get_int_tuple(end.output_shape)[-1]
-        n_add = <a id="change">get_int_tuple</a>(<a id="change">start.output_shape</a>)[-1]
-        self._search_next(old_node_id, dim, dim, n_add)
-        return self.produce_model()
-</code></pre>
+        new_node_id = self.node_to_id[0]
+        old_node_id = self.adj_list[output_id][0][0]
+        layer = Concatenate()
+        layer.build([<a id="change">get_int_tuple(end.output_shape)</a>, get_int_tuple(start.output_shape)])
+        self._add_edge(layer, new_node_id, old_node_id, False)
+        self._add_edge(layer, input_id, old_node_id, False)
+        self._redirect_edge(output_id, old_node_id, new_node_id)</code></pre>

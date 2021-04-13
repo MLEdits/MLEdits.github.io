@@ -2,27 +2,35 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        ys = []
+        self.assertEqual(delta.new_element.text.body, test_data)
 
-        h = x
-        <a id="change">hs = []</a>
-        for i, link in enumerate(self):
-            h = link(h)
-            if i in {35, 43, 51}:
-                ys.append(h)
+    def test_enqueue_new_element_delta_same_id(self):
+        <a id="change">queue = MockQueue()</a>
+        dg = DeltaGenerator(queue, id=123)
+        self.assertEqual(123, dg._id)
 
-            if i in {14, 23, 33, 41}:
-                hs.append(h)
-            elif i in {35, 43}:
-                <a id="change">h = hs.pop()</a>
-            elif i in {36, 44}:
-                h = F.concat((_upsample(h), hs.pop()))
+        test_data = &quotsome test data&quot
+        &#47&#47 Use FakeDeltaGenerator.fake_text cause if we use
+        &#47&#47 DeltaGenerator.text, it calls enqueue_new_element_delta
+        &#47&#47 automatically.  Ideally I should unwrap it.
+        fake_dg = FakeDeltaGenerator()
 
-        return ys</code></pre><h3>After Change</h3><pre><code class='java'>
-        ys = []
-        for h, link in zip(self.extractor(x), self.subnet):
-            h = link(h)
-            h = F.reshape(h, (<a id="change">h.shape[0]</a>, 3, 1 + 4 + self.n_fg_class, -1))
-            h = F.transpose(h, (0, 3, 1, 2))
-            ys.append(h)
-        return F.concat(ys)</code></pre>
+        def marshall_element(element):
+            fake_dg.fake_text(element, test_data)
+
+        new_dg = dg._enqueue_new_element_delta(marshall_element)
+        self.assertEqual(dg, new_dg)
+
+        <a id="change">delta = queue._deltas.pop()</a>
+        self.assertEqual(123, delta.id)
+        self.assertEqual(delta.new_element.text.body, test_data)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        new_dg = dg._enqueue_new_element_delta(marshall_element)
+        self.assertEqual(dg, new_dg)
+
+        msg = <a id="change">self.queue[-1]</a>
+        self.assertEqual(123, msg.delta.id)
+        self.assertEqual(msg.delta.new_element.text.body, test_data)
+
+</code></pre>

@@ -2,65 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            self.progbar.update(self.seen, self.log_values)
 
-    def turn_strings_to_floats(self, X, y=None):
+    def on_epoch_end(self, epoch, logs={}):
+        <a id="change">for k, v in self.totals.items():
+            self.log_values.append((k, self.totals[k] / self.seen))
+                
+       </a> for k, v in logs.items():
+            self.log_values.append((k, v))
+        self.progbar.update(self.seen, self.log_values)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            self.progbar.update(self.seen, self.log_values)
 
-        <a id="change">for key, val in self.column_descriptions.items():
-
-            if val == &quotcategorical&quot:
-                for row in X:
-                    for key, val in row.items():
-                        try:
-                            row[key] = str(val)
-                        except:
-                            pass
-
-            else:
-                for row in X:
-                    for key, val in row.items():
-                        try:
-                            row[key] = float(val)
-                        except:
-                            pass
-
-       </a> return X
+    def on_epoch_end(self, epoch, logs={}):
+        <a id="change">for k in self.params[&quotmetrics&quot]:
+            if k in self.totals:
+                self.log_values.append((k, self.totals[k] / self.seen))
+            if k in logs:
+                self.log_values.append((k, logs[k]))
+       </a> self.progbar.update(self.seen, self.log_values)
 
 
-    def transform(self, X, y=None):</code></pre><h3>After Change</h3><pre><code class='java'>
-
-    def turn_strings_to_floats(self, X, y=None):
-
-        <a id="change">for row in X:
-            for key, val in row.items():
-                col_desc = self.column_descriptions.get(key)
-                if col_desc == &quotcategorical&quot:
-                    row[key] = str(val)
-                elif col_desc in (None, &quotcontinuous&quot, &quotnumerical&quot, &quotfloat&quot, &quotint&quot):
-                    row[key] = float(val)
-                else:
-                    &#47&#47 covers cases for dates, target, etc.
-                    pass
-
-
-        &#47&#47 for key, val in self.column_descriptions.items():
-
-        &#47&#47     if val == &quotcategorical&quot:
-        &#47&#47         for row in X:
-        &#47&#47             for key, val in row.items():
-        &#47&#47                 try:
-        &#47&#47                     row[key] = str(val)
-        &#47&#47                 except:
-        &#47&#47                     pass
-
-        &#47&#47     elif va:
-        &#47&#47         for row in X:
-        &#47&#47             for key, val in row.items():
-        &#47&#47                 try:
-        &#47&#47                     row[key] = float(val)
-        &#47&#47                 except:
-        &#47&#47                     pass
-
-       </a> return X
-
-
-    def transform(self, X, y=None):</code></pre>
+class History(Callback):</code></pre>

@@ -10,11 +10,11 @@
 
 
 if __name__ == &quot__main__&quot:</code></pre><h3>After Change</h3><pre><code class='java'>
-    with torch.no_grad():
         output_sru_250 = model(inputs)
     assert len(output_sru_235) == len(output_sru_250) == 2
-    <a id="change">max_diff0 = (output_sru_235[0] - output_sru_250[0]).abs().max().item()</a>
-    max_diff1 = (output_sru_235[1] - output_sru_250[1]).abs().max().item()
+    max_diff0 = (output_sru_235[0] - output_sru_250[0]).abs().max().item()
+    <a id="change">max_diff1 = (output_sru_235[1] - output_sru_250[1]).abs().max().item()</a>
     assert max_diff0 &lt;= EPSILON
     assert max_diff1 &lt;= EPSILON
+
 </code></pre>

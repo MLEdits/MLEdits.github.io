@@ -6,21 +6,20 @@
     if dtype is None:
         dtype = floatx()
     <a id="change">tf_dtype = tf.as_dtype(dtype)</a>
-    v = tf.zeros(shape=shape, dtype=tf_dtype, name=name)
-    if py_all(v.get_shape().as_list()):
-        return variable(v, dtype=dtype, name=name)
-    return v</code></pre><h3>After Change</h3><pre><code class='java'>
-    
-    if dtype is None:
-        dtype = floatx()
+    if seed is None:
+        &#47&#47 ensure that randomness is conditioned by the Numpy RNG
+        seed = np.random.randint(10e8)
+    value = tf.random_uniform_initializer(</code></pre><h3>After Change</h3><pre><code class='java'>
+    if seed is None:
+        &#47&#47 ensure that randomness is conditioned by the Numpy RNG
+        seed = np.random.randint(10e8)
     <a id="change">with tf_ops.init_scope():
-        v = tf.zeros(shape=shape, dtype=dtype, name=name)
-        if py_all(v.shape.as_list()):
-            return variable(v, dtype=dtype, name=name)
-        return v
+        value = tf.random_uniform_initializer(
+            low, high, dtype=dtype, seed=seed)(shape)
+        return variable(value, dtype=dtype, name=name)
 
 
-</a>@tf_graph_op
-def ones(shape, dtype=None, name=None):
-    Instantiates an all-ones variable and returns it.
+</a>def random_normal_variable(shape, mean, scale, dtype=None,
+                           name=None, seed=None):
+    Instantiates a variable with values drawn from a normal distribution.
 </code></pre>

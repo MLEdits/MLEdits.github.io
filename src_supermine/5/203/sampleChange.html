@@ -20,11 +20,11 @@ def main(gpu=-1, batch_size=1, iterations=100000,
     model = FCN32s(n_class=n_class)
     if gpu != -1:
         model.to_gpu(gpu)</code></pre><h3>After Change</h3><pre><code class='java'>
+
     train_data = VOCSemanticSegmentationDataset(mode=&quottrain&quot)
     test_data = VOCSemanticSegmentationDataset(mode=&quotval&quot)
-    extend(train_data, transform)
-    <a id="change">extend(test_data, transform)</a>
+    <a id="change">extend(train_data, transform)</a>
+    extend(test_data, transform)
 
     &#47&#47 set up FCN32s
-    n_class = 21
-    model = FCN32s(n_class=n_class)</code></pre>
+    n_class = 21</code></pre>

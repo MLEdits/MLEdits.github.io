@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-def build_model_from_config(config, mode=&quotinfer&quot):
-    model_config = config[&quotmodel&quot]
-    model_name = <a id="change">model_config[&quotname&quot]</a>
+def interact_agent(config_path):
+    a = build_agent_from_config(config_path)
+    commutator_name = <a id="change">a.commutator_config[&quotname&quot]</a>
+    commutator = from_params(REGISTRY[commutator_name], a.commutator_config)
 
-    vocabs = {}
-    if &quotvocabs&quot in config:
-        for vocab_param_name, vocab_config in config[&quotvocabs&quot].items():</code></pre><h3>After Change</h3><pre><code class='java'>
-        model = Chainer(model_config[&quotin&quot], model_config[&quotout&quot], model_config.get(&quotin_y&quot))
+    models = [build_model_from_config(sk) for sk in a.skill_configs]
+    while True:</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        for component_config in model_config[&quotpipe&quot]:
-            component = <a id="change">from_params(component_config, vocabs=[], mode=mode)</a>
+def interact_agent(config_path):
+    a = build_agent_from_config(config_path)
+    commutator = <a id="change">from_params(a.commutator_config)</a>
 
-            if &quotin&quot in component_config:
-                c_in = component_config[&quotin&quot]
-                c_out = component_config[&quotout&quot]</code></pre>
+    models = [build_model_from_config(sk) for sk in a.skill_configs]
+    while True:
+        &#47&#47 get input from user</code></pre>

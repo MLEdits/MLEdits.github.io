@@ -1,42 +1,22 @@
-<html><h3>94dbc3042f5a85b399f5ce2859d4e8fbafd235b9,tests/keras/backend/backend_test.py,,check_two_tensor_operation,#Any#Any#Any#Any#,37
+<html><h3>86cff17e7ef1b355e1ab4862ccd664ed4c856227,python/ray/util/sgd/torch/distributed_torch_runner.py,DistributedTorchRunner,_get_model_state_dicts,#DistributedTorchRunner#,140
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-def check_two_tensor_operation(function_name, x_input_shape,
-                               y_input_shape, backend_list, **kwargs):
-    xval = np.random.random(x_input_shape) - 0.5
-    <a id="change">x_list = [k.variable(xval) for k in backend_list]</a>
+            &#47&#47 This is so that we create a duplicate of weights into CPU rather
+            &#47&#47 than move the model weights out of the GPU so that we can
+            &#47&#47 resume training while saving intermediate checkpoints.
+            cpu_state_dicts += [{k: <a id="change">v.cpu()</a> <a id="change">for</a> k, v in state_dict.items()}]
+        <a id="change">return cpu_state_dicts</a>
 
-    yval = np.random.random(y_input_shape) - 0.5
+    def _set_model_state_dicts(self, model_state_dicts):
+        for model, model_state_dict in zip(self.models, model_state_dicts):
+            model.module.load_state_dict(model_state_dict)</code></pre><h3>After Change</h3><pre><code class='java'>
 
-    y_list = [k.variable(yval) for k in backend_list]
+        This is needed for PyTorch DistributedDataParallel models.
+        
+        <a id="change">return [model.module.state_dict() for model in self.models]</a>
 
-    z_list = []
-    <a id="change">for x, y, k in zip(x_list, y_list, backend_list):
-        z_list.append(k.eval(getattr(k, function_name)(x, y, **kwargs)))
-
-   </a> for i in range(len(z_list) - 1):
-        assert z_list[i].shape == z_list[i + 1].shape
-        assert_allclose(z_list[i], z_list[i + 1], atol=1e-05)
-        if hasattr(z_list[i], &quot_keras_shape&quot):</code></pre><h3>After Change</h3><pre><code class='java'>
-    yval = np.random.random(y_input_shape) - 0.5
-
-    z_list = []
-    <a id="change">for k in backend_list:
-        if k == KCSD:
-            z = cntk_func_two_tensor(function_name, x_input_shape,
-                                     y=yval, **kwargs)([xval])[0]
-        elif k == KCTD:
-            z = cntk_func_two_tensor(function_name, x_input_shape,
-                                     y=y_input_shape, **kwargs)([xval, yval])[0]
-        else:
-            z = k.eval(getattr(k, function_name)(k.variable(xval), k.variable(yval), **kwargs))
-        if hasattr(z, &quot_keras_shape&quot):
-            assert z._keras_shape == z.shape
-        z_list += [z]
-
-   </a> for (z1, z2) in zip(z_list[1:], z_list[:-1]):
-        assert z1.shape == z2.shape
-        assert_allclose(z1, z2, atol=1e-05)
-</code></pre><img src="13750385.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 8</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L40' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_two_tensor_operation</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/94dbc3042f5a85b399f5ce2859d4e8fbafd235b9#diff-254a51c95545edd5f7188d4a7e71c1de4944ba8bddb7d769c1fae2d1b527d081L24' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 94dbc3042f5a85b399f5ce2859d4e8fbafd235b9</div><div id='time'> Time: 2017-07-06</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: tests/keras/backend/backend_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: check_single_tensor_operation</div><BR><BR><div id='link'><a href='https://github.com/streamlit/streamlit/commit/92dba5a4d8aa1f531674370ded7d4ebaffbc979d#diff-f4b143d038865610703f38f6401d27ef987101daa66e04121522c1e12a6b689aL6' target='_blank'>Link</a></div><div id='project'> Project Name: streamlit/streamlit</div><div id='commit'> Commit Name: 92dba5a4d8aa1f531674370ded7d4ebaffbc979d</div><div id='time'> Time: 2018-04-06</div><div id='author'> Author: adrien.g.treuille@gmail.com</div><div id='file'> File Name: local/server/streamlit/local/io.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>
+    def _set_model_state_dicts(self, model_state_dicts):
+        for model, model_state_dict in zip(self.models, model_state_dicts):
+            model.module.load_state_dict(model_state_dict)</code></pre><img src="14648127.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/86cff17e7ef1b355e1ab4862ccd664ed4c856227#diff-bcbbc871d3b955a0ea6b42e6dbc2213e0b847688efae523c35d5ab5b3ee175e9L145' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 86cff17e7ef1b355e1ab4862ccd664ed4c856227</div><div id='time'> Time: 2020-03-30</div><div id='author'> Author: rliaw@berkeley.edu</div><div id='file'> File Name: python/ray/util/sgd/torch/distributed_torch_runner.py</div><div id='class'> Class Name: DistributedTorchRunner</div><div id='method'> Method Name: _get_model_state_dicts</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/f08687f5503b1a59b1f5ce9a4cb0d6983d4d1554#diff-396cded251382c39ae2a136ee01acb8b085561c1735826666ecae0b43160ad34L94' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: f08687f5503b1a59b1f5ce9a4cb0d6983d4d1554</div><div id='time'> Time: 2020-03-08</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/policy/torch_policy.py</div><div id='class'> Class Name: TorchPolicy</div><div id='method'> Method Name: compute_actions</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/86cff17e7ef1b355e1ab4862ccd664ed4c856227#diff-31d88f3d8a68242e96f2e27954833b60dfaa3bbb5a57fbb1c2dc483dbeb12131L229' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 86cff17e7ef1b355e1ab4862ccd664ed4c856227</div><div id='time'> Time: 2020-03-30</div><div id='author'> Author: rliaw@berkeley.edu</div><div id='file'> File Name: python/ray/util/sgd/torch/torch_runner.py</div><div id='class'> Class Name: TorchRunner</div><div id='method'> Method Name: _get_model_state_dicts</div><BR>

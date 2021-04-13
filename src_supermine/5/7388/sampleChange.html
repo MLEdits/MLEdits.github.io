@@ -5,7 +5,7 @@
                     "by this schema: {}".format(arg, required_args))
 
         &#47&#47 Check if given args have all required args.
-        if len(required_args) != <a id="change">len(given_args)</a>:
+        if <a id="change">len(required_args)</a> != len(given_args):
             raise ValidationError("Given args: {} doesn&quott have all the "
                                   "necessary args for this schema: {}".format(
                                       given_args, required_args))</code></pre><h3>After Change</h3><pre><code class='java'>

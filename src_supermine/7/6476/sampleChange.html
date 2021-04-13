@@ -9,12 +9,11 @@
             data_root = _get_sintel()
             data_dir = os.path.join(data_root, &quottraining&quot)
        </a> self.data_dir = data_dir
-        self.paths = self._collect_data(data_dir)
-        <a id="change">self.keys = self.paths.keys()</a>
+        <a id="change">self.paths = self._collect_data(data_dir)</a>
+        <a id="change">self.keys</a> = self.paths.keys()
 
         self.mode = mode
-
-    def __len__(self):</code></pre><h3>After Change</h3><pre><code class='java'>
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
     .. _`MPI Sintel Flow Dataset`: http://sintel.is.tue.mpg.de/
 

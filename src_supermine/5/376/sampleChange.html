@@ -2,18 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    def get_mean(self):
-        if len(self.values) == 0:
-            return &quot&quot
-        if type(<a id="change">self.values[0]</a>) == np.ndarray:
-            return np.mean(np.concatenate(self.values))
-        else:
-            return np.mean(self.values)</code></pre><h3>After Change</h3><pre><code class='java'>
-    def get_mean(self):
-        if len(self.values) == 0:
-            return &quot&quot
-        <a id="change">return np.mean(self._get_values())</a>
-
-    def get_max(self):
-        if len(self.values) == 0:
-            return &quot&quot</code></pre>
+        if self.mode == &quotsum&quot or self.mode == &quotave&quot:
+            s = theano.tensor.sum(X, axis=1)
+            if self.mode == &quotave&quot:
+                s /= <a id="change">X.shape[1]</a>
+            return s
+        elif self.mode == &quotmul&quot:
+            s = theano.tensor.mul(X, axis=1)
+            return s</code></pre><h3>After Change</h3><pre><code class='java'>
+    def get_output(self, train=False):
+        X = self.get_input(train)
+        if self.mode == &quotave&quot:
+            s = <a id="change">theano.tensor.mean(X, axis=1)</a>
+            <a id="change">return s</a>
+        if self.mode == &quotsum&quot:
+            s = theano.tensor.sum(X, axis=1)
+            return s
+        elif self.mode == &quotmul&quot:</code></pre>

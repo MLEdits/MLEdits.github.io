@@ -1,24 +1,21 @@
-<html><h3>90b0e10e81a5a0e03753715ec1034278bdd5f600,pwnagotchi/plugins/default/api.py,,parse_pcap,#Any#,86
+<html><h3>0a01df9bdc0bd142eff95a1c878947047194d617,deeppavlov/core/commands/train.py,,train_model_from_config,#Any#,72
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    data_path = expand_path(reader_config.get(&quotdata_path&quot, &quot&quot))
+    kwargs = reader_config.copy()
+    if "name" in kwargs: del kwargs["name"]
+    <a id="change">if "data_path" in kwargs: del kwargs["data_path"]
+</a>    data = reader.read(data_path, **kwargs)
 
-        for pkt in rdpcap(filename):
-            info = parse_packet(pkt, info)
-            <a id="change">if &quotessid&quot in info and info[&quotessid&quot] is not None and &quotbssid&quot in info and info[&quotbssid&quot] is not None:
-                break
+    iterator_config = config[&quotdataset_iterator&quot]
+    dataset: BasicDatasetIterator = from_params(iterator_config, data=data)</code></pre><h3>After Change</h3><pre><code class='java'>
+    reader_config = config[&quotdataset_reader&quot]
+    reader = get_model(reader_config[&quotname&quot])()
+    data_path = expand_path(reader_config.get(&quotdata_path&quot, &quot&quot))
+    <a id="change">kwargs = {k: v for k, v in reader_config.items() if k not in [&quotname&quot, &quotdata_path&quot]}</a>
+    data = reader.read(data_path, **kwargs)
 
-       </a> bssid = info[&quotbssid&quot] if &quotbssid&quot in info else None
-        essid = info[&quotessid&quot] if &quotessid&quot in info else None
-
-    except Exception as e:</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 /root/handshakes/BSSID.pcap
-        essid, bssid = &quot&quot, net_id
-
-    <a id="change">it = iter(bssid)</a>
-    <a id="change">bssid = &quot:&quot.join([a + b for a, b in zip(it, it)])</a>
-
-    info = {
-        &quotessid&quot: essid,
-        &quotbssid&quot: bssid</code></pre><img src="26040879.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/evilsocket/pwnagotchi/commit/90b0e10e81a5a0e03753715ec1034278bdd5f600#diff-c1ae85f41d50579e2706dc894a12c55b9cee966595bef1788c23809558f721d3L84' target='_blank'>Link</a></div><div id='project'> Project Name: evilsocket/pwnagotchi</div><div id='commit'> Commit Name: 90b0e10e81a5a0e03753715ec1034278bdd5f600</div><div id='time'> Time: 2019-10-07</div><div id='author'> Author: evilsocket@gmail.com</div><div id='file'> File Name: pwnagotchi/plugins/default/api.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: parse_pcap</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/bff50cfc37380140d53debfb140e262a38668db0#diff-2545ecf4895ea68a36abeadd269ebd292822feb364caf75ae3ecf001101c2b07L103' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: bff50cfc37380140d53debfb140e262a38668db0</div><div id='time'> Time: 2020-12-18</div><div id='author'> Author: 62982571+Gekho457@users.noreply.github.com</div><div id='file'> File Name: python/ray/autoscaler/_private/kubernetes/config.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _get_resource</div><BR><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/690e6c8f9a42cf5b42dc010dfb073e54175da221#diff-cbd933b75e3c2f9232bd2ce7c71aa3ffe67427531e11b51dda87ca355d02bf64L94' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: 690e6c8f9a42cf5b42dc010dfb073e54175da221</div><div id='time'> Time: 2020-05-07</div><div id='author'> Author: jimthompson5802@gmail.com</div><div id='file'> File Name: ludwig/models/modules/combiners.py</div><div id='class'> Class Name: ConcatCombiner</div><div id='method'> Method Name: call</div><BR><BR><div id='link'><a href='https://github.com/PetrochukM/PyTorch-NLP/commit/6a5916968838686e332fb68a10cb30222843fbd9#diff-a350d27403fbeadcaee196ff838d84e1ae06ef14d82e4e969b41ff8c07d87953L77' target='_blank'>Link</a></div><div id='project'> Project Name: PetrochukM/PyTorch-NLP</div><div id='commit'> Commit Name: 6a5916968838686e332fb68a10cb30222843fbd9</div><div id='time'> Time: 2018-04-26</div><div id='author'> Author: florian.joh.schaefer@gmail.com</div><div id='file'> File Name: torchnlp/word_to_vector/pretrained_word_vectors.py</div><div id='class'> Class Name: _PretrainedWordVectors</div><div id='method'> Method Name: __getitem__</div><BR>
+    iterator_config = config[&quotdataset_iterator&quot]
+    dataset: BasicDatasetIterator = from_params(iterator_config, data=data)</code></pre><img src="26568007.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/0a01df9bdc0bd142eff95a1c878947047194d617#diff-a973a9930124b9712c1cac8b4626201558afee53722e6f06336a8fa56d4ca56dL73' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 0a01df9bdc0bd142eff95a1c878947047194d617</div><div id='time'> Time: 2018-03-16</div><div id='author'> Author: ol.gure@gmail.com</div><div id='file'> File Name: deeppavlov/core/commands/train.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: train_model_from_config</div><BR><BR><div id='link'><a href='https://github.com/wkentaro/labelme/commit/7ad8d5c5cf89269d191117c4dd41ce205bc66c8c#diff-20a434242a3644257f0c023ee8b47787fb12f85bd0dfeab0e3c059660b076bc3L149' target='_blank'>Link</a></div><div id='project'> Project Name: wkentaro/labelme</div><div id='commit'> Commit Name: 7ad8d5c5cf89269d191117c4dd41ce205bc66c8c</div><div id='time'> Time: 2019-05-15</div><div id='author'> Author: www.kentaro.wada@gmail.com</div><div id='file'> File Name: labelme/widgets/label_dialog.py</div><div id='class'> Class Name: LabelDialog</div><div id='method'> Method Name: resetFlags</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/3e6d5a72b03f7a17bdaf5967e337db077c89df41#diff-4ad98a013b2477bf2379408d147ad09105ac967f3289ec8a3942b0170a4ce597L16' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 3e6d5a72b03f7a17bdaf5967e337db077c89df41</div><div id='time'> Time: 2018-01-22</div><div id='author'> Author: arkhipov@yahoo.com</div><div id='file'> File Name: deeppavlov/models/ner/ner.py</div><div id='class'> Class Name: NER</div><div id='method'> Method Name: __init__</div><BR>

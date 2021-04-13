@@ -13,11 +13,11 @@ for iteration in range(1, 60):
 
 def sample(preds, temperature=1.0):
     &#47&#47 helper function to sample an index from a probability array
-    preds = <a id="change">np</a>.asarray(preds).astype(&quotfloat64&quot)
+    <a id="change">preds = np.asarray(preds).astype(&quotfloat64&quot)</a>
     preds = np.log(preds) / temperature
     exp_preds = np.exp(preds)
     preds = exp_preds / np.sum(exp_preds)
-    <a id="change">probas = np.random.multinomial(1, preds, 1)</a>
+    probas = np.random.multinomial(1, preds, 1)
     <a id="change">return np.argmax(probas)</a>
 
 &#47&#47 train the model, output generated text after each iteration

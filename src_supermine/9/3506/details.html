@@ -1,25 +1,40 @@
-<html><h3>c672738b39c8f739551da0d88991a2fedfba3e14,deeppavlov/models/ranking/metrics.py,,recall_at_k,#Any#Any#Any#,24
+<html><h3>20ef4a860325d1735df038d4e4b8c7de5e013ed3,rllib/tests/test_avail_actions_qmix.py,,,#,43
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    predictions = np.array(y_pred)
-    predictions = np.argsort(predictions, -1)[:, :k]
-    flags = np.zeros_like(predictions)
-    <a id="change">for i in range(predictions.shape[0]):
-        for j in range(predictions.shape[1]):
-            if predictions[i][j] in np.arange(labels[i][j]):
-                flags[i][j] = 1.
-   </a> return np.mean((np.sum(flags, -1) &gt;= 1.).astype(float))
+        return obs, rewards, dones, {}
 
 
-@register_metric(&quotrank_response&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-    predictions = np.flip(np.argsort(predictions, -1), -1)[:, :k]
-    num_correct = 0
-    for el in predictions:
-        <a id="change">if 0 in el:
-            num_correct += 1
-   </a> return float(num_correct) / num_examples
+<a id="change">if __name__ == "__main__":
+    grouping = {
+        "group_1": ["agent_1"],  &#47&#47 trivial grouping for testing
+    }
+    obs_space = Tuple([AvailActionsTestEnv.observation_space])
+    act_space = Tuple([AvailActionsTestEnv.action_space])
+    register_env(
+        "action_mask_test",
+        lambda config: AvailActionsTestEnv(config).with_agent_groups(
+            grouping, obs_space=obs_space, act_space=act_space))
 
-@register_metric(&quotrank_response&quot)
-def rank_response(y_true, y_pred):</code></pre><img src="16116022.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 8</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L25' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: recall_at_k</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/6d3e4bdc22cc89fb7ecf188ccf0479632012026f#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 6d3e4bdc22cc89fb7ecf188ccf0479632012026f</div><div id='time'> Time: 2018-04-18</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/4fca544205a55010e8959bb760aece5be80dc3a5#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 4fca544205a55010e8959bb760aece5be80dc3a5</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR>
+    ray.init()
+    agent = QMixTrainer(
+        env="action_mask_test",
+        config={
+            "num_envs_per_worker": 5,  &#47&#47 test with vectorization on
+            "env_config": {
+                "avail_action": 3,
+            },
+        })
+    for _ in range(5):
+        agent.train()  &#47&#47 OK if it doesn&quott trip the action assertion error
+    assert agent.train()["episode_reward_mean"] == 21.0</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        assert agent.train()["episode_reward_mean"] == 21.0
+
+
+<a id="change">if __name__ == "__main__":
+    import pytest
+    import sys
+    sys.exit(pytest.main(["-v", __file__]))</a>
+</code></pre><img src="16951190.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/20ef4a860325d1735df038d4e4b8c7de5e013ed3#diff-5b6ed10b379e1255997bb343268e406db040f726e351788fb32c38d1ac1aac6cL43' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 20ef4a860325d1735df038d4e4b8c7de5e013ed3</div><div id='time'> Time: 2020-03-11</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/tests/test_avail_actions_qmix.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/20ef4a860325d1735df038d4e4b8c7de5e013ed3#diff-8a2fd6f9690a2f012869dcf5a858894e1e155ab73bfedb486f1510205b19a9d6L8' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 20ef4a860325d1735df038d4e4b8c7de5e013ed3</div><div id='time'> Time: 2020-03-11</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/tests/test_multi_agent_pendulum.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/9872fc1801e6aff9ac32fb141bd85501805f52ae#diff-b7b753daf0e20dd9311615b02e2324ae99cd3a5f08f9a4a9a479bb394bd5b683L421' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 9872fc1801e6aff9ac32fb141bd85501805f52ae</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: pcmoritz@gmail.com</div><div id='file'> File Name: python/ray/util/client/server/server.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

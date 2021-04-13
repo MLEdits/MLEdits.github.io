@@ -10,13 +10,13 @@
                     path_def = os.path.join(default_folder, path_i)
                     path_def = os.path.abspath(path_def)
                     if not os.path.exists(path_def):</code></pre><h3>After Change</h3><pre><code class='java'>
-                    path_def = os.path.join(default_folder, path_i)
-                    path_def = os.path.abspath(path_def)
-                    if not os.path.exists(path_def):
+                        continue
+
+                    if not default_folder:
                         <a id="change">tf.logging.fatal(
                             &quotdata input folder "%s" not found, did you maybe &quot
                             &quotforget to download data?&quot, path_i)</a>
                         raise ValueError
-                    path.append(path_def)
-
-            elif name == "filename_contains":</code></pre>
+                    path_def = os.path.join(default_folder, path_i)
+                    path_def = os.path.abspath(path_def)
+                    if not os.path.exists(path_def):</code></pre>

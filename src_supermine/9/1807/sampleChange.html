@@ -12,11 +12,13 @@
     return value_tuple
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
-            raise ValueError(&quotThe `{}` argument must be a tuple of {} &quot
-                             &quotintegers. Received: {}&quot.format(name, n, value))
-        if len(value_tuple) != n:
-            raise ValueError(<a id="change">&quotThe `{}` argument must be a tuple of {} &quot
-                             &quotintegers. Received: {}&quot.format(name, n, value)</a>)
-        for single_value in value_tuple:
             try:
-                int(single_value)</code></pre>
+                int(single_value)
+            except ValueError:
+                raise ValueError(<a id="change">&quotThe `{}` argument must be a tuple of {} &quot
+                                 &quotintegers. Received: {} including element {} &quot
+                                 &quotof type {}&quot.format(name, n, value, single_value,
+                                                     type(single_value))</a>)
+    return value_tuple
+
+</code></pre>

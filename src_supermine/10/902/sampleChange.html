@@ -2,38 +2,58 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            ModelTrainer(self.model, self.x_train, self.y_train, self.x_test, self.y_test, self.verbose).train_model()
-            _, optimal_accuracy = self.model.evaluate(self.x_test,self.y_test,verbose=self.verbose)
-            models = self._remove_duplicate(net_transfromer(self.model))
-            <a id="change">for index in range(0,len(models)):
-                models[index].compile(loss=categorical_crossentropy,
-                  optimizer=Adadelta(),
-                  metrics=[&quotaccuracy&quot])
-                ModelTrainer(models[index], self.x_train, self.y_train, self.x_test, self.y_test, self.verbose).train_model()
-                _, accuracy = models[index].evaluate(self.x_test, self.y_test, self.verbose)
-                if accuracy &gt; optimal_accuracy:
-                    optimal_accuracy = accuracy
-                    optimal_index = index
-                    self.model = models[index]
-       </a> return self.model if self.optimal_index is not None else None
+                (num_images, height, width, num_channels),
+                dtype=np.uint8
+            )
+            <a id="change">for i in range(len(dataset_df)):
+                filepath = get_abs_path(
+                    csv_path,
+                    dataset_df[feature[&quotname&quot]][i]
+                )
 
+                img = ImageBaseFeature._read_image_and_resize(
+                    filepath,
+                    width,
+                    height,
+                    should_resize,
+                    num_channels,
+                    preprocessing_parameters[&quotresize_method&quot],
+                    user_specified_num_channels
+                )
+                try:
+                    data[feature[&quotname&quot]][i, :, :, :] = img
+                except:
+                    logger.error(
+                        "Images are not of the same size. "
+                        "Expected size is {}, "
+                        "current image size is {}."
+                        "Images are expected to be all of the same size"
+                        "or explicit image width and height are expected"
+                        "to be provided. "
+                        "Additional information: https://uber.github.io/ludwig/user_guide/&#47&#47image-features-preprocessing"
+                            .format(first_image.shape, img.shape)
+                    )
+                    raise
+       </a> else:
+            data_fp = os.path.splitext(dataset_df.csv)[0] + &quot.hdf5&quot
+            mode = &quotw&quot
+            if os.path.isfile(data_fp):</code></pre><h3>After Change</h3><pre><code class='java'>
+            user_specified_num_channels=user_specified_num_channels
+        )
+        all_file_paths = [get_abs_path(csv_path, file_path)
+                          <a id="change">for</a> file_path in dataset_df[feature[&quotname&quot]]]
 
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        new_models = self._remove_duplicate(net_transformer(self.model))
-        self.history_models += new_models
-
-        <a id="change">accuracy_list = []</a>
-        for model in new_models:
-            model.compile(loss=categorical_crossentropy,
-                          optimizer=Adadelta(),
-                          metrics=[&quotaccuracy&quot])
-            ModelTrainer(model, self.x_train, self.y_train, self.x_test, self.y_test,
-                         self.verbose).train_model()
-            _, accuracy = model.evaluate(self.x_test, self.y_test, self.verbose)
-            accuracy_list.append(accuracy)
-
-        <a id="change">max_index = np.argmax(np.array(accuracy_list))[0]</a>
-        max_accuracy = accuracy_list[max_index]
-
-        if max_accuracy &gt; optimal_accuracy:
-            return new_models[max_index]</code></pre>
+        if feature[&quotpreprocessing&quot][&quotin_memory&quot]:
+            data[feature[&quotname&quot]] = np.empty(
+                (num_images, height, width, num_channels),
+                dtype=np.uint8
+            )
+            with Pool(5) as pool:
+                logger.info(&quotUsing 5 processes for preprocessing images&quot)
+                <a id="change">data[feature[&quotname&quot]] = np.array(
+                    pool.map(read_image_and_resize, all_file_paths)
+                )</a>
+        else:
+            data_fp = os.path.splitext(dataset_df.csv)[0] + &quot.hdf5&quot
+            mode = &quotw&quot
+            if os.path.isfile(data_fp):</code></pre>

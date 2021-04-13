@@ -17,7 +17,7 @@
         &#47&#47 knots_id = tf.gather_nd(all_coords_f, weight_id)
         n_val = tf.gather_nd(tf.stack([diff, all_coords_f], axis=-1), weight_id)
         n_val = tf.unstack(n_val, axis=-1)
-        <a id="change">point_weights</a>, knots_id = n_val[0], n_val[1]
+        point_weights, knots_id = <a id="change">n_val</a>[0], n_val[1]
 
         point_weights = tf.reduce_sum(point_weights, axis=1)
         &#47&#47 skip this as power = 2:</code></pre>

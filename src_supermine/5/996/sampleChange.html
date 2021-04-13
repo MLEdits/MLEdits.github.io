@@ -3,17 +3,30 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-def data_creator(config):
-    Returns training dataloader, validation dataloader.
-    return <a id="change">LinearDataset</a>(2, 5),  LinearDataset(2, 5, size=400)
+    for i in range(total_nodes):
+        for j in range(total_nodes):
+            if <a id="change">binary_mask</a>[i, j] == 1:
+                dg.add_edge(i, j)
+        pos[i] = 2. * np.array(number_to_type_layer(i, n_types))[::-1]
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    dg = get_digraph_from_binary_mask(nodes, binary_mask)
 
+    pos = {}
+    <a id="change">val_map = {}</a>
+    sources, sinks = find_sources_and_sinks(dg)
 
-def train_example(num_replicas=1, use_gpu=False):</code></pre><h3>After Change</h3><pre><code class='java'>
+    for i in range(total_nodes):
+        pos[i] = 2. * np.array(number_to_type_layer(i, n_types))[::-1]
+        if i in sources:
+            val_map[i] = 1.
+        elif i in sinks:
+            val_map[i] = 0.5
+        else:
+            val_map[i] = 0.
 
-def data_creator(config):
-    Returns training dataloader, validation dataloader.
-    <a id="change">train_dataset = LinearDataset(2, 5, size=config.get("data_size", 1000))</a>
-    val_dataset = LinearDataset(2, 5, size=config.get("val_size", 400))
-    train_loader = torch.utils.data.DataLoader(
-        train_dataset,
-        batch_size=config.get("batch_size", 32),</code></pre>
+    plt.figure(figsize=(12, 12))
+    <a id="change">values = [val_map.get(node, 0.25) for node in nodes]</a>
+
+    nx.draw(dg, pos, cmap=plt.get_cmap(&quotjet&quot), node_color=values, node_size=7000, alpha=0.3)
+
+    nx.draw_networkx_labels(dg, pos, nodes, font_size=18)</code></pre>

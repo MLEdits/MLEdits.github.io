@@ -3,23 +3,21 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    def backward(self, grad_h, grad_last):
-        if self.bidirectional:
-            <a id="change">grad_last = torch.cat((grad_last[0], grad_last[1]), 1)</a>
-        bidir = 2 if self.bidirectional else 1
-        u, x, bias, init, mask_h = self.saved_tensors
-        c = self.intermediate
-        length = x.size(0) if x.dim() == 3 else 1</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 Normal use
-        grad_x = x.new(*x.size()) if k_ == 3 else None
+            &#47&#47 Apply one MLP layer.
+            emb = self.activation(
+                self.linear(<a id="change">torch.cat([word] + features, -1)</a>))
 
-        <a id="change">if k_ == 3:
-            x_ptr = x.contiguous() * scale_x if scale_x != 1 else x.contiguous()
-            x_ptr = x_ptr.data_ptr()
-        else:
-            x_ptr = 0
+        if self.positional_encoding:
+            <a id="change">emb = emb + Variable(self.pe[:emb.size(0), :1, :emb.size(2)]
+                                 .expand_as(emb))</a>
+            emb = self.dropout(emb)
+        return emb
 
-       </a> stream, _, _, bwd_func, bibwd_func = self.get_functions()
-        FUNC = bwd_func if not self.bidirectional else bibwd_func
-        FUNC(
-            args=[</code></pre>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        Return:
+            emb (FloatTensor): len x batch x sum of feature embedding sizes
+        
+        feat_inputs = (feat.squeeze(2) <a id="change">for</a> feat in src_input.split(1, dim=2))
+        features = [lut(feat) for lut, feat in zip(self.emb_luts, feat_inputs)]
+        emb = self.merge(features)
+        return emb</code></pre>

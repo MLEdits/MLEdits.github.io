@@ -2,27 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        embedding = self._embedding
-        if self._dropout_layer is not None:
-            is_training = utils.is_train_mode(mode)
-            <a id="change">embedding = self._dropout_layer.apply(
-                inputs=embedding, training=is_training)</a>
 
-        inputs = positions
-        if inputs is None:
-            if sequence_length is None:</code></pre><h3>After Change</h3><pre><code class='java'>
-        if dropout_layer:
-            is_training = utils.is_train_mode(mode)
-            if self._hparams.dropout_strategy == &quotitem_type&quot:
-                <a id="change">embedding = dropout_layer.apply(
-                    inputs=embedding, training=is_training)</a>
+            self.app.set_output_op(net_outputs)
+            variable_averages = tf.train.ExponentialMovingAverage(0.9)
+            <a id="change">self._moving_ave_op = variable_averages.apply(
+                tf.trainable_variables())</a>
 
-        outputs = tf.nn.embedding_lookup(embedding, inputs, **kwargs)
+            if self.is_training:
+                averaged_grads = util.average_gradients(training_grads)
+                self.app.set_network_update_op(averaged_grads)</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        if dropout_layer and self._hparams.dropout_strategy != &quotitem_type&quot:
-            <a id="change">outputs = dropout_layer.apply(
-                inputs=outputs, training=is_training)</a>
+            &#47&#47 moving average operation
+            variable_averages = tf.train.ExponentialMovingAverage(0.9)
+            <a id="change">trainables = tf.trainable_variables()</a>
+            <a id="change">moving_ave_op = variable_averages.apply(trainables)</a>
 
-        if positions is None:
-            outputs = utils.mask_sequences(
-                outputs, sequence_length, rank=2+self._dim_rank)</code></pre>
+            &#47&#47 training operation
+            if self.is_training:
+                updates_op = [moving_ave_op]</code></pre>

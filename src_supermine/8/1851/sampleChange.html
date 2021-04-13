@@ -3,10 +3,9 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-
 def get_minimal_dtype(arrays, increase_itemsize_factor=1):
-    <a id="change">input_dts = [array.dtype if not isinstance(array, np.dtype) else array
-                 for array in arrays]</a>
+    input_dts = [array.dtype if not isinstance(array, np.dtype) else array
+                 <a id="change">for</a> array in arrays]
     <a id="change">promoted_dt</a> = np.promote_types(*input_dts)
     if increase_itemsize_factor &gt; 1:
         promoted_dt_highres = "%s%d" % (<a id="change">promoted_dt.kind</a>, <a id="change">promoted_dt.itemsize</a> * increase_itemsize_factor)

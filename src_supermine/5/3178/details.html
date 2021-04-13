@@ -1,21 +1,20 @@
-<html><h3>e6ef08f367e0389e811d63eaa5afb16183a19e2b,src/sdk/pynni/nni/compression/tensorflow/compressor.py,,_locate_layers,#Any#Any#,240
+<html><h3>c672738b39c8f739551da0d88991a2fedfba3e14,deeppavlov/models/ranking/metrics.py,,rank_response,#Any#Any#,37
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                ret[id(item)] = LayerInfo(item, cur_path + [i])
+    predictions = np.array(y_pred)
+    predictions = np.argsort(predictions, -1)
+    ranks = []
+    for i in range(<a id="change">predictions.shape[0]</a>):
+        for j in range(predictions.shape[1]):
+            if predictions[i][j] in np.arange(labels[i][j]):
+                ranks.append(j)</code></pre><h3>After Change</h3><pre><code class='java'>
 
-    else:
-        <a id="change">raise ValueError(&quotUnexpected model type: {}&quot.format(type(model)))</a>
-    return ret
-
-def _select_config(layer_info, config_list):
-    &#47&#47 Find the last matching config block for given layer.</code></pre><h3>After Change</h3><pre><code class='java'>
-    &#47&#47 and to my knowledge `Layer.name` is only useful for read-only access.
-    &#47&#47 `cur_path`s format is documented in `LayerInfo.path`.
-    &#47&#47 TODO: it can only find layers in `Model` and `list` for now.
-    <a id="change">assert isinstance(model, tf.keras.Model)</a>
-    if isinstance(model, tf.keras.Sequential):
-        _logger.warning(&quot`Sequential` model is not supported yet, ignored.&quot)
-    ret = {}
-    for key, value in model.__dict__.items():</code></pre><img src="15217523.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/e6ef08f367e0389e811d63eaa5afb16183a19e2b#diff-46d40363c6a5b72a8091f5a0bdbe79200da7a73e1b21fc624fb468a21390aa19L247' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: e6ef08f367e0389e811d63eaa5afb16183a19e2b</div><div id='time'> Time: 2020-08-24</div><div id='author'> Author: 40699903+liuzhe-lz@users.noreply.github.com</div><div id='file'> File Name: src/sdk/pynni/nni/compression/tensorflow/compressor.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _locate_layers</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/01c3a882833dc5031df2f4440717870b35e4833a#diff-fbed0e600f18dd851f5e171d652685c7b6232be8b4157a1fb46edd377432bbe8L91' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 01c3a882833dc5031df2f4440717870b35e4833a</div><div id='time'> Time: 2017-05-29</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: utilities/subject.py</div><div id='class'> Class Name: Subject</div><div id='method'> Method Name: column</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/d77955ba3cbf7c83b3c3d2e13a6709fcefe17a5d#diff-b2acf892c94a58651032cd70c2344edb31db7e4fb603bc86098f552c43571de7L23' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: d77955ba3cbf7c83b3c3d2e13a6709fcefe17a5d</div><div id='time'> Time: 2017-08-22</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/utilities/user_parameters_parser.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: run</div><BR>
+@register_metric(&quotrank_response&quot)
+def rank_response(y_true, y_pred):
+    <a id="change">num_examples = float(len(y_pred))</a>
+    predictions = np.array(y_pred)
+    predictions = np.flip(np.argsort(predictions, -1), -1)
+    rank_tot = 0
+    for el in predictions:</code></pre><img src="16086437.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 4</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L38' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rank_response</div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/fe65da57a1f4e7a6ec365636a92ccca5cef6e80a#diff-2cf0483ad33e6f2cf004bb877e90062038ede4ebb20c6288e008cb83171ac9eaL321' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: fe65da57a1f4e7a6ec365636a92ccca5cef6e80a</div><div id='time'> Time: 2017-11-16</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: niftynet/io/image_sets_partitioner.py</div><div id='class'> Class Name: ImageSetsPartitioner</div><div id='method'> Method Name: to_string</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L25' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: recall_at_k</div><BR>

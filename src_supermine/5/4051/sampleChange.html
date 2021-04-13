@@ -15,11 +15,8 @@
             shape = list(self.kernel_shape)
             shape[-1] = self.filters
             <a id="change">ones = K.zeros_like(inputs)</a>
-            ones = <a id="change">K.sum(ones, axis=1)</a>
+            <a id="change">ones = K.sum(ones, axis=1)</a>
             ones = self.input_conv(ones, K.zeros(shape),
                                    padding=self.padding)
-            <a id="change">ones += 1.</a>
-
-            def dropped_inputs():
-                return K.dropout(ones, self.recurrent_dropout)
-            rec_dp_mask = [K.in_train_phase(dropped_inputs,</code></pre>
+            ones += 1.
+</code></pre>

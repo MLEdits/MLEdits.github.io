@@ -2,20 +2,32 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                l.reset_states()
 
-def copy_layer(layer):
-    new_layer = layer.__class__.from_config(layer.get_config())
-    <a id="change">if new_layer is None:
-        raise ValueError("There must be a Dense or Convolution Layer")
-   </a> return new_layer
+    def set_previous(self, layer, connection_map={}):
+        <a id="change">if self.nb_input != layer.nb_output:
+            raise Exception(&quotCannot connect layers: &quot
+                            &quotinput count does not match output count.&quot)
+       </a> if self.nb_input == 1:
+            self.inputs[self.input_order[0]].set_previous(layer)
+        else:
+            if not connection_map:
+                raise Exception(&quotCannot attach multi-input layer: &quot
+                                &quotno connection_map provided.&quot)
+            for k, v in connection_map.items():
+                if k in self.inputs and v in layer.outputs:
+                    self.inputs[k].set_previous(layer.outputs[v])
+                else:
+                    <a id="change">raise Exception(&quotInvalid connection map.&quot)</a>
 
+    def get_input(self, train=False):
+        if len(self.inputs) == len(self.outputs) == 1:
+            return self.inputs[self.input_order[0]].get_input(train)</code></pre><h3>After Change</h3><pre><code class='java'>
 
-def extract_config(network):</code></pre><h3>After Change</h3><pre><code class='java'>
-def copy_layer(layer):
-    print(layer.get_config)
-    new_layer = layer.__class__.from_config(layer.get_config())
-    <a id="change">new_layer.build(layer.input_shape)</a>
-    new_layer.set_weights(layer.get_weights())
-    return new_layer
-
-</code></pre>
+    Note: `Graph` can only be used as a layer
+    (connect, input, get_input, get_output)
+    when it has exactly one input and o<a id="change">ne output.
+ </a>   &quot&quot&quot
+    def __init__(self):
+        self.namespace = set()  &#47&#47 strings
+        self.nodes = OrderedDict()  &#47&#47 layer-like</code></pre>

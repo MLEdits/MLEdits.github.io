@@ -9,10 +9,10 @@
     for var_name, var_lst in experiments.items():
         &#47&#47 set common args
         for k, v in common.items():</code></pre><h3>After Change</h3><pre><code class='java'>
-        cargs = deepcopy(args)
         &#47&#47 set default value
         for v in experiments:
-            setattr(cargs, v, <a id="change">vars</a>(args)[&quotdefault_%s&quot % v])
-        exp_vars = vars(args)[&quottest_%s&quot % exp_name]
+            setattr(cargs, v, vars(args)[&quotdefault_%s&quot % v])
+        exp_vars = <a id="change">vars</a>(args)[&quottest_%s&quot % exp_name]
         avg_speed = []
-        fp.write(&quotspeed wrt. %s\n&quot % exp_name)</code></pre>
+        fp.write(&quotspeed wrt. %s\n&quot % exp_name)
+        for cvar in exp_vars:</code></pre>

@@ -12,27 +12,9 @@
 
     def test_static_model_auto_naming(self):</code></pre><h3>After Change</h3><pre><code class='java'>
 
-    def test_dynamic_model_auto_naming(self):
-        print(&quot-&quot * 20, &quottest_dynamic_model_auto_naming&quot, &quot-&quot * 20)
-        <a id="change">test_flag = True</a>
-
-        model_basic = basic_dynamic_model()
-        model_basic_1 = basic_dynamic_model()
-        model_basic_2 = basic_dynamic_model("basic_dynamic_model_2")
-        model_basic_3 = basic_dynamic_model()
-        model_basic_given_name = basic_dynamic_model("a_dynamic_model")
-
-        self.assertEqual(model_basic.name, "basic_dynamic_model")
-        self.assertEqual(model_basic.conv1.name, "conv1")
-        self.assertEqual(model_basic_1.name, "basic_dynamic_model_1")
-        self.assertEqual(model_basic_1.conv1.name, "conv1")
-        self.assertEqual(model_basic_2.name, "basic_dynamic_model_2")
-        self.assertEqual(model_basic_3.name, "basic_dynamic_model_3")
-        self.assertEqual(model_basic_given_name.name, "a_dynamic_model")
-
         try:
             model_basic_given_repeat_name = basic_dynamic_model("basic_dynamic_model_1")
-            test_flag = False
+            <a id="change">test_flag = False</a>
         except Exception as e:
             pass
         if not test_flag:
@@ -50,7 +32,7 @@
 
         try:
             model_nested_given_repeat_name = nested_dynamic_model(inner_model_name_2="basic_dynamic_model_1")
-            <a id="change">test_flag = False</a>
+            test_flag = False
         except Exception as e:
             pass
         if not test_flag:
@@ -58,7 +40,7 @@
 
         try:
             model_nested_given_repeat_name_1 = nested_dynamic_model(name="basic_dynamic_model_5")
-            test_flag = False
+            <a id="change">test_flag = False</a>
         except Exception as e:
             pass
         <a id="change">if not test_flag:
@@ -67,4 +49,4 @@
    </a> def test_static_model_auto_naming(self):
         print(&quot-&quot * 20, &quottest_static_model_auto_naming&quot, &quot-&quot * 20)
         test_flag = True
-</code></pre><img src="32656754.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L78' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_dynamic_model_auto_naming</div><BR><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L184' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_vgg_auto_naming</div><BR><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L130' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_static_model_auto_naming</div><BR>
+</code></pre><img src="33360677.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 6</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L78' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_dynamic_model_auto_naming</div><BR><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L130' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_static_model_auto_naming</div><BR><BR><div id='link'><a href='https://github.com/tensorlayer/tensorlayer/commit/f3bc59666e114d46885de0f7309cc2f42eae4b82#diff-5ad79170f5386c6818dd8e32b51bbf9e4aba542a23c168f7c4d9f9df26df8165L184' target='_blank'>Link</a></div><div id='project'> Project Name: tensorlayer/tensorlayer</div><div id='commit'> Commit Name: f3bc59666e114d46885de0f7309cc2f42eae4b82</div><div id='time'> Time: 2019-04-06</div><div id='author'> Author: ivbensekin@gmail.com</div><div id='file'> File Name: tests/models/test_auto_naming.py</div><div id='class'> Class Name: Auto_Naming_Test</div><div id='method'> Method Name: test_vgg_auto_naming</div><BR>

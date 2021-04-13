@@ -14,18 +14,10 @@
                 self._optimizer.zero_grad()
 
                 loss = loss_fnc(positive_prediction,</code></pre><h3>After Change</h3><pre><code class='java'>
-                positive_prediction = self._net(user_representation,
-                                                sequence_var)
-
-                <a id="change">if self._loss == &quotadaptive_hinge&quot:
-                    negative_prediction = [self._get_negative_prediction(sequence_var.size(),
-                                                                         user_representation)
-                                           for _ in range(5)]
-                else:
-                    negative_prediction = self._get_negative_prediction(sequence_var.size(),
-                                                                        user_representation)
-
-               </a> self._optimizer.zero_grad()
-
-                loss = loss_fnc(positive_prediction,
-                                negative_prediction,</code></pre>
+            loss_fnc = pointwise_loss
+        elif self._loss == &quotbpr&quot:
+            loss_fnc = bpr_loss
+        elif <a id="change">self</a>._loss == &quothinge&quot:
+            loss_fnc = hinge_loss
+        else:
+            loss_fnc = adaptive_hinge_loss</code></pre>

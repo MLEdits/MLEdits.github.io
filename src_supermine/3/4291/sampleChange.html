@@ -3,20 +3,22 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-            for bb in pred_bbox_l:
-                if len(gt_bbox_l) &gt; 0:
-                    iou = bbox_iou(gt_bbox_l, <a id="change">bb[np.newaxis]</a>)
-                    gt_idx = iou.argmax()
-                    iou = iou[gt_idx]
-                else:</code></pre><h3>After Change</h3><pre><code class='java'>
-            gt_bbox_l = gt_bbox_l.copy()
-            gt_bbox_l[:, 2:] += 1
+    signal = SignalActor.remote()
+    outer_oid = return_an_id.remote()
+    inner_oid_binary = <a id="change">ray</a>.get(outer_oid)[0].binary()
+    pending_oid = pending.remote([outer_oid], signal)
 
-            <a id="change">iou = bbox_iou(pred_bbox_l, gt_bbox_l)</a>
-            gt_index = iou.argmax(axis=1)
-            match_ = iou.max(axis=1) &gt;= iou_thresh
-            <a id="change">del iou</a>
+    &#47&#47 Remove the local reference to the returned ID.</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 Check that the inner ID is pinned by the remote task ID.
+    _fill_object_store_and_get(pending_oid, succeed=False)
+    ray.get(signal.send.remote())
+    <a id="change">inner_oid = ray.get(pending_oid)</a>
+    inner_oid_binary = inner_oid.binary()
+    _fill_object_store_and_get(inner_oid_binary)
 
-            selec = np.zeros(gt_bbox_l.shape[0], dtype=bool)
-            for gt_idx, mc in six.moves.zip(gt_index, match_):
-                if mc:</code></pre>
+    del pending_oid
+    <a id="change">del inner_oid</a>
+    _fill_object_store_and_get(inner_oid_binary, succeed=False)
+
+
+&#47&#47 Call a recursive chain of tasks that pass a serialized reference that was</code></pre>

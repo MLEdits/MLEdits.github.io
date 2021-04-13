@@ -10,10 +10,10 @@
     os.rmdir(image_dest_folder)
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
-    run_experiment(input_features, output_features, data_csv=rel_path)
 
-    &#47&#47 Stacked CNN encoder, in_memory = False
-    <a id="change">input_features[0][&quotpreprocessing&quot][&quotin_memory&quot]</a> = False
-    rel_path = generate_data(input_features, output_features, csv_filename)
-    run_experiment(input_features, output_features, data_csv=rel_path)
-</code></pre>
+    df1 = read_csv(rel_path)
+
+    <a id="change">input_features</a>[0][<a id="change">&quotpreprocessing&quot</a>][&quotnum_channels&quot] = 1
+    rel_path = generate_data(
+        input_features, output_features, csv_filename, num_examples=50
+    )</code></pre>

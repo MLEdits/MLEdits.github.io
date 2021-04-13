@@ -2,21 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                output of `get_weights`).
-        &quot&quot&quot
-        params = self.weights
-        <a id="change">if len(params) != len(weights):
-            raise Exception(&quotProvided weight array does not match  weights (&quot +
-                            str(len(params)) + &quot optimizer params vs. &quot +
-                            str(len(weights)) + &quot provided weights)&quot)
-       </a> for p, w in zip(params, weights):
-            if K.get_value(p).shape != w.shape:
-                raise Exception(&quotOptimizer weight shape &quot +
-                                str(K.get_value(p).shape) +</code></pre><h3>After Change</h3><pre><code class='java'>
-                                str(pv.shape) +
-                                &quot not compatible with &quot
-                                &quotprovided weight shape &quot + str(w.shape))
-            weight_value_tuples.append(<a id="change">(p, w)</a>)
-        K.batch_set_value(weight_value_tuples)
+        return T.vector(name=name, dtype=dtype)
+    elif ndim == 2:
+        return T.matrix(name=name, dtype=dtype)
+    elif <a id="change">ndim == 3:
+   </a>     return T.tensor3(name=name, dtype=dtype)
+    elif ndim == 4:
+        return T.tensor4(name=name, dtype=dtype)
+    else:
+        <a id="change">raise Exception(&quotndim too large: &quot + str(ndim))</a>
 
-    def get_weights(self):</code></pre>
+
+def shape(x):
+    &quot&quot&quotReturn the shape of a tensor.</code></pre><h3>After Change</h3><pre><code class='java'>
+        raise Exception(&quotSpecify either a shape or ndim value.&quot)
+    if shape is not None:
+        ndim = len(shape)
+    broadcast = <a id="change">(False,)</a> * ndim
+    return T.TensorType(dtype, broadcast)(name)
+
+</code></pre>

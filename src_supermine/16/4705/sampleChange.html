@@ -5,8 +5,8 @@
         assert observed[0].keypoints[2].y &gt; 2
 
     def test_keypoints_scale_zoom_in__deterministic(self):
-        aug = <a id="change">iaa.Affine(scale=1.75, translate_px=0, rotate=0, shear=0)</a>
-        <a id="change">aug_det = aug.to_deterministic()</a>
+        <a id="change">aug = iaa.Affine(scale=1.75, translate_px=0, rotate=0, shear=0)</a>
+        aug_det = aug.to_deterministic()
 
         <a id="change">observed = aug_det.augment_keypoints(self.kpsoi)</a>
 

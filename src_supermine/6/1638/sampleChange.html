@@ -5,7 +5,7 @@
                 dtype=LayersConfig.tf_dtype, **self.E_init_args
             )
 
-            <a id="change">self.outputs = tf.nn.embedding_lookup(embeddings, self.inputs)</a>
+            <a id="change">self.outputs</a> = tf.nn.embedding_lookup(embeddings, self.inputs)
 
         <a id="change">self._add_layers(self.outputs)</a>
         self._add_params(embeddings)

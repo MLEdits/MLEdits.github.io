@@ -2,13 +2,13 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            Reciprocal of `self`
-        
-
-        if <a id="change">method.lower()</a> == "nr":
-            new_self = self.modulus()
-            result = 3 * (0.5 - new_self).exp() + 0.003
-            for i in range(nr_iters):</code></pre><h3>After Change</h3><pre><code class='java'>
+            for i in range(nr_iters):
+                result = 2 * result - result * result * new_self
+            return result * self.signum()
+        elif <a id="change">method.lower()</a> == "division":
+            ones = self * 0 + 1
+            return ones / self
+        elif method.lower() == "log":</code></pre><h3>After Change</h3><pre><code class='java'>
             for i in range(nr_iters):
                 result = 2 * result - result * result * new_self
             return result * self.signum()

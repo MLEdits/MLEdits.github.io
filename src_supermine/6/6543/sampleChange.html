@@ -10,11 +10,11 @@
         os.remove(json_path)
 
     hdf5_path = csv_path.replace(&quotcsv&quot, &quothdf5&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-    if os.path.exists(csv_path):
-        os.remove(csv_path)
-
-    json_path = <a id="change">os.path.splitext(csv_path)[0] + &quot.json&quot</a>
     if os.path.exists(json_path):
         os.remove(json_path)
 
-    hdf5_path = os.path.splitext(csv_path)[0] + &quot.hdf5&quot</code></pre>
+    hdf5_path = <a id="change">os.path.splitext(csv_path)[0] + &quot.hdf5&quot</a>
+    if os.path.exists(hdf5_path):
+        os.remove(hdf5_path)
+
+</code></pre>

@@ -23,11 +23,7 @@
                     spatial_shape = <a id="change">pred_b.get_shape().as_list()[:-1]</a>
                     ref_shape = spatial_shape + [-1]
                     ground_truth_b = tf.reshape(ground_truth[b_ind], ref_shape)
-                    if ground_truth_b.get_shape().as_list()[-1] == 1:
+                    if <a id="change">ground_truth_b.get_shape().as_list()[-1]</a> == 1:
                         ground_truth_b = tf.squeeze(ground_truth_b, axis=-1)
                     if weight_map is not None:
-                        weight_b = tf.reshape(weight_map[b_ind], ref_shape)
-                        if <a id="change">weight_b.get_shape().as_list()[-1]</a> == 1:
-                            weight_b = tf.squeeze(weight_b, axis=-1)
-                    else:
-                        weight_b = None</code></pre>
+                        weight_b = tf.reshape(weight_map[b_ind], ref_shape)</code></pre>

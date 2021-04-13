@@ -13,11 +13,10 @@
 
             all_anchors = tf.reshape(
                 all_anchors, (num_anchors * num_anchor_points, 4)</code></pre><h3>After Change</h3><pre><code class='java'>
+
             &#47&#47 Expand dims to use broadcasting sum.
             all_anchors = (
-                np.expand_dims(self._anchor_reference, axis=0) +
-                <a id="change">tf.expand_dims(shifts, axis=1)</a>
+                <a id="change">np.expand_dims(self._anchor_reference, axis=0)</a> +
+                tf.expand_dims(shifts, axis=1)
             )
-
-            &#47&#47 Flatten
-            all_anchors = tf.reshape(</code></pre>
+</code></pre>

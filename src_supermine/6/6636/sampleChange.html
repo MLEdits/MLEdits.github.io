@@ -8,12 +8,11 @@
     <a id="change">with pytest.raises(ray.exceptions.RayActorError):
         ray.get(a.ready.remote())
 
-    &#47&#47 Lastly, make sure when None is specified, actors are not scheduled
-    &#47&#47 on the same placement group.
-   </a> a = Actor.options(placement_group=pg).remote()
-    ray.get(a.ready.remote())
-    &#47&#47 1 top level actor + 3 children.
-    for _ in range(total_num_actors - 1):</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 We should have 2 alive pgs and 4 alive actors.
+   </a> assert assert_alive_num_pg(2)
+    assert assert_alive_num_actor(4)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
     &#47&#47 Kill an actor and wait until it is killed.
     ray.kill(a)
@@ -22,9 +21,8 @@
     except ray.exceptions.RayActorError:
         pass
 
-    &#47&#47 Lastly, make sure when None is specified, actors are not scheduled
-    &#47&#47 on the same placement group.
-   </a> a = Actor.options(placement_group=pg).remote()
-    ray.get(a.ready.remote())
-    &#47&#47 1 top level actor + 3 children.
-    for _ in range(total_num_actors - 1):</code></pre>
+    &#47&#47 We should have 2 alive pgs and 4 alive actors.
+   </a> assert assert_alive_num_pg(2)
+    assert assert_alive_num_actor(4)
+
+</code></pre>

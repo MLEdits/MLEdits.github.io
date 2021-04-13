@@ -3,26 +3,22 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
+&#47&#47 Starting the report takes up the first run.
+&#47&#47 When run the test will see the slider first.
+<a id="change">if not st.test_run_count:
+    w1 = st.button(&quotlabel&quot)
+elif st.test_run_count == 1:
+    w1 = st.slider(&quotlabel&quot, 25, 0, 100, 1)
+else:
+    w1 = st.selectbox(&quotlabel&quot, (&quotm&quot, &quotf&quot), 1)
 
-def _check_conflicts():
-    <a id="change">if (get_option(&quots3.sharingEnabled&quot)
-            and not get_option(&quots3.usePublicStorage&quot)):
-        assert get_option(&quots3.bucket&quot), (
-            &quotFor sharing, s3.bucket must be set&quot)
+</a>st.write(&quotvalue 1:&quot, w1)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+if hasattr(st, &quottest_run_count&quot):
+    st.test_run_count += 1
+else:
+    st.test_run_count = <a id="change">0 if st.get_option(&quotserver.headless&quot) else -1</a>
 
-   </a> if (get_option(&quotclient.tryToOutliveProxy&quot)
-            and not get_option(&quotproxy.isRemote&quot)):
-        LOGGER.warning(
-            &quotThe following combination of settings...\n&quot</code></pre><h3>After Change</h3><pre><code class='java'>
-
-
-def _check_conflicts():
-    s3_settings_internal = <a id="change">get_option(&quots3.settingsInternal&quot)</a>
-    <a id="change">if s3_settings_internal is not None:
-        assert s3_settings_internal.get(&quotbucket&quot), (
-            &quotFor sharing via S3, s3.bucket must be set&quot)
-
-   </a> if (get_option(&quotclient.tryToOutliveProxy&quot)
-            and not get_option(&quotproxy.isRemote&quot)):
-        LOGGER.warning(
-            &quotThe following combination of settings...\n&quot</code></pre>
+if st.test_run_count &lt; 1:
+    w1 = st.slider(&quotlabel&quot, 0, 100, 25, 1)
+else:</code></pre>

@@ -2,22 +2,30 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    :param param_list_right: list of numpy arrays
-    :return: list of numpy arrays
-    
-    <a id="change">res = []</a>
-    <a id="change">for x, y in zip(param_list_left, param_list_right):
-        res.append(x + y)
-   </a> <a id="change">return res</a>
 
+    @classmethod
+    async def get_all_node_summary(cls):
+        <a id="change">all_nodes_summary = []</a>
+        <a id="change">for node_id in DataSource.nodes.keys():
+            node_info = await cls.get_node_info(node_id)
+            node_info.pop("workers", None)
+            node_info.pop("actors", None)
+            node_info["raylet"].pop("workersStats", None)
+            node_info["raylet"].pop("viewData", None)
+            all_nodes_summary.append(node_info)
+       </a> <a id="change">return all_nodes_summary</a>
 
-def subtract_params(param_list_left, param_list_right):
-    Subtract two lists of parameters</code></pre><h3>After Change</h3><pre><code class='java'>
-    :param param_list_right: list of numpy arrays
-    :return: list of numpy arrays
-    
-    <a id="change">return [x + y for x, y in zip(param_list_left, param_list_right)]</a>
+    @classmethod
+    async def get_all_node_details(cls):
+        node_details = []</code></pre><h3>After Change</h3><pre><code class='java'>
 
+    @classmethod
+    async def get_all_node_summary(cls):
+        <a id="change">return [
+            await DataOrganizer.get_node_summary(node_id)
+            for node_id in DataSource.nodes.keys()
+        ]</a>
 
-def subtract_params(param_list_left, param_list_right):
-    Subtract two lists of parameters</code></pre>
+    @classmethod
+    async def get_all_node_details(cls):
+        return [</code></pre>

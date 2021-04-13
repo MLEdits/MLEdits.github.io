@@ -2,16 +2,16 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    x_train = list(
+    word_to_id["&lt;UNK&gt;"] = 2
+
+    id_to_word = {value: key for key, value in word_to_id.items()}
+    x_train = <a id="change">list(
         map(lambda sentence: " ".join(id_to_word[i] for i in sentence), x_train)
-    )
-    x_test = <a id="change">list(
-        map(lambda sentence: " ".join(id_to_word[i] for i in sentence), x_test)
     )</a>
-    x_train = np.array(x_train, dtype=np.str)
-    x_test = np.array(x_test, dtype=np.str)
-    return (x_train, y_train), (x_test, y_test)
-</code></pre><h3>After Change</h3><pre><code class='java'>
+    x_test = list(
+        map(lambda sentence: " ".join(id_to_word[i] for i in sentence), x_test)
+    )
+    x_train = np.array(x_train, dtype=np.str)</code></pre><h3>After Change</h3><pre><code class='java'>
     &#47&#47 set path to dataset
     IMDB_DATADIR = os.path.join(os.path.dirname(dataset), &quotaclImdb&quot)
     
@@ -21,8 +21,10 @@
 
     encoding = &quotutf-8&quot
     x_train = np.array(train_data.data)
-    <a id="change">y_train = np.array(train_data.target)</a>
+    y_train = np.array(train_data.target)
     x_test = np.array(test_data.data)
-    y_test = np.array(test_data.target)
+    <a id="change">y_test = np.array(test_data.target)</a>
     return (x_train, y_train), (x_test, y_test)
-</code></pre>
+
+
+def main():</code></pre>

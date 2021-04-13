@@ -2,19 +2,40 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        method = node.lib_ast.query(self.path).object_ref
-        resolved_self = node.store.get_object(key=self._self.id_at_location)
-        result_read_permissions = resolved_self.read_permissions
-        <a id="change">tags = resolved_self.tags.copy()</a>
+            print(results)
 
-        resolved_args = []
-        for arg in self.args:
-            r_arg = node.store[arg.id_at_location]</code></pre><h3>After Change</h3><pre><code class='java'>
-        result_read_permissions = resolved_self.read_permissions
+        &#47&#47 tf.
+        tf_config = <a id="change">config.copy()</a>
+        tf_config["eager"] = False
+        <a id="change">trainer = dqn.DQNTrainer(config=tf_config, env="CartPole-v0")</a>
+        num_iterations = 1
+        for i in range(num_iterations):
+            results = trainer.train()
+            print(results)</code></pre><h3>After Change</h3><pre><code class='java'>
+        config["num_workers"] = 0  &#47&#47 Run locally.
+        num_iterations = 2
 
-        resolved_args = []
-        <a id="change">tag_args = []</a>
-        for arg in self.args:
-            r_arg = node.store[arg.id_at_location]
-            result_read_permissions = self.intersect_keys(
-                result_read_permissions, r_arg.read_permissions</code></pre>
+        <a id="change">for _ in framework_iterator(config, frameworks=["tf", "eager"]):
+            &#47&#47 Rainbow.
+            rainbow_config = config.copy()
+            rainbow_config["num_atoms"] = 10
+            rainbow_config["noisy"] = True
+            rainbow_config["double_q"] = True
+            rainbow_config["dueling"] = True
+            rainbow_config["n_step"] = 5
+            trainer = dqn.DQNTrainer(config=rainbow_config, env="CartPole-v0")
+            for i in range(num_iterations):
+                results = trainer.train()
+                print(results)
+
+            &#47&#47 double-dueling DQN.
+            plain_config = config.copy()
+            trainer = dqn.DQNTrainer(config=plain_config, env="CartPole-v0")
+            for i in range(num_iterations):
+                results = trainer.train()
+                print(results)
+
+   </a> def test_dqn_exploration_and_soft_q_config(self):
+        Tests, whether a DQN Agent outputs exploration/softmaxed actions.
+        config = dqn.DEFAULT_CONFIG.copy()
+        config["num_workers"] = 0  &#47&#47 Run locally.</code></pre>

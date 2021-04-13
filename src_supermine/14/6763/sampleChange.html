@@ -12,16 +12,6 @@
         for tensor in initial_state:
             if hasattr(tensor, &quot_keras_history&quot) != is_keras_tensor:
                 raise ValueError(&quotThe initial state of an RNN layer cannot be&quot</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 they should be the main input and `initial_state`
-        &#47&#47 e.g. when loading model from file
-        if isinstance(inputs, (list, tuple)) and len(inputs) &gt; 1 and initial_state is None:
-            <a id="change">initial_state</a> = inputs[1:]
-            inputs = inputs[0]
-
-        &#47&#47 If `initial_state` is specified,
-        &#47&#47 and if it a Keras tensor,
-        &#47&#47 then add it to the inputs and temporarily
-        &#47&#47 modify the input spec to include the state.
         if initial_state is None:
             return super(Recurrent, self).__call__(inputs, **kwargs)
 

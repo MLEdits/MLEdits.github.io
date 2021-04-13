@@ -3,19 +3,16 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-
-def is_done(path):
-    return <a id="change">os.path.isfile(os.path.join(path, _MARK_DONE))</a>
-
-
-def tokenize_reg(s):
-    pattern = "[\w]+|[‑–—“”€№…’\"&#47&#47$%&\&quot()+,-./:;&lt;&gt;?]"</code></pre><h3>After Change</h3><pre><code class='java'>
-
-
-def is_done(path):
-    mark = <a id="change">Path(path)</a> / _MARK_DONE
-    return <a id="change">mark.is_file()</a>
+        if train_data_path is not None:
+            print(&quot___Reading train data from %s&quot % train_data_path)
+            if <a id="change">os.path.isfile(train_data_path)</a>:
+                data_dict[&quottrain&quot] = IntentDatasetReader.read_from_json(train_data_path)
+            else:
+                raise IOError("Error: Train file does not exist")</code></pre><h3>After Change</h3><pre><code class='java'>
+            raise IOError("Error: Valid file does not exist")
 
 
-def tokenize_reg(s):
-    pattern = "[\w]+|[‑–—“”€№…’\"&#47&#47$%&\&quot()+,-./:;&lt;&gt;?]"</code></pre>
+        if <a id="change">Path(test_data_path).is_file()</a>:
+            print(&quot___Reading test data from %s&quot % train_data_path)
+            data_dict[&quottest&quot] = IntentDatasetReader.read_from_json(test_data_path)
+        else:</code></pre>

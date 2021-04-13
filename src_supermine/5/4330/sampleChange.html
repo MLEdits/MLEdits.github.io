@@ -6,9 +6,9 @@
     set_on_master(args.use_horovod)
 
     if <a id="change">is_on_master()</a>:
-        print_ludwig(&quotExperiment&quot, LUDWIG_VERSION)
-
-    if args.k_fold is None:</code></pre><h3>After Change</h3><pre><code class='java'>
+        print_ludwig(&quotPredict&quot, LUDWIG_VERSION)
+        logger.info(&quotDataset path: {}&quot.format(args.dataset))
+        logger.info(&quotModel path: {}&quot.format(args.model_path))</code></pre><h3>After Change</h3><pre><code class='java'>
         dest=&quotallow_parallel_threads&quot,
         help=&quotdisable TensorFlow from using multithreading for reproducibility&quot
     )

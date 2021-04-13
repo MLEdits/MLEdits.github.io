@@ -2,70 +2,46 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        pool_mode: one of "max", "avg".
-    &quot&quot&quot
-    if border_mode == &quotsame&quot:
-        <a id="change">padding = &quotSAME&quot</a>
-    elif border_mode == &quotvalid&quot:
-        padding = &quotVALID&quot
-    else:
-        raise Exception(&quotInvalid border mode: &quot + str(border_mode))
+        Produce samples from the posterior latent function(s) at the input points.
+        
+        mu, var = self.predict_f(Xnew, full_cov=full_cov)  &#47&#47 [N, P], [P, N, N]
+        <a id="change">num_latent_gps = var.shape[0]</a>
+        num_elems = tf.shape(var)[1]
+        <a id="change">var_jitter = ops.add_to_diagonal(var, default_jitter())</a>
+        L = tf.linalg.cholesky(var_jitter)  &#47&#47 [P, N, N]
+        <a id="change">V = tf.random.normal([num_latent_gps, num_elems, num_samples], dtype=mu.dtype)</a>  &#47&#47 [P, N, S]
+        LV = L @ V  &#47&#47 [P, N, S]
+        mu_t = tf.linalg.adjoint(mu)  &#47&#47 [P, N]
+        <a id="change">return tf.transpose(mu_t[..., np.newaxis] + LV)</a>  &#47&#47 [S, N, P]
 
-    strides = (1,) + strides + (1,)
-    pool_size = (1,) + pool_size + (1,)
+    def predict_y(
+        self, Xnew: DataPoint, full_cov: bool = False, full_output_cov: bool = False</code></pre><h3>After Change</h3><pre><code class='java'>
 
-    if _FLOATX == &quotfloat64&quot:
-        &#47&#47 tf max_pool only supports float32
-        <a id="change">x = tf.cast(x, &quotfloat32&quot)</a>
+        Currently, the method does not support `full_output_cov=True` and `full_cov=True`.
+        
+        <a id="change">if full_cov and full_output_cov:
+            raise NotImplementedError(
+                "The combination of both `full_cov` and `full_output_cov` is not supported."
+            )
 
-    if dim_ordering in {&quottf&quot, &quotth&quot}:
-        if dim_ordering == &quotth&quot:
-            &#47&#47 TF uses the last dimension as channel dimension,
-            &#47&#47 instead of the 2nd one.
-            &#47&#47 TH input shape: (samples, input_depth, rows, cols)
-            &#47&#47 TF input shape: (samples, rows, cols, input_depth)
-            &#47&#47 TH kernel shape: (depth, input_depth, rows, cols)
-            &#47&#47 TF kernel shape: (rows, cols, input_depth, depth)
-            <a id="change">x = tf.transpose(x, (0, 2, 3, 1))</a>
-        if pool_mode == &quotmax&quot:
-            x = tf.nn.max_pool(x, pool_size, strides, padding=padding)
-        elif pool_mode == &quotavg&quot:
-            x = tf.nn.avg_pool(x, pool_size, strides, padding=padding)
+        &#47&#47 check below for shape info
+       </a> mean, cov = self.predict_f(Xnew, full_cov=full_cov, full_output_cov=full_output_cov)
+        if full_cov:
+            &#47&#47 mean: [..., N, P]
+            &#47&#47 cov: [..., P, N, N]
+            mean_for_sample = tf.linalg.adjoint(mean)  &#47&#47 [..., P, N]
+            samples = sample_mvn(
+                mean_for_sample, cov, "full", num_samples=num_samples
+            )  &#47&#47 [..., (S), P, N]
+            samples = tf.linalg.adjoint(samples)  &#47&#47 [..., (S), N, P]
         else:
-            raise Exception(&quotInvalid pooling mode: &quot + str(pool_mode))
-        if dim_ordering == &quotth&quot:
-            x = <a id="change">tf.transpose(x, (0, 3, 1, 2))</a>
-    else:
-        raise Exception(&quotUnknown dim_ordering: &quot + str(dim_ordering))
+            &#47&#47 mean: [..., N, P]
+            &#47&#47 cov: [..., N, P] or [..., N, P, P]
+            cov_structure = "full" if full_output_cov else "diag"
+            <a id="change">samples = sample_mvn(
+                mean, cov, cov_structure, num_samples=num_samples
+            )</a>  &#47&#47 [..., (S), N, P]
+        <a id="change">return samples</a>  &#47&#47 [..., (S), N, P]
 
-    if _FLOATX == &quotfloat64&quot:
-        x = tf.cast(x, &quotfloat64&quot)
-    <a id="change">return x</a>
-
-
-&#47&#47 RANDOMNESS
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        dim_ordering: one of "th", "tf".
-        pool_mode: one of "max", "avg".
-    &quot&quot&quot
-    <a id="change">if dim_ordering not in {&quotth&quot, &quottf&quot}:
-        raise Exception(&quotUnknown dim_ordering &quot + str(dim_ordering))
-
-   </a> padding = _preprocess_border_mode(border_mode)
-    strides = (1,) + strides + (1,)
-    pool_size = (1,) + pool_size + (1,)
-
-    <a id="change">x = _preprocess_conv2d_input(x, dim_ordering)</a>
-
-    if pool_mode == &quotmax&quot:
-        x = tf.nn.max_pool(x, pool_size, strides, padding=padding)
-    elif pool_mode == &quotavg&quot:
-        x = tf.nn.avg_pool(x, pool_size, strides, padding=padding)
-    else:
-        raise Exception(&quotInvalid pooling mode: &quot + str(pool_mode))
-
-    <a id="change">return _postprocess_conv2d_output(x, dim_ordering)</a>
-
-
-def pool3d(x, pool_size, strides=(1, 1, 1), border_mode=&quotvalid&quot,
-           dim_ordering=_IMAGE_DIM_ORDERING, pool_mode=&quotmax&quot):</code></pre>
+    def predict_y(
+        self, Xnew: DataPoint, full_cov: bool = False, full_output_cov: bool = False</code></pre>

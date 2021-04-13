@@ -5,18 +5,18 @@
         format=&quot%(message)s&quot
     )
 
-    <a id="change">print_ludwig(&quotExperiment&quot, LUDWIG_VERSION)</a>
+    <a id="change">print_ludwig(&quotTrain&quot, LUDWIG_VERSION)</a>
 
-    experiment(**vars(args))
+    full_train(**vars(args))
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
 
     set_on_master(args.use_horovod)
 
     <a id="change">if is_on_master():
-        print_ludwig(&quotExperiment&quot, LUDWIG_VERSION)
+        print_ludwig(&quotTrain&quot, LUDWIG_VERSION)
 
-   </a> experiment(**vars(args))
+   </a> full_train(**vars(args))
 
 
 if __name__ == &quot__main__&quot:</code></pre>

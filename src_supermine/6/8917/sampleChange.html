@@ -10,11 +10,10 @@
 
         with self.test_context() as session:
             session_new = tf.Session(graph=session.graph)</code></pre><h3>After Change</h3><pre><code class='java'>
-            for unexpected_dict in unexpected_dicts:
-                self.assertFalse(values == unexpected_dict)
 
-        expected_dict = <a id="change">{&quotp/a&quot: 10., &quotp/b&quot: 11., &quotp/c/d&quot: 12.}</a>
+        expected_dict = {&quotp/a&quot: 10., &quotp/b&quot: 11., &quotp/c/d&quot: 12.}
         unexpected_dicts = [
-            {&quotp&quot: 10., &quotp/b&quot: 11., &quotp/c/d&quot: 12.},
+            <a id="change">{&quotp&quot: 10., &quotp/b&quot: 11., &quotp/c/d&quot: 12.}</a>,
             {&quotp/a&quot: 11., &quotp/b&quot: 11., &quotp/c/d&quot: 12.},
-            {&quotp/a&quot: 11.}</code></pre>
+            {&quotp/a&quot: 11.}
+        ]</code></pre>

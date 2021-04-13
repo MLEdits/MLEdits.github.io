@@ -2,16 +2,14 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            ia.do_assert(all([ia.is_single_integer(val) or ia.is_string(val) for val in order]),
-                         "Expected order list to only contain integers/strings, got types %s." % (
-                             str([type(val) for val in order]),))
-            <a id="change">ia.do_assert(all([val in available_orders + available_orders_str for val in order]),
-                         "Expected all order values to be in %s, got %s." % (
-                             available_orders + available_orders_str, str(order),))</a>
-            self.order = iap.Choice(order)
-        elif isinstance(order, iap.StochasticParameter):
-            self.order = order
-        else:</code></pre><h3>After Change</h3><pre><code class='java'>
+        else:
+            &#47&#47 translate by pixels
+            if isinstance(translate_px, dict):
+                <a id="change">ia.do_assert("x" in translate_px or "y" in translate_px)</a>
+                x = translate_px.get("x", 0)
+                y = translate_px.get("y", 0)
+                self.translate = (
+                    iap.handle_discrete_param(x, "translate_px[&quotx&quot]", value_range=None, tuple_to_uniform=True,</code></pre><h3>After Change</h3><pre><code class='java'>
                     str(available_orders_str), order))
             self.order = iap.Deterministic(order)
         elif isinstance(order, list):

@@ -10,10 +10,10 @@
     assert model.output_shape == (None, 1536, None, None)
 
     K.set_image_data_format(&quotchannels_last&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-        queue.put(model.output_shape)
+    model_output_shape = queue.get_nowait()
+    assert model_output_shape == (None, None, None, 1536)
 
-    queue = Queue()
-    p = Process(target=target, args=<a id="change">(queue, (None, None, 1))</a>)
+    p = Process(target=target, args=<a id="change">(queue, (None, None, 4))</a>)
     <a id="change">p.start()</a>
     p.join()
     assert not queue.empty(), &quotModel creation failed.&quot

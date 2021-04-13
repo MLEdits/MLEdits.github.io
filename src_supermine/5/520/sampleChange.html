@@ -2,21 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        elif a == 1:
-            graphs.append(to_wider_graph(deepcopy(graph)))
-        elif a == 2:
-            <a id="change">graphs.append(to_skip_connection_graph(deepcopy(graph)))</a>
-    graphs = list(filter(lambda x: x, graphs))
-    return list(filter(lambda x: legal_graph(x), graphs))
+    for i in range(predictions.shape[0]):
+        for j in range(predictions.shape[1]):
+            if predictions[i][j] in np.arange(labels[i][j]):
+                <a id="change">ranks.append(j)</a>
+                break
+    return np.mean(np.asarray(ranks).astype(float))
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        if temp_graph is not None and temp_graph.size() &lt;= Constant.MAX_MODEL_SIZE:
-            graphs.append(temp_graph)
+    rank_tot = 0
+    for el in predictions:
+        for i, x in enumerate(el):
+            <a id="change">if x == 0:
+                rank_tot += i
+                break
+   </a> return float(rank_tot)/num_examples
 
-        <a id="change">if len(graphs) &gt;= Constant.N_NEIGHBOURS:
-            break
-
-   </a> return list(filter(lambda x: legal_graph(x), graphs))
-
-
-def default_transform(graph):</code></pre>
+@register_metric(&quotr@1_insQA&quot)
+def r_at_1_insQA(y_true, y_pred):</code></pre>

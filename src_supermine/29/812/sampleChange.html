@@ -12,7 +12,7 @@
           "data_format {}, but instead was {}.").format(
               len(self._data_format), self._data_format, self._input_shape))
 
-   </a> <a id="change">self._input_channels</a> = self._input_shape[self._channel_index]
+   </a> self._input_channels = self._input_shape[self._channel_index]
     <a id="change">if self._input_channels is None:
       raise base.UnderspecifiedError(
           "Number of input channels must be known at module build time")

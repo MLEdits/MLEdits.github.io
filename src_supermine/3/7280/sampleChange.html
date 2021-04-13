@@ -3,35 +3,31 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-        indices: List[int] = []
-        type_ids: List[int] = []
-        <a id="change">for token in tokens:
-            if getattr(token, "text_id", None) is not None:
-                &#47&#47 `text_id` being set on the token means that we aren&quott using the vocab, we just use
-                &#47&#47 this id instead. Id comes from the pretrained vocab.
-                &#47&#47 It is computed in PretrainedTransformerTokenizer.
-                indices.append(token.text_id)
+def _instrument_model(model, wrappers):
+    &#47&#47 Replace layers to wrappers
+    <a id="change">for wrapper in reversed(wrappers):
+        cur = model
+        for key in wrapper.layer_info.path[:-1]:
+            if isinstance(key, str):
+                cur = getattr(cur, key)
             else:
-                raise KeyError(
-                    "Using PretrainedTransformerIndexer but field text_id is not set"
-                    f" for the following token: {token.text}"
-                )
+                name, index = key
+                cur = getattr(cur, name)[index]
+        key = wrapper.layer_info.path[-1]
+        if isinstance(key, str):
+            setattr(cur, key, wrapper)
+        else:
+            name, index = key
+            getattr(cur, name)[index] = wrapper</a>
+            &#47&#47if isinstance(cur, tf.keras.Sequential):
+            &#47&#47    cur._graph_initialized = False
+            &#47&#47    cur._layer_call_argspecs[wrapper] = cur._layer_call_argspecs[wrapper.layer]
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                for i, item in enumerate(value):
+                    if isinstance(item, tf.keras.layers.Layer):
+                        value[i] = self._instrument(item)
+        <a id="change">return model</a>
 
-            if type_ids is not None and getattr(token, "type_id", None) is not None:
-                type_ids.append(token.type_id)
-            else:
-                type_ids = None
 
-        &#47&#47 The mask has 1 for real tokens and 0 for padding tokens. Only real tokens are attended to.
-       </a> mask = [1] * len(indices)
-
-        result = {"token_ids": indices, "mask": mask}
-        if type_ids is not None:</code></pre><h3>After Change</h3><pre><code class='java'>
-        if type_ids is not None:
-            output["type_ids"] = type_ids
-
-        <a id="change">return self._postprocess_output(output)</a>
-
-    def _extract_token_and_type_ids(
-        self, tokens: List[Token]
-    ) -&gt; Tuple[List[int], Optional[List[int]]]:</code></pre>
+    def _select_config(self, layer):
+        &#47&#47 Find the last matching config block for given layer.</code></pre>

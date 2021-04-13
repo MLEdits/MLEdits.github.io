@@ -2,25 +2,31 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-  for genotypes in itertools.product(*genotype_options):
-    paired = [VariantAndGenotypes(v, g) for v, g in zip(variants, genotypes)]
-    for haplotypes in create_haplotypes(paired, ref.start):
-      yield <a id="change">haplotypes, genotypes</a>
+  with OutputsWriter(options) as writer:
+    running_timer = timer.TimerStart()
+    for region in regions:
+      <a id="change">candidates</a>, examples, gvcfs = region_processor.process(region)
+      n_candidates += len(candidates)
+      n_examples += len(examples)
+      n_regions += 1</code></pre><h3>After Change</h3><pre><code class='java'>
+  last_reported = 0
+  running_timer = timer.TimerStart()
 
+  <a id="change">writers_dict = {}</a>
 
-def all_diploid_haplotypes(variants_and_genotypes, genotypes2haplotype):
-  Returns all diploid haplotypes for variants given their genotypes.</code></pre><h3>After Change</h3><pre><code class='java'>
-      pass
+  for region in regions:
+    candidates_dict, examples_dict, gvcfs_dict = region_processor.process(
+        region)
+    for sample in candidates_dict:
+      candidates = candidates_dict[sample]
+      examples = examples_dict[sample]
+      gvcfs = gvcfs_dict[sample]
 
-  genotype_options = genotype_options_for_variants(variants, enumeration_type)
-  <a id="change">haplotypes_to_genotypes_dict</a> = collections.OrderedDict()
-  for genotypes in itertools.product(*genotype_options):
-    paired = [VariantAndGenotypes(v, g) for v, g in zip(variants, genotypes)]
-    for haplotypes in create_haplotypes(paired, ref.start):
-      key = frozenset(haplotypes)
-      <a id="change">if key not in haplotypes_to_genotypes_dict:
-        haplotypes_to_genotypes_dict[key] = []
-     </a> haplotypes_to_genotypes_dict[key].append(genotypes)
-  return haplotypes_to_genotypes_dict
+      <a id="change">if sample not in writers_dict:
+        &#47&#47 Only use suffix in calling mode
+        suffix = None if in_training_mode(options) else sample
+        writers_dict[sample] = OutputsWriter(options, suffix=suffix)
+     </a> writer = writers_dict[sample]
 
-</code></pre>
+      n_candidates += len(candidates)
+      n_examples += len(examples)</code></pre>

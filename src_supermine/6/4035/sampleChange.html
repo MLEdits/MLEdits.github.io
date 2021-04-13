@@ -17,17 +17,12 @@
     df.fillna(&quotmissing&quot)  &#47&#47 avoid tokenization exception.
 
     &#47&#47 Segment input into 3 dataframes.
-    relation = df[col_relation]
+    relation = <a id="change">df[col_relation]</a>
 
     left = <a id="change">df</a>[[&quotid_left&quot, &quottext_left&quot]].drop_duplicates([&quotid_left&quot])
     left.set_index(&quotid_left&quot, inplace=True)
     &#47&#47 Infer the length of the text left
-    &#47&#47 left[&quotlength_left&quot] = left.apply(lambda r: len(r[&quottext_left&quot]), axis=1)
-
-    right = <a id="change">df</a>[[&quotid_right&quot, &quottext_right&quot]].drop_duplicates([&quotid_right&quot])
-    right.set_index(&quotid_right&quot, inplace=True)
-    &#47&#47 Infer the length of the text right
-</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 left[&quotlength_left&quot] = left.apply(lambda r: len(r[&quottext_left&quot]), axis=1)</code></pre><h3>After Change</h3><pre><code class='java'>
         id_right = df[&quotid_right&quot]
 
     &#47&#47 Build Relation

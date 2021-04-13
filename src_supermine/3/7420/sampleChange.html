@@ -9,11 +9,11 @@ def check_single_tensor_operation(function_name, input_shape, backend_list, **kw
 
     z_list = []
     for k in backend_list:</code></pre><h3>After Change</h3><pre><code class='java'>
+    if assert_value_with_ref is not None:
         assert_list_with_ref(z_list, assert_value_with_ref)
     else:
-        assert_list_pairwise(z_list, allclose=assert_value_equality)
-    <a id="change">assert_list_keras_shape(z_list)</a>
+        <a id="change">assert_list_pairwise(z_list, allclose=assert_value_equality)</a>
+    assert_list_keras_shape(z_list)
 
 
-def check_two_tensor_operation(function_name, x_shape_or_val,
-                               y_shape_or_val, backend_list, **kwargs):</code></pre>
+def check_two_tensor_operation(function_name, x_shape_or_val,</code></pre>

@@ -2,13 +2,13 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-
         hidden_t = []
         for row in range(input.size(2)):
-            print(input[<a id="change">:, :, row, :</a>].size())
-            row_outputs, row_hidden_t = self.rnn(input[:, :, row, :], None)
+            print(input[:, :, row, :].size())
+            <a id="change">row_outputs</a>, row_hidden_t = self.rnn(input[:, :, row, :], None)
             hidden_t.append(row_hidden_t)
-        return hidden_t</code></pre><h3>After Change</h3><pre><code class='java'>
+        return hidden_t
+</code></pre><h3>After Change</h3><pre><code class='java'>
             inp = input[:, :, row, :].transpose(0, 2).transpose(1, 2)
             outputs, hidden_t = self.rnn(inp)
             all_outputs.append(outputs)

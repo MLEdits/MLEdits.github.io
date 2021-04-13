@@ -5,7 +5,7 @@
         pe = torch.zeros(max_len, 1, dim)
         for i in range(dim):
             for j in range(max_len):
-                k = <a id="change">float(j)</a> / (10000.0 ** (2.0*i / float(dim)))
+                k = float(j) / (10000.0 ** (2.0*i / <a id="change">float(dim)</a>))
                 pe[j, 0, i] = math.cos(k) if i % 2 == 1 else math.sin(k)
         return pe
 </code></pre><h3>After Change</h3><pre><code class='java'>
@@ -15,9 +15,8 @@
         pe = <a id="change">torch</a>.arange(0, max_len).unsqueeze(1).expand(max_len, dim)
         div_term = 1 / torch.pow(10000, torch.arange(0, dim * 2, 2) / dim)
         pe = pe * div_term.expand_as(pe)
-        pe[:, 0::2] = torch.sin(pe[:, 0::2])
-        <a id="change">pe[:, 1::2] = torch.cos(pe[:, 1::2])</a>
+        <a id="change">pe[:, 0::2] = torch.sin(pe[:, 0::2])</a>
+        pe[:, 1::2] = torch.cos(pe[:, 1::2])
         return pe.unsqueeze(1)
 
-    def load_pretrained_vectors(self, emb_file):
-        if emb_file is not None:</code></pre>
+    def load_pretrained_vectors(self, emb_file):</code></pre>

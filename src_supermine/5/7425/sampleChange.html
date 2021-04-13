@@ -4,21 +4,21 @@
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
     @pytest.mark.skipif(K.backend() == &quottheano&quot,
                         reason=&quottheano returns tuples for update ops&quot)
-    def test_update_sub(self):
+    def test_update_add(self):
         x = <a id="change">np.random.randn(3, 4)</a>
         x_var = K.variable(x)
-        decrement = np.random.randn(3, 4)
+        increment = np.random.randn(3, 4)
 
-        x -= decrement</code></pre><h3>After Change</h3><pre><code class='java'>
+        x += increment</code></pre><h3>After Change</h3><pre><code class='java'>
     @pytest.mark.skipif(K.backend() == &quottheano&quot,
                         reason=&quottheano returns tuples for update ops&quot)
-    def test_update_sub(self):
+    def test_update_add(self):
         x = <a id="change">np.ones((3, 4))</a>
         x_var = K.variable(x)
-        decrement = np.random.random((3, 4))
+        increment = np.random.random((3, 4))
 
-        <a id="change">op = K.update_sub(x_var, decrement)</a>
+        <a id="change">op = K.update_add(x_var, increment)</a>
         K.eval(op)
 
-        assert_allclose(x - decrement, K.eval(x_var), atol=1e-05)
+        assert_allclose(x + increment, K.eval(x_var), atol=1e-05)
 </code></pre>

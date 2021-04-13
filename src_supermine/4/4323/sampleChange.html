@@ -2,19 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            output = self.dropout(output)
-            outputs += [output]
 
-        outputs = <a id="change">torch.cat(outputs)</a>
-        pred = self.logsoftmax(self.decoder(outputs))
-        return pred
+            &#47&#47 Apply one MLP layer.
+            emb = self.activation(
+                self.linear(<a id="change">torch.cat([word] + features, -1)</a>))
 
-</code></pre><h3>After Change</h3><pre><code class='java'>
-            output = self.dropout(output)
-            outputs += [output]
+        if self.positional_encoding:
+            emb = emb + Variable(self.pe[:emb.size(0), :1, :emb.size(2)]</code></pre><h3>After Change</h3><pre><code class='java'>
+        Return:
+            emb (FloatTensor): len x batch x sum of feature embedding sizes
+        
+        feat_inputs = (feat.squeeze(2) <a id="change">for</a> feat in src_input.split(1, dim=2))
+        <a id="change">features = [lut(feat) for lut, feat in zip(self.emb_luts, feat_inputs)]</a>
+        emb = self.merge(features)
+        return emb
 
-        <a id="change">outputs = torch.cat([x.unsqueeze(0) for x in outputs])</a>
-        return outputs
-
-
-class NMTModel(nn.Container):</code></pre>
+</code></pre>

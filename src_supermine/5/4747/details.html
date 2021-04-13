@@ -6,34 +6,23 @@
         The wider model
     
     &#47&#47 The last conv layer cannot be widen since wider operator cannot be done over the two sides of flatten.
-    conv_layers = <a id="change">list</a>(<a id="change">filter(lambda x: is_conv_layer(x), graph.layer_list)</a>)[:-1]
+    conv_layers = list(<a id="change">filter(lambda x: is_conv_layer(x), graph.layer_list)</a>)[:-1]
     &#47&#47 The first layer cannot be widen since widen operator cannot be done over the two sides of flatten.
     &#47&#47 The last layer is softmax, which also cannot be widen.
-    dense_layers = list(filter(lambda x: is_dense_layer(x), graph.layer_list))[1:-1]
-
-    if len(dense_layers) == 0:
-        weighted_layers = conv_layers
-    elif randint(0, 1) == 0:
-        <a id="change">weighted_layers = conv_layers</a>
+    dense_layers = list(filter(lambda x: is_dense_layer(x), graph.layer_list))[1:-1]</code></pre><h3>After Change</h3><pre><code class='java'>
+    Returns:
+        The wider model
+    
+    <a id="change">weighted_layer_ids = graph.wide_layer_ids()</a>
+    if len(weighted_layer_ids) &lt;= 1:
+        target_id = weighted_layer_ids[0]
     else:
-        weighted_layers = dense_layers
-
-    if len(weighted_layers) &lt;= 1:
-        target = weighted_layers[0]
-    else:
-        target = weighted_layers[randint(0, len(weighted_layers) - 1)]
-
-    if is_conv_layer(target):
-        n_add = randint(1, 4 * target.filters)
-    else:
-        n_add = randint(1, 4 * <a id="change">target.units</a>)
-
-    graph.to_wider_model(graph.layer_to_id[target], n_add)
-    return graph</code></pre><h3>After Change</h3><pre><code class='java'>
         target_id = weighted_layer_ids[randint(0, len(weighted_layer_ids) - 1)]
 
     if is_conv_layer(graph.layer_list[target_id]):
         n_add = randint(1, 4 * <a id="change">graph</a>.layer_list[target_id].filters)
     else:
-        n_add = randint(1, 4 * graph.layer_list[target_id].units)
-</code></pre><img src="20110706.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/b048efa4f956b80266942caea6ee8b4311e1d17a#diff-8a1284164d27b45b4962d2b18adbb76d2a8877cef3d32ecbc46ddf58e9e8cadcL18' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: b048efa4f956b80266942caea6ee8b4311e1d17a</div><div id='time'> Time: 2018-04-08</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/net_transformer.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: to_wider_graph</div><BR><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/b048efa4f956b80266942caea6ee8b4311e1d17a#diff-8a1284164d27b45b4962d2b18adbb76d2a8877cef3d32ecbc46ddf58e9e8cadcL57' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: b048efa4f956b80266942caea6ee8b4311e1d17a</div><div id='time'> Time: 2018-04-08</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/net_transformer.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: to_skip_connection_graph</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/76450c8d4777f12188203e8303d7fd7eb499210c#diff-949c24ea7cb984c07205ce7dd2d6fd48dda9bbba5982e133f224ef37c55f1595L335' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 76450c8d4777f12188203e8303d7fd7eb499210c</div><div id='time'> Time: 2020-05-28</div><div id='author'> Author: smtp.pdames@gmail.com</div><div id='file'> File Name: python/ray/autoscaler/aws/config.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _get_security_group</div><BR>
+        n_add = randint(1, 4 * <a id="change">graph</a>.layer_list[target_id].units)
+
+    graph.to_wider_model(target_id, n_add)
+    return graph</code></pre><img src="20621786.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 5</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/b048efa4f956b80266942caea6ee8b4311e1d17a#diff-8a1284164d27b45b4962d2b18adbb76d2a8877cef3d32ecbc46ddf58e9e8cadcL18' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: b048efa4f956b80266942caea6ee8b4311e1d17a</div><div id='time'> Time: 2018-04-08</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/net_transformer.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: to_wider_graph</div><BR><BR><div id='link'><a href='https://github.com/keras-team/autokeras/commit/b048efa4f956b80266942caea6ee8b4311e1d17a#diff-8a1284164d27b45b4962d2b18adbb76d2a8877cef3d32ecbc46ddf58e9e8cadcL57' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/autokeras</div><div id='commit'> Commit Name: b048efa4f956b80266942caea6ee8b4311e1d17a</div><div id='time'> Time: 2018-04-08</div><div id='author'> Author: jin@tamu.edu</div><div id='file'> File Name: autokeras/net_transformer.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: to_skip_connection_graph</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/03b0e7061cf477fbeccb9c128ee76603df582d86#diff-9f211728739d8c530be209acfeaf63e70a4f30275188f5d5a4b458e61646b57eL130' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: 03b0e7061cf477fbeccb9c128ee76603df582d86</div><div id='time'> Time: 2018-09-04</div><div id='author'> Author: leonard@lausen.nl</div><div id='file'> File Name: scripts/word_embeddings/evaluate_pretrained.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: load_embedding_from_path</div><BR>

@@ -2,23 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            return
+        output2 = M2(ipt).numpy()
 
-        if &quotinterval&quot not in self.options or (&quotinterval&quot in self.options and self.options[&quotinterval&quot] is None):
-            <a id="change">logging.error("AUTO-BACKUP: Interval is not set.")</a>
-            return
+        self.assertEqual((output1 == output2).all(), True)
+        <a id="change">self.assertEqual(M1.config, M2.config)</a>
 
-        if &quotcommands&quot not in self.options or (&quotcommands&quot in self.options and self.options[&quotcommands&quot] is None):
-            logging.error("AUTO-BACKUP: No commands given.")</code></pre><h3>After Change</h3><pre><code class='java'>
-        self.status = StatusFile(&quot/root/.auto-backup&quot)
+    def test_elementwise_no_para_no_args(self):
+        &#47&#47 z = mean + noise * tf.exp(std * 0.5) + foo
+        def func(noise, mean, std, foo=42):</code></pre><h3>After Change</h3><pre><code class='java'>
+        output1 = M1(ipt).numpy()
+        output2 = M2(ipt).numpy()
 
-    def on_loaded(self):
-        <a id="change">for opt in [&quotfiles&quot, &quotinterval&quot, &quotcommands&quot, &quotmax_tries&quot]:
-            if opt not in self.options or (opt in self.options and self.options[opt] is None):
-                logging.error(f"AUTO-BACKUP: Option {opt} is not set.")
-                return
+        <a id="change">M1_config = RemoveDateInConfig(M1.config)</a>
+        M2_config = RemoveDateInConfig(M2.config)
 
-       </a> self.ready = True
-        logging.info("AUTO-BACKUP: Successfully loaded.")
-
-    def on_internet_available(self, agent):</code></pre>
+        self.assertEqual((output1 == output2).all(), True)
+        self.assertEqual(M1_config, M2_config)</code></pre>

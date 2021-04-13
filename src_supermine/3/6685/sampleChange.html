@@ -2,16 +2,16 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    n = 2
-    input_arr = np.random.random((n, n, n))
+    for i, arr in enumerate(input_arr):
+        bar.update(i, list(arr))
 
-    <a id="change">bar = Progbar(n)</a>
+    <a id="change">bar = Progbar(None)</a>
     for i, arr in enumerate(input_arr):
         <a id="change">bar.update(i, list(arr))</a>
 
-    bar = Progbar(None)
-    for i, arr in enumerate(input_arr):
-        bar.update(i, list(arr))</code></pre><h3>After Change</h3><pre><code class='java'>
+
+def test_custom_objects_scope():
+</code></pre><h3>After Change</h3><pre><code class='java'>
                 [[&quotkey1&quot, 1], [&quotkey2&quot, 1e-4]],
                 [[&quotkey3&quot, 1], [&quotkey2&quot, 1e-4]]]
 

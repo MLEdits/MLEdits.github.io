@@ -2,25 +2,24 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            filename=&quotresult_iter_{iteration}_no_{index}.png&quot)
+        self.extension(self.trainer)
 
-        outputs = self.link(&quotignored&quot, -1, &quotinputs&quot, 1.0)
+        <a id="change">if not optional_modules:
+            return
 
-        <a id="change">if isinstance(self.outputs, tuple):
-            originals = self.outputs
-            outputs = outputs
-        else:
-            originals = self.outputs,
-            outputs = outputs,
+       </a> for idx in six.moves.range(len(self.dataset)):
+            <a id="change">out_file = osp.join(
+                self.trainer.out, &quotresult_iter_0_no_{:d}.png&quot.format(idx))</a>
+            self.assertTrue(osp.exists(out_file))
 
-       </a> self.assertEquals(len(originals), len(outputs))
 
-        for orig, out in zip(originals, outputs):
-            self.assertIsInstance(out, chainer.Variable)</code></pre><h3>After Change</h3><pre><code class='java'>
-            np.testing.assert_equal(out.data, orig)
+testing.run_module(__name__, __file__)</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.extension = DetectionVisReport(
+            self.iterator, self.link,
+            filename=&quotresult_no_{index}_iter_{iteration}.png&quot)
+        <a id="change">self._check(&quotresult_no_{:d}_iter_0.png&quot)</a>
 
-    def test_cpu(self):
-        <a id="change">self._check(np)</a>
 
-    @attr.gpu
-    def test_gpu(self):
-        self.link.to_gpu()</code></pre>
+testing.run_module(__name__, __file__)
+</code></pre>

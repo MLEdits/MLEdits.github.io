@@ -2,29 +2,26 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            ModelTrainer(self.model, self.x_train, self.y_train, self.x_test, self.y_test, self.verbose).train_model()
-            _, optimal_accuracy = self.model.evaluate(self.x_test,self.y_test,verbose=self.verbose)
-            models = self._remove_duplicate(net_transfromer(self.model))
-            <a id="change">for index in range(0,len(models)):
-                models[index].compile(loss=categorical_crossentropy,
-                  optimizer=Adadelta(),
-                  metrics=[&quotaccuracy&quot])
-                ModelTrainer(models[index], self.x_train, self.y_train, self.x_test, self.y_test, self.verbose).train_model()
-                _, accuracy = models[index].evaluate(self.x_test, self.y_test, self.verbose)
-                if accuracy &gt; optimal_accuracy:
-                    optimal_accuracy = accuracy
-                    optimal_index = index
-                    self.model = models[index]
-       </a> return self.model if self.optimal_index is not None else None
+        &#47&#47 TODO(sven): implement case: vf_shared_layers = False.
+        &#47&#47 vf_share_layers = model_config.get("vf_share_layers")
 
-
-</code></pre><h3>After Change</h3><pre><code class='java'>
-            _, accuracy = model.evaluate(self.x_test, self.y_test, self.verbose)
-            accuracy_list.append(accuracy)
-
-        max_index = <a id="change">np</a>.argmax(np.array(accuracy_list))[0]
-        <a id="change">max_accuracy = accuracy_list[max_index]</a>
-
-        if max_accuracy &gt; optimal_accuracy:
-            return new_models[max_index]
+        logger.debug(<a id="change">"Constructing fcnet {} {}".format(hiddens, activation)</a>)
+        layers = []
+        prev_layer_size = int(np.product(obs_space.shape))
+        self._logits = None</code></pre><h3>After Change</h3><pre><code class='java'>
+        self._value_branch_separate = None
+        if not self.vf_share_layers:
+            &#47&#47 Build a parallel set of hidden layers for the value net.
+            <a id="change">prev_vf_layer_size = int(np.product(obs_space.shape))</a>
+            <a id="change">self._value_branch_separate = []</a>
+            for size in hiddens:
+                <a id="change">self._value_branch_separate.append(
+                    SlimFC(
+                        in_size=prev_vf_layer_size,
+                        out_size=size,
+                        activation_fn=activation,
+                        initializer=normc_initializer(1.0)))</a>
+                prev_vf_layer_size = size
+            self._value_branch_separate = nn.Sequential(
+                *self._value_branch_separate)
 </code></pre>

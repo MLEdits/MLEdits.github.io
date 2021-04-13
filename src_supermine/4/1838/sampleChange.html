@@ -5,16 +5,17 @@
     glove_file.close()
 
     embeddings = np.asarray(embd, dtype=float)
-    <a id="change">word_to_ix = {}</a>
+    word_to_ix = <a id="change">{}</a>
     for word in vocab:
-        word_to_ix[word] = len(word_to_ix)
+        <a id="change">word_to_ix[word] = len(word_to_ix)</a>
 
-    return word_to_ix, embeddings</code></pre><h3>After Change</h3><pre><code class='java'>
+    return word_to_ix, embeddings
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
     logger.info(&quotLoaded GloVe!&quot)
 
     embeddings = np.asarray(embd, dtype=float)
-    <a id="change">word_to_ix = {word: i for i, word in enumerate(vocab)}</a>
+    word_to_ix = {word: i <a id="change">for</a> i, word in <a id="change">enumerate(vocab)</a>}
     return word_to_ix, embeddings
 
-
-def glove_dump():</code></pre>
+</code></pre>

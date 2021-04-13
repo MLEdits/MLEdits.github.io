@@ -2,21 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 The name of the layer we want to visualize
+    &#47&#47 (see model definition in vggnet.py)
+    layer_name = &quotpredictions&quot
+    layer_dict = <a id="change">dict([(layer.name, layer) for layer in model.layers[1:]])</a>
+    output_class = [20]
 
-    &#47&#47 Visualize [20] (ouzel) and [20, 71] (An ouzel-scorpion :D)
-    indices = [20, [20, 71]]
-    idx_label_map = <a id="change">dict((idx, utils.get_imagenet_label(idx)) for idx in [20, 71])</a>
+    losses = [
+        (ActivationMaximization(layer_dict[layer_name], output_class), 2),</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 The name of the layer we want to visualize
+    &#47&#47 (see model definition in vggnet.py)
+    layer_name = &quotpredictions&quot
+    layer_idx = <a id="change">[idx for idx, layer in enumerate(model.layers) if layer.name == layer_name]</a>[0]
+    output_class = [20]
 
-    vis_img = visualize_activation(model, layer_idx, filter_indices=indices,
-                                   max_iter=500, idx_label_map=idx_label_map)
-    cv2.imshow(&quotMultiple category visualization&quot, vis_img)</code></pre><h3>After Change</h3><pre><code class='java'>
-
-    &#47&#47 Visualize [20] (ouzel) and [20, 71] (An ouzel-scorpion :D)
-    indices = [20, [20, 71]]
-    images = <a id="change">[visualize_activation(model, layer_idx, filter_indices=idx,
-                                   text=utils.get_imagenet_label(idx),
-                                   max_iter=500) for idx in indices]</a>
-    cv2.imshow(&quotMultiple category visualization&quot, utils.stitch_images(images))
-    cv2.waitKey(0)
-
-</code></pre>
+    optimizer_params = {</code></pre>

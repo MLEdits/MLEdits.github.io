@@ -14,15 +14,14 @@
     )
 
     for param in model.trainable_parameters:
-        param.transform = None
+        <a id="change">param.transform = None</a>
         <a id="change">low_value = -100</a>
         <a id="change">high_value = low_value + prior_width</a>
         <a id="change">param.prior = Uniform(low=np.float64(low_value), high=np.float64(high_value))</a>
-        <a id="change">param.prior_on = prior_on</a>
+        param.prior_on = prior_on
 
         prior_density = 1 / prior_width
-        expected_log_prior += np.log(prior_density)
-</code></pre><h3>After Change</h3><pre><code class='java'>
+        expected_log_prior += np.log(prior_density)</code></pre><h3>After Change</h3><pre><code class='java'>
      Verifies the objective for a set of priors where no transforms are set.
     
     expected_log_prior = 0.0

@@ -2,25 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            if self.do_ten_crop:
-                n = y.shape[0] // 10
-                y_shape = y.shape[1:]
-                <a id="change">y = y.reshape((n, 10) + y_shape)</a>
-                y = self.xp.sum(y, axis=1) / 10
-        <a id="change">return cuda.to_cpu(y)</a>
+    def forward(self, clips):
+        c, _, _ = clips.shape
+        num_images = int(c / 3)
+        <a id="change">clip_mean = self.mean * num_images</a>
+        clip_std = self.std * num_images
+        <a id="change">clip_mean = nd.array(np.asarray(clip_mean).reshape((c, 1, 1)))</a>
+        <a id="change">clip_std = nd.array(np.asarray(clip_std).reshape((c, 1, 1)))</a>
+        <a id="change">return (clips - clip_mean) / clip_std</a>
 
+class VideoRandomHorizontalFlip(Block):
+    Randomly flip the input video clip left to right
+    with a probability of 0.5.</code></pre><h3>After Change</h3><pre><code class='java'>
+        new_clips = []
+        for cur_img in clips:
+            new_clips.append((cur_img - self.mean) / self.std)
+        <a id="change">return new_clips</a>
 
-def _max_pooling_2d(x):
-    return F.max_pooling_2d(x, ksize=2)</code></pre><h3>After Change</h3><pre><code class='java'>
-                    activation = self._gather_ten_crop(activation)
-                activations[name] = cuda.to_cpu(activations)
-        else:
-            <a id="change">activations = cuda.to_cpu(activations.data)</a>
-            if self.do_ten_crop:
-                <a id="change">activations = self._gather_ten_crop(activations)</a>
-
-        <a id="change">return activations</a>
-
-    def _gather_ten_crop(self, y):
-        xp = chainer.cuda.get_array_module(y)
-        n = y.shape[0] // 10</code></pre>
+class VideoRandomHorizontalFlip(Block):
+    Randomly flip the images left to right with a probability.
+</code></pre>

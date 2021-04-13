@@ -10,13 +10,12 @@
                             else:
                                 output_tensors = _to_list(layer.call(computed_tensor))
                             output_masks = _to_list(layer.compute_mask(computed_tensor,</code></pre><h3>After Change</h3><pre><code class='java'>
-                        else:
-                            computed_tensors = [x[0] for x in computed_data]
-                            computed_masks = [x[1] for x in computed_data]
-                            <a id="change">if &quotmask&quot in inspect.getargspec(layer.call).args:
-                                if &quotmask&quot not in kwargs:
-                                    kwargs[&quotmask&quot] = computed_masks
-                           </a> output_tensors = _to_list(layer.call(computed_tensors, **kwargs))
-                            output_masks = _to_list(layer.compute_mask(computed_tensors,
-                                                                       computed_masks))
-</code></pre>
+                        if len(computed_data) == 1:
+                            computed_tensor, computed_mask = computed_data[0]
+                            if &quotmask&quot in inspect.getargspec(layer.call).args:
+                                <a id="change">if &quotmask&quot not in kwargs:
+                                    kwargs[&quotmask&quot] = computed_mask
+                           </a> output_tensors = _to_list(layer.call(computed_tensor, **kwargs))
+                            output_masks = _to_list(layer.compute_mask(computed_tensor,
+                                                                       computed_mask))
+                            computed_tensors = [computed_tensor]</code></pre>

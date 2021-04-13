@@ -10,10 +10,12 @@
         self.mode = mode
 
     def __len__(self):</code></pre><h3>After Change</h3><pre><code class='java'>
-    is called.
     `source` is the image of the source image and `target` is the image of
     the target image which are both in CHW format. `flow` represents optical
-    flow from the source to the target whose shap<a id="change">e i</a>s :math:`(3, H, W)`.
-    :math:`H` and :math:`W` are the height and the width of images.
+    flow from the source to the target whose shape is :math:`(3, H, W)`.
+    :math:`H` and :math:`W` are the height and the width of images<a id="change">.
 
-    Args:</code></pre>
+</a>    Args:
+        data_dir (string): Path to the root of the training data. If this is
+            :obj:`auto`, this class will automatically download data for you
+            under :obj:`$CHAINER_DATASET_ROOT/pfnet/chainercv/sintel`.</code></pre>

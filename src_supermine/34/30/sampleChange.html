@@ -18,7 +18,10 @@
             trained_coefficients = self.trained_pipeline.named_steps[&quotfinal_model&quot].model.coef_[0]
         else:
             trained_coefficients = self.trained_pipeline.named_steps[&quotfinal_model&quot].model.coef_</code></pre><h3>After Change</h3><pre><code class='java'>
-    def _print_ml_analytics_results_regression(self):
+        return trained_feature_names
+
+
+    def _print_ml_analytics_results_regression(<a id="change">self</a>):
         print(&quot\n\nHere are the results from our &quot + self.trained_pipeline.named_steps[&quotfinal_model&quot].model_name)
 
         <a id="change">trained_feature_names = self._get_trained_feature_names()</a>

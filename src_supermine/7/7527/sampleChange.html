@@ -2,22 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 resume training while saving intermediate checkpoints.
+        cpu_state_dicts = []
+        for model in self.models:
+            <a id="change">state_dict = model.state_dict()</a>
+            cpu_state_dicts += [<a id="change">{k: v.cpu() for k, v in state_dict.items()}</a>]
+        return cpu_state_dicts
 
+    def _set_model_state_dicts(self, models_state_dicts):</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.training_operator._set_timers(self.timers)
 
-def to_dict(config):
-    return <a id="change">{
-        k: (to_dict(v) if type(v) is EasyDict else v)
-        for k, v in config.items()
-    }</a>
+    def _get_model_state_dicts(self):
+        <a id="change">return [model.state_dict() for model in self.models]</a>
 
-
-def dump_config(config):
-    config = to_dict(config)</code></pre><h3>After Change</h3><pre><code class='java'>
-
-def to_dict(config):
-    if type(config) is list:
-        <a id="change">return [to_dict(c) for c in config]</a>
-    elif type(config) is EasyDict:
-        return dict([(k, to_dict(v)) for k, v in config.items()])
-    else:
-        return config</code></pre>
+    def _set_model_state_dicts(self, models_state_dicts):
+        for model, state_dict in zip(self.models, models_state_dicts):
+            model.load_state_dict(state_dict)</code></pre>

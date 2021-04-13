@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-        self.W_i = self.init((input_dim, self.output_dim))
-        self.U_i = self.inner_init((self.output_dim, self.output_dim))
-        self.b_i = <a id="change">shared_zeros((self.output_dim))</a>
+        self.W_h = self.init((input_dim, self.output_dim))
+        self.U_h = self.inner_init((self.output_dim, self.output_dim))
+        self.b_h = <a id="change">shared_zeros((self.output_dim))</a>
 
-        self.W_f = self.init((input_dim, self.output_dim))
-        self.U_f = self.inner_init((self.output_dim, self.output_dim))
-        self.b_f = self.forget_bias_init((self.output_dim))</code></pre><h3>After Change</h3><pre><code class='java'>
-                           K.zeros(input_shape[0], self.output_dim)]
+        self.params = [
+            self.W_z, self.U_z, self.b_z,
+            self.W_r, self.U_r, self.b_r,</code></pre><h3>After Change</h3><pre><code class='java'>
+                raise Exception(&quotIf a RNN is stateful, a complete &quot +
+                                &quotinput_shape must be provided &quot +
+                                &quot(including batch size).&quot)
+            <a id="change">self.states = [K.zeros(input_shape[0], self.output_dim)]</a>
         else:
-            &#47&#47 initial states: 2 all-zero tensor of shape (output_dim)
-            <a id="change">self.states = [None, None]</a>
-
-        self.W_i = self.init((input_dim, self.output_dim))
-        self.U_i = self.inner_init((self.output_dim, self.output_dim))
-        self.b_i = K.zeros((self.output_dim))</code></pre>
+            &#47&#47 initial states: all-zero tensor of shape (output_dim)
+            self.states = [None]
+</code></pre>

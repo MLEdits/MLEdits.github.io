@@ -2,21 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-def get_hash(o) -&gt; str:
-    hashable_o = make_hashable(o)
-    hash = make_hash_sha256(hashable_o)
-    <a id="change">return hash</a>
+    def _repr_html_(self):
+        from .utilities import tabulate_module_summary
 
+        <a id="change">return tabulate_module_summary(self, tablefmt="html")</a>
 
-def get_short_hash(o) -&gt; str:
-    hash = get_hash(o)[:6]</code></pre><h3>After Change</h3><pre><code class='java'>
-    Returns:
-        base64-encoded string
-    
-    bytes_to_hash = <a id="change">repr</a>(_make_hashable(obj)).encode()
-    hash_bytes = sha256(bytes_to_hash).digest()
-    <a id="change">return urlsafe_b64encode(hash_bytes).decode()</a>
+    def _repr_pretty_(self, p, cycle):
+        from .utilities import tabulate_module_summary
+</code></pre><h3>After Change</h3><pre><code class='java'>
+         Nice representation of GPflow objects in IPython/Jupyter notebooks 
+        from html import escape
 
+        <a id="change">return self._representation_table(escape(repr(self)), "html")</a>
 
-def get_short_hash(o) -&gt; str:
-    hash = get_hash(o)[:6]</code></pre>
+    def _repr_pretty_(self, p, cycle):
+         Nice representation of GPflow objects in the IPython shell 
+        repr_str = self._representation_table(repr(self), default_summary_fmt())</code></pre>

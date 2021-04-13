@@ -2,11 +2,10 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    return n
 
 
-<a id="change">x = tf.placeholder(tf.float32, [None, 100, 100, 3])</a>
-net = model(x, True, False)
+x = tf.placeholder(tf.float32, [None, 100, 100, 3])
+<a id="change">net = model(x, True, False)</a>
 _ = model(x, False, True)
 
 net.print_layers()
@@ -18,7 +17,9 @@ net.print_params(False)
 </a>if len(net.all_params) != 12:
     raise Exception("params do not match")
 
-if net.count_params() != 60560:</code></pre><h3>After Change</h3><pre><code class='java'>
+if net.count_params() != 60560:
+    <a id="change">raise Exception("params do not match")</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
         self.assertEqual(self.data["train_network"]["n_params"], 60560)
 
 

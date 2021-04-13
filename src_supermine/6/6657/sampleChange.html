@@ -4,14 +4,16 @@
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
 
-if __name__ == &quot__main__&quot:
-    pytest.main(<a id="change">[__file__]</a>)
-</code></pre><h3>After Change</h3><pre><code class='java'>
+BACKENDS = []  &#47&#47 Holds a list of all available back-ends
+WITH_NP = <a id="change">[K, KNP]</a>
 
-STEPS_PER_EPOCH = 100
-STEPS = 100
-WORKERS = <a id="change">4 if K.backend() != &quottensorflow&quot else 2</a>
+try:
+    from keras.backend import cntk_backend as KC
+    BACKENDS.append(KC)</code></pre><h3>After Change</h3><pre><code class='java'>
+    warnings.warn(&quotCould not import the Theano backend&quot)
 
 
-class DummySequence(Sequence):
-    def __getitem__(self, idx):</code></pre>
+WITH_NP = [<a id="change">KTH if K.backend() == &quottheano&quot else KC if K.backend() == &quotcntk&quot else KTF</a>, KNP]
+
+
+def check_dtype(var, dtype):</code></pre>

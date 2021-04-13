@@ -3,21 +3,22 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-        if args.analogy_datasets:
-            &#47&#47 Pre-compute all words in vocabulary in case of analogy evaluation
-            <a id="change">idx_to_token = [
-                model.token_to_idx[idx]
-                for idx in range(len(model.token_to_idx))
-            ]</a>
-            if args.max_vocab_size:
-                idx_to_token = idx_to_token[:args.max_vocab_size]
-        else:
-            idx_to_token = [</code></pre><h3>After Change</h3><pre><code class='java'>
-            unknown_token=None, unknown_lookup=model, allow_extend=True,
-            unknown_autoextend=True)
+def make_features(batch, fields):
+    &#47&#47 TODO: This is bit hacky, add to batch somehow.
+    <a id="change">f = ONMTDataset.collect_features(fields)</a>
+    cat = [batch.src[0]] + <a id="change">[batch.__dict__[k] for k in f]</a>
+    <a id="change">cat = [c.unsqueeze(2) for c in cat]</a>
+    return torch.cat(cat, 2)
 
-        <a id="change">idx_to_token = sorted(model._token_to_idx, key=model._token_to_idx.get)</a>
-        if not args.analogy_datasets:
-            &#47&#47 Prune tokens not used in evaluation datasets
-            eval_tokens_ = set(
-                evaluation.get_tokens_in_evaluation_datasets(args))</code></pre>
+
+def join_dicts(*args):</code></pre><h3>After Change</h3><pre><code class='java'>
+    else:
+        data = batch.__dict__[side]
+    feat_start = side + "_feat_"
+    features = <a id="change">sorted(batch.__dict__[k]
+                      for k in batch.__dict__ if feat_start in k)</a>
+    <a id="change">levels = [data] + features</a>
+    return torch.cat([level.unsqueeze(2) for level in levels], 2)
+
+
+def join_dicts(*args):</code></pre>

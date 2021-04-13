@@ -2,17 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            skip,down = sd(down,
-                           is_training=is_training,
-                           keep_prob=hp[&quotp_channels_selected&quot])
-            tf.summary.scalar(&quotskip{}&quot.format(idx),tf.reduce_mean(tf.square(skip)),<a id="change">[tf.GraphKeys.SUMMARIES]</a>)
-            if not down is None:
-                tf.summary.scalar(&quotdown{}&quot.format(idx),tf.reduce_mean(tf.square(down)),[tf.GraphKeys.SUMMARIES])
-            all_segmentation_features.append(image_resize(skip,output_shape))</code></pre><h3>After Change</h3><pre><code class='java'>
-            segmentation = segmentation + \
-                           SpatialPriorBlock([12] * spatial_rank, output_shape)
-        segmentation = image_resize(segmentation, input_size[1:-1])
-        image3_axial(&quotseg&quot, <a id="change">tf.nn.softmax(segmentation)[:, :, :, :, 1:] * 255.</a>,
-                     3, [tf.GraphKeys.SUMMARIES])
-        image3_axial(&quotimg&quot,
-                     tf.minimum(255., tf.maximum(0.,</code></pre>
+        with tf.device(&quot/cpu:0&quot):
+
+            batch_size = ground_truth.get_shape()[0].value
+            ground_truth = tf.reshape(ground_truth, <a id="change">[batch_size, -1]</a>)
+            if weight_map is not None:
+                weight_map = tf.reshape(weight_map, [batch_size, -1])
+            &#47&#47 assumes same gt and weight across scales</code></pre><h3>After Change</h3><pre><code class='java'>
+                    &#47&#47 performs softmax if required
+                    if self._softmax:
+                        pred_b = tf.cast(pred_b, dtype=tf.float32)
+                        pred_b = <a id="change">tf.nn.softmax(pred_b)</a>
+
+                    &#47&#47 reshape pred, ground_truth, weight_map to the same
+                    &#47&#47 size: (n_voxels, num_classes)
+                    &#47&#47 if the ground_truth has only one channel, the shape
+                    &#47&#47 becomes: (n_voxels,)
+                    spatial_shape = pred_b.get_shape().as_list()[:-1]
+                    ref_shape = <a id="change">spatial_shape + [-1]</a>
+                    ground_truth_b = tf.reshape(ground_truth[b_ind], ref_shape)
+                    if ground_truth_b.get_shape().as_list()[-1] == 1:
+                        ground_truth_b = tf.squeeze(ground_truth_b, axis=-1)
+                    if weight_map is not None:</code></pre>

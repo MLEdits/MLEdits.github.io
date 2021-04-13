@@ -2,35 +2,61 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        DiscreteSpace("x5", [-1, 0, 1, 2, 3]),
-    })
 
-    <a id="change">config = {"stop": {"training_iteration": 100}}</a>
-    algo = GeneticSearch(
-        space,
-        reward_attr="neg_mean_loss",
-        max_generation=2 if args.smoke_test else 10,
-        population_size=10 if args.smoke_test else 50)
-    <a id="change">scheduler</a> = <a id="change">AsyncHyperBandScheduler(metric="neg_mean_loss", mode="max")</a>
+    ray.init()
+
+    <a id="change">tune_kwargs = {
+        "num_samples": 10 if args.smoke_test else 50,
+        "config": {
+            "iterations": 100,
+            "x1": tune.uniform(0.0, 1.0),
+            "x2": tune.uniform(0.0, 1.0),
+            "x3": tune.uniform(0.0, 1.0),
+            "x4": tune.uniform(0.0, 1.0),
+            "x5": tune.uniform(0.0, 1.0),
+            "x6": tune.uniform(0.0, 1.0),
+        },
+        "stop": {
+            "timesteps_total": 100
+        }
+    }</a>
+    algo = AxSearch(
+        max_concurrent=4,
+        metric="hartmann6",
+        mode="min",
+        parameter_constraints=["x1 + x2 &lt;= 2.0"],  &#47&#47 Optional.
+        outcome_constraints=["l2norm &lt;= 1.25"],  &#47&#47 Optional.
+    )
+    <a id="change">scheduler</a> = <a id="change">AsyncHyperBandScheduler(metric="hartmann6", mode="min")</a>
     <a id="change">tune.run(
-        michalewicz_function,
-        name="my_exp",
+        easy_objective,
+        name="ax",
         search_alg=algo,
         scheduler=scheduler,
-        **config)</a>
+        **tune_kwargs)</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        reward_attr="neg_mean_loss",
-        max_generation=2 if args.smoke_test else 10,
-        population_size=10 if args.smoke_test else 50)
+        parameter_constraints=["x1 + x2 &lt;= 2.0"],  &#47&#47 Optional.
+        outcome_constraints=["l2norm &lt;= 1.25"],  &#47&#47 Optional.
+    )
     <a id="change">scheduler</a> = <a id="change">AsyncHyperBandScheduler()</a>
     <a id="change">analysis = tune.run(
-        michalewicz_function,
-        metric="neg_mean_loss",
-        mode="max",
-        name="my_exp",
+        easy_objective,
+        name="ax",
+        metric="hartmann6",  &#47&#47 provided in the &quoteasy_objective&quot function
+        mode="min",
         search_alg=algo,
         scheduler=scheduler,
-        stop={"training_iteration": 100})</a>
+        num_samples=10 if args.smoke_test else 50,
+        config={
+            "iterations": 100,
+            "x1": tune.uniform(0.0, 1.0),
+            "x2": tune.uniform(0.0, 1.0),
+            "x3": tune.uniform(0.0, 1.0),
+            "x4": tune.uniform(0.0, 1.0),
+            "x5": tune.uniform(0.0, 1.0),
+            "x6": tune.uniform(0.0, 1.0),
+        },
+        stop={"timesteps_total": 100})</a>
 
     <a id="change">print("Best hyperparameters found were: ", analysis.best_config)</a>
 </code></pre>

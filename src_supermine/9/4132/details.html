@@ -1,39 +1,25 @@
-<html><h3>200e3be0929599459ee5d1100b3076b9188ecf25,tests/resampler_grid_warper_test.py,,,#,43
+<html><h3>4e6f863acd500dc02e7c2a8e5a01566ac58930d9,sonnet/python/modules/conv_test.py,,,#,4324
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                               expected_value=expected)
-
+    with self.assertRaisesRegexp(snt.NotConnectedError, err):
+      self.assertEqual(conv3_transpose.output_shape, conv3.input_shape)
 
 <a id="change">if __name__ == "__main__":
-    tf.test.main()</a>
+  tf.test.main()</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
-from niftynet.layer.grid_warper import AffineGridWarperLayer
-from niftynet.layer.resampler import ResamplerLayer
 
-<a id="change">test_case_2d_1 = {
-    &quotdata&quot: "+/b9/+3/377dpX+Mxp+Y/9nT/d/X6vfMuf+hX/hSY/1pvf/P9/z//+///+7z"
-            "//ve19noiHuXVjlVSCUpwpyH/9i/9+LDwuufS84yGOYKGOgYQspG2v7Q/uXg"
-            "07aonZBtS1NqWVRycl9zZEY86sSf/+u/7uezlNlvIdYPA/8AAP8AK+MfgMRd"
-            "f3JGVzYTdV0xW2d9Y2N7c2NuZEgz58CV/+S66OS1jdt2KOclAP8AAP8AFtkB"
-            "V6Ema1wjkmZDkmdFXGd5XltwdWFqdldF8c2r/+/V//7szP/JOs9AC+gNGvkS"
-            "P9YlrNp4fl41kVdDj1ZDYWN8ZFdzblFjfVpU/+/a//Hp/e718P/2v/+8bOdb"
-            "auVOtv6Q9fW/om9eiEg/oGFYXFR9e2GOdEttbkZO7tPI//v2//P/+/f47PjQ"
-            "3Pmn3fmi3eGm/+rRyZCHhEg9l19Oal2TbU6HeUp2lm17x7Wn5eXZ7e7w9evp"
-            "+OXH/+yz+uWs3b+b/9/N3a6ebj8lg1Y1ZFyNcFWIelB0fFde2Mu48fjm+f/7"
-            "+PPt9uLH/+m6/+W24cSk/+TNz62SUS0LeVYuYGGAa1x9dFRpdldS9OXO/P3r"
-            "8vb1//78//bg8OG28d6z/OjH/+nLwqWHbksrh2JFWmB6ZWB2aVVedl9R893F"
-            "//Hl//r/++/z//Xh/PDG9Oa38Nqx/uC+ontcek04kWFVYWWKX1x5bWBqZE0/"
-            "8dO7/+re89HS//Xx/uvK7+Cp/++1/+u74rWMhE8vilJBk1lYWVmNX1iCbF1y"
-            "VToz58Gs/9rH/tLF/+DG/+y2/uej/+Ki/92pq3hLjVcxlFtHkVZSbGmYTkNt"
-            "gmqCWzg22K2a/+TL/93C++C1++eq+OOi/+q489GsfVk3dlArkGRJkGFR3dnw"
-            "lIadXT5NSiEdvpOA/93C8+DA8+rB+PLA/PDI//fn//v47eHVpph9cVo7ZkYt"
-            "/f37//f678zQxpeRrYJx993G8OvO7vTQ8PbU/fvs/Pj/9/n/9///+P/t8OnM"
-            "4s2u".encode(&quotascii&quot),
-    &quotshap</a><a id="change">e&quot: (16, 16, 3)
+&#47&#47 These functions compute the expected output shape of a convolution of each
+&#47&#47 padding type, for a given input shape and kernel size.
+<a id="change">_PADDINGS_EXPECTED_SHAPE_TRANSFORMS = {
+    snt.SAME: lambda in_length, kernel_size: in_length,
+    snt.VALID: lambda in_length, kernel_size: in_length - kernel_size + 1,
+    snt.FULL: lambda in_length, kernel_size: in_length + kernel_size - 1,
+    snt.CAUSAL: lambda in_length, kernel_size: in_length,
+    snt.REVERSE_CAUSAL: lambda in_length, kernel_size: in_length,
 }</a>
 
 
-def get_2d_images():
-    try:</code></pre><img src="18013271.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/200e3be0929599459ee5d1100b3076b9188ecf25#diff-74d485afd329a44f4b8004697c29b4e2e08299ac301cf559f4bd3a05dfd4e893L11' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 200e3be0929599459ee5d1100b3076b9188ecf25</div><div id='time'> Time: 2017-10-26</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: tests/resampler_grid_warper_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/4e6f863acd500dc02e7c2a8e5a01566ac58930d9#diff-d6d32945fc5fae0973a195c7320b5708c6d7a362f2d8c394db76f648bba9c270L4324' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: 4e6f863acd500dc02e7c2a8e5a01566ac58930d9</div><div id='time'> Time: 2018-11-20</div><div id='author'> Author: noreply@google.com</div><div id='file'> File Name: sonnet/python/modules/conv_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/e78a24eeb124ff9efb99b1aee7ab1ee9181c9e0f#diff-6089c8e503cc90534c44b5c05c6b2df73a2fb0b30c81b033bad26a1f8ea0d34eL153' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: e78a24eeb124ff9efb99b1aee7ab1ee9181c9e0f</div><div id='time'> Time: 2020-07-17</div><div id='author'> Author: szha@users.noreply.github.com</div><div id='file'> File Name: tools/batch/submit-job.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>
+class Conv2DTest(parameterized.TestCase, tf.test.TestCase):
+</code></pre><img src="18703553.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 7</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmind/sonnet/commit/4e6f863acd500dc02e7c2a8e5a01566ac58930d9#diff-d6d32945fc5fae0973a195c7320b5708c6d7a362f2d8c394db76f648bba9c270L410' target='_blank'>Link</a></div><div id='project'> Project Name: deepmind/sonnet</div><div id='commit'> Commit Name: 4e6f863acd500dc02e7c2a8e5a01566ac58930d9</div><div id='time'> Time: 2018-11-20</div><div id='author'> Author: noreply@google.com</div><div id='file'> File Name: sonnet/python/modules/conv_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-nlp/commit/e78a24eeb124ff9efb99b1aee7ab1ee9181c9e0f#diff-6089c8e503cc90534c44b5c05c6b2df73a2fb0b30c81b033bad26a1f8ea0d34eL153' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-nlp</div><div id='commit'> Commit Name: e78a24eeb124ff9efb99b1aee7ab1ee9181c9e0f</div><div id='time'> Time: 2020-07-17</div><div id='author'> Author: szha@users.noreply.github.com</div><div id='file'> File Name: tools/batch/submit-job.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/NifTK/NiftyNet/commit/200e3be0929599459ee5d1100b3076b9188ecf25#diff-74d485afd329a44f4b8004697c29b4e2e08299ac301cf559f4bd3a05dfd4e893L43' target='_blank'>Link</a></div><div id='project'> Project Name: NifTK/NiftyNet</div><div id='commit'> Commit Name: 200e3be0929599459ee5d1100b3076b9188ecf25</div><div id='time'> Time: 2017-10-26</div><div id='author'> Author: wenqi.li@ucl.ac.uk</div><div id='file'> File Name: tests/resampler_grid_warper_test.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

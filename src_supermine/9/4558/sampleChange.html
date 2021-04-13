@@ -3,32 +3,21 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-def sample_lstm_hyperparameters(random_state, num):
 
-    <a id="change">space = {
-        &quotn_iter&quot: list(range(5, 30)),
-        &quotbatch_size&quot: [256, 512, 1024],
-        &quotl2&quot: [1e-6, 1e-5, 1e-4, 1e-3, 1e-2, 0.0],
-        &quotlearning_rate&quot: [1e-3, 1e-2, 5 * 1e-2],
-        &quotloss&quot: [&quotbpr&quot, &quothinge&quot, &quotpointwise&quot],
-        &quotembedding_dim&quot: [8, 16, 32, 64, 128, 256]
+def pretrained_model_list():
+    return <a id="change">list(_model_sha1.keys())</a>
+</code></pre><h3>After Change</h3><pre><code class='java'>
+
+def pretrained_model_list():
+    Get list of model which has pretrained weights available.
+    <a id="change">_renames = {
+        &quotresnet18_v1b_2.6x&quot: &quotresnet18_v1b_0.89&quot,
+        &quotresnet50_v1d_1.8x&quot: &quotresnet50_v1d_0.86&quot,
+        &quotresnet50_v1d_3.6x&quot: &quotresnet50_v1d_0.48&quot,
+        &quotresnet50_v1d_5.9x&quot: &quotresnet50_v1d_0.37&quot,
+        &quotresnet50_v1d_8.8x&quot: &quotresnet50_v1d_0.11&quot,
+        &quotresnet101_v1d_1.9x&quot: &quotresnet101_v1d_0.76&quot,
+        &quotresnet101_v1d_2.2x&quot: &quotresnet101_v1d_0.73&quot,
     }</a>
-
-    sampler = ParameterSampler(space,
-                               n_iter=num,
-                               random_state=random_state)</code></pre><h3>After Change</h3><pre><code class='java'>
-
-def sample_lstm_hyperparameters(random_state, num):
-
-    <a id="change">space = {
-        &quotn_iter&quot: N_ITER,
-        &quotbatch_size&quot: BATCH_SIZE,
-        &quotl2&quot: L2,
-        &quotlearning_rate&quot: LEARNING_RATES,
-        &quotloss&quot: LOSSES,
-        &quotembedding_dim&quot: EMBEDDING_DIM,
-    }</a>
-
-    sampler = ParameterSampler(space,
-                               n_iter=num,
-                               random_state=random_state)</code></pre>
+    return [_renames[x] if x in _renames else x for x in _model_sha1.keys()]
+</code></pre>

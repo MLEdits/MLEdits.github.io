@@ -14,7 +14,12 @@ class TSFTrainer:
     def __init__(self, hparams=None):
         flags_hparams = <a id="change">self.default_hparams()</a>
         if FLAGS.expt_dir:
-            <a id="change">flags_hparams["expt_dir"]</a> = FLAGS.expt_dir
+            flags_hparams["expt_dir"] = FLAGS.expt_dir
         if FLAGS.log_dir:
             flags_hparams["log_dir"] = FLAGS.log_dir
-        if FLAGS.config:</code></pre>
+        if FLAGS.config:
+            <a id="change">flags_hparams["config"] = FLAGS.config</a>
+        if FLAGS.model:
+            flags_hparams["model"] = FLAGS.model
+
+        self._hparams = HParams(hparams, flags_hparams, allow_new_hparam=True)</code></pre>

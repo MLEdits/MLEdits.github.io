@@ -2,20 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.object_store_name = object_store_name
-        self.raylet_name = raylet_name
-        self.node_id = os.environ["RAY_NODE_ID"]
-        <a id="change">assert self.node_id, "Empty node id (RAY_NODE_ID)."</a>
-        self.server = aiogrpc.server(options=(("grpc.so_reuseport", 0), ))
-        self.grpc_port = self.server.add_insecure_port(
-            f"[::]:{self.dashboard_agent_port}")
-        logger.info("Dashboard agent grpc address: %s:%s", self.ip,</code></pre><h3>After Change</h3><pre><code class='java'>
-        self.object_store_name = object_store_name
-        self.raylet_name = raylet_name
-        self.node_id = os.environ["RAY_NODE_ID"]
-        <a id="change">self.ppid = int(os.environ["RAY_RAYLET_PID"])</a>
-        assert self.ppid &gt; 0
-        logger.info("Parent pid is %s", <a id="change">self.ppid</a>)
-        self.server = aiogrpc.server(options=(("grpc.so_reuseport", 0), ))
-        self.grpc_port = self.server.add_insecure_port(
-            f"[::]:{self.dashboard_agent_port}")</code></pre>
+
+        &#47&#47 check model&quots file
+        checkpoint = &quot{}-{}&quot.format(self.session_dir, self.initial_iter)
+        <a id="change">assert tf.train.get_checkpoint_state(self.model_dir) is not None, \
+            "Model file not found {}*, please check" \
+            "config parameter: model_dir and *_iter".format(checkpoint)</a>
+
+        &#47&#47 restore session
+        tf.logging.info(&quotAccessing {} ...&quot.format(checkpoint))
+        self.saver.restore(sess, checkpoint)</code></pre><h3>After Change</h3><pre><code class='java'>
+            assert checkpoint, &quotcheckpoint path not found &quot \
+                               &quotin {}/checkpoints&quot.format(self.model_dir)
+            try:
+                <a id="change">self.initial_iter = int(checkpoint.rsplit(&quot-&quot)[-1])</a>
+                tf.logging.info(&quotset initial_iter to {} based &quot
+                                &quoton checkpoints&quot.format(<a id="change">self.initial_iter</a>))
+            except ValueError:
+                tf.logging.fatal(&quotfailed to get interation number&quot
+                                 &quotfrom checkpoint path&quot)</code></pre>

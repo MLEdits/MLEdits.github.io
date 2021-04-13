@@ -2,26 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        
-        discount_factor = self._hparams.discount_factor
-        qvalues = list(self._rewards)
-        <a id="change">for i in range(len(qvalues) - 2, -1, -1):
-            qvalues[i] += discount_factor * qvalues[i + 1]
+    &#47&#47 Returns newly instantiated matplotlib.axes.Axes object if ax is None
+    ax = vis_image(img, ax=ax)
 
-       </a> q_mean = np.mean(qvalues)
-        q_std = np.std(qvalues)
-        qvalues = [(q - q_mean) / q_std for q in qvalues]
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        discount_factor = self._hparams.discount_factor
+    canvas_img = np.zeros(<a id="change">(mask.shape[1], mask.shape[2], 4)</a>, dtype=np.uint8)
+    for i, (color, bb, msk) in enumerate(zip(colors, bbox, mask)):
+        rgba = np.append(color, alpha * 255)
+        bb = np.round(bb).astype(np.int32)</code></pre><h3>After Change</h3><pre><code class='java'>
+    n_inst = len(bbox)
+    colors = np.array([_default_cmap(l) for l in range(1, n_inst + 1)])
 
-        qvalues = np.array(self._rewards)
-        <a id="change">qvalues = np.expand_dims(qvalues, -1)</a>
-        max_seq_length = self._samples_py.shape[1]
-        if max_seq_length &gt; 1:
-            prefix = np.zeros(
-                [qvalues.shape[0], max_seq_length-1], dtype=qvalues.dtype)
-            qvalues = <a id="change">np.concatenate([prefix, qvalues])</a>
-            for i in range(max_seq_length - 2, -1, -1):
-                qvalues[:, i] += discount_factor * qvalues[:, i + 1]
+    <a id="change">canvas_img = img.transpose((1, 2, 0)).copy()</a>
+    for i, (color, bb, msk) in enumerate(zip(colors, bbox, mask)):
+        bb = np.round(bb).astype(np.int32)
+        y_min, x_min, y_max, x_max = bb
+        if y_max &gt; y_min and x_max &gt; x_min:
+            <a id="change">canvas_img[msk] = alpha * color + canvas_img[msk] * (1 - alpha)</a>
 
-        q_mean = np.mean(qvalues)</code></pre>
+        caption = []
+        if label is not None and label_names is not None:
+            lb = label[i]</code></pre>

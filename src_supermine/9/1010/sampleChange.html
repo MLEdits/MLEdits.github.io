@@ -29,9 +29,11 @@
     def attention_layer(cls, attention_input: typing.Any,</code></pre><h3>After Change</h3><pre><code class='java'>
         &#47&#47 shape = [B, L, D]
         embed_query = embedding(query)
-        &#47&#47 shape = [B, L, 1]
+        &#47&#47 shape = [B, L]
         atten_mask = <a id="change">K.not_equal(query, self._params[&quotmask_value&quot])</a>
+        &#47&#47 shape = [B, L]
         atten_mask = K.cast(atten_mask, K.floatx())
+        &#47&#47 shape = [B, L, D]
         atten_mask = K.expand_dims(atten_mask, axis=2)
         &#47&#47 shape = [B, L, D]
         attention_probs = self.attention_layer(embed_query, atten_mask)

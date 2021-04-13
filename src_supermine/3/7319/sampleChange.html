@@ -10,10 +10,10 @@
 
                 if opt.n_best &gt; 1:
                     print(&quot\nBEST HYP:&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-        import json
-        translator.initBeamAccum()
 
-    for line in addone(<a id="change">codecs.open(opt.src, &quotr&quot, &quotutf-8&quot)</a>):
-        if line is not None:
-            srcTokens = line.split()
-            srcBatch += [srcTokens]</code></pre>
+    count = 0
+
+    tgtF = <a id="change">codecs.open(opt.tgt, &quotr&quot, &quotutf-8&quot)</a> if opt.tgt else None
+
+    if opt.dump_beam != "":
+        import json</code></pre>

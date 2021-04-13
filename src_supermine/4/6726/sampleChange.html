@@ -11,12 +11,11 @@
 
             if opt.verbose:
                 words = []</code></pre><h3>After Change</h3><pre><code class='java'>
-                if opt.n_best &gt; 1:
-                    print(&quot\nBEST HYP:&quot)
-                    for score, sent in zip(pred_score, n_best_preds):
-                        <a id="change">os.write(1, bytes("[%.4f] %s\n" % (score, sent),
-                                 &quotUTF-8&quot))</a>
+            n_best_preds = [" ".join(pred) for pred in pred_sents[:opt.n_best]]
+            count += 1
+            out_file.write(&quot\n&quot.join(n_best_preds))
+            <a id="change">out_file.write(&quot\n&quot)</a>
+            out_file.flush()
 
-    report_score(&quotPRED&quot, pred_score_total, pred_words_total)
-    if opt.tgt:
-        report_score(&quotGOLD&quot, gold_score_total, gold_words_total)</code></pre>
+            if opt.verbose:
+                words = get_src_words(</code></pre>

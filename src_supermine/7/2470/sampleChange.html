@@ -2,57 +2,31 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    config["rollout_fragment_length"] = adjusted_batch_size
+                           other_agent_batches=None,
+                           episode=None):
+    completed = sample_batch[SampleBatch.DONES][-1]
+    <a id="change">if completed:
+        last_r = 0.0
+    else:
+        next_state = []
+        for i in range(policy.num_state_tensors()):
+            next_state.append(sample_batch["state_out_{}".format(i)][-1])
+        last_r = policy._value(sample_batch[SampleBatch.NEXT_OBS][-1],
+                               sample_batch[SampleBatch.ACTIONS][-1],
+                               sample_batch[SampleBatch.REWARDS][-1],
+                               *next_state)
+   </a> return compute_advantages(
+        sample_batch, last_r, policy.config["gamma"], policy.config["lambda"],
+        policy.config["use_gae"], policy.config["use_critic"])
+</code></pre><h3>After Change</h3><pre><code class='java'>
+                           episode=None):
 
-    &#47&#47 Setup parameter noise.
-    <a id="change">if config.get("parameter_noise", False):
-        if config["batch_mode"] != "complete_episodes":
-            raise ValueError("Exploration with parameter space noise requires "
-                             "batch_mode to be complete_episodes.")
-        if config.get("noisy", False):
-            raise ValueError("Exploration with parameter space noise and "
-                             "noisy network cannot be used at the same time.")
+    &#47&#47 Stub serving backward compatibility.
+    <a id="change">deprecation_warning(
+        old="rllib.agents.a3c.a3c_tf_policy.postprocess_advantages",
+        new="rllib.evaluation.postprocessing.compute_gae_for_sample_batch",
+        error=False)</a>
 
-        start_callback = config["callbacks"].get("on_episode_start")
-
-        def on_episode_start(info):
-            &#47&#47 as a callback function to sample and pose parameter space
-            &#47&#47 noise on the parameters of network
-            policies = info["policy"]
-            for pi in policies.values():
-                pi.add_parameter_noise()
-            if start_callback is not None:
-                start_callback(info)
-
-        config["callbacks"]["on_episode_start"] = on_episode_start
-
-        end_callback = config["callbacks"].get("on_episode_end")
-
-        def on_episode_end(info):
-            &#47&#47 as a callback function to monitor the distance
-            &#47&#47 between noisy policy and original policy
-            policies = info["policy"]
-            episode = info["episode"]
-            model = policies[DEFAULT_POLICY_ID].model
-            if hasattr(model, "pi_distance"):
-                episode.custom_metrics["policy_distance"] = model.pi_distance
-            if end_callback is not None:
-                end_callback(info)
-
-        config["callbacks"]["on_episode_end"] = on_episode_end
-
-
-</a>def get_initial_state(config):
-    return {
-        "last_target_update_ts": 0,
-        "num_target_updates": 0,</code></pre><h3>After Change</h3><pre><code class='java'>
-            "temperature": config.get("softmax_temp", 1.0)
-        }
-    if config.get("parameter_noise", DEPRECATED_VALUE) != DEPRECATED_VALUE:
-        <a id="change">deprecation_warning("parameter_noise", "exploration_config={"
-                            "type=ParameterNoise"
-                            "}")</a>
-
-    if config["exploration_config"]["type"] == "ParameterNoise":
-        if config["batch_mode"] != "complete_episodes":
-            logger.warning(</code></pre>
+    return compute_gae_for_sample_batch(policy, sample_batch,
+                                        other_agent_batches, episode)
+</code></pre>

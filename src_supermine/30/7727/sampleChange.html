@@ -21,9 +21,10 @@
         x_2d = self.get_2d_input()
         conv_2d = DeconvolutionalLayer(10, 3, 1)
         conv_2d_out = conv_2d(x_2d, is_training=True)</code></pre><h3>After Change</h3><pre><code class='java'>
+                                       param_dict=input_param,
                                        output_shape=(2, 32, 16, 10))
 
-    def test_deconv_2d_bias_reg_shape(self):
+    def test_deconv_2d_bias_reg_shape(<a id="change">self</a>):
         input_param = <a id="change">{&quotn_output_chns&quot: 10,
                        &quotkernel_size&quot: [3, 1],
                        &quotstride&quot: [2, 1],

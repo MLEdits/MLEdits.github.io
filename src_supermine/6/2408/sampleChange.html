@@ -3,15 +3,15 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
     global logger
-    logger = logging.getLogger(&quotludwig.train&quot)
+    logger = logging.getLogger(&quotludwig.hyperopt&quot)
 
     <a id="change">set_on_master(args.use_horovod)</a>
 
     if is_on_master():
-        print_ludwig(&quotTrain&quot, LUDWIG_VERSION)
+        print_ludwig("Hyperopt", LUDWIG_VERSION)
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        dest=&quotallow_parallel_threads&quot,
-        help=&quotdisable TensorFlow from using multithreading for reproducibility&quot
+        default=None,
+        help=&quotmaximum memory in MB to allocate per GPU device&quot
     )
     <a id="change">parser.add_argument(
         "-b",
@@ -21,6 +21,6 @@
         choices=ALL_BACKENDS,
     )</a>
     parser.add_argument(
-        &quot-dbg&quot,
-        &quot--debug&quot,
-        action=&quotstore_true&quot,</code></pre>
+        "-dbg",
+        "--debug",
+        action="store_true",</code></pre>

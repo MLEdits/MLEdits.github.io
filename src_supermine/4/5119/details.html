@@ -1,20 +1,35 @@
-<html><h3>79edae58d5892c5a7eb19b68f9e79dfae4682e20,keras/backend/tensorflow_backend.py,Function,__call__,#Function#Any#,970
+<html><h3>f27475aaeba87052e277df83beaadf002f4fd9da,allennlp/commands/train.py,,_train_worker,#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#Any#,310
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        params["trainer"]["world_size"] = world_size
+        params["trainer"]["distributed"] = True
 
-    def __call__(self, inputs):
-        assert type(inputs) in {list, tuple}
-        names = [<a id="change">getattr(v, &quotname&quot, None)</a> <a id="change">for</a> v in self.inputs]
-        feed_dict = dict(zip(names, inputs))
-        session = get_session()
-        updated = session.run(self.outputs + [self.updates_op], feed_dict=feed_dict)</code></pre><h3>After Change</h3><pre><code class='java'>
-            if is_sparse(tensor):
-                sparse_coo = value.tocoo()
-                indices = np.concatenate((np.expand_dims(sparse_coo.row, 1), np.expand_dims(sparse_coo.col, 1)), 1)
-                value = <a id="change">(indices, value.data, value.shape)</a>
-            feed_dict[tensor] = value
-        session = get_session()
-        updated = session.run(self.outputs + [self.updates_op], feed_dict=feed_dict)
-        return updated[:len(self.outputs)]</code></pre><img src="21196849.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/79edae58d5892c5a7eb19b68f9e79dfae4682e20#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L972' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 79edae58d5892c5a7eb19b68f9e79dfae4682e20</div><div id='time'> Time: 2016-09-09</div><div id='author'> Author: kuza55@gmail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: Function</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/7dcc162114ac1d3c3846150d5c600f4d8683fa73#diff-fa3c76576694291de650c11f3e3a4d00a68e887bfedddaf1079b5a7ac6903d6cL94' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 7dcc162114ac1d3c3846150d5c600f4d8683fa73</div><div id='time'> Time: 2018-02-16</div><div id='author'> Author: srush@seas.harvard.edu</div><div id='file'> File Name: onmt/Models.py</div><div id='class'> Class Name: RNNEncoder</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/catalyst-team/catalyst/commit/d45c03f8ec931f6ce7fcae61734a04345c90a5a8#diff-938dbe137012011d95127821440b9e8924ad09630672d02df97ff0567a45fb36L154' target='_blank'>Link</a></div><div id='project'> Project Name: catalyst-team/catalyst</div><div id='commit'> Commit Name: d45c03f8ec931f6ce7fcae61734a04345c90a5a8</div><div id='time'> Time: 2020-02-23</div><div id='author'> Author: scitator@gmail.com</div><div id='file'> File Name: catalyst/core/runner.py</div><div id='class'> Class Name: _Runner</div><div id='method'> Method Name: _prepare_for_stage</div><BR>
+        <a id="change">torch.cuda.set_device(int(gpu_id))</a>
+        dist.init_process_group(
+            backend="nccl",
+            init_method=f"tcp://{master_addr}:{master_port}",
+            world_size=world_size,</code></pre><h3>After Change</h3><pre><code class='java'>
+        params["trainer"]["world_size"] = world_size
+        params["trainer"]["distributed"] = True
+
+        <a id="change">if gpu_id &gt;= 0:
+            torch.cuda.set_device(int(gpu_id))
+            dist.init_process_group(
+                backend="nccl",
+                init_method=f"tcp://{master_addr}:{master_port}",
+                world_size=world_size,
+                rank=global_rank,
+            )
+        else:
+            dist.init_process_group(
+                backend="gloo",
+                init_method=f"tcp://{master_addr}:{master_port}",
+                world_size=world_size,
+                rank=global_rank,
+            )
+       </a> logging.info(
+            f"Process group of world size {world_size} initialized "
+            f"for distributed training in worker {global_rank}"
+        )</code></pre><img src="21819996.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/allenai/allennlp/commit/f27475aaeba87052e277df83beaadf002f4fd9da#diff-a608f646e4d02aea1732866d1d7a2a8a632045d79c2b186e5630ca3ff946e0f4L388' target='_blank'>Link</a></div><div id='project'> Project Name: allenai/allennlp</div><div id='commit'> Commit Name: f27475aaeba87052e277df83beaadf002f4fd9da</div><div id='time'> Time: 2020-05-21</div><div id='author'> Author: dirkg@allenai.org</div><div id='file'> File Name: allennlp/commands/train.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _train_worker</div><BR><BR><div id='link'><a href='https://github.com/NervanaSystems/coach/commit/a849c17e46ea7188a7b6229c9f68417803e730ad#diff-0c98d1a1202990548e6ee3acec4390c4ad7c11930fe78c716f27a925a553f812L40' target='_blank'>Link</a></div><div id='project'> Project Name: NervanaSystems/coach</div><div id='commit'> Commit Name: a849c17e46ea7188a7b6229c9f68417803e730ad</div><div id='time'> Time: 2018-11-13</div><div id='author'> Author: balaji.warft@gmail.com</div><div id='file'> File Name: rl_coach/agents/agent.py</div><div id='class'> Class Name: Agent</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/c95913a2967d6d17e71bb1b703f99c00c483bcdc#diff-b69ad581af290659556987c88e3c5f9956216f2372e15441331bcdc508ea326cL240' target='_blank'>Link</a></div><div id='project'> Project Name: AKSHAYUBHAT/DeepVideoAnalytics</div><div id='commit'> Commit Name: c95913a2967d6d17e71bb1b703f99c00c483bcdc</div><div id='time'> Time: 2017-09-10</div><div id='author'> Author: akshayubhat@gmail.com</div><div id='file'> File Name: dvalib/detector.py</div><div id='class'> Class Name: TextBoxDetector</div><div id='method'> Method Name: load</div><BR>

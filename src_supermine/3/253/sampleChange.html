@@ -2,18 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        
-        CAVEAT: Requires defined shape and can&quott work with unknown shape.
-        
-        size = np.prod(<a id="change">y.shape.as_list()</a>)
-        N = int(np.sqrt(size / self.num_matrices))
-        reshaped = tf.reshape(y, shape=(self.num_matrices, N, N))
-        indices = np.array([np.hstack(x) for x in</code></pre><h3>After Change</h3><pre><code class='java'>
-        indices = itertools.product(np.arange(self.num_matrices), indices)
-        indices = np.array([np.hstack(x) for x in indices])
-        triangular = tf.gather_nd(y, indices)
-        <a id="change">return tf.reshape(triangular, [self.num_matrices, (self.N**2 + self.N) // 2])</a>
+        n, m = size, size
+    with tf_ops.init_scope():
+        v = tf.eye(n, m, dtype=dtype, name=name)
+        if py_all(<a id="change">v.shape.as_list()</a>):
+            return variable(v, dtype=dtype, name=name)
+        return v
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    else:
+        n, m = size, size
+    with tf_ops.init_scope():
+        <a id="change">return tf.eye(n, m, dtype=dtype, name=name)</a>
 
-    def log_jacobian_tensor(self, x):
-        return tf.zeros((1,), settings.float_type)
-</code></pre>
+
+@symbolic
+def zeros_like(x, dtype=None, name=None):</code></pre>

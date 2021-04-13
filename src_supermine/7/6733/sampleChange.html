@@ -2,22 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            {"a": [1, 2, 3, 4, 5]}
-        
+    if mask is not None:
+        if mask.ndim == ndim - 1:
+            mask = expand_dims(mask)
+        <a id="change">assert mask.ndim == ndim</a>
+        mask = mask.dimshuffle(axes)
 
-        <a id="change">assert self.keys() == other.keys(), "must have same columns"</a>
-        out = {}
-        for k in self.keys():
-            out[k] = concat_aligned([self[k], other[k]])
-        return SampleBatch(out)</code></pre><h3>After Change</h3><pre><code class='java'>
-            {"a": [1, 2, 3, 4, 5]}
-        
+        if unroll:
+            indices = list(range(input_length))</code></pre><h3>After Change</h3><pre><code class='java'>
+    uses_learning_phase = False
 
-        <a id="change">if self.keys() != other.keys():
+    if mask is not None:
+        <a id="change">if mask.ndim != 2:
             raise ValueError(
-                "SampleBatches to concat must have same columns! {} vs {}".
-                format(list(self.keys()), list(other.keys())))
-       </a> out = {}
-        for k in self.keys():
-            out[k] = concat_aligned([self[k], other[k]])
-        return SampleBatch(out)</code></pre>
+                &quotmask should have `shape=(samples, time)`, &quot
+                &quotgot {}&quot.format(mask.shape))
+       </a> mask = mask.dimshuffle([1, 0])
+
+        def get_matching_mask(mask_t, ref_tensor_t):
+            &#47&#47 tf.where needs its condition tensor</code></pre>

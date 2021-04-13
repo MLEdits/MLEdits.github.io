@@ -2,19 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        new_input = node_old_to_new[old_input]
-        new_output = new_layer(new_input)
-        node_old_to_new[old_output] = new_output
-    return Model(new_model_input, <a id="change">node_old_to_new[model.outputs]</a>)
 
 
-def to_skip_connection_model(conv_model):</code></pre><h3>After Change</h3><pre><code class='java'>
+def to_deeper_dense_model(model, level):
+    new_deeper_layer_list = dense_to_deeper_layer(<a id="change">model.layers[level]</a>)
+    return insert_layer(model, level, new_deeper_layer_list)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
 
-def copy_conv_model(model):
+def to_deeper_dense_model(model, target):
     <a id="change">graph = Graph(model)</a>
-    <a id="change">return graph.produce_model()</a>
+    <a id="change">return graph.to_dense_deeper_model(target, randint(1, 2) * 2 + 1)</a>
 
 
-def to_skip_connection_model(conv_model):
-    return conv_model</code></pre>
+def to_wider_dense_model(model, target):
+    graph = Graph(model)</code></pre>

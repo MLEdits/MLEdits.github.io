@@ -30,9 +30,8 @@ def test_normalize():
     assert isinstance(new_dataset, tf.data.Dataset)
 </code></pre><h3>After Change</h3><pre><code class='java'>
 
-
 def test_normalize():
-    dataset = <a id="change">common.generate_data(dtype=&quotdataset&quot)</a>
+    dataset = common.generate_data(dtype=&quotdataset&quot)
     <a id="change">new_dataset = run_preprocessor(preprocessor.Normalization(),
                                    dataset,
                                    common.generate_data(dtype=&quotdataset&quot),

@@ -5,7 +5,7 @@
             &#47&#47 TF input shape: (samples, rows, cols, input_depth)
             &#47&#47 TH kernel shape: (depth, input_depth, rows, cols)
             &#47&#47 TF kernel shape: (rows, cols, input_depth, depth)
-            x = tf.transpose(x, <a id="change">(0, 2, 3, 1)</a>)
+            x = <a id="change">tf.transpose(x, (0, 2, 3, 1))</a>
         if pool_mode == &quotmax&quot:
             x = tf.nn.max_pool(x, pool_size, strides, padding=padding)
         elif pool_mode == &quotavg&quot:
@@ -13,7 +13,7 @@
         else:
             raise Exception(&quotInvalid pooling mode: &quot + str(pool_mode))
         if dim_ordering == &quotth&quot:
-            x = <a id="change">tf.transpose(x, (0, 3, 1, 2))</a>
+            x = tf.transpose(x, (0, 3, 1, 2))
     else:
         raise Exception(&quotUnknown dim_ordering: &quot + str(dim_ordering))
 

@@ -9,11 +9,11 @@
 
 
         &quot&quot&quot</code></pre><h3>After Change</h3><pre><code class='java'>
-        cls.data_x = np.random.random([cls.batch_size, cls.num_steps, cls.embedding_size]).astype(np.float32)
         cls.data_y = np.zeros([cls.batch_size, 1]).astype(np.float32)
 
-        map1 = <a id="change">np.random.random([1, cls.num_steps])</a>
-        map2 = np.random.random([cls.embedding_size, 1])
+        map1 = np.random.random([1, cls.num_steps])
+        map2 = <a id="change">np.random.random([cls.embedding_size, 1])</a>
         for i in range(cls.batch_size):
             cls.data_y[i] = np.matmul(map1, np.matmul(cls.data_x[i], map2))
-</code></pre>
+
+    @classmethod</code></pre>

@@ -2,63 +2,72 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    args, _ = parser.parse_known_args()
     ray.init()
 
-    &#47&#47 The config will be automatically converted to SkOpt&quots search space
     <a id="change">tune_kwargs = {
         "num_samples": 10 if args.smoke_test else 50,
         "config": {
-            "steps": 100,
-            "width": tune.uniform(0, 20),
-            "height": tune.uniform(-100, 100),
-            "activation": tune.choice(["relu", "tanh"])
-        }
+            "iterations": 100,
+            "LiNO3_vol": tune.uniform(0, 7),
+            "Li2SO4_vol": tune.uniform(0, 7),
+            "NaClO4_vol": tune.uniform(0, 7)
+        },
     }</a>
 
     &#47&#47 Optional: Pass the parameter space yourself
-    &#47&#47 space = {
-    &#47&#47     "width": (0, 20),
-    &#47&#47     "height": (-100, 100),
-    &#47&#47     "activation": ["relu", "tanh"]
-    &#47&#47 }
+    &#47&#47 space = [{
+    &#47&#47     "name": "LiNO3_vol",
+    &#47&#47     "type": "float",
+    &#47&#47     "min": 0,
+    &#47&#47     "max": 7
+    &#47&#47 }, {
+    &#47&#47     "name": "Li2SO4_vol",
+    &#47&#47     "type": "float",
+    &#47&#47     "min": 0,
+    &#47&#47     "max": 7
+    &#47&#47 }, {
+    &#47&#47     "name": "NaClO4_vol",
+    &#47&#47     "type": "float",
+    &#47&#47     "min": 0,
+    &#47&#47     "max": 7
+    &#47&#47 }]
 
-    previously_run_params = [[10, 0, "relu"], [15, -20, "tanh"]]
-    known_rewards = [-189, -1144]
-
-    algo = SkOptSearch(
-        &#47&#47 parameter_names=space.keys(),  &#47&#47 If you want to set the space
-        &#47&#47 parameter_ranges=space.values(), &#47&#47 If you want to set the space
-        points_to_evaluate=previously_run_params,
-        evaluated_rewards=known_rewards)
-    algo = ConcurrencyLimiter(algo, max_concurrent=4)
+    df_search = DragonflySearch(
+        optimizer="bandit",
+        domain="euclidean",
+        &#47&#47 space=space,  &#47&#47 If you want to set the space manually
+    )
+    df_search = ConcurrencyLimiter(df_search, max_concurrent=4)
 
     scheduler = AsyncHyperBandScheduler()
-
     <a id="change">tune.run(
-        easy_objective,
-        metric="mean_loss",
-        mode="min",
-        name="skopt_exp_with_warmstart",
-        search_alg=algo,
+        objective,
+        metric="objective",
+        mode="max",
+        name="dragonfly_search",
+        search_alg=df_search,
         scheduler=scheduler,
         **tune_kwargs)</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
+    df_search = ConcurrencyLimiter(df_search, max_concurrent=4)
 
     scheduler = AsyncHyperBandScheduler()
-
     <a id="change">analysis = tune.run(
-        easy_objective,
-        metric="mean_loss",
-        mode="min",
-        name="skopt_exp_with_warmstart",
-        search_alg=algo,
+        objective,
+        metric="objective",
+        mode="max",
+        name="dragonfly_search",
+        search_alg=df_search,
         scheduler=scheduler,
         num_samples=10 if args.smoke_test else 50,
         config={
-            "steps": 100,
-            "width": tune.uniform(0, 20),
-            "height": tune.uniform(-100, 100),
-            "activation": tune.choice(["relu", "tanh"])
-        })</a>
+            "iterations": 100,
+            "LiNO3_vol": tune.uniform(0, 7),
+            "Li2SO4_vol": tune.uniform(0, 7),
+            "NaClO4_vol": tune.uniform(0, 7)
+        },
+    )</a>
+
     <a id="change">print("Best hyperparameters found were: ", analysis.best_config)</a>
 </code></pre>

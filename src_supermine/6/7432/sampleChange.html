@@ -24,11 +24,13 @@
                 for val in value:
                     contain.append(val.strip())
             elif name == "filename_not_contains":
-                <a id="change">value = value.split(&quot,&quot)</a>
-                for val in value:
+                value = value.split(&quot,&quot)
+                <a id="change">for val in value:
                     not_contain.append(val.strip())
-        path = tuple(set(path))
-        contain = tuple(set(contain))</code></pre><h3>After Change</h3><pre><code class='java'>
+       </a> path = tuple(set(path))
+        contain = tuple(set(contain))
+        not_contain = tuple(set(not_contain))
+        new_matcher = cls(path, contain, not_contain)</code></pre><h3>After Change</h3><pre><code class='java'>
         :param input_tuple:
         :return:
         &quot&quot&quot

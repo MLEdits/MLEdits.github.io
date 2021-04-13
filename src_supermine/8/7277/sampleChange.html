@@ -15,11 +15,11 @@
     return full_masks, sorted_inds
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        sorted_inds = np.argsort(range(len(masks)))
 
     bboxes *= scale
-    valid = <a id="change">np.where(scores &gt;= thresh)[0]</a>
-    sorted_inds = sorted_inds[valid]
+    valid = np.where(scores &gt;= thresh)[0]
+    sorted_inds = <a id="change">sorted_inds[valid]</a>
     masks = masks[valid]
     bboxes = bboxes[valid]
-    full_masks = fill(masks, bboxes, im_shape)</code></pre>
+    full_masks = fill(masks, bboxes, im_shape)
+    return full_masks, sorted_inds</code></pre>

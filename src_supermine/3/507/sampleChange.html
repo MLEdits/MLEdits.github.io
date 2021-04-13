@@ -11,10 +11,10 @@
     outputs, final_state, sequence_lengths = decoder(
         initial_state=connector(text_database._hparams.batch_size))
 </code></pre><h3>After Change</h3><pre><code class='java'>
+    src_text = text_data_batch[&quotsource_text_ids&quot]
+    tgt_text = text_data_batch[&quottarget_text_ids&quot]
+
+    decoder_inputs = tf.concat((tf.ones_like(<a id="change">tgt_text[:, :1]</a>), tgt_text[:, :-1]), -1)
 
     print(&quotsrc_text:{}&quot.format(src_text))
-    encoder_output = encoder(src_text,
-            sequence_length=<a id="change">text_data_batch[&quotsource_length&quot]</a>)
-    &#47&#47 Decode
-    print(&quotencoder_output:{}&quot.format(encoder_output.shape))
-    logits, preds = decoder(decoder_inputs, encoder_output)</code></pre>
+    encoder_output = encoder(src_text,</code></pre>

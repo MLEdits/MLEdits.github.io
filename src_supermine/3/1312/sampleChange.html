@@ -5,7 +5,7 @@
         momentum = tf.cast(self.momentum, update.dtype.base_dtype)
         epsilon = tf.cast(self.epsilon, update.dtype.base_dtype)
 
-        ms.assign(<a id="change">tf.square(update) * (1. - decay) + ms * decay</a>)
+        ms.assign(<a id="change">tf.square(update)</a> * (1. - decay) + ms * decay)
         if self.centered:
           mg.assign(update * (1. - decay) + mg * decay)
           denominator = ms - mg + epsilon</code></pre><h3>After Change</h3><pre><code class='java'>

@@ -2,37 +2,31 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                        round(memory / 1e9, 2),
-                        int(100 * (memory / system_memory))))
+            if not isinstance(port_forward, list):
+                port_forward = [port_forward]
+            for local, remote in port_forward:
+                <a id="change">logger.info(self.log_prefix + "Forwarding " +
+                            "{} -&gt; localhost:{}".format(local, remote))</a>
+                ssh += ["-L", "{}:localhost:{}".format(remote, local)]
 
-        <a id="change">logger.info(
-            "Starting Ray with {} GiB memory available for workers and up to "
-            "{} GiB for objects. You can adjust these settings "
-            "with ray.init(memory=&lt;bytes&gt;, "
-            "object_store_memory=&lt;bytes&gt;).".format(
-                round(
-                    ray_constants.round_to_memory_units(
-                        memory, round_up=False) / (1024**3), 2),
-                round(object_store_memory / (1024**3), 2)))</a>
+        final_cmd = ssh + ssh_options.to_ssh_options_list(timeout=timeout) + [
+            "{}@{}".format(self.ssh_user, self.ssh_ip)</code></pre><h3>After Change</h3><pre><code class='java'>
+        ssh = ["ssh", "-tt"]
 
-        spec = ResourceSpec(num_cpus, num_gpus, memory, object_store_memory,
-                            resources, redis_max_memory)
-        assert spec.resolved()</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 TODO(maximsmol): this behavior is strange since we do not have a
-        &#47&#47 good grasp on when this will get called
-        &#47&#47 (you have to study node.py to make a guess)
-        <a id="change">with cli_logger.group("Available RAM"):
-            cli_logger.labeled_value("Workers", "{} GiB", str(worker_ram))
-            cli_logger.labeled_value("Objects", "{} GiB", str(object_ram))
-            cli_logger.newline()
-            cli_logger.print("To adjust these values, use")
-            with cf.with_style("monokai") as c:
-                cli_logger.print(
-                    "  ray{0}init(memory{1}{2}, "
-                    "object_store_memory{1}{2})", c.magenta("."),
-                    c.magenta("="), c.purple("&lt;bytes&gt;"))
+        if port_forward:
+            <a id="change">with cli_logger.group("Forwarding ports"):
+                if not isinstance(port_forward, list):
+                    port_forward = [port_forward]
+                for local, remote in port_forward:
+                    cli_logger.verbose(
+                        "Forwarding port {} to port {} on localhost.",
+                        cf.bold(local), cf.bold(remote))  &#47&#47 todo: msg
+                    cli_logger.old_info(logger,
+                                        "{}Forwarding {} -&gt; localhost:{}",
+                                        self.log_prefix, local, remote)
+                    ssh += ["-L", "{}:localhost:{}".format(remote, local)]
 
-       </a> cli_logger.old_info(
-            logger,
-            "Starting Ray with {} GiB memory available for workers and up to "
-            "{} GiB for objects. You can adjust these settings "</code></pre>
+       </a> final_cmd = ssh + ssh_options.to_ssh_options_list(timeout=timeout) + [
+            "{}@{}".format(self.ssh_user, self.ssh_ip)
+        ]
+        if cmd:</code></pre>

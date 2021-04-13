@@ -2,25 +2,24 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        idx_tensor = tf.constant(idx_list)
+        self.sorted_indexes = [item[0] for item in zip_]
 
-        _, idx = tf.math.top_k(dist_tensor, k=n)
-        <a id="change">return tf.gather(idx_tensor, idx)</a>
+    def __iter__(self):
+        <a id="change">return iter(self.sorted_indexes)</a>
 
-    def _get_distance_sum(self, weight, in_idx, out_idx):
-        w = tf.reshape(weight, (-1, weight.shape[-2], weight.shape[-1]))
-        anchor_w = tf.tile(tf.expand_dims(weight[in_idx, out_idx], 0), [w.shape[0], 1, 1])</code></pre><h3>After Change</h3><pre><code class='java'>
-        assert len(weight.shape) &gt;= 3
-        assert weight.shape[0] * weight.shape[1] &gt; 2
+    def __len__(self):
+        return len(self.data)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.get_noise = get_noise
 
-        <a id="change">dist_list = []</a>
-        for in_i in range(weight.shape[0]):
-            for out_i in range(weight.shape[1]):
-                dist_sum = self._get_distance_sum(weight, in_i, out_i)
-                dist_list.append((dist_sum, (in_i, out_i)))
-        <a id="change">min_gm_kernels = sorted(dist_list, key=lambda x: x[0])[:n]</a>
-        <a id="change">return [x[1] for x in min_gm_kernels]</a>
+    def __iter__(self):
+        <a id="change">zip_ = []</a>
+        for i, row in enumerate(self.data):
+            value = self.get_noise(row) + self.sort_key(row)
+            zip_.append(tuple([i, value]))
+        <a id="change">zip_ = sorted(zip_, key=lambda r: r[1])</a>
+        <a id="change">return iter([item[0] for item in zip_])</a>
 
-    def _get_distance_sum(self, weight, in_idx, out_idx):
-        w = tf.reshape(weight, (-1, weight.shape[-2], weight.shape[-1]))
-        anchor_w = tf.tile(tf.expand_dims(weight[in_idx, out_idx], 0), [w.shape[0], 1, 1])</code></pre>
+    def __len__(self):
+        return len(self.data)
+</code></pre>

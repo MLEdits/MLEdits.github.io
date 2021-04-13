@@ -15,10 +15,10 @@
     Check that an error is raised if the input image is too small.
 </code></pre><h3>After Change</h3><pre><code class='java'>
 
-    with self.assertRaisesRegexp(tf.errors.InvalidArgumentError, "keep_prob"):
-      output = net(inputs, keep_prob=0.7, is_training=False)
-      <a id="change">self.evaluate(output)</a>
-
     &#47&#47 No exception if keep_prob=1
     output = net(inputs, keep_prob=1.0, is_training=False)
-    self.evaluate(output)</code></pre>
+    <a id="change">self.evaluate(output)</a>
+
+  def testInputTooSmall(self):
+    Check that an error is raised if the input image is too small.
+</code></pre>

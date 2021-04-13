@@ -5,11 +5,13 @@
 
 async def handle_connection(conn: socket.socket, addr, model: Chainer, params_names: List[str], bufsize: int):
     conn.setblocking(False)
-    <a id="change">incoming_data = b&quot&quot</a>
+    incoming_data = <a id="change">b&quot&quot</a>
     recv_data = conn.recv(bufsize)
-    incoming_data += recv_data
+    <a id="change">incoming_data += recv_data</a>
     try:
-        data = json.loads(incoming_data)</code></pre><h3>After Change</h3><pre><code class='java'>
+        data = json.loads(incoming_data)
+    except ValueError:
+        log.error(&quotrequest type is not json&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
     if len(model.out_params) == 1:
         prediction = [prediction]
     prediction = list(zip(*prediction))

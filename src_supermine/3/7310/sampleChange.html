@@ -10,11 +10,11 @@
         return X, y
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 User logging so they can adjust if they pass in a bunch of bad values:
-        bad_rows = X_df[pd.isnull(X_df[self.output_column])]
-        if bad_rows.shape[0] &gt; 0:
-            <a id="change">print(&quotWe encountered a number of missing values for this output column&quot)</a>
+            print(&quotWe encountered a number of missing values for this output column&quot)
             print(&quotSpecifically, here is the output column:&quot)
             print(self.output_column)
-            print(&quotAnd here is the number of missing (nan, None, etc.) values for this column:&quot)
-            print(bad_rows.shape[0])</code></pre>
+            <a id="change">print(&quotAnd here is the number of missing (nan, None, etc.) values for this column:&quot)</a>
+            print(bad_rows.shape[0])
+            print(&quotWe will remove these values, and continue with training on the cleaned dataset&quot)
+        X_df = X_df.dropna(subset=[self.output_column])
+</code></pre>

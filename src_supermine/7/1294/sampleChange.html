@@ -2,20 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        cfg.dataset_type == "scalecrop"
-        or cfg.dataset_type == "tensorpack"
-        or cfg.dataset_type == "deterministic"
-    ) and <a id="change">cfg["batch_size"]</a> != 1:
-        print(
-            "Switching batchsize to 1, as the tensorpack/ scalecrop/ deterministic loader does not support batches &gt;1. Use imgaug/default loader for larger batch sizes."
-        )</code></pre><h3>After Change</h3><pre><code class='java'>
-            )
-        elif &quotefficientnet&quot in cfg.net_type:
-            variables_to_restore = slim.get_variables_to_restore(include=["efficientnet"])
-            <a id="change">variables_to_restore = {
-                    var.op.name.replace("efficientnet/", "")
-                    + &quot/ExponentialMovingAverage&quot:var for var in variables_to_restore}</a>
+        &#47&#47 check heat-up value
+        results = []
+        if csv["In Heatup"].values[-1] == 0:
+            results.append(<a id="change">csv</a>[<a id="change">"Total steps"</a>].values[-1])
         else:
-            print("Wait for DLC 2.3.")
+            while csv["In Heatup"].values[-1] == 1:
+                csv = pd.read_csv(csv_path[0])</code></pre><h3>After Change</h3><pre><code class='java'>
+            csv = pd.read_csv(csv_path[0])
+            time.sleep(1)
 
-    restorer = TF.train.Saver(variables_to_restore)</code></pre>
+        <a id="change">csv.columns = [column.replace(" ", "_") for column in csv.columns]</a>
+        results = csv.query("In_Heatup == 1")
+        last_val_in_heatup = results.Total_steps.values[-1]
+        assert int(last_val_in_heatup) &gt;= Def.Consts.num_hs, \
+            Def.Consts.ASSERT_MSG.format("bigger than " +</code></pre>

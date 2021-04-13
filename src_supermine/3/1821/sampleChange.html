@@ -2,19 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    will have shape (s1, s2 * rep, s3).
-    
-    &#47&#47 TODO: `keras_shape` inference.
-    return <a id="change">T.repeat(x, rep, axis=axis)</a>
 
+        &#47&#47 create the inputs for the network
+        input = current_states
+        input.append(<a id="change">np.repeat(np.expand_dims(self.current_goal, 0), self.tp.batch_size, 0)</a>)
 
-def resize_images(X, height_factor, width_factor, data_format):
-    Resize the images contained in a 4D tensor of shape</code></pre><h3>After Change</h3><pre><code class='java'>
-    If x has shape (s1, s2, s3) and axis=1, the output
-    will have shape (s1, s2 * rep, s3).
-    
-    <a id="change">y = T.repeat(x, rep, axis=axis)</a>
-    if hasattr(x, &quot_keras_shape&quot):
-        y._keras_shape = list(x._keras_shape)
-        y._keras_shape[axis] = x._keras_shape[axis] * rep
-        y._keras_shape = tuple(y._keras_shape)</code></pre>
+        &#47&#47 get the current outputs of the network
+        targets = self.main_network.online_network.predict(input)</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        &#47&#47 create the inputs for the network
+        input = current_states
+        <a id="change">input[&quotgoal&quot] = np.repeat(np.expand_dims(self.current_goal, 0), self.tp.batch_size, 0)</a>
+
+        &#47&#47 get the current outputs of the network
+        targets = self.main_network.online_network.predict(input)
+</code></pre>

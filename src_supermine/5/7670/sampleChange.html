@@ -9,11 +9,10 @@
     return x
   return <a id="change">tf.reshape(x, [-1] + x.shape.as_list()[num_dims:])</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
-    return tf.reshape(x, static_shape)
 
   &#47&#47 Shape can&quott be inferred statically.
-  <a id="change">tensor_shape = tf.shape(x)</a>
-  leading_dim = tf.reduce_prod(tensor_shape[:num_dims], keepdims=True)
+  tensor_shape = tf.shape(x)
+  <a id="change">leading_dim = tf.reduce_prod(tensor_shape[:num_dims], keepdims=True)</a>
   other_dims = tensor_shape[num_dims:]
   dynamic_shape = tf.concat([leading_dim, other_dims], axis=0)
   <a id="change">result = tf.reshape(x, dynamic_shape)</a>

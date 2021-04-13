@@ -2,19 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                )
-            )
-        else:
-            <a id="change">raise Exception("no checkpoint found at \"{}\"".format(filename))</a>
+                              np_array.shape[1],
+                              np_array.ravel())
+    else:
+        <a id="change">raise Exception(An MLLib Matrix can only be created from a two-dimensional numpy array)</a>
 
-    def save_checkpoint(
-        self,
-        logdir: str,</code></pre><h3>After Change</h3><pre><code class='java'>
-            print(
-                f"loaded checkpoint {filename} (epoch {checkpoint[&quotepoch&quot]})")
-        else:
-            <a id="change">raise Exception("no checkpoint found at {filename}")</a>
 
-    def save_checkpoint(
-        self,
-        logdir: str,</code></pre>
+def from_vector(vector):
+    &quot&quot&quot Convert MLlib Vector to numpy array &quot&quot&quot</code></pre><h3>After Change</h3><pre><code class='java'>
+                              np_array.shape[1],
+                              np_array.ravel())
+    else:
+        <a id="change">raise Exception("An MLLib Matrix can only be created from a two-dimensional " +
+                        "numpy array, got {}".format(len(np_array.shape)))</a>
+
+
+def from_vector(vector):
+    Convert MLlib Vector to numpy array</code></pre>

@@ -2,27 +2,24 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            TODO
-        
-        discount_factor = self._hparams.discount_factor
-        qvalues = <a id="change">list(self._rewards)</a>
-        max_seq_length = len(qvalues)
-        if max_seq_length &gt;= 2:
-            for i in range(max_seq_length - 2, -1, -1):
-                qvalues[i] += discount_factor * qvalues[i + 1]
+    output_shape = output_shape[1:]
+    &#47&#47 in keras2, need handle output shape in different format
+    if data_format == &quotchannels_last&quot:
+        <a id="change">shape = list(output_shape)</a>
+        shape[0] = output_shape[2]
+        shape[1] = output_shape[0]
+        shape[2] = output_shape[1]
+        <a id="change">output_shape = tuple(shape)</a>
 
-        q_mean = np.mean(qvalues)
-        <a id="change">q_std = np.std(qvalues)</a>
-        <a id="change">qvalues = [(q - q_mean) / q_std for q in qvalues]</a>
+    x = C.convolution_transpose(
+        kernel,
+        x,</code></pre><h3>After Change</h3><pre><code class='java'>
+    output_shape = output_shape[1:]
+    &#47&#47 in keras2, need handle output shape in different format
+    if data_format == &quotchannels_last&quot:
+        <a id="change">output_shape = transpose_shape(output_shape, &quotchannels_first&quot,
+                                       spatial_axes=(0, 1))</a>
 
-        fetches = dict(loss=self._train_op)
-        feed_dict_ = {
-            self._observ_inputs: self._observs,</code></pre><h3>After Change</h3><pre><code class='java'>
-        qvalues = discount_reward(
-            [self._rewards], discount=self._hparams.discount_factor,
-            normalize=self._hparams.normalize_reward)
-        <a id="change">qvalues = qvalues[0, :]</a>
-
-        fetches = dict(loss=self._train_op)
-        feed_dict_ = {
-            self._observ_inputs: self._observs,</code></pre>
+    x = C.convolution_transpose(
+        kernel,
+        x,</code></pre>

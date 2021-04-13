@@ -1,20 +1,21 @@
-<html><h3>d3c310f40877f55186bf43c1b5b164713d76ab1c,python/ray/serve/api.py,,create_backend,#Any#Any#,240
+<html><h3>4aef40d869462e0aae0920354df6b08a177a54df,gpflow/base.py,Parameter,log_prior,#Parameter#,66
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    &#47&#47 particularly for max-batch-size
-    router = global_state.get_router()
-    ray.get(router.set_backend_config.remote(backend_tag, backend_config_dict))
-    _scale(backend_tag, <a id="change">backend_config_dict["num_replicas"]</a>)
+        y = self._unconstrained
+        dtype = x.dtype
 
+        <a id="change">out = tf.convert_to_tensor(0., dtype=dtype)</a>
 
-@_ensure_connected</code></pre><h3>After Change</h3><pre><code class='java'>
-                type(func_or_class)))
+        bijector = self.transform
+        if self.prior is not None:
+            out += tf.reduce_sum(self.prior.log_prob(x))</code></pre><h3>After Change</h3><pre><code class='java'>
+                out += tf.reduce_sum(log_det_jacobian)
+            return out
+        else:
+            <a id="change">return tf.convert_to_tensor(0., dtype=self.dtype)</a>
 
-    ray.get(
-        <a id="change">global_state.master_actor.create_backend.remote(
-            backend_tag, creator, backend_config, arg_list)</a>)
-
-
-@_ensure_connected</code></pre><img src="14503021.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/d3c310f40877f55186bf43c1b5b164713d76ab1c#diff-8b49c7fb1705b0aa39a5ea95dbabe0b092c77acc9ccafd4b7fa13f6a5382efd3L225' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: d3c310f40877f55186bf43c1b5b164713d76ab1c</div><div id='time'> Time: 2020-04-07</div><div id='author'> Author: ed.nmi.oakes@gmail.com</div><div id='file'> File Name: python/ray/serve/api.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: create_backend</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/d8f5b522655f2b848ba20817dd18d6e4aefb8a42#diff-2282f450bed7ade0c0efd2b1550fdacb6757d32d08e9e63b9735a06e55df740bL107' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: d8f5b522655f2b848ba20817dd18d6e4aefb8a42</div><div id='time'> Time: 2020-04-10</div><div id='author'> Author: ed.nmi.oakes@gmail.com</div><div id='file'> File Name: python/ray/serve/master.py</div><div id='class'> Class Name: ServeMaster</div><div id='method'> Method Name: _start_backend_replica</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/2298f6fb40cb6d348b5b48593c93cdd58ddd1f29#diff-af3bfc8014e6bbeccb70103d6f9adc1fcbccafb3fc876e44380fd6ca8785f91eL33' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 2298f6fb40cb6d348b5b48593c93cdd58ddd1f29</div><div id='time'> Time: 2020-04-23</div><div id='author'> Author: ekhliang@gmail.com</div><div id='file'> File Name: rllib/execution/replay_ops.py</div><div id='class'> Class Name: StoreToReplayBuffer</div><div id='method'> Method Name: __call__</div><BR>
+    @property
+    def handle(self):
+        return self._unconstrained.handle</code></pre><img src="15371913.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/4aef40d869462e0aae0920354df6b08a177a54df#diff-754d035025e026fac6cd53dcec379a55336c167ce7c1b8894ae3afb02b901fc1L66' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: 4aef40d869462e0aae0920354df6b08a177a54df</div><div id='time'> Time: 2019-10-14</div><div id='author'> Author: st--@users.noreply.github.com</div><div id='file'> File Name: gpflow/base.py</div><div id='class'> Class Name: Parameter</div><div id='method'> Method Name: log_prior</div><BR><BR><div id='link'><a href='https://github.com/microsoft/nni/commit/55b557f17385ca10b8a3e8fb8bbb0d3799906db5#diff-df251c9dfb250a216429eb5be38feb7856e2d9e0614c9e3bfded2388caa8bdc8L181' target='_blank'>Link</a></div><div id='project'> Project Name: microsoft/nni</div><div id='commit'> Commit Name: 55b557f17385ca10b8a3e8fb8bbb0d3799906db5</div><div id='time'> Time: 2019-11-20</div><div id='author'> Author: 38930155+chicm-ms@users.noreply.github.com</div><div id='file'> File Name: src/sdk/pynni/nni/compression/tensorflow/builtin_pruners.py</div><div id='class'> Class Name: FPGMPruner</div><div id='method'> Method Name: _get_min_gm_kernel_idx</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/3077f277daa5f71a3d51f5217d367e08ab09a550#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L282' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 3077f277daa5f71a3d51f5217d367e08ab09a550</div><div id='time'> Time: 2017-10-27</div><div id='author'> Author: ozabluda@gmail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _to_tensor</div><BR><BR><div id='link'><a href='https://github.com/GPflow/GPflow/commit/4e2d5aadad95f4a91e4043e7f473afc71e55fbcd#diff-754d035025e026fac6cd53dcec379a55336c167ce7c1b8894ae3afb02b901fc1L72' target='_blank'>Link</a></div><div id='project'> Project Name: GPflow/GPflow</div><div id='commit'> Commit Name: 4e2d5aadad95f4a91e4043e7f473afc71e55fbcd</div><div id='time'> Time: 2019-06-07</div><div id='author'> Author: art.art.v@gmail.com</div><div id='file'> File Name: gpflow/base.py</div><div id='class'> Class Name: Parameter</div><div id='method'> Method Name: log_prior</div><BR>

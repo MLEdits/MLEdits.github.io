@@ -10,6 +10,10 @@
         return X, y
 
 </code></pre><h3>After Change</h3><pre><code class='java'>
+            print(&quotAnd here is the number of missing (nan, None, etc.) values for this column:&quot)
+            print(bad_rows.shape[0])
+            print(&quotWe will remove these values, and continue with training on the cleaned dataset&quot)
+        <a id="change">X_df = X_df.dropna(subset=[self.output_column])</a>
 
 
         &#47&#47 Remove the output column from the dataset, and store it into the y varaible

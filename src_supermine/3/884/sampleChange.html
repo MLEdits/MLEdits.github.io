@@ -22,11 +22,34 @@ except (ImportError, AssertionError):
     
     Loads a RGB or Grayscale Image from a file and stores it in a 5D array,
     moving the color channels to the last axis for color images.</code></pre><h3>After Change</h3><pre><code class='java'>
+
+
+EXTERNAL_LOADERS = [
+    dict(name=&quotopencv&quot, module=&quotcv2&quot, method=&quotimread&quot, kwargs=<a id="change">dict(flags=-1)</a>),
+    dict(name=&quotskimage&quot, module=&quotskimage.io&quot, method=&quotimread&quot, version=&quot0.13&quot),
+    dict(name=&quotpillow&quot, module=&quotPIL.Image&quot, method=&quotopen&quot)
+]
+
+AVAILABLE_LOADER = OrderedDict()
+
+<a id="change">for loader in EXTERNAL_LOADERS:
+    try:
         &#47&#47 Default params
         min_ver = loader.get(&quotversion&quot, None)
         args = loader.get(&quotargs&quot, tuple())
-        <a id="change">kwargs = loader.get(&quotkwargs&quot, dict())</a>
+        kwargs = loader.get(&quotkwargs&quot, dict())
         &#47&#47 Retrieve external function
         external_module = require_module(loader[&quotmodule&quot], min_version=min_ver)
         external_function = getattr(external_module, loader[&quotmethod&quot])
-        &#47&#47 Save loader params</code></pre>
+        &#47&#47 Save loader params
+        loader_dict = dict(fn=external_function, args=args, kwargs=kwargs)
+    except (ImportError, AssertionError, AttributeError):
+        continue
+
+    AVAILABLE_LOADER[loader[&quotname&quot]] = loader_dict
+
+
+</a>tf.logging.info(&quot+++ Available Image Loaders {}:&quot
+                 .format(list(AVAILABLE_LOADER.keys())))
+
+</code></pre>

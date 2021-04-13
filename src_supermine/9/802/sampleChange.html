@@ -2,20 +2,17 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-net.print_params(False)
+from __future__ import print_function
+import sys
+if &quotgoogle&quot in sys.modules and &quotgoogle.protobuf&quot not in sys.modules:
+  del <a id="change">sys.modules[&quotgoogle&quot]</a>
 
-shape = s.outputs.get_shape().as_list()
-if <a id="change">shape[1:]</a> != [40, 40, 1]:
-    raise Exception("shape do not match")
 
-if len(net.all_layers) != 9:</code></pre><h3>After Change</h3><pre><code class='java'>
-        self.assertEqual(self.net_n_params, 1667980)
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    self.assertNotIn(&quotchrY&quot, exclude_contigs.EXCLUDED_HUMAN_CONTIGS)
 
 
 <a id="change">if __name__ == &quot__main__&quot:
-
-    &#47&#47 tf.logging.set_verbosity(tf.logging.INFO)
-    tf.logging.set_verbosity(tf.logging.DEBUG)
-
-    unittest.main()</a>
+  absltest.main()</a>
 </code></pre>

@@ -2,24 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self._kwargs = kwargs
+            scores_data = scores.data.clone()
+            target = target.data.clone()
+        else:
+            <a id="change">assert False, "Copy training, coming soon"</a>
 
-    def _get_sampler(self, sampler):
-        <a id="change">assert isinstance(sampler, str), &quotExpected sampler to be a str, but got %s&quot%type(sampler)</a>
-        if sampler == &quotrandom&quot:
-            return RandomSampler
-        if sampler == &quotsequential&quot:
-            return SequentialSampler</code></pre><h3>After Change</h3><pre><code class='java'>
-    def _get_sampler(self, sampler):
-        if isinstance(sampler, Sampler):
-            return sampler
-        <a id="change">if isinstance(sampler, str):
-            length = len(self._files)
-            if sampler == &quotrandom&quot:
-                return RandomSampler(length)
-            if sampler == &quotsequential&quot:
-                return SequentialSampler(length)
-       </a> raise ValueError(&quotfile_sampler must be a supported str ("random", "sequential") or&quot
-                         &quota `gluon.data.Sampler`, but got %s&quot%(sampler))
+        &#47&#47 Coverage loss term.
+        ppl = loss.data.clone()
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            &#47&#47 Correct target is copy when only option.
+            target = target.data.clone()
+            for i in range(target.size(0)):
+                <a id="change">if target[i] == 0 and align.data[i] != 0:
+                    target[i] = align.data[i] + len(self.tgt_vocab)
 
-    def __iter__(self):</code></pre>
+        &#47&#47 Coverage loss term.
+       </a> ppl = loss.data.clone()
+
+        stats = Statistics.score(ppl, scores_data, target, pad)
+        return loss, stats</code></pre>

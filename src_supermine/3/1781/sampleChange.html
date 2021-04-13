@@ -3,16 +3,17 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-if __name__ == "__main__":
-    env = HopperWrapper()
-    <a id="change">env.reset()</a>
-    for _ in range(1000):
-        env.step(env.action_space.sample())
-</code></pre><h3>After Change</h3><pre><code class='java'>
-import numpy as np
+            &#47&#47 phase 1. child network step
+            self.optimizer.zero_grad()
+            <a id="change">self.mutator.reset()</a>
+            logits = self.model(trn_X)
+            loss = self.loss(logits, trn_y)
+            loss.backward()
+            &#47&#47 gradient clipping</code></pre><h3>After Change</h3><pre><code class='java'>
 
-&#47&#47 MuJoCo may not be installed.
-<a id="change">HalfCheetahEnv = </a>HopperEnv = None
-try:
-    from gym.envs.mujoco import HalfCheetahEnv, HopperEnv
-except (ImportError, gym.error.DependencyNotInstalled):</code></pre>
+            &#47&#47 phase 2: child network step
+            self.optimizer.zero_grad()
+            <a id="change">logits</a>, loss = self._logits_and_loss(trn_X, trn_y)
+            loss.backward()
+            nn.utils.clip_grad_norm_(self.model.parameters(), 5.)  &#47&#47 gradient clipping
+            self.optimizer.step()</code></pre>

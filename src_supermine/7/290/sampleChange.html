@@ -2,19 +2,10 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        x = array.reshape((-1,)).astype(&quotfloat32&quot, copy=False)
-        return nd.dot(x, x)
-
-    norm_arrays = [_norm(arr) <a id="change">for</a> arr in arrays]
-
-    &#47&#47 group norm arrays by ctx
-    def group_by_ctx(arr_list):
-        groups = collections.defaultdict(list)
-        for arr in arr_list:
             ctx = arr.context
             groups[ctx].append(arr)
         return groups
-    norm_groups = group_by_ctx(norm_arrays)
+    <a id="change">norm_groups = group_by_ctx(norm_arrays)</a>
 
     &#47&#47 reduce
     ctx, dtype = arrays[0].context, &quotfloat32&quot

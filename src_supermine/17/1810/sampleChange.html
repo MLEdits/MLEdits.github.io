@@ -11,13 +11,13 @@
            </a> config["eager"] = <a id="change">True if fw == "eager" else False</a>
             config["use_pytorch"] = <a id="change">True if fw == "torch" else False</a>
 
-            &#47&#47 Default GaussianNoise setup.
-            trainer = td3.TD3Trainer(config=config, env="Pendulum-v0")
+            &#47&#47 Default OUNoise setup.
+            trainer = ddpg.DDPGTrainer(config=config, env="Pendulum-v0")
             &#47&#47 Setting explore=False should always return the same action.</code></pre><h3>After Change</h3><pre><code class='java'>
         obs = np.array([0.0, 0.1, -0.1])
 
         &#47&#47 Test against all frameworks.
-        for _ in <a id="change">framework_iterator(config, frameworks="tf")</a>:
-            &#47&#47 Default GaussianNoise setup.
-            trainer = td3.TD3Trainer(config=config, env="Pendulum-v0")
+        for _ in <a id="change">framework_iterator(config, "tf")</a>:
+            &#47&#47 Default OUNoise setup.
+            trainer = ddpg.DDPGTrainer(config=config, env="Pendulum-v0")
             &#47&#47 Setting explore=False should always return the same action.</code></pre>

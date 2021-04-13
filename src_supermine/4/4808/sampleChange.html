@@ -3,16 +3,20 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    &#47&#47 Build decoder.
-    feat_fields = [fields[k]
-                   <a id="change">for</a> k in <a id="change">inputters.collect_features(fields, &quottgt&quot)</a>]
-    tgt_emb = build_embeddings(
-        model_opt, fields["tgt"], feat_fields, for_encoder=False)
-</code></pre><h3>After Change</h3><pre><code class='java'>
+def make_features(batch, fields):
+    &#47&#47 TODO: This is bit hacky, add to batch somehow.
+    f = <a id="change">ONMTDataset.collect_features(fields)</a>
+    cat = [batch.src[0]] + [batch.__dict__[k] for k in f]
+    <a id="change">cat = [c.unsqueeze(2) for c in cat]</a>
+    return torch.cat(cat, 2)
 
-    &#47&#47 Build encoder.
-    if model_opt.model_type == "text":
-        src_fields = [f <a id="change">for</a> n, f in <a id="change">fields[&quotsrc&quot]</a>]
-        src_emb = build_embeddings(model_opt, src_fields[0], src_fields[1:])
-        encoder = build_encoder(model_opt, src_emb)
-    elif model_opt.model_type == "img":</code></pre>
+
+def join_dicts(*args):</code></pre><h3>After Change</h3><pre><code class='java'>
+    if isinstance(batch.__dict__[side], tuple):
+        data = batch.__dict__[side][0]
+    else:
+        <a id="change">data = batch.__dict__[side]</a>
+    feat_start = side + "_feat_"
+    features = sorted(batch.__dict__[k]
+                      for k in batch.__dict__ if feat_start in k)
+    levels = [data] + features</code></pre>

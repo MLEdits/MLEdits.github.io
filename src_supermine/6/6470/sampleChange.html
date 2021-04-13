@@ -13,13 +13,10 @@
     z_list = []
     for k in backend_list:
         <a id="change">if k == KCSD:
-            z = cntk_func_two_tensor(function_name, x_input_shape,
-                                     y=yval, **kwargs)([xval])[0]
-        elif k == KCTD:
-            z = cntk_func_two_tensor(function_name, x_input_shape,
-                                     y=y_input_shape, **kwargs)([xval, yval])[0]
+            z = cntk_func_single_tensor(function_name, input_shape,
+                                        **kwargs)([val])[0]
         else:
-            z = k.eval(getattr(k, function_name)(k.variable(xval), k.variable(yval), **kwargs))
+            z = k.eval(getattr(k, function_name)(k.variable(val), **kwargs))
        </a> if hasattr(z, &quot_keras_shape&quot):
             assert z._keras_shape == z.shape
         z_list += [z]

@@ -6,16 +6,13 @@
     This is not set if not using Tune.
     
     <a id="change">_session = get_session()</a>
-    <a id="change">return _session.trial_name</a>
+    <a id="change">return _session.trial_id</a>
 
 
+__all__ = [
+    "session", "log", "trial_dir", "init", "shutdown", "trial_name", "trial_id"</code></pre><h3>After Change</h3><pre><code class='java'>
 def trial_id():
-    Trial id for the corresponding trial of this Trainable.</code></pre><h3>After Change</h3><pre><code class='java'>
-def trial_name():
     _deprecation_warning(
-        call="trial_name", alternative_call="get_trial_name", soft=True)
-    <a id="change">return session.get_trial_name()</a>
-
-
-def trial_id():
-    _deprecation_warning(</code></pre>
+        call="trial_id", alternative_call="get_trial_id", soft=True)
+    <a id="change">return session.get_trial_id()</a>
+</code></pre>

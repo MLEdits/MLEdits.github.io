@@ -63,9 +63,8 @@
     pbar = tqdm(total=nframes)
     counter = 0
     step = max(10, int(nframes / 100))
-    inds = []
 
-    <a id="change">PredicteData</a> = {}
+    PredicteData = {}
     &#47&#47 initializing constants
     dist_grid = predict.make_nms_grid(dlc_cfg.nmsradius)
     stride, halfstride = dlc_cfg.stride, dlc_cfg.stride * 0.5

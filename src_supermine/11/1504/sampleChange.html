@@ -11,19 +11,16 @@
 
 
 sess = tf.Session()</code></pre><h3>After Change</h3><pre><code class='java'>
-                &#47&#47 self.train_op = tf.train.AdamOptimizer(lr).minimize(self.loss)
-        self.optimizer = tf.train.AdamOptimizer(lr)
 
-    def learn(<a id="change">self</a>, s, r, s_):
+    def learn(self, s, r, s_):
             &#47&#47 v_ = self.sess.run(self.v, {self.s: [s_]})
         v_ = <a id="change">self.model([s_]).outputs</a>
             &#47&#47 td_error, _ = self.sess.run([self.td_error, self.train_op], {self.s: [s], self.v_: v_, self.r: r})
         with tf.GradientTape() as tape:
             v = self.model([s]).outputs
             &#47&#47 TD_error = r + lambd * V(newS) - V(S)
-            td_error = r + LAMBDA * v_ - v
-            <a id="change">loss = tf.square(td_error)</a>
+            <a id="change">td_error = r + LAMBDA * v_ - v</a>
+            loss = tf.square(td_error)
         grad = tape.gradient(loss, self.model.weights)
         self.optimizer.apply_gradients(zip(grad, self.model.weights))
-
-        return td_error</code></pre>
+</code></pre>

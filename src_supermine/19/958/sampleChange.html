@@ -31,14 +31,8 @@
     unclipped = <a id="change">unclipped.astype(np.float32)</a>
     clipped = unclipped.clip(-1., 1.)
 
-    hidden = tf.constant(unclipped)
+    <a id="change">hidden = tf.constant(unclipped)</a>
     cell = tf.constant(unclipped)
     output = core(obs, [hidden, cell])
     self.evaluate(tf.global_variables_initializer())
-    output1, (hidden1, cell1) = self.evaluate(output)
-
-    <a id="change">hidden = tf.constant(clipped)</a>
-    output = core(obs, [hidden, cell])
-
-    output2, (hidden2, cell2) = self.evaluate(output)
-    self.assertAllClose(output1, output2)</code></pre>
+    output1, (hidden1, cell1) = self.evaluate(output)</code></pre>

@@ -1,19 +1,21 @@
-<html><h3>075c34d037ec564aa9c923a653c2cc3135c99510,keras/backend/tensorflow_backend.py,,pool2d,#Any#Any#Any#Any#Any#Any#,548
+<html><h3>78351302b0761178581d92612b528f6eea529618,onmt/modules/copy_generator.py,CopyGeneratorLossCompute,_make_shard_state,#CopyGeneratorLossCompute#Any#Any#Any#Any#,187
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        elif pool_mode==&quotmean&quot:
-            x = tf.nn.avg_pool(x, pool_size, strides, padding=padding)
-        else:
-            raise Exception(<a id="change">&quotInvalid pooling mode: &quot + str(pool_mode)</a>)
-        x = tf.transpose(x, (0, 3, 1, 2))
-    elif dim_ordering == &quottf&quot:
-        if pool_mode==&quotmax&quot:</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 tf max_pool only supports float32
-        x = tf.cast(x, &quotfloat32&quot)
 
-    if dim_ordering in <a id="change">{&quottf&quot, &quotth&quot}</a>:
-        if dim_ordering == &quotth&quot:
-            &#47&#47 TF uses the last dimension as channel dimension,
-            &#47&#47 instead of the 2nd one.</code></pre><img src="38589796.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/075c34d037ec564aa9c923a653c2cc3135c99510#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L557' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 075c34d037ec564aa9c923a653c2cc3135c99510</div><div id='time'> Time: 2015-12-07</div><div id='author'> Author: max.pumperla@googlemail.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: pool2d</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e6c3f77b0b10b0d76778109a40d6d3282f1cadd0#diff-50c97c4dfd2a0d293beded45a6b7b5e8851aa5e69e424da757e329c71abac65dL258' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e6c3f77b0b10b0d76778109a40d6d3282f1cadd0</div><div id='time'> Time: 2018-02-07</div><div id='author'> Author: francois.chollet@gmail.com</div><div id='file'> File Name: keras/callbacks.py</div><div id='class'> Class Name: ProgbarLogger</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/5e76a51d56f9383d28264810a6f4db7ba12998fe#diff-9d10b704277d1feea7a47eb3999b3f13051a5c08db54abb3ce10bb069dc37a3bL137' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 5e76a51d56f9383d28264810a6f4db7ba12998fe</div><div id='time'> Time: 2021-02-23</div><div id='author'> Author: fyrestone@outlook.com</div><div id='file'> File Name: dashboard/head.py</div><div id='class'> Class Name: DashboardHead</div><div id='method'> Method Name: run</div><BR>
+        return {
+            "output": output,
+            "target": batch.tgt[<a id="change">range_[0] + 1: range_[1], :, 0</a>],
+            "copy_attn": attns.get("copy"),
+            "align": batch.alignment[range_[0] + 1: range_[1]]
+        }</code></pre><h3>After Change</h3><pre><code class='java'>
+            raise AssertionError("using -copy_attn you need to pass in "
+                                 "-dynamic_dict during preprocess stage.")
+
+        <a id="change">shard_state = super(CopyGeneratorLossCompute, self)._make_shard_state(
+            batch, output, range_, attns)</a>
+
+        shard_state.update({
+            "copy_attn": attns.get("copy"),
+            "align": batch.alignment[range_[0] + 1: range_[1]]</code></pre><img src="39366744.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/78351302b0761178581d92612b528f6eea529618#diff-9a67e3b5d34875df6453b914d2e5c83f64c90a4e0adf19f64dff2db63f79505bL189' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 78351302b0761178581d92612b528f6eea529618</div><div id='time'> Time: 2019-06-27</div><div id='author'> Author: pltrdy@gmail.com</div><div id='file'> File Name: onmt/modules/copy_generator.py</div><div id='class'> Class Name: CopyGeneratorLossCompute</div><div id='method'> Method Name: _make_shard_state</div><BR><BR><div id='link'><a href='https://github.com/williamFalcon/pytorch-lightning/commit/8e9a026bc34d8409faa572a7144c2d96a7c039ed#diff-be973553bd6fedbb9a9d12b51c98611878850a32cf34ad93e40f21410b497a86L545' target='_blank'>Link</a></div><div id='project'> Project Name: williamFalcon/pytorch-lightning</div><div id='commit'> Commit Name: 8e9a026bc34d8409faa572a7144c2d96a7c039ed</div><div id='time'> Time: 2021-02-11</div><div id='author'> Author: rohitgr1998@gmail.com</div><div id='file'> File Name: tests/models/test_hparams.py</div><div id='class'> Class Name: SimpleNoArgsModel</div><div id='method'> Method Name: test_step</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/0f6b6eda26f8ccc7c8803fa2b8fab0f43fa4672a#diff-0f656ce2fe8f15012a7077675f121923ef5299936fc26b29935e3eec54534eaaL298' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 0f6b6eda26f8ccc7c8803fa2b8fab0f43fa4672a</div><div id='time'> Time: 2021-02-25</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/layers/preprocessing/string_lookup.py</div><div id='class'> Class Name: StringLookup</div><div id='method'> Method Name: get_vocabulary</div><BR>

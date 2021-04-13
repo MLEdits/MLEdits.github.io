@@ -2,24 +2,17 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            else:
-                split_indices.append(tf.shape(dist.sample())[1])
-        split_list = tf.split(x, split_indices, axis=1)
-        <a id="change">for i, distribution in enumerate(self.child_distributions):
-            &#47&#47 Remove extra categorical dimension
-            if isinstance(distribution, Categorical):
-                split_list[i] = tf.cast(
-                    tf.squeeze(split_list[i], axis=-1), tf.int32)
-       </a> log_list = [
-            distribution.logp(split_x) for distribution, split_x in zip(
-                self.child_distributions, split_list)
-        ]</code></pre><h3>After Change</h3><pre><code class='java'>
+            raise ValueError("Expected tuple space for actions {}: {}".format(
+                action, space))
+        out = []
+        <a id="change">for a, s in zip(action, space.spaces):
+            out.append(clip_action(a, s))
+       </a> return out
+    else:
+        return action
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            a = np.clip(a, s.low, s.high)
+        return a
 
-        &#47&#47 Remove extra categorical dimension and take the logp of each
-        &#47&#47 component.
-        flat_logps = <a id="change">tree.map_structure(map_, split_x,
-                                        self.flat_child_distributions)</a>
-
-        return functools.reduce(lambda a, b: a + b, flat_logps)
-
-    @override(ActionDistribution)</code></pre>
+    return <a id="change">tree.map_structure(map_, action, action_space)</a>
+</code></pre>

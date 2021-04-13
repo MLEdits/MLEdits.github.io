@@ -2,25 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    &#47&#47 iadd inplace
-    enc_v1_ptr += v2
+    &#47&#47 imul
+    result_enc_ptr = enc_v1_ptr * v2
 
-    result = <a id="change">enc_v1_ptr.decrypt().get()</a>
-    _almost_equal(result, expected)
+    result = <a id="change">result_enc_ptr.decrypt().get()</a>
+    assert result == expected
 
-
-@pytest.mark.vendor(lib="tenseal")</code></pre><h3>After Change</h3><pre><code class='java'>
-    &#47&#47 radd
-    result_enc_ptr = v2 + enc_v1_ptr
+    &#47&#47 rmul
+    result_enc_ptr = v2 * enc_v1_ptr</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 imul
+    result_enc_ptr = enc_v1_ptr * v2
 
     result = <a id="change">decrypt(context, result_enc_ptr)</a>
-    _almost_equal(result, expected)
+    assert result == expected
 
-    &#47&#47 iadd inplace
-    enc_v1_ptr += v2
+    &#47&#47 rmul
+    result_enc_ptr = v2 * enc_v1_ptr
 
-    result = <a id="change">decrypt(context, enc_v1_ptr)</a>
-    _almost_equal(result, expected)
-
-
-@pytest.mark.vendor(lib="tenseal")</code></pre>
+    result = <a id="change">decrypt(context, result_enc_ptr)</a>
+    assert result == expected
+</code></pre>

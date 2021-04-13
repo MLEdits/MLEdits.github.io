@@ -10,11 +10,10 @@
             z0 = z[:, :self.output_dim]
             z1 = z[:, self.output_dim: 2 * self.output_dim]
             z2 = z[:, 2 * self.output_dim: 3 * self.output_dim]</code></pre><h3>After Change</h3><pre><code class='java'>
-        rec_dp_mask = states[3]
 
         if self.implementation == 1:
-            z = <a id="change">K.dot(inputs * dp_mask[0], self.kernel)</a>
-            z += K.dot(h_tm1 * rec_dp_mask[0], self.recurrent_kernel)
+            z = K.dot(inputs * dp_mask[0], self.kernel)
+            z += <a id="change">K.dot(h_tm1 * rec_dp_mask[0], self.recurrent_kernel)</a>
             <a id="change">if self.use_bias:
                 z += self.bias
 

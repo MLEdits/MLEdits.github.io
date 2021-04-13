@@ -17,8 +17,9 @@
                 5,
                 range(len(batches)),
                 key=lambda i: len(pickle.dumps([self.data[j] for j in batches[i]])))</a>
-            <a id="change">front = [batches[i] for i in indices]</a>
+            front = <a id="change">[batches[i] for i in indices]</a>
             for i in sorted(indices, reverse=True):
                 batches.pop(i)
-            batches[0:0] = front
-            return iter(batches)</code></pre>
+            <a id="change">batches[0:0] = front</a>
+            return iter(batches)
+</code></pre>

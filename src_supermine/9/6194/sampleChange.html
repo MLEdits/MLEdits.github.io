@@ -5,7 +5,7 @@
         config["num_workers"] = 0  &#47&#47 Run locally.
 
         &#47&#47 tf.
-        <a id="change">trainer = ppo.PPOTrainer(config=config, env="CartPole-v0")</a>
+        <a id="change">trainer = pg.PGTrainer(config=config, env="CartPole-v0")</a>
 
         num_iterations = 2
         <a id="change">for i in range(num_iterations):
@@ -13,18 +13,18 @@
 
         &#47&#47 Torch.
        </a> config["use_pytorch"] = True
-        trainer = ppo.PPOTrainer(config=config, env="CartPole-v0")
+        trainer = pg.PGTrainer(config=config, env="CartPole-v0")
         for i in range(num_iterations):
             trainer.train()</code></pre><h3>After Change</h3><pre><code class='java'>
         config["num_workers"] = 0  &#47&#47 Run locally.
         num_iterations = 2
 
         <a id="change">for _ in framework_iterator(config):
-            trainer = ppo.PPOTrainer(config=config, env="CartPole-v0")
+            trainer = pg.PGTrainer(config=config, env="CartPole-v0")
             for i in range(num_iterations):
                 trainer.train()
 
-   </a> def test_ppo_fake_multi_gpu_learning(self):
-        Test whether PPOTrainer can learn CartPole w/ faked multi-GPU.
-        config = ppo.DEFAULT_CONFIG.copy()
-        &#47&#47 Fake GPU setup.</code></pre>
+   </a> def test_pg_loss_functions(self):
+        Tests the PG loss function math.
+        config = pg.DEFAULT_CONFIG.copy()
+        config["num_workers"] = 0  &#47&#47 Run locally.</code></pre>

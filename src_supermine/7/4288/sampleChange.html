@@ -18,10 +18,10 @@
     input_dtype = image.dtype
     if image.dtype.name in ["bool", "float16"]:
         image = image.astype(np.float32, copy=False)</code></pre><h3>After Change</h3><pre><code class='java'>
-    )
 
-    input_dtype = image.dtype
-    if image.dtype in <a id="change">{iadt._BOOL_DTYPE, iadt._FLOAT16_DTYPE}</a>:
-        image = image.astype(np.float32, copy=False)
-    elif image.dtype == iadt._INT8_DTYPE:
-        image = image.astype(np.int16, copy=False)</code></pre>
+    if input_dtype.kind == "b":
+        image_aug = image_aug &gt; 0.5
+    elif input_dtype in <a id="change">{iadt._INT8_DTYPE, iadt._FLOAT16_DTYPE}</a>:
+        image_aug = iadt.restore_dtypes_(image_aug, input_dtype)
+
+    return image_aug</code></pre>

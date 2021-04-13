@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    def test_query_evaluators(self):
+    def test_metrics(self):
         &#47&#47 Allow for Unittest run.
         <a id="change">ray.init(num_cpus=5, ignore_reinit_error=True)</a>
-        register_env("test", lambda _: gym.make("CartPole-v0"))
-        for fw in framework_iterator(frameworks=("torch", "tf")):
-            pg = PGTrainer(
-                env="test",</code></pre><h3>After Change</h3><pre><code class='java'>
-            self.assertEqual(results, [10, 10, 10])
-            self.assertEqual(results2, [(0, 10), (1, 10), (2, 10)])
-            self.assertEqual(results3, [[1, 1], [1, 1], [1, 1]])
-            <a id="change">pg.stop()</a>
+        ev = RolloutWorker(
+            env_creator=lambda _: MockEnv(episode_length=10),
+            policy=MockPolicy,
+            batch_mode="complete_episodes")</code></pre><h3>After Change</h3><pre><code class='java'>
+        result = collect_metrics(ev, [remote_ev])
+        self.assertEqual(result["episodes_this_iter"], 20)
+        self.assertEqual(result["episode_reward_mean"], 10)
+        <a id="change">ev.stop()</a>
 
-    def test_reward_clipping(self):
-        &#47&#47 clipping on
-        ev = RolloutWorker(</code></pre>
+    def test_async(self):
+        ev = RolloutWorker(
+            env_creator=lambda _: gym.make("CartPole-v0"),</code></pre>

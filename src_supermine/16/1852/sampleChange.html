@@ -12,8 +12,8 @@
                 "epsilon": self.epsilon}</a>
 
 
-class Adamax(Optimizer):
-    &quot&quot&quotAdamax optimizer from Adam paper&quots Section 7. It is a variant</code></pre><h3>After Change</h3><pre><code class='java'>
+&#47&#47 aliases
+sgd = SGD</code></pre><h3>After Change</h3><pre><code class='java'>
         return self.updates
 
     def get_config(self):
@@ -21,9 +21,9 @@ class Adamax(Optimizer):
                   &quotbeta_1&quot: float(K.get_value(self.beta_1)),
                   &quotbeta_2&quot: float(K.get_value(self.beta_2)),
                   &quotepsilon&quot: self.epsilon}</a>
-        <a id="change">base_config = super(Adam, self).get_config()</a>
+        <a id="change">base_config = super(Adamax, self).get_config()</a>
         <a id="change">return dict(list(base_config.items()) + list(config.items()))</a>
 
 
-class Adamax(Optimizer):
-    &quot&quot&quotAdamax optimizer from Adam paper&quots Section 7. It is a variant</code></pre>
+&#47&#47 aliases
+sgd = SGD</code></pre>

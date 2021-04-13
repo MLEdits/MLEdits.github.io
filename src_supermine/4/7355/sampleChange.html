@@ -10,15 +10,15 @@
 
 
 def in_train_phase(x, alt):</code></pre><h3>After Change</h3><pre><code class='java'>
-    
-    if condition.dtype != tf.bool:
-        condition = tf.cast(condition, &quotbool&quot)
-    <a id="change">if not callable(then_expression):
-        def then_expression_fn():
             return then_expression
     else:
         then_expression_fn = then_expression
-   </a> if not callable(else_expression):
+    <a id="change">if not callable(else_expression):
         def else_expression_fn():
             return else_expression
-    else:</code></pre>
+    else:
+        else_expression_fn = else_expression
+   </a> x = _cond(condition,
+              then_expression_fn,
+              else_expression_fn)
+    return x</code></pre>

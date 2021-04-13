@@ -2,18 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    
-    vocab = dict(vocab)
-    n_src_features = len(collect_features(vocab, &quotsrc&quot))
-    <a id="change">n_tgt_features = len(collect_features(vocab, &quottgt&quot))</a>
-    fields = get_fields(data_type, n_src_features, n_tgt_features)
-    for k, v in vocab.items():
-        fields[k].vocab = v
-    return fields</code></pre><h3>After Change</h3><pre><code class='java'>
-    
-    vocab = dict(vocab)
-    n_src_features = sum(&quotsrc_feat_&quot in k for k in vocab)
-    n_tgt_features = sum(&quottgt_feat_&quot in k <a id="change">for</a> k in vocab)
-    fields = get_fields(data_type, n_src_features, n_tgt_features)
 
-    for k, vals in fields.items():</code></pre>
+def make_features(batch, fields):
+    &#47&#47 TODO: This is bit hacky, add to batch somehow.
+    f = <a id="change">ONMTDataset.collect_features(fields)</a>
+    cat = [batch.src[0]] + [batch.__dict__[k] <a id="change">for</a> k in f]
+    cat = [c.unsqueeze(2) for c in cat]
+    return torch.cat(cat, 2)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+    data (Variable): a batch of source or target data
+    
+    assert side in [&quotsrc&quot, &quottgt&quot]
+    <a id="change">if isinstance(batch.__dict__[side], tuple):
+        data = batch.__dict__[side][0]
+    else:
+        data = batch.__dict__[side]
+   </a> feat_start = side + "_feat_"
+    features = sorted(batch.__dict__[k]
+                      for k in batch.__dict__ if feat_start in k)
+    levels = [data] + features</code></pre>

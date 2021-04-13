@@ -15,9 +15,8 @@
 
     def make_positional_encodings(self, dim, max_len):
         pe = torch.arange(0, max_len).unsqueeze(1).expand(max_len, dim)
-        div_term = 1 / torch.pow(10000, <a id="change">torch.arange(0, dim * 2, 2) / dim</a>)
-        <a id="change">pe = pe * div_term.expand_as(pe)</a>
+        <a id="change">div_term = 1 / torch.pow(10000, torch.arange(0, dim * 2, 2) / dim)</a>
+        pe = pe * div_term.expand_as(pe)
         pe[:, 0::2] = torch.sin(pe[:, 0::2])
         pe[:, 1::2] = torch.cos(pe[:, 1::2])
-        return pe.unsqueeze(1)
-</code></pre>
+        return pe.unsqueeze(1)</code></pre>

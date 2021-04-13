@@ -4,23 +4,22 @@
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
 
-def from_params(cls: Type, params: Dict, **kwargs) -&gt; Type[&quotT&quot]:
+def from_params(cls: Type, params: Dict, **kwargs) -&gt; Type:
+    <a id="change">signature_params = getfullargspec(cls.__init__).args[1:]</a>
     <a id="change">config_params = {}</a>
-    <a id="change">for sp in params.keys():
+    <a id="change">for sp in signature_params:
         try:
-            if sp != &quotname&quot:
-                config_params[sp] = params[sp]
+            config_params[sp] = params[sp]
         except KeyError:
-            print("Using default value for parameter `{}`.".format(sp))
             &#47&#47 Occurs when params[sp] throws KeyError. It means that the needed configuration is
             &#47&#47 absent in the json file and a default configuration from class constructor should
-            &#47&#47  be taken instead.
+            &#47&#47 be taken instead.
             pass
 
-   </a> for param_name, subcl_params in config_params.items():
+   </a> for reg_name, subcl_params in config_params.items():
         if isinstance(subcl_params, dict):
             try:
-                subcl_name = subcl_params[&quotname&quot]</code></pre><h3>After Change</h3><pre><code class='java'>
+                subcl = _REGISTRY[subcl_params[&quotname&quot]]</code></pre><h3>After Change</h3><pre><code class='java'>
 
 
 def from_params(cls: Type, params: Dict, **kwargs) -&gt; Type[&quotT&quot]:

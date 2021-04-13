@@ -5,8 +5,8 @@
 
 def noise(src, rate, level, chroma):
     if np.random.uniform() &lt; rate:
-        src = <a id="change">iproc.array_to_wand(src)</a>
-        <a id="change">dst = _noise(src, level, chroma)</a>
+        <a id="change">src = iproc.array_to_wand(src)</a>
+        dst = _noise(src, level, chroma)
         <a id="change">return iproc.wand_to_array(dst)</a>
     else:
         return src

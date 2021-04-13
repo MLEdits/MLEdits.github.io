@@ -5,21 +5,28 @@
         if not tokens:
             return [], [], -1
 
-        split_tokens = [token.split(u"￨") <a id="change">for</a> token in tokens]
+        <a id="change">split_tokens = [token.split(u"￨") for token in tokens]</a>
         split_tokens = <a id="change">[token for token in split_tokens if token[0]]</a>
-        <a id="change">token_size = len(split_tokens[0])</a>
+        token_size = len(split_tokens[0])
 
         assert all(len(token) == token_size for token in split_tokens), \
             "all words must have the same number of features"
-        words_and_features = list(zip(*split_tokens))</code></pre><h3>After Change</h3><pre><code class='java'>
+        words_and_features = list(zip(*split_tokens))
+        words = words_and_features[0]
+        <a id="change">features = words_and_features[1:]</a>
+
+        return words, features, token_size - 1
+
+    &#47&#47 Below are helper functions for intra-class use only.</code></pre><h3>After Change</h3><pre><code class='java'>
+        words = []
         features = []
         n_feats = None
-        for token in tokens:
-            <a id="change">split_token = token.split(u"￨")</a>
+        <a id="change">for token in tokens:
+            split_token = token.split(u"￨")
             assert all([special != split_token[0] for special in specials]), \
                 "Dataset cannot contain Special Tokens"
 
-            <a id="change">if split_token[0]:
+            if split_token[0]:
                 words += [split_token[0]]
                 features += [split_token[1:]]
 

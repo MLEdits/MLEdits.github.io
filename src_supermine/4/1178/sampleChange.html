@@ -2,21 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.output = None
-        self.scheme = scheme
-        self.return_type = InputEmbedding
-        self.layers = <a id="change">[]</a>
-        self.input_rescaling = input_rescaling
-        self.input_offset = input_offset
-        self.input_clipping = input_clipping
-</code></pre><h3>After Change</h3><pre><code class='java'>
-class InputEmbedder(object):
-    
-    An input embedder is the first part of the network, which takes the input from the state and produces a vector
-    embedding by passing it through a neural network. The embedder will mostly be input<a id="change"> type dependent, and there
-    can be multiple embedders in a single network
-    
-    def __init__(self, input_size: List[int], activat</a>ion_function=tf.nn.relu,
-                 scheme: EmbedderScheme=None, batchnorm: bool=False, dropout: bool=False,
-                 name: str= "embedder", input_rescaling=1.0, input_offset=0.0, input_clipping=None, dense_layer=Dense):
-        self.name = name</code></pre>
+    def get_constants(self, x):
+        constants = []
+        if 0 &lt; self.dropout_U &lt; 1:
+            ones = K.ones_like(K.reshape(x[:, 0, 0], <a id="change">(-1, 1)</a>))
+            ones = K.concatenate([ones] * self.output_dim, 1)
+            B_U = [K.in_train_phase(K.dropout(ones, self.dropout_U), ones)
+                   for _ in range(4)]</code></pre><h3>After Change</h3><pre><code class='java'>
+    def get_constants(self, x):
+        constants = []
+        if 0 &lt; self.dropout_U &lt; 1:
+            <a id="change">ones = K.zeros_like(x)</a>
+            ones = K.sum(ones, axis=1)
+            ones = self.conv_step(ones, K.zeros(self.W_shape),
+                                  border_mode=self.border_mode)
+            <a id="change">ones = ones + 1</a>
+            B_U = [K.in_train_phase(K.dropout(ones, self.dropout_U), ones)
+                   for _ in range(4)]
+            constants.append(B_U)
+        else:</code></pre>

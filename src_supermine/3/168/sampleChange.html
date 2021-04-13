@@ -2,18 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                if X.name is None:
-                    raise ValueError(&quotmerge_mode=`join` only works with named inputs&quot)
-                else:
-                    inputs[<a id="change">self</a>.layers[i].get_output(train).name] = self.layers[i].get_output(train)
-            return inputs
-        elif self.mode == &quotmul&quot:
-            s = self.layers[0].get_output(train)</code></pre><h3>After Change</h3><pre><code class='java'>
-        elif self.mode == &quotjoin&quot:
-            inputs = OrderedDict()
-            for i in range(len(self.layers)):
-                <a id="change">X = self.layers[i].get_output(train)</a>
-                if X.name is None:
-                    raise ValueError("merge_mode=&quotjoin&quot only works with named inputs")
-                else:
-                    inputs[X.name] = self.layers[i].get_output(train)</code></pre>
+
+    def __call__(self, loss):
+        loss += self.l1 * T.sum(T.mean(abs(self.layer.get_output(True)), axis=0))
+        loss += self.l2 * T.sum(T.mean(<a id="change">self</a>.layer.get_output(True) ** 2, axis=0))
+        return loss
+
+    def get_config(self):</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.layer = layer
+
+    def __call__(self, loss):
+        <a id="change">output = self.layer.get_output(True)</a>
+        loss += self.l1 * K.sum(K.mean(K.abs(output), axis=0))
+        loss += self.l2 * K.sum(K.mean(output ** 2, axis=0))
+        return loss
+</code></pre>

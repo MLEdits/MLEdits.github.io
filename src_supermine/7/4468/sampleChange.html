@@ -7,10 +7,8 @@ with tf.Session() as sess:
     while True:
         <a id="change">print(sess.run(data_node))</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
-with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
     while True:
-        start_t = <a id="change">time.perf_counter()</a>
+        start_t = time.perf_counter()
         x = sess.run(data_node)
         <a id="change">usage = time.perf_counter() - start_t</a>
         print(<a id="change">&quotspeed: %d/s&quot % int(x[&quotfeature&quot].shape[0] / usage)</a>)

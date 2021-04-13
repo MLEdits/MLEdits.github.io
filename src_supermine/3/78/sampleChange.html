@@ -9,11 +9,11 @@
         &#47&#47 pickle string length optimization: member descriptors of obj are
         &#47&#47 created automatically from obj&quots __slots__ attribute, no need to
         &#47&#47 save them in obj&quots state</code></pre><h3>After Change</h3><pre><code class='java'>
-        &#47&#47 checks, but pickle the list of registered subclasses of obj.
-        clsdict.pop(&quot_abc_cache&quot, None)
         clsdict.pop(&quot_abc_negative_cache&quot, None)
-        <a id="change">clsdict.pop(&quot_abc_negative_cache_version&quot, None)</a>
+        clsdict.pop(&quot_abc_negative_cache_version&quot, None)
         clsdict.pop(&quot_abc_impl&quot, None)
-        registry = clsdict.pop(&quot_abc_registry&quot, None)
+        registry = <a id="change">clsdict.pop(&quot_abc_registry&quot, None)</a>
         if registry is None:
-            &#47&#47 in Python3.7+, the abc caches and registered subclasses of a</code></pre>
+            &#47&#47 in Python3.7+, the abc caches and registered subclasses of a
+            &#47&#47 class are bundled into the single _abc_impl attribute
+            if hasattr(abc, &quot_get_dump&quot):</code></pre>

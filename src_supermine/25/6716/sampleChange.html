@@ -20,11 +20,13 @@
                         <a id="change">if window[i].ndim &lt; 2:
                             window[i] = np.expand_dims(window[i], 0)
                        </a> window_loc = window[i]
-                        <a id="change">self.csv_out[i]</a> = self._initialise_empty_csv(
+                        self.csv_out[i] = self._initialise_empty_csv(
                             n_channel=<a id="change">window</a>[i][0].shape[-1])
 
-                    self.csv_out[i] = np.concatenate([self.csv_out[i],
-                                                      window_loc], 0)</code></pre><h3>After Change</h3><pre><code class='java'>
+                    <a id="change">self.csv_out[i]</a> = np.concatenate([self.csv_out[i],
+                                                      window_loc], 0)
+
+            self._save_current_image()</code></pre><h3>After Change</h3><pre><code class='java'>
                         window_loc = np.reshape(window[i], [1, 1])
                         self.csv_out[i] = self._initialise_empty_csv(1)
                     else:
@@ -45,8 +47,10 @@
                         while <a id="change">window_save.ndim</a> &lt; 2:
                             <a id="change">window_save = np.expand_dims(window_save, 0)</a>
                         window_loc = window[i]
-                        <a id="change">self.csv_out[i]</a> = self._initialise_empty_csv(
+                        self.csv_out[i] = self._initialise_empty_csv(
                             n_channel=<a id="change">window_save</a>.shape[-1])
 
-                    self.csv_out[i] = np.concatenate([self.csv_out[i],
-                                                      window_loc], 0)</code></pre>
+                    <a id="change">self.csv_out[i]</a> = np.concatenate([self.csv_out[i],
+                                                      window_loc], 0)
+
+            self._save_current_image()</code></pre>

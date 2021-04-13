@@ -9,22 +9,22 @@
                     successor_node = input_to_node[output_name]
                     if successor_node not in visited:
                         node_group.append(successor_node)</code></pre><h3>After Change</h3><pre><code class='java'>
-        while not node_queue.empty():
-            curr_node = node_queue.get()
-            for _input in curr_node.inputs():
-                <a id="change">if _input.node().kind() == CONSTANT_KIND:
-                    continue
-               </a> input_name = _input.debugName()
-                if input_name in output_to_node:
-                    <a id="change">for predecessor_node in output_to_node[input_name]:
-                        if predecessor_node in nodes:
-                            if predecessor_node not in visited:
-                                node_group.append(predecessor_node)
-                                node_queue.put(predecessor_node)
-                                visited.add(predecessor_node)
-                        else:
-                            inputs.add(input_name)
-               </a> else:
+                else:
                     inputs.add(input_name)
             for _output in curr_node.outputs():
-                if _output.node().kind() == CONSTANT_KIND:</code></pre>
+                <a id="change">if _output.node().kind() == CONSTANT_KIND:
+                    continue
+               </a> output_name = _output.debugName()
+                if output_name in input_to_node:
+                    <a id="change">for successor_node in input_to_node[output_name]:
+                        if successor_node in nodes:
+                            if successor_node not in visited:
+                                node_group.append(successor_node)
+                                node_queue.put(successor_node)
+                                visited.add(successor_node)
+                        else:
+                            outputs.add(output_name)
+               </a> else:
+                    outputs.add(output_name)
+
+        nodepy = NodePyGroup(node_name, unique_name, module_type, op_type,</code></pre>

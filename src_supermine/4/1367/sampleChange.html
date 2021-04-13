@@ -12,8 +12,7 @@
   &#47&#47 with command line arguments that were passed to the script
   parser_unk = argparse.ArgumentParser()
   for pm, value in flatten_dict(base_config).items():
-    if type(value) is int or type(value) is float or <a id="change">type(value) is str:
- </a>     parser_unk.add_argument(&quot--&quot + pm, default=value, type=type(value))
-    elif type(value) is bool:
-      parser_unk.add_argument(&quot--&quot + pm, default=value, type=ast.literal_eval)
-  config_update = parser_unk.parse_args(unknown)</code></pre>
+    if <a id="change">type(value) == int or</a> type(value) == float or \
+       isinstance(value, string_types):
+      parser_unk.add_argument(&quot--&quot + pm, default=value, type=type(value))
+    elif type(value) == bool:</code></pre>

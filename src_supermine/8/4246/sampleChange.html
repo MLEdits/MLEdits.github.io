@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    def testLaplaceMode(self):
+    def testBetaMode(self):
         with self.test_context():
-            <a id="change">self.m.x = gpflow.Param(1.0)</a>
-            <a id="change">self.m.x.prior</a> = gpflow.priors.Laplace(3., 10.)
-
-            self.m.compile()
-            opt = gpflow.train.ScipyOptimizer()</code></pre><h3>After Change</h3><pre><code class='java'>
-    def testLaplaceMode(self):
+            <a id="change">self.m.x = gpflow.Param(0.1)</a>
+            <a id="change">self.m.x.prior</a> = gpflow.priors.Beta(3., 3.)
+            transform = gpflow.transforms.Logistic()
+            self.m.x.transform = transform
+</code></pre><h3>After Change</h3><pre><code class='java'>
         with self.test_context():
             m = self.setup()
-            m.x = <a id="change">gpflow.Param(1.0, prior=gpflow.priors.Laplace(3., 10.))</a>
+            transform = gpflow.transforms.Logistic()
+            m.x = <a id="change">gpflow.Param(0.1, prior=gpflow.priors.Beta(3., 3.), transform=transform)</a>
+
             m.compile()
             opt = gpflow.train.ScipyOptimizer()
-            opt.minimize(m)
-            xmax = m.read_trainables()</code></pre>
+            opt.minimize(m)</code></pre>

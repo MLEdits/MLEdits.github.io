@@ -2,18 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            if isinstance(grad, tf.IndexedSlices):
-              from open_seq2seq.models import Text2Text
-              from open_seq2seq.decoders import TransformerDecoder
-              if <a id="change">isinstance(model, Text2Text) and \
-                 isinstance(model.decoder, TransformerDecoder)</a>:
-                from tensorflow.python.training.optimizer import _deduplicate_indexed_slices
-                summed_values, unique_indices = _deduplicate_indexed_slices(
-                    values=grad.values, indices=grad.indices)</code></pre><h3>After Change</h3><pre><code class='java'>
-        for grad, var in grads_and_vars:
-          if grad is not None:
-            if isinstance(grad, tf.IndexedSlices):
-              if <a id="change">model._decoder.params.get(&quotshared_embed&quot, False)</a>:
-                from tensorflow.python.training.optimizer import _deduplicate_indexed_slices
-                summed_values, unique_indices = _deduplicate_indexed_slices(
-                    values=grad.values, indices=grad.indices)</code></pre>
+            self.model = model
+        assert self.model is not None
+
+        if <a id="change">isinstance(fp16, bool) and fp16</a>:
+            opt_level = "O1"
+        elif isinstance(fp16, bool) and not fp16:
+            opt_level = None</code></pre><h3>After Change</h3><pre><code class='java'>
+        fp16 = _resolve_bool_fp16(fp16)
+        opt_level = None
+        if fp16:
+            opt_level = <a id="change">fp16.get("opt_level", None)</a>
+
+        if opt_level is not None:
+            device = "cuda"
+        elif device is None:</code></pre>

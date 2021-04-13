@@ -2,14 +2,14 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            raise ValueError(
+                "unrecognised input string {}".format(string_input))
         if type_str == &quotint&quot:
-            return tuple(map(int, values))
+            <a id="change">return tuple(map(int, values))</a>
         if type_str == &quotfloat&quot:
-            <a id="change">return tuple(map(float, values))</a>
+            return tuple(map(float, values))
         if type_str == &quotstr&quot:
-            return tuple(values)
-        else:
-            raise ValueError("unknown array type_str {}".format(string_input))</code></pre><h3>After Change</h3><pre><code class='java'>
+            return tuple(values)</code></pre><h3>After Change</h3><pre><code class='java'>
     regex = re.compile(STATEMENT)
     matched_str = regex.match(string_input)
     if matched_str:

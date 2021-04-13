@@ -10,11 +10,11 @@
     def __str__(self):
         return self.to_string()
 </code></pre><h3>After Change</h3><pre><code class='java'>
+        if overwrite:
             try:
                 valid_fraction, infer_fraction = self.ratios
-                valid_fraction = max(min(1.0, float(valid_fraction)), 0.0)
-                <a id="change">infer_fraction = max(min(1.0, float(infer_fraction)), 0.0)</a>
+                <a id="change">valid_fraction = max(min(1.0, float(valid_fraction)), 0.0)</a>
+                infer_fraction = max(min(1.0, float(infer_fraction)), 0.0)
             except (TypeError, ValueError):
                 tf.logging.fatal(
-                    &quotUnknown format of faction values %s&quot, self.ratios)
-                raise</code></pre>
+                    &quotUnknown format of faction values %s&quot, self.ratios)</code></pre>

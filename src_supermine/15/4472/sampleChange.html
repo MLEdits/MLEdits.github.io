@@ -16,13 +16,13 @@ class Function(object):
         <a id="change">if not isinstance(inputs, (list, tuple)):
             raise TypeError(&quot`inputs` to a TensorFlow backend function &quot
                             &quotshould be a list or tuple.&quot)
-       </a> <a id="change">if not isinstance(outputs, (list, tuple)):
-            raise TypeError(&quot`outputs` of a TensorFlow backend function &quot
-                            &quotshould be a list or tuple.&quot)
-       </a> if not isinstance(updates, (list, tuple)):
-            <a id="change">raise TypeError(&quot`updates` in a TensorFlow backend function &quot
+       </a> if not isinstance(outputs, (list, tuple)):
+            <a id="change">raise TypeError(&quot`outputs` of a TensorFlow backend function &quot
                             &quotshould be a list or tuple.&quot)</a>
-        self.inputs = list(inputs)
+        <a id="change">if not isinstance(updates, (list, tuple)):
+            raise TypeError(&quot`updates` in a TensorFlow backend function &quot
+                            &quotshould be a list or tuple.&quot)
+       </a> self.inputs = list(inputs)
         self.outputs = list(outputs)
         with tf.control_dependencies(self.outputs):
             updates_ops = []</code></pre>

@@ -2,26 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    for border_mode in [&quotvalid&quot, &quotsame&quot]:
-        for pool_size in [(2, 2), (3, 3), (4, 4), (5, 5)]:
-            for strides in [(1, 1), (2, 2)]:
-                <a id="change">layer = convolutional.AveragePooling2D(strides=strides,
-                                                       border_mode=border_mode,
-                                                       pool_size=pool_size)</a>
-                layer.input = K.variable(input)
-                <a id="change">for train in [True, False]:
-                    out = K.eval(layer.get_output(train))
-                    if border_mode == &quotsame&quot and strides == (1, 1):
-                        assert input.shape == out.shape
-               </a> layer.get_config()
+        Args:
+            TODO
+        
+        <a id="change">discount_factor = self._hparams.discount_factor</a>
+        qvalues = list(self._rewards)
+        <a id="change">max_seq_length = len(qvalues)</a>
+        if max_seq_length &gt;= 2:
+            <a id="change">for i in range(max_seq_length - 2, -1, -1):
+                qvalues[i] += discount_factor * qvalues[i + 1]
 
+       </a> q_mean = np.mean(qvalues)
+        q_std = np.std(qvalues)
+        qvalues = [(q - q_mean) / q_std for q in qvalues]
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        qvalues = discount_reward(
+            [self._rewards], discount=self._hparams.discount_factor,
+            normalize=self._hparams.normalize_reward)
+        <a id="change">qvalues = qvalues[0, :]</a>
 
-@pytest.mark.skipif(K._BACKEND != &quottheano&quot, reason="Requires Theano backend")</code></pre><h3>After Change</h3><pre><code class='java'>
-
-
-def test_averagepooling_2d():
-    <a id="change">pool_size = (3, 3)</a>
-
-    for border_mode in [&quotvalid&quot, &quotsame&quot]:
-        for pool_size in [(2, 2), (3, 3), (4, 4), (5, 5)]:
-            for strides in [(1, 1), (2, 2)]:</code></pre>
+        fetches = dict(loss=self._train_op)
+        feed_dict_ = {
+            self._observ_inputs: self._observs,</code></pre>

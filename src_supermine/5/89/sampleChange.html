@@ -3,22 +3,36 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    def learn(self, s, r, s_):
-        v_ = self.sess.run(self.v, {self.s: [s_]})
-        <a id="change">td_error, _ = self.sess.run([self.td_error, self.train_op], {self.s: [s], self.v_: v_, self.r: r})</a>
-        return td_error
+        new_Y = self.rng.randn(2, 2)
+        self.m.Y = new_Y
+        <a id="change">fd = {}</a>
+        self.m.update_feed_dict(self.m.get_feed_dict_keys(), fd)
+        assert np.all(fd[self.m.Y._tf_array] == new_Y)
+        self.assertFalse(self.m._needs_recompile)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+            self.assertEqual(m.Z.read_value().dtype, settings.np_float)
 
+    def test_same_shape(self):
+        <a id="change">with self.test_context():
+            m, rng = self.setup()
+            m.compile()
 
-sess = tf.Session()</code></pre><h3>After Change</h3><pre><code class='java'>
-            &#47&#47 v_ = self.sess.run(self.v, {self.s: [s_]})
-        v_ = self.model([s_]).outputs
-            &#47&#47 td_error, _ = self.sess.run([self.td_error, self.train_op], {self.s: [s], self.v_: v_, self.r: r})
-        <a id="change">with tf.GradientTape() as tape:
-            v = self.model([s]).outputs
-            &#47&#47 TD_error = r + lambd * V(newS) - V(S)
-            td_error = r + LAMBDA * v_ - v
-            loss = tf.square(td_error)
-       </a> grad = tape.gradient(loss, self.model.weights)
-        self.optimizer.apply_gradients(zip(grad, self.model.weights))
+            new_X = rng.randn(2, 2)
+            m.X = new_X
+            assert_array_equal(m.X.shape, new_X.shape)
+            assert_array_equal(m.X.read_value(), new_X)
 
-        return td_error</code></pre>
+            new_Y = rng.randn(2, 2)
+            m.Y = new_Y
+            assert_array_equal(m.Y.shape, new_Y.shape)
+            assert_array_equal(m.Y.read_value(), new_Y)
+
+            new_Z = rng.randn(2, 2)
+            m.Z = new_Z
+            assert_array_equal(m.Z.shape, new_Z.shape)
+            assert_array_equal(m.Z.read_value(), new_Z)
+
+   </a> def test_raise(self):
+        with self.test_context():
+            m, rng = self.setup()
+            m.compile()</code></pre>

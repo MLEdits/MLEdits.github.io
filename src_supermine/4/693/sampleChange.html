@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-if args.embedding_path is not None and not os.path.exists(args.embedding_path):
+if not os.path.exists(args.embedding_path):
     print(&quotword embedding model file was not found&quot)
     <a id="change">exit()</a>
 if args.restore is not None and not os.path.exists(args.restore):
     print(&quotrestore model file was not found&quot)
     exit()
 </code></pre><h3>After Change</h3><pre><code class='java'>
-    sys.exit(0)
+
+if args.embedding_path is not None and not os.path.exists(args.embedding_path):
+    print(&quotword embedding model file was not found&quot)
+    <a id="change">sys.exit(0)</a>
 if args.restore is not None and not os.path.exists(args.restore):
     print(&quotrestore model file was not found&quot)
-    <a id="change">sys.exit(0)</a>
-
-&#47&#47 load dataset
-dataset = SNIPS(path=args.dataset_path,
-                sentence_length=args.sentence_length,</code></pre>
+    sys.exit(0)
+dataset = SNIPS(sentence_length=args.sentence_length,</code></pre>

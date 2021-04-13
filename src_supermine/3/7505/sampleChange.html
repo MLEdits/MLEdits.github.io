@@ -12,12 +12,8 @@
             dist += Xs + tf.linalg.transpose(Xs)
             return dist
 
-        Xs = tf.reduce_sum(<a id="change">tf.square(X)</a>, axis=-1)
+        <a id="change">Xs = tf.reduce_sum(tf.square(X), axis=-1)</a>
         X2 = X2 / self.lengthscale
         X2s = tf.reduce_sum(tf.square(X2), axis=-1)
         dist = -2 * tf.tensordot(X, X2, [[-1], [-1]])
-        <a id="change">dist += broadcasting_elementwise(tf.add, Xs, X2s)</a>
-        return dist
-
-    def scaled_euclid_dist(self, X, X2):
-        </code></pre>
+        dist += broadcasting_elementwise(tf.add, Xs, X2s)</code></pre>

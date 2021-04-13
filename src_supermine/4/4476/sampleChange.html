@@ -21,10 +21,11 @@
 
 def start(detached: bool = False,
           http_host: str = DEFAULT_HTTP_HOST,</code></pre><h3>After Change</h3><pre><code class='java'>
+            raise KeyError(f"Endpoint &quot{endpoint_name}&quot does not exist.")
 
         if endpoint_name not in self._handle_cache:
-            handle = RayServeHandle(self._controller, endpoint_name, sync=True)
-            <a id="change">self._handle_cache[endpoint_name] = handle</a>
+            <a id="change">handle = RayServeHandle(self._controller, endpoint_name, sync=True)</a>
+            self._handle_cache[endpoint_name] = handle
         <a id="change">return self._handle_cache[endpoint_name]</a>
 
 

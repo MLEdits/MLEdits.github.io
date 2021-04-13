@@ -2,21 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    }
-    block = graph_module.deserialize(graph_module.serialize(block))
+    hp = kerastuner.HyperParameters()
 
-    block.column_names = <a id="change">[&quot0&quot, &quot1&quot]</a>
+    block = graph_module.deserialize(graph_module.serialize(block))
+    <a id="change">block.column_names = [&quot0&quot, &quot1&quot]</a>
     block.column_types = {
-        &quot0&quot: adapters.NUMERICAL,
-        &quot1&quot: adapters.NUMERICAL,
+        &quot0&quot: adapters.CATEGORICAL,
+        &quot1&quot: adapters.CATEGORICAL,
     }</code></pre><h3>After Change</h3><pre><code class='java'>
         &quot0&quot: adapters.NUMERICAL,
         &quot1&quot: adapters.NUMERICAL,
     }
     <a id="change">outputs = utils.block_basic_exam(
         block,
-        tf.keras.Input(shape=(32, 2), dtype=tf.float32),
+        tf.keras.Input(shape=(2,), dtype=tf.string),
         [],
     )</a>
     assert isinstance(nest.flatten(outputs)[0], tf.Tensor)
-</code></pre>
+
+
+def test_timeseries_block():</code></pre>

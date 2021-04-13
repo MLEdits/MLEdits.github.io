@@ -9,10 +9,10 @@
     print(&quot{:&gt;23} : {:.4f}&quot.format(
         &quotClass average accuracy&quot, mean_pixel_accuracy))
     print(&quot{:&gt;23} : {:.4f}&quot.format(</code></pre><h3>After Change</h3><pre><code class='java'>
-
-    result = eval_semantic_segmentation(pred_labels, gt_labels)
-
-    for iu, label_name in zip(<a id="change">result[&quotiou&quot]</a>, camvid_label_names):
-        print(&quot{:&gt;23} : {:.4f}&quot.format(label_name, iu))
     print(&quot=&quot * 34)
-    print(&quot{:&gt;23} : {:.4f}&quot.format(&quotmean IoU&quot, result[&quotmiou&quot]))</code></pre>
+    print(&quot{:&gt;23} : {:.4f}&quot.format(&quotmean IoU&quot, result[&quotmiou&quot]))
+    print(&quot{:&gt;23} : {:.4f}&quot.format(
+        &quotClass average accuracy&quot, <a id="change">result[&quotmean_accuracy&quot]</a>))
+    print(&quot{:&gt;23} : {:.4f}&quot.format(
+        &quotGlobal average accuracy&quot, result[&quotpixel_accuracy&quot]))
+</code></pre>

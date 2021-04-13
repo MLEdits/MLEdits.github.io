@@ -2,42 +2,36 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                for k, v in reuse_weights.items():
-                    if isinstance(v, str):
-                        try:
-                            v = <a id="change">old_classes.index(v)</a>  &#47&#47 raise ValueError if not found
-                        except ValueError:
-                            raise ValueError(
-                                "{} not found in old class names {}".format(v, old_classes))</code></pre><h3>After Change</h3><pre><code class='java'>
-            if isinstance(reuse_weights, dict):
-                &#47&#47 trying to replace str with indices
-                new_keys = []
-                new_vals = <a id="change">[]</a>
-                for k, v in reuse_weights.items():
-                    if isinstance(v, str):
-                        try:
-                            <a id="change">new_vals.append(old_classes.index(v))</a>  &#47&#47 raise ValueError if not found
-                        except ValueError:
-                            raise ValueError(
-                                "{} not found in old class names {}".format(v, old_classes))
-                    else:
-                        if v &lt; 0 or v &gt;= len(old_classes):
-                            raise ValueError(
-                                "Index {} out of bounds for old class names".format(v))
-                        new_vals.append(v)
-                    if isinstance(k, str):
-                        try:
-                            new_keys.append(self.classes.index(k))  &#47&#47 raise ValueError if not found
-                        except ValueError:
-                            raise ValueError(
-                                "{} not found in new class names {}".format(k, self.classes))
-                    else:
-                        if k &lt; 0 or k &gt;= len(self.classes):
-                            raise ValueError(
-                                "Index {} out of bounds for new class names".format(k))
-                        new_keys.append(k)
-                <a id="change">reuse_weights = dict(zip(new_keys, new_vals))</a>
-            else:
-                new_map = {}
-                for x in reuse_weights:
-                    try:</code></pre>
+            &#47&#47 make pixel indexes 0-based
+            bbox_elem = [float(b - 1) for b in bbox_elem]
+            name = obj.find(&quotname&quot).text.lower().strip()
+            bbox_elem += [<a id="change">self.labels.index(name)</a>]
+            bbox.append(bbox_elem)
+        bbox = np.stack(bbox).astype(np.float32)
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        anno = ET.parse(
+            os.path.join(self.data_dir, &quotAnnotations&quot, id_ + &quot.xml&quot))
+        bbox = []
+        label = <a id="change">[]</a>
+        for obj in anno.findall(&quotobject&quot):
+            &#47&#47 when in not using difficult mode, and the object is
+            &#47&#47 difficult, skipt it.
+            if not self.use_difficult and int(obj.find(&quotdifficult&quot).text) == 1:
+                continue
+
+            bndbox_anno = obj.find(&quotbndbox&quot)
+            bbox_elem = [int(bndbox_anno.find(&quotxmin&quot).text),
+                         int(bndbox_anno.find(&quotymin&quot).text),
+                         int(bndbox_anno.find(&quotxmax&quot).text),
+                         int(bndbox_anno.find(&quotymax&quot).text)]
+            &#47&#47 make pixel indexes 0-based
+            bbox_elem = [float(b - 1) for b in bbox_elem]
+            name = obj.find(&quotname&quot).text.lower().strip()
+            <a id="change">label.append(self.labels.index(name))</a>
+            bbox.append(bbox_elem)
+        bbox = np.stack(bbox).astype(np.float32)
+        <a id="change">label = np.stack(label).astype(np.int32)</a>
+
+        &#47&#47 Load a image
+        img_file = os.path.join(self.data_dir, &quotJPEGImages&quot, id_ + &quot.jpg&quot)
+        img = read_image_as_array(img_file)  &#47&#47 RGB</code></pre>

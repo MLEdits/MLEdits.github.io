@@ -12,10 +12,10 @@
                        activation=&quotrelu&quot,
                        padding=&quotsame&quot,
                        input_shape=self.input_shape))
-        <a id="change">model.add(conv(64, self._get_shape(3),
+        model.add(conv(64, self._get_shape(3),
                        padding=&quotsame&quot,
-                       activation=&quotrelu&quot))</a>
-        model.add(pool(pool_size=self._get_shape(2)))
+                       activation=&quotrelu&quot))
+        <a id="change">model.add(pool(pool_size=self._get_shape(2)))</a>
         <a id="change">model.add(Dropout(0.25))</a>
         model.add(Flatten())
         <a id="change">model.add(Dense(128, activation=&quotrelu&quot))</a>
@@ -29,15 +29,15 @@
         conv = get_conv_layer_func(len(self._get_shape(3)))
 
         input_tensor = <a id="change">Input(shape=self.input_shape)</a>
-        <a id="change">output_tensor = conv(32, kernel_size=self._get_shape(3),
-                             padding=&quotsame&quot)(input_tensor)</a>
+        output_tensor = conv(32, kernel_size=self._get_shape(3),
+                             padding=&quotsame&quot)(input_tensor)
         output_tensor = BatchNormalization()(output_tensor)
         output_tensor = Activation(&quotrelu&quot)(output_tensor)
 
         <a id="change">output_tensor = conv(64, self._get_shape(3),
                              padding=&quotsame&quot)(output_tensor)</a>
         output_tensor = BatchNormalization()(output_tensor)
-        output_tensor = Activation(&quotrelu&quot)(output_tensor)
+        <a id="change">output_tensor = Activation(&quotrelu&quot)(output_tensor)</a>
 
         output_tensor = pool(pool_size=self._get_shape(2), padding=&quotsame&quot)(output_tensor)
         <a id="change">output_tensor = Dropout(0.25)(output_tensor)</a>

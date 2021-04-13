@@ -3,39 +3,28 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
+    base_accumulator = accumulators[0]
+    for accumulator in accumulators[1:]:
+      <a id="change">for token, value in accumulator.count_dict.items():
+        base_accumulator.count_dict[token] += value
 
-    def turn_strings_to_floats(self, X, y=None):
-        <a id="change">for row in X:
-            for key, val in row.items():
-                try:
-                    row[key] = float(val)
-                except:
-                    pass
+   </a> return base_accumulator
 
-       </a> return X
+  def extract(self, accumulator):
+    Convert an accumulator into a dict of output values.</code></pre><h3>After Change</h3><pre><code class='java'>
 
+      if self._compute_idf:
+        base_accumulator.data["next_doc_id"] += accumulator.data["next_doc_id"]
+        <a id="change">if self._compute_idf:
+          for token, value in accumulator.per_doc_count_dict.items():
+            &#47&#47 Any newly created token counts in &quotbase_accumulator&quot&quots
+            &#47&#47 per_doc_count_dict will have a last_doc_id of -1. This is always
+            &#47&#47 less than the next doc id (which are strictly positive), so any
+            &#47&#47 future occurrences are guaranteed to be counted.
+            base_accumulator.per_doc_count_dict[token]["count"] += value[
+                "count"]
 
-    def transform(self, X, y=None):</code></pre><h3>After Change</h3><pre><code class='java'>
+   </a> return base_accumulator
 
-        for key, val in self.column_descriptions.items():
-
-            <a id="change">if val == &quotcategorical&quot:
-                for row in X:
-                    for key, val in row.items():
-                        try:
-                            row[key] = str(val)
-                        except:
-                            pass
-
-            else:
-                for row in X:
-                    for key, val in row.items():
-                        try:
-                            row[key] = float(val)
-                        except:
-                            pass
-
-       </a> return X
-
-
-    def transform(self, X, y=None):</code></pre>
+  def extract(self, accumulator):
+    Convert an accumulator into a dict of output values.</code></pre>

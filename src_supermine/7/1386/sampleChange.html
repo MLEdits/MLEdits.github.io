@@ -2,20 +2,10 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                    dataset_df[feature[&quotname&quot]][i]
-                )
-
-                <a id="change">img = ImageBaseFeature._read_image_and_resize(
-                    filepath,
-                    width,
-                    height,
-                    should_resize,
-                    num_channels,
-                    preprocessing_parameters[&quotresize_method&quot],
                     user_specified_num_channels
-                )</a>
+                )
                 try:
-                    data[feature[&quotname&quot]][i, :, :, :] = img
+                    <a id="change">data[feature[&quotname&quot]][i, :, :, :] = img</a>
                 except:
                     <a id="change">logger.error(
                         "Images are not of the same size. "

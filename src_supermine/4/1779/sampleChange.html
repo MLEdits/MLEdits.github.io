@@ -14,10 +14,8 @@
 
     def log_jacobian_tensor(self, x):
         return tf.zeros((1,), settings.float_type)</code></pre><h3>After Change</h3><pre><code class='java'>
-        
-        if self.squeeze:
             y = tf.expand_dims(y, axis=0)
-        <a id="change">indices = np.vstack(np.tril_indices(self.N)).T</a>
+        indices = np.vstack(np.tril_indices(self.N)).T
         indices = itertools.product(np.arange(self.num_matrices), indices)
         indices = np.array([np.hstack(x) <a id="change">for</a> x in indices])
         triangular = tf.gather_nd(y, indices)

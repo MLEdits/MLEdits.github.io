@@ -2,18 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    X = np.random.normal(loc=5.0, scale=10.0, size=(1000, 10))
-    model.fit(X, X, nb_epoch=5, verbose=0)
-    norm_m0.input = K.variable(X)
-    out = (<a id="change">norm_m0.get_output(train=True)</a> - norm_m0.beta) / norm_m0.gamma
+            Ls = []
+            with autograd.record():
+                for j, (X, y, m, s, h) in enumerate(zip(data, target, mask, sample, hiddens)):
+                    <a id="change">output</a>, h, new_target = model(X, y, h, s)
+                    output = output.reshape((-3, -1))
+                    new_target = new_target.reshape((-1,))
+                    l = loss(output, new_target) * m.reshape((-1,))</code></pre><h3>After Change</h3><pre><code class='java'>
+            for _ in range(len(data)):
+                hidden, ls = parallel.get()
+                &#47&#47 hidden states are ordered by context id
+                <a id="change">index = context.index(hidden[0].context)</a>
+                hiddens[index] = hidden
+                Ls.append(ls)
 
-    assert_allclose(K.eval(K.mean(out)), 0.0, atol=1e-1)
-    assert_allclose(K.eval(K.std(out)), 1.0, atol=1e-1)</code></pre><h3>After Change</h3><pre><code class='java'>
-    out = norm_m0.call(K.variable(X))
-    out -= norm_m0.beta
-    out /= norm_m0.gamma
-    np_out = <a id="change">K.function([K.learning_phase()], [out])([1.])[0]</a>
-
-    assert_allclose(np_out.mean(), 0.0, atol=1e-1)
-    assert_allclose(np_out.std(), 1.0, atol=1e-1)
-</code></pre>
+            &#47&#47 prefetch the next batch of data</code></pre>

@@ -10,10 +10,10 @@
                 h = F.concat((_upsample(h), hs.pop()))
 
         return ys</code></pre><h3>After Change</h3><pre><code class='java'>
-        ys = []
         for h, link in zip(self.extractor(x), self.subnet):
             h = link(h)
-            h = F.reshape(h, <a id="change">(h.shape[0], 3, 1 + 4 + self.n_fg_class, -1)</a>)
-            h = F.transpose(h, (0, 3, 1, 2))
+            h = F.reshape(h, (h.shape[0], 3, 1 + 4 + self.n_fg_class, -1))
+            h = F.transpose(h, <a id="change">(0, 3, 1, 2)</a>)
             ys.append(h)
-        return F.concat(ys)</code></pre>
+        return F.concat(ys)
+</code></pre>

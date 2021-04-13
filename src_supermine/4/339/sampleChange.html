@@ -2,14 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    f.close()
 
-    def shuffle(self):
-        zipped = list(zip(self.src, self.tgt))
-        <a id="change">random.shuffle(zipped)</a>
-        self.src, self.tgt = [x[0] for x in zipped], [x[1] for x in zipped]
-</code></pre><h3>After Change</h3><pre><code class='java'>
+    np.random.seed(seed)
+    <a id="change">np.random.shuffle(x)</a>
+    np.random.seed(seed)
+    np.random.shuffle(y)
 
-    def shuffle(self):
-        data = list(zip(self.src, self.tgt))
-        self.src, self.tgt = zip(*[<a id="change">data[i]</a> <a id="change">for</a> i in torch.randperm(<a id="change">len(data)</a>)])
-</code></pre>
+    x_train = np.array(x[:int(len(x) * (1 - test_split))])</code></pre><h3>After Change</h3><pre><code class='java'>
+    f.close()
+
+    np.random.seed(seed)
+    <a id="change">indices = np.arange(len(x))</a>
+    np.random.shuffle(indices)
+    x = <a id="change">x[indices]</a>
+    y = y[indices]
+
+    x_train = np.array(x[:int(len(x) * (1 - test_split))])
+    y_train = np.array(y[:int(len(x) * (1 - test_split))])</code></pre>

@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    &#47&#47 Copy logo to static sub-folder for RTD to be able to locate it
-    os.mkdir(static_images_path)
-    <a id="change">shutil.copy(logo_path_abs, os.path.join(html_static_path, static_images_folder))</a>
-
-    global working_dir, module_path
-    output_path = working_dir
-    apidoc_command_path = &quotsphinx-apidoc&quot</code></pre><h3>After Change</h3><pre><code class='java'>
-    &#47&#47 Copy logo to static sub-folder for RTD to be able to locate it
-    static_images_path = os.path.join(html_static_path, static_images_folder)
-    os.mkdir(static_images_path)
-    <a id="change">shutil.copy(logo_path_abs, static_images_path)</a>
-
-    global working_dir, module_path
-    output_path = working_dir
-    apidoc_command_path = &quotsphinx-apidoc&quot</code></pre>
+    def hyper_build(self, hp):
+        Build a GraphHyperModel with no HyperBlock but only Block.
+        inputs = <a id="change">copy.copy(self.inputs)</a>
+        old_node_to_new = {}
+        for input_node, old_input_node in zip(inputs, self.inputs):
+            input_node.clear_edges()
+            old_node_to_new[old_input_node] = input_node</code></pre><h3>After Change</h3><pre><code class='java'>
+        inputs = []
+        old_node_to_new = {}
+        for old_input_node in self.inputs:
+            input_node = <a id="change">copy(old_input_node)</a>
+            inputs.append(input_node)
+            old_node_to_new[old_input_node] = input_node
+        for old_block in self._blocks:
+            inputs = [old_node_to_new[input_node]</code></pre>

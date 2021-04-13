@@ -2,20 +2,18 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            self.W_shape = (self.nb_filter, stack_size, self.nb_row, self.nb_col)
+    def build(self, input_shape):
+        if self.data_format == &quotchannels_first&quot:
+            stack_size = input_shape[1]
+            self.W_shape = <a id="change">(self.nb_filter, stack_size, self.nb_row, self.nb_col)</a>
         elif self.data_format == &quotchannels_last&quot:
             stack_size = input_shape[3]
-            self.W_shape = <a id="change">(self.nb_row, self.nb_col, stack_size, self.nb_filter)</a>
-        else:
-            raise ValueError(&quotInvalid data_format:&quot, self.data_format)
-        self.W = self.add_weight(self.W_shape,
-                                 initializer=self.init,</code></pre><h3>After Change</h3><pre><code class='java'>
-            raise ValueError(&quotInputs to `SeparableConv2D` should have rank 4. &quot
-                             &quotReceived input shape:&quot, str(input_shape))
+            self.W_shape = (self.nb_row, self.nb_col, stack_size, self.nb_filter)
+        else:</code></pre><h3>After Change</h3><pre><code class='java'>
         if self.data_format == &quotchannels_first&quot:
-            <a id="change">channel_axis = 1</a>
+            channel_axis = 1
         else:
-            channel_axis = 3
+            <a id="change">channel_axis = 3</a>
         if input_shape[channel_axis] is None:
             raise ValueError(&quotThe channel dimension of the inputs to &quot
                              &quot`SeparableConv2D` &quot
@@ -25,23 +23,10 @@
                                   self.kernel_size[1],
                                   input_dim,
                                   self.depth_multiplier)
-        pointwise_kernel_shape = (1, 1,
-                                  <a id="change">self.depth_multiplier * input_dim</a>,
-                                  self.filters)
+        <a id="change">pointwise_kernel_shape = (1, 1,
+                                  self.depth_multiplier * input_dim,
+                                  self.filters)</a>
 
         self.depthwise_kernel = self.add_weight(
             depthwise_kernel_shape,
-            initializer=self.depthwise_initializer,
-            name=&quotdepthwise_kernel&quot,
-            regularizer=self.depthwise_regularizer,
-            constraint=self.depthwise_constraint)
-        <a id="change">self.pointwise_kernel = self.add_weight(
-            pointwise_kernel_shape,
-            initializer=self.pointwise_initializer,
-            name=&quotpointwise_kernel&quot,
-            regularizer=self.pointwise_regularizer,
-            constraint=self.pointwise_constraint)</a>
-
-        if self.use_bias:
-            self.bias = self.add_weight((self.filters,),
-                                        initializer=self.bias_initializer,</code></pre>
+            initializer=self.depthwise_initializer,</code></pre>

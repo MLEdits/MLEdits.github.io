@@ -18,14 +18,11 @@
         webui_url + "/api/launch_profiling",
         params={
             "node_id": ray.nodes()[0]["NodeID"],</code></pre><h3>After Change</h3><pre><code class='java'>
-            actors_info = raylet_info["result"]["actors"]
             try:
                 assert len(actors_info) == 3
-                <a id="change">c_actor_info = [
-                    actor for actor in actors_info.values()
+                c_actor_info = [
+                    actor <a id="change">for</a> actor in <a id="change">actors_info.values()</a>
                     if "ActorC" in actor["actorTitle"]
-                ][0]</a>
+                ][0]
                 assert c_actor_info["numObjectRefsInScope"] == 13
-                assert c_actor_info["numLocalObjects"] == 10
-                break
-            except AssertionError:</code></pre>
+                assert c_actor_info["numLocalObjects"] == 10</code></pre>

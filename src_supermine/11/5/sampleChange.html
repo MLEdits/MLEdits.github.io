@@ -17,10 +17,10 @@
         &quot--debug&quot,
         action=&quotstore_true&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
     global logger
-    logger = logging.getLogger(&quotludwig.predict&quot)
+    logger = logging.getLogger(&quotludwig.train&quot)
 
     <a id="change">args.backend = initialize_backend(args.backend)</a>
     if <a id="change">args.backend.is_coordinator()</a>:
-        print_ludwig(&quotPredict&quot, LUDWIG_VERSION)
-        logger.info(&quotDataset path: {}&quot.format(args.dataset))
-        logger.info(&quotModel path: {}&quot.format(args.model_path))</code></pre>
+        print_ludwig(&quotTrain&quot, LUDWIG_VERSION)
+
+    train_cli(**vars(args))</code></pre>

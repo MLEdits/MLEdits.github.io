@@ -16,8 +16,9 @@
             for _ in range(<a id="change">len(data)</a>):
                 hidden, ls = parallel.get()
                 &#47&#47 hidden states are ordered by context id
-                <a id="change">index = context.index(hidden[0].context)</a>
-                hiddens[index] = hidden
+                index = context.index(hidden[0].context)
+                <a id="change">hiddens[index] = hidden</a>
                 Ls.append(ls)
 
-            &#47&#47 prefetch the next batch of data</code></pre>
+            &#47&#47 prefetch the next batch of data
+            try:</code></pre>

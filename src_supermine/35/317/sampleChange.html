@@ -14,10 +14,8 @@
 
     def test_add_output_shape(self):
         with self.test_context() as sess:</code></pre><h3>After Change</h3><pre><code class='java'>
-    def composition_mfs(self):
-        return self.composition_mfs_add() + self.composition_mfs_mult()
 
-    def test_basic_output_shape(<a id="change">self</a>):
+    def test_basic_output_shape(self):
         with self.test_context() as sess:
             <a id="change">X = tf.placeholder(settings.tf_float, shape=[self.N, self.input_dim])</a>
             <a id="change">X_data = np.random.randn(self.N, self.input_dim).astype(settings.np_float)</a>

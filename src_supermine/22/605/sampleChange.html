@@ -5,16 +5,13 @@
         assert keypoints_equal([observed], [expected])
 
     def test_keypoints_factor_is_0(self):
-        <a id="change">aug = iaa.AlphaElementwise(
-            0.0,
-            iaa.Noop(),
-            iaa.Affine(translate_px={"x": 1}))</a>
+        <a id="change">aug = iaa.Alpha(0.0, iaa.Noop(), iaa.Affine(translate_px={"x": 1}))</a>
         <a id="change">observed = aug.augment_keypoints([self.kpsoi])[0]</a>
         <a id="change">expected = self.kpsoi.shift(x=1)</a>
         assert keypoints_equal([observed], [expected])
 
     def test_keypoints_factor_is_0499(self):
-        aug = iaa.AlphaElementwise(</code></pre><h3>After Change</h3><pre><code class='java'>
+        aug = iaa.Alpha(0.499, iaa.Noop(), iaa.Affine(translate_px={"x": 1}))</code></pre><h3>After Change</h3><pre><code class='java'>
         self._test_cba_factor_is_0501("augment_keypoints", self.kpsoi)
 
     def test_keypoints_factor_is_0(self):

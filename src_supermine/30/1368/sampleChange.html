@@ -2,9 +2,9 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+
 @pytest.mark.parametrize("reconstruction_enabled", [False, True])
-def test_reconstruction_cached_dependency(ray_start_cluster,
-                                          reconstruction_enabled):
+def test_multiple_downstream_tasks(ray_start_cluster, reconstruction_enabled):
     <a id="change">config</a> = <a id="change">json.dumps({
         "num_heartbeats_timeout": 10,
         "raylet_heartbeat_timeout_milliseconds": 100,
@@ -16,9 +16,9 @@ def test_reconstruction_cached_dependency(ray_start_cluster,
     &#47&#47 Head node with no resources.
     cluster.add_node(num_cpus=0, _internal_config=config)
     ray.init(address=cluster.address)</code></pre><h3>After Change</h3><pre><code class='java'>
+
 @pytest.mark.parametrize("reconstruction_enabled", [False, True])
-def test_reconstruction_cached_dependency(ray_start_cluster,
-                                          reconstruction_enabled):
+def test_multiple_downstream_tasks(ray_start_cluster, reconstruction_enabled):
     <a id="change">config</a> = <a id="change">{
         "num_heartbeats_timeout": 10,
         "raylet_heartbeat_timeout_milliseconds": 100,

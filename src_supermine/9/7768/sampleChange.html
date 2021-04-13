@@ -10,14 +10,8 @@ except (ImportError, AssertionError):
     tf.logging.info(&quot+++ Using PIL as Image Loading backend&quot)
     USE_SKIMAGE = False
 </code></pre><h3>After Change</h3><pre><code class='java'>
-from niftynet.utilities.util_import import require_module
-
-
-<a id="change">EXTERNAL_LOADERS = [
-    dict(name=&quotopencv&quot, module=&quotcv2&quot, method=&quotimread&quot, kwargs=dict(flags=-1)),
-    dict(name=&quotskimage&quot, module=&quotskimage.io&quot, method=&quotimread&quot, version=&quot0.13&quot),
     dict(name=&quotpillow&quot, module=&quotPIL.Image&quot, method=&quotopen&quot)
-]</a>
+]
 
 <a id="change">AVAILABLE_LOADER = OrderedDict()</a>
 

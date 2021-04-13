@@ -2,20 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            image_id, data, interp_orders = self.reader(shuffle=self.shuffle)
-            if not data:
-                break
-            image_shapes = <a id="change">{
-                name: data[name].shape for name in self.window.names}</a>
-            &#47&#47 window shapes can be dynamic, here they
-            &#47&#47 are converted to static ones
-            &#47&#47 as now we know the image shapes
-            static_window_shapes = self.window.match_image_shapes(image_shapes)</code></pre><h3>After Change</h3><pre><code class='java'>
-            if not data:
-                break
-            image_shapes = \
-                <a id="change">dict((name, data[name].shape) for name in self.window.names)</a>
-            &#47&#47 window shapes can be dynamic, here they
-            &#47&#47 are converted to static ones
-            &#47&#47 as now we know the image shapes
-            static_window_shapes = self.window.match_image_shapes(image_shapes)</code></pre>
+
+
+def to_dict(config):
+    return <a id="change">{
+        k: (to_dict(v) if type(v) is EasyDict else v)
+        for k, v in config.items()
+    }</a>
+
+
+def dump_config(config):
+    config = to_dict(config)</code></pre><h3>After Change</h3><pre><code class='java'>
+    if type(config) is list:
+        return [to_dict(c) for c in config]
+    elif type(config) is EasyDict:
+        return <a id="change">dict([(k, to_dict(v)) for k, v in config.items()])</a>
+    else:
+        return config
+
+</code></pre>

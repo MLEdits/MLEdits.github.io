@@ -2,20 +2,28 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        if token in self.stoi:
-            return self.vectors[self.stoi[token]]
-        else:
-            <a id="change">return self.unk_init(torch.Tensor(self.dim))</a>
+        return DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    def __len__(self):
-        return len(self.vectors)
-</code></pre><h3>After Change</h3><pre><code class='java'>
-            token = tokens
-            return self._get_token(token)
-        else:
-            <a id="change">raise TypeError("&quot__getitem__&quot method can only be used with types"
-                            "&quotstr&quot, &quotlist&quot, or &quottuple&quot as parameter")</a>
+    def transform_test(self, data, targets=None, batch_size=None):
+        common_list = [Normalize(<a id="change">torch.Tensor(self.mean)</a>, torch.Tensor(self.std))]
+        compose_list = common_list
 
-    def __len__(self):
-        return len(self.vectors)
+        dataset = self._transform(compose_list, data, targets)
+
+        if batch_size is None:
+            batch_size = Constant.MAX_BATCH_SIZE
+        batch_size = min(len(data), batch_size)
+
+        <a id="change">return DataLoader(dataset, batch_size=batch_size, shuffle=False)</a>
+
+    def _transform(self, compose_list, data, targets):
+        data = data / self.max_val
+        data = torch.Tensor(data.transpose(0, 3, 1, 2))</code></pre><h3>After Change</h3><pre><code class='java'>
+
+    @abstractmethod
+    def transform_test(self, data, target=None, batch_size=None):
+        <a id="change">raise NotImplementedError</a>
+
+
+class TextDataTransformer(DataTransformer):
 </code></pre>

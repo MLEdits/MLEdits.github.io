@@ -2,23 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                read_permissions=result_read_permissions,
+            )
+
+        <a id="change">if method_name == "__len__":
+            result.tags = resolved_self.tags + ["__len__"]
+
+       </a> node.store[self.id_at_location] = result
+
+    @syft_decorator(typechecking=True)
+    def _object2proto(self) -&gt; RunClassMethodAction_PB:</code></pre><h3>After Change</h3><pre><code class='java'>
+                result_read_permissions, r_arg.read_permissions
+            )
+            resolved_kwargs[arg_name] = r_arg.data
+            <a id="change">if tags is None:
+                tags = r_arg.tags.copy()
             else:
-                &#47&#47 sum feature merge (for now, the same as the old option
-                &#47&#47 for merging features in OpenNMT-py)
-                feat_sizes = (opt.feat_vec_size <a id="change">for</a> feat_dict in feature_dicts)
-                &#47&#47 apply a layer of mlp to get it down to the right dim
-                self.mlp = nn.Sequential(onmt.modules.BottleLinear(
-                                        opt.word_vec_size +</code></pre><h3>After Change</h3><pre><code class='java'>
-                &#47&#47 Derive embedding sizes from each feature&quots vocab size
-                emb_sizes.extend([int(feat_dict.size() ** feat_exp)
-                                  for feat_dict in feature_dicts])
-            elif <a id="change">opt.feat_merge == &quotsum&quot:</a>
-                &#47&#47 All embeddings to be summed must be the same size
-                emb_sizes.extend([opt.word_vec_size] * len(feature_dicts))
-            else:
-                &#47&#47 mlp feature merge
-                <a id="change">emb_sizes.extend([opt.feat_vec_size] * len(feature_dicts))</a>
-                &#47&#47 apply a layer of mlp to get it down to the correct dim
-                self.mlp = nn.Sequential(onmt.modules.BottleLinear(
-                                        sum(emb_sizes),
-                                        opt.word_vec_size),</code></pre>
+                tags.extend([tag for tag in r_arg.tags if tag not in tags])
+
+       </a> (
+            upcasted_args,
+            upcasted_kwargs,
+        ) = lib.python.util.upcast_args_and_kwargs(resolved_args, resolved_kwargs)</code></pre>

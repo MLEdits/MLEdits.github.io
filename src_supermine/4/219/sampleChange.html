@@ -10,12 +10,10 @@
                           if vars(task_param).get(name, None)]
         if not filtered_names:
             tf.logging.fatal("Reader requires task input keywords %s, but "</code></pre><h3>After Change</h3><pre><code class='java'>
-        if not task_param:
-            task_param = {mod:(mod,) for mod in list(data_param)}
         elif isinstance(task_param, ParserNamespace):
-            <a id="change">task_param = vars(task_param)</a>
+            task_param = vars(task_param)
         try:
-            task_param = dict(task_param)
+            <a id="change">task_param = dict(task_param)</a>
         except ValueError:
             tf.logging.fatal(
                 "To concatenate multiple input data arrays,\n"

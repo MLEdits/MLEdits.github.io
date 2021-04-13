@@ -2,19 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.Z = self.rng.randn(3,1)
 
-    def test_white(self):
-        m1 = GPflow.svgp.SVGP(self.X, self.Y, kern=<a id="change">GPflow.kernels.RBF(1)+GPflow.kernels.White(1)</a>, likelihood=GPflow.likelihoods.Exponential(),
-                           Z=self.Z, q_diag=True, whiten=True)
-        m2 = GPflow.svgp.SVGP(self.X, self.Y, kern=<a id="change">GPflow.kernels.RBF(1)+GPflow.kernels.White(1)</a>, likelihood=GPflow.likelihoods.Exponential(),
-                           Z=self.Z, q_diag=False, whiten=True)
-        m1._compile()
-        m2._compile()</code></pre><h3>After Change</h3><pre><code class='java'>
-                              likelihood=GPflow.likelihoods.Exponential(),
-                              Z=self.Z, q_diag=True, whiten=True)
-        m2 = GPflow.svgp.SVGP(self.X, self.Y,
-                              kern=<a id="change">GPflow.kernels.RBF(1)</a>,
-                              likelihood=GPflow.likelihoods.Exponential(),
-                              Z=self.Z, q_diag=False, whiten=True)
-        m1._compile()</code></pre>
+        m1 = GPflow.gpr.GPR(X, Y, kern=GPflow.kernels.RBF(1))
+        m2 = GPflow.vgp.VGP(X, Y, GPflow.kernels.RBF(1), likelihood=GPflow.likelihoods.Gaussian())
+        m3 = GPflow.svgp.SVGP(X, Y, <a id="change">GPflow.kernels.RBF(1)+GPflow.kernels.White(1)</a>,
+                              likelihood=GPflow.likelihoods.Gaussian(),
+                              Z=X.copy(), q_diag=False)
+        m3.Z.fixed = True
+        m4 = GPflow.svgp.SVGP(X, Y, <a id="change">GPflow.kernels.RBF(1)+GPflow.kernels.White(1)</a>,
+                              likelihood=GPflow.likelihoods.Gaussian(),
+                              Z=X.copy(), q_diag=False, whiten=True)
+        m4.Z.fixed=True</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        m1 = GPflow.gpr.GPR(X, Y, kern=GPflow.kernels.RBF(1))
+        m2 = GPflow.vgp.VGP(X, Y, GPflow.kernels.RBF(1), likelihood=GPflow.likelihoods.Gaussian())
+        m3 = GPflow.svgp.SVGP(X, Y, <a id="change">GPflow.kernels.RBF(1)</a>,
+                              likelihood=GPflow.likelihoods.Gaussian(),
+                              Z=X.copy(), q_diag=False)
+        m3.Z.fixed = True</code></pre>

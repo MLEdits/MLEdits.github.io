@@ -2,22 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+            activity_regularizer=activity_regularizer
+        )
+        self.decoder_rnncell = \
+            <a id="change">get_from_registry(cell_type, rnn_layers_registry)(state_size)</a>
+        logger.debug(&quot  {}&quot.format(self.decoder_rnncell))
 
-
-def get_sequence_vector(sequence, format, unit_to_id, lowercase=True):
-    format_function = <a id="change">get_from_registry(
-        format,
-        format_registry
-    )</a>
-    format_dtype = int_type(len(unit_to_id) - 1)
-    return _get_sequence_vector(sequence, format_function, format_dtype,
-                                unit_to_id, lowercase=lowercase)
-</code></pre><h3>After Change</h3><pre><code class='java'>
-
-
-def get_sequence_vector(sequence, format, unit_to_id, lowercase=True):
-    tokenizer = <a id="change">get_from_registry(format, tokenizer_registry)()</a>
-    format_dtype = int_type(len(unit_to_id) - 1)
-    return _get_sequence_vector(
-        sequence,
-        tokenizer,</code></pre>
+        &#47&#47 Sampler
+        self.sampler = tfa.seq2seq.sampler.TrainingSampler()</code></pre><h3>After Change</h3><pre><code class='java'>
+            bias_regularizer=bias_regularizer,
+            activity_regularizer=activity_regularizer
+        )
+        rnn_cell = <a id="change">get_from_registry(cell_type, rnn_layers_registry)</a>
+        rnn_cells = [rnn_cell(state_size) for _ in range(num_layers)]
+        self.decoder_rnncell = StackedRNNCells(rnn_cells)
+        logger.debug(&quot  {}&quot.format(self.decoder_rnncell))
+</code></pre>

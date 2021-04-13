@@ -2,21 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            &#47&#47 as a SessionEvent and bail immediately.
-            LOGGER.debug(&quotFatal script error: %s&quot % e)
-            self.on_script_compile_error.send(e)
-            <a id="change">self._set_state(ScriptState.STOPPED)</a>
+        if self.is_fully_stopped():
+            pass
+        else:
+            <a id="change">self._set_state(State.STOP_REQUESTED)</a>
+            self._state_change_requested = True
+
+    def request_pause_unpause(self):
+        if self._state == State.PAUSED:</code></pre><h3>After Change</h3><pre><code class='java'>
+        self._event_queue.enqueue(ScriptEvent.RERUN, self._report)
+
+    def request_stop(self):
+        <a id="change">if self.is_shutdown():
+            LOGGER.warning(&quotDiscarding STOP event after shutdown&quot)
             return
+       </a> self._event_queue.enqueue(ScriptEvent.STOP)
 
-        &#47&#47 If we get here, we&quotve successfully compiled our script. The next step
-        &#47&#47 is to run it. Errors thrown during execution will be shown to the</code></pre><h3>After Change</h3><pre><code class='java'>
-            argv = self._report.argv
-
-        &#47&#47 Update the Widget singleton with the new widget_state
-        <a id="change">if rerun_data.widget_state is not None:
-            self._widgets.set_state(rerun_data.widget_state)
-
-       </a> if config.get_option(&quotrunner.installTracer&quot):
-            self._install_tracer()
-
-        &#47&#47 This will be set to a RerunData instance if our execution</code></pre>
+    def request_shutdown(self):
+        if self.is_shutdown():</code></pre>

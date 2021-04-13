@@ -2,13 +2,13 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            gpu=cf["num_gpus"],
-            memory=cf["memory"],
-            object_store_memory=cf["object_store_memory"],
-            extra_cpu=cf["num_cpus_per_worker"] * <a id="change">cf["num_workers"]</a> +
             cf["num_aggregation_workers"],
             extra_gpu=cf["num_gpus_per_worker"] * cf["num_workers"],
-            extra_memory=cf["memory_per_worker"] * cf["num_workers"],</code></pre><h3>After Change</h3><pre><code class='java'>
+            extra_memory=cf["memory_per_worker"] * cf["num_workers"],
+            extra_object_store_memory=<a id="change">cf["object_store_memory_per_worker"]</a> *
+            cf["num_workers"])
+
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
         &#47&#47 Return PlacementGroupFactory containing all needed resources
         &#47&#47 (already properly defined as device bundles).

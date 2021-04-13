@@ -5,12 +5,11 @@
         outputs = output.transpose(0, 1).contiguous()
         if state.previous_input is not None:
             outputs = outputs[state.previous_input.size(0):]
-            attn = <a id="change">attn[:, state.previous_input.size(0):].squeeze()</a>
-            <a id="change">attn = torch.stack([attn])</a>
+            <a id="change">attn = attn[:, state.previous_input.size(0):].squeeze()</a>
+            attn = torch.stack([attn])
         attns["std"] = attn
         if self._copy:
-            attns["copy"] = attn
-</code></pre><h3>After Change</h3><pre><code class='java'>
+            attns["copy"] = attn</code></pre><h3>After Change</h3><pre><code class='java'>
         tgt_pad_mask = tgt_words.data.eq(padding_idx).unsqueeze(1) \
             .expand(tgt_batch, tgt_len, tgt_len)
 

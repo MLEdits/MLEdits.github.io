@@ -1,19 +1,21 @@
-<html><h3>3bb62b0838e580201810095961db156f45368c6e,onmt/decoders/cnn_decoder.py,CNNDecoder,forward,#CNNDecoder#Any#Any#Any#Any#,78
+<html><h3>dc83851aca230648c4f75ac1a0d4b9971b2d6aa0,keras/backend/tensorflow_backend.py,,tile,#Any#Any#,2378
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            attns["copy"] = attn
+        A tiled tensor.
+    
+    if isinstance(n, int):
+        n = <a id="change">[n]</a>
+    return tf.tile(x, n)
 
-        &#47&#47 Update the state.
-        <a id="change">self.update_state(tgt)</a>
-        &#47&#47 TODO change the way attns is returned dict =&gt; list or tuple (onnx)
-        return dec_outs, attns
-</code></pre><h3>After Change</h3><pre><code class='java'>
-            attns["copy"] = attn
 
-        &#47&#47 Update the state.
-        <a id="change">self.state["previous_input"]</a> = tgt
-        &#47&#47 TODO change the way attns is returned dict =&gt; list or tuple (onnx)
-        return dec_outs, attns
-</code></pre><img src="10735456.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 2</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/3bb62b0838e580201810095961db156f45368c6e#diff-3baba8e032345d7afa3a959f61c99464a7d05104f76358420ead619c916bab40L74' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 3bb62b0838e580201810095961db156f45368c6e</div><div id='time'> Time: 2018-12-08</div><div id='author'> Author: guillaume.klein@systrangroup.com</div><div id='file'> File Name: onmt/decoders/cnn_decoder.py</div><div id='class'> Class Name: CNNDecoder</div><div id='method'> Method Name: forward</div><BR><BR><div id='link'><a href='https://github.com/OpenNMT/OpenNMT-py/commit/3bb62b0838e580201810095961db156f45368c6e#diff-86563f2e2d4c51883fbd3caa04c4fb2828b79e8352c2afc2b510dc098503e750L151' target='_blank'>Link</a></div><div id='project'> Project Name: OpenNMT/OpenNMT-py</div><div id='commit'> Commit Name: 3bb62b0838e580201810095961db156f45368c6e</div><div id='time'> Time: 2018-12-08</div><div id='author'> Author: guillaume.klein@systrangroup.com</div><div id='file'> File Name: onmt/decoders/decoder.py</div><div id='class'> Class Name: RNNDecoderBase</div><div id='method'> Method Name: forward</div><BR><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/2c76a23d68e9ccdd40849a1e0c8597151d4ccc72#diff-6ee778ac6bfdda4199f94d4561eb176de95165863e689af86837e61e328656b3L141' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: 2c76a23d68e9ccdd40849a1e0c8597151d4ccc72</div><div id='time'> Time: 2020-03-27</div><div id='author'> Author: w4nderlust@gmail.com</div><div id='file'> File Name: ludwig/features/base_feature.py</div><div id='class'> Class Name: OutputFeature</div><div id='method'> Method Name: update_metrics</div><BR><BR><div id='link'><a href='https://github.com/uber/ludwig/commit/70d0fe1729a5e8e2d4f5bf06447c5333b82d5c56#diff-1bcb267f1a0a83aea88c3f15b64f346e2c42ea81e99400ea1504744e662ddb5fL212' target='_blank'>Link</a></div><div id='project'> Project Name: uber/ludwig</div><div id='commit'> Commit Name: 70d0fe1729a5e8e2d4f5bf06447c5333b82d5c56</div><div id='time'> Time: 2020-03-25</div><div id='author'> Author: jimthompson5802@aol.com</div><div id='file'> File Name: ludwig/features/binary_feature.py</div><div id='class'> Class Name: BinaryOutputFeature</div><div id='method'> Method Name: update_metrics</div><BR>
+def flatten(x):</code></pre><h3>After Change</h3><pre><code class='java'>
+    elif isinstance(n, list):
+        n = tuple(n)
+
+    <a id="change">shape = int_shape(x)</a>
+    if len(n) &lt; len(shape):  &#47&#47 Padding the axis
+        n = tuple([1 for _ in range(len(shape) - len(n))]) + n
+    elif len(n) != len(shape):
+        raise NotImplementedError</code></pre><img src="11633937.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/dc83851aca230648c4f75ac1a0d4b9971b2d6aa0#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L2390' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: dc83851aca230648c4f75ac1a0d4b9971b2d6aa0</div><div id='time'> Time: 2019-03-16</div><div id='author'> Author: me@taehoonlee.com</div><div id='file'> File Name: keras/backend/tensorflow_backend.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: tile</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/688d4ead1098429b45dc53f4fedd303e8413829d#diff-00ea0e13b40fd9dd9ca240d3173f042f501860a2c09b536bfce9a14b0f7656feL176' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 688d4ead1098429b45dc53f4fedd303e8413829d</div><div id='time'> Time: 2018-04-20</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/utils.py</div><div id='class'> Class Name: Attention</div><div id='method'> Method Name: call</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/a003d7d85c61bc74b88ad0d3b8d07834fe9636ea#diff-00ea0e13b40fd9dd9ca240d3173f042f501860a2c09b536bfce9a14b0f7656feL176' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: a003d7d85c61bc74b88ad0d3b8d07834fe9636ea</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/utils.py</div><div id='class'> Class Name: Attention</div><div id='method'> Method Name: call</div><BR>

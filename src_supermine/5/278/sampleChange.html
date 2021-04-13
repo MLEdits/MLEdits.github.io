@@ -2,14 +2,10 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        Produce samples from the posterior latent function(s) at the input points.
-        
-        mu, var = self.predict_f(Xnew, full_cov=full_cov)  &#47&#47 [N, P], [P, N, N]
-        <a id="change">num_latent_gps = var.shape[0]</a>
         num_elems = tf.shape(var)[1]
         var_jitter = ops.add_to_diagonal(var, default_jitter())
         L = tf.linalg.cholesky(var_jitter)  &#47&#47 [P, N, N]
-        V = tf.random.normal([num_latent_gps, num_elems, num_samples], dtype=mu.dtype)  &#47&#47 [P, N, S]
+        <a id="change">V = tf.random.normal([num_latent_gps, num_elems, num_samples], dtype=mu.dtype)</a>  &#47&#47 [P, N, S]
         LV = L @ V  &#47&#47 [P, N, S]
         mu_t = tf.linalg.adjoint(mu)  &#47&#47 [P, N]
         <a id="change">return tf.transpose(mu_t[..., np.newaxis] + LV)</a>  &#47&#47 [S, N, P]

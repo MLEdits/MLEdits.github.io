@@ -2,21 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                assert num_succeeded == max_trial_num, &quotonly %d succeeded trial jobs, there should be %d&quot % (num_succeeded, max_trial_num)
-                break
+            trainer.stop()
 
-        <a id="change">assert status == &quotDONE&quot, &quotFailed to finish in maxExecDuration&quot</a>
-    finally:
-        if os.path.exists(new_config_file):
-            os.remove(new_config_file)
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        for _ in range(0, max_duration+30, sleep_interval):
-            time.sleep(sleep_interval)
-            status = get_experiment_status(STATUS_URL)
-            <a id="change">if status in [&quotDONE&quot, &quotERROR&quot] or get_failed_trial_jobs(TRIAL_JOBS_URL):
-                break
+            self.assertTrue(rewards_wo == 0.0)
+            <a id="change">self.assertGreater(rewards_w, 0.1)</a>
 
-       </a> print_failed_job_log(config[&quottrainingServicePlatform&quot], TRIAL_JOBS_URL)
-        if status != &quotDONE&quot or get_succeeded_trial_num(TRIAL_JOBS_URL) &lt; max_trial_num:
-            raise AssertionError(&quotFailed to finish in maxExecDuration&quot)
-    finally:</code></pre>
+
+if __name__ == "__main__":
+    import pytest</code></pre><h3>After Change</h3><pre><code class='java'>
+            for _ in range(num_iterations):
+                result = trainer.train()
+                print(result)
+                <a id="change">if result["episode_reward_mean"] &gt;= 0.001:
+                    print("Learnt something!")
+                    learnt = True
+                    break
+           </a> trainer.stop()
+            self.assertTrue(learnt)
+
+            &#47&#47 &#47&#47 W/o Curiosity. Expect to learn nothing.</code></pre>

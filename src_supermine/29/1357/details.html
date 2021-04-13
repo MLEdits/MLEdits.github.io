@@ -1,4 +1,4 @@
-<html><h3>e94a6641dccda6dd7f8ad86fad82e62388548777,keras/initializers/initializers_v2.py,Zeros,__call__,#Zeros#Any#Any#,132
+<html><h3>e94a6641dccda6dd7f8ad86fad82e62388548777,keras/initializers/initializers_v2.py,RandomUniform,__call__,#RandomUniform#Any#Any#,253
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
@@ -6,21 +6,23 @@
        (via `tf.keras.backend.set_floatx(float_dtype)`).
       **kwargs: Additional keyword arguments.
     
-    <a id="change">return super(Zeros, self).__call__(shape, dtype=_get_dtype(dtype), **kwargs)</a>
+    <a id="change">return super(RandomUniform, self).__call__(
+        shape, dtype=_get_dtype(dtype), **kwargs)</a>
 
 
-@keras_export(&quotkeras.initializers.Ones&quot, &quotkeras.initializers.ones&quot, v1=[])
-class Ones(tf.ones_initializer, Initializer):</code></pre><h3>After Change</h3><pre><code class='java'>
+@keras_export(&quotkeras.initializers.RandomNormal&quot,
+              &quotkeras.initializers.random_normal&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
       **kwargs: Additional keyword arguments.
     
     _validate_kwargs(self.__class__.__name__, kwargs)
     <a id="change">dtype = _get_dtype(dtype)</a>
-    <a id="change">if not dtype.is_numpy_compatible or dtype == tf.string:
-      raise ValueError(&quotExpected numeric or boolean dtype, got %s.&quot % dtype)
+    <a id="change">if not dtype.is_floating and not dtype.is_integer:
+      raise ValueError(&quotExpected float or integer dtype, got %s.&quot % dtype)
    </a> <a id="change">if _PARTITION_SHAPE in kwargs:
       shape = kwargs[_PARTITION_SHAPE]
-   </a> <a id="change">return tf.zeros(shape, dtype)</a>
+   </a> <a id="change">return self._random_generator.random_uniform(shape, self.minval,
+                                                 self.maxval, dtype)</a>
 
-
-@keras_export(&quotkeras.initializers.Ones&quot, &quotkeras.initializers.ones&quot, v1=[])
-class Ones(Initializer):</code></pre><img src="6939305.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 25</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L132' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: Zeros</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L163' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: Ones</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L253' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: RandomUniform</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L132' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: Zeros</div><div id='method'> Method Name: __call__</div><BR>
+  def get_config(self):
+    return {
+        &quotminval&quot: self.minval,</code></pre><img src="7381728.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 25</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L253' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: RandomUniform</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L253' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: RandomUniform</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L163' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: Ones</div><div id='method'> Method Name: __call__</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/e94a6641dccda6dd7f8ad86fad82e62388548777#diff-4a9bb9352ade076e423e571e42e4ddb50bb71f63a3f5abc936a53694c7c6c2c6L132' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: e94a6641dccda6dd7f8ad86fad82e62388548777</div><div id='time'> Time: 2021-01-06</div><div id='author'> Author: scottzhu@google.com</div><div id='file'> File Name: keras/initializers/initializers_v2.py</div><div id='class'> Class Name: Zeros</div><div id='method'> Method Name: __call__</div><BR>

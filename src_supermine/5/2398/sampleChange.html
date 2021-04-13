@@ -3,13 +3,13 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-    bar = Progbar(n)
+    bar = Progbar(None)
     for i, arr in enumerate(input_arr):
         <a id="change">bar.update(i, list(arr))</a>
 
-    bar = Progbar(None)
-    for i, arr in enumerate(input_arr):
-        bar.update(i, list(arr))</code></pre><h3>After Change</h3><pre><code class='java'>
+
+def test_custom_objects_scope():
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
 @keras_test
 def test_progbar():

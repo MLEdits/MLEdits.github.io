@@ -2,26 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    stop_grace_period_secs=300,
-    hooks=hooks,
-  ) as sess:
-    <a id="change">for step, feed_dict in enumerate(train_model.data_layer.iterate_forever()):
-      if sess.should_stop():
-        break
-      tm = time.time()
-      sess.run(fetches=train_model.train_op, feed_dict=feed_dict)
-      if step &gt;= bench_start:
-        total_time += time.time() - tm
+      with self.test_session(use_gpu=True) as sess:
+        tf.global_variables_initializer().run()
+        for num in range(0, 2):
+          <a id="change">for i, model_dict in enumerate(model.data_layer.iterate_one_epoch()):
+            loss, _ = sess.run(
+              [model.loss, model.train_op],
+              feed_dict=model_dict,
+            )
 
- </a> if hvd is not None:
-    deco_print("Finished training on rank {}".format(hvd.rank()))
-  else:
-    deco_print("Finished training")</code></pre><h3>After Change</h3><pre><code class='java'>
-      sess.run(train_model.get_data_layer().iterator.initializer)
-    else:
-      for i in range(train_model.num_gpus):
-        <a id="change">sess.run(train_model.get_data_layer(i).iterator.initializer)</a>
-    step = 0
-    while True:
-      if sess.should_stop():
-        break</code></pre>
+
+</a>class BasicText2TextWithAttentionTestOnHorovod(tf.test.TestCase):
+  def setUp(self):
+    print("Setting Up BasicSeq2SeqWithAttention on Horovod")
+    create_data(train_corpus_size=500)</code></pre><h3>After Change</h3><pre><code class='java'>
+      model.compile()
+      with self.test_session(use_gpu=True) as sess:
+        tf.global_variables_initializer().run()
+        <a id="change">sess.run(model.get_data_layer().iterator.initializer)</a>
+        while True:
+          try:
+            loss, _ = sess.run(
+              [model.loss, model.train_op]</code></pre>

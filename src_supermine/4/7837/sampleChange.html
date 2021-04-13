@@ -2,14 +2,14 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        return
-    if os.access(os.path.dirname(package_home), os.W_OK):
-        subprocess.check_call(["rm", "-rf", package_home])
-        <a id="change">subprocess.check_call(["ln", "-s", local_home, package_home])</a>
-    else:
         print("You don&quott have write permission to {}, using sudo:".format(
             package_home))
-        subprocess.check_call(["sudo", "rm", "-rf", package_home])</code></pre><h3>After Change</h3><pre><code class='java'>
+        subprocess.check_call(["sudo", "rm", "-rf", package_home])
+        <a id="change">subprocess.check_call(["sudo", "ln", "-s", local_home, package_home])</a>
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(</code></pre><h3>After Change</h3><pre><code class='java'>
             default=True):
         return
     &#47&#47 Windows: Create directory junction.

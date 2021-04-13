@@ -2,19 +2,22 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                n = y.shape[0] // 10
-                y_shape = y.shape[1:]
-                y = y.reshape((n, 10) + y_shape)
-                <a id="change">y = self.xp.sum(y, axis=1) / 10</a>
-        return cuda.to_cpu(y)
+        if "prev_penalty" in beam.global_state.keys():
+            beam.scores.add_(beam.global_state["prev_penalty"])
+            cov = beam.global_state["coverage"] + attn
+            <a id="change">penalty = self.beta * (torch.max(cov, cov.clone().fill_(1.0)).sum(1) - cov.size(1))</a>
+            beam.scores.sub_(penalty)
 
+    def update_global_state(self, beam):
+        "Keeps the coverage vector as sum of attens"</code></pre><h3>After Change</h3><pre><code class='java'>
+        if "prev_penalty" in beam.global_state.keys():
+            beam.scores.add_(beam.global_state["prev_penalty"])
+            cov = beam.global_state["coverage"] + attn
+            <a id="change">penalty = self.cov_penalty(beam,
+                                       logprobs,
+                                       beam.global_state["coverage"],
+                                       self.beta)</a>
+            <a id="change">beam.global_state["prev_penalty"]</a> = penalty
+            beam.scores.sub_(penalty)
 
-def _max_pooling_2d(x):</code></pre><h3>After Change</h3><pre><code class='java'>
-
-                if self.do_ten_crop:
-                    activation = self._gather_ten_crop(activation)
-                <a id="change">activations[name] = cuda.to_cpu(activations)</a>
-        else:
-            activations = cuda.to_cpu(activations.data)
-            if self.do_ten_crop:
-                activations = self._gather_ten_crop(activations)</code></pre>
+    def update_global_state(self, beam):</code></pre>

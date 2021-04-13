@@ -2,24 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-      rel_prob = tf.math.sigmoid(tf.cast(rel_logits, tf.float32))
-      is_clicked = tf.greater_equal(tf.cast(clicks, tf.float32), 1.0)
+    encoder_output = encoder(src_text[&quottext_ids&quot][:, :-1],
+            sequence_length=src_text[&quotlength&quot]-1)
+    &#47&#47 Decode
+    <a id="change">outputs</a>, final_state, sequence_lengths = decoder(
+        initial_state=connector(text_database._hparams.batch_size))
 
-      <a id="change">prob_non_clicks = 1 - exam_prob * rel_prob + 1e-6</a>
-      exam_prob_given_non_clicks = exam_prob * (1 - rel_prob) / prob_non_clicks
-      rel_prob_given_non_clicks = (1 - exam_prob) * rel_prob / prob_non_clicks
+    &#47&#47 Build loss</code></pre><h3>After Change</h3><pre><code class='java'>
+    src_text = text_data_batch[&quotsource_text_ids&quot]
+    tgt_text = text_data_batch[&quottarget_text_ids&quot]
 
-      <a id="change">exam_prob_given_non_clicks</a>, rel_prob_given_non_clicks = [
-          tf.stop_gradient(
-              tf.compat.v1.where(is_clicked, tf.ones_like(prob), prob))
-          for prob in [exam_prob_given_non_clicks, rel_prob_given_non_clicks]</code></pre><h3>After Change</h3><pre><code class='java'>
-      exam_prob_posterior = tf.compat.v1.where(
-          is_clicked, tf.ones_like(exam_logits_posterior),
-          tf.sigmoid(exam_logits_posterior))
-      <a id="change">rel_prob_posterior = tf.compat.v1.where(
-          is_clicked, tf.ones_like(rel_logits_posterior),
-          tf.sigmoid(rel_logits_posterior))</a>
-      return tf.stop_gradient(exam_prob_posterior), tf.stop_gradient(
-          rel_prob_posterior)
+    decoder_inputs = tf.concat((<a id="change">tf.ones_like(tgt_text[:, :1])</a>, tgt_text[:, :-1]), -1)
 
-  def compute_unreduced_loss(self, labels, logits):</code></pre>
+    print(&quotsrc_text:{}&quot.format(src_text))
+    encoder_output = encoder(src_text,
+            sequence_length=text_data_batch[&quotsource_length&quot])
+    &#47&#47 Decode
+    print(&quotencoder_output:{}&quot.format(encoder_output.shape))
+    <a id="change">logits, preds = decoder(decoder_inputs, encoder_output)</a>
+    print(&quotlogits:{}&quot.format(logits.shape))
+    &#47&#47istarget = tf.to_float(tf.not_equal(y, 0))
+    &#47&#47 acc = tf.reduce_sum(tf.to_float(tf.equal(preds,
+    &#47&#47 Build loss</code></pre>

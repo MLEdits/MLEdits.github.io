@@ -2,11 +2,11 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        .shard(num_shards=self._num_workers, index=self._worker_id)
+          .shard(num_shards=self._num_workers, index=self._worker_id)
 
     if self.params[&quotshuffle&quot]:
-      _src_tgt_dataset = <a id="change">_src_tgt_dataset\
-        .shuffle(buffer_size=self.get_size_in_samples())</a>
+      <a id="change">_src_tgt_dataset = _src_tgt_dataset\
+          .shuffle(buffer_size=self.get_size_in_samples())</a>
     else:
       _src_tgt_dataset = _src_tgt_dataset
 
@@ -14,8 +14,8 @@
     if self.params[&quotshuffle&quot]:
       bf_size = self.get_size_in_samples() if self._shuffle_buffer_size == -1 \
                                            else self._shuffle_buffer_size
-      <a id="change">_src_tgt_dataset = _src_tgt_dataset.shuffle(buffer_size=bf_size)</a>
-
+      _src_tgt_dataset = <a id="change">_src_tgt_dataset.shuffle(buffer_size=bf_size)</a>
     else:
       _src_tgt_dataset = _src_tgt_dataset
-</code></pre>
+
+    if self.params[&quotrepeat&quot]:</code></pre>

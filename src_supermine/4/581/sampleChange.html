@@ -5,15 +5,16 @@
             indices = tf.stack([tf.range(tf.shape(h)[0]), seq_lengths], axis=1)
             h_last = tf.gather_nd(h, indices)
         else:
-            <a id="change">h_last = tf.squeeze(h_last, 0)</a>
-        c_last = tf.squeeze(c_last, 0)
-        return h, (h_last, c_last)
+            h_last = <a id="change">tf.squeeze(h_last, 0)</a>
+        return h, h_last
 
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        h, (h_last, c_last) = lstm(tf.transpose(units, (1, 0, 2)), (initial_h, initial_c))
+
+def cudnn_lstm(units, n_hidden, n_layers=1, trainable_initial_states=None, seq_lengths=None, initial_h=None, initial_c=None,</code></pre><h3>After Change</h3><pre><code class='java'>
+
+        h, h_last = gru(tf.transpose(units, (1, 0, 2)), (initial_h, ))
         h = tf.transpose(h, (1, 0, 2))
-        h_last = tf.reshape(h_last, shape=(-1, n_hidden))
-        c_last = tf.reshape(c_last, shape=<a id="change">(-1, n_hidden)</a>)
+        <a id="change">h_last = tf.reshape(h_last, shape=(-1, n_hidden))</a>
 
         &#47&#47 Extract last states if they are provided
-        if seq_lengths is not None:</code></pre>
+        if seq_lengths is not None:
+            indices = tf.stack([tf.range(tf.shape(h)[0]), seq_lengths], axis=1)</code></pre>

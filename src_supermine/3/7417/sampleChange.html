@@ -2,19 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-            argv, reset_widget_triggers(widget_state))
+        return state
 
-        &#47&#47 Update the Widget singleton with the new widget_state
-        <a id="change">self._ctx.widgets.set_state(widget_state)</a>
-
-        if config.get_option(&quotrunner.installTracer&quot):
-            self._install_tracer()
+    def set_state(self, state):
+        <a id="change">super().set_state(state)</a>
+        self.max_features = state[&quotmax_features&quot]
+        self.pretraining = state[&quotpretraining&quot]
+        self.embedding_dim = state[&quotembedding_dim&quot]
 </code></pre><h3>After Change</h3><pre><code class='java'>
+    def build(self, hp, inputs=None):
+        inputs = nest.flatten(inputs)
+        if len(inputs) == 1:
+          <a id="change">  return inputs
 
-        &#47&#47 Update the Widget singleton with the new widget_state
-        if rerun_data.widget_state is not None:
-            <a id="change">self._widgets.set_state(rerun_data.widget_state)</a>
-
-        if config.get_option(&quotrunner.installTracer&quot):
-            self._install_tracer()
+        merge_type = self.merge_type or hp.</a>Choice(&quotmerge_type&quot,
+                                                  [&quotadd&quot, &quotconcatenate&quot],
+                                                  default=&quotadd&quot)
 </code></pre>

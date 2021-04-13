@@ -10,11 +10,10 @@
 
     def load_pretrained_vectors(self, emb_file):
         if emb_file is not None:</code></pre><h3>After Change</h3><pre><code class='java'>
-            return self.word_lut.embedding_dim
 
     def make_positional_encodings(self, dim, max_len):
-        pe = <a id="change">torch</a>.arange(0, max_len).unsqueeze(1).expand(max_len, dim)
-        div_term = 1 / torch.pow(10000, torch.arange(0, dim * 2, 2) / dim)
+        pe = torch.arange(0, max_len).unsqueeze(1).expand(max_len, dim)
+        div_term = 1 / torch.pow(10000, <a id="change">torch.arange(0, dim * 2, 2)</a> / dim)
         pe = pe * div_term.expand_as(pe)
         pe[:, 0::2] = torch.sin(pe[:, 0::2])
         <a id="change">pe[:, 1::2] = torch.cos(pe[:, 1::2])</a>

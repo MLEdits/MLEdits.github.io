@@ -2,24 +2,39 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    word_to_id = {k: (v + index_offset) for k, v in word_to_id.items()}
-    word_to_id["&lt;PAD&gt;"] = 0
-    word_to_id["&lt;START&gt;"] = 1
-    <a id="change">word_to_id["&lt;UNK&gt;"]</a> = 2
+            for name in df[args.img_col].values
+        ]
+        img_data = np.stack(
+            [load_image(name, args.img_size) <a id="change">for</a> name in image_names], axis=0
+        )
+        img_data = (
+            img_data.transpose((0, 3, 1, 2)) / 255.0  &#47&#47 noqa: WPS432</code></pre><h3>After Change</h3><pre><code class='java'>
+    if args.num_rows is not None:
+        indices = np.random.choice(len(df), args.num_rows)
+        features = features[indices, :]
+        <a id="change">df = df.iloc[indices]</a>
 
-    id_to_word = {value: key for key, value in word_to_id.items()}
-    x_train = list(</code></pre><h3>After Change</h3><pre><code class='java'>
-    
-    classes = [&quotpos&quot, &quotneg&quot]
-    train_data = load_files(os.path.join(IMDB_DATADIR, &quottrain&quot), shuffle=True, categories=classes)
-    test_data = load_files(<a id="change">os.path.join(IMDB_DATADIR,  &quottest&quot)</a>, shuffle=False, categories=classes)
+    if args.img_col is not None:
+        img_data = _load_image_data(
+            rootpath=args.img_rootpath, paths=df[args.img_col].values
+        )
+    else:
+        img_data = None
 
-    encoding = &quotutf-8&quot
-    x_train = np.array(train_data.data)
-    y_train = np.array(train_data.target)
-    x_test = np.array(test_data.data)
-    <a id="change">y_test = np.array(test_data.target)</a>
-    return (x_train, y_train), (x_test, y_test)
-
-
-def main():</code></pre>
+    summary_writer = SummaryWriter(args.out_dir)
+    metadata = df[meta_header].values.tolist()
+    <a id="change">metadata = [
+        [
+            str(text)
+            .replace("\n", " ")
+            .replace(r"\s", " ")
+            .replace(r"\s\s+", " ")
+            .strip()
+            for text in texts
+        ]
+        for texts in metadata
+    ]</a>
+    assert len(metadata) == len(features)
+    summary_writer.add_embedding(
+        features,
+        metadata=metadata,</code></pre>

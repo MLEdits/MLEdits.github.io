@@ -5,18 +5,12 @@
 
 def _build_indel_size_chart(vis_data):
   Create the indel size chart.
-  indel_size_data = <a id="change">pd.DataFrame(
+  <a id="change">indel_size_data = pd.DataFrame(
       vis_data[&quotindel_sizes&quot], columns=[&quotsize&quot, &quotcount&quot])</a>
   indel_size_data[&quottype&quot] = np.where(indel_size_data[&quotsize&quot] &gt; 0, &quotInsertions&quot,
                                      &quotDeletions&quot)
   &#47&#47 using &quotsize&quot alone makes bars overlap slightly, so instead use bin_start and
-  &#47&#47 bin_end to force each bar to cover exactly one integer position:
-  indel_size_data[&quotbin_start&quot] = indel_size_data[&quotsize&quot] - 0.5
-  <a id="change">indel_size_data[&quotbin_end&quot] = indel_size_data[&quotsize&quot] + 0.5</a>
-
-  indels_linear = alt.Chart(indel_size_data).mark_bar().encode(
-      x=alt.X(&quotbin_start&quot, title=&quotsize&quot),
-      x2=&quotbin_end&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
+  &#47&#47 bin_end to force each bar to cover exactly one integer position:</code></pre><h3>After Change</h3><pre><code class='java'>
   height = 100
   placeholder_height = (2 * height) + 20  &#47&#47 2 charts, plus spacing
   title = &quotBiallelic indel size distribution&quot

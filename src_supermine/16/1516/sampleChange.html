@@ -10,25 +10,13 @@
     def _reset_states(self):
         self.sum_y = 0.0
         self.sum_y_squared = 0.0</code></pre><h3>After Change</h3><pre><code class='java'>
-            &quotsum_y&quot, initializer=&quotzeros&quot,
-            dtype=tf.float32
-        )
-        <a id="change">self.sum_y_squared = self.add_weight(
-            &quotsum_y_squared&quot, initializer=&quotzeros&quot,
-            dtype=tf.float32
-        )</a>
-        self.sum_y_hat = self.add_weight(
-            &quotsum_y_hat&quot, initializer=&quotzeros&quot,
-            dtype=tf.float32
-        )
-        self.sum_y_hat_squared = self.add_weight(
             &quotsum_y_hat_squared&quot, initializer=&quotzeros&quot,
             dtype=tf.float32
         )
-        self.sum_y_hat = self.add_weight(
+        <a id="change">self.sum_y_hat = self.add_weight(
             &quotsum_y_y_hat&quot, initializer=&quotzeros&quot,
             dtype=tf.float32
-        )
+        )</a>
         <a id="change">self.sum_y_y_hat = self.add_weight(
             &quotsum_y_y_hat&quot, initializer=&quotzeros&quot,
             dtype=tf.float32

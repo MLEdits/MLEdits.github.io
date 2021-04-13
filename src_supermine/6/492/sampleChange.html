@@ -17,7 +17,7 @@
     specificity_part = tf.reduce_sum(squared_error * one_hot, 0) / tf.reduce_sum(one_hot, 0)
     sensitivity_part = <a id="change">tf.reduce_sum(tf.multiply(squared_error, one_cold), 0)</a> / tf.reduce_sum(one_cold, 0)
 
-    return tf.reduce_sum(<a id="change">r * specificity_part + (1 - r) * sensitivity_part</a>)
+    return tf.reduce_sum(r * specificity_part + <a id="change">(</a>1 - r) * sensitivity_part)
 
 
 def l2_reg_loss(scope):</code></pre>

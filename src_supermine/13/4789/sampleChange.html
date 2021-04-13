@@ -11,16 +11,10 @@
     with self.test_session() as sess:
       sess.run(tf.global_variables_initializer())
       unclipped = np.random.rand(3, 5) - 0.5</code></pre><h3>After Change</h3><pre><code class='java'>
-    unclipped = unclipped.astype(np.float32)
-    clipped = unclipped.clip(-1., 1.)
-
-    <a id="change">hidden = tf.constant(unclipped)</a>
-    cell = tf.constant(unclipped)
-    output = core(obs, [hidden, cell])
     self.evaluate(tf.global_variables_initializer())
     output1, (hidden1, cell1) = self.evaluate(output)
 
-    cell = tf.constant(clipped)
+    <a id="change">cell = tf.constant(clipped)</a>
     <a id="change">output = core(obs, [hidden, cell])</a>
     output2, (hidden2, cell2) = self.evaluate(output)
     self.assertAllClose(output1, output2)

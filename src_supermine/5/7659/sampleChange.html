@@ -2,12 +2,15 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    full += _make_table(shared)
+    full = &quot&#47&#47 MatchZoo Model Hyper-parameters Reference \n\n&quot
+    full += &quot&#47&#47&#47&#47 Shared Parameters \n\n&quot
+    shared = matchzoo.engine.BaseModel.get_default_params()
+    <a id="change">full += _make_table(shared)</a>
 
     for m in matchzoo.models.list_available():
-        <a id="change">m = m()</a>
+        m = m()
         <a id="change">full</a> += &quot&#47&#47&#47&#47 &quot + str(m.__class__.__name__) + &quot\n\n&quot
-        <a id="change">full</a> += _make_table([p for p in m.get_default_params()
+        full += _make_table([p for p in m.get_default_params()
                              if p.name not in shared.keys()])
 
     file_path = Path(__file__).parent.joinpath(&quotREADME.md&quot)

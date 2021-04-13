@@ -5,7 +5,7 @@
     pass
 
 
-<a id="change">__all__ = ["NeptuneRunner", "SupervisedNeptuneRunner"]</a>
+<a id="change">__all__ = ["WandbRunner", "SupervisedWandbRunner"]</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
 from catalyst.dl.experiment import ConfigExperiment
 from catalyst.dl.runner import SupervisedRunner
@@ -13,5 +13,5 @@ from catalyst.dl.runner import SupervisedRunner
 <a id="change">warnings.simplefilter("always")</a>
 
 
-class NeptuneRunner(Runner):
+class WandbRunner(Runner):
     </code></pre>

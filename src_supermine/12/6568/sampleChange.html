@@ -2,36 +2,26 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+    &#47&#47 &#47&#47 parses requirements from requirements.txt
+    reqs_path = os.path.join(__location__, &quotrequirements.txt&quot)
+    install_reqs = parse_requirements(reqs_path, session=PipSession())
+    reqs = <a id="change">[str(ir.req) for ir in install_reqs]</a>
 
-        final_output, final_states = _recurrence(inputs, states)
-        last_output = C.sequence.last(final_output)
-        <a id="change">last_states = final_states</a>
+    <a id="change">for r in reqs:
+        pip.main([&quotinstall&quot, &quot-U&quot, r])
+   </a> return reqs
 
-    if need_convert:
-        final_output = C.sequence.unpack(final_output, 0, no_mask_output=True)
-        last_states = [
-            C.sequence.unpack(
-                s, 0, no_mask_output=True) for <a id="change">s</a> in last_states]
-        if num_time_step is not None and num_time_step is not C.FreeDimension:
-            final_output = _reshape_sequence(final_output, num_time_step)
-            <a id="change">last_states = [
-                _reshape_sequence(
-                    _, num_time_step) for _ in last_states]</a>
 
-    return last_output, final_output, last_states
+setup(license=&quotApache License, Version 2.0&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
+    &#47&#47 &#47&#47 parses requirements from requirements.txt
+    reqs_path = os.path.join(__location__, &quotrequirements.txt&quot)
+    install_reqs = parse_requirements(reqs_path, session=PipSession())
+    <a id="change">reqs = []</a>
+    <a id="change">for ir in install_reqs:
+        pip.main([&quotinstall&quot, str(ir.req or ir.link)])
+        if ir.req:
+            reqs.append(str(ir.req))
+   </a> return reqs
 
-</code></pre><h3>After Change</h3><pre><code class='java'>
-    if num_time_step is None and not has_seq_axis(inputs):
-        num_time_step = inputs.shape[0]
 
-    <a id="change">initial = []</a>
-    <a id="change">for s in initial_states:
-        if _get_dynamic_axis_num(s) == 0:
-            initial.append(C.user_function(ConvertToBatch(s)))
-        else:
-            initial.append(s)
-
-   </a> need_convert = not has_seq_axis(inputs)
-    if need_convert:
-        inputs = C.to_sequence(inputs)
-</code></pre>
+setup(license=&quotApache License, Version 2.0&quot,</code></pre>

@@ -2,24 +2,23 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        self.current += batch_size
+    for ir in install_reqs:
+        pip_main([&quotinstall&quot, str(ir.req or ir.link)])
+        if ir.req:
+            <a id="change">reqs.append(str(ir.req))</a>
+    return reqs
 
-        loss = logs.get(&quotloss&quot)
-        <a id="change">self.log_values.append((&quotloss&quot, loss))</a>
-        self.tot_loss += loss * batch_size
-        if self.params[&quotshow_accuracy&quot]:
-            accuracy = logs.get(&quotaccuracy&quot)
-            self.log_values.append((&quotacc.&quot, accuracy))</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        for k, v in logs.items():
-            self.log_values.append((k, v))
-            <a id="change">if k in self.totals:
-                self.totals[k] += v * batch_size
-            else:
-                self.totals[k] = v * batch_size
+def readme():</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        &#47&#47 skip progbar update for the last batch; will be handled by on_epoch_end
-       </a> if self.verbose and self.seen &lt; self.params[&quotnb_sample&quot]:
-            self.progbar.update(self.seen, self.log_values)
+    names = []
+    links = []
+    <a id="change">for req in reqs:
+        if &quot://&quot in req:
+            links.append(req)
+        else:
+            names.append(req)
+   </a> return {&quotinstall_requires&quot: names, &quotdependency_links&quot: links}
 
-    def on_epoch_end(self, epoch, logs={}):</code></pre>
+
+def readme():</code></pre>

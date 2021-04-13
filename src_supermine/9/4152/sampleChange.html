@@ -24,26 +24,8 @@
 
     if args.num_rows is not None:
         indices = np.random.choice(<a id="change">len(df)</a>, args.num_rows)
-        features = features[indices, :]
+        <a id="change">features = features[indices, :]</a>
         df = df.iloc[indices]
 
     if args.img_col is not None:
-        img_data = _load_image_data(
-            rootpath=args.img_rootpath, paths=df[args.img_col].values
-        )
-    else:
-        img_data = None
-
-    summary_writer = SummaryWriter(args.out_dir)
-    metadata = df[meta_header].values.tolist()
-    metadata = [
-        [
-            str(text)
-            .replace("\n", " ")
-            .replace(r"\s", " ")
-            .replace(r"\s\s+", " ")
-            .strip()
-            <a id="change">for</a> text in texts
-        ]
-        for texts in metadata
-    ]</code></pre>
+        img_data = _load_image_data(</code></pre>

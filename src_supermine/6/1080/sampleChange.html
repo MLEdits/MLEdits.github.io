@@ -12,11 +12,10 @@
 
        </a> return result
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        id = json.loads(id)
         is_client_worker = json.loads(is_client_worker)
         log_msgs = json.loads(log_msgs)
-        verbose = <a id="change">json.loads(verbose)</a>
-        encoding = json.loads(encoding)
+        verbose = json.loads(verbose)
+        encoding = <a id="change">json.loads(encoding)</a>
         timeout = json.loads(timeout)
 
         hook = sy.local_worker.hook

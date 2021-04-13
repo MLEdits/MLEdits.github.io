@@ -13,8 +13,13 @@
     n_inst = len(bbox)
     colors = np.array([_default_cmap(l) for l in range(1, n_inst + 1)])
 
-    <a id="change">canvas_img = img.transpose((1, 2, 0)).copy()</a>
+    canvas_img = img.transpose(<a id="change">(1, 2, 0)</a>).copy()
     for i, (color, bb, msk) in enumerate(zip(colors, bbox, mask)):
         bb = np.round(bb).astype(np.int32)
         y_min, x_min, y_max, x_max = bb
-        if y_max &gt; y_min and x_max &gt; x_min:</code></pre>
+        if y_max &gt; y_min and x_max &gt; x_min:
+            <a id="change">canvas_img[msk] = alpha * color + canvas_img[msk] * (1 - alpha)</a>
+
+        caption = []
+        if label is not None and label_names is not None:
+            lb = label[i]</code></pre>

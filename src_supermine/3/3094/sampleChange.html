@@ -3,18 +3,18 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-            if self.do_ten_crop:
-                n = y.shape[0] // 10
-                y_shape = <a id="change">y.shape[1:]</a>
-                y = y.reshape((n, 10) + y_shape)
-                y = self.xp.sum(y, axis=1) / 10
-        return cuda.to_cpu(y)
-</code></pre><h3>After Change</h3><pre><code class='java'>
-                    activation = self._gather_ten_crop(activation)
-                activations[name] = cuda.to_cpu(activations)
-        else:
-            activations = <a id="change">cuda.to_cpu(activations.data)</a>
-            if self.do_ten_crop:
-                activations = self._gather_ten_crop(activations)
+  @parameterized.parameters(opt.Momentum, opt.FastMomentum)
+  def testNoneUpdate(self, opt_class):
+    parameters = <a id="change">[tf.Variable([1., 2.])]</a>
+    updates = [None]
+    optimizer = opt_class(learning_rate=0.1, momentum=0.9)
+    optimizer.apply(updates, parameters)
+    self.assertAllClose([[1., 2.]], [x.numpy() for x in parameters])</code></pre><h3>After Change</h3><pre><code class='java'>
+    updates = [None, tf.constant(3.)]
+    optimizer = opt_class(learning_rate=0.1, momentum=0.9)
+    optimizer.apply(updates, parameters)
+    <a id="change">self.assertAllClose(1., parameters[0].numpy())</a>
 
-        return activations</code></pre>
+  @parameterized.parameters(momentum.Momentum, momentum.FastMomentum)
+  def testVariableHyperParams(self, opt_class):
+    parameters = [tf.Variable([1., 2.]), tf.Variable([3., 4.])]</code></pre>

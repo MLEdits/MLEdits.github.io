@@ -10,10 +10,11 @@
     @staticmethod
     def collapse_copy_scores(scores, batch, tgt_vocab, src_vocabs):
         </code></pre><h3>After Change</h3><pre><code class='java'>
-         Sort using length of source sentences. 
-        &#47&#47 Default to a balanced sort, prioritizing tgt len match.
-        &#47&#47 TODO: make this configurable.
-        <a id="change">return len(ex.src)</a> &#47&#47(int(len(ex.tgt) / 5), int(len(ex.src) / 5))
-        &#47&#47return (int(len(ex.tgt) / 5), int(len(ex.src) / 5))
 
-    @staticmethod</code></pre>
+    def sort_key(self, ex):
+         Sort using length of source sentences. 
+        <a id="change">return len(ex.src)</a>
+
+    @staticmethod
+    def collapse_copy_scores(scores, batch, tgt_vocab, src_vocabs):
+        </code></pre>

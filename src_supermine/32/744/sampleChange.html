@@ -7,25 +7,29 @@
         input_dim = self.input_shape[2]
         self.input = <a id="change">T.tensor3()
 
-</a>        self.W = self.init((input_dim, self.output_dim))
-        self.U = self.inner_init((self.output_dim, self.output_dim))
-        self.b = shared_zeros((self.output_dim))
-        self.params = [self.W, self.U, self.b]</code></pre><h3>After Change</h3><pre><code class='java'>
+</a>        self.W_i = self.init((input_dim, self.output_dim))
+        self.U_i = self.inner_init((self.output_dim, self.output_dim))
+        self.b_i = shared_zeros((self.output_dim))
+</code></pre><h3>After Change</h3><pre><code class='java'>
 
     def build(self):
         input_shape = self.input_shape
+        <a id="change">input_dim = input_shape[2]</a>
+        <a id="change">self.input_dim = input_dim</a>
+        self.input = K.placeholder(input_shape)
+
         <a id="change">if self.stateful:
             if not input_shape[0]:
                 raise Exception(&quotIf a RNN is stateful, a complete &quot +
                                 &quotinput_shape must be provided &quot +
                                 &quot(including batch size).&quot)
-            self.states = [K.zeros(input_shape[0], self.output_dim)]
+            self.states = [K.zeros(input_shape[0], self.output_dim),
+                           K.zeros(input_shape[0], self.output_dim)]
         else:
-            &#47&#47 initial states: all-zero tensor of shape (output_dim)
-            self.states = [None]
-       </a> <a id="change">input_dim = input_shape[2]</a>
-        <a id="change">self.input_dim = input_dim</a>
+            &#47&#47 initial states: 2 all-zero tensor of shape (output_dim)
+            self.states = [None, None]
 
-        self.W = self.init((input_dim, self.output_dim))
-        self.U = self.inner_init((self.output_dim, self.output_dim))
-        self.b = K.zeros((self.output_dim))</code></pre>
+       </a> self.W_i = self.init((input_dim, self.output_dim))
+        self.U_i = self.inner_init((self.output_dim, self.output_dim))
+        self.b_i = K.zeros((self.output_dim))
+</code></pre>

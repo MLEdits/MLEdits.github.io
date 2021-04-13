@@ -15,12 +15,11 @@
 
         n_in = int(self.inputs.get_shape()[-1])
         self.n_units = n_units
-        logging.info("DorefaDenseLayer  %s: %d %s" % (<a id="change">self.name</a>, <a id="change">self.n_units</a>, act.__name__))
+        logging.info("BinaryDenseLayer  %s: %d %s" % (<a id="change">self.name</a>, <a id="change">self.n_units</a>, act.__name__))
         with tf.variable_scope(name):
             W = tf.get_variable(name=&quotW&quot, shape=(n_in, n_units), initializer=W_init, dtype=LayersConfig.tf_dtype, **W_init_args)
             &#47&#47 W = tl.act.sign(W)    &#47&#47 dont update ...
-            W = _quantize_weight(W, bitW)
-            <a id="change">self.inputs</a> = _quantize_active(_cabs(self.inputs), bitA)
+            W = quantize(W)
             &#47&#47 W = tf.Variable(W)
             &#47&#47 print(W)
             if b_init is not None:
@@ -31,12 +30,15 @@
                 <a id="change">self.outputs</a> = act(tf.matmul(self.inputs, W) + b)
                 &#47&#47 self.outputs = act(xnor_gemm(self.inputs, W) + b) &#47&#47 TODO
             else:
-                self.outputs = act(tf.matmul(self.inputs, W))</code></pre><h3>After Change</h3><pre><code class='java'>
+                <a id="change">self.outputs</a> = act(tf.matmul(self.inputs, W))
+                &#47&#47 self.outputs = act(xnor_gemm(self.inputs, W)) &#47&#47 TODO
+
+        self.all_layers.append(self.outputs)</code></pre><h3>After Change</h3><pre><code class='java'>
             b_init_args=None,
-            name=&quotdorefa_dense&quot,
+            name=&quotbinary_dense&quot,
     ):
-        <a id="change">super(DorefaDenseLayer, self).__init__(prev_layer=prev_layer, name=name)</a>
-        logging.info("DorefaDenseLayer  %s: %d %s" % (name, n_units, act.__name__))
+        <a id="change">super(BinaryDenseLayer, self).__init__(prev_layer=prev_layer, name=name)</a>
+        logging.info("BinaryDenseLayer  %s: %d %s" % (name, n_units, act.__name__))
 
         <a id="change">self.inputs = prev_layer.outputs</a>
 
@@ -47,6 +49,7 @@
 
         if self.inputs.get_shape().ndims != 2:
             raise Exception("The input dimension must be rank 2, please reshape or flatten it")
+
         if use_gemm:
             raise Exception("TODO. The current version use tf.matmul for inferencing.")
 
@@ -56,8 +59,7 @@
         with tf.variable_scope(name):
             W = tf.get_variable(name=&quotW&quot, shape=(n_in, n_units), initializer=W_init, dtype=LayersConfig.tf_dtype, **W_init_args)
             &#47&#47 W = tl.act.sign(W)    &#47&#47 dont update ...
-            W = _quantize_weight(W, bitW)
-            <a id="change">self.inputs</a> = _quantize_active(_cabs(self.inputs), bitA)
+            W = quantize(W)
             &#47&#47 W = tf.Variable(W)
             &#47&#47 print(W)
             if b_init is not None:
@@ -68,4 +70,7 @@
                 <a id="change">self.outputs</a> = act(tf.matmul(self.inputs, W) + b)
                 &#47&#47 self.outputs = act(xnor_gemm(self.inputs, W) + b) &#47&#47 TODO
             else:
-                self.outputs = act(tf.matmul(self.inputs, W))</code></pre>
+                <a id="change">self.outputs</a> = act(tf.matmul(self.inputs, W))
+                &#47&#47 self.outputs = act(xnor_gemm(self.inputs, W)) &#47&#47 TODO
+
+        self.all_layers.append(self.outputs)</code></pre>

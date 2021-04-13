@@ -2,38 +2,38 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    pointwise_kernel = _preprocess_conv2d_kernel(pointwise_kernel, data_format)
-    padding = _preprocess_border_mode(padding)
+                    layers.get_initializer(self._hparams.initializer))
 
-    <a id="change">if dilation_rate == (1, 1):
-        x = C.convolution(depthwise_kernel, x,
-                          strides=strides,
-                          auto_padding=[False, padding, padding],
-                          groups=x.shape[0])
-        x = C.convolution(pointwise_kernel, x,
-                          strides=(1, 1, 1),
-                          auto_padding=[False])
-    else:
-        if dilation_rate[0] != dilation_rate[1]:
-            raise ValueError(&quotCNTK Backend: non-square dilation_rate is &quot
-                             &quotnot supported.&quot)
-        if strides != (1, 1):
-            raise ValueError(&quotInvalid strides for dilated convolution&quot)
-        x = C.convolution(depthwise_kernel, x,
-                          strides=strides,
-                          auto_padding=[False, padding, padding],
-                          groups=x.shape[0])
-        x = C.convolution(pointwise_kernel, x,
-                          strides=(1, 1, 1),
-                          auto_padding=[False])
-   </a> x = _postprocess_conv2d_output(x, data_format)
-    return squeeze(x, spatial_start_dim)
+            &#47&#47 Make the output layer
+            <a id="change">if is_callable(output_layer):
+                self._output_layer = output_layer
+            elif tf.contrib.framework.is_tensor(output_layer):
+                self._vocab_size = shape_list(output_layer)[1]
+                self._output_layer = self._make_output_layer_from_tensor(
+                    output_layer)
+            elif output_layer is None:
+                if self._vocab_size is None:
+                    raise ValueError(
+                        "Either `output_layer` or `vocab_size` must be provided"
+                        " Set `output_layer=tf.identity` if no output layer is "
+                        "wanted.")
+                with tf.variable_scope(self.variable_scope):
+                    self._output_layer = tf.layers.Dense(
+                        units=self._vocab_size,
+                        use_bias=self._hparams.output_layer_bias)
+            else:
+                raise ValueError(
+                    "output_layer should be tensor or callable layer or None."
+                    "Unsupported type:", type(output_layer)
+                )
+           </a> self.multihead_attentions = {
+                &quotself_att&quot: [],
+                &quotencdec_att&quot: []
+            }</code></pre><h3>After Change</h3><pre><code class='java'>
+                    layers.get_initializer(self._hparams.initializer))
 
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        raise ValueError(
-            &quotDilated separable 1D convolution is currently not supported &quot
-            &quotby CNTK backend. Please set `dilation_rate` to 1. &quot
-            &quotYou passed: %s&quot % <a id="change">(dilation_rate,)</a>)
-
-    if data_format == &quotchannels_last&quot:
-        spatial_start_dim = 2</code></pre>
+            &#47&#47 Make the output layer
+            <a id="change">self</a>._output_layer, self._vocab_size = _make_output_layer(
+                output_layer, vocab_size, self._hparams.output_layer_bias,
+                self.variable_scope)
+</code></pre>

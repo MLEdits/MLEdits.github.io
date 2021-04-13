@@ -3,9 +3,10 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
+
 def _get_resource(container_resources, resource_name, field_name):
-    if (field_name in container_resources
-            and <a id="change">resource_name in container_resources[field_name]</a>):
+    if (<a id="change">field_name in container_resources</a>
+            and resource_name in container_resources[field_name]):
         return _parse_resource(container_resources[field_name][resource_name])
     else:
         return float("inf")</code></pre><h3>After Change</h3><pre><code class='java'>

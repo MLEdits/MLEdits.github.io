@@ -9,13 +9,15 @@
         return graph.get_tensor_by_name(name)
     except ValueError:
         return None</code></pre><h3>After Change</h3><pre><code class='java'>
+    if index is not None:
+        return _get_tensor_by_name(name, index, graph)
     tensor = _get_tensor_by_name(name, &quot0&quot, graph)
-    if tensor is None:
+    <a id="change">if tensor is None:
         return tensor
-    <a id="change">if _get_tensor_by_name(name, &quot1&quot, graph) is not None:
-        raise ValueError(&quotAmbiguous tensor for "{0}" with multiple indices found.&quot
-                         .format(name))
-   </a> return tensor
+   </a> if _get_tensor_by_name(name, &quot1&quot, graph) is not None:
+        <a id="change">raise ValueError(&quotAmbiguous tensor for "{0}" with multiple indices found.&quot
+                         .format(name))</a>
+    return tensor
 
 
 def is_ndarray(value):</code></pre>

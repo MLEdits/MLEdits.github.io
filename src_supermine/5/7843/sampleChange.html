@@ -2,21 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    act_dim = act_space.n
-    actor = mlp(obs_space, list(hidden_sizes) + [act_dim], activation, None, name=&quotactor&quot)
+                  optimizer=Adadelta(),
+                  metrics=[&quotaccuracy&quot])
+    a2, b2 = conv_to_wider_layer(a, b, 5)
+    <a id="change">model2 = Sequential([a2, b2])</a>
+    model2.compile(loss=categorical_crossentropy,
+                   optimizer=Adadelta(),
+                   metrics=[&quotaccuracy&quot])
+    random_input = np.random.rand(1, 28, 28, 1)</code></pre><h3>After Change</h3><pre><code class='java'>
+    temp_tensor = Activation(&quotrelu&quot)(temp_tensor)
+    temp_tensor = new_conv2(temp_tensor)
+    temp_tensor = copy_layer(model.layers[5])(temp_tensor)
+    <a id="change">temp_tensor = Activation(&quotrelu&quot)(temp_tensor)</a>
+    <a id="change">model2 = Model(inputs=new_input, outputs=temp_tensor)</a>
 
-    <a id="change">critic = mlp(obs_space, list(hidden_sizes) + [1], activation, None, name=&quotcritic&quot)</a>
-
-    def cal(s, a=None, old_logp_all=None):
-        s = s.astype(np.float32)
-        logits = actor(s)</code></pre><h3>After Change</h3><pre><code class='java'>
-def mlp_categorical_policy(x, a, hidden_sizes, activation, output_activation):
-    act_dim = a.n
-
-    <a id="change">x = input_layer_from_space(x)</a>
-    logits = mlp(x, list(hidden_sizes) + [act_dim], activation, None)
-    <a id="change">actor = tl.models.Model(x, logits)</a>
-
-    def cal_outputs_0(states):
-        states = states.astype(np.float32)
-        logits = actor(states)</code></pre>
+    random_input = get_conv_data()
+    output1 = model.predict_on_batch(random_input)
+    output2 = model2.predict_on_batch(random_input)</code></pre>

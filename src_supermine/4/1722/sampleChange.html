@@ -11,11 +11,11 @@
                         if is_whitened:
                             fmean_func, fvar_func = gpflow.conditionals.conditional(
                                 self.X, self.Z, m.kern, m.q_mu, q_sqrt=m.q_sqrt)</code></pre><h3>After Change</h3><pre><code class='java'>
-                                self.X, self.Z, m.kern, m.q_mu, q_sqrt=m.q_sqrt, whiten=True)
                     mean_value = fmean_func.eval(session=sess)[0, 0]
                     var_value = fvar_func.eval(session=sess)[0, 0]
-                    <a id="change">assert_allclose(mean_value - self.posteriorMean, 0, atol=4)</a>
-                    assert_allclose(var_value - self.posteriorVariance, 0, atol=4)
+                    assert_allclose(mean_value - self.posteriorMean, 0, atol=4)
+                    <a id="change">assert_allclose(var_value - self.posteriorVariance, 0, atol=4)</a>
 
 
-class VariationalMultivariateTest(GPflowTestCase):</code></pre>
+class VariationalMultivariateTest(GPflowTestCase):
+    def setUp(self):</code></pre>

@@ -15,6 +15,13 @@
             &#47&#47 initial states: 2 all-zero tensor of shape (output_dim)
             self.states = [None, None]
 </code></pre><h3>After Change</h3><pre><code class='java'>
+        self.inner_activation = activations.get(inner_activation)
+        super(LSTM, self).__init__(**kwargs)
+
+    def build(<a id="change">self</a>):
+        input_shape = self.input_shape
+        input_dim = input_shape[2]
+        self.input_dim = input_dim
         self.input = K.placeholder(input_shape)
 
         if self.stateful:

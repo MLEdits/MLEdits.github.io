@@ -5,17 +5,17 @@
     def connect_data_and_network(self,
                                  outputs_collector=None,
                                  gradients_collector=None):
-        <a id="change">data_dict = self.get_sampler()[0].pop_batch_op()</a>
-        image = tf.cast(data_dict[&quotimage&quot], tf.float32)
+        data_dict = <a id="change">self.get_sampler()[0].pop_batch_op()</a>
+        <a id="change">image = tf.cast(data_dict[&quotimage&quot], tf.float32)</a>
         <a id="change">net_out = self.net(image, self.is_training)</a>
 
         if self.is_training:
             crop_layer = CropLayer(border=self.regression_param.loss_border,
                                    name=&quotcrop-88&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
-                average_over_devices=True, summary_type=&quotscalar&quot,
-                collection=TF_SUMMARIES)
-        else:
-            <a id="change">data_dict</a>, net_out = data_net(for_training=False)
-            crop_layer = CropLayer(border=0, name=&quotcrop-88&quot)
-            post_process_layer = PostProcessingLayer(&quotIDENTITY&quot)
-            net_out = post_process_layer(crop_layer(net_out))</code></pre>
+
+
+        if self.is_training:
+            <a id="change">data_dict</a>, net_out = tf.cond(self.is_validation,
+                                         lambda: data_net(False),
+                                         lambda: data_net(True))
+            crop_layer = CropLayer(border=self.regression_param.loss_border,</code></pre>

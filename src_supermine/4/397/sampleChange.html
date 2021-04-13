@@ -5,14 +5,14 @@
     def choose_action(self, curr_state, phase=RunPhase.TRAIN):
         assert not self.env.discrete_controls, &quotDDPG works only for continuous control problems&quot
         &#47&#47 convert to batch so we can run it through the network
-        observation = np.expand_dims(<a id="change">np.array(curr_state[&quotobservation&quot])</a>, 0)
+        <a id="change">observation = np.expand_dims(np.array(curr_state[&quotobservation&quot]), 0)</a>
         result = self.actor_network.online_network.predict(observation)
         action_values = result[0].squeeze()
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        action_batch = np.expand_dims(action, 0)
+
+        if phase == RunPhase.TRAIN:</code></pre><h3>After Change</h3><pre><code class='java'>
         if type(action) != np.ndarray:
             action_batch = np.array([[action]])
-        <a id="change">inputs = self.tf_input_state(curr_state)</a>
+        inputs = self.tf_input_state(curr_state)
         <a id="change">inputs[&quotaction&quot] = action_batch</a>
         q_value = self.critic_network.online_network.predict(inputs)[0]
         self.q_values.add_sample(q_value)

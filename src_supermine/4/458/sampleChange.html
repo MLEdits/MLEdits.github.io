@@ -2,19 +2,19 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                            val_loss = valid_metrics_values[0]
-                print(&quotepochs_done: {}&quot.format(epochs_done))
-        except KeyboardInterrupt:
-            <a id="change">print(&quotInterrupted&quot, file=sys.stderr)</a>
+    def infer(self, instance, *args, **kwargs):
+        instance = instance.strip().lower()
+        if not all([ord(c) &lt; 128 for c in instance]):
+            <a id="change">print(&quotNon ASCII symbols in the string, returning empty slots&quot, file=sys.stderr)</a>
+            return {}
 
-        self.save()
+        tokens = tokenize_reg(instance)
+        if len(tokens) &gt; 0:</code></pre><h3>After Change</h3><pre><code class='java'>
+    def infer(self, instance, *args, **kwargs):
+        instance = instance.strip().lower()
+        if not all([ord(c) &lt; 128 for c in instance]):
+            <a id="change">log.warning(&quotNon ASCII symbols in the string, returning empty slots&quot)</a>
+            return {}
 
-    def infer(self, data, predict_proba=False, *args):</code></pre><h3>After Change</h3><pre><code class='java'>
-                            val_loss = valid_metrics_values[0]
-                log.info(&quotepochs_done: {}&quot.format(epochs_done))
-        except KeyboardInterrupt:
-            <a id="change">log.warning(&quotInterrupted&quot)</a>
-
-        self.save()
-
-    def infer(self, data, predict_proba=False, *args):</code></pre>
+        tokens = tokenize_reg(instance)
+        if len(tokens) &gt; 0:</code></pre>

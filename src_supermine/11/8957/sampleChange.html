@@ -2,23 +2,21 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        feature_size = shape[-1]
-        output_node = input_node
-
-        <a id="change">bidirectional = self.bidirectional or hp.Choice(&quotbidirectional&quot,
-                                                        [True, False],
-                                                        default=True)</a>
-        layer_type = self.layer_type or hp.Choice(&quotlayer_type&quot,
-                                                  [&quotgru&quot, &quotlstm&quot],
-                                                  default=&quotlstm&quot)
-        num_layers = self.num_layers or hp.Choice(&quotnum_layers&quot,</code></pre><h3>After Change</h3><pre><code class='java'>
-        feature_size = shape[-1]
-        output_node = input_node
-
-        <a id="change">bidirectional = self.bidirectional</a>
-        <a id="change">if bidirectional is None:
-            bidirectional = hp.Choice(&quotbidirectional&quot, [True, False], default=True)
-       </a> layer_type = self.layer_type or hp.Choice(&quotlayer_type&quot,
-                                                  [&quotgru&quot, &quotlstm&quot],
-                                                  default=&quotlstm&quot)
-        num_layers = self.num_layers or hp.Choice(&quotnum_layers&quot,</code></pre>
+        normalize = self.normalize or hp.Choice(&quotnormalize&quot,
+                                                [True, False],
+                                                default=True)
+        <a id="change">augment = self.augment or hp.Choice(&quotaugment&quot, [True, False], default=True)</a>
+        if normalize:
+            output_node = preprocessor.Normalization()(output_node)
+        if augment:
+            output_node = preprocessor.ImageAugmentation(seed=self.seed)(output_node)</code></pre><h3>After Change</h3><pre><code class='java'>
+        normalize = self.normalize
+        if normalize is None:
+            normalize = hp.Choice(&quotnormalize&quot, [True, False], default=True)
+        <a id="change">augment = self.augment</a>
+        <a id="change">if augment is None:
+            augment = hp.Choice(&quotaugment&quot, [True, False], default=True)
+       </a> if normalize:
+            output_node = preprocessor.Normalization()(output_node)
+        if augment:
+            output_node = preprocessor.ImageAugmentation(seed=self.seed)(output_node)</code></pre>

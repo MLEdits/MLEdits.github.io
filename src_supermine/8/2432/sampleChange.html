@@ -5,17 +5,18 @@
             [3, 6, 6, 9, 9],  &#47&#47 Inside matD
         ])
         &#47&#47 Construct the pretrained map with four matrix.
-        matA = np.ones(<a id="change">(5, 5)</a>)
+        matA = <a id="change">np.ones((5, 5))</a>
         matB = np.ones((5, 5)) + 1
-        matC = np.ones((5, 5)) + 2
-        matD = <a id="change">np.ones((5, 5))</a> + 3
+        matC = np.ones(<a id="change">(5, 5)</a>) + 2
+        matD = np.ones((5, 5)) + 3
         pretrained = np.bmat(<a id="change">[[matA, matB], [matC, matD]]</a>)
         &#47&#47 Expand the dimensions to be compatible with ROIPoolingLayer.
-        <a id="change">pretrained = np.expand_dims(pretrained, axis=0)</a>
-        pretrained = np.expand_dims(pretrained, axis=3)
+        pretrained = np.expand_dims(pretrained, axis=0)
+        <a id="change">pretrained = np.expand_dims(pretrained, axis=3)</a>
 
         results = self._run_roi_pooling(roi_proposals, pretrained, self.config)
-        print(results[&quotcrops&quot].shape)</code></pre><h3>After Change</h3><pre><code class='java'>
+        print(results[&quotcrops&quot].shape)
+        print(results[&quotroi_pool&quot][0])</code></pre><h3>After Change</h3><pre><code class='java'>
             [2, 1, 6, 4, 9],  &#47&#47 Inside mat_C
             [3, 6, 6, 9, 9],  &#47&#47 Inside mat_D
         ])

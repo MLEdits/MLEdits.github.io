@@ -2,47 +2,30 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-    matrix = matrix[:2, :].flat
+    image_filtered = image_pil.filter(kernel)
 
     &#47&#47 don&quott return np.asarray(...) as its results are read-only
-    <a id="change">return np.array(
-        image_pil.transform(image_pil.size, PIL.Image.AFFINE, matrix,
-                            fillcolor=fillcolor)
-    )</a>
+    <a id="change">return np.array(image_filtered)</a>
 
 
-&#47&#47 we don&quott use pil_solarize() here. but instead just subclass Invert,
-&#47&#47 which is easier and comes down to the same</code></pre><h3>After Change</h3><pre><code class='java'>
+def filter_blur(image):
+    Apply a blur filter kernel to the image.</code></pre><h3>After Change</h3><pre><code class='java'>
     if 0 in image.shape:
         return np.copy(image)
 
     <a id="change">image, is_hw1 = _ensure_valid_shape(
-        image, "imgaug.augmenters.pillike.warp_affine()")</a>
+        image, "imgaug.augmenters.pillike.filter_*()")</a>
 
     image_pil = PIL.Image.fromarray(image)
 
-    height, width = image.shape[0:2]
-    center_px = (width * center[0], height * center[1])
-    matrix = _create_affine_matrix(scale_x=scale_x,
-                                   scale_y=scale_y,
-                                   translate_x_px=translate_x_px,
-                                   translate_y_px=translate_y_px,
-                                   rotate_deg=rotate_deg,
-                                   shear_x_deg=shear_x_deg,
-                                   shear_y_deg=shear_y_deg,
-                                   center_px=center_px)
-    matrix = matrix[:2, :].flat
+    image_filtered = image_pil.filter(kernel)
 
     &#47&#47 don&quott return np.asarray(...) as its results are read-only
-    <a id="change">result = np.array(
-        image_pil.transform(image_pil.size, PIL.Image.AFFINE, matrix,
-                            fillcolor=fillcolor)
-    )</a>
-
+    <a id="change">result = np.array(image_filtered)</a>
     <a id="change">if is_hw1:
         result = result[:, :, np.newaxis]
    </a> <a id="change">return result</a>
 
 
-&#47&#47 we don&quott use pil_solarize() here. but instead just subclass Invert,
-&#47&#47 which is easier and comes down to the same</code></pre>
+def filter_blur(image):
+    Apply a blur filter kernel to the image.</code></pre>

@@ -9,7 +9,7 @@
         self.updates = []
 
         for p, g, a in zip(params, grads, self.weights):
-            &#47&#47 update accumulator</code></pre><h3>After Change</h3><pre><code class='java'>
+            new_a = a + K.square(g)  &#47&#47 update accumulator</code></pre><h3>After Change</h3><pre><code class='java'>
 
     def get_updates(self, params, constraints, loss):
         grads = self.get_gradients(loss, params)
@@ -19,4 +19,4 @@
         self.updates = []
 
         for p, g, a in zip(params, grads, accumulators):
-            &#47&#47 update accumulator</code></pre>
+            new_a = a + K.square(g)  &#47&#47 update accumulator</code></pre>

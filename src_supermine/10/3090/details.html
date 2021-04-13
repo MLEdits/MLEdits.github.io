@@ -1,23 +1,22 @@
-<html><h3>7e52351ae56a5068131d873252ad4f95d134c33d,python/ray/util/collective/collective_group/nccl_collective_group.py,NCCLGroup,allreduce,#NCCLGroup#Any#Any#,157
+<html><h3>4fca544205a55010e8959bb760aece5be80dc3a5,deeppavlov/models/evolution/check_binary_mask.py,,get_graph_and_plot,#Any#Any#Any#Any#,97
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        &#47&#47 TODO(Hao): implement a simple stream manager here
-        stream = self._get_cuda_stream()
+    pos = {}
 
-        <a id="change">dtype = nccl_util.get_nccl_tensor_dtype(tensor)</a>
-        <a id="change">ptr = nccl_util.get_tensor_ptr(tensor)</a>
-        <a id="change">n_elems = nccl_util.get_tensor_n_elements(tensor)</a>
-        reduce_op = nccl_util.get_nccl_reduce_op(allreduce_options.reduceOp)
+    for i in range(total_nodes):
+        <a id="change">for j in range(total_nodes):
+            if binary_mask[i, j] == 1:
+                dg.add_edge(i, j)
+       </a> pos[i] = 2. * np.array(number_to_type_layer(i, n_types))[::-1]
 
-        &#47&#47 in-place allreduce
-        comm.allReduce(ptr, ptr, n_elems, dtype, reduce_op, stream.ptr)</code></pre><h3>After Change</h3><pre><code class='java'>
-                nccl_util.get_nccl_reduce_op(allreduce_options.reduceOp),
-                stream.ptr)
+    plt.figure(figsize=(12, 12))
+    nx.draw(dg, pos, node_color=&quotb&quot, node_size=7000, alpha=0.3)</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        <a id="change">self._collective(tensor, tensor, collective_fn)</a>
+    pos = {}
+    val_map = {}
+    <a id="change">sources</a>, sinks = find_sources_and_sinks(dg)
 
-    def barrier(self, barrier_options=BarrierOptions()):
-        Blocks until all processes reach this barrier.
-</code></pre><img src="14962976.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 8</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/7e52351ae56a5068131d873252ad4f95d134c33d#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L157' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 7e52351ae56a5068131d873252ad4f95d134c33d</div><div id='time'> Time: 2021-01-05</div><div id='author'> Author: zhisbug@users.noreply.github.com</div><div id='file'> File Name: python/ray/util/collective/collective_group/nccl_collective_group.py</div><div id='class'> Class Name: NCCLGroup</div><div id='method'> Method Name: allreduce</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/7e52351ae56a5068131d873252ad4f95d134c33d#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L190' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 7e52351ae56a5068131d873252ad4f95d134c33d</div><div id='time'> Time: 2021-01-05</div><div id='author'> Author: zhisbug@users.noreply.github.com</div><div id='file'> File Name: python/ray/util/collective/collective_group/nccl_collective_group.py</div><div id='class'> Class Name: NCCLGroup</div><div id='method'> Method Name: reduce</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/7e52351ae56a5068131d873252ad4f95d134c33d#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L232' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 7e52351ae56a5068131d873252ad4f95d134c33d</div><div id='time'> Time: 2021-01-05</div><div id='author'> Author: zhisbug@users.noreply.github.com</div><div id='file'> File Name: python/ray/util/collective/collective_group/nccl_collective_group.py</div><div id='class'> Class Name: NCCLGroup</div><div id='method'> Method Name: allgather</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/7e52351ae56a5068131d873252ad4f95d134c33d#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L212' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 7e52351ae56a5068131d873252ad4f95d134c33d</div><div id='time'> Time: 2021-01-05</div><div id='author'> Author: zhisbug@users.noreply.github.com</div><div id='file'> File Name: python/ray/util/collective/collective_group/nccl_collective_group.py</div><div id='class'> Class Name: NCCLGroup</div><div id='method'> Method Name: broadcast</div><BR>
+    for i in range(total_nodes):
+        pos[i] = 2. * np.array(number_to_type_layer(i, n_types))[::-1]</code></pre><img src="15841729.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 8</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/4fca544205a55010e8959bb760aece5be80dc3a5#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 4fca544205a55010e8959bb760aece5be80dc3a5</div><div id='time'> Time: 2018-06-26</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/244aafdcf89ae814975c8c4e3faf0bd4995c7878#diff-76f2318b991e73ff7e0e5cdfc96310fa6c0856a79ac0dfa9d690266082ee870dL29' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 244aafdcf89ae814975c8c4e3faf0bd4995c7878</div><div id='time'> Time: 2020-09-05</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/utils/exploration/tests/test_curiosity.py</div><div id='class'> Class Name: OneHotWrapper</div><div id='method'> Method Name: observation</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/6d3e4bdc22cc89fb7ecf188ccf0479632012026f#diff-d976b2356b67cabc79120c689d5605d5f02dde5d920e41d7d55236d9b2cec8eaL98' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: 6d3e4bdc22cc89fb7ecf188ccf0479632012026f</div><div id='time'> Time: 2018-04-18</div><div id='author'> Author: dilyara.rimovna@gmail.com</div><div id='file'> File Name: deeppavlov/models/evolution/check_binary_mask.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: get_graph_and_plot</div><BR>

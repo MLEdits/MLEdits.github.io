@@ -6,11 +6,14 @@
     def forward(self, clips):
         c, _, _ = clips.shape
         <a id="change">num_images = int(c / 3)</a>
-        <a id="change">clip_mean = self.mean * num_images</a>
+        clip_mean = self.mean * num_images
         clip_std = self.std * num_images
         clip_mean = nd.array(np.asarray(clip_mean).reshape((c, 1, 1)))
-        clip_std = nd.array(np.asarray(clip_std).reshape((c, 1, 1)))
-        return (clips - clip_mean) / clip_std</code></pre><h3>After Change</h3><pre><code class='java'>
+        <a id="change">clip_std = nd.array(np.asarray(clip_std).reshape((c, 1, 1)))</a>
+        return (clips - clip_mean) / clip_std
+
+class VideoRandomHorizontalFlip(Block):
+    Randomly flip the input video clip left to right</code></pre><h3>After Change</h3><pre><code class='java'>
         self.std = np.asarray(std).reshape((len(std), 1, 1))
 
     def forward(self, clips):

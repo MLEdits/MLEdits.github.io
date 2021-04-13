@@ -2,29 +2,25 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        return loss
-
-    def process_event(self, event_name, data):
-        <a id="change">if event_name == &quotafter_validation&quot:
-            if not hasattr(self, &quot_best_f1&quot):
-                self._best_f1 = 0
-            if not hasattr(self, &quot_impatience&quot):
-                self._impatience = 0
-            if data[&quotmetrics&quot][&quotner_f1&quot] &gt; self._best_f1:
-                self._best_f1 = data[&quotmetrics&quot][&quotner_f1&quot]
-                self._impatience = 0
+            event_name: event_name sent by trainer
+            data: number of examples, epochs, metrics sent by trainer
+        
+        <a id="change">if event_name == "after_validation":
+            if data[&quotimpatience&quot] &gt; self.last_impatience:
+                self.lr_impatience += 1
             else:
-                self._impatience += 1
+                self.lr_impatience = 0
 
-            if self._impatience &gt;= self._lr_drop_patience:
-                self._impatience = 0
-                log.info(&quotDropping learning rate from {:.1e} to {:.1e}&quot.format(self._learning_rate,
-                                                                               self._learning_rate * self._lr_drop_value))
-                self.load()
-                self._learning_rate *= self._lr_drop_value</a>
+            self.last_impatience = data[&quotimpatience&quot]
+
+            if self.lr_impatience &gt;= self.learning_rate_patience:
+                self.lr_impatience = 0
+                self.learning_rate = max(self.learning_rate / 2, self.min_learning_rate)
+                logger.info(&quotSQuAD model: learning_rate changed to {}&quot.format(self.learning_rate))
+            logger.info(&quotSQuAD model: lr_impatience: {}, learning_rate: {}&quot.format(self.lr_impatience, self.learning_rate))</a>
 </code></pre><h3>After Change</h3><pre><code class='java'>
-        return {&quotloss&quot: loss_value}
-
-    def process_event(self, event_name, data):
+            event_name: event_name sent by trainer
+            data: number of examples, epochs, metrics sent by trainer
+        
         <a id="change">super</a>().process_event(event_name, data)
 </code></pre>

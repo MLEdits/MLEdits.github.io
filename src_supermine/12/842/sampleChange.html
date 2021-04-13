@@ -3,23 +3,25 @@
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-def make_features(batch, fields):
-    &#47&#47 This is a bit hacky for now.
-    <a id="change">feats = []</a>
+def make_base_model(opt, model_opt, fields, cuda, checkpoint=None):
+    &#47&#47 HACK: collect source feature vocabs.
+    <a id="change">feature_vocabs = []</a>
     <a id="change">for j in range(100):
         key = "src_feat_" + str(j)
         if key not in fields:
             break
-        feats.append(batch.__dict__[key])
-   </a> cat = [batch.src[0]] + feats
-    cat = [c.unsqueeze(2) for c in cat]
-    return torch.cat(cat, 2)
-</code></pre><h3>After Change</h3><pre><code class='java'>
-        src = onmt.IO.make_features(batch, self.fields)
+        feature_vocabs.append(fields[key].vocab)
 
-        &#47&#47  (1) run the encoder on the src
-        encStates, context = self.model.encoder(src, l<a id="change">engths=src_lengths)
-        en</a>cStates = self.model.init_decoder_state(context, encStates)
+   </a> emb_opts = {&quotsrc_word_vec_size&quot: model_opt.src_word_vec_size,
+                &quotposition_encoding&quot: model_opt.position_encoding,
+                &quotfeat_merge&quot: model_opt.feat_merge,
+                &quotfeat_vec_exponent&quot: model_opt.feat_vec_exponent,</code></pre><h3>After Change</h3><pre><code class='java'>
 
-        useMasking = (self._type == "text")
-        &#47&#47  This mask is applied to the attention model inside the decoder</code></pre>
+    &#47&#47 Make Encoder.
+    src_vocab = fields["src"].vocab
+    num_feat_embeddings = <a id="change">[len(feat_dict) for feat_dict in
+                           ONMTDataset.collect_feature_dicts(fields)]</a>
+    embeddings = build_embeddings(
+                model_opt, src_vocab.stoi[onmt.IO.PAD_WORD],
+                len(src_vocab), for_encoder=True,
+                num_feat_embeddings=num_feat_embeddings)</code></pre>

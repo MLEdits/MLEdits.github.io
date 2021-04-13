@@ -16,16 +16,10 @@
     val = np.random.random(input_shape) - 0.5
     xtf = KTF.variable(val)
     xc = KC.placeholder(input_shape)</code></pre><h3>After Change</h3><pre><code class='java'>
-    z_list = []
-    for k in backend_list:
-        if k == KCSD:
-            <a id="change">z = cntk_func_two_tensor(function_name, x_input_shape,
-                                     y=yval, **kwargs)([xval])[0]</a>
-        elif k == KCTD:
             z = cntk_func_two_tensor(function_name, x_input_shape,
                                      y=y_input_shape, **kwargs)([xval, yval])[0]
         else:
-            z = k.eval(getattr(k, function_name)(k.variable(xval), k.variable(yval), **kwargs))
+            <a id="change">z = k.eval(getattr(k, function_name)(k.variable(xval), k.variable(yval), **kwargs))</a>
         if hasattr(z, &quot_keras_shape&quot):
             assert z._keras_shape == z.shape
         <a id="change">z_list += [z]</a>

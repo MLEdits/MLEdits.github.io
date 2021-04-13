@@ -1,23 +1,27 @@
-<html><h3>f08687f5503b1a59b1f5ce9a4cb0d6983d4d1554,rllib/policy/torch_policy.py,TorchPolicy,compute_actions,#TorchPolicy#Any#Any#Any#Any#Any#Any#Any#Any#,61
+<html><h3>c672738b39c8f739551da0d88991a2fedfba3e14,deeppavlov/models/ranking/metrics.py,,recall_at_k,#Any#Any#Any#,24
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-                    ACTION_PROB: torch.exp(logp),
-                    ACTION_LOGP: logp
-                })
-            <a id="change">return (actions.cpu().numpy(), [h.cpu().numpy() for h in state],
-                    extra_action_out)</a>
+        for j in range(predictions.shape[1]):
+            if predictions[i][j] in np.arange(labels[i][j]):
+                flags[i][j] = 1.
+    return np.mean(<a id="change">(np.sum(flags, -1) &gt;= 1.).astype(float)</a>)
 
-    @override(Policy)
-    def compute_log_likelihoods(self,
-                                actions,</code></pre><h3>After Change</h3><pre><code class='java'>
-                    ACTION_PROB: np.exp(logp),
-                    ACTION_LOGP: logp
-                })
-            <a id="change">return convert_to_non_torch_type(
-                (actions, state, extra_action_out))</a>
 
-    @override(Policy)
-    def compute_log_likelihoods(self,
-                                actions,</code></pre><img src="6696210.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/f08687f5503b1a59b1f5ce9a4cb0d6983d4d1554#diff-396cded251382c39ae2a136ee01acb8b085561c1735826666ecae0b43160ad34L94' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: f08687f5503b1a59b1f5ce9a4cb0d6983d4d1554</div><div id='time'> Time: 2020-03-08</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/policy/torch_policy.py</div><div id='class'> Class Name: TorchPolicy</div><div id='method'> Method Name: compute_actions</div><BR><BR><div id='link'><a href='https://github.com/ray-project/ray/commit/83e06cd30a45245c2cb0e9f4bd924224b1581554#diff-2b44094c090e30cbd19a663e7ff53f0b8c59edc7eeaeea8c4818e23559cc6233L40' target='_blank'>Link</a></div><div id='project'> Project Name: ray-project/ray</div><div id='commit'> Commit Name: 83e06cd30a45245c2cb0e9f4bd924224b1581554</div><div id='time'> Time: 2020-03-01</div><div id='author'> Author: sven@anyscale.io</div><div id='file'> File Name: rllib/policy/eager_tf_policy.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: _convert_to_numpy</div><BR><BR><div id='link'><a href='https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/5e82853bb435e7c46e2e3bafa2c1d0a4c40ffb38#diff-972ac249d128e43f774945e44d3b1e2ea8833795badd9197488c0c82acdadb4fL25' target='_blank'>Link</a></div><div id='project'> Project Name: AKSHAYUBHAT/DeepVideoAnalytics</div><div id='commit'> Commit Name: 5e82853bb435e7c46e2e3bafa2c1d0a4c40ffb38</div><div id='time'> Time: 2017-02-03</div><div id='author'> Author: AKSHAYUBHAT@GMAIL.COM</div><div id='file'> File Name: dvalib/indexer.py</div><div id='class'> Class Name: BaseIndexer</div><div id='method'> Method Name: apply</div><BR>
+@register_metric(&quotrank_response&quot)</code></pre><h3>After Change</h3><pre><code class='java'>
+    return recall_at_k(labels, predictions, k=10)
+
+def recall_at_k(y_true, y_pred, k):
+    num_examples = <a id="change">float(len(y_pred))</a>
+    predictions = np.array(y_pred)
+    predictions = np.flip(np.argsort(predictions, -1), -1)[:, :k]
+    num_correct = 0
+    for el in predictions:
+        if 0 in el:
+            num_correct += 1
+    return <a id="change">float(num_correct) / num_examples</a>
+
+@register_metric(&quotrank_response&quot)
+def rank_response(y_true, y_pred):
+    num_examples = float(len(y_pred))</code></pre><img src="7143263.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 3</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L25' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: recall_at_k</div><BR><BR><div id='link'><a href='https://github.com/deepmipt/DeepPavlov/commit/c672738b39c8f739551da0d88991a2fedfba3e14#diff-52b6f544f27001dd35211a031660acaa8f46d504cec53028abdd5dab939d1667L38' target='_blank'>Link</a></div><div id='project'> Project Name: deepmipt/DeepPavlov</div><div id='commit'> Commit Name: c672738b39c8f739551da0d88991a2fedfba3e14</div><div id='time'> Time: 2018-10-04</div><div id='author'> Author: puleon@mail.ru</div><div id='file'> File Name: deeppavlov/models/ranking/metrics.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: rank_response</div><BR><BR><div id='link'><a href='https://github.com/keras-team/keras/commit/42ccc34b337f9eb05de7f864a88844352740133a#diff-88eeff386291ce0472ca864d13eb984dc3604f71066f91b82cf16d76abeb70f8L58' target='_blank'>Link</a></div><div id='project'> Project Name: keras-team/keras</div><div id='commit'> Commit Name: 42ccc34b337f9eb05de7f864a88844352740133a</div><div id='time'> Time: 2017-11-18</div><div id='author'> Author: ozabluda@gmail.com</div><div id='file'> File Name: examples/mnist_dataset_api.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>

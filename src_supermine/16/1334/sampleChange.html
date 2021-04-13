@@ -9,9 +9,9 @@
                                        initializer=self.init)</a>
 
         <a id="change">self.W</a> = self.add_weight((input_shape[-1] + self.context_length, input_shape[-1], ),
-                                 initializer=<a id="change">self.init</a>,
+                                 initializer=self.init,
                                  regularizer=self.W_regularizer,
-                                 constraint=self.W_constraint)
+                                 constraint=<a id="change">self.W_constraint</a>)
 
         if self.use_bias:
             <a id="change">self.b = self.add_weight((input_shape[-1], ),
