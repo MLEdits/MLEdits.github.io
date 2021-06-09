@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+        
+        
+<html>
+<head>
+ <style>
+     table, th, td {
+         border: 1px solid black;
+     }
+
+ </style>
+</head>
+<body>
+
+<H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
+<body><HTML><H2> Refactoring Type : <i>Merge Variable</i> | Total : <i>15</i> | Precision : <i>in progress</i>  | True Positives :0 | Evaluated : 0 | Not Evaluated  : 15 </H2>
+
+<table>
+ <tr>
+  <th>Project</th>
+  <th>RefactoringType</th>
+  <th>RefactoringLink</th>
+  <th>CommitLink</th>
+  <th>TrueRefactoring?</th>
+  <th>Description</th>
+  <th>File</th>
+ </tr>
+ <tr><td>Hironsan/anago</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/Hironsan/anago/commit/bbfbf8def4a89dd860d305267bf2797ed3df69ce#diff-9f4241cfae54a446e69be20582f2536fa636341a35714881b1ad7dcf7000e371L32">RefactoringLink</a></td><td><a href="https://github.com/Hironsan/anago/commit/bbfbf8def4a89dd860d305267bf2797ed3df69ce">CommitLink</a></td><td></td>
+<td>Merge Variable	[x_train : Union&lt;Union&lt;int[],Tuple&lt;int[],Any[]>>[],int[],Tuple&lt;int[],Any[]>>, y_train : Union&lt;numpy.ndarray,int[],Tuple&lt;int[],Any[]>>, x_valid : Union&lt;Union&lt;int[],Tuple&lt;int[],Any[]>>[],int[],Tuple&lt;int[],Any[]>>, y_valid : Union&lt;numpy.ndarray,int[],Tuple&lt;int[],Any[]>>] to self : TrainerTest in method package test_train(self TrainerTest) : void from class org.tests.test_trainer.TrainerTest</td>
+<td>tests/test_trainer.py</td>
+</tr>
+<tr><td>dmlc/gluon-cv</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/dmlc/gluon-cv/commit/ee602b6f68f0bdd19f449a86955697f8f0a2d54c#diff-c3f3262beb83a68fced6fa61c99a0759b0bcb2121f78b3182958b7fa90240b95L69">RefactoringLink</a></td><td><a href="https://github.com/dmlc/gluon-cv/commit/ee602b6f68f0bdd19f449a86955697f8f0a2d54c">CommitLink</a></td><td></td>
+<td>Merge Variable	[clip_mean : Any, clip_std : Any] to self : VideoNormalize in method package forward(self VideoNormalize, clips Any) : void from class org.gluoncv.data.transforms.video.VideoNormalize</td>
+<td>gluoncv/data/transforms/video.py</td>
+</tr>
+<tr><td>keras-team/autokeras</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/keras-team/autokeras/commit/b31f2cafe77bf3a2f738289a89438fb72936117c#diff-997d5b8a3a5ae278d692aba8aa2738caa87a8bfcd749ccc4c0d26b8fd36710faL181">RefactoringLink</a></td><td><a href="https://github.com/keras-team/autokeras/commit/b31f2cafe77bf3a2f738289a89438fb72936117c">CommitLink</a></td><td></td>
+<td>Merge Variable	[x : Any, y : Any[]] to dataset : PyTypeError in method package fit(self AutoModel, x Any, y Any, validation_split Any, validation_data Any) : void from class org.autokeras.auto_model.AutoModel</td>
+<td>autokeras/auto/auto_model.py</td>
+</tr>
+<tr><td>uber/ludwig</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/uber/ludwig/commit/9ac9ca5199b1288a99b0aea8bce3677437e64603#diff-0430a392e9085e176481b29638139e95cc3aedd1f022c681ab601d7ad3840d61L746">RefactoringLink</a></td><td><a href="https://github.com/uber/ludwig/commit/9ac9ca5199b1288a99b0aea8bce3677437e64603">CommitLink</a></td><td></td>
+<td>Merge Variable	[output_feature : Any, target : Any] to targets : Map&lt;Any,Any> in method package train(self Model, training_set Any, validation_set Any, test_set Any, validation_field Any, validation_measure Any, save_path Any, regularization_lambda Any, epochs Any, learning_rate Any, batch_size Any, eval_batch_size Any, bucketing_field Any, dropout_rate Any, early_stop Any, reduce_learning_rate_on_plateau Any, reduce_learning_rate_on_plateau_patience Any, reduce_learning_rate_on_plateau_rate Any, increase_batch_size_on_plateau Any, increase_batch_size_on_plateau_patience Any, increase_batch_size_on_plateau_rate Any, increase_batch_size_on_plateau_max Any, learning_rate_warmup_epochs Any, resume Any, skip_save_model Any, skip_save_progress Any, skip_save_log Any, gpus Any, gpu_fraction Any, random_seed Any) : void from class org.ludwig.models.model.Model</td>
+<td>ludwig/models/model.py</td>
+</tr>
+<tr><td>catalyst-team/catalyst</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/catalyst-team/catalyst/commit/34cd4f7599e47bfaaac20b9ebde1e35fc1cd44ee#diff-f3cedb749a43ba65251e1e290a383a3ee003af04d1f99c216c221f888173a23dL173">RefactoringLink</a></td><td><a href="https://github.com/catalyst-team/catalyst/commit/34cd4f7599e47bfaaac20b9ebde1e35fc1cd44ee">CommitLink</a></td><td></td>
+<td>Merge Variable	[df_infer : Any, df_valid : Any, df_train : Any] to fold_dfs : Map&lt;String,Any> in method package read_multiple_dataframes(in_csv_train Any, in_csv_valid Any, in_csv_infer Any, tag2class Any, class_column Any, tag_column Any) : void from class org.catalyst.utils.pandas.PyDummyClass1</td>
+<td>catalyst/utils/pandas.py</td>
+</tr>
+<tr><td>GPflow/GPflow</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/GPflow/GPflow/commit/732b0ce24760cdbbb11b8566a2d8f1e4902e171f#diff-0f1a9630371533868d779db7995d60f987368a24b5e2036403b611e4b491eaa9L191">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/732b0ce24760cdbbb11b8566a2d8f1e4902e171f">CommitLink</a></td><td></td>
+<td>Merge Variable	[WgvarW : Any, Wgmu : Any] to Kmms : Any in method package _conditional(Xnew Any, feature Any, kernel Any, f Any) : void from class org.gpflow.conditionals.mo_conditionals.PyDummyClass1</td>
+<td>gpflow/conditionals/mo_conditionals.py</td>
+</tr>
+<tr><td>OpenNMT/OpenNMT-py</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/8a59fda1117b708128e6fc352b22f528d86a620a#diff-0c8e0e4765ae9bf1985bf9eb5226e4964b31723f801dc1acc69ce1523a1a9fc4L18">RefactoringLink</a></td><td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/8a59fda1117b708128e6fc352b22f528d86a620a">CommitLink</a></td><td></td>
+<td>Merge Variable	[examples : Union&lt;itertools.chain&lt;Nothing>[],Generator&lt;Map&lt;String,Any>,Any,None>>, src_examples : PyTypeError] to self : AudioDataset in method package _process_corpus(self AudioDataset, fields Any, src_examples_iter Any, tgt_examples_iter Any, num_src_feats Any, num_tgt_feats Any, tgt_seq_length Any, sample_rate Any, window_size Any, window_stride Any, window Any, normalize_audio Any, use_filter_pred Any) : void from class org.onmt.io.AudioDataset.AudioDataset</td>
+<td>onmt/io/AudioDataset.py</td>
+</tr>
+<tr><td>OpenNMT/OpenNMT-py</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/84b534d6cfd398b7ab23211f49d2e5f7b3467bbf#diff-7cfe9e3ad8ea9bd3ada3097dc76ff3d4b4001cf485f024bd0e4c4ceb79062b7eL17">RefactoringLink</a></td><td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/84b534d6cfd398b7ab23211f49d2e5f7b3467bbf">CommitLink</a></td><td></td>
+<td>Merge Variable	[examples : Union&lt;itertools.chain&lt;Nothing>[],Generator&lt;Map&lt;String,Any>,Any,None>>, src_examples : Generator&lt;Map&lt;String,Any>,Any,None>] to self : ImageDataset in method package _process_corpus(self ImageDataset, fields Any, src_examples_iter Any, tgt_examples_iter Any, num_src_feats Any, num_tgt_feats Any, tgt_seq_length Any, use_filter_pred Any) : void from class org.onmt.io.ImageDataset.ImageDataset</td>
+<td>onmt/io/ImageDataset.py</td>
+</tr>
+<tr><td>OpenNMT/OpenNMT-py</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/5e8936c90646daea4a0483f3fc73f6e0aa4b1c9e#diff-3d2589cbd41abb9c319ad84f494fd1793ba2c40843fe1db6d2de8c1f65055f1aL462">RefactoringLink</a></td><td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/5e8936c90646daea4a0483f3fc73f6e0aa4b1c9e">CommitLink</a></td><td></td>
+<td>Merge Variable	[batch : Any, bidir : int] to init_ : Any in method package backward(self SRU_Compute, grad_h Any, grad_last Any) : void from class org.onmt.modules.SRU.SRU_Compute</td>
+<td>onmt/modules/SRU.py</td>
+</tr>
+<tr><td>deepmipt/DeepPavlov</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/deepmipt/DeepPavlov/commit/d2e391c8a390102def7bac5c4defbb82c850847f#diff-e29ef8d1f1237d1e2b7fe73144b8ea5364fa404af22659acb8964fac9c6df2e9L134">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/d2e391c8a390102def7bac5c4defbb82c850847f">CommitLink</a></td><td></td>
+<td>Merge Variable	[basic_params : Any, params : Map&lt;Any,Any>] to self : ParamsEvolution in method package initialize_params_in_config(self ParamsEvolution, basic_config Any, paths Any) : void from class org.deeppavlov.models.evolution.evolution_param_generator.ParamsEvolution</td>
+<td>deeppavlov/models/evolution/evolution_param_generator.py</td>
+</tr>
+<tr><td>aleju/imgaug</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/aleju/imgaug/commit/3928b6efe59ed0bf5cdd603c590b8bba49fa22ea#diff-52655f854e5777e8c8477b4edeaf9edc204e433b24866740d25a2d5ddc4d5509L3268">RefactoringLink</a></td><td><a href="https://github.com/aleju/imgaug/commit/3928b6efe59ed0bf5cdd603c590b8bba49fa22ea">CommitLink</a></td><td></td>
+<td>Merge Variable	[images : Any, result : Any] to batch : Any in method package _augment_batch(self ElasticTransformation, batch Any, random_state Any, parents Any, hooks Any) : void from class org.imgaug.augmenters.geometric.ElasticTransformation</td>
+<td>imgaug/augmenters/geometric.py</td>
+</tr>
+<tr><td>ray-project/ray</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L307">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b">CommitLink</a></td><td></td>
+<td>Merge Variable	[tensor : Any, dst_rank : Any] to send_options : Any in method package send(self NCCLGroup, tensors Any, send_options Any) : void from class org.python.ray.util.collective.collective_group.nccl_collective_group.NCCLGroup</td>
+<td>python/ray/util/collective/collective_group/nccl_collective_group.py</td>
+</tr>
+<tr><td>ray-project/ray</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L326">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b">CommitLink</a></td><td></td>
+<td>Merge Variable	[tensor : Any, src_rank : Any] to recv_options : Any in method package recv(self NCCLGroup, tensors Any, recv_options Any) : void from class org.python.ray.util.collective.collective_group.nccl_collective_group.NCCLGroup</td>
+<td>python/ray/util/collective/collective_group/nccl_collective_group.py</td>
+</tr>
+<tr><td>ray-project/ray</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/ray-project/ray/commit/c4ccbfdfa96ffddeeb170b7cb79b80c7e1a6c9b4#diff-9645ee1cfc0c5d4224ba9c9f981fd1669693b7ea3e3c73fdf38d75a9cfe02984L20">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/c4ccbfdfa96ffddeeb170b7cb79b80c7e1a6c9b4">CommitLink</a></td><td></td>
+<td>Merge Variable	[dist_dim : PyTypeError, dist_class : PyTypeError] to self : ARSTFPolicy in method package __init__(self ARSTFPolicy, obs_space Any, action_space Any, config Any) : void from class org.rllib.agents.ars.ars_tf_policy.ARSTFPolicy</td>
+<td>rllib/agents/ars/ars_tf_policy.py</td>
+</tr>
+<tr><td>ray-project/ray</td>
+<td>Merge Variable</td>
+<td><a href="https://github.com/ray-project/ray/commit/c4ccbfdfa96ffddeeb170b7cb79b80c7e1a6c9b4#diff-a6022241fb137fa3dad9f81c1f506e9df4f1c0ba9632377309b12bf94ca76995L70">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/c4ccbfdfa96ffddeeb170b7cb79b80c7e1a6c9b4">CommitLink</a></td><td></td>
+<td>Merge Variable	[dist_dim : PyTypeError, dist_class : PyTypeError] to self : ESTFPolicy in method package __init__(self ESTFPolicy, obs_space Any, action_space Any, config Any) : void from class org.rllib.agents.es.es_tf_policy.ESTFPolicy</td>
+<td>rllib/agents/es/es_tf_policy.py</td>
+</tr>
+</table>
+
+</body>
+</html>

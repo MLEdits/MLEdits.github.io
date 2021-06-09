@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Pull Up Method</i> | Total : <i>8</i> | Precision : <i>in progress</i>  | True Positives :0 | Evaluated : 0 | Not Evaluated  : 8 </H2>
+<body><HTML><H2> Refactoring Type : <i>Pull Up Method</i> | Total : <i>197</i> | Precision : <i>85.87%</i>  | True Positives :79 | Evaluated : 92 | Not Evaluated  : 105 </H2>
 
 <table>
  <tr>
@@ -25,53 +25,1187 @@
   <th>Description</th>
   <th>File</th>
  </tr>
- <tr><td>nilmtk/nilmtk</td>
+ <tr><td>catalyst-team/catalyst</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/nilmtk/nilmtk/commit/bb66ea0993507b10b25d5cca128965bc3c67a966#diff-fc86def40746fa8f783acc7fa20483452a0bca19c211d2c932c2603ffc3e8ddaL813">RefactoringLink</a></td><td><a href="https://github.com/nilmtk/nilmtk/commit/bb66ea0993507b10b25d5cca128965bc3c67a966">CommitLink</a></td><td></td>
-<td>Pull Up Method	package _prep_kwargs_for_sample_period_and_resample(self MeterGroup, sample_period Any, resample Any) : void from class org.nilmtk.metergroup.MeterGroup to package _prep_kwargs_for_sample_period_and_resample(self Electric, sample_period Any, resample Any) : void from class org.nilmtk.electric.Electric</td>
-<td>nilmtk/metergroup.py</td>
+<td><a href="https://github.com/catalyst-team/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e#diff-37d852d31c7bb496abaa1ef28a7aba2e1732ea470c2b5e302e00596a345cb6dcL208">RefactoringLink</a></td><td><a href="https://github.com/catalyst-team/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method	package trace(self SupervisedRunner, model Any, batch Any, logdir Any, loader Any, method_name Any, mode Any, requires_grad Any, fp16 Any, device Any, predict_params Any) : void from class org.catalyst.dl.runner.supervised.SupervisedRunner to package trace() : void from class org.catalyst.dl.runner.core.Runner</td>
+<td>catalyst/dl/runner/supervised.py</td>
 </tr>
-<tr><td>thoughtworksarts/EmoPy</td>
+<tr><td>asyml/texar</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/8ab53c19d5db99b267e821c03cb6944e7992e621#diff-02819a46d910220b60b705947656cc7c35e77fb8cce6cc3dbae7d4e18317bd2eL72">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/8ab53c19d5db99b267e821c03cb6944e7992e621">CommitLink</a></td><td></td>
-<td>Pull Up Method	package _vectorize_labels(self DirectoryDataLoader, label_index_map Any, labels Any) : void from class org.src.directory_data_loader.DirectoryDataLoader to package _vectorize_labels(self _DataLoader, label_index_map Any, labels Any) : void from class org.src.data_loader._DataLoader</td>
-<td>src/directory_data_loader.py</td>
+<td><a href="https://github.com/asyml/texar/commit/297047cae73728e5f391b558b64aaa94e2a5c323#diff-92eaa5598420d6d976917b694780c7c1c64591c85ad702bdea64f4f0d1ad6bb7L62">RefactoringLink</a></td><td><a href="https://github.com/asyml/texar/commit/297047cae73728e5f391b558b64aaa94e2a5c323">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method	package _shuffle_dataset(dataset Any, hparams Any, dataset_files Any) : void from class org.texar.data.data.text_data_base.TextDataBase to package _shuffle_dataset(dataset Any, hparams Any, dataset_files Any) : void from class org.texar.data.data.data_base.DataBase</td>
+<td>texar/data/data/text_data_base.py</td>
 </tr>
-<tr><td>thoughtworksarts/EmoPy</td>
+<tr><td>catalyst-team/catalyst</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03#diff-b62ed7b7b4e5607062a933cb150ee8b0c3396d4902d48b653c77ff664c690774L189">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03">CommitLink</a></td><td></td>
-<td>Pull Up Method	package fit_generator(self ConvolutionalLstmNN, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets.ConvolutionalLstmNN to package fit_generator(self _FERNeuralNet, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets._FERNeuralNet</td>
-<td>neuralnets.py</td>
+<td><a href="https://github.com/catalyst-team/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e#diff-37d852d31c7bb496abaa1ef28a7aba2e1732ea470c2b5e302e00596a345cb6dcL208">RefactoringLink</a></td><td><a href="https://github.com/catalyst-team/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package trace(self SupervisedRunner, model Any, batch Any, logdir Any, loader Any, method_name Any, mode Any, requires_grad Any, fp16 Any, device Any, predict_params Any) : void from class org.catalyst.dl.runner.supervised.SupervisedRunner to package trace() : void from class org.catalyst.dl.runner.core.Runner</td>
+<td>catalyst/dl/runner/supervised.py</td>
 </tr>
-<tr><td>thoughtworksarts/EmoPy</td>
+<tr><td>asyml/texar</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03#diff-b62ed7b7b4e5607062a933cb150ee8b0c3396d4902d48b653c77ff664c690774L265">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03">CommitLink</a></td><td></td>
-<td>Pull Up Method	package fit_generator(self ConvolutionalNN, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets.ConvolutionalNN to package fit_generator(self _FERNeuralNet, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets._FERNeuralNet</td>
-<td>neuralnets.py</td>
+<td><a href="https://github.com/asyml/texar/commit/297047cae73728e5f391b558b64aaa94e2a5c323#diff-92eaa5598420d6d976917b694780c7c1c64591c85ad702bdea64f4f0d1ad6bb7L62">RefactoringLink</a></td><td><a href="https://github.com/asyml/texar/commit/297047cae73728e5f391b558b64aaa94e2a5c323">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _shuffle_dataset(dataset Any, hparams Any, dataset_files Any) : void from class org.texar.data.data.text_data_base.TextDataBase to package _shuffle_dataset(dataset Any, hparams Any, dataset_files Any) : void from class org.texar.data.data.data_base.DataBase</td>
+<td>texar/data/data/text_data_base.py</td>
 </tr>
-<tr><td>thoughtworksarts/EmoPy</td>
+<tr><td>tensorly/tensorly</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03#diff-b62ed7b7b4e5607062a933cb150ee8b0c3396d4902d48b653c77ff664c690774L343">RefactoringLink</a></td><td><a href="https://github.com/thoughtworksarts/EmoPy/commit/01e747a2379182c82658d5f5fdce433e1ecaae03">CommitLink</a></td><td></td>
-<td>Pull Up Method	package fit_generator(self TimeDelayConvNN, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets.TimeDelayConvNN to package fit_generator(self _FERNeuralNet, generator Any, validation_data Any, epochs Any) : void from class org.neuralnets._FERNeuralNet</td>
-<td>neuralnets.py</td>
+<td><a href="https://github.com/tensorly/tensorly/commit/4cba332fcf2cc1e369cafba7de9c21fa8b4b0cf8#diff-9a369b099baae7789b140f00d0013509d33ab7f89d9db618f4efcd8d6b425ad7L82">RefactoringLink</a></td><td><a href="https://github.com/tensorly/tensorly/commit/4cba332fcf2cc1e369cafba7de9c21fa8b4b0cf8">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package symeig_svd(self MxnetBackend, matrix Any, n_eigenvecs Any) : void from class org.tensorly.backend.mxnet_backend.MxnetBackend to package symeig_svd(self Backend, matrix Any, n_eigenvecs Any) : void from class org.tensorly.backend.core.Backend</td>
+<td>tensorly/backend/mxnet_backend.py</td>
 </tr>
-<tr><td>rasbt/mlxtend</td>
+<tr><td>tensorly/tensorly</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d#diff-e8bf675ea65b7e2ec741951bcbb2bfa7d3bed14995b77d03441ea478f47bf0cfL164">RefactoringLink</a></td><td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d">CommitLink</a></td><td></td>
-<td>Pull Up Method	package _tensor_to_numpy(self TfSoftmaxRegression, var Any) : void from class org.mlxtend.tf_classifier.tf_softmax.TfSoftmaxRegression to package _tensor_to_numpy(self _TfBaseClassifier, var Any) : void from class org.mlxtend.tf_classifier.tf_base._TfBaseClassifier</td>
-<td>mlxtend/tf_classifier/tf_softmax.py</td>
+<td><a href="https://github.com/tensorly/tensorly/commit/4cba332fcf2cc1e369cafba7de9c21fa8b4b0cf8#diff-24715023f5061c7a1481b5d68bff7dea66e0c054253ac9ba62f1ad811ef0e221L200">RefactoringLink</a></td><td><a href="https://github.com/tensorly/tensorly/commit/4cba332fcf2cc1e369cafba7de9c21fa8b4b0cf8">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package symeig_svd(self PyTorchBackend, matrix Any, n_eigenvecs Any) : void from class org.tensorly.backend.pytorch_backend.PyTorchBackend to package symeig_svd(self Backend, matrix Any, n_eigenvecs Any) : void from class org.tensorly.backend.core.Backend</td>
+<td>tensorly/backend/pytorch_backend.py</td>
 </tr>
-<tr><td>rasbt/mlxtend</td>
+<tr><td>PIQuIL/QuCumber</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d#diff-e8bf675ea65b7e2ec741951bcbb2bfa7d3bed14995b77d03441ea478f47bf0cfL64">RefactoringLink</a></td><td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d">CommitLink</a></td><td></td>
-<td>Pull Up Method	package _one_hot(self TfSoftmaxRegression, y Any, n_labels Any) : void from class org.mlxtend.tf_classifier.tf_softmax.TfSoftmaxRegression to package _one_hot(self _TfBaseClassifier, y Any, n_labels Any) : void from class org.mlxtend.tf_classifier.tf_base._TfBaseClassifier</td>
-<td>mlxtend/tf_classifier/tf_softmax.py</td>
+<td><a href="https://github.com/PIQuIL/QuCumber/commit/459fee9b65afdd3c4aabf7330c0948b34c8e3e8d#diff-a7c4852f6776d3a559654457c3fed955ad1aa9efb93ce4fbe9a274cc691d60a4L294">RefactoringLink</a></td><td><a href="https://github.com/PIQuIL/QuCumber/commit/459fee9b65afdd3c4aabf7330c0948b34c8e3e8d">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package compute_normalization(self ComplexWaveFunction, space Any) : void from class org.qucumber.nn_states.complex_wavefunction.ComplexWaveFunction to package normalization(self WaveFunctionBase, space Any) : void from class org.qucumber.nn_states.wavefunction.WaveFunctionBase</td>
+<td>qucumber/nn_states/complex_wavefunction.py</td>
 </tr>
-<tr><td>rasbt/mlxtend</td>
+<tr><td>suavecode/SUAVE</td>
 <td>Pull Up Method</td>
-<td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d#diff-e8bf675ea65b7e2ec741951bcbb2bfa7d3bed14995b77d03441ea478f47bf0cfL70">RefactoringLink</a></td><td><a href="https://github.com/rasbt/mlxtend/commit/e97cc8f5f54b44f107e49e063cca92edd524c75d">CommitLink</a></td><td></td>
-<td>Pull Up Method	package _to_classlabels(self TfSoftmaxRegression, z Any) : void from class org.mlxtend.tf_classifier.tf_softmax.TfSoftmaxRegression to package _to_classlabels(self _TfBaseClassifier, z Any) : void from class org.mlxtend.tf_classifier.tf_base._TfBaseClassifier</td>
-<td>mlxtend/tf_classifier/tf_softmax.py</td>
+<td><a href="https://github.com/suavecode/SUAVE/commit/f600931cf72c1373d11d64247fd544e6e6ae1a6a#diff-a9fb884149de118dfa37982e64bfd5009756313ec699964092bc37e03ed937f8L72">RefactoringLink</a></td><td><a href="https://github.com/suavecode/SUAVE/commit/f600931cf72c1373d11d64247fd544e6e6ae1a6a">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package evaluate(self Weights_Transport, conditions Any) : void from class org.trunk.SUAVE.Analyses.Weights.Weights_Transport.Weights_Transport to package evaluate(self Weights, conditions Any) : void from class org.trunk.SUAVE.Analyses.Weights.Weights.Weights</td>
+<td>trunk/SUAVE/Analyses/Weights/Weights_Transport.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/40dbeced5a236dd7d8d1fa83579240d9fc040b7c#diff-3b03543095288ceefbfb44ce8b6345b40b72bc506fcdbbdcf646ada036a4d40fL303">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/40dbeced5a236dd7d8d1fa83579240d9fc040b7c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package marginal(self MultitaskGaussianLikelihoodKronecker, function_dist Any) : void from class org.gpytorch.likelihoods.multitask_gaussian_likelihood.MultitaskGaussianLikelihoodKronecker to package marginal(self _MultitaskGaussianLikelihoodBase, function_dist Any) : void from class org.gpytorch.likelihoods.multitask_gaussian_likelihood._MultitaskGaussianLikelihoodBase</td>
+<td>gpytorch/likelihoods/multitask_gaussian_likelihood.py</td>
+</tr>
+<tr><td>albahnsen/CostSensitiveClassification</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/albahnsen/CostSensitiveClassification/commit/86e760faf452bb466108bf873455563227a89091#diff-259ffd9e985d7d76fc570cecae52acff6e2aad65659fdbfc2b87f625b42173b8L338">RefactoringLink</a></td><td><a href="https://github.com/albahnsen/CostSensitiveClassification/commit/86e760faf452bb466108bf873455563227a89091">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package fit(self BaggingClassifier, X Any, y Any, cost_mat Any, sample_weight Any) : void from class org.costcla.models.bagging.BaggingClassifier to package fit(self BaseBagging, X Any, y Any, cost_mat Any, sample_weight Any) : void from class org.costcla.models.bagging.BaseBagging</td>
+<td>costcla/models/bagging.py</td>
+</tr>
+<tr><td>comic/grand-challenge.org</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/comic/grand-challenge.org/commit/f735596e50fa30fc4f7800709efc13f8b9934a16#diff-24a33b09cc33109d69cba0c48b8347a6eaa30985fdf43987d61a0bd74cd04ae8L368">RefactoringLink</a></td><td><a href="https://github.com/comic/grand-challenge.org/commit/f735596e50fa30fc4f7800709efc13f8b9934a16">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package config(self LeaderboardDetail) : void from class org.app.grandchallenge.evaluation.views.LeaderboardDetail to package evaluation_config(self TeamContextMixin) : void from class org.app.grandchallenge.evaluation.views.TeamContextMixin</td>
+<td>app/grandchallenge/evaluation/views.py</td>
+</tr>
+<tr><td>ina-foss/inaSpeechSegmenter</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/ina-foss/inaSpeechSegmenter/commit/c069c7f51434f02906cc41e1a50433e30d937bc4#diff-c08e2e8722bff2ae0218035fc1de93122ebd6e869bb8ca1ad5f9fa8a0f6036deL161">RefactoringLink</a></td><td><a href="https://github.com/ina-foss/inaSpeechSegmenter/commit/c069c7f51434f02906cc41e1a50433e30d937bc4">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self SpeechMusic) : void from class org.inaSpeechSegmenter.segmenter.SpeechMusic to package __init__(self Vad) : void from class org.inaSpeechSegmenter.segmenter.Vad</td>
+<td>inaSpeechSegmenter/segmenter.py</td>
+</tr>
+<tr><td>ina-foss/inaSpeechSegmenter</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/ina-foss/inaSpeechSegmenter/commit/c069c7f51434f02906cc41e1a50433e30d937bc4#diff-c08e2e8722bff2ae0218035fc1de93122ebd6e869bb8ca1ad5f9fa8a0f6036deL169">RefactoringLink</a></td><td><a href="https://github.com/ina-foss/inaSpeechSegmenter/commit/c069c7f51434f02906cc41e1a50433e30d937bc4">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self SpeechMusicNoise) : void from class org.inaSpeechSegmenter.segmenter.SpeechMusicNoise to package __init__(self Vad) : void from class org.inaSpeechSegmenter.segmenter.Vad</td>
+<td>inaSpeechSegmenter/segmenter.py</td>
+</tr>
+<tr><td>dit/dit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269#diff-7be1f16873e465c23156368ff15f01b8e268f434f45b98ab6b09906bf296aff6L70">RefactoringLink</a></td><td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package __len__(self SampleSpace) : void from class org.dit.samplespace.SampleSpace to package __len__(self BaseSampleSpace) : void from class org.dit.samplespace.BaseSampleSpace</td>
+<td>dit/samplespace.py</td>
+</tr>
+<tr><td>dit/dit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269#diff-7be1f16873e465c23156368ff15f01b8e268f434f45b98ab6b09906bf296aff6L73">RefactoringLink</a></td><td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package __contains__(self SampleSpace, item Any) : void from class org.dit.samplespace.SampleSpace to package __contains__(self BaseSampleSpace, item Any) : void from class org.dit.samplespace.BaseSampleSpace</td>
+<td>dit/samplespace.py</td>
+</tr>
+<tr><td>dit/dit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269#diff-7be1f16873e465c23156368ff15f01b8e268f434f45b98ab6b09906bf296aff6L76">RefactoringLink</a></td><td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package __iter__(self SampleSpace) : void from class org.dit.samplespace.SampleSpace to package __iter__(self BaseSampleSpace) : void from class org.dit.samplespace.BaseSampleSpace</td>
+<td>dit/samplespace.py</td>
+</tr>
+<tr><td>dit/dit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269#diff-7be1f16873e465c23156368ff15f01b8e268f434f45b98ab6b09906bf296aff6L79">RefactoringLink</a></td><td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package index(self SampleSpace, item Any) : void from class org.dit.samplespace.SampleSpace to package index(self BaseSampleSpace, item Any) : void from class org.dit.samplespace.BaseSampleSpace</td>
+<td>dit/samplespace.py</td>
+</tr>
+<tr><td>dit/dit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269#diff-7be1f16873e465c23156368ff15f01b8e268f434f45b98ab6b09906bf296aff6L217">RefactoringLink</a></td><td><a href="https://github.com/dit/dit/commit/fc1952ad8d675e930bbd58757a1c5a4eeadaa269">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package sort(self SampleSpace) : void from class org.dit.samplespace.SampleSpace to package sort(self BaseSampleSpace) : void from class org.dit.samplespace.BaseSampleSpace</td>
+<td>dit/samplespace.py</td>
+</tr>
+<tr><td>enthought/chaco</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b#diff-c1d52170f944adbe10f2137002402c915af676fd93aa07840c57b08094fd90e9L72">RefactoringLink</a></td><td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __getitem__(self ArrayPlotData, name Any) : void from class org.chaco.array_plot_data.ArrayPlotData to package __getitem__(self AbstractPlotData, name Any) : void from class org.chaco.abstract_plot_data.AbstractPlotData</td>
+<td>chaco/array_plot_data.py</td>
+</tr>
+<tr><td>enthought/chaco</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b#diff-c1d52170f944adbe10f2137002402c915af676fd93aa07840c57b08094fd90e9L75">RefactoringLink</a></td><td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __setitem__(self ArrayPlotData, name Any, value Any) : void from class org.chaco.array_plot_data.ArrayPlotData to package __setitem__(self AbstractPlotData, name Any, value Any) : void from class org.chaco.abstract_plot_data.AbstractPlotData</td>
+<td>chaco/array_plot_data.py</td>
+</tr>
+<tr><td>enthought/chaco</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b#diff-c1d52170f944adbe10f2137002402c915af676fd93aa07840c57b08094fd90e9L78">RefactoringLink</a></td><td><a href="https://github.com/enthought/chaco/commit/7007efb257905b96618ea2d0072a37292fdb655b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __delitem__(self ArrayPlotData, name Any) : void from class org.chaco.array_plot_data.ArrayPlotData to package __delitem__(self AbstractPlotData, name Any) : void from class org.chaco.abstract_plot_data.AbstractPlotData</td>
+<td>chaco/array_plot_data.py</td>
+</tr>
+<tr><td>NeuroTechX/moabb</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/NeuroTechX/moabb/commit/ce5dbf57781e10fd0e0367008a76f91521b59651#diff-0e496de28421b51e7236122b4caa23308f1b0ed9e70c3bc082773e2d66480c07L122">RefactoringLink</a></td><td><a href="https://github.com/NeuroTechX/moabb/commit/ce5dbf57781e10fd0e0367008a76f91521b59651">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package scoring(self ImageryNClass) : void from class org.moabb.paradigms.motor_imagery.ImageryNClass to package scoring(self BaseMotorImagery) : void from class org.moabb.paradigms.motor_imagery.BaseMotorImagery</td>
+<td>moabb/paradigms/motor_imagery.py</td>
+</tr>
+<tr><td>scikit-optimize/scikit-optimize</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-optimize/scikit-optimize/commit/f9ec0e8cbca615581ac819b94087aaee893bb6d9#diff-47bfb120fea413a5981625ca0c7136680ba6d27f50a5f1a510de8d0754feb5d8L42">RefactoringLink</a></td><td><a href="https://github.com/scikit-optimize/scikit-optimize/commit/f9ec0e8cbca615581ac819b94087aaee893bb6d9">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package bounds(self Integer) : void from class org.skopt.parameter.Integer to package bounds(self Distribution) : void from class org.skopt.parameter.Distribution</td>
+<td>skopt/parameter.py</td>
+</tr>
+<tr><td>tensorpack/tensorpack</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tensorpack/tensorpack/commit/b61d0722b03c69bd501798a13b368ee508642a4c#diff-1bc4345737d79c0f9883400517d8ef28978cae2feca4227930107048ca8b9902L60">RefactoringLink</a></td><td><a href="https://github.com/tensorpack/tensorpack/commit/b61d0722b03c69bd501798a13b368ee508642a4c">CommitLink</a></td><td></td>
+<td>Pull Up Method package current_state(self TimePointHistoryFramePlayer) : void from class org.tensorpack.RL.history.TimePointHistoryFramePlayer to package finish_episode(self RLEnvironment) : void from class org.tensorpack.RL.envbase.RLEnvironment</td>
+<td>tensorpack/RL/history.py</td>
+</tr>
+<tr><td>brian-team/brian2</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/brian-team/brian2/commit/c1c2c012957648425d0d328ce32c4623c1ab7d14#diff-2663fba82315d5eccc4252f8d4b3986df61b700d5908f009432d0df2ad1a6ab6L109">RefactoringLink</a></td><td><a href="https://github.com/brian-team/brian2/commit/c1c2c012957648425d0d328ce32c4623c1ab7d14">CommitLink</a></td><td></td>
+<td>Pull Up Method package SelectFilesPlugin_1() : void from class org.dev.tools.run_examples.SelectFilesPlugin to package __init__(self Plugin, example_dir Any) : void from class org.dev.tools.run_examples.Plugin</td>
+<td>dev/tools/run_examples.py</td>
+</tr>
+<tr><td>brian-team/brian2</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/brian-team/brian2/commit/a21b67aed967b3932019c8b0d266bf4098a55d2a#diff-5d7b10f73f8360f6e167cca4ae4502ae30e4a27635a93f1ea2f171230b10d08bL385">RefactoringLink</a></td><td><a href="https://github.com/brian-team/brian2/commit/a21b67aed967b3932019c8b0d266bf4098a55d2a">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package unpack_namespace(self GSLWeaveCodeGenerator, variables_in_vector Any, variables_in_scalar Any) : void from class org.brian2.codegen.generators.GSL_generator.GSLWeaveCodeGenerator to package unpack_namespace(self GSLCodeGenerator, variables_in_vector Any, variables_in_scalar Any) : void from class org.brian2.codegen.generators.GSL_generator.GSLCodeGenerator</td>
+<td>brian2/codegen/generators/GSL_generator.py</td>
+</tr>
+<tr><td>snorkel-team/snorkel</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/snorkel-team/snorkel/commit/78655e7eea8853762c70091462950e4e7b150f4b#diff-ee4b78ba1254b772fc00e785d492d8d1f56bf407d106c481ebeff9607b3aa3b9L349">RefactoringLink</a></td><td><a href="https://github.com/snorkel-team/snorkel/commit/78655e7eea8853762c70091462950e4e7b150f4b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _preprocess_data(self TFNoiseAwareModel, X Any) : void from class org.snorkel.learning.disc_learning.TFNoiseAwareModel to package _preprocess_data(self Classifier, X Any) : void from class org.snorkel.learning.classifier.Classifier</td>
+<td>snorkel/learning/disc_learning.py</td>
+</tr>
+<tr><td>snorkel-team/snorkel</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/snorkel-team/snorkel/commit/df1975c181147c565d42a8e5945c219ee75ae96b#diff-ee4b78ba1254b772fc00e785d492d8d1f56bf407d106c481ebeff9607b3aa3b9L17">RefactoringLink</a></td><td><a href="https://github.com/snorkel-team/snorkel/commit/df1975c181147c565d42a8e5945c219ee75ae96b">CommitLink</a></td><td></td>
+<td>Pull Up Method package NoiseAwareModel_1() : void from class org.snorkel.learning.disc_learning.NoiseAwareModel to package Classifier_1() : void from class org.snorkel.learning.classifier.Classifier</td>
+<td>snorkel/learning/disc_learning.py</td>
+</tr>
+<tr><td>vitchyr/rlkit</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/vitchyr/rlkit/commit/b33301554a390c526d9b6d011e62a5838d48a245#diff-219fef9a0b0b168b3201e5bde5e5a6c3d146b1989e89c38e3dc5666302ca19e9L40">RefactoringLink</a></td><td><a href="https://github.com/vitchyr/rlkit/commit/b33301554a390c526d9b6d011e62a5838d48a245">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package evaluate(self TorchRLAlgorithm, epoch Any) : void from class org.rlkit.torch.torch_rl_algorithm.TorchRLAlgorithm to package evaluate(self RLAlgorithm, epoch Any, eval_paths Any) : void from class org.rlkit.core.rl_algorithm.RLAlgorithm</td>
+<td>rlkit/torch/torch_rl_algorithm.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/6da67850d0d921b281133c5d6cbf1e327e210d07#diff-712a4ab701c6c57bbd0c32847735c22f3622c53fa53fe8f6c890b53f1e6825afL133">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/6da67850d0d921b281133c5d6cbf1e327e210d07">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package set_executable(self GpuPointerChaseDep, CompileGpuPointerChase Any) : void from class org.cscs_checks.microbenchmarks.gpu.pointer_chase.pointer_chase.GpuPointerChaseDep to package set_executable(self GpuPointerChaseBase, CompileGpuPointerChase Any) : void from class org.cscs_checks.microbenchmarks.gpu.pointer_chase.pointer_chase.GpuPointerChaseBase</td>
+<td>cscs-checks/microbenchmarks/gpu/pointer_chase/pointer_chase.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/330c7b4b2616d04e6787d868cdf10de677fde983#diff-7a98b6229a208c314ca8e815ba5c1598f7a84b7d0afc861a7ea47707f1cf887dL37">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/330c7b4b2616d04e6787d868cdf10de677fde983">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _update_nodelist(self TorqueJobScheduler, job Any, nodespec Any) : void from class org.reframe.core.schedulers.torque.TorqueJobScheduler to package _update_nodelist(self PbsJobScheduler, job Any, nodespec Any) : void from class org.reframe.core.schedulers.pbs.PbsJobScheduler</td>
+<td>reframe/core/schedulers/torque.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/dcff63c43b1a25f00d2122cd88d488bef516e6db#diff-13dc8760a0c04468f4a6326c6d7b70cfcf18c1c8eeed2b396fb41f9345c27c4bL126">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/dcff63c43b1a25f00d2122cd88d488bef516e6db">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package set_executable(self CudaAwareMPIOneNodeCheck, CudaAwareMPICheck Any) : void from class org.cscs_checks.prgenv.cuda.cuda_aware_mpi.CudaAwareMPIOneNodeCheck to package set_executable(self CudaAwareMPIRuns, CudaAwareMPICheck Any) : void from class org.cscs_checks.prgenv.cuda.cuda_aware_mpi.CudaAwareMPIRuns</td>
+<td>cscs-checks/prgenv/cuda/cuda_aware_mpi.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/dcff63c43b1a25f00d2122cd88d488bef516e6db#diff-13dc8760a0c04468f4a6326c6d7b70cfcf18c1c8eeed2b396fb41f9345c27c4bL145">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/dcff63c43b1a25f00d2122cd88d488bef516e6db">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package set_executable(self CudaAwareMPITwoNodesCheck, CudaAwareMPICheck Any) : void from class org.cscs_checks.prgenv.cuda.cuda_aware_mpi.CudaAwareMPITwoNodesCheck to package set_executable(self CudaAwareMPIRuns, CudaAwareMPICheck Any) : void from class org.cscs_checks.prgenv.cuda.cuda_aware_mpi.CudaAwareMPIRuns</td>
+<td>cscs-checks/prgenv/cuda/cuda_aware_mpi.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/e77a66a73aa24bd85b5a1fcfe50e62f7b83720be#diff-29760da25a0486920e10c07a05efd2d2b24ee4dd23a41f3cd91c433054c614feL446">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/e77a66a73aa24bd85b5a1fcfe50e62f7b83720be">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package test_submit_max_pending_time(self TestSlurmJob) : void from class org.unittests.test_schedulers.TestSlurmJob to package test_submit_max_pending_time(self _TestJob) : void from class org.unittests.test_schedulers._TestJob</td>
+<td>unittests/test_schedulers.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/e77a66a73aa24bd85b5a1fcfe50e62f7b83720be#diff-29760da25a0486920e10c07a05efd2d2b24ee4dd23a41f3cd91c433054c614feL588">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/e77a66a73aa24bd85b5a1fcfe50e62f7b83720be">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package test_submit_max_pending_time(self TestTorqueJob) : void from class org.unittests.test_schedulers.TestTorqueJob to package test_submit_max_pending_time(self _TestJob) : void from class org.unittests.test_schedulers._TestJob</td>
+<td>unittests/test_schedulers.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092#diff-c8fdac74b6f35f463fbb938d18fbea079af4fdff628ece6f6df35c855208be17L94">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package arithmetic_intensity(self SdeBroadwellJ1Test) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBroadwellJ1Test to package arithmetic_intensity(self SdeBaseTest) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBaseTest</td>
+<td>cscs-checks/tools/profiling_and_debugging/intel_sde_berkeley_stream.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092#diff-c8fdac74b6f35f463fbb938d18fbea079af4fdff628ece6f6df35c855208be17L159">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package arithmetic_intensity(self SdeBroadwellJ2Test) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBroadwellJ2Test to package arithmetic_intensity(self SdeBaseTest) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBaseTest</td>
+<td>cscs-checks/tools/profiling_and_debugging/intel_sde_berkeley_stream.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092#diff-c8fdac74b6f35f463fbb938d18fbea079af4fdff628ece6f6df35c855208be17L103">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/09ad4a6d973d810cd8236a6a70c1a1c9f262f092">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package gflops(self SdeBroadwellJ1Test) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBroadwellJ1Test to package gflops(self SdeBaseTest) : void from class org.cscs_checks.tools.profiling_and_debugging.intel_sde_berkeley_stream.SdeBaseTest</td>
+<td>cscs-checks/tools/profiling_and_debugging/intel_sde_berkeley_stream.py</td>
+</tr>
+<tr><td>eth-cscs/reframe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/eth-cscs/reframe/commit/8e554e4b4fe9ed2ef6676bd236e319b5a5f2685a#diff-29760da25a0486920e10c07a05efd2d2b24ee4dd23a41f3cd91c433054c614feL291">RefactoringLink</a></td><td><a href="https://github.com/eth-cscs/reframe/commit/8e554e4b4fe9ed2ef6676bd236e319b5a5f2685a">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package test_guess_num_tasks(self TestLocalJob) : void from class org.unittests.test_schedulers.TestLocalJob to package test_guess_num_tasks(self _TestJob) : void from class org.unittests.test_schedulers._TestJob</td>
+<td>unittests/test_schedulers.py</td>
+</tr>
+<tr><td>XanaduAI/strawberryfields</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/XanaduAI/strawberryfields/commit/bfdb992986066a4222923e33aa569458c4bd68cd#diff-f1b198cb7132a8d059f2d4a052c69ced4da4fcad705e4456891dccf41f64e5f9L638">RefactoringLink</a></td><td><a href="https://github.com/XanaduAI/strawberryfields/commit/bfdb992986066a4222923e33aa569458c4bd68cd">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package measure_fock(self BaseFock, modes Any, select Any) : void from class org.strawberryfields.backends.base.BaseFock to package measure_fock(self BaseBackend, modes Any, select Any) : void from class org.strawberryfields.backends.base.BaseBackend</td>
+<td>strawberryfields/backends/base.py</td>
+</tr>
+<tr><td>allenai/allennlp</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f#diff-909716fd34db4c4472f4f6aa58d9d15370f947fa2bd6ee97a2b8c2b52fa984d2L36">RefactoringLink</a></td><td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self BasicIterator, batch_size Any, instances_per_epoch Any, max_instances_in_memory Any) : void from class org.allennlp.data.iterators.basic_iterator.BasicIterator to package __init__(self DataIterator, batch_size Any, instances_per_epoch Any, max_instances_in_memory Any, cache_instances Any, track_epoch Any) : void from class org.allennlp.data.iterators.data_iterator.DataIterator</td>
+<td>allennlp/data/iterators/basic_iterator.py</td>
+</tr>
+<tr><td>allenai/allennlp</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f#diff-909716fd34db4c4472f4f6aa58d9d15370f947fa2bd6ee97a2b8c2b52fa984d2L57">RefactoringLink</a></td><td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _take_instances(self BasicIterator, instances Any, max_instances Any) : void from class org.allennlp.data.iterators.basic_iterator.BasicIterator to package _take_instances(self DataIterator, instances Any, max_instances Any) : void from class org.allennlp.data.iterators.data_iterator.DataIterator</td>
+<td>allennlp/data/iterators/basic_iterator.py</td>
+</tr>
+<tr><td>allenai/allennlp</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f#diff-909716fd34db4c4472f4f6aa58d9d15370f947fa2bd6ee97a2b8c2b52fa984d2L88">RefactoringLink</a></td><td><a href="https://github.com/allenai/allennlp/commit/fa34344baffe2f8e2a50d5353a6e05f1ef668b8f">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _memory_sized_lists(self BasicIterator, instances Any) : void from class org.allennlp.data.iterators.basic_iterator.BasicIterator to package _memory_sized_lists(self DataIterator, instances Any) : void from class org.allennlp.data.iterators.data_iterator.DataIterator</td>
+<td>allennlp/data/iterators/basic_iterator.py</td>
+</tr>
+<tr><td>CyberReboot/poseidon</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/poseidon/commit/c5e78393c3b229c1485bfa9946f5732c48c06f46#diff-3ab9e0edabf4776aeff3347d911ffec0f9b9f9bac363b304ed2178f64eadffa3L235">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/poseidon/commit/c5e78393c3b229c1485bfa9946f5732c48c06f46">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_handlers(self Investigator_Response, t Any) : void from class org.poseidon.poseidonMain.Investigator.Investigator.Investigator_Response to package get_handlers(self Investigator, t Any) : void from class org.poseidon.poseidonMain.Investigator.Investigator.Investigator</td>
+<td>poseidon/poseidonMain/Investigator/Investigator.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L126">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _partition_rows_by_field_vals(self Host, rows Any) : void from class org.networkml.featurizers.funcs.host.Host to package _partition_rows_by_field_vals(self HostBase, rows Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L133">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _host_rows(self Host, rows Any, host_func Any) : void from class org.networkml.featurizers.funcs.host.Host to package _host_rows(self HostBase, rows Any, host_func Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L141">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _calc_tshark_field(self Host, field Any, tshark_field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.Host to package _calc_tshark_field(self HostBase, field Any, tshark_field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L158">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _calc_time_delta(self Host, field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.Host to package _calc_time_delta(self HostBase, field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L162">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/8ceeb6ed4ee9970031ab67a60ed0268a5621b6ed">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _calc_framelen(self Host, field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.Host to package _calc_framelen(self HostBase, field Any, rows Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>CyberReboot/NetworkML</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/CyberReboot/NetworkML/commit/d210ddb87f7331dfdf3a274301f47e81f4e70c7b#diff-477d45e6b6b61cb022c4b2b8ef0640f9ceb3e09a5e7f72ba603fe5b9a1f8b8c2L138">RefactoringLink</a></td><td><a href="https://github.com/CyberReboot/NetworkML/commit/d210ddb87f7331dfdf3a274301f47e81f4e70c7b">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package _last_protocols(rows Any) : void from class org.networkml.featurizers.funcs.host.Host to package _last_protocols(rows Any) : void from class org.networkml.featurizers.funcs.host.HostBase</td>
+<td>networkml/featurizers/funcs/host.py</td>
+</tr>
+<tr><td>tensorly/tensorly</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b#diff-9f121cd3f3024aba6ee1c7f363f3a24f77c8b0b749d3535cb360e84349953d3eL58">RefactoringLink</a></td><td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package norm(tensor Any, order Any, axis Any) : void from class org.tensorly.backend.jax_backend.JaxBackend to package norm(self Backend, tensor Any, order Any, axis Any) : void from class org.tensorly.backend.core.Backend</td>
+<td>tensorly/backend/jax_backend.py</td>
+</tr>
+<tr><td>tensorly/tensorly</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b#diff-9a369b099baae7789b140f00d0013509d33ab7f89d9db618f4efcd8d6b425ad7L56">RefactoringLink</a></td><td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package norm(tensor Any, order Any, axis Any) : void from class org.tensorly.backend.mxnet_backend.MxnetBackend to package norm(self Backend, tensor Any, order Any, axis Any) : void from class org.tensorly.backend.core.Backend</td>
+<td>tensorly/backend/mxnet_backend.py</td>
+</tr>
+<tr><td>tensorly/tensorly</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b#diff-c62565b9422565b8f9cf8513c0b9c2fd6f6826cbd0d725f2410ff35e11127f5bL41">RefactoringLink</a></td><td><a href="https://github.com/tensorly/tensorly/commit/f08bbba169e4db6ac0e9c8c781793c84362d3c0b">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package norm(tensor Any, order Any, axis Any) : void from class org.tensorly.backend.numpy_backend.NumpyBackend to package norm(self Backend, tensor Any, order Any, axis Any) : void from class org.tensorly.backend.core.Backend</td>
+<td>tensorly/backend/numpy_backend.py</td>
+</tr>
+<tr><td>UFAL-DSG/tgen</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/UFAL-DSG/tgen/commit/85151cdc50e0567e050897ed01593fbf944da0fb#diff-4a56dd414f90e821275ffdb81b5260fc645a56a5bb49069a1dc51ade2a708f83L101">RefactoringLink</a></td><td><a href="https://github.com/UFAL-DSG/tgen/commit/85151cdc50e0567e050897ed01593fbf944da0fb">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package load_from_file(model_fname Any) : void from class org.tgen.logreg_rank.LogisticRegressionRanker to package load_from_file(model_fname Any) : void from class org.tgen.rank.Ranker</td>
+<td>tgen/logreg_rank.py</td>
+</tr>
+<tr><td>tyarkoni/pliers</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tyarkoni/pliers/commit/4e57d88eae9b8430b291be3b499bd7b5b7ed1221#diff-2530c4267fc8385c65a19db1910b0b104c0fd9489cc755145a05fe9742c978abL151">RefactoringLink</a></td><td><a href="https://github.com/tyarkoni/pliers/commit/4e57d88eae9b8430b291be3b499bd7b5b7ed1221">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _get_values(self LibrosaFramedFeatureExtractor, stim Any) : void from class org.pliers.extractors.audio.LibrosaFramedFeatureExtractor to package _get_values(self LibrosaFeatureExtractor, stim Any) : void from class org.pliers.extractors.audio.LibrosaFeatureExtractor</td>
+<td>pliers/extractors/audio.py</td>
+</tr>
+<tr><td>tyarkoni/pliers</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/tyarkoni/pliers/commit/4e57d88eae9b8430b291be3b499bd7b5b7ed1221#diff-2530c4267fc8385c65a19db1910b0b104c0fd9489cc755145a05fe9742c978abL154">RefactoringLink</a></td><td><a href="https://github.com/tyarkoni/pliers/commit/4e57d88eae9b8430b291be3b499bd7b5b7ed1221">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _extract(self LibrosaFramedFeatureExtractor, stim Any) : void from class org.pliers.extractors.audio.LibrosaFramedFeatureExtractor to package _extract(self LibrosaFeatureExtractor, stim Any) : void from class org.pliers.extractors.audio.LibrosaFeatureExtractor</td>
+<td>pliers/extractors/audio.py</td>
+</tr>
+<tr><td>matplotlib/matplotlib</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c#diff-ba79d31808d1f55bdf8bf2896366c85122eb9488e140c5a4de060f2c4e1fa8f6L72">RefactoringLink</a></td><td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self CbarAxes) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxes to package __init__(self CbarAxesBase) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxesBase</td>
+<td>lib/mpl_toolkits/axes_grid1/axes_grid.py</td>
+</tr>
+<tr><td>matplotlib/matplotlib</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c#diff-ba79d31808d1f55bdf8bf2896366c85122eb9488e140c5a4de060f2c4e1fa8f6L78">RefactoringLink</a></td><td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package cla(self CbarAxes) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxes to package cla(self CbarAxesBase) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxesBase</td>
+<td>lib/mpl_toolkits/axes_grid1/axes_grid.py</td>
+</tr>
+<tr><td>matplotlib/matplotlib</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c#diff-8efa0c6910332fe773e06b9916ac4469d7bd95c251292530960809ffc26a3bbbL6">RefactoringLink</a></td><td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self CbarAxes) : void from class org.lib.mpl_toolkits.axisartist.axes_grid.CbarAxes to package __init__(self CbarAxesBase) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxesBase</td>
+<td>lib/mpl_toolkits/axisartist/axes_grid.py</td>
+</tr>
+<tr><td>matplotlib/matplotlib</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c#diff-8efa0c6910332fe773e06b9916ac4469d7bd95c251292530960809ffc26a3bbbL12">RefactoringLink</a></td><td><a href="https://github.com/matplotlib/matplotlib/commit/1163bf5f6f67fcb0b2861ec41bbb278297a7063c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package cla(self CbarAxes) : void from class org.lib.mpl_toolkits.axisartist.axes_grid.CbarAxes to package cla(self CbarAxesBase) : void from class org.lib.mpl_toolkits.axes_grid1.axes_grid.CbarAxesBase</td>
+<td>lib/mpl_toolkits/axisartist/axes_grid.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2#diff-6a3dd59851dc95a1e5563703048666ea694abf1e5299549769bf0d7901789eb7L161">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _squash_correction(self GaussianPolicy, actions Any) : void from class org.softlearning.policies.gaussian_policy.GaussianPolicy to package _squash_correction(self NNPolicy, actions Any) : void from class org.softlearning.policies.nn_policy.NNPolicy</td>
+<td>softlearning/policies/gaussian_policy.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2#diff-4290b8658ec76085b50dc567324546a72904c24d5736fbae11c837f7d8a3c9cbL169">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _squash_correction(self GMMPolicy, actions Any) : void from class org.softlearning.policies.gmm.GMMPolicy to package _squash_correction(self NNPolicy, actions Any) : void from class org.softlearning.policies.nn_policy.NNPolicy</td>
+<td>softlearning/policies/gmm.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2#diff-d720c7ccf51e8660c302874569569e5bcc7eb762222d3e1fddd5ff7754a712e8L228">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/36155f72073ab63782d1cea71513f7ff69e3e1e2">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _squash_correction(self LatentSpacePolicy, actions Any) : void from class org.softlearning.policies.latent_space_policy.LatentSpacePolicy to package _squash_correction(self NNPolicy, actions Any) : void from class org.softlearning.policies.nn_policy.NNPolicy</td>
+<td>softlearning/policies/latent_space_policy.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/52215556be240dde4e84aa04bfaf91cbae14809c#diff-749706ee0b5362835365a54c22b33b6d99002a06dcead4461df22f0fda0fd2bbL49">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/52215556be240dde4e84aa04bfaf91cbae14809c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _advance(self SimpleReplayPool) : void from class org.softlearning.replay_pools.simple_replay_pool.SimpleReplayPool to package _advance(self FlexibleReplayPool, count Any) : void from class org.softlearning.replay_pools.flexible_replay_pool.FlexibleReplayPool</td>
+<td>softlearning/replay_pools/simple_replay_pool.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/52215556be240dde4e84aa04bfaf91cbae14809c#diff-749706ee0b5362835365a54c22b33b6d99002a06dcead4461df22f0fda0fd2bbL54">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/52215556be240dde4e84aa04bfaf91cbae14809c">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package batch_indices(self SimpleReplayPool, batch_size Any) : void from class org.softlearning.replay_pools.simple_replay_pool.SimpleReplayPool to package random_indices(self FlexibleReplayPool, batch_size Any) : void from class org.softlearning.replay_pools.flexible_replay_pool.FlexibleReplayPool</td>
+<td>softlearning/replay_pools/simple_replay_pool.py</td>
+</tr>
+<tr><td>rail-berkeley/softlearning</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rail-berkeley/softlearning/commit/16cf48b6577de2c429b962ad942a301a6f01b120#diff-f0cb3ea0a5c48d230841d467772948e06d85c9d411b206581160ed8e6bf3d162L33">RefactoringLink</a></td><td><a href="https://github.com/rail-berkeley/softlearning/commit/16cf48b6577de2c429b962ad942a301a6f01b120">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package output_for(self MLPPreprocessor, observations Any, reuse Any) : void from class org.softlearning.preprocessors.mlp_preprocessor.MLPPreprocessor to package output_for(self MLPFunction) : void from class org.softlearning.misc.nn.MLPFunction</td>
+<td>softlearning/preprocessors/mlp_preprocessor.py</td>
+</tr>
+<tr><td>analysiscenter/batchflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/analysiscenter/batchflow/commit/3ecdf8bfb3110b5bee6259a3724090ad216da21d#diff-09f3d6d8059370385bbd0e49bbd5256a8a9c1f02b71b648651b91e4440f407ebL140">RefactoringLink</a></td><td><a href="https://github.com/analysiscenter/batchflow/commit/3ecdf8bfb3110b5bee6259a3724090ad216da21d">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package apply_transform(self ImagesBatch, ix Any, src Any, dst Any, func Any) : void from class org.dataset.batch_image.ImagesBatch to package apply_transform(self Batch, ix Any, src Any, dst Any, func Any) : void from class org.dataset.batch.Batch</td>
+<td>dataset/batch_image.py</td>
+</tr>
+<tr><td>analysiscenter/batchflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/analysiscenter/batchflow/commit/3ecdf8bfb3110b5bee6259a3724090ad216da21d#diff-09f3d6d8059370385bbd0e49bbd5256a8a9c1f02b71b648651b91e4440f407ebL152">RefactoringLink</a></td><td><a href="https://github.com/analysiscenter/batchflow/commit/3ecdf8bfb3110b5bee6259a3724090ad216da21d">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package apply_transform_all(self ImagesBatch, src Any, dst Any, func Any) : void from class org.dataset.batch_image.ImagesBatch to package apply_transform_all(self Batch, src Any, dst Any, func Any) : void from class org.dataset.batch.Batch</td>
+<td>dataset/batch_image.py</td>
+</tr>
+<tr><td>analysiscenter/batchflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/analysiscenter/batchflow/commit/dc20fe44ecf920b5873aad690217eba64b615740#diff-d987c388c88bf7d82b5f40226d85e309e16ff1afbbe973579a56aeb80c3ec461L83">RefactoringLink</a></td><td><a href="https://github.com/analysiscenter/batchflow/commit/dc20fe44ecf920b5873aad690217eba64b615740">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package make_filename() : void from class org.dataset.batch.Batch to package make_filename() : void from class org.dataset.batch_base.BaseBatch</td>
+<td>dataset/batch.py</td>
+</tr>
+<tr><td>analysiscenter/batchflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/analysiscenter/batchflow/commit/52e7ee67a9a4da1858112cc2745c6ac13e78cb5f#diff-d987c388c88bf7d82b5f40226d85e309e16ff1afbbe973579a56aeb80c3ec461L119">RefactoringLink</a></td><td><a href="https://github.com/analysiscenter/batchflow/commit/52e7ee67a9a4da1858112cc2745c6ac13e78cb5f">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package save(self Batch) : void from class org.dataset.batch.Batch to package save(self BaseBatch) : void from class org.dataset.batch_base.BaseBatch</td>
+<td>dataset/batch.py</td>
+</tr>
+<tr><td>dask/dask-ml</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dask/dask-ml/commit/b59d53b80dc5d69a58a7a2b8b2d291af3f81a341#diff-3194a1178bcd5e43627ceab0dd162c22691563ef7d6392548ba927bbbb411723L73">RefactoringLink</a></td><td><a href="https://github.com/dask/dask-ml/commit/b59d53b80dc5d69a58a7a2b8b2d291af3f81a341">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _keys(self Estimator) : void from class org.dklearn.estimator.Estimator to package _keys(self DaskBaseEstimator) : void from class org.dklearn.core.DaskBaseEstimator</td>
+<td>dklearn/estimator.py</td>
+</tr>
+<tr><td>dask/dask-ml</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/dask/dask-ml/commit/b59d53b80dc5d69a58a7a2b8b2d291af3f81a341#diff-ffb120f8a9b6f246bfdf8c7b977c4957ea40b12a88e1fe64d4d8045f80e7f89cL35">RefactoringLink</a></td><td><a href="https://github.com/dask/dask-ml/commit/b59d53b80dc5d69a58a7a2b8b2d291af3f81a341">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _keys(self Pipeline) : void from class org.dklearn.pipeline.Pipeline to package _keys(self DaskBaseEstimator) : void from class org.dklearn.core.DaskBaseEstimator</td>
+<td>dklearn/pipeline.py</td>
+</tr>
+<tr><td>robertmartin8/PyPortfolioOpt</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/robertmartin8/PyPortfolioOpt/commit/3528831202c64d82fba3113524f7ebfbfdb402e9#diff-34d45293c4072e0b35922f1d1f47d8b6e3245eb61dc5b0905f47ce3a3595a7b4L312">RefactoringLink</a></td><td><a href="https://github.com/robertmartin8/PyPortfolioOpt/commit/3528831202c64d82fba3113524f7ebfbfdb402e9">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package shrink(self SingleIndex) : void from class org.pypfopt.risk_models.SingleIndex to package _ledoit_wolf_single_factor(self CovarianceShrinkage) : void from class org.pypfopt.risk_models.CovarianceShrinkage</td>
+<td>pypfopt/risk_models.py</td>
+</tr>
+<tr><td>robertmartin8/PyPortfolioOpt</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/robertmartin8/PyPortfolioOpt/commit/8bdb57dcd926e62643c8e8ae51fb08e6c0982f7a#diff-34d45293c4072e0b35922f1d1f47d8b6e3245eb61dc5b0905f47ce3a3595a7b4L248">RefactoringLink</a></td><td><a href="https://github.com/robertmartin8/PyPortfolioOpt/commit/8bdb57dcd926e62643c8e8ae51fb08e6c0982f7a">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package shrink(self ConstantCorrelation) : void from class org.pypfopt.risk_models.ConstantCorrelation to package _ledoit_wolf_constant_correlation(self CovarianceShrinkage) : void from class org.pypfopt.risk_models.CovarianceShrinkage</td>
+<td>pypfopt/risk_models.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/35ac8b37a511c5b9d6afb6573ee60d7eae2d3957#diff-9014d80d6008d937129a783b4fbe2d0b9bbf51417b5e41285a6d8e2f746ecd67L15">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/35ac8b37a511c5b9d6afb6573ee60d7eae2d3957">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package build_image_dataset(self ImageSource, temp_dir Any) : void from class org.rastervision.data.raster_source.image_source.ImageSource to package _activate(self RasterioRasterSource) : void from class org.rastervision.data.raster_source.rasterio_source.RasterioRasterSource</td>
+<td>rastervision/data/raster_source/image_source.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/6d415ffbc6d83e04c397fac40512d70297044af6#diff-e59e4218022f22dd00b517263444152eedd1a9d949fb49cf366135a98df1abebL35">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/6d415ffbc6d83e04c397fac40512d70297044af6">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package load_bundle_files(self GeoTiffSourceConfig, bundle_dir Any) : void from class org.src.rastervision.data.raster_source.geotiff_source_config.GeoTiffSourceConfig to package load_bundle_files(self RasterSourceConfig, bundle_dir Any) : void from class org.src.rastervision.data.raster_source.raster_source_config.RasterSourceConfig</td>
+<td>src/rastervision/data/raster_source/geotiff_source_config.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/6d415ffbc6d83e04c397fac40512d70297044af6#diff-f5a0e5d4c3e20cfb53b309092e14b258330ae6b8ae15ab35139292e10753b37fL35">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/6d415ffbc6d83e04c397fac40512d70297044af6">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package load_bundle_files(self ImageSourceConfig, bundle_dir Any) : void from class org.src.rastervision.data.raster_source.image_source_config.ImageSourceConfig to package load_bundle_files(self RasterSourceConfig, bundle_dir Any) : void from class org.src.rastervision.data.raster_source.raster_source_config.RasterSourceConfig</td>
+<td>src/rastervision/data/raster_source/image_source_config.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545#diff-ee451dc1ce9f57a40998868329f3ad2908fb18c0230d44a04593a0c943439a26L83">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package __init__(self ObjectDetectionEvaluation) : void from class org.src.rastervision.evaluations.object_detection_evaluation.ObjectDetectionEvaluation to package __init__(self Evaluation) : void from class org.src.rastervision.core.evaluation.Evaluation</td>
+<td>src/rastervision/evaluations/object_detection_evaluation.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545#diff-ee451dc1ce9f57a40998868329f3ad2908fb18c0230d44a04593a0c943439a26L90">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_by_id(self ObjectDetectionEvaluation, class_id Any) : void from class org.src.rastervision.evaluations.object_detection_evaluation.ObjectDetectionEvaluation to package get_by_id(self Evaluation, class_id Any) : void from class org.src.rastervision.core.evaluation.Evaluation</td>
+<td>src/rastervision/evaluations/object_detection_evaluation.py</td>
+</tr>
+<tr><td>azavea/raster-vision</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545#diff-ee451dc1ce9f57a40998868329f3ad2908fb18c0230d44a04593a0c943439a26L118">RefactoringLink</a></td><td><a href="https://github.com/azavea/raster-vision/commit/871f2f95fc82596eb7e30c424a446348e5c82545">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package to_json(self ObjectDetectionEvaluation) : void from class org.src.rastervision.evaluations.object_detection_evaluation.ObjectDetectionEvaluation to package to_json(self Evaluation) : void from class org.src.rastervision.core.evaluation.Evaluation</td>
+<td>src/rastervision/evaluations/object_detection_evaluation.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/6dde00403e1d247edd0f4326f18de2ab94173419#diff-50166fc6e2ce58419e6d4df354769b798bd294d2878d01394b2557cdafc02a2cL72">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/6dde00403e1d247edd0f4326f18de2ab94173419">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self LearningNodePerceptron, initial_class_observations Any, perceptron_weight Any) : void from class org.src.skmultiflow.trees.stacked_single_target_regression_hoeffding_tree.StackedSingleTargetRegressionHoeffdingTree.LearningNodePerceptron to package __init__(self LearningNodePerceptron, initial_class_observations Any, perceptron_weight Any, random_state Any) : void from class org.src.skmultiflow.trees.multi_target_regression_hoeffding_tree.MultiTargetRegressionHoeffdingTree.LearningNodePerceptron</td>
+<td>src/skmultiflow/trees/stacked_single_target_regression_hoeffding_tree.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/6dde00403e1d247edd0f4326f18de2ab94173419#diff-50166fc6e2ce58419e6d4df354769b798bd294d2878d01394b2557cdafc02a2cL294">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/6dde00403e1d247edd0f4326f18de2ab94173419">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self InactiveLearningNodePerceptron, initial_class_observations Any, perceptron_weight Any) : void from class org.src.skmultiflow.trees.stacked_single_target_regression_hoeffding_tree.StackedSingleTargetRegressionHoeffdingTree.InactiveLearningNodePerceptron to package __init__(self InactiveLearningNodePerceptron, initial_class_observations Any, perceptron_weight Any, random_state Any) : void from class org.src.skmultiflow.trees.multi_target_regression_hoeffding_tree.MultiTargetRegressionHoeffdingTree.InactiveLearningNodePerceptron</td>
+<td>src/skmultiflow/trees/stacked_single_target_regression_hoeffding_tree.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28#diff-cd4235930045d559a4e03503fed24bce1b61485757c699bd64dca2b83cb86bebL193">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_n_features(self WaveformGenerator) : void from class org.src.skmultiflow.data.generators.waveform_generator.WaveformGenerator to package n_features(self Stream) : void from class org.src.skmultiflow.data.base_stream.Stream</td>
+<td>src/skmultiflow/data/generators/waveform_generator.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28#diff-cd4235930045d559a4e03503fed24bce1b61485757c699bd64dca2b83cb86bebL187">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_n_cat_features(self WaveformGenerator) : void from class org.src.skmultiflow.data.generators.waveform_generator.WaveformGenerator to package n_cat_features(self Stream) : void from class org.src.skmultiflow.data.base_stream.Stream</td>
+<td>src/skmultiflow/data/generators/waveform_generator.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28#diff-cd4235930045d559a4e03503fed24bce1b61485757c699bd64dca2b83cb86bebL190">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_n_num_features(self WaveformGenerator) : void from class org.src.skmultiflow.data.generators.waveform_generator.WaveformGenerator to package n_num_features(self Stream) : void from class org.src.skmultiflow.data.base_stream.Stream</td>
+<td>src/skmultiflow/data/generators/waveform_generator.py</td>
+</tr>
+<tr><td>scikit-multiflow/scikit-multiflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28#diff-cd4235930045d559a4e03503fed24bce1b61485757c699bd64dca2b83cb86bebL196">RefactoringLink</a></td><td><a href="https://github.com/scikit-multiflow/scikit-multiflow/commit/4f8038822f524b18a9ad84bc69f5d29113f3ae28">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package get_n_targets(self WaveformGenerator) : void from class org.src.skmultiflow.data.generators.waveform_generator.WaveformGenerator to package n_targets(self Stream) : void from class org.src.skmultiflow.data.base_stream.Stream</td>
+<td>src/skmultiflow/data/generators/waveform_generator.py</td>
+</tr>
+<tr><td>pytorch/audio</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c#diff-2a2d056b918de891b2e797bb837d7b8f8c6e3917567f1aedf85d7c3cfe305f85L594">RefactoringLink</a></td><td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c">CommitLink</a></td><td></td>
+<td>Pull Up Method package TestTransformsCPU_1() : void from class org.test.test_torchscript_consistency.TestTransformsCPU to package TestBaseMixin_1() : void from class org.test.common_utils.TestBaseMixin</td>
+<td>test/test_torchscript_consistency.py</td>
+</tr>
+<tr><td>pytorch/audio</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c#diff-2a2d056b918de891b2e797bb837d7b8f8c6e3917567f1aedf85d7c3cfe305f85L583">RefactoringLink</a></td><td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c">CommitLink</a></td><td></td>
+<td>Pull Up Method package TestFunctionalCPU_1() : void from class org.test.test_torchscript_consistency.TestFunctionalCPU to package TestBaseMixin_1() : void from class org.test.common_utils.TestBaseMixin</td>
+<td>test/test_torchscript_consistency.py</td>
+</tr>
+<tr><td>pytorch/audio</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c#diff-2a2d056b918de891b2e797bb837d7b8f8c6e3917567f1aedf85d7c3cfe305f85L600">RefactoringLink</a></td><td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c">CommitLink</a></td><td></td>
+<td>Pull Up Method package TestTransformsCUDA_1() : void from class org.test.test_torchscript_consistency.TestTransformsCUDA to package TestBaseMixin_1() : void from class org.test.common_utils.TestBaseMixin</td>
+<td>test/test_torchscript_consistency.py</td>
+</tr>
+<tr><td>pytorch/audio</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c#diff-2a2d056b918de891b2e797bb837d7b8f8c6e3917567f1aedf85d7c3cfe305f85L589">RefactoringLink</a></td><td><a href="https://github.com/pytorch/audio/commit/00d38203e401b8d9472a8f8394a10e2c309be02c">CommitLink</a></td><td></td>
+<td>Pull Up Method package TestFunctionalCUDA_1() : void from class org.test.test_torchscript_consistency.TestFunctionalCUDA to package TestBaseMixin_1() : void from class org.test.common_utils.TestBaseMixin</td>
+<td>test/test_torchscript_consistency.py</td>
+</tr>
+<tr><td>pytorch/pytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/pytorch/commit/1b97ffa07af8cfbc95e55325d7e6bb758905939d#diff-5b331823d79fc13c5436ad744a4856c5ef0acd9403ca3fa9d4a12f8ec69cdc8aL77">RefactoringLink</a></td><td><a href="https://github.com/pytorch/pytorch/commit/1b97ffa07af8cfbc95e55325d7e6bb758905939d">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package assertAllFused(self TestTEFuser, graph Any, except_for Any) : void from class org.test.test_jit_fuser_te.TestTEFuser to package assertAllFused(self JitTestCase, graph Any, except_for Any) : void from class org.torch.testing._internal.jit_utils.JitTestCase</td>
+<td>test/test_jit_fuser_te.py</td>
+</tr>
+<tr><td>pytorch/translate</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/translate/commit/2bc2a72bd4537e3a8db532281b1257aa64fd0e2a#diff-1eaadc60a76609b952481690fe5d5ba2bad5420990b750bc52a62d63b358f2bfL85">RefactoringLink</a></td><td><a href="https://github.com/pytorch/translate/commit/2bc2a72bd4537e3a8db532281b1257aa64fd0e2a">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package aggregate_logging_outputs(logging_outputs Any) : void from class org.pytorch_translate.word_prediction.word_prediction_criterion.WordPredictionCriterion to package aggregate_logging_outputs(logging_outputs Any) : void from class org.pytorch_translate.word_prediction.word_prediction_criterion._BasePredictionCriterion</td>
+<td>pytorch_translate/word_prediction/word_prediction_criterion.py</td>
+</tr>
+<tr><td>pytorch/fairseq</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/fairseq/commit/3f9700868da4d09988b7dfbd7d5b3a9d5ea7d401#diff-6fb432bfeb5c51147d887f2ef550743aa1842165c119a7c942260afa87d0a431L21">RefactoringLink</a></td><td><a href="https://github.com/pytorch/fairseq/commit/3f9700868da4d09988b7dfbd7d5b3a9d5ea7d401">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package grad_denom(self CrossEntropyCriterion, samples Any) : void from class org.fairseq.criterions.cross_entropy.CrossEntropyCriterion to package grad_denom(sample_sizes Any) : void from class org.fairseq.criterions.fairseq_criterion.FairseqCriterion</td>
+<td>fairseq/criterions/cross_entropy.py</td>
+</tr>
+<tr><td>pytorch/fairseq</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/fairseq/commit/3f9700868da4d09988b7dfbd7d5b3a9d5ea7d401#diff-445d8a12d2bf868341e7cc8b158ccabf84cf1ec16dfb503eb1e7d6982d5be669L52">RefactoringLink</a></td><td><a href="https://github.com/pytorch/fairseq/commit/3f9700868da4d09988b7dfbd7d5b3a9d5ea7d401">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package grad_denom(self LabelSmoothedCrossEntropyCriterion, samples Any) : void from class org.fairseq.criterions.label_smoothed_cross_entropy.LabelSmoothedCrossEntropyCriterion to package grad_denom(sample_sizes Any) : void from class org.fairseq.criterions.fairseq_criterion.FairseqCriterion</td>
+<td>fairseq/criterions/label_smoothed_cross_entropy.py</td>
+</tr>
+<tr><td>pytorch/ignite</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/ignite/commit/f9645c0f07c3d07f77251f3d6c92e68bc8cc6ac3#diff-f6eb7e0b72e80c8dbb118ae0a6c1ffaf7845ecd7c012eb7f6f884564d9649105L88">RefactoringLink</a></td><td><a href="https://github.com/pytorch/ignite/commit/f9645c0f07c3d07f77251f3d6c92e68bc8cc6ac3">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _setup_attrs(self _NativeDistModel) : void from class org.ignite.distributed.comp_models.native._NativeDistModel to package _setup_attrs(self ComputationModel) : void from class org.ignite.distributed.comp_models.base.ComputationModel</td>
+<td>ignite/distributed/comp_models/native.py</td>
+</tr>
+<tr><td>pytorch/ignite</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/ignite/commit/f9645c0f07c3d07f77251f3d6c92e68bc8cc6ac3#diff-7a5a3fbe09c75049aed0c4d6d27f7476277e0e4e923734365e44e9de7265b62cL61">RefactoringLink</a></td><td><a href="https://github.com/pytorch/ignite/commit/f9645c0f07c3d07f77251f3d6c92e68bc8cc6ac3">CommitLink</a></td><td>Yes</td>
+<td>Pull Up Method package _setup_attrs(self _XlaDistModel) : void from class org.ignite.distributed.comp_models.xla._XlaDistModel to package _setup_attrs(self ComputationModel) : void from class org.ignite.distributed.comp_models.base.ComputationModel</td>
+<td>ignite/distributed/comp_models/xla.py</td>
+</tr>
+<tr><td>pytorch/text</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/text/commit/300a3787b3629d58a310a45d05d3c67d32af6f9c#diff-8289949af8a5765bdbe906370ba77653387b0a00086afb846652d6c3473d96f9L32">RefactoringLink</a></td><td><a href="https://github.com/pytorch/text/commit/300a3787b3629d58a310a45d05d3c67d32af6f9c">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package sort_key(ex Any) : void from class org.torchtext.datasets.snli.SNLI to package sort_key(ex Any) : void from class org.torchtext.datasets.nli.NLIDataset</td>
+<td>torchtext/datasets/snli.py</td>
+</tr>
+<tr><td>pytorch/text</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pytorch/text/commit/300a3787b3629d58a310a45d05d3c67d32af6f9c#diff-8289949af8a5765bdbe906370ba77653387b0a00086afb846652d6c3473d96f9L80">RefactoringLink</a></td><td><a href="https://github.com/pytorch/text/commit/300a3787b3629d58a310a45d05d3c67d32af6f9c">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package iters(cls Any, batch_size Any, device Any, root Any, vectors Any, trees Any) : void from class org.torchtext.datasets.snli.SNLI to package iters(cls Any, batch_size Any, device Any, root Any, vectors Any, trees Any) : void from class org.torchtext.datasets.nli.NLIDataset</td>
+<td>torchtext/datasets/snli.py</td>
+</tr>
+<tr><td>RaRe-Technologies/gensim</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/RaRe-Technologies/gensim/commit/1ac5a26896cbcfad97076d763ad291d57d99a674#diff-0035b20cc255b7b262c2e2b68e1a434a74dc719dfbd5b1cef9f7b8ef7b216eb4L162">RefactoringLink</a></td><td><a href="https://github.com/RaRe-Technologies/gensim/commit/1ac5a26896cbcfad97076d763ad291d57d99a674">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package load_word2vec_format(cls Any, fname Any, fvocab Any, binary Any, encoding Any, unicode_errors Any, limit Any, datatype Any) : void from class org.gensim.models.keyedvectors.KeyedVectors to package load_word2vec_format(cls Any, fname Any, fvocab Any, binary Any, encoding Any, unicode_errors Any, limit Any, datatype Any) : void from class org.gensim.models.keyedvectors.KeyedVectorsBase</td>
+<td>gensim/models/keyedvectors.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/cdbb8791ec13d03fd1fcf2580111db677a3ebc29#diff-2f62d752fb2d754e890a6b1cb2a679f94560a8ec3cd4b40ef4d3c9c2753ee4aaL321">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/cdbb8791ec13d03fd1fcf2580111db677a3ebc29">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package get_weights(self Preprocessor) : void from class org.autokeras.hypermodel.base.Preprocessor to package get_config(self Block) : void from class org.autokeras.hypermodel.base.Block</td>
+<td>autokeras/hypermodel/base.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/cdbb8791ec13d03fd1fcf2580111db677a3ebc29#diff-d519c75330811b4f3678de6df72b346f37048b42e92ef5b0482655aa59c00938L289">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/cdbb8791ec13d03fd1fcf2580111db677a3ebc29">CommitLink</a></td><td>No</td>
+<td>Pull Up Method package get_weights(self LightGBMModel) : void from class org.autokeras.hypermodel.preprocessor.LightGBMModel to package get_config(self Block) : void from class org.autokeras.hypermodel.base.Block</td>
+<td>autokeras/hypermodel/preprocessor.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7#diff-2076c1341a0dedef73cc33dfc1284fe43b020d5c8fd8d610f093d2a1257d7217L8">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self StubBatchNormalization, input_node Any, output_node Any) : void from class org.autokeras.stub.StubBatchNormalization to package __init__(self StubLayer, input_node Any, output_node Any) : void from class org.autokeras.stub.StubLayer</td>
+<td>autokeras/stub.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7#diff-2076c1341a0dedef73cc33dfc1284fe43b020d5c8fd8d610f093d2a1257d7217L28">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self StubWeightedAdd, input_nodes Any, output_node Any) : void from class org.autokeras.stub.StubWeightedAdd to package __init__(self StubAggregateLayer, input_nodes Any, output_node Any) : void from class org.autokeras.stub.StubAggregateLayer</td>
+<td>autokeras/stub.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7#diff-2076c1341a0dedef73cc33dfc1284fe43b020d5c8fd8d610f093d2a1257d7217L36">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self StubConcatenate, input_nodes Any, output_node Any) : void from class org.autokeras.stub.StubConcatenate to package __init__(self StubAggregateLayer, input_nodes Any, output_node Any) : void from class org.autokeras.stub.StubAggregateLayer</td>
+<td>autokeras/stub.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7#diff-2076c1341a0dedef73cc33dfc1284fe43b020d5c8fd8d610f093d2a1257d7217L44">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/44f5e54afd1e436752e954c653605a593c8bf1f7">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self StubActivation, input_node Any, output_node Any) : void from class org.autokeras.stub.StubActivation to package __init__(self StubLayer, input_node Any, output_node Any) : void from class org.autokeras.stub.StubLayer</td>
+<td>autokeras/stub.py</td>
+</tr>
+<tr><td>jhfjhfj1/autokeras</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/jhfjhfj1/autokeras/commit/640509a75b7502dc7ef930051e70a7379c63cedd#diff-f0ca8166ffff51f0eba42799069642c2d0a168b771049842b8054a4c58de8b49L122">RefactoringLink</a></td><td><a href="https://github.com/jhfjhfj1/autokeras/commit/640509a75b7502dc7ef930051e70a7379c63cedd">CommitLink</a></td><td></td>
+<td>Pull Up Method package add_model(self HillClimbingSearcher, model Any, x_train Any, y_train Any, x_test Any, y_test Any) : void from class org.autokeras.search.HillClimbingSearcher to package add_model(self Searcher, model Any, x_train Any, y_train Any, x_test Any, y_test Any) : void from class org.autokeras.search.Searcher</td>
+<td>autokeras/search.py</td>
+</tr>
+<tr><td>Microsoft/dowhy</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Microsoft/dowhy/commit/9aff522e02295a31159df53de084b97cadc84014#diff-4a7b515366c20548f2bf751c93567a8e7520005a69ff465d58659e24b12d6f9bL193">RefactoringLink</a></td><td><a href="https://github.com/Microsoft/dowhy/commit/9aff522e02295a31159df53de084b97cadc84014">CommitLink</a></td><td></td>
+<td>Pull Up Method package choose_variables(self BootstrapRefuter, required_variables Any) : void from class org.dowhy.causal_refuters.bootstrap_refuter.BootstrapRefuter to package choose_variables(self CausalRefuter, required_variables Any) : void from class org.dowhy.causal_refuter.CausalRefuter</td>
+<td>dowhy/causal_refuters/bootstrap_refuter.py</td>
+</tr>
+<tr><td>bashtage/linearmodels</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bashtage/linearmodels/commit/c6082f3449aa28e9ed7c720fb8795a60d6c55b7e#diff-91b86314d0e7a0ca430f3d57193f88c59a7eac8b4c0a50d9ecff61d1a233a508L151">RefactoringLink</a></td><td><a href="https://github.com/bashtage/linearmodels/commit/c6082f3449aa28e9ed7c720fb8795a60d6c55b7e">CommitLink</a></td><td></td>
+<td>Pull Up Method package _prepare_data_from_formula(formula Any, data Any, portfolios Any) : void from class org.linearmodels.asset_pricing.model.TradedFactorModel to package _prepare_data_from_formula(formula Any, data Any, portfolios Any) : void from class org.linearmodels.asset_pricing.model._FactorModelBase</td>
+<td>linearmodels/asset_pricing/model.py</td>
+</tr>
+<tr><td>bashtage/linearmodels</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bashtage/linearmodels/commit/d447103f5844a1d65dbb5473c948da9c99af3095#diff-879643027588683300fafcbc46e7c7747c6c57e1b3c68fe4098a768dd293be35L521">RefactoringLink</a></td><td><a href="https://github.com/bashtage/linearmodels/commit/d447103f5844a1d65dbb5473c948da9c99af3095">CommitLink</a></td><td></td>
+<td>Pull Up Method package estimated_effects(self PanelEffectsResults) : void from class org.linearmodels.panel.results.PanelEffectsResults to package estimated_effects(self PanelResults) : void from class org.linearmodels.panel.results.PanelResults</td>
+<td>linearmodels/panel/results.py</td>
+</tr>
+<tr><td>bashtage/linearmodels</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bashtage/linearmodels/commit/e168bea6a686c7587ba53517e8f4d46c01dcc0a7#diff-57c337191c383abec54d0799ad9eeca5d48daba9fe5361c7de29d18d192b2549L510">RefactoringLink</a></td><td><a href="https://github.com/bashtage/linearmodels/commit/e168bea6a686c7587ba53517e8f4d46c01dcc0a7">CommitLink</a></td><td></td>
+<td>Pull Up Method package _prepare_between(self PooledOLS) : void from class org.linearmodels.panel.model.PooledOLS to package _prepare_between(self PanelOLS) : void from class org.linearmodels.panel.model.PanelOLS</td>
+<td>linearmodels/panel/model.py</td>
+</tr>
+<tr><td>bashtage/linearmodels</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bashtage/linearmodels/commit/091ebf3a503765453ee357fb3eb133d82c18ccbd#diff-35ecbe8ede376c5f7d3362caaa2a387810752e04a0d0c9a6751023921a9d2e03L887">RefactoringLink</a></td><td><a href="https://github.com/bashtage/linearmodels/commit/091ebf3a503765453ee357fb3eb133d82c18ccbd">CommitLink</a></td><td></td>
+<td>Pull Up Method package kappa(self IVResults) : void from class org.panel.iv.model.IVResults to package kappa(self OLSResults) : void from class org.panel.iv.model.OLSResults</td>
+<td>panel/iv/model.py</td>
+</tr>
+<tr><td>Qiskit/qiskit-aqua</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Qiskit/qiskit-aqua/commit/6f9629d086cd0352fddfab0a41fe1ec6fe370f92#diff-ca7af8d7647f6e4f4e440a0d89632a9375d6fae4390ab61d5bc02919990c47aeL234">RefactoringLink</a></td><td><a href="https://github.com/Qiskit/qiskit-aqua/commit/6f9629d086cd0352fddfab0a41fe1ec6fe370f92">CommitLink</a></td><td></td>
+<td>Pull Up Method package __hash__(self PauliOp) : void from class org.qiskit.aqua.operators.primitive_ops.pauli_op.PauliOp to package __hash__(self PrimitiveOp) : void from class org.qiskit.aqua.operators.primitive_ops.primitive_op.PrimitiveOp</td>
+<td>qiskit/aqua/operators/primitive_ops/pauli_op.py</td>
+</tr>
+<tr><td>Qiskit/qiskit-aqua</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Qiskit/qiskit-aqua/commit/a9d3c214be4f4b2d9cf1a2dd1f2a71f67c59f944#diff-e17b28a802a9b64f2d48498db0259e93afc9565e563b2846543d858c94a5c6f2L33">RefactoringLink</a></td><td><a href="https://github.com/Qiskit/qiskit-aqua/commit/a9d3c214be4f4b2d9cf1a2dd1f2a71f67c59f944">CommitLink</a></td><td></td>
+<td>Pull Up Method package CustomCircuitOracle_1() : void from class org.qiskit.aqua.components.oracles.custom_circuit_oracle.CustomCircuitOracle to package Oracle_1() : void from class org.qiskit.aqua.components.oracles.oracle.Oracle</td>
+<td>qiskit/aqua/components/oracles/custom_circuit_oracle.py</td>
+</tr>
+<tr><td>stanford-mast/nn_dataflow</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/stanford-mast/nn_dataflow/commit/55a4da256044509b923ae9515e937b6bac4920a7#diff-77450662806eeb9068dcb444f8b1719620c8fab399798e811be932a3ab488b70L354">RefactoringLink</a></td><td><a href="https://github.com/stanford-mast/nn_dataflow/commit/55a4da256044509b923ae9515e937b6bac4920a7">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_gen_constraint_ff_end(self TestPipelineSegment) : void from class org.nn_dataflow.tests.pipeline_test.test_pipeline_segment.TestPipelineSegment to package _validate_allocation(self TestPipelineFixture, segment Any, allocation Any) : void from class org.nn_dataflow.tests.pipeline_test.test_pipeline_fixture.TestPipelineFixture</td>
+<td>nn_dataflow/tests/pipeline_test/test_pipeline_segment.py</td>
+</tr>
+<tr><td>mathics/Mathics</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48#diff-ed64bb131e5b2d5893da008a9131a283c058a0fd883ea798c8eaad3fc1effb20L396">RefactoringLink</a></td><td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48">CommitLink</a></td><td></td>
+<td>Pull Up Method package to_laba(self RGBColor) : void from class org.mathics.builtin.graphics.RGBColor to package to_laba(self _Color) : void from class org.mathics.builtin.graphics._Color</td>
+<td>mathics/builtin/graphics.py</td>
+</tr>
+<tr><td>mathics/Mathics</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48#diff-ed64bb131e5b2d5893da008a9131a283c058a0fd883ea798c8eaad3fc1effb20L404">RefactoringLink</a></td><td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48">CommitLink</a></td><td></td>
+<td>Pull Up Method package to_rgba(self LABColor) : void from class org.mathics.builtin.graphics.LABColor to package to_rgba(self _Color) : void from class org.mathics.builtin.graphics._Color</td>
+<td>mathics/builtin/graphics.py</td>
+</tr>
+<tr><td>mathics/Mathics</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48#diff-ed64bb131e5b2d5893da008a9131a283c058a0fd883ea798c8eaad3fc1effb20L434">RefactoringLink</a></td><td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48">CommitLink</a></td><td></td>
+<td>Pull Up Method package to_rgba(self LCHColor) : void from class org.mathics.builtin.graphics.LCHColor to package to_rgba(self _Color) : void from class org.mathics.builtin.graphics._Color</td>
+<td>mathics/builtin/graphics.py</td>
+</tr>
+<tr><td>mathics/Mathics</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48#diff-ed64bb131e5b2d5893da008a9131a283c058a0fd883ea798c8eaad3fc1effb20L518">RefactoringLink</a></td><td><a href="https://github.com/mathics/Mathics/commit/3aabe9bf122d03617e219d5efd400e0d9e0dbc48">CommitLink</a></td><td></td>
+<td>Pull Up Method package to_laba(self CMYKColor) : void from class org.mathics.builtin.graphics.CMYKColor to package to_laba(self _Color) : void from class org.mathics.builtin.graphics._Color</td>
+<td>mathics/builtin/graphics.py</td>
+</tr>
+<tr><td>IndicoDataSolutions/Enso</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/IndicoDataSolutions/Enso/commit/929c852fb6a0549dcf0c9d43d0919301d829b159#diff-26e0f771be2f89f802d12473da028f7d8076d224389ff3c21aec4ef636e11302L6">RefactoringLink</a></td><td><a href="https://github.com/IndicoDataSolutions/Enso/commit/929c852fb6a0549dcf0c9d43d0919301d829b159">CommitLink</a></td><td></td>
+<td>Pull Up Method package points(self KCenter) : void from class org.enso.sample.kcenter_sampler.KCenter to package points(self Sampler) : void from class org.enso.sample.__init__.Sampler</td>
+<td>enso/sample/kcenter_sampler.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/5bff5be87be033f2d3a95423557b5af3dbf1746b#diff-a93cffc080722b94e6825eaf0ff86db30f72eeb1aae756f15641c65d0e54e856L97">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/5bff5be87be033f2d3a95423557b5af3dbf1746b">CommitLink</a></td><td></td>
+<td>Pull Up Method package train(self _VariationalStrategy, mode Any) : void from class org.gpytorch.variational._variational_strategy._VariationalStrategy to package train(self Module, mode Any) : void from class org.gpytorch.module.Module</td>
+<td>gpytorch/variational/_variational_strategy.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/6bca4eed74e22ee369c166649f15db56f8565e35#diff-a2e5888585347fe71883e84d923480394e543cf0334c100e41d18c1762116a31L379">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/6bca4eed74e22ee369c166649f15db56f8565e35">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_inv_matmul_vec(self LazyTensorTestCase) : void from class org.test.lazy._lazy_tensor_test_case.LazyTensorTestCase to package _test_matmul(self RectangularLazyTensorTestCase, rhs Any) : void from class org.test.lazy._lazy_tensor_test_case.RectangularLazyTensorTestCase</td>
+<td>test/lazy/_lazy_tensor_test_case.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/6bca4eed74e22ee369c166649f15db56f8565e35#diff-eb28feaac62802fcd45dc2fbd6b55bcaa629ed87d586fc7a59ead94a13d033ecL97">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/6bca4eed74e22ee369c166649f15db56f8565e35">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_inv_matmul_matrix(self TestCachedCGLazyTensorNoLogdet, cholesky Any) : void from class org.test.lazy.test_cached_cg_lazy_tensor.TestCachedCGLazyTensorNoLogdet to package _test_inv_matmul(self LazyTensorTestCase, rhs Any, lhs Any, cholesky Any) : void from class org.test.lazy._lazy_tensor_test_case.LazyTensorTestCase</td>
+<td>test/lazy/test_cached_cg_lazy_tensor.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/560ce78f80f283e8092cc1102207945f613ca1e3#diff-a2e5888585347fe71883e84d923480394e543cf0334c100e41d18c1762116a31L289">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/560ce78f80f283e8092cc1102207945f613ca1e3">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_quad_form_derivative(self LazyTensorTestCase) : void from class org.test.lazy._lazy_tensor_test_case.LazyTensorTestCase to package test_quad_form_derivative(self RectangularLazyTensorTestCase) : void from class org.test.lazy._lazy_tensor_test_case.RectangularLazyTensorTestCase</td>
+<td>test/lazy/_lazy_tensor_test_case.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/560ce78f80f283e8092cc1102207945f613ca1e3#diff-a2e5888585347fe71883e84d923480394e543cf0334c100e41d18c1762116a31L607">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/560ce78f80f283e8092cc1102207945f613ca1e3">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_transpose_batch(self LazyTensorTestCase) : void from class org.test.lazy._lazy_tensor_test_case.LazyTensorTestCase to package test_transpose_batch(self RectangularLazyTensorTestCase) : void from class org.test.lazy._lazy_tensor_test_case.RectangularLazyTensorTestCase</td>
+<td>test/lazy/_lazy_tensor_test_case.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2#diff-e7520aa073cf460d302268c6d21b9f8def1f52c633b06e4d1cb487cf6ca5b80fL57">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2">CommitLink</a></td><td></td>
+<td>Pull Up Method package _quad_form_derivative(self BlockDiagLazyTensor, left_vecs Any, right_vecs Any) : void from class org.gpytorch.lazy.block_diag_lazy_tensor.BlockDiagLazyTensor to package _quad_form_derivative(self BlockLazyTensor, left_vecs Any, right_vecs Any) : void from class org.gpytorch.lazy.block_lazy_tensor.BlockLazyTensor</td>
+<td>gpytorch/lazy/block_diag_lazy_tensor.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2#diff-e7520aa073cf460d302268c6d21b9f8def1f52c633b06e4d1cb487cf6ca5b80fL135">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2">CommitLink</a></td><td></td>
+<td>Pull Up Method package zero_mean_mvn_samples(self BlockDiagLazyTensor, num_samples Any) : void from class org.gpytorch.lazy.block_diag_lazy_tensor.BlockDiagLazyTensor to package zero_mean_mvn_samples(self BlockLazyTensor, num_samples Any) : void from class org.gpytorch.lazy.block_lazy_tensor.BlockLazyTensor</td>
+<td>gpytorch/lazy/block_diag_lazy_tensor.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2#diff-8175ee383d42ead8336ed829bdf660985d49ab7f690c80bd5c179d5006b9575cL292">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/c517e0b8b34a85b8142b4669c152b6e62c02d8e2">CommitLink</a></td><td></td>
+<td>Pull Up Method package diag(self CatLazyTensor) : void from class org.gpytorch.lazy.cat_lazy_tensor.CatLazyTensor to package sum(self LazyTensor, dim Any) : void from class org.gpytorch.lazy.lazy_tensor.LazyTensor</td>
+<td>gpytorch/lazy/cat_lazy_tensor.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/529456c17464022d42e1c343bec52f2d4d77e79b#diff-256230fc9cca96bb46914a422e954ca81f4c341f78f6c17a1c4048df95ba22e3L47">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/529456c17464022d42e1c343bec52f2d4d77e79b">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self HomoskedasticGaussianLikelihood, log_noise_prior Any, batch_size Any) : void from class org.gpytorch.likelihoods.gaussian_likelihood.HomoskedasticGaussianLikelihood to package __init__(self GaussianLikelihood, log_noise_prior Any, batch_size Any) : void from class org.gpytorch.likelihoods.gaussian_likelihood.GaussianLikelihood</td>
+<td>gpytorch/likelihoods/gaussian_likelihood.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/529456c17464022d42e1c343bec52f2d4d77e79b#diff-256230fc9cca96bb46914a422e954ca81f4c341f78f6c17a1c4048df95ba22e3L63">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/529456c17464022d42e1c343bec52f2d4d77e79b">CommitLink</a></td><td></td>
+<td>Pull Up Method package pyro_sample_y(self HomoskedasticGaussianLikelihood, variational_dist_f Any, y_obs Any, sample_shape Any, name_prefix Any) : void from class org.gpytorch.likelihoods.gaussian_likelihood.HomoskedasticGaussianLikelihood to package pyro_sample_y(self GaussianLikelihood, variational_dist_f Any, y_obs Any, sample_shape Any, name_prefix Any) : void from class org.gpytorch.likelihoods.gaussian_likelihood.GaussianLikelihood</td>
+<td>gpytorch/likelihoods/gaussian_likelihood.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/4e82a8a494e4f6e103425557d15ac2247f7835dc#diff-1f5488d44ddb2c348824b4ef5b9af2830b05b73176bece77e70efa271be0f712L44">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/4e82a8a494e4f6e103425557d15ac2247f7835dc">CommitLink</a></td><td></td>
+<td>Pull Up Method package forward_diag(self MultitaskKernel, x1 Any, x2 Any) : void from class org.gpytorch.kernels.multitask_kernel.MultitaskKernel to package _create_input_grid(self Kernel, x1 Any, x2 Any, diag Any, batch_dims Any) : void from class org.gpytorch.kernels.kernel.Kernel</td>
+<td>gpytorch/kernels/multitask_kernel.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/65634256f313ef7861ad2986a343ef40121be657#diff-59233757cd4916fbf0c287fe1fbc89c4c1a5631628dc1a48631edc66a4853ff4L13">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/65634256f313ef7861ad2986a343ef40121be657">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self MaternKernel, nu Any, log_lengthscale_bounds Any, active_dims Any) : void from class org.gpytorch.kernels.matern_kernel.MaternKernel to package __init__(self Kernel, has_lengthscale Any, ard_num_dims Any, log_lengthscale_bounds Any, active_dims Any) : void from class org.gpytorch.kernels.kernel.Kernel</td>
+<td>gpytorch/kernels/matern_kernel.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/5b3e337c7a67ea470dec1a4987eefb12168783f6#diff-6ea3c0ee57f74e18a43c8899a33e1080af347021ec287eb2232e7b4525e33efcL40">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/5b3e337c7a67ea470dec1a4987eefb12168783f6">CommitLink</a></td><td></td>
+<td>Pull Up Method package train(self GridInducingPointModule, mode Any) : void from class org.gpytorch.inducing_points.grid_inducing_point_module.GridInducingPointModule to package train(self InducingPointModule, mode Any) : void from class org.gpytorch.inducing_points.inducing_point_module.InducingPointModule</td>
+<td>gpytorch/inducing_points/grid_inducing_point_module.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/5b3e337c7a67ea470dec1a4987eefb12168783f6#diff-6ea3c0ee57f74e18a43c8899a33e1080af347021ec287eb2232e7b4525e33efcL46">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/5b3e337c7a67ea470dec1a4987eefb12168783f6">CommitLink</a></td><td></td>
+<td>Pull Up Method package variational_covar(self GridInducingPointModule) : void from class org.gpytorch.inducing_points.grid_inducing_point_module.GridInducingPointModule to package variational_covar(self InducingPointModule) : void from class org.gpytorch.inducing_points.inducing_point_module.InducingPointModule</td>
+<td>gpytorch/inducing_points/grid_inducing_point_module.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d#diff-093942657e81ea1d052770e38a6b921eb56ad9ebb291d6433f6fe3b5c90d16aeL39">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d">CommitLink</a></td><td></td>
+<td>Pull Up Method package exact_posterior_covar(self InterpolatedPosteriorStrategy, test_train_covar Any, train_test_covar Any, test_test_covar Any) : void from class org.gpytorch.posterior.interpolated_posterior_strategy.InterpolatedPosteriorStrategy to package lanczos_size(self PosteriorStrategy) : void from class org.gpytorch.posterior.posterior_strategy.PosteriorStrategy</td>
+<td>gpytorch/posterior/interpolated_posterior_strategy.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d#diff-3e8093c892378173a3d4829316f6e572f17d6cefd8bc21c8516dad85b46e2e41L21">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d">CommitLink</a></td><td></td>
+<td>Pull Up Method package exact_posterior_covar(self DefaultPosteriorStrategy, test_train_covar Any, train_test_covar Any, test_test_covar Any) : void from class org.gpytorch.posterior.default_posterior_strategy.DefaultPosteriorStrategy to package exact_posterior_covar_fast(self PosteriorStrategy, lanczos_q_var Any, lanczos_t_var Any) : void from class org.gpytorch.posterior.posterior_strategy.PosteriorStrategy</td>
+<td>gpytorch/posterior/default_posterior_strategy.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d#diff-093942657e81ea1d052770e38a6b921eb56ad9ebb291d6433f6fe3b5c90d16aeL39">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/d239093cc403fa72acf0c09e8658d6f7e6a7b90d">CommitLink</a></td><td></td>
+<td>Pull Up Method package exact_posterior_covar(self InterpolatedPosteriorStrategy, test_train_covar Any, train_test_covar Any, test_test_covar Any) : void from class org.gpytorch.posterior.interpolated_posterior_strategy.InterpolatedPosteriorStrategy to package exact_posterior_covar_fast(self PosteriorStrategy, lanczos_q_var Any, lanczos_t_var Any) : void from class org.gpytorch.posterior.posterior_strategy.PosteriorStrategy</td>
+<td>gpytorch/posterior/interpolated_posterior_strategy.py</td>
+</tr>
+<tr><td>cornellius-gp/gpytorch</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/cornellius-gp/gpytorch/commit/5ce83b6c816723325c6dff8b9521bc3accb92dc8#diff-296cf97bdc96ea3a873edfa629ca7829e02b89f3fefb8c82e7d776cc2aca79d5L18">RefactoringLink</a></td><td><a href="https://github.com/cornellius-gp/gpytorch/commit/5ce83b6c816723325c6dff8b9521bc3accb92dc8">CommitLink</a></td><td></td>
+<td>Pull Up Method package __repr__(self GaussianRandomVariable) : void from class org.gpytorch.random_variables.gaussian_random_variable.GaussianRandomVariable to package __repr__(self RandomVariable) : void from class org.gpytorch.random_variables.random_variable.RandomVariable</td>
+<td>gpytorch/random_variables/gaussian_random_variable.py</td>
+</tr>
+<tr><td>freelunchtheorem/Conditional_Density_Estimation</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/freelunchtheorem/Conditional_Density_Estimation/commit/d42807468622809672de6165c1adf656a79b49ba#diff-7e5aadbc94bfd77200d7ff878438c2891b2d779c3be86cf39526576bbf5fe60fL277">RefactoringLink</a></td><td><a href="https://github.com/freelunchtheorem/Conditional_Density_Estimation/commit/d42807468622809672de6165c1adf656a79b49ba">CommitLink</a></td><td></td>
+<td>Pull Up Method package fit_by_cv(self BaseNNMixtureEstimator, X Any, Y Any, n_folds Any, param_grid Any, random_state Any, verbose Any, n_jobs Any) : void from class org.cde.density_estimator.BaseNNMixtureEstimator.BaseNNMixtureEstimator to package fit_by_cv(self BaseNNEstimator, X Any, Y Any, n_folds Any, param_grid Any, random_state Any, verbose Any, n_jobs Any) : void from class org.cde.density_estimator.BaseNNEstimator.BaseNNEstimator</td>
+<td>cde/density_estimator/BaseNNMixtureEstimator.py</td>
+</tr>
+<tr><td>freelunchtheorem/Conditional_Density_Estimation</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/freelunchtheorem/Conditional_Density_Estimation/commit/97855e997a93f9a65353ca2135fab7e6a2c8fde5#diff-3c7b4c9fa371459b4429723d4db84b370896a665a2e3a38f02b6c974e3322a29L283">RefactoringLink</a></td><td><a href="https://github.com/freelunchtheorem/Conditional_Density_Estimation/commit/97855e997a93f9a65353ca2135fab7e6a2c8fde5">CommitLink</a></td><td></td>
+<td>Pull Up Method package plot3d(self BaseDensityEstimator, xlim Any, ylim Any, resolution Any, show Any, numpyfig Any) : void from class org.cde.density_estimator.BaseDensityEstimator.BaseDensityEstimator to package plot3d(self ConditionalDensity, xlim Any, ylim Any, resolution Any, show Any, numpyfig Any) : void from class org.cde.BaseConditionalDensity.ConditionalDensity</td>
+<td>cde/density_estimator/BaseDensityEstimator.py</td>
+</tr>
+<tr><td>openai/gym</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/openai/gym/commit/fe244fadf648c5af34e22dfcfc6eaff7cbbe0739#diff-2fba744d9559707e27dacf059be4585f7767fe6e35d7245d8765eedf10ebd9dcL86">RefactoringLink</a></td><td><a href="https://github.com/openai/gym/commit/fe244fadf648c5af34e22dfcfc6eaff7cbbe0739">CommitLink</a></td><td></td>
+<td>Pull Up Method package close(self SyncVectorEnv) : void from class org.gym.vector.sync_vector_env.SyncVectorEnv to package close(self VectorEnv) : void from class org.gym.vector.vector_env.VectorEnv</td>
+<td>gym/vector/sync_vector_env.py</td>
+</tr>
+<tr><td>ShangtongZhang/DeepRL</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/ShangtongZhang/DeepRL/commit/1b0070d9b4c6fc3f15d5a5e846248ba4de24f1db#diff-dd733117c8812fa1d6a3a39056b6d5216b45eb64635c234c63a68a18847c7894L103">RefactoringLink</a></td><td><a href="https://github.com/ShangtongZhang/DeepRL/commit/1b0070d9b4c6fc3f15d5a5e846248ba4de24f1db">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self VecTask, name Any, num_envs Any, single_process Any, log_dir Any, seed Any) : void from class org.deep_rl.component.envs.VecTask to package __init__(self Task, name Any, num_envs Any, single_process Any, log_dir Any, episode_life Any, seed Any) : void from class org.deep_rl.component.envs.Task</td>
+<td>deep_rl/component/envs.py</td>
+</tr>
+<tr><td>ShangtongZhang/DeepRL</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/ShangtongZhang/DeepRL/commit/1b0070d9b4c6fc3f15d5a5e846248ba4de24f1db#diff-dd733117c8812fa1d6a3a39056b6d5216b45eb64635c234c63a68a18847c7894L123">RefactoringLink</a></td><td><a href="https://github.com/ShangtongZhang/DeepRL/commit/1b0070d9b4c6fc3f15d5a5e846248ba4de24f1db">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self AtariTask, name Any, num_envs Any, single_process Any, log_dir Any, seed Any) : void from class org.deep_rl.component.envs.AtariTask to package __init__(self Task, name Any, num_envs Any, single_process Any, log_dir Any, episode_life Any, seed Any) : void from class org.deep_rl.component.envs.Task</td>
+<td>deep_rl/component/envs.py</td>
+</tr>
+<tr><td>aws/sagemaker-python-sdk</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48#diff-32e12ae94f981c5c188e17c37a4f48894d1bfb4f1770bdaba5637ed4128c37c5L1631">RefactoringLink</a></td><td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48">CommitLink</a></td><td></td>
+<td>Pull Up Method package _normalize_baseline_output(self DefaultModelMonitor, output_s3_uri Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.DefaultModelMonitor to package _normalize_baseline_output(self ModelMonitor, output_s3_uri Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.ModelMonitor</td>
+<td>src/sagemaker/model_monitor/model_monitoring.py</td>
+</tr>
+<tr><td>aws/sagemaker-python-sdk</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48#diff-32e12ae94f981c5c188e17c37a4f48894d1bfb4f1770bdaba5637ed4128c37c5L1655">RefactoringLink</a></td><td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48">CommitLink</a></td><td></td>
+<td>Pull Up Method package _normalize_monitoring_output(self DefaultModelMonitor, output_s3_uri Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.DefaultModelMonitor to package _normalize_monitoring_output(self ModelMonitor, monitoring_schedule_name Any, output_s3_uri Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.ModelMonitor</td>
+<td>src/sagemaker/model_monitor/model_monitoring.py</td>
+</tr>
+<tr><td>aws/sagemaker-python-sdk</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48#diff-32e12ae94f981c5c188e17c37a4f48894d1bfb4f1770bdaba5637ed4128c37c5L1681">RefactoringLink</a></td><td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48">CommitLink</a></td><td></td>
+<td>Pull Up Method package _generate_env_map(env Any, output_path Any, enable_cloudwatch_metrics Any, record_preprocessor_script_container_path Any, post_processor_script_container_path Any, dataset_format Any, dataset_source_container_path Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.DefaultModelMonitor to package _generate_env_map(env Any, output_path Any, enable_cloudwatch_metrics Any, record_preprocessor_script_container_path Any, post_processor_script_container_path Any, dataset_format Any, dataset_source_container_path Any, analysis_type Any, problem_type Any, inference_attribute Any, probability_attribute Any, ground_truth_attribute Any, probability_threshold_attribute Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.ModelMonitor</td>
+<td>src/sagemaker/model_monitor/model_monitoring.py</td>
+</tr>
+<tr><td>aws/sagemaker-python-sdk</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48#diff-32e12ae94f981c5c188e17c37a4f48894d1bfb4f1770bdaba5637ed4128c37c5L1733">RefactoringLink</a></td><td><a href="https://github.com/aws/sagemaker-python-sdk/commit/553029bec8448c014966c44a9f81a93dede00b48">CommitLink</a></td><td></td>
+<td>Pull Up Method package _upload_and_convert_to_processing_input(self DefaultModelMonitor, source Any, destination Any, name Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.DefaultModelMonitor to package _upload_and_convert_to_processing_input(self ModelMonitor, source Any, destination Any, name Any) : void from class org.src.sagemaker.model_monitor.model_monitoring.ModelMonitor</td>
+<td>src/sagemaker/model_monitor/model_monitoring.py</td>
+</tr>
+<tr><td>aws/sagemaker-python-sdk</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/aws/sagemaker-python-sdk/commit/0f6e75fa44b09b1e3b725919fd223a98ec1b735c#diff-25e5d90876e4e075cba7fe8ae004e6c43d300faeecc2d076d1babacc5c0f6d06L460">RefactoringLink</a></td><td><a href="https://github.com/aws/sagemaker-python-sdk/commit/0f6e75fa44b09b1e3b725919fd223a98ec1b735c">CommitLink</a></td><td></td>
+<td>Pull Up Method package transformer(self ModelPackage, instance_count Any, instance_type Any, strategy Any, assemble_with Any, output_path Any, output_kms_key Any, accept Any, env Any, max_concurrent_transforms Any, max_payload Any, tags Any, volume_kms_key Any) : void from class org.src.sagemaker.model.ModelPackage to package transformer(self Model, instance_count Any, instance_type Any, strategy Any, assemble_with Any, output_path Any, output_kms_key Any, accept Any, env Any, max_concurrent_transforms Any, max_payload Any, tags Any, volume_kms_key Any) : void from class org.src.sagemaker.model.Model</td>
+<td>src/sagemaker/model.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4#diff-89f092a151340486dac97ad9f3b4d9af482fbc365cd63b016b4a6a29513fc689L95">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_instance_dedup(self TestIndexApiDedup, method_to_call Any) : void from class org.tests.test_indexing.TestIndexApiDedup to package test_empty_imput_dataframes(self TestIndexApi, index_class Any) : void from class org.tests.test_indexing.TestIndexApi</td>
+<td>tests/test_indexing.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4#diff-89f092a151340486dac97ad9f3b4d9af482fbc365cd63b016b4a6a29513fc689L105">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_empty_dataframes_dedup(self TestIndexApiDedup, method_to_call Any) : void from class org.tests.test_indexing.TestIndexApiDedup to package test_empty_imput_dataframes(self TestIndexApi, index_class Any) : void from class org.tests.test_indexing.TestIndexApi</td>
+<td>tests/test_indexing.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4#diff-89f092a151340486dac97ad9f3b4d9af482fbc365cd63b016b4a6a29513fc689L117">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/dc2f423ac8b76a5b4fcfe355c07b390d8c83c9d4">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_amount_of_pairs_dedup(self TestIndexApiDedup, method_to_call Any) : void from class org.tests.test_indexing.TestIndexApiDedup to package test_index_names_dedup(self TestIndexApi, index_class Any) : void from class org.tests.test_indexing.TestIndexApi</td>
+<td>tests/test_indexing.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9#diff-48320eb8159b37479c6544662a11ad857ac6a7de38a6c4df0df7a406458375e3L58">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_instance_linking(self TestCompareAPI) : void from class org.tests.test_compare.TestCompareAPI to package test_instance_linking(self TestCompare) : void from class org.tests.test_compare.TestCompare</td>
+<td>tests/test_compare.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9#diff-48320eb8159b37479c6544662a11ad857ac6a7de38a6c4df0df7a406458375e3L78">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_instance_dedup(self TestCompareAPI) : void from class org.tests.test_compare.TestCompareAPI to package test_instance_dedup(self TestCompare) : void from class org.tests.test_compare.TestCompare</td>
+<td>tests/test_compare.py</td>
+</tr>
+<tr><td>J535D165/recordlinkage</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9#diff-48320eb8159b37479c6544662a11ad857ac6a7de38a6c4df0df7a406458375e3L98">RefactoringLink</a></td><td><a href="https://github.com/J535D165/recordlinkage/commit/d34ed4561be9dd26ad8859c817c641487ab113a9">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_name_series_linking(self TestCompareAPI) : void from class org.tests.test_compare.TestCompareAPI to package test_name_series_linking(self TestCompare) : void from class org.tests.test_compare.TestCompare</td>
+<td>tests/test_compare.py</td>
+</tr>
+<tr><td>automl/auto-sklearn</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/automl/auto-sklearn/commit/805adf9ac119bf49d85df7039febe506cbea50b9#diff-ca14987e915c231822fcb6ea19d2b9e9074f845d9fcf790a0a59c97af31e87abL91">RefactoringLink</a></td><td><a href="https://github.com/automl/auto-sklearn/commit/805adf9ac119bf49d85df7039febe506cbea50b9">CommitLink</a></td><td></td>
+<td>Pull Up Method package __del__(self AutoSklearnClassifier) : void from class org.autosklearn.estimators.AutoSklearnClassifier to package __del__(self AutoML) : void from class org.autosklearn.automl.AutoML</td>
+<td>autosklearn/estimators.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956#diff-c556fbe9d3ef5162c28990ca9e279a723bdaa6c222b8a851e6f436339a2ba0ddL193">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956">CommitLink</a></td><td></td>
+<td>Pull Up Method package train_step(self ConvNet, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.conv.ConvNet to package train_step(self Net, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.base.Net</td>
+<td>slm_lab/agent/net/conv.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956#diff-320990264044727ba6864580bc7379bcde13a7ba9d68ccf57468857ee2a08076L125">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956">CommitLink</a></td><td></td>
+<td>Pull Up Method package train_step(self MLPNet, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.mlp.MLPNet to package train_step(self Net, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.base.Net</td>
+<td>slm_lab/agent/net/mlp.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956#diff-320990264044727ba6864580bc7379bcde13a7ba9d68ccf57468857ee2a08076L294">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956">CommitLink</a></td><td></td>
+<td>Pull Up Method package train_step(self HydraMLPNet, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.mlp.HydraMLPNet to package train_step(self Net, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.base.Net</td>
+<td>slm_lab/agent/net/mlp.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956#diff-54189061d60564151db3a95e988fca02848fed6bf25221c04ab5283d4d20e69fL173">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/ba5d91b14006e0d46e491217344d5c8a4e65d956">CommitLink</a></td><td></td>
+<td>Pull Up Method package train_step(self RecurrentNet, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.recurrent.RecurrentNet to package train_step(self Net, loss Any, optim Any, lr_scheduler Any, clock Any, global_net Any) : void from class org.slm_lab.agent.net.base.Net</td>
+<td>slm_lab/agent/net/recurrent.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/e7584bc18e845e296e315bb1c29c13b6d70ee419#diff-f1cd34d4381d6db094c98a7667e1800e482fc90a25008af5235a18f28b855632L320">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/e7584bc18e845e296e315bb1c29c13b6d70ee419">CommitLink</a></td><td></td>
+<td>Pull Up Method package calc_td_advs_v_targets(self ActorCritic, batch Any) : void from class org.slm_lab.agent.algorithm.actor_critic.ActorCritic to package calc_pdparam_batch(self Reinforce, batch Any) : void from class org.slm_lab.agent.algorithm.reinforce.Reinforce</td>
+<td>slm_lab/agent/algorithm/actor_critic.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/e7584bc18e845e296e315bb1c29c13b6d70ee419#diff-f1cd34d4381d6db094c98a7667e1800e482fc90a25008af5235a18f28b855632L320">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/e7584bc18e845e296e315bb1c29c13b6d70ee419">CommitLink</a></td><td></td>
+<td>Pull Up Method package calc_td_advs_v_targets(self ActorCritic, batch Any) : void from class org.slm_lab.agent.algorithm.actor_critic.ActorCritic to package calc_ret_advs(self Reinforce, batch Any) : void from class org.slm_lab.agent.algorithm.reinforce.Reinforce</td>
+<td>slm_lab/agent/algorithm/actor_critic.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/2051aa89ec691d1c056e3e1f1187c489597c2ead#diff-da304447a2de4c64b49e21a3b35ec2059f0f2c32ae933c67285e2208cc2e9facL133">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/2051aa89ec691d1c056e3e1f1187c489597c2ead">CommitLink</a></td><td></td>
+<td>Pull Up Method package print_memory_info(self Replay) : void from class org.slm_lab.agent.memory.replay.Replay to package print_memory_info(self Memory) : void from class org.slm_lab.agent.memory.base.Memory</td>
+<td>slm_lab/agent/memory/replay.py</td>
+</tr>
+<tr><td>kengz/SLM-Lab</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/kengz/SLM-Lab/commit/f7c257ebab143ec83f1e1ffbe8dc49e3b43a628e#diff-b5567650ebe58b755dc8953336f57d4610e756b5f8b5583f73ffa6c4dda643ecL101">RefactoringLink</a></td><td><a href="https://github.com/kengz/SLM-Lab/commit/f7c257ebab143ec83f1e1ffbe8dc49e3b43a628e">CommitLink</a></td><td></td>
+<td>Pull Up Method package act(self Random, state Any) : void from class org.slm_lab.agent.__init__.Random to package act(self Agent, state Any) : void from class org.slm_lab.agent.__init__.Agent</td>
+<td>slm_lab/agent/__init__.py</td>
+</tr>
+<tr><td>rtavenar/tslearn</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rtavenar/tslearn/commit/5a1127f3e2ba7554f2e26a52ed1facf43daa5fbf#diff-1579b9247dbbc6c614df8605e5339a43ae1ebb36fed5d7cab36cd8c93c2c5400L352">RefactoringLink</a></td><td><a href="https://github.com/rtavenar/tslearn/commit/5a1127f3e2ba7554f2e26a52ed1facf43daa5fbf">CommitLink</a></td><td></td>
+<td>Pull Up Method package _sax_preprocess(self KNeighborsTimeSeriesClassifier, X Any, n_segments Any, alphabet_size_avg Any) : void from class org.tslearn.neighbors.KNeighborsTimeSeriesClassifier to package _sax_preprocess(self KNeighborsTimeSeriesMixin, X Any, n_segments Any, alphabet_size_avg Any) : void from class org.tslearn.neighbors.KNeighborsTimeSeriesMixin</td>
+<td>tslearn/neighbors.py</td>
+</tr>
+<tr><td>rtavenar/tslearn</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rtavenar/tslearn/commit/5a1127f3e2ba7554f2e26a52ed1facf43daa5fbf#diff-1579b9247dbbc6c614df8605e5339a43ae1ebb36fed5d7cab36cd8c93c2c5400L374">RefactoringLink</a></td><td><a href="https://github.com/rtavenar/tslearn/commit/5a1127f3e2ba7554f2e26a52ed1facf43daa5fbf">CommitLink</a></td><td></td>
+<td>Pull Up Method package _calculate_X_(self KNeighborsTimeSeriesClassifier, X Any, metric_params Any) : void from class org.tslearn.neighbors.KNeighborsTimeSeriesClassifier to package _calculate_X_(self KNeighborsTimeSeriesMixin, X Any, other_X Any) : void from class org.tslearn.neighbors.KNeighborsTimeSeriesMixin</td>
+<td>tslearn/neighbors.py</td>
+</tr>
+<tr><td>rtavenar/tslearn</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/rtavenar/tslearn/commit/372bb17086792210b4bb6837f9dcf2e15264b845#diff-ecb1fd224ac50d3f20655f7ce91bae8aca51e9117efd965e8ab3f8f41a94dd03L72">RefactoringLink</a></td><td><a href="https://github.com/rtavenar/tslearn/commit/372bb17086792210b4bb6837f9dcf2e15264b845">CommitLink</a></td><td></td>
+<td>Pull Up Method package _shapelet_transform(self ConvolutionalShapeletModel, Xi Any) : void from class org.tslearn.shapelets.ConvolutionalShapeletModel to package shapelets_(self ShapeletModel) : void from class org.tslearn.shapelets.ShapeletModel</td>
+<td>tslearn/shapelets.py</td>
+</tr>
+<tr><td>comic/grand-challenge.org</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/comic/grand-challenge.org/commit/5e89f20ae3a06a6948bb28a98f7f3b1cfe4ce72b#diff-9f3055a4f7253e98c6769ab788cc2987178f6dcc89019063ebb8f38a31ce9045L61">RefactoringLink</a></td><td><a href="https://github.com/comic/grand-challenge.org/commit/5e89f20ae3a06a6948bb28a98f7f3b1cfe4ce72b">CommitLink</a></td><td></td>
+<td>Pull Up Method package format_date(date Any) : void from class org.app.grandchallenge.participants.models.RegistrationRequest to package format_date(date Any) : void from class org.app.grandchallenge.core.models.RequestBase</td>
+<td>app/grandchallenge/participants/models.py</td>
+</tr>
+<tr><td>comic/grand-challenge.org</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/comic/grand-challenge.org/commit/bbeb44e7b5ace198a2b5443b936dfc671e2dd9ef#diff-c32822496d11de45019f131c442885fdd1481384e5f0dc40e5cf43949d8d1e8cL99">RefactoringLink</a></td><td><a href="https://github.com/comic/grand-challenge.org/commit/bbeb44e7b5ace198a2b5443b936dfc671e2dd9ef">CommitLink</a></td><td></td>
+<td>Pull Up Method package __retry_docker_obj_prune() : void from class org.app.grandchallenge.container_exec.backends.docker.Executor to package __retry_docker_obj_prune() : void from class org.app.grandchallenge.container_exec.backends.docker.DockerConnection</td>
+<td>app/grandchallenge/container_exec/backends/docker.py</td>
+</tr>
+<tr><td>comic/grand-challenge.org</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/comic/grand-challenge.org/commit/96c5b85e8c6f73407c2aa06ee1e06200de10289f#diff-8c0effdb6a1ca968ff90f59f887c6dfb8dd252e63d9386dbddcb18f8eb9db02bL470">RefactoringLink</a></td><td><a href="https://github.com/comic/grand-challenge.org/commit/96c5b85e8c6f73407c2aa06ee1e06200de10289f">CommitLink</a></td><td></td>
+<td>Pull Up Method package __str__(self Challenge) : void from class org.app.grandchallenge.challenges.models.Challenge to package __str__(self ChallengeBase) : void from class org.app.grandchallenge.challenges.models.ChallengeBase</td>
+<td>app/grandchallenge/challenges/models.py</td>
+</tr>
+<tr><td>shaypal5/pdpipe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1#diff-e6456b16fe3d193c52552963e2d422895e8e414ef020ba0da01a775463d9c0e4L111">RefactoringLink</a></td><td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1">CommitLink</a></td><td></td>
+<td>Pull Up Method package _fit_transform(self ValDrop, df Any, verbose Any) : void from class org.pdpipe.basic_stages.ValDrop to package _fit_transform(self ColumnsBasedPipelineStage, df Any, verbose Any) : void from class org.pdpipe.core.ColumnsBasedPipelineStage</td>
+<td>pdpipe/basic_stages.py</td>
+</tr>
+<tr><td>shaypal5/pdpipe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1#diff-e6456b16fe3d193c52552963e2d422895e8e414ef020ba0da01a775463d9c0e4L59">RefactoringLink</a></td><td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1">CommitLink</a></td><td></td>
+<td>Pull Up Method package _transform(self ColDrop, df Any, verbose Any) : void from class org.pdpipe.basic_stages.ColDrop to package _transform(self ColumnsBasedPipelineStage, df Any, verbose Any) : void from class org.pdpipe.core.ColumnsBasedPipelineStage</td>
+<td>pdpipe/basic_stages.py</td>
+</tr>
+<tr><td>shaypal5/pdpipe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1#diff-e6456b16fe3d193c52552963e2d422895e8e414ef020ba0da01a775463d9c0e4L115">RefactoringLink</a></td><td><a href="https://github.com/shaypal5/pdpipe/commit/30e94b17579865cd83a7e0703d86071c7ae62fc1">CommitLink</a></td><td></td>
+<td>Pull Up Method package _transform(self ValDrop, df Any, verbose Any) : void from class org.pdpipe.basic_stages.ValDrop to package _transform(self ColumnsBasedPipelineStage, df Any, verbose Any) : void from class org.pdpipe.core.ColumnsBasedPipelineStage</td>
+<td>pdpipe/basic_stages.py</td>
+</tr>
+<tr><td>shaypal5/pdpipe</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/shaypal5/pdpipe/commit/2825fb35a245f990063e7f733faee3f25b980941#diff-e6456b16fe3d193c52552963e2d422895e8e414ef020ba0da01a775463d9c0e4L47">RefactoringLink</a></td><td><a href="https://github.com/shaypal5/pdpipe/commit/2825fb35a245f990063e7f733faee3f25b980941">CommitLink</a></td><td></td>
+<td>Pull Up Method package _is_fittable(self ColDrop) : void from class org.pdpipe.basic_stages.ColDrop to package _is_fittable(self ColumnsBasedPipelineStage) : void from class org.pdpipe.core.ColumnsBasedPipelineStage</td>
+<td>pdpipe/basic_stages.py</td>
+</tr>
+<tr><td>chainer/chainerrl</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/chainer/chainerrl/commit/2d2ad5587e02c6a5e459ff03bd11075048195be8#diff-608a898a69d239c9c405c6e2cfb6229f364bac969d8b076532a3f5b365f5ab2dL49">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainerrl/commit/2d2ad5587e02c6a5e459ff03bd11075048195be8">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_training_gpu(self _TestDQNLike) : void from class org.tests.agents_tests.test_dqn_like._TestDQNLike to package test_training_gpu_fast(self _TestTraining) : void from class org.tests.agents_tests.test_training._TestTraining</td>
+<td>tests/agents_tests/test_dqn_like.py</td>
+</tr>
+<tr><td>chainer/chainerrl</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/chainer/chainerrl/commit/2d2ad5587e02c6a5e459ff03bd11075048195be8#diff-608a898a69d239c9c405c6e2cfb6229f364bac969d8b076532a3f5b365f5ab2dL54">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainerrl/commit/2d2ad5587e02c6a5e459ff03bd11075048195be8">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_training_cpu(self _TestDQNLike) : void from class org.tests.agents_tests.test_dqn_like._TestDQNLike to package test_training_gpu_fast(self _TestTraining) : void from class org.tests.agents_tests.test_training._TestTraining</td>
+<td>tests/agents_tests/test_dqn_like.py</td>
+</tr>
+<tr><td>regel/loudml</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/regel/loudml/commit/62ec5caa020e85c7f3372a878aa8f6a290ea67d1#diff-36faa5c526dc5842703cdae2aa60bce82e518337cb9c22f6301f9227b18c8df2L86">RefactoringLink</a></td><td><a href="https://github.com/regel/loudml/commit/62ec5caa020e85c7f3372a878aa8f6a290ea67d1">CommitLink</a></td><td></td>
+<td>Pull Up Method package _must_commit(self ElasticsearchDataSource) : void from class org.python.loudml_new.elastic.ElasticsearchDataSource to package _must_commit(self DataSource) : void from class org.python.loudml_new.datasource.DataSource</td>
+<td>python/loudml_new/elastic.py</td>
+</tr>
+<tr><td>regel/loudml</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/regel/loudml/commit/62ec5caa020e85c7f3372a878aa8f6a290ea67d1#diff-36faa5c526dc5842703cdae2aa60bce82e518337cb9c22f6301f9227b18c8df2L119">RefactoringLink</a></td><td><a href="https://github.com/regel/loudml/commit/62ec5caa020e85c7f3372a878aa8f6a290ea67d1">CommitLink</a></td><td></td>
+<td>Pull Up Method package _enqueue(self ElasticsearchDataSource, req Any) : void from class org.python.loudml_new.elastic.ElasticsearchDataSource to package enqueue(self DataSource, req Any) : void from class org.python.loudml_new.datasource.DataSource</td>
+<td>python/loudml_new/elastic.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/212323f15de627b5a0aaf4e74cae5de89b7ac017#diff-2257b34410aee27eb14e348b9545fef2e212ff93bd72af02d700ae8df43d97bbL617">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/212323f15de627b5a0aaf4e74cae5de89b7ac017">CommitLink</a></td><td></td>
+<td>Pull Up Method package agg_axis(self FrameApply) : void from class org.pandas.core.apply.FrameApply to package agg_axis(self Apply) : void from class org.pandas.core.apply.Apply</td>
+<td>pandas/core/apply.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/f42be060c32d27a8b316bbb4dab1779a4a1beddf#diff-4047761a35d9868b02343d19db1aa62bb5cc972755817893ffa87a3e11e534a3L349">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/f42be060c32d27a8b316bbb4dab1779a4a1beddf">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_int_key(self TestSetitemCastingEquivalents, obj Any, key Any, expected Any, val Any, indexer_sli Any) : void from class org.pandas.tests.series.indexing.test_setitem.TestSetitemCastingEquivalents to package check_indexer(self SetitemCastingEquivalents, obj Any, key Any, expected Any, val Any, indexer Any) : void from class org.pandas.tests.series.indexing.test_setitem.SetitemCastingEquivalents</td>
+<td>pandas/tests/series/indexing/test_setitem.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/f42be060c32d27a8b316bbb4dab1779a4a1beddf#diff-4047761a35d9868b02343d19db1aa62bb5cc972755817893ffa87a3e11e534a3L357">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/f42be060c32d27a8b316bbb4dab1779a4a1beddf">CommitLink</a></td><td></td>
+<td>Pull Up Method package test_slice_key(self TestSetitemCastingEquivalents, obj Any, key Any, expected Any, val Any, indexer_si Any) : void from class org.pandas.tests.series.indexing.test_setitem.TestSetitemCastingEquivalents to package test_mask_key(self SetitemCastingEquivalents, obj Any, key Any, expected Any, val Any, indexer_sli Any) : void from class org.pandas.tests.series.indexing.test_setitem.SetitemCastingEquivalents</td>
+<td>pandas/tests/series/indexing/test_setitem.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/83a12f554e88959b277f22344589acfa971d0b3d#diff-2257b34410aee27eb14e348b9545fef2e212ff93bd72af02d700ae8df43d97bbL95">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/83a12f554e88959b277f22344589acfa971d0b3d">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self FrameApply, obj Any, how Any, func Any, raw Any, result_type Any, args Any, kwds Any) : void from class org.pandas.core.apply.FrameApply to package __init__(self Apply, obj Any, how Any, func Any, raw Any, result_type Any, args Any, kwds Any) : void from class org.pandas.core.apply.Apply</td>
+<td>pandas/core/apply.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/83a12f554e88959b277f22344589acfa971d0b3d#diff-2257b34410aee27eb14e348b9545fef2e212ff93bd72af02d700ae8df43d97bbL144">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/83a12f554e88959b277f22344589acfa971d0b3d">CommitLink</a></td><td></td>
+<td>Pull Up Method package index(self FrameApply) : void from class org.pandas.core.apply.FrameApply to package index(self Apply) : void from class org.pandas.core.apply.Apply</td>
+<td>pandas/core/apply.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4#diff-f145e441b5820d235a78589ee9ee6c9c49fea0de6ca659a972b61b6aa29f9df8L822">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4">CommitLink</a></td><td></td>
+<td>Pull Up Method package setup_class(cls Any) : void from class org.pandas.tests.computation.test_eval.TestEvalPythonPandas to package TestEvalPythonPython_1() : void from class org.pandas.tests.computation.test_eval.TestEvalPythonPython</td>
+<td>pandas/tests/computation/test_eval.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4#diff-f145e441b5820d235a78589ee9ee6c9c49fea0de6ca659a972b61b6aa29f9df8L1855">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4">CommitLink</a></td><td></td>
+<td>Pull Up Method package setup_class(cls Any) : void from class org.pandas.tests.computation.test_eval.TestMathPythonPandas to package TestMathPythonPython_1() : void from class org.pandas.tests.computation.test_eval.TestMathPythonPython</td>
+<td>pandas/tests/computation/test_eval.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4#diff-f145e441b5820d235a78589ee9ee6c9c49fea0de6ca659a972b61b6aa29f9df8L1863">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4">CommitLink</a></td><td></td>
+<td>Pull Up Method package setup_class(cls Any) : void from class org.pandas.tests.computation.test_eval.TestMathNumExprPandas to package TestMathPythonPython_1() : void from class org.pandas.tests.computation.test_eval.TestMathPythonPython</td>
+<td>pandas/tests/computation/test_eval.py</td>
+</tr>
+<tr><td>pandas-dev/pandas</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4#diff-f145e441b5820d235a78589ee9ee6c9c49fea0de6ca659a972b61b6aa29f9df8L1871">RefactoringLink</a></td><td><a href="https://github.com/pandas-dev/pandas/commit/ef2e64db544d6d8721508cb110c8e0bcffbf01c4">CommitLink</a></td><td></td>
+<td>Pull Up Method package setup_class(cls Any) : void from class org.pandas.tests.computation.test_eval.TestMathNumExprPython to package TestMathPythonPython_1() : void from class org.pandas.tests.computation.test_eval.TestMathPythonPython</td>
+<td>pandas/tests/computation/test_eval.py</td>
+</tr>
+<tr><td>Scitator/catalyst</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Scitator/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e#diff-37d852d31c7bb496abaa1ef28a7aba2e1732ea470c2b5e302e00596a345cb6dcL208">RefactoringLink</a></td><td><a href="https://github.com/Scitator/catalyst/commit/e0369b82a76bb9a65fa7bc3ddc30ca148df8b88e">CommitLink</a></td><td></td>
+<td>Pull Up Method package trace(self SupervisedRunner, model Any, batch Any, logdir Any, loader Any, method_name Any, mode Any, requires_grad Any, fp16 Any, device Any, predict_params Any) : void from class org.catalyst.dl.runner.supervised.SupervisedRunner to package trace() : void from class org.catalyst.dl.runner.core.Runner</td>
+<td>catalyst/dl/runner/supervised.py</td>
+</tr>
+<tr><td>Scitator/catalyst</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Scitator/catalyst/commit/fbd7d0e78f673707df7d6375423fe02da619b398#diff-37d852d31c7bb496abaa1ef28a7aba2e1732ea470c2b5e302e00596a345cb6dcL160">RefactoringLink</a></td><td><a href="https://github.com/Scitator/catalyst/commit/fbd7d0e78f673707df7d6375423fe02da619b398">CommitLink</a></td><td></td>
+<td>Pull Up Method package infer(self SupervisedRunner, model Any, loaders Any, callbacks Any, verbose Any, state_kwargs Any, fp16 Any, check Any) : void from class org.catalyst.dl.runner.supervised.SupervisedRunner to package infer() : void from class org.catalyst.dl.runner.core.Runner</td>
+<td>catalyst/dl/runner/supervised.py</td>
+</tr>
+<tr><td>Scitator/catalyst</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/Scitator/catalyst/commit/4350bebdd5f412b1e2f1dc2510f5567d003186d8#diff-74dc86de78a0451867038185ca255cd987ac4b63e10eb008535d16a1b141a2d2L110">RefactoringLink</a></td><td><a href="https://github.com/Scitator/catalyst/commit/4350bebdd5f412b1e2f1dc2510f5567d003186d8">CommitLink</a></td><td></td>
+<td>Pull Up Method package prepare_for_sampler(cls Any, config Any) : void from class org.catalyst.rl.offpolicy.algorithms.dqn.DQN to package prepare_for_sampler(cls Any, env_spec Any, config Any) : void from class org.catalyst.rl.offpolicy.algorithms.core_discrete.Algorithm</td>
+<td>catalyst/rl/offpolicy/algorithms/dqn.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/88a7fe1e4280ab7c476ce2bb894375fb6b5297d6#diff-6e1a20094f30361ff7a9d50584a6791f250d32e383492dea215047dd1e91436fL188">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/88a7fe1e4280ab7c476ce2bb894375fb6b5297d6">CommitLink</a></td><td></td>
+<td>Pull Up Method package click_custom_action(self _SinglePlotPage) : void from class org.bokeh._testing.plugins.bokeh._SinglePlotPage to package double_click_element_at_position(self _BokehModelPage, element Any, x Any, y Any) : void from class org.bokeh._testing.plugins.bokeh._BokehModelPage</td>
+<td>bokeh/_testing/plugins/bokeh.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/6186862c533bee1be144b03563db5fd3fdbbaf0f#diff-575a47b03d11a92bceaada6710a71ce78b14948b1d0ecde96ba507be133b15fdL104">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/6186862c533bee1be144b03563db5fd3fdbbaf0f">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self LogColorMapper, palette Any) : void from class org.bokeh.models.mappers.LogColorMapper to package __init__(self ColorMapper, palette Any) : void from class org.bokeh.models.mappers.ColorMapper</td>
+<td>bokeh/models/mappers.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/6186862c533bee1be144b03563db5fd3fdbbaf0f#diff-575a47b03d11a92bceaada6710a71ce78b14948b1d0ecde96ba507be133b15fdL63">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/6186862c533bee1be144b03563db5fd3fdbbaf0f">CommitLink</a></td><td></td>
+<td>Pull Up Method package __init__(self LinearColorMapper, palette Any) : void from class org.bokeh.models.mappers.LinearColorMapper to package __init__(self ColorMapper, palette Any) : void from class org.bokeh.models.mappers.ColorMapper</td>
+<td>bokeh/models/mappers.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892#diff-7fbf81bec2c447d5cb9d6c6e3be876bfa9c5092a0ebbe4591f07b16b6415f0e6L55">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892">CommitLink</a></td><td></td>
+<td>Pull Up Method package _axis(self Figure) : void from class org.bokeh.plotting.figure.Figure to package _axis(self Plot) : void from class org.bokeh.models.plots.Plot</td>
+<td>bokeh/plotting/figure.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892#diff-7fbf81bec2c447d5cb9d6c6e3be876bfa9c5092a0ebbe4591f07b16b6415f0e6L63">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892">CommitLink</a></td><td></td>
+<td>Pull Up Method package xaxis(self Figure) : void from class org.bokeh.plotting.figure.Figure to package xaxis(self Plot) : void from class org.bokeh.models.plots.Plot</td>
+<td>bokeh/plotting/figure.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892#diff-7fbf81bec2c447d5cb9d6c6e3be876bfa9c5092a0ebbe4591f07b16b6415f0e6L70">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892">CommitLink</a></td><td></td>
+<td>Pull Up Method package yaxis(self Figure) : void from class org.bokeh.plotting.figure.Figure to package yaxis(self Plot) : void from class org.bokeh.models.plots.Plot</td>
+<td>bokeh/plotting/figure.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892#diff-7fbf81bec2c447d5cb9d6c6e3be876bfa9c5092a0ebbe4591f07b16b6415f0e6L77">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892">CommitLink</a></td><td></td>
+<td>Pull Up Method package axis(self Figure) : void from class org.bokeh.plotting.figure.Figure to package axis(self Plot) : void from class org.bokeh.models.plots.Plot</td>
+<td>bokeh/plotting/figure.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892#diff-7fbf81bec2c447d5cb9d6c6e3be876bfa9c5092a0ebbe4591f07b16b6415f0e6L84">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/5351da59d137156b2faca18c4c713351f4634892">CommitLink</a></td><td></td>
+<td>Pull Up Method package legend(self Figure) : void from class org.bokeh.plotting.figure.Figure to package legend(self Plot) : void from class org.bokeh.models.plots.Plot</td>
+<td>bokeh/plotting/figure.py</td>
+</tr>
+<tr><td>bokeh/bokeh</td>
+<td>Pull Up Method</td>
+<td><a href="https://github.com/bokeh/bokeh/commit/2e9f07cf432efb207576e1328e369829c893a8e0#diff-e3b944759283cf34f51497b0fc0fee1038e82251a88fc9ef5d05c563698d5ee1L19">RefactoringLink</a></td><td><a href="https://github.com/bokeh/bokeh/commit/2e9f07cf432efb207576e1328e369829c893a8e0">CommitLink</a></td><td></td>
+<td>Pull Up Method package Paragraph_1() : void from class org.bokeh.models.widgets.markups.Paragraph to package Markup_1() : void from class org.bokeh.models.widgets.markups.Markup</td>
+<td>bokeh/models/widgets/markups.py</td>
 </tr>
 </table>
 
