@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        &#47&#47 Warn if nodes don&quott have the attribute
+        if 0 in data_sizes:
+            print(
+                <a id="change">"Warning: Some nodes have no value for attribute &quot{}&quot, "
+                "using default value.".format(attr_name)</a>
+            )
+            data_sizes.discard(0)
+
+        &#47&#47 Check all are the same for this node type</code></pre><h3>After Change</h3><pre><code class='java'>
+        &#47&#47 Warn if nodes don&quott have the attribute
+        if 0 in data_sizes:
+            warnings.warn(
+                <a id="change">"Some nodes have no value for attribute &quot{}&quot, "
+                "using default value.".format(attr_name)</a>,
+                RuntimeWarning,
+                stacklevel=2,
+            )</code></pre>

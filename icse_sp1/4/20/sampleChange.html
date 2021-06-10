@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        conda_env["dependencies"] = []
+
+    new_entry = {"pip": [f"-r {BASE_REQS_PATH}"]}
+    <a id="change">conda_env["dependencies"].append(new_entry)</a>
+
+    temp_dir = tempfile.mkdtemp()
+    new_env_path = os.path.join(temp_dir, "conda.yaml")
+    with open(new_env_path, "w") as new_env:</code></pre><h3>After Change</h3><pre><code class='java'>
+        conda_env["dependencies"] = []
+
+    dependency = next((dep for dep in conda_env["dependencies"] if "pip" in dep), None)
+    <a id="change">if dependency is not None:
+        dependency["pip"].append(f"-r {BASE_REQS_PATH}")
+    else:
+        new_entry = {"pip": [f"-r {BASE_REQS_PATH}"]}
+        conda_env["dependencies"].append(new_entry)
+
+   </a> temp_dir = tempfile.mkdtemp()
+    new_env_path = os.path.join(temp_dir, "conda.yaml")
+    with open(new_env_path, "w") as new_env:
+        yaml.dump(conda_env, new_env)</code></pre>

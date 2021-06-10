@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+                              }
+            else:
+                &#47&#47 Remove the addition we added previously
+                lineinfile = <a id="change">{"dest": dest,
+                              "regexp": &quot^del settings.modules["%s"]&quot % module,
+                              "state": "absent",
+                              }</a>
+        else:
+            if not has_module(module):
+                &#47&#47 No changes required
+                continue</code></pre><h3>After Change</h3><pre><code class='java'>
+                continue
+            tappend({"name": "If we disabled the module, then remove the disabling",
+                     "become": "yes",
+                     "lineinfile": <a id="change">{"dest": dest,
+                                    "regexp": &quot^del settings.modules["%s"]&quot % module,
+                                    "state": "absent",
+                                    }</a>,
+                     })
+            &#47&#47 @ToDo: Only do this if not included in the default set
+            &#47&#47 @ToDo: Lookup label e.g. from settings.get_setup_wizard_questions()
+            label = module
+            tappend(<a id="change">{"name": "Enable the Module",
+                     "become": "yes",
+                     "lineinfile": {"dest": dest,
+                                    "regexp": &quot^settings.modules["%s"]&quot % module,
+                                    "line": &quotsettings.modules["%s"] = {"name_nice": T("%s"), "module_type": 10}&quot % (module, label),
+                                    },
+                     }</a>)
+        else:
+            if not has_module(module):
+                &#47&#47 No changes required</code></pre>

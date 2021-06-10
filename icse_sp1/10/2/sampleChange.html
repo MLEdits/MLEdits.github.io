@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        Esp = self.spmatrix(E)
+        Fsp = self.spmatrix(F)
+
+        matrices = <a id="change">[A, B, C, D, E, F, G]</a>
+        spmatrices = [Bsp, Dsp, Esp, Fsp]
+        &#47&#47 sparse/sparse
+        for i in spmatrices:
+            for j in spmatrices:
+                try:
+                    dense_mult = np.multiply(i.todense(), j.todense())
+                except ValueError:
+                    assert_raises(ValueError, i.multiply, j)
+                    continue
+                sp_mult = i.multiply(j)
+                if isspmatrix(sp_mult):
+                    assert_almost_equal(sp_mult.todense(), dense_mult)
+                else:
+                    assert_almost_equal(sp_mult, dense_mult)
+
+        &#47&#47 sparse/dense
+        for i in spmatrices:
+            for j in matrices:
+                try:
+                    <a id="change">dense_mult</a> = np.multiply(i.todense(), j)
+                except ValueError:
+                    assert_raises(ValueError, i.multiply, j)
+                    continue
+                <a id="change">sp_mult</a> = i.multiply(j)
+                if isspmatrix(sp_mult):
+                    assert_almost_equal(sp_mult.todense(), dense_mult)
+                else:</code></pre><h3>After Change</h3><pre><code class='java'>
+        Jsp = self.spmatrix(J)
+        Jspp = self.spmatrix(J[:,0,None])
+
+        matrices = <a id="change">[A, B, C, D, E, F, G, H, J]</a>
+        spmatrices = [Bsp, Dsp, Esp, Fsp, Hsp, Hspp, Jsp, Jspp]
+
+        &#47&#47 sparse/sparse
+        for i in spmatrices:
+            for j in spmatrices:
+                try:
+                    dense_mult = np.multiply(i.todense(), j.todense())
+                except ValueError:
+                    assert_raises(ValueError, i.multiply, j)
+                    continue
+                sp_mult = i.multiply(j)
+                if isspmatrix(sp_mult):
+                    assert_almost_equal(sp_mult.todense(), dense_mult)
+                else:
+                    assert_almost_equal(sp_mult, dense_mult)
+
+        &#47&#47 sparse/dense
+        for i in spmatrices:
+            for j in matrices:
+                try:
+                    <a id="change">dense_mult</a> = np.multiply(i.todense(), j)
+                except ValueError:
+                    assert_raises(ValueError, i.multiply, j)
+                    continue
+                <a id="change">sp_mult</a> = i.multiply(j)
+                if isspmatrix(sp_mult):
+                    assert_almost_equal(sp_mult.todense(), dense_mult)
+                else:</code></pre>

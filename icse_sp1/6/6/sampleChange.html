@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="../../../../default.css">
+<script src="../../../../highlight.pack.js"></script> 
+<script>hljs.initHighlightingOnLoad();</script>
+<html><h3></h3><h3>Before Change</h3><pre><code class='java'>
+        self.id = id
+    @property
+    def protein(self):
+        <a id="change">return toolkit.readfile(&quotpdb&quot, &quot%s/%s/%s_protein.pdb&quot % (self.home, self.id,self.id), lazy=True).next()</a>
+    @property
+    def pocket(self):
+        return toolkit.readfile(&quotpdb&quot, &quot%s/%s/%s_pocket.pdb&quot % (self.home, self.id,self.id), lazy=True).next()
+    @property</code></pre><h3>After Change</h3><pre><code class='java'>
+        self.opt = opt
+    @property
+    def protein(self):
+        <a id="change">if isfile(&quot%s/%s/%s_protein.pdb&quot % (self.home, self.id,self.id)):
+            return toolkit.readfile(&quotpdb&quot, &quot%s/%s/%s_protein.pdb&quot % (self.home, self.id,self.id), lazy=True, opt = self.opt).next()
+        else:
+            return None
+   </a> @property
+    def pocket(self):
+        if isfile(&quot%s/%s/%s_pocket.pdb&quot % (self.home, self.id,self.id)):
+            return toolkit.readfile(&quotpdb&quot, &quot%s/%s/%s_pocket.pdb&quot % (self.home, self.id,self.id), lazy=True, opt = self.opt).next()</code></pre>
