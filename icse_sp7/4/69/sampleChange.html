@@ -2,19 +2,20 @@
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
-        with open(os.path.join(os.path.dirname(__file__), reqfile)) as f:
-            return f.read().splitlines()
+    yc = torch.clamp(coords[:,:,1], 0, input.size(2)-1)
 
-    req = <a id="change">_openreq(&quotrequirements.txt&quot)</a>
-    if sys.version_info[0] &lt; 3:
-        req[0] = req[0].replace("&gt;=", "==")
+    &#47&#47 round to nearest coordinate
+    <a id="change">coords = torch.stack([xc.round().long(),
+                          yc.round().long()], 2)</a>
 
-    return </code></pre><h3>After Change</h3><pre><code class='java'>
-    if sys.version_info[0] &lt; 3:
-        return _openreq(&quotrequirements2.txt&quot)
+    &#47&#47 gather image values at coordinates
+    mapped_vals = torch.stack([th_gather_nd(input[i], coords[i])
+                    for i in range(input.size(0))], 0)</code></pre><h3>After Change</h3><pre><code class='java'>
+    coords[:,1] = torch.clamp(coords[:,1], 0, input.size(2)-1).round()
 
-    <a id="change">return _openreq(&quotrequirements.txt&quot)</a>
+    stride = torch.FloatTensor(input.stride())[1:]
+    <a id="change">idx = coords.mv(stride).long()</a>
 
+    input_flat = th_c_flatten(input)
 
-about = get_about()
-setup(name=&quotkonlpy&quot,</code></pre>
+    mapped_vals = torch.stack([input_flat[i][idx] </code></pre>

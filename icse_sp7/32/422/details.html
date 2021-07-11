@@ -1,26 +1,54 @@
-<html><h3>e7a6d712e65f2dccbb840cc4a26622b72146e10b,test_Sony.py,,,#,11
+<html><h3>2318052dc79966bf36675606b7d992a347418292,gluoncv/model_zoo/resnext.py,Block,__init__,#Block#Any#Any#Any#Any#Any#Any#Any#,53
 </h3><link rel="stylesheet" href="../../../../default.css">
 <script src="../../../../highlight.pack.js"></script> 
 <script>hljs.initHighlightingOnLoad();</script>
 <html><h3></h3><h3>Before Change</h3><pre><code class='java'>
 
-&#47&#47 get test IDs
-test_fns = glob.glob(gt_dir + &quot/1*.ARW&quot)
-<a id="change">test_ids</a> = <a id="change">[]</a>
-<a id="change">for i in range(len(test_fns)):
-    _, test_fn = os.path.split(test_fns[i])
-    test_ids.append(int(test_fn[0:5]))
+        self.body = nn.HybridSequential(prefix=&quot&quot)
+        self.body.add(nn.Conv2D(group_width, kernel_size=1, use_bias=False))
+        <a id="change">self.body.add(nn.BatchNorm())</a>
+        self.body.add(nn.Activation(&quotrelu&quot))
+        self.body.add(nn.Conv2D(group_width, kernel_size=3, strides=stride, padding=1,
+                                groups=cardinality, use_bias=False))
+        self.body.add(nn.BatchNorm())
+        self.body.add(nn.Activation(&quotrelu&quot))
+        self.body.add(nn.Conv2D(channels * 4, kernel_size=1, use_bias=False))
+        <a id="change">if last_gamma:
+            self.body.add(nn.BatchNorm())
+        else:
+            self.body.add(nn.BatchNorm(gamma_initializer=&quotzeros&quot))
 
-</a>DEBUG = 0
-if DEBUG == 1:
-    save_freq = 2
-    test_ids = test_ids[0:5]</code></pre><h3>After Change</h3><pre><code class='java'>
-result_dir = &quot./result_Sony/&quot
+       </a> if use_se:
+            self.se = nn.HybridSequential(prefix=&quot&quot)
+            self.se.add(nn.Conv2D(channels // 4, kernel_size=1, padding=0))
+            self.se.add(nn.Activation(&quotrelu&quot))
+            self.se.add(nn.Conv2D(channels * 4, kernel_size=1, padding=0))
+            self.se.add(nn.Activation(&quotsigmoid&quot))
+        else:
+            self.se = None
 
-&#47&#47 get test IDs
-<a id="change">test_fns</a> = glob.glob(gt_dir + &quot/1*.ARW&quot)
-test_ids = <a id="change">[int(os.path.basename(test_fn)[0:5]) for test_fn in test_fns]</a>
+        if downsample:
+            self.downsample = nn.HybridSequential(prefix=&quot&quot)
+            self.downsample.add(nn.Conv2D(channels * 4, kernel_size=1, strides=stride,
+                                          use_bias=False))
+            self.downsample.add(<a id="change">nn.BatchNorm()</a>)
+        else:
+            self.downsample = None
+</code></pre><h3>After Change</h3><pre><code class='java'>
+        for :class:`mxnet.gluon.contrib.nn.SyncBatchNorm`.
+    
+    def __init__(self, channels, cardinality, bottleneck_width, stride,
+                 downsample=False, last_gamma=False, use_se=Fal<a id="change">se,
+                 norm_layer=BatchNorm, norm_kwargs=Non</a>e, **kwargs):
+        super(Block, self).__init__(**kwargs)
+        D = int(math.floor(channels * (bottleneck_width / 64)))
+        group_width = cardinality * D
 
-DEBUG = 0
-if DEBUG == 1:
-    save_freq = 2</code></pre><img src="2172971.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 4</div><BR><div id='size'>Non-data size: 24</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/cchen156/Learning-to-See-in-the-Dark/commit/e7a6d712e65f2dccbb840cc4a26622b72146e10b#diff-5dfd3cdf9cb69afa5d99ee869cd813e01fc441f9617b78ae7fe18ee64fe16cf8L17' target='_blank'>Link</a></div><div id='project'> Project Name: cchen156/Learning-to-See-in-the-Dark</div><div id='commit'> Commit Name: e7a6d712e65f2dccbb840cc4a26622b72146e10b</div><div id='time'> Time: 2018-08-08</div><div id='author'> Author: pengxiaoping@xiaomi.com</div><div id='file'> File Name: test_Sony.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/cchen156/Learning-to-See-in-the-Dark/commit/e7a6d712e65f2dccbb840cc4a26622b72146e10b#diff-ac2b6111e514ee24ba6b43a25620d7c52efb90644a9e28c0999189815cb14c4fL15' target='_blank'>Link</a></div><div id='project'> Project Name: cchen156/Learning-to-See-in-the-Dark</div><div id='commit'> Commit Name: e7a6d712e65f2dccbb840cc4a26622b72146e10b</div><div id='time'> Time: 2018-08-08</div><div id='author'> Author: pengxiaoping@xiaomi.com</div><div id='file'> File Name: train_Fuji.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/cchen156/Learning-to-See-in-the-Dark/commit/e7a6d712e65f2dccbb840cc4a26622b72146e10b#diff-765b4b04b98394b2798ee3c8b242c4fede80d6d956a3aa2aba0f3ad36868d050L15' target='_blank'>Link</a></div><div id='project'> Project Name: cchen156/Learning-to-See-in-the-Dark</div><div id='commit'> Commit Name: e7a6d712e65f2dccbb840cc4a26622b72146e10b</div><div id='time'> Time: 2018-08-08</div><div id='author'> Author: pengxiaoping@xiaomi.com</div><div id='file'> File Name: test_Fuji.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR><BR><div id='link'><a href='https://github.com/cchen156/Learning-to-See-in-the-Dark/commit/e7a6d712e65f2dccbb840cc4a26622b72146e10b#diff-03337ef0b4344258e6d058fcf2121ae26368749a3ba8a09c3351ced2587de506L17' target='_blank'>Link</a></div><div id='project'> Project Name: cchen156/Learning-to-See-in-the-Dark</div><div id='commit'> Commit Name: e7a6d712e65f2dccbb840cc4a26622b72146e10b</div><div id='time'> Time: 2018-08-08</div><div id='author'> Author: pengxiaoping@xiaomi.com</div><div id='file'> File Name: train_Sony.py</div><div id='class'> Class Name: </div><div id='method'> Method Name: </div><BR>
+        self.body = nn.HybridSequential(prefix=&quot<a id="change">&quot)
+        self.body.add(nn.Conv2D(group_width, kernel_size=1, use_bias=F</a>alse))
+        self.body.add(norm_layer(**({} if norm_kwargs is None else norm_kwargs)))
+        self.body.add(nn.Activation(&quotrelu&quot)<a id="change">)
+        self.body.add(nn.Conv2D(group_width, kernel_size=3, strides=str</a>ide, padding=1,
+                                groups=cardinality, use_bias=False))
+        self.body.add(norm_layer(**({} if norm_kwargs is None else norm_kwargs)))
+        self.body.add(nn.Activation(&quotrelu&quot))</code></pre><img src="4175136.png" alt="Italian Trulli"   style="width:500px;height:500px;"><div id='inPattern'>In pattern: SUPERPATTERN</div><BR><div id='frequency'>Frequency: 3</div><BR><div id='size'>Non-data size: 24</div><BR><h3>Instances</h3><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/2318052dc79966bf36675606b7d992a347418292#diff-76db75f5012fdba786839719a924c03306dbcd60f3f5f94fc730390c7e158306L53' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 2318052dc79966bf36675606b7d992a347418292</div><div id='time'> Time: 2019-01-07</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/model_zoo/resnext.py</div><div id='class'> Class Name: Block</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/2318052dc79966bf36675606b7d992a347418292#diff-16adbe71a49b38b95b1c2dbdd350b6990e2b7cff6e13b7477daf33c2d752e580L133' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 2318052dc79966bf36675606b7d992a347418292</div><div id='time'> Time: 2019-01-07</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/model_zoo/resnet.py</div><div id='class'> Class Name: BottleneckV1</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/2318052dc79966bf36675606b7d992a347418292#diff-16adbe71a49b38b95b1c2dbdd350b6990e2b7cff6e13b7477daf33c2d752e580L65' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 2318052dc79966bf36675606b7d992a347418292</div><div id='time'> Time: 2019-01-07</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/model_zoo/resnet.py</div><div id='class'> Class Name: BasicBlockV1</div><div id='method'> Method Name: __init__</div><BR><BR><div id='link'><a href='https://github.com/dmlc/gluon-cv/commit/2318052dc79966bf36675606b7d992a347418292#diff-76db75f5012fdba786839719a924c03306dbcd60f3f5f94fc730390c7e158306L53' target='_blank'>Link</a></div><div id='project'> Project Name: dmlc/gluon-cv</div><div id='commit'> Commit Name: 2318052dc79966bf36675606b7d992a347418292</div><div id='time'> Time: 2019-01-07</div><div id='author'> Author: cheungchih@gmail.com</div><div id='file'> File Name: gluoncv/model_zoo/resnext.py</div><div id='class'> Class Name: Block</div><div id='method'> Method Name: __init__</div><BR>
