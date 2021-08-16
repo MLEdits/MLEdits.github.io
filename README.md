@@ -1,3 +1,3 @@
 # MLEdits.github.io
-This is the website that present repetitive changes done in ML Systems and Refactoring Validations.
+This is the website that present repetitive changes done in ML Systems and Refactoring Validations
 
