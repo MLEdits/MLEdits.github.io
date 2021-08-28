@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Inline Method</i> | Total : <i>81</i> | Precision : <i>75.0%</i>  | True Positives :3 | Evaluated : 4 | Not Evaluated  : 77 </H2>
+<body><HTML><H2> Refactoring Type : <i>Inline Method</i> | Total : <i>28</i> | Precision : <i>85.71%</i>  | True Positives :24 | Evaluated : 28 | Not Evaluated  : 53 </H2>
 
 <table>
  <tr>
@@ -51,464 +51,146 @@
 </tr>
 <tr><td>shenweichen/DeepCTR</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-c0d0afbed82c0652dc33a87826d286a261c60d98b11b0751d62b27310e488e50L169">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, seq_max_len Any) : void inlined to package DIEN(dnn_feature_columns Any, history_feature_list Any, embedding_size Any, hist_len_max Any, gru_type Any, use_negsampling Any, alpha Any, use_bn Any, dnn_hidden_units Any, dnn_activation Any, att_hidden_units Any, att_activation Any, att_weight_normalization Any, l2_reg_dnn Any, l2_reg_embedding Any, dnn_dropout Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.dien.PyDummyClass1</td>
-<td>deepctr/models/dien.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-c0d0afbed82c0652dc33a87826d286a261c60d98b11b0751d62b27310e488e50L169">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, seq_max_len Any) : void inlined to package DIEN(dnn_feature_columns Any, history_feature_list Any, embedding_size Any, hist_len_max Any, gru_type Any, use_negsampling Any, alpha Any, use_bn Any, dnn_hidden_units Any, dnn_activation Any, att_hidden_units Any, att_activation Any, att_weight_normalization Any, l2_reg_dnn Any, l2_reg_embedding Any, dnn_dropout Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.dien.PyDummyClass1</td>
-<td>deepctr/models/dien.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-529f229186221aefacd378dc617d94159c9ffc122e2f87ab647e9df99249246cL60">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, seq_max_len Any) : void inlined to package DIN(dnn_feature_columns Any, history_feature_list Any, embedding_size Any, hist_len_max Any, dnn_use_bn Any, dnn_hidden_units Any, dnn_activation Any, att_hidden_size Any, att_activation Any, att_weight_normalization Any, l2_reg_dnn Any, l2_reg_embedding Any, dnn_dropout Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.din.PyDummyClass1</td>
-<td>deepctr/models/din.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-529f229186221aefacd378dc617d94159c9ffc122e2f87ab647e9df99249246cL60">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, seq_max_len Any) : void inlined to package DIN(dnn_feature_columns Any, history_feature_list Any, embedding_size Any, hist_len_max Any, dnn_use_bn Any, dnn_hidden_units Any, dnn_activation Any, att_hidden_size Any, att_activation Any, att_weight_normalization Any, l2_reg_dnn Any, l2_reg_embedding Any, dnn_dropout Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.din.PyDummyClass1</td>
-<td>deepctr/models/din.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-b527eb0dd0395c89f6c5c80f3a6b148156e5dbbc7cf8f390edf754a7107936c9L144">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
+<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-b527eb0dd0395c89f6c5c80f3a6b148156e5dbbc7cf8f390edf754a7107936c9L144">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, sess_max_count Any, seq_max_len Any) : void inlined to package DSIN(dnn_feature_columns Any, sess_feature_list Any, embedding_size Any, sess_max_count Any, sess_len_max Any, bias_encoding Any, att_embedding_size Any, att_head_num Any, dnn_hidden_units Any, dnn_activation Any, dnn_dropout Any, dnn_use_bn Any, l2_reg_dnn Any, l2_reg_embedding Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.dsin.PyDummyClass1</td>
 <td>deepctr/models/dsin.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-b527eb0dd0395c89f6c5c80f3a6b148156e5dbbc7cf8f390edf754a7107936c9L144">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package get_input(feature_dim_dict Any, seq_feature_list Any, sess_max_count Any, seq_max_len Any) : void inlined to package DSIN(dnn_feature_columns Any, sess_feature_list Any, embedding_size Any, sess_max_count Any, sess_len_max Any, bias_encoding Any, att_embedding_size Any, att_head_num Any, dnn_hidden_units Any, dnn_activation Any, dnn_dropout Any, dnn_use_bn Any, l2_reg_dnn Any, l2_reg_embedding Any, init_std Any, seed Any, task Any) : void in class org.deepctr.models.dsin.PyDummyClass1</td>
-<td>deepctr/models/dsin.py</td>
-</tr>
-<tr><td>shenweichen/DeepCTR</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb#diff-da2d12286725538eaef70d0a5e7b8b979ff74a75f59c08b624a4e3fcc363edf2L146">RefactoringLink</a></td><td><a href="https://github.com/shenweichen/DeepCTR/commit/be65ce986a45bf2f35b5494db3fa6e993b905aeb">CommitLink</a></td><td></td>
-<td>Inline Method	package create_embedding_dict(feature_dim_dict Any, embedding_size Any, init_std Any, seed Any, l2_rev_V Any, l2_reg_w Any) : void inlined to package NFFM(linear_feature_columns Any, dnn_feature_columns Any, embedding_size Any, dnn_hidden_units Any, l2_reg_embedding Any, l2_reg_linear Any, l2_reg_dnn Any, dnn_dropout Any, init_std Any, seed Any, include_linear Any, use_bn Any, reduce_sum Any, task Any) : void in class org.deepctr.models.nffm.PyDummyClass1</td>
-<td>deepctr/models/nffm.py</td>
 </tr>
 <tr><td>tryolabs/luminoth</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L80">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td></td>
+<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L80">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _whctrs(anchor Any) : void inlined to package generate_anchors_reference(base_size Any, aspect_ratios Any, scales Any) : void in class org.luminoth.utils.anchors.PyDummyClass1</td>
 <td>luminoth/utils/anchors.py</td>
 </tr>
 <tr><td>tryolabs/luminoth</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L85">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td></td>
+<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L85">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _mkanchors(ws Any, hs Any, x_ctr Any, y_ctr Any) : void inlined to package generate_anchors_reference(base_size Any, aspect_ratios Any, scales Any) : void in class org.luminoth.utils.anchors.PyDummyClass1</td>
 <td>luminoth/utils/anchors.py</td>
 </tr>
 <tr><td>tryolabs/luminoth</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L96">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td></td>
+<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L96">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _mkanchors(ws Any, hs Any, x_ctr Any, y_ctr Any) : void inlined to package generate_anchors_reference(base_size Any, aspect_ratios Any, scales Any) : void in class org.luminoth.utils.anchors.PyDummyClass1</td>
 <td>luminoth/utils/anchors.py</td>
 </tr>
 <tr><td>tryolabs/luminoth</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L86">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td></td>
+<td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea#diff-c61eebc1ea6854837b019087f6df7999111be57f0cc558661357554bbae50775L86">RefactoringLink</a></td><td><a href="https://github.com/tryolabs/luminoth/commit/54deec3aec7a3bcba5c99479037072bca93f87ea">CommitLink</a></td><td>No</td>
 <td>Inline Method	package _ratio_enum(anchor Any, ratios Any) : void inlined to package generate_anchors_reference(base_size Any, aspect_ratios Any, scales Any) : void in class org.luminoth.utils.anchors.PyDummyClass1</td>
 <td>luminoth/utils/anchors.py</td>
 </tr>
 <tr><td>keras-team/autokeras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/autokeras/commit/ef4ee83ced90babe1e186e370a309ca602794255#diff-cad51f5274a404cd680c15910fffd3e721e18fdc905d89bf10c8603a94544050L74">RefactoringLink</a></td><td><a href="https://github.com/keras-team/autokeras/commit/ef4ee83ced90babe1e186e370a309ca602794255">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/autokeras/commit/ef4ee83ced90babe1e186e370a309ca602794255#diff-cad51f5274a404cd680c15910fffd3e721e18fdc905d89bf10c8603a94544050L74">RefactoringLink</a></td><td><a href="https://github.com/keras-team/autokeras/commit/ef4ee83ced90babe1e186e370a309ca602794255">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package build_model() : void inlined to package test_model_save_load_output_same(tmp_path Any) : void in class org.tests.autokeras.keras_layers_test.PyDummyClass1</td>
 <td>tests/autokeras/keras_layers_test.py</td>
 </tr>
-<tr><td>wkentaro/labelme</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/wkentaro/labelme/commit/448bd4a78699766aea66231ba442b8b5826d2a05#diff-e55c84f8614dfc8cc35bafecb5bb4f15f35784ad6b8c4b82e6378a6bb813cd1eL188">RefactoringLink</a></td><td><a href="https://github.com/wkentaro/labelme/commit/448bd4a78699766aea66231ba442b8b5826d2a05">CommitLink</a></td><td></td>
-<td>Inline Method	package _main() : void inlined to package main() : void in class org.labelme.main.PyDummyClass1</td>
-<td>labelme/main.py</td>
-</tr>
-<tr><td>catalyst-team/catalyst</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/catalyst-team/catalyst/commit/8b711a800b967982e5272fe960a3f94f9b9c4771#diff-8cc76c0256221a9238a70bc274e5c33c335f49983e7b5b8919b0f7967e07c61aL163">RefactoringLink</a></td><td><a href="https://github.com/catalyst-team/catalyst/commit/8b711a800b967982e5272fe960a3f94f9b9c4771">CommitLink</a></td><td></td>
-<td>Inline Method	package images_to_sprite(data Any) : void inlined to package main(args Any, _ Any) : void in class org.catalyst.contrib.scripts.project_embeddings.PyDummyClass1</td>
-<td>catalyst/contrib/scripts/project_embeddings.py</td>
-</tr>
-<tr><td>catalyst-team/catalyst</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/catalyst-team/catalyst/commit/8b711a800b967982e5272fe960a3f94f9b9c4771#diff-8cc76c0256221a9238a70bc274e5c33c335f49983e7b5b8919b0f7967e07c61aL163">RefactoringLink</a></td><td><a href="https://github.com/catalyst-team/catalyst/commit/8b711a800b967982e5272fe960a3f94f9b9c4771">CommitLink</a></td><td></td>
-<td>Inline Method	package images_to_sprite(data Any) : void inlined to package main(args Any, _ Any) : void in class org.catalyst.contrib.scripts.project_embeddings.PyDummyClass1</td>
-<td>catalyst/contrib/scripts/project_embeddings.py</td>
-</tr>
 <tr><td>microsoft/nni</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972#diff-080e6c21b8e9197667a61ca1a43a0b9602cd4b7067d48cb92c5c4221b6d9f8caL628">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972">CommitLink</a></td><td></td>
+<td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972#diff-080e6c21b8e9197667a61ca1a43a0b9602cd4b7067d48cb92c5c4221b6d9f8caL628">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972">CommitLink</a></td><td>No</td>
 <td>Inline Method	package quant_backward(tensor Any, grad_output Any, quant_type Any) : void inlined to package backward(cls Any, ctx Any, grad_output Any) : void in class org.nni.compression.pytorch.compressor.QuantGrad</td>
 <td>nni/compression/pytorch/compressor.py</td>
 </tr>
 <tr><td>microsoft/nni</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972#diff-080e6c21b8e9197667a61ca1a43a0b9602cd4b7067d48cb92c5c4221b6d9f8caL628">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972">CommitLink</a></td><td></td>
+<td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972#diff-080e6c21b8e9197667a61ca1a43a0b9602cd4b7067d48cb92c5c4221b6d9f8caL628">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/2f6a74f1ee1bc7ce225137f0764d3895c7a5f972">CommitLink</a></td><td>No</td>
 <td>Inline Method	package quant_backward(tensor Any, grad_output Any, quant_type Any) : void inlined to package backward(cls Any, ctx Any, grad_output Any) : void in class org.nni.compression.pytorch.compressor.QuantGrad</td>
 <td>nni/compression/pytorch/compressor.py</td>
-</tr>
-<tr><td>microsoft/nni</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/microsoft/nni/commit/accb40f9d901b628c1b1408d8fcea025be5894ac#diff-771b610da16c9d50961f4467edae395c0f49bbda65043b8d119818129ed11d44L188">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/accb40f9d901b628c1b1408d8fcea025be5894ac">CommitLink</a></td><td></td>
-<td>Inline Method	package get_trained_model(args Any, device Any, train_loader Any, val_loader Any, criterion Any) : void inlined to package main(args Any) : void in class org.examples.model_compress.auto_pruners_torch.PyDummyClass1</td>
-<td>examples/model_compress/auto_pruners_torch.py</td>
-</tr>
-<tr><td>microsoft/nni</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/microsoft/nni/commit/accb40f9d901b628c1b1408d8fcea025be5894ac#diff-771b610da16c9d50961f4467edae395c0f49bbda65043b8d119818129ed11d44L188">RefactoringLink</a></td><td><a href="https://github.com/microsoft/nni/commit/accb40f9d901b628c1b1408d8fcea025be5894ac">CommitLink</a></td><td></td>
-<td>Inline Method	package get_trained_model(args Any, device Any, train_loader Any, val_loader Any, criterion Any) : void inlined to package main(args Any) : void in class org.examples.model_compress.auto_pruners_torch.PyDummyClass1</td>
-<td>examples/model_compress/auto_pruners_torch.py</td>
-</tr>
-<tr><td>hanxiao/bert-as-service</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/hanxiao/bert-as-service/commit/dd3c13d51975d7ca569681dd19639473d19e8e85#diff-44ace16cb718aadd24b1c32a628113844418f650ac5fcc606d7a88c3fdb393f1L393">RefactoringLink</a></td><td><a href="https://github.com/hanxiao/bert-as-service/commit/dd3c13d51975d7ca569681dd19639473d19e8e85">CommitLink</a></td><td></td>
-<td>Inline Method	package input_fn_builder() : void inlined to package run1(self BertWorker) : void in class org.server.bert_serving.server.__init__.BertWorker</td>
-<td>server/bert_serving/server/__init__.py</td>
-</tr>
-<tr><td>hanxiao/bert-as-service</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/hanxiao/bert-as-service/commit/dd3c13d51975d7ca569681dd19639473d19e8e85#diff-44ace16cb718aadd24b1c32a628113844418f650ac5fcc606d7a88c3fdb393f1L393">RefactoringLink</a></td><td><a href="https://github.com/hanxiao/bert-as-service/commit/dd3c13d51975d7ca569681dd19639473d19e8e85">CommitLink</a></td><td></td>
-<td>Inline Method	package input_fn_builder() : void inlined to package run1(self BertWorker) : void in class org.server.bert_serving.server.__init__.BertWorker</td>
-<td>server/bert_serving/server/__init__.py</td>
-</tr>
-<tr><td>asyml/texar</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/asyml/texar/commit/5547b27d70a369d254c6a95a0c570fa382f8ef18#diff-8bdc31f0176ba7fcf2494cc50142f6d762c09348b35d26633169852362a820e4L148">RefactoringLink</a></td><td><a href="https://github.com/asyml/texar/commit/5547b27d70a369d254c6a95a0c570fa382f8ef18">CommitLink</a></td><td></td>
-<td>Inline Method	package prepare_data() : void inlined to package main() : void in class org.examples.bert.prepare_data.PyDummyClass1</td>
-<td>examples/bert/prepare_data.py</td>
 </tr>
 <tr><td>williamFalcon/pytorch-lightning</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/9f12ca095ab6e3295bd03fd1e50130a12b11569c#diff-8cc348656e5d5c12f8bb6930e41240da015887af602c1fcc4a0190420d4f7588L160">RefactoringLink</a></td><td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/9f12ca095ab6e3295bd03fd1e50130a12b11569c">CommitLink</a></td><td></td>
+<td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/9f12ca095ab6e3295bd03fd1e50130a12b11569c#diff-8cc348656e5d5c12f8bb6930e41240da015887af602c1fcc4a0190420d4f7588L160">RefactoringLink</a></td><td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/9f12ca095ab6e3295bd03fd1e50130a12b11569c">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _append_to_structure(primary_dict Any, opt_idx Any, batch_idx Any, result Any) : void inlined to package append(self HookResultStore, result Any, info Any) : void in class org.pytorch_lightning.trainer.connectors.logger_connector.epoch_result_store.HookResultStore</td>
 <td>pytorch_lightning/trainer/connectors/logger_connector/epoch_result_store.py</td>
 </tr>
-<tr><td>williamFalcon/pytorch-lightning</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/e425bf3ba93eb1654efd7cff9d3f6e54b40fe188#diff-ac96be7ba54bac4d7dc79ee012a211498fb97689e37026fe8a1b06a359079224L110">RefactoringLink</a></td><td><a href="https://github.com/williamFalcon/pytorch-lightning/commit/e425bf3ba93eb1654efd7cff9d3f6e54b40fe188">CommitLink</a></td><td></td>
-<td>Inline Method	package _make_trainable(module Any) : void inlined to package freeze(modules Any, train_bn Any) : void in class org.pytorch_lightning.callbacks.finetuning.BaseFinetuning</td>
-<td>pytorch_lightning/callbacks/finetuning.py</td>
-</tr>
 <tr><td>GPflow/GPflow</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54#diff-c12d9e359c589e405a132b291f892d640e0fd4b9bc459759d91f152ddc8c5571L73">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54">CommitLink</a></td><td></td>
-<td>Inline Method	package _exec_notebook_ts(notebook_filename Any) : void inlined to package test_notebook(notebook_file Any) : void in class org.tests.test_notebooks.PyDummyClass1</td>
-<td>tests/test_notebooks.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54#diff-c12d9e359c589e405a132b291f892d640e0fd4b9bc459759d91f152ddc8c5571L73">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54">CommitLink</a></td><td></td>
+<td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54#diff-c12d9e359c589e405a132b291f892d640e0fd4b9bc459759d91f152ddc8c5571L73">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/99e898823cc6ae6029276cd8327ee88016f93f54">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _exec_notebook_ts(notebook_filename Any) : void inlined to package test_notebook(notebook_file Any) : void in class org.tests.test_notebooks.PyDummyClass1</td>
 <td>tests/test_notebooks.py</td>
 </tr>
 <tr><td>deepmipt/DeepPavlov</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af#diff-fd05ed9f3d6abaeb98aa453ae7ed34a7798636769df37330f5e2aa73157351f4L64">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af">CommitLink</a></td><td></td>
+<td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af#diff-fd05ed9f3d6abaeb98aa453ae7ed34a7798636769df37330f5e2aa73157351f4L64">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _get_model(config_path Any, vocab_path Any) : void inlined to package build_model_from_config(config_path Any) : void in class org.deeppavlov.core.commands.infer.PyDummyClass1</td>
 <td>deeppavlov/core/commands/infer.py</td>
 </tr>
 <tr><td>deepmipt/DeepPavlov</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af#diff-fd05ed9f3d6abaeb98aa453ae7ed34a7798636769df37330f5e2aa73157351f4L64">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/a299033a771822e5176d3eff54c63798bc9675af">CommitLink</a></td><td></td>
-<td>Inline Method	package _get_model(config_path Any, vocab_path Any) : void inlined to package build_model_from_config(config_path Any) : void in class org.deeppavlov.core.commands.infer.PyDummyClass1</td>
-<td>deeppavlov/core/commands/infer.py</td>
-</tr>
-<tr><td>deepmipt/DeepPavlov</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/deepmipt/DeepPavlov/commit/f088ca492bb0a5ecb6c8b5708132d561b812efde#diff-a973a9930124b9712c1cac8b4626201558afee53722e6f06336a8fa56d4ca56dL31">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/f088ca492bb0a5ecb6c8b5708132d561b812efde">CommitLink</a></td><td></td>
+<td><a href="https://github.com/deepmipt/DeepPavlov/commit/f088ca492bb0a5ecb6c8b5708132d561b812efde#diff-a973a9930124b9712c1cac8b4626201558afee53722e6f06336a8fa56d4ca56dL31">RefactoringLink</a></td><td><a href="https://github.com/deepmipt/DeepPavlov/commit/f088ca492bb0a5ecb6c8b5708132d561b812efde">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package get_data(skill_config Any, dataset_config Any, vocab_path Any) : void inlined to package train_agent_models(config_path Any) : void in class org.deeppavlov.core.commands.train.PyDummyClass1</td>
 <td>deeppavlov/core/commands/train.py</td>
 </tr>
-<tr><td>Unity-Technologies/ml-agents</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/Unity-Technologies/ml-agents/commit/f10f13d7fe2a994bff6761bd01a6dea66c450edd#diff-8ca75ea3b46e43a5cd9b80d9e519d41ea890d31d2ab6dfacaa35a57a0af9ef6cL346">RefactoringLink</a></td><td><a href="https://github.com/Unity-Technologies/ml-agents/commit/f10f13d7fe2a994bff6761bd01a6dea66c450edd">CommitLink</a></td><td></td>
-<td>Inline Method	package create_discrete_action_masking_layer(all_logits Any, action_masks Any, action_size Any) : void inlined to package create_dc_actor_critic(self LearningModel, h_size Any, num_layers Any) : void in class org.python.unitytrainers.models.LearningModel</td>
-<td>ml-agents/mlagents/trainers/models.py</td>
-</tr>
-<tr><td>AKSHAYUBHAT/DeepVideoAnalytics</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/19b2103de8a502a6569c6a1dce0d75c5465d66dd#diff-e0108e69b5672629072b4bd288400b0ddd7b68cf499049c5cc51c4d171c80165L87">RefactoringLink</a></td><td><a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/commit/19b2103de8a502a6569c6a1dce0d75c5465d66dd">CommitLink</a></td><td></td>
-<td>Inline Method	package _build_non_max_suppressor(nms_config Any) : void inlined to package build(image_resizer_config Any) : void in class org.repos.object_detection.builders.image_resizer_builder.PyDummyClass1</td>
-<td>dvalib/object_detection/builders/post_processing_builder.py</td>
-</tr>
 <tr><td>streamlit/streamlit</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/streamlit/streamlit/commit/c587e0e36a829cbd2133adeb5f20c1874f32880b#diff-f67d874587c737c1b9a74094096e9da223942f29d5d62fbef5415b728d7c094aL84">RefactoringLink</a></td><td><a href="https://github.com/streamlit/streamlit/commit/c587e0e36a829cbd2133adeb5f20c1874f32880b">CommitLink</a></td><td></td>
+<td><a href="https://github.com/streamlit/streamlit/commit/c587e0e36a829cbd2133adeb5f20c1874f32880b#diff-f67d874587c737c1b9a74094096e9da223942f29d5d62fbef5415b728d7c094aL84">RefactoringLink</a></td><td><a href="https://github.com/streamlit/streamlit/commit/c587e0e36a829cbd2133adeb5f20c1874f32880b">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _convert_msg_to_exception_msg(msg Any, e Any) : void inlined to package serialize_forward_msg(msg Any) : void in class org.lib.streamlit.server.server_util.PyDummyClass1</td>
 <td>lib/streamlit/server/server_util.py</td>
 </tr>
 <tr><td>ray-project/ray</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b#diff-17f3216912aa12100ce4d32c798c94f32f341c5ab5787321b5cef6981700ed88L397">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/7a78f4e95960bf8560b0547802f171e2b40e4f6b">CommitLink</a></td><td></td>
-<td>Inline Method	package _parse_p2p_group_key(key Any) : void inlined to package destroy_group(self NCCLGroup) : void in class org.python.ray.util.collective.collective_group.nccl_collective_group.NCCLGroup</td>
-<td>python/ray/util/collective/collective_group/nccl_collective_group.py</td>
-</tr>
-<tr><td>ray-project/ray</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce#diff-cfc25900c9ac924d79a156a4f7d9d45272c9f2a0033ac4abbde9776b6ef0af2aL45">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce">CommitLink</a></td><td></td>
-<td>Inline Method	package _async_init() : void inlined to package init() : void in class org.python.ray.experimental.async_api.PyDummyClass1</td>
-<td>python/ray/experimental/async_api.py</td>
-</tr>
-<tr><td>ray-project/ray</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce#diff-cfc25900c9ac924d79a156a4f7d9d45272c9f2a0033ac4abbde9776b6ef0af2aL45">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce">CommitLink</a></td><td></td>
-<td>Inline Method	package _async_init() : void inlined to package init() : void in class org.python.ray.experimental.async_api.PyDummyClass1</td>
-<td>python/ray/experimental/async_api.py</td>
-</tr>
-<tr><td>ray-project/ray</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce#diff-cfc25900c9ac924d79a156a4f7d9d45272c9f2a0033ac4abbde9776b6ef0af2aL45">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce">CommitLink</a></td><td></td>
-<td>Inline Method	package _async_init() : void inlined to package init() : void in class org.python.ray.experimental.async_api.PyDummyClass1</td>
-<td>python/ray/experimental/async_api.py</td>
-</tr>
-<tr><td>ray-project/ray</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce#diff-cfc25900c9ac924d79a156a4f7d9d45272c9f2a0033ac4abbde9776b6ef0af2aL45">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce">CommitLink</a></td><td></td>
+<td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce#diff-cfc25900c9ac924d79a156a4f7d9d45272c9f2a0033ac4abbde9776b6ef0af2aL45">RefactoringLink</a></td><td><a href="https://github.com/ray-project/ray/commit/13c14eac076c81227a96e24f749392f5b75aa2ce">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _async_init() : void inlined to package init() : void in class org.python.ray.experimental.async_api.PyDummyClass1</td>
 <td>python/ray/experimental/async_api.py</td>
 </tr>
 <tr><td>chainer/chainercv</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/chainer/chainercv/commit/dd7f9fa8b43d42edf20483b30ff7d4591270eaf6#diff-abea21af1a82069175165dce8fbbd46b5f068811790afba682767f9a3c1a4feeL87">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/dd7f9fa8b43d42edf20483b30ff7d4591270eaf6">CommitLink</a></td><td></td>
+<td><a href="https://github.com/chainer/chainercv/commit/dd7f9fa8b43d42edf20483b30ff7d4591270eaf6#diff-abea21af1a82069175165dce8fbbd46b5f068811790afba682767f9a3c1a4feeL87">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/dd7f9fa8b43d42edf20483b30ff7d4591270eaf6">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package resize_backend() : void inlined to package resize(img Any, size Any, interpolation Any) : void in class org.chainercv.transforms.image.resize.PyDummyClass1</td>
 <td>chainercv/transforms/image/resize.py</td>
 </tr>
 <tr><td>chainer/chainercv</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/chainer/chainercv/commit/44edfba78536668c2240e8e722029741a547bd9a#diff-7abe3761999fa57a4e24a48350180ccc64517db21d7792a7e3991b6a642d8bebL43">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/44edfba78536668c2240e8e722029741a547bd9a">CommitLink</a></td><td></td>
+<td><a href="https://github.com/chainer/chainercv/commit/44edfba78536668c2240e8e722029741a547bd9a#diff-7abe3761999fa57a4e24a48350180ccc64517db21d7792a7e3991b6a642d8bebL43">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/44edfba78536668c2240e8e722029741a547bd9a">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _check_available() : void inlined to package rotate(img Any, angle Any, expand Any, fill Any, interpolation Any) : void in class org.chainercv.transforms.image.rotate.PyDummyClass1</td>
 <td>chainercv/transforms/image/rotate.py</td>
 </tr>
-<tr><td>chainer/chainercv</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/chainer/chainercv/commit/222213890a758b3efc8ed8ff57133291753f98e0#diff-4f7dc1d26151360c95bffca1c5b59b62a7e61af63be8f30b9a54d48e49772231L108">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/222213890a758b3efc8ed8ff57133291753f98e0">CommitLink</a></td><td></td>
-<td>Inline Method	package _get_random_sized_crop_params(size Any, scale_ratio_interval Any, aspect_ratio_interval Any) : void inlined to package random_sized_crop(img Any, scale_ratio_interval Any, aspect_ratio_interval Any, return_params Any, copy Any) : void in class org.chainercv.transforms.image.random_sized_crop.PyDummyClass1</td>
-<td>chainercv/transforms/image/random_sized_crop.py</td>
-</tr>
-<tr><td>chainer/chainercv</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/chainer/chainercv/commit/222213890a758b3efc8ed8ff57133291753f98e0#diff-4f7dc1d26151360c95bffca1c5b59b62a7e61af63be8f30b9a54d48e49772231L108">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/222213890a758b3efc8ed8ff57133291753f98e0">CommitLink</a></td><td></td>
-<td>Inline Method	package _get_random_sized_crop_params(size Any, scale_ratio_interval Any, aspect_ratio_interval Any) : void inlined to package random_sized_crop(img Any, scale_ratio_interval Any, aspect_ratio_interval Any, return_params Any, copy Any) : void in class org.chainercv.transforms.image.random_sized_crop.PyDummyClass1</td>
-<td>chainercv/transforms/image/random_sized_crop.py</td>
-</tr>
-<tr><td>chainer/chainercv</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/chainer/chainercv/commit/361aa2a9c0d9e2bbda5e76d452aa7f0a4b1838f8#diff-a5a141fea0742b4f7abfd896158a6e1b237220346c1e2600b2aca10b5c49c402L211">RefactoringLink</a></td><td><a href="https://github.com/chainer/chainercv/commit/361aa2a9c0d9e2bbda5e76d452aa7f0a4b1838f8">CommitLink</a></td><td></td>
-<td>Inline Method	package _pred_and_rec_cls(bboxes Any, scores Any, gt_bboxes Any, gt_difficults Any, iou_thresh Any) : void inlined to package eval_detection_voc(pred_bboxes Any, pred_labels Any, pred_scores Any, gt_bboxes Any, gt_labels Any, gt_difficults Any, iou_thresh Any, use_07_metric Any) : void in class org.chainercv.evaluations.eval_detection_voc.PyDummyClass1</td>
-<td>chainercv/evaluations/eval_detection_voc.py</td>
-</tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3308">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3308">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _preprocess_deconv_output_shape(x Any, shape Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3308">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _preprocess_deconv_output_shape(x Any, shape Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3314">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package conv2d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package separable_conv2d(x Any, depthwise_kernel Any, pointwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package separable_conv2d(x Any, depthwise_kernel Any, pointwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package separable_conv2d(x Any, depthwise_kernel Any, pointwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package separable_conv2d(x Any, depthwise_kernel Any, pointwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3351">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package separable_conv2d(x Any, depthwise_kernel Any, pointwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package depthwise_conv2d(x Any, depthwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package depthwise_conv2d(x Any, depthwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package depthwise_conv2d(x Any, depthwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package depthwise_conv2d(x Any, depthwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3386">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package depthwise_conv2d(x Any, depthwise_kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package pool2d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package pool2d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package pool2d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package pool2d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3504">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv2d_output(x Any, data_format Any) : void inlined to package pool2d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3426">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3426">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d(x Any, kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3426">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d(x Any, kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3426">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d(x Any, kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3426">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d(x Any, kernel Any, strides Any, padding Any, data_format Any, dilation_rate Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3463">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3463">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
 <td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3463">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3463">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3463">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package conv3d_transpose(x Any, kernel Any, output_shape Any, strides Any, padding Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3544">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
+<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3544">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td>Yes</td>
 <td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package pool3d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3544">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package pool3d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3544">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package pool3d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3544">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/6b106ab4ec9a1c0eb3e24ae590ce63f84022ad40">CommitLink</a></td><td></td>
-<td>Inline Method	package _postprocess_conv3d_output(x Any, data_format Any) : void inlined to package pool3d(x Any, pool_size Any, strides Any, padding Any, data_format Any, pool_mode Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass3</td>
-<td>keras/backend/tensorflow_backend.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Inline Method</td>
-<td><a href="https://github.com/keras-team/keras/commit/80dcdcd88d9ca6f93695de0d16e4ce3ff2c094a7#diff-8d37272f22c146505301f9d7f2a729d60681f649b77fea252346332e7ac31327L3223">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/80dcdcd88d9ca6f93695de0d16e4ce3ff2c094a7">CommitLink</a></td><td></td>
-<td>Inline Method	package _preprocess_deconv_output_shape(x Any, shape Any, data_format Any) : void inlined to package resize_images(x Any, height_factor Any, width_factor Any, data_format Any) : void in class org.keras.backend.tensorflow_backend.PyDummyClass2</td>
 <td>keras/backend/tensorflow_backend.py</td>
 </tr>
 </table>

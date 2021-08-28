@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Reorder Parameter</i> | Total : <i>131</i> | Precision : <i>94.12%</i>  | True Positives :96 | Evaluated : 102 | Not Evaluated  : 29 </H2>
+<body><HTML><H2> Refactoring Type : <i>Reorder Parameter</i> | Total : <i>106</i> | Precision : <i>98.11%</i>  | True Positives :104 | Evaluated : 106 | Not Evaluated  : 21 </H2>
 
 <table>
  <tr>
@@ -201,32 +201,8 @@
 </tr>
 <tr><td>GPflow/GPflow</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7#diff-3c94d4f695db27dd3318316994bd591c12f54ee32b4a208b703fa6bc9268947aL11">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7">CommitLink</a></td><td>No</td>
-<td>Reorder Parameter        [p : Any, rbf_kern : Any, feat1 : Any, lin_kern : Any, feat2 : Any, nghp : Any] to [p : Any, lin_kern : Any, feat1 : Any, rbf_kern : Any, feat2 : Any, nghp : Any] in method package _E(p Any, lin_kern Any, feat1 Any, rbf_kern Any, feat2 Any, nghp Any) : void from class org.gpflow.expectations.cross_kernels.PyDummyClass1</td>
-<td>gpflow/expectations/cross_kernels.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7#diff-3c94d4f695db27dd3318316994bd591c12f54ee32b4a208b703fa6bc9268947aL72">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7">CommitLink</a></td><td>No</td>
-<td>Reorder Parameter	[p : Any, lin_kern : Any, feat1 : Any, rbf_kern : Any, feat2 : Any, nghp : Any] to [p : Any, rbf_kern : Any, feat1 : Any, lin_kern : Any, feat2 : Any, nghp : Any] in method package _E(p Any, rbf_kern Any, feat1 Any, lin_kern Any, feat2 Any, nghp Any) : void from class org.gpflow.expectations.cross_kernels.PyDummyClass1</td>
-<td>gpflow/expectations/cross_kernels.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7#diff-fee8fbc7796488585954f103c4c56440d987b0172ba271e33e24db101bc94737L18">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7">CommitLink</a></td><td>No</td>
-<td>Reorder Parameter        [p : Any, mean : Any, _ : Any, kernel : Any, feature : Any, nghp : Any] to [p : Any, kernel : Any, feature : Any, mean : Any, _ : Any, nghp : Any] in method package _E(p Any, kernel Any, feature Any, mean Any, _ Any, nghp Any) : void from class org.gpflow.expectations.misc.PyDummyClass1</td>
-<td>gpflow/expectations/misc.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Reorder Parameter</td>
 <td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7#diff-fee8fbc7796488585954f103c4c56440d987b0172ba271e33e24db101bc94737L33">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/8e3e4e8aac602c22724ec7ef28bdc9a4f9f031f7">CommitLink</a></td><td>No</td>
 <td>Reorder Parameter	[p : Any, kernel : Any, feature : Any, mean : Any, _ : Any, nghp : Any] to [p : Any, mean : Any, _ : Any, kernel : Any, feature : Any, nghp : Any] in method package _E(p Any, mean Any, _ Any, kernel Any, feature Any, nghp Any) : void from class org.gpflow.expectations.misc.PyDummyClass1</td>
-<td>gpflow/expectations/misc.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/b8d1d6847ff63841940a3c513e382feb8542b08f#diff-fee8fbc7796488585954f103c4c56440d987b0172ba271e33e24db101bc94737L18">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/b8d1d6847ff63841940a3c513e382feb8542b08f">CommitLink</a></td><td>No</td>
-<td>Reorder Parameter	[p : Any, mean : Any, _ : Any, kern : Any, feat : Any, nghp : Any] to [p : Any, kern : Any, feat : Any, mean : Any, _ : Any, nghp : Any] in method package _E(p Any, kern Any, feat Any, mean Any, _ Any, nghp Any) : void from class org.gpflow.expectations.misc.PyDummyClass1</td>
 <td>gpflow/expectations/misc.py</td>
 </tr>
 <tr><td>GPflow/GPflow</td>
@@ -637,179 +613,53 @@
 <td>Reorder Parameter [self : GradientBoostingQuantileRegressor, quantiles : Any, base_estimator : Any, random_state : Any, n_jobs : Any] to [self : GradientBoostingQuantileRegressor, quantiles : Any, base_estimator : Any, n_jobs : Any, random_state : Any] in method package __init__(self GradientBoostingQuantileRegressor, quantiles Any, base_estimator Any, n_jobs Any, random_state Any) : void from class org.skopt.learning.gbrt.GradientBoostingQuantileRegressor</td>
 <td>skopt/learning/gbrt.py</td>
 </tr>
-<tr><td>tensorpack/tensorpack</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/tensorpack/tensorpack/commit/a6936913dbd0b0118ca80bb85adb2fe20bf748f1#diff-4dc4363ff421c97938f0191d196302de8fc10e1d037c1350c509c56718fcb6ddL17">RefactoringLink</a></td><td><a href="https://github.com/tensorpack/tensorpack/commit/a6936913dbd0b0118ca80bb85adb2fe20bf748f1">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : PredictConfig, model : Any, inputs_desc : Any, tower_func : Any, session_creator : Any, session_init : Any, input_names : Any, output_names : Any, return_input : Any, create_graph : Any] to [self : PredictConfig, model : Any, inputs_desc : Any, tower_func : Any, input_names : Any, output_names : Any, session_creator : Any, session_init : Any, return_input : Any, create_graph : Any] in method package __init__(self PredictConfig, model Any, inputs_desc Any, tower_func Any, input_names Any, output_names Any, session_creator Any, session_init Any, return_input Any, create_graph Any) : void from class org.tensorpack.predict.config.PredictConfig</td>
-<td>tensorpack/predict/config.py</td>
-</tr>
-<tr><td>tensorpack/tensorpack</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/tensorpack/tensorpack/commit/2df3dcf401a99fe61c699ad719e95528872d3abe#diff-0587d1fdc6375f095601ba786c2d76391901ca593d6c22cff0c0357b89fff476L13">RefactoringLink</a></td><td><a href="https://github.com/tensorpack/tensorpack/commit/2df3dcf401a99fe61c699ad719e95528872d3abe">CommitLink</a></td><td></td>
-<td>Reorder Parameter [x : Any, dim : Any, tensor : Any] to [x : Any, tensor : Any, dim : Any] in method package ConcatWith(x Any, tensor Any, dim Any) : void from class org.tensorpack.models.shapes.PyDummyClass1</td>
-<td>tensorpack/models/shapes.py</td>
-</tr>
-<tr><td>tensorpack/tensorpack</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/tensorpack/tensorpack/commit/99c70935a7f72050f45891fbbcc49c4ce43aedce#diff-ce7ce89626c81cd74b417909baa3976598c3b61aaa3f5aa6086ec7adcc13b41bL102">RefactoringLink</a></td><td><a href="https://github.com/tensorpack/tensorpack/commit/99c70935a7f72050f45891fbbcc49c4ce43aedce">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : AsyncMultiGPUTrainer, config : Any, input_queue : Any, predict_tower : Any, average_gradient : Any] to [self : AsyncMultiGPUTrainer, config : Any, input_queue : Any, average_gradient : Any, predict_tower : Any] in method package __init__(self AsyncMultiGPUTrainer, config Any, input_queue Any, average_gradient Any, predict_tower Any) : void from class org.tensorpack.train.multigpu.AsyncMultiGPUTrainer</td>
-<td>tensorpack/train/multigpu.py</td>
-</tr>
-<tr><td>hachmannlab/chemml</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/hachmannlab/chemml/commit/1af63f2515486911a01f05ad0c6ed5aaceaebfd6#diff-98b4f88d10fe26d0c4dc815ea68df1c91af7ba6bd9d3f28f3d5ca2215d3a32aeL55">RefactoringLink</a></td><td><a href="https://github.com/hachmannlab/chemml/commit/1af63f2515486911a01f05ad0c6ed5aaceaebfd6">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : Dragon, version : Any, CheckUpdates : Any, SaveLayout : Any, PreserveTemporaryProjects : Any, ShowWorksheet : Any, Decimal_Separator : Any, Missing_String : Any, DefaultMolFormat : Any, HelpBrowser : Any, RejectUnusualValence : Any, Add2DHydrogens : Any, MaxSRforAllCircuit : Any, MaxSR : Any, MaxSRDetour : Any, MaxAtomWalkPath : Any, LogPathWalk : Any, LogEdge : Any, Weights : Any, SaveOnlyData : Any, SaveLabelsOnSeparateFile : Any, SaveFormatBlock : Any, SaveFormatSubBlock : Any, SaveExcludeMisVal : Any, SaveExcludeAllMisVal : Any, SaveExcludeConst : Any, SaveExcludeNearConst : Any, SaveExcludeStdDev : Any, SaveStdDevThreshold : Any, SaveExcludeCorrelated : Any, SaveCorrThreshold : Any, SaveExclusionOptionsToVariables : Any, SaveExcludeMisMolecules : Any, SaveExcludeRejectedMolecules : Any, blocks : Any, molInput : Any, molInputFormat : Any, molFile : Any, SaveStdOut : Any, SaveProject : Any, SaveProjectFile : Any, SaveFile : Any, SaveType : Any, SaveFilePath : Any, logMode : Any, logFile : Any, external : Any, fileName : Any, delimiter : Any, consecutiveDelimiter : Any, MissingValue : Any, RejectDisconnectedStrucuture : Any, RetainBiggestFragment : Any, DisconnectedCalculationOption : Any, RoundCoordinates : Any, RoundWeights : Any, RoundDescriptorValues : Any, knimemode : Any] to [self : Dragon, version : Any, molFile : Any, molInput : Any, CheckUpdates : Any, SaveLayout : Any, PreserveTemporaryProjects : Any, ShowWorksheet : Any, Decimal_Separator : Any, Missing_String : Any, DefaultMolFormat : Any, HelpBrowser : Any, RejectUnusualValence : Any, Add2DHydrogens : Any, MaxSRforAllCircuit : Any, MaxSR : Any, MaxSRDetour : Any, MaxAtomWalkPath : Any, LogPathWalk : Any, LogEdge : Any, Weights : Any, SaveOnlyData : Any, SaveLabelsOnSeparateFile : Any, SaveFormatBlock : Any, SaveFormatSubBlock : Any, SaveExcludeMisVal : Any, SaveExcludeAllMisVal : Any, SaveExcludeConst : Any, SaveExcludeNearConst : Any, SaveExcludeStdDev : Any, SaveStdDevThreshold : Any, SaveExcludeCorrelated : Any, SaveCorrThreshold : Any, SaveExclusionOptionsToVariables : Any, SaveExcludeMisMolecules : Any, SaveExcludeRejectedMolecules : Any, blocks : Any, molInputFormat : Any, SaveStdOut : Any, SaveProject : Any, SaveProjectFile : Any, SaveFile : Any, SaveType : Any, SaveFilePath : Any, logMode : Any, logFile : Any, external : Any, fileName : Any, delimiter : Any, consecutiveDelimiter : Any, MissingValue : Any, RejectDisconnectedStrucuture : Any, RetainBiggestFragment : Any, DisconnectedCalculationOption : Any, RoundCoordinates : Any, RoundWeights : Any, RoundDescriptorValues : Any, knimemode : Any] in method package __init__(self Dragon, version Any, molFile Any, molInput Any, CheckUpdates Any, SaveLayout Any, PreserveTemporaryProjects Any, ShowWorksheet Any, Decimal_Separator Any, Missing_String Any, DefaultMolFormat Any, HelpBrowser Any, RejectUnusualValence Any, Add2DHydrogens Any, MaxSRforAllCircuit Any, MaxSR Any, MaxSRDetour Any, MaxAtomWalkPath Any, LogPathWalk Any, LogEdge Any, Weights Any, SaveOnlyData Any, SaveLabelsOnSeparateFile Any, SaveFormatBlock Any, SaveFormatSubBlock Any, SaveExcludeMisVal Any, SaveExcludeAllMisVal Any, SaveExcludeConst Any, SaveExcludeNearConst Any, SaveExcludeStdDev Any, SaveStdDevThreshold Any, SaveExcludeCorrelated Any, SaveCorrThreshold Any, SaveExclusionOptionsToVariables Any, SaveExcludeMisMolecules Any, SaveExcludeRejectedMolecules Any, blocks Any, molInputFormat Any, SaveStdOut Any, SaveProject Any, SaveProjectFile Any, SaveFile Any, SaveType Any, SaveFilePath Any, logMode Any, logFile Any, external Any, fileName Any, delimiter Any, consecutiveDelimiter Any, MissingValue Any, RejectDisconnectedStrucuture Any, RetainBiggestFragment Any, DisconnectedCalculationOption Any, RoundCoordinates Any, RoundWeights Any, RoundDescriptorValues Any, knimemode Any) : void from class org.chemml.chem.Dragon.Dragon</td>
-<td>chemml/chem/Dragon.py</td>
-</tr>
-<tr><td>snorkel-team/snorkel</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/snorkel-team/snorkel/commit/17d88ee6ba813dbd6c5265847bd461ec86d35b90#diff-10645115aef7f054478075a08e6b5f5d735de603cdad3238b1738478b4c3423cL49">RefactoringLink</a></td><td><a href="https://github.com/snorkel-team/snorkel/commit/17d88ee6ba813dbd6c5265847bd461ec86d35b90">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : RNNBase, dim : Any, attn_window : Any, cell_type : Any, word_dict : Any, max_len : Any] to [self : RNNBase, dim : Any, attn_window : Any, max_len : Any, cell_type : Any, word_dict : Any] in method package _build_model(self RNNBase, dim Any, attn_window Any, max_len Any, cell_type Any, word_dict Any) : void from class org.snorkel.contrib.disc_learning.rnn.rnn_base.RNNBase</td>
-<td>snorkel/contrib/disc_learning/rnn/rnn_base.py</td>
-</tr>
-<tr><td>snorkel-team/snorkel</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/snorkel-team/snorkel/commit/a3030889bbf7a71af138fbd93f9e402465d54fd8#diff-893459c7669c552b75c6abdc534884389294d142e7116d4f92d982476e12d2cfL112">RefactoringLink</a></td><td><a href="https://github.com/snorkel-team/snorkel/commit/a3030889bbf7a71af138fbd93f9e402465d54fd8">CommitLink</a></td><td></td>
-<td>Reorder Parameter [canonical_ids : Any, context : Any] to [context : Any, canonical_ids : Any] in method package get_entity_counts(context Any, canonical_ids Any) : void from class org.snorkel.features.relative_features.PyDummyClass1</td>
-<td>snorkel/features/relative_features.py</td>
-</tr>
-<tr><td>snorkel-team/snorkel</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/snorkel-team/snorkel/commit/2cf3e74048727bc4a3369615e11930816f941aa0#diff-d982eb7bfe0a85e422cced872ab8d19db03329eb4ca6d3135166bc17becb0d42L93">RefactoringLink</a></td><td><a href="https://github.com/snorkel-team/snorkel/commit/2cf3e74048727bc4a3369615e11930816f941aa0">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : AnnotationManager, session : Any, candidate_set : Any, key_set : Any, f : Any, key_set_mutable : Any] to [self : AnnotationManager, session : Any, candidate_set : Any, key_set : Any, key_set_mutable : Any, f : Any] in method package update(self AnnotationManager, session Any, candidate_set Any, key_set Any, key_set_mutable Any, f Any) : void from class org.snorkel.annotations.AnnotationManager</td>
-<td>snorkel/annotations.py</td>
-</tr>
-<tr><td>PyMVPA/PyMVPA</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/PyMVPA/PyMVPA/commit/814fc9c2debff76a5b61a2b54fe311b2d03bec69#diff-53d49dade774bed9932baa3d2736d9cef2e303426bcc94f7d53e2d1ae03f1801L56">RefactoringLink</a></td><td><a href="https://github.com/PyMVPA/PyMVPA/commit/814fc9c2debff76a5b61a2b54fe311b2d03bec69">CommitLink</a></td><td></td>
-<td>Reorder Parameter [stat : Any, alternative : Any, data : Any, mask : Any, outfn : Any] to [data : Any, outfn : Any, stat : Any, alternative : Any, mask : Any] in method package run_ttest(data Any, outfn Any, stat Any, alternative Any, mask Any) : void from class org.mvpa2.tests.test_cmdline_ttest.TestCmdlineTtest</td>
-<td>mvpa2/tests/test_cmdline_ttest.py</td>
-</tr>
 <tr><td>datascienceinc/Skater</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/datascienceinc/Skater/commit/820d48b65545c2e51f02f762b92182e21a55ffde#diff-055257db455f0be83960510f6a095fca7bb434474c71222e434a3ac1ff3305e6L7">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/820d48b65545c2e51f02f762b92182e21a55ffde">CommitLink</a></td><td></td>
-<td>Reorder Parameter [path : Any, img_width : Any, img_height : Any] to [path : Any, img_height : Any, img_width : Any] in method package load_image(path Any, img_height Any, img_width Any) : void from class org.skater.util.image_ops.PyDummyClass1</td>
-<td>skater/util/image_ops.py</td>
-</tr>
-<tr><td>datascienceinc/Skater</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L61">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td></td>
+<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L61">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [y_predicted : Any, y_true : Any] to [y_true : Any, y_predicted : Any] in method package check_data(y_true Any, y_predicted Any) : void from class org.skater.model.scorer.Scorer</td>
 <td>skater/model/scorer.py</td>
 </tr>
 <tr><td>datascienceinc/Skater</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L80">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td></td>
+<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L80">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [y_predicted : Any, y_true : Any] to [y_true : Any, y_predicted : Any] in method package check_data(y_true Any, y_predicted Any) : void from class org.skater.model.scorer.RegressionScorer</td>
 <td>skater/model/scorer.py</td>
 </tr>
 <tr><td>datascienceinc/Skater</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L104">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td></td>
+<td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129#diff-2646515e096add5ad2b24360fdfb81a5c5bcdcc3b03137aa803fb8e1920166a4L104">RefactoringLink</a></td><td><a href="https://github.com/datascienceinc/Skater/commit/c3bff7a2c5e86d6df8dcd99f28281df541e77129">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [y_predicted : Any, y_true : Any] to [y_true : Any, y_predicted : Any] in method package check_data(y_true Any, y_predicted Any) : void from class org.skater.model.scorer.ClassifierScorer</td>
 <td>skater/model/scorer.py</td>
 </tr>
 <tr><td>fgnt/pb_bss</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/fgnt/pb_bss/commit/8d5150068fa13ed3f5d78fd6a1c09b6565f961a4#diff-02ddd61025b1b7e63b934214e91d2825782a353b49d405c534022de30bcf1af9L144">RefactoringLink</a></td><td><a href="https://github.com/fgnt/pb_bss/commit/8d5150068fa13ed3f5d78fd6a1c09b6565f961a4">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : GMMTrainer, x : Any, affiliation : Any, saliency : Any, covariance_type : Any, fixed_covariance : Any, weight_constant_axis : Any] to [self : GMMTrainer, x : Any, affiliation : Any, saliency : Any, weight_constant_axis : Any, covariance_type : Any, fixed_covariance : Any] in method package _m_step(self GMMTrainer, x Any, affiliation Any, saliency Any, weight_constant_axis Any, covariance_type Any, fixed_covariance Any) : void from class org.pb_bss.distribution.gmm.GMMTrainer</td>
-<td>pb_bss/distribution/gmm.py</td>
-</tr>
-<tr><td>fgnt/pb_bss</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/fgnt/pb_bss/commit/504fc6e7fd2ddd6bc77855f6381d84314b6f2138#diff-a1b13e42a9bbb06a7c7970b55fea4befc9eebce8517f1414d0b0de14a54268b4L794">RefactoringLink</a></td><td><a href="https://github.com/fgnt/pb_bss/commit/504fc6e7fd2ddd6bc77855f6381d84314b6f2138">CommitLink</a></td><td></td>
+<td><a href="https://github.com/fgnt/pb_bss/commit/504fc6e7fd2ddd6bc77855f6381d84314b6f2138#diff-a1b13e42a9bbb06a7c7970b55fea4befc9eebce8517f1414d0b0de14a54268b4L794">RefactoringLink</a></td><td><a href="https://github.com/fgnt/pb_bss/commit/504fc6e7fd2ddd6bc77855f6381d84314b6f2138">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [target_psd_matrix : Any, beamformer : Any, noise_psd_matrix : Any] to [beamformer : Any, target_psd_matrix : Any, noise_psd_matrix : Any] in method package get_bf_vector(beamformer Any, target_psd_matrix Any, noise_psd_matrix Any) : void from class org.paderbox.speech_enhancement.beamformer.PyDummyClass1</td>
 <td>paderbox/speech_enhancement/beamformer.py</td>
 </tr>
-<tr><td>explosion/spaCy</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/explosion/spaCy/commit/3e78e82a834b42ff165fbb2614cb6f42206ce390#diff-a4c0e25dc001de2e2b6fce616e56a150d3f0059ea2233f2cd07d5baba012b7b8L82">RefactoringLink</a></td><td><a href="https://github.com/explosion/spaCy/commit/3e78e82a834b42ff165fbb2614cb6f42206ce390">CommitLink</a></td><td></td>
-<td>Reorder Parameter [texts_loc : Any, vectors_model : Any, output_dir : Any, width : Any, conv_depth : Any, bilstm_depth : Any, cnn_pieces : Any, sa_depth : Any, use_chars : Any, cnn_window : Any, embed_rows : Any, loss_func : Any, use_vectors : Any, dropout : Any, n_iter : Any, batch_size : Any, max_length : Any, min_length : Any, seed : Any, n_save_every : Any, init_tok2vec : Any, epoch_start : Any] to [texts_loc : Any, vectors_model : Any, output_dir : Any, width : Any, conv_depth : Any, cnn_pieces : Any, sa_depth : Any, cnn_window : Any, bilstm_depth : Any, use_chars : Any, embed_rows : Any, loss_func : Any, use_vectors : Any, dropout : Any, n_iter : Any, batch_size : Any, max_length : Any, min_length : Any, seed : Any, n_save_every : Any, init_tok2vec : Any, epoch_start : Any] in method package pretrain(texts_loc Any, vectors_model Any, output_dir Any, width Any, conv_depth Any, cnn_pieces Any, sa_depth Any, cnn_window Any, bilstm_depth Any, use_chars Any, embed_rows Any, loss_func Any, use_vectors Any, dropout Any, n_iter Any, batch_size Any, max_length Any, min_length Any, seed Any, n_save_every Any, init_tok2vec Any, epoch_start Any) : void from class org.spacy.cli.pretrain.PyDummyClass1</td>
-<td>spacy/cli/pretrain.py</td>
-</tr>
-<tr><td>explosion/spaCy</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/explosion/spaCy/commit/e7aa25d9b1107a07896f34bfef4bb7f0c630a5ad#diff-d7d0fcd570b7bf25afe39592ea6ff5ee327e85d668e22a13b2ba9185d4636127L414">RefactoringLink</a></td><td><a href="https://github.com/explosion/spaCy/commit/e7aa25d9b1107a07896f34bfef4bb7f0c630a5ad">CommitLink</a></td><td></td>
-<td>Reorder Parameter [itn : Any, beam_width : Any, losses : Any, dev_scores : Any, cpu_wps : Any, gpu_wps : Any] to [itn : Any, losses : Any, dev_scores : Any, beam_width : Any, cpu_wps : Any, gpu_wps : Any] in method package _get_progress(itn Any, losses Any, dev_scores Any, beam_width Any, cpu_wps Any, gpu_wps Any) : void from class org.spacy.cli.train.PyDummyClass1</td>
-<td>spacy/cli/train.py</td>
-</tr>
 <tr><td>explosion/thinc</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/explosion/thinc/commit/c4cab3f48ec91cd1269f0c1bc6678c96f34415b1#diff-81cc8f51f6740cb9176ed41208fbe48f219b34ec841882757d63d0f73bc01577L647">RefactoringLink</a></td><td><a href="https://github.com/explosion/thinc/commit/c4cab3f48ec91cd1269f0c1bc6678c96f34415b1">CommitLink</a></td><td></td>
+<td><a href="https://github.com/explosion/thinc/commit/c4cab3f48ec91cd1269f0c1bc6678c96f34415b1#diff-81cc8f51f6740cb9176ed41208fbe48f219b34ec841882757d63d0f73bc01577L647">RefactoringLink</a></td><td><a href="https://github.com/explosion/thinc/commit/c4cab3f48ec91cd1269f0c1bc6678c96f34415b1">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [W : Any, b : Any, cell_tm1 : Any, hidden_tm1 : Any, inputs : Any] to [W : Any, b : Any, hidden_tm1 : Any, cell_tm1 : Any, inputs : Any] in method package lstm(W Any, b Any, hidden_tm1 Any, cell_tm1 Any, inputs Any) : void from class org.thinc.backends.jax_ops.PyDummyClass1</td>
-<td>thinc/backends/jax_ops.py</td>
-</tr>
-<tr><td>explosion/thinc</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/explosion/thinc/commit/3da9f027240ecde962714134f385dca904a62732#diff-81cc8f51f6740cb9176ed41208fbe48f219b34ec841882757d63d0f73bc01577L300">RefactoringLink</a></td><td><a href="https://github.com/explosion/thinc/commit/3da9f027240ecde962714134f385dca904a62732">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : JaxOps, W : Any, b : Any, cell_tm1 : Any, hidden_tm1 : Any, inputs : Any] to [self : JaxOps, W : Any, b : Any, hidden_tm1 : Any, cell_tm1 : Any, inputs : Any] in method package lstm(self JaxOps, W Any, b Any, hidden_tm1 Any, cell_tm1 Any, inputs Any) : void from class org.thinc.backends.jax_ops.JaxOps</td>
 <td>thinc/backends/jax_ops.py</td>
 </tr>
 <tr><td>jadore801120/attention-is-all-you-need-pytorch</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/jadore801120/attention-is-all-you-need-pytorch/commit/1d4df3b0095d8cae714bf17eb3820479ccc69a04#diff-a6a596f1b879b5a9b6619ca2e20a4a5ec1725229f46a2e80291aa2a89ef6dc5cL31">RefactoringLink</a></td><td><a href="https://github.com/jadore801120/attention-is-all-you-need-pytorch/commit/1d4df3b0095d8cae714bf17eb3820479ccc69a04">CommitLink</a></td><td></td>
+<td><a href="https://github.com/jadore801120/attention-is-all-you-need-pytorch/commit/1d4df3b0095d8cae714bf17eb3820479ccc69a04#diff-a6a596f1b879b5a9b6619ca2e20a4a5ec1725229f46a2e80291aa2a89ef6dc5cL31">RefactoringLink</a></td><td><a href="https://github.com/jadore801120/attention-is-all-you-need-pytorch/commit/1d4df3b0095d8cae714bf17eb3820479ccc69a04">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [seq_q : Any, seq_k : Any] to [seq_k : Any, seq_q : Any] in method package get_attn_key_pad_mask(seq_k Any, seq_q Any) : void from class org.transformer.Models.PyDummyClass1</td>
 <td>transformer/Models.py</td>
 </tr>
-<tr><td>Zhaoyi-Yan/Shift-Net_pytorch</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/Zhaoyi-Yan/Shift-Net_pytorch/commit/dc9aafd83851f7c55c6fe61702e281856ec023ca#diff-6d68f6547077bd7d9ae7777c92100da7b783573e2f6ee5a27d4dcc0d5a9efb26L387">RefactoringLink</a></td><td><a href="https://github.com/Zhaoyi-Yan/Shift-Net_pytorch/commit/dc9aafd83851f7c55c6fe61702e281856ec023ca">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : InceptionUnetSkipConnectionBlock, outer_nc : Any, inner_nc : Any, opt : Any, innerCos_list : Any, shift_list : Any, mask_global : Any, input_nc : Any, submodule : Any, shift_layer : Any, outermost : Any, innermost : Any, norm_layer : Any, use_dropout : Any] to [self : InceptionUnetSkipConnectionBlock, outer_nc : Any, inner_nc : Any, innerCos_list : Any, shift_list : Any, mask_global : Any, input_nc : Any, opt : Any, submodule : Any, shift_layer : Any, outermost : Any, innermost : Any, norm_layer : Any, use_dropout : Any] in method package __init__(self InceptionUnetSkipConnectionBlock, outer_nc Any, inner_nc Any, innerCos_list Any, shift_list Any, mask_global Any, input_nc Any, opt Any, submodule Any, shift_layer Any, outermost Any, innermost Any, norm_layer Any, use_dropout Any) : void from class org.models.modules.shift_unet.InceptionUnetSkipConnectionBlock</td>
-<td>models/modules/shift_unet.py</td>
-</tr>
-<tr><td>idealo/image-super-resolution</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/idealo/image-super-resolution/commit/177816f6db739e4bdbc374e03966ed4a698d2145#diff-013380396a9db418eb505bc3b4153575f405432f965f895faa195d03251a2781L77">RefactoringLink</a></td><td><a href="https://github.com/idealo/image-super-resolution/commit/177816f6db739e4bdbc374e03966ed4a698d2145">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : RDN, arch_params : Any, weights : Any, patch_size : Any, c_dim : Any, kernel_size : Any, upscaling : Any, init_extreme_val : Any] to [self : RDN, arch_params : Any, patch_size : Any, c_dim : Any, kernel_size : Any, upscaling : Any, init_extreme_val : Any, weights : Any] in method package __init__(self RDN, arch_params Any, patch_size Any, c_dim Any, kernel_size Any, upscaling Any, init_extreme_val Any, weights Any) : void from class org.ISR.models.rdn.RDN</td>
-<td>ISR/models/rdn.py</td>
-</tr>
-<tr><td>idealo/image-super-resolution</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/idealo/image-super-resolution/commit/177816f6db739e4bdbc374e03966ed4a698d2145#diff-4c11cd22e1307bf1a2fff23cfed8b760f859023d4299e98e001592e7446d13ebL68">RefactoringLink</a></td><td><a href="https://github.com/idealo/image-super-resolution/commit/177816f6db739e4bdbc374e03966ed4a698d2145">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : RRDN, arch_params : Any, weights : Any, patch_size : Any, beta : Any, c_dim : Any, kernel_size : Any, init_val : Any] to [self : RRDN, arch_params : Any, patch_size : Any, beta : Any, c_dim : Any, kernel_size : Any, init_val : Any, weights : Any] in method package __init__(self RRDN, arch_params Any, patch_size Any, beta Any, c_dim Any, kernel_size Any, init_val Any, weights Any) : void from class org.ISR.models.rrdn.RRDN</td>
-<td>ISR/models/rrdn.py</td>
-</tr>
 <tr><td>geek-ai/MAgent</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/geek-ai/MAgent/commit/c0fcdb69458854b60845498bffc75893ec2e422c#diff-bd772243ff816f61275864476a2bd3176dd7183846a3dcae9c9cdd19203758f2L12">RefactoringLink</a></td><td><a href="https://github.com/geek-ai/MAgent/commit/c0fcdb69458854b60845498bffc75893ec2e422c">CommitLink</a></td><td></td>
+<td><a href="https://github.com/geek-ai/MAgent/commit/c0fcdb69458854b60845498bffc75893ec2e422c#diff-bd772243ff816f61275864476a2bd3176dd7183846a3dcae9c9cdd19203758f2L12">RefactoringLink</a></td><td><a href="https://github.com/geek-ai/MAgent/commit/c0fcdb69458854b60845498bffc75893ec2e422c">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [self : DeepQNetwork, env : Any, handle : Any, name : Any, batch_size : Any, reward_decay : Any, learning_rate : Any, train_freq : Any, target_update : Any, memory_size : Any, eval_obs : Any, use_dueling : Any, use_double : Any, infer_batch_size : Any, custom_view_space : Any, custom_feature_space : Any, num_gpu : Any] to [self : DeepQNetwork, env : Any, handle : Any, name : Any, batch_size : Any, learning_rate : Any, reward_decay : Any, train_freq : Any, target_update : Any, memory_size : Any, eval_obs : Any, use_dueling : Any, use_double : Any, infer_batch_size : Any, custom_view_space : Any, custom_feature_space : Any, num_gpu : Any] in method package __init__(self DeepQNetwork, env Any, handle Any, name Any, batch_size Any, learning_rate Any, reward_decay Any, train_freq Any, target_update Any, memory_size Any, eval_obs Any, use_dueling Any, use_double Any, infer_batch_size Any, custom_view_space Any, custom_feature_space Any, num_gpu Any) : void from class org.python.magent.builtin.mx_model.dqn.DeepQNetwork</td>
 <td>python/magent/builtin/mx_model/dqn.py</td>
 </tr>
-<tr><td>geek-ai/MAgent</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/geek-ai/MAgent/commit/38efffc3a7a76c240a6d7f26417d2cf48dc2aa54#diff-bd772243ff816f61275864476a2bd3176dd7183846a3dcae9c9cdd19203758f2L12">RefactoringLink</a></td><td><a href="https://github.com/geek-ai/MAgent/commit/38efffc3a7a76c240a6d7f26417d2cf48dc2aa54">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : DeepQNetwork, env : Any, handle : Any, name : Any, batch_size : Any, reward_decay : Any, learning_rate : Any, train_freq : Any, target_update : Any, memory_size : Any, eval_obs : Any, use_dueling : Any, use_double : Any, custom_view_space : Any, custom_feature_space : Any, num_gpu : Any, infer_batch_size : Any] to [self : DeepQNetwork, env : Any, handle : Any, name : Any, batch_size : Any, reward_decay : Any, learning_rate : Any, train_freq : Any, target_update : Any, memory_size : Any, eval_obs : Any, use_dueling : Any, use_double : Any, infer_batch_size : Any, custom_view_space : Any, custom_feature_space : Any, num_gpu : Any] in method package __init__(self DeepQNetwork, env Any, handle Any, name Any, batch_size Any, reward_decay Any, learning_rate Any, train_freq Any, target_update Any, memory_size Any, eval_obs Any, use_dueling Any, use_double Any, infer_batch_size Any, custom_view_space Any, custom_feature_space Any, num_gpu Any) : void from class org.python.magent.builtin.mx_model.dqn.DeepQNetwork</td>
-<td>python/magent/builtin/mx_model/dqn.py</td>
-</tr>
-<tr><td>vitchyr/rlkit</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/vitchyr/rlkit/commit/78552d3de73174dd0ffdf9a58009281013dcf640#diff-9dacefdf87715c3748cc739717d75ffe5a3253a65f9c683529e5cab6c534a979L10">RefactoringLink</a></td><td><a href="https://github.com/vitchyr/rlkit/commit/78552d3de73174dd0ffdf9a58009281013dcf640">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : ReplayBuffer, observation : Any, action : Any, reward : Any, next_observation : Any, terminal : Any] to [self : ReplayBuffer, observation : Any, action : Any, reward : Any, terminal : Any, next_observation : Any] in method package add_sample(self ReplayBuffer, observation Any, action Any, reward Any, terminal Any, next_observation Any) : void from class org.rlkit.data_management.replay_buffer.ReplayBuffer</td>
-<td>rlkit/data_management/replay_buffer.py</td>
-</tr>
 <tr><td>metagenome-atlas/atlas</td>
 <td>Reorder Parameter</td>
-<td><a href="https://github.com/metagenome-atlas/atlas/commit/70fc0bac9020011bf3f9b6386692d0e88e555a4f#diff-eb3370b168296e88a7ddc960d4add2b02806527d717749ee081e2979516fe3dcL123">RefactoringLink</a></td><td><a href="https://github.com/metagenome-atlas/atlas/commit/70fc0bac9020011bf3f9b6386692d0e88e555a4f">CommitLink</a></td><td></td>
+<td><a href="https://github.com/metagenome-atlas/atlas/commit/70fc0bac9020011bf3f9b6386692d0e88e555a4f#diff-eb3370b168296e88a7ddc960d4add2b02806527d717749ee081e2979516fe3dcL123">RefactoringLink</a></td><td><a href="https://github.com/metagenome-atlas/atlas/commit/70fc0bac9020011bf3f9b6386692d0e88e555a4f">CommitLink</a></td><td>Yes</td>
 <td>Reorder Parameter [report_out : Any, read_counts : Any, zipfiles_raw : Any, zipfiles_QC : Any, min_quality : Any] to [report_out : Any, read_counts : Any, zipfiles_QC : Any, min_quality : Any, zipfiles_raw : Any] in method package main(report_out Any, read_counts Any, zipfiles_QC Any, min_quality Any, zipfiles_raw Any) : void from class org.atlas.report.qc_report.PyDummyClass1</td>
 <td>atlas/report/qc_report.py</td>
-</tr>
-<tr><td>VinF/deer</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/VinF/deer/commit/8de02525aa6017c09a6cd0a651fc76b14cca3d88#diff-616094d26add8e185d7db3b9bc92d38b35bbdff6342a222a0b478c60d8221a2bL74">RefactoringLink</a></td><td><a href="https://github.com/VinF/deer/commit/8de02525aa6017c09a6cd0a651fc76b14cca3d88">CommitLink</a></td><td></td>
-<td>Reorder Parameter [self : EpsilonController, initialE : Any, eDecays : Any, eMin : Any, resetEvery : Any, evaluateOn : Any, periodicity : Any] to [self : EpsilonController, initialE : Any, eDecays : Any, eMin : Any, evaluateOn : Any, periodicity : Any, resetEvery : Any] in method package __init__(self EpsilonController, initialE Any, eDecays Any, eMin Any, evaluateOn Any, periodicity Any, resetEvery Any) : void from class org.General_Deep_Q_RL.experiment.base_controllers.EpsilonController</td>
-<td>General_Deep_Q_RL/experiment/base_controllers.py</td>
-</tr>
-<tr><td>inspirehep/magpie</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/inspirehep/magpie/commit/58f3e6aa4a6f4b2a486bbc93ce22b7669d152f0e#diff-c7d1055acbf5d93db9d16ab8f6224819eab0b92f65f51d7498895207debcf495L15">RefactoringLink</a></td><td><a href="https://github.com/inspirehep/magpie/commit/58f3e6aa4a6f4b2a486bbc93ce22b7669d152f0e">CommitLink</a></td><td></td>
-<td>Reorder Parameter [train_dir : Any, nn_model : Any, labels : Any, as_generator : Any, batch_size : Any, test_dir : Any, word2vec_model : Any, scaler : Any] to [train_dir : Any, labels : Any, test_dir : Any, nn_model : Any, as_generator : Any, batch_size : Any, word2vec_model : Any, scaler : Any] in method package get_data_for_model(train_dir Any, labels Any, test_dir Any, nn_model Any, as_generator Any, batch_size Any, word2vec_model Any, scaler Any) : void from class org.magpie.nn.input_data.PyDummyClass1</td>
-<td>magpie/nn/input_data.py</td>
-</tr>
-<tr><td>inspirehep/magpie</td>
-<td>Reorder Parameter</td>
-<td><a href="https://github.com/inspirehep/magpie/commit/c2f25707dc221f2aea1e8caa4cddd4b870ea5cb8#diff-c7d1055acbf5d93db9d16ab8f6224819eab0b92f65f51d7498895207debcf495L15">RefactoringLink</a></td><td><a href="https://github.com/inspirehep/magpie/commit/c2f25707dc221f2aea1e8caa4cddd4b870ea5cb8">CommitLink</a></td><td></td>
-<td>Reorder Parameter [train_dir : Any, nn_model : Any, labels : Any, as_generator : Any, batch_size : Any, test_dir : Any, word2vec_model : Any, scaler : Any] to [train_dir : Any, labels : Any, test_dir : Any, nn_model : Any, as_generator : Any, batch_size : Any, word2vec_model : Any, scaler : Any] in method package get_data_for_model(train_dir Any, labels Any, test_dir Any, nn_model Any, as_generator Any, batch_size Any, word2vec_model Any, scaler Any) : void from class org.magpie.nn.input_data.PyDummyClass1</td>
-<td>magpie/nn/input_data.py</td>
 </tr>
 </table>
 

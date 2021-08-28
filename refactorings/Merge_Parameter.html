@@ -13,7 +13,7 @@
 <body>
 
 <H1>An Empirical Study of Frequent Code Edit Patterns In Machine Learning Systems</H1>
-<body><HTML><H2> Refactoring Type : <i>Merge Parameter</i> | Total : <i>76</i> | Precision : <i>87.93%</i>  | True Positives :51 | Evaluated : 58 | Not Evaluated  : 18 </H2>
+<body><HTML><H2> Refactoring Type : <i>Merge Parameter</i> | Total : <i>56</i> | Precision : <i>91.07%</i>  | True Positives :51 | Evaluated : 56 | Not Evaluated  : 18 </H2>
 
 <table>
  <tr>
@@ -33,12 +33,6 @@
 </tr>
 <tr><td>dmlc/gluon-cv</td>
 <td>Merge Parameter</td>
-<td><a href="https://github.com/dmlc/gluon-cv/commit/7e7135f5888457886b70d38bfd428ffc51dc7648#diff-1cb396a58ecff9f3e9f75382535ed76e9e825f882a4021ff13816faca40756f6L33">RefactoringLink</a></td><td><a href="https://github.com/dmlc/gluon-cv/commit/7e7135f5888457886b70d38bfd428ffc51dc7648">CommitLink</a></td><td>No</td>
-<td>Merge Parameter	[down_sample : Any, stride : Any] to self : ResNet_IRCSNv2 in method package __init__(self ResNet_IRCSNv2, block Any, block_nums Any, num_classes Any, use_affine Any) : void from class org.gluoncv.torch.model_zoo.action_recognition.ircsnv2.ResNet_IRCSNv2</td>
-<td>gluoncv/torch/model_zoo/action_recognition/ir_CSN_152.py</td>
-</tr>
-<tr><td>dmlc/gluon-cv</td>
-<td>Merge Parameter</td>
 <td><a href="https://github.com/dmlc/gluon-cv/commit/6721429cb93637a0f9a7ec8a85deea4d43cb5d62#diff-30f6848202cafbe6f85746265ba7570fba39781b8a9e7e274be37ad425d00c24L102">RefactoringLink</a></td><td><a href="https://github.com/dmlc/gluon-cv/commit/6721429cb93637a0f9a7ec8a85deea4d43cb5d62">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter	[base_size : Any, crop_size : Any] to module : Any in method package __init__(self MultiEvalModel, module Any, nclass Any, ctx_list Any, flip Any, scales Any) : void from class org.gluoncv.model_zoo.segbase.MultiEvalModel</td>
 <td>gluoncv/model_zoo/segbase.py</td>
@@ -54,18 +48,6 @@
 <td><a href="https://github.com/ClimbsRocks/auto_ml/commit/5d568975e9ea60667cf201eda064a2a1c698e0cb#diff-893454c3b7604c9e39cf39dfbdd6f1f0b1c6707e4fec48a68ceec16035875121L77">RefactoringLink</a></td><td><a href="https://github.com/ClimbsRocks/auto_ml/commit/5d568975e9ea60667cf201eda064a2a1c698e0cb">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter	[user_input_func : Any, ml_for_analytics : Any] to self : Predictor in method package _construct_pipeline(self Predictor, model_name Any, impute_missing_values Any, perform_feature_scaling Any) : void from class org.auto_ml.predictor.Predictor</td>
 <td>auto_ml/predictor.py</td>
-</tr>
-<tr><td>GPflow/GPflow</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/GPflow/GPflow/commit/6d989a86124ec05d1fdaaeca7fd890509375844e#diff-593100e32bfb0dd5913480ec55704584688b6536ea7f1c7271b7c83c5aeacec8L78">RefactoringLink</a></td><td><a href="https://github.com/GPflow/GPflow/commit/6d989a86124ec05d1fdaaeca7fd890509375844e">CommitLink</a></td><td></td>
-<td>Merge Parameter	[x_prior_mean : Any, x_prior_var : Any] to self : BayesianGPLVM in method package __init__(self BayesianGPLVM, data Any, X_data_mean Any, X_data_var Any, kernel Any, num_inducing_variables Any, inducing_variable Any, X_prior_mean Any, X_prior_var Any) : void from class org.gpflow.models.gplvm.BayesianGPLVM</td>
-<td>gpflow/models/gplvm.py</td>
-</tr>
-<tr><td>OpenNMT/OpenNMT-py</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/4bb186c46ecd0858ed008d7d12d0966804f8c684#diff-004ff622c411caa26172d7c3ca873f7011649e0573e40798b4ce022426fe6444L77">RefactoringLink</a></td><td><a href="https://github.com/OpenNMT/OpenNMT-py/commit/4bb186c46ecd0858ed008d7d12d0966804f8c684">CommitLink</a></td><td></td>
-<td>Merge Parameter	[gpu : Any, n_best : Any, max_length : Any, copy_attn : Any, beam_size : Any, min_length : Any, stepwise_penalty : Any, dump_beam : Any, block_ngram_repeat : Any, sample_rate : Any, window_size : Any, window_stride : Any, window : Any, use_filter_pred : Any, replace_unk : Any, data_type : Any, verbose : Any, report_rouge : Any, fast : Any] to opt : Any in method package __init__(self Translator, model Any, fields Any, opt Any, model_opt Any, global_scorer Any, out_file Any, report_score Any, logger Any) : void from class org.onmt.translate.translator.Translator</td>
-<td>onmt/translate/translator.py</td>
 </tr>
 <tr><td>aleju/imgaug</td>
 <td>Merge Parameter</td>
@@ -88,7 +70,7 @@
 <tr><td>keras-team/keras</td>
 <td>Merge Parameter</td>
 <td><a href="https://github.com/keras-team/keras/commit/c60e2dfbdbb49b383b159fba7f46810c7dcbbf34#diff-2f9af20beb18f9b9cd94e80c137b13b662a93a8d522680eed8369cf5c3ad4f5eL19">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/c60e2dfbdbb49b383b159fba7f46810c7dcbbf34">CommitLink</a></td><td>No</td>
-<td>Merge Parameter	[input_dim : Any, nb_hidden : Any] to output_dim : Any in method package get_model(input_dim Any, nb_hidden Any, output_dim Any) : void from class org.tests.auto.test_optimizers.PyDummyClass1</td>
+<td>Merge Parameter        [input_dim : Any, nb_hidden : Any] to output_dim : Any in method package get_model(input_dim Any, nb_hidden Any, output_dim Any) : void from class org.tests.auto.test_optimizers.PyDummyClass1</td>
 <td>tests/auto/test_optimizers.py</td>
 </tr>
 <tr><td>keras-team/keras</td>
@@ -102,36 +84,6 @@
 <td><a href="https://github.com/keras-team/keras/commit/dcbe14cd9a475ba896306db28f2739c833f96290#diff-65cfdcd5ff30213e169880ae0e5ba78926d31a20634a2ba7eb482fd72a5f445eL156">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/dcbe14cd9a475ba896306db28f2739c833f96290">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter	[batch_size : Any, verbose : Any] to self : KerasClassifier in method package predict_proba(self KerasClassifier, X Any) : void from class org.keras.wrappers.scikit_learn.KerasClassifier</td>
 <td>keras/wrappers/scikit_learn.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a#diff-5f87779f108c86ad93c8fc60382f59adf2e2c23c8ca8ef46a1b8477b8952910bL14">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a">CommitLink</a></td><td></td>
-<td>Merge Parameter	[b_regularizer : Any, activity_regularizer : Any] to self : Convolution1D in method package __init__(self Convolution1D, input_dim Any, nb_filter Any, filter_length Any, init Any, activation Any, weights Any, border_mode Any, subsample_length Any, W_regularizer Any, b_regularizer Any, activity_regularizer Any, W_constraint Any, b_constraint Any) : void from class org.keras.layers.convolutional.Convolution1D</td>
-<td>keras/layers/convolutional.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a#diff-5f87779f108c86ad93c8fc60382f59adf2e2c23c8ca8ef46a1b8477b8952910bL102">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a">CommitLink</a></td><td></td>
-<td>Merge Parameter	[b_regularizer : Any, activity_regularizer : Any] to self : Convolution2D in method package __init__(self Convolution2D, nb_filter Any, stack_size Any, nb_row Any, nb_col Any, init Any, activation Any, weights Any, border_mode Any, subsample Any, W_regularizer Any, b_regularizer Any, activity_regularizer Any, W_constraint Any, b_constraint Any) : void from class org.keras.layers.convolutional.Convolution2D</td>
-<td>keras/layers/convolutional.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a#diff-b1d27e7fec4411418d2e5347ab41597d2ebf4bff8ee2313f1d5c9f678cdca0eaL295">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a">CommitLink</a></td><td></td>
-<td>Merge Parameter	[b_regularizer : Any, activity_regularizer : Any] to self : Dense in method package __init__(self Dense, input_dim Any, output_dim Any, init Any, activation Any, weights Any, name Any, W_regularizer Any, b_regularizer Any, activity_regularizer Any, W_constraint Any, b_constraint Any) : void from class org.keras.layers.core.Dense</td>
-<td>keras/layers/core.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a#diff-b1d27e7fec4411418d2e5347ab41597d2ebf4bff8ee2313f1d5c9f678cdca0eaL377">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a">CommitLink</a></td><td></td>
-<td>Merge Parameter	[b_regularizer : Any, activity_regularizer : Any] to self : TimeDistributedDense in method package __init__(self TimeDistributedDense, input_dim Any, output_dim Any, init Any, activation Any, weights Any, W_regularizer Any, b_regularizer Any, activity_regularizer Any, W_constraint Any, b_constraint Any) : void from class org.keras.layers.core.TimeDistributedDense</td>
-<td>keras/layers/core.py</td>
-</tr>
-<tr><td>keras-team/keras</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a#diff-b1d27e7fec4411418d2e5347ab41597d2ebf4bff8ee2313f1d5c9f678cdca0eaL505">RefactoringLink</a></td><td><a href="https://github.com/keras-team/keras/commit/94d857f3cbbc668fbf9eb641895454612c5f124a">CommitLink</a></td><td></td>
-<td>Merge Parameter	[b_regularizer : Any, activity_regularizer : Any] to self : MaxoutDense in method package __init__(self MaxoutDense, input_dim Any, output_dim Any, nb_feature Any, init Any, weights Any, W_regularizer Any, b_regularizer Any, activity_regularizer Any, W_constraint Any, b_constraint Any) : void from class org.keras.layers.core.MaxoutDense</td>
-<td>keras/layers/core.py</td>
 </tr>
 <tr><td>suavecode/SUAVE</td>
 <td>Merge Parameter</td>
@@ -198,18 +150,6 @@
 <td><a href="https://github.com/rusty1s/pytorch_geometric/commit/3f49306a39ae8140079e15d258d14c43c9a99232#diff-266b607154b028c2eaa99a5a0c01587410285d582c0e87e8c798308fd72a07a5L48">RefactoringLink</a></td><td><a href="https://github.com/rusty1s/pytorch_geometric/commit/3f49306a39ae8140079e15d258d14c43c9a99232">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter [norm : Any, norm_embed : Any] to normalize : Any in method package __init__(self GNN, in_channels Any, hidden_channels Any, out_channels Any, normalize Any, add_loop Any, lin Any) : void from class org.examples.enzymes_diff_pool.GNN</td>
 <td>examples/enzymes_diff_pool.py</td>
-</tr>
-<tr><td>rusty1s/pytorch_geometric</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/rusty1s/pytorch_geometric/commit/fe5b7e0e45f1912f84c1423b9c60d501fa2a24f3#diff-210d38b796112ee32a8aef9efd3f3b828783a1ac3a331adf64fb4d37078542ffL39">RefactoringLink</a></td><td><a href="https://github.com/rusty1s/pytorch_geometric/commit/fe5b7e0e45f1912f84c1423b9c60d501fa2a24f3">CommitLink</a></td><td></td>
-<td>Merge Parameter [kernel_size : Any, is_open_spline : Any] to self : SplineGCN in method package __init__(self SplineGCN, in_features Any, out_features Any, dim Any, kernel_size Any, is_open_spline Any, degree Any, bias Any) : void from class org.torch_geometric.nn.modules.spline_gcn.SplineGCN</td>
-<td>torch_geometric/nn/modules/spline_gcn.py</td>
-</tr>
-<tr><td>facebook/FAI-PEP</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/facebook/FAI-PEP/commit/834a87fd3294c41631c27af6e298995ee23e4120#diff-b40300e033bede7d5ce7267e52e7ffe7911443748460c19894e4801bb73be102L41">RefactoringLink</a></td><td><a href="https://github.com/facebook/FAI-PEP/commit/834a87fd3294c41631c27af6e298995ee23e4120">CommitLink</a></td><td>No</td>
-<td>Merge Parameter [src : Any, tgt : Any] to self : IDB in method package pull(self IDB, src Any, tgt Any) : void from class org.benchmarking.platforms.ios.idb.IDB</td>
-<td>benchmarking/platforms/ios/idb.py</td>
 </tr>
 <tr><td>UFAL-DSG/tgen</td>
 <td>Merge Parameter</td>
@@ -313,23 +253,11 @@
 <td>Merge Parameter [ntime : Any, nnum : Any] to self : TabularPreprocessor in method package cat_to_num(self TabularPreprocessor, x Any, y Any) : void from class org.autokeras.tabular.tabular_preprocessor.TabularPreprocessor</td>
 <td>autokeras/tabular/tabular_preprocessor.py</td>
 </tr>
-<tr><td>stanford-mast/nn_dataflow</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/stanford-mast/nn_dataflow/commit/f8070ed5f1d732fb0c3dde3a68fbe73438103567#diff-37cdf61c0c85e46f4d420a9691d815184405adc3257a2098bb13b39d041fee84L98">RefactoringLink</a></td><td><a href="https://github.com/stanford-mast/nn_dataflow/commit/f8070ed5f1d732fb0c3dde3a68fbe73438103567">CommitLink</a></td><td></td>
-<td>Merge Parameter [dfsch_list : Any, options : Any] to prev_nndf_tops : Any in method package _layer_schedule_search(self NNDataflow, layer_name Any, prev_nndf_tops Any, options Any) : void from class org.nn_dataflow.core.nn_dataflow.NNDataflow</td>
-<td>nn_dataflow/core/nn_dataflow.py</td>
-</tr>
 <tr><td>IndicoDataSolutions/finetune</td>
 <td>Merge Parameter</td>
 <td><a href="https://github.com/IndicoDataSolutions/finetune/commit/93a248470bbb7985bbebcc1cd46309b37f524a1a#diff-ac5848fd8bf0a4c8ad378bd7f8505c4444ffe30226ec2d85b6432ab592d1850eL65">RefactoringLink</a></td><td><a href="https://github.com/IndicoDataSolutions/finetune/commit/93a248470bbb7985bbebcc1cd46309b37f524a1a">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter [X : Any, context : Any] to zipped_data : Any in method package _predict_internal(self MultiLabelClassifier, zipped_data Any, threshold Any, probas Any) : void from class org.finetune.target_models.multi_label_classifier.MultiLabelClassifier</td>
 <td>finetune/target_models/multi_label_classifier.py</td>
-</tr>
-<tr><td>AllenCellModeling/pytorch_fnet</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/AllenCellModeling/pytorch_fnet/commit/5b0fe392bc61053a0e84a1a0d7c2140c3b32415c#diff-86f57633e67253101e123b04a20b542564fef5565212f581c8a274b93ef04f6cL4">RefactoringLink</a></td><td><a href="https://github.com/AllenCellModeling/pytorch_fnet/commit/5b0fe392bc61053a0e84a1a0d7c2140c3b32415c">CommitLink</a></td><td></td>
-<td>Merge Parameter [percent_test : Any, path : Any] to self : DataSet in method package _build_new_sets(self DataSet) : void from class org.util.DataSet.DataSet</td>
-<td>util/DataSet.py</td>
 </tr>
 <tr><td>cornellius-gp/gpytorch</td>
 <td>Merge Parameter</td>
@@ -379,12 +307,6 @@
 <td>Merge Parameter [name : Any, output : Any] to tf_graph : Any in method package tensorflow_graph_to_onnx_graph(cls Any, tf_graph Any, opset Any, ignore_unimplemented Any) : void from class org.onnx_tf.frontend.TensorflowFrontend</td>
 <td>onnx_tf/frontend.py</td>
 </tr>
-<tr><td>elbayadm/attn2d</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/elbayadm/attn2d/commit/1235aa0809633134fd2e5d1de81721c344d6d649#diff-6e65327f729a8658d627b762ec14902e25927698f35e5495e6b8e3a1bfcfd7afL189">RefactoringLink</a></td><td><a href="https://github.com/elbayadm/attn2d/commit/1235aa0809633134fd2e5d1de81721c344d6d649">CommitLink</a></td><td></td>
-<td>Merge Parameter [dropout : Any, share_input_output_embed : Any, learned_pos_embed : Any] to args : Any in method package __init__(self TransformerDecoder, args Any, dictionary Any, embed_tokens Any) : void from class org.fairseq.models.transformer.TransformerDecoder</td>
-<td>fairseq/models/transformer.py</td>
-</tr>
 <tr><td>flow-project/flow</td>
 <td>Merge Parameter</td>
 <td><a href="https://github.com/flow-project/flow/commit/20112e3678692ed70b2a231b5a427b6c7d2ac98a#diff-4ef899ef2a0a276b2352f8c10aac8aae4451b72df8caac4f2a5a07d4fcf05626L27">RefactoringLink</a></td><td><a href="https://github.com/flow-project/flow/commit/20112e3678692ed70b2a231b5a427b6c7d2ac98a">CommitLink</a></td><td>Yes</td>
@@ -403,47 +325,11 @@
 <td>Merge Parameter [board_cards : Any, pocket_cards : Any] to oc : Any in method package get_gut_shot_two_overcards_draw(self Outs_Calculator, oc Any) : void from class org.decisionmaker.outs_calculator.Outs_Calculator</td>
 <td>decisionmaker/outs_calculator.py</td>
 </tr>
-<tr><td>dickreuter/Poker</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/dickreuter/Poker/commit/4fbb3bc1fe7014e4232f92fee7d7341703cddd87#diff-5e182734510e882d9d7b64edb0d103af34fa20acc8be6c29ba3b2b67b881810eL181">RefactoringLink</a></td><td><a href="https://github.com/dickreuter/Poker/commit/4fbb3bc1fe7014e4232f92fee7d7341703cddd87">CommitLink</a></td><td></td>
-<td>Merge Parameter [board_cards : Any, pocket_cards : Any] to oc : Any in method package get_pocket_pair_to_set(self Outs_Calculator, oc Any) : void from class org.decisionmaker.outs_calculator.Outs_Calculator</td>
-<td>decisionmaker/outs_calculator.py</td>
-</tr>
-<tr><td>dickreuter/Poker</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/dickreuter/Poker/commit/4fbb3bc1fe7014e4232f92fee7d7341703cddd87#diff-5e182734510e882d9d7b64edb0d103af34fa20acc8be6c29ba3b2b67b881810eL356">RefactoringLink</a></td><td><a href="https://github.com/dickreuter/Poker/commit/4fbb3bc1fe7014e4232f92fee7d7341703cddd87">CommitLink</a></td><td></td>
-<td>Merge Parameter [board_cards : Any, pocket_cards : Any] to oc : Any in method package get_gut_shot_two_overcards_draw(self Outs_Calculator, oc Any) : void from class org.decisionmaker.outs_calculator.Outs_Calculator</td>
-<td>decisionmaker/outs_calculator.py</td>
-</tr>
-<tr><td>dickreuter/Poker</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/dickreuter/Poker/commit/1db1fdc63962bf880b0a16783424cc587dc917c1#diff-5e182734510e882d9d7b64edb0d103af34fa20acc8be6c29ba3b2b67b881810eL181">RefactoringLink</a></td><td><a href="https://github.com/dickreuter/Poker/commit/1db1fdc63962bf880b0a16783424cc587dc917c1">CommitLink</a></td><td></td>
-<td>Merge Parameter [board_cards : Any, pocket_cards : Any] to oc : Any in method package get_pocket_pair_to_set(self Outs_Calculator, oc Any) : void from class org.decisionmaker.outs_calculator.Outs_Calculator</td>
-<td>decisionmaker/outs_calculator.py</td>
-</tr>
-<tr><td>dickreuter/Poker</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/dickreuter/Poker/commit/1db1fdc63962bf880b0a16783424cc587dc917c1#diff-5e182734510e882d9d7b64edb0d103af34fa20acc8be6c29ba3b2b67b881810eL356">RefactoringLink</a></td><td><a href="https://github.com/dickreuter/Poker/commit/1db1fdc63962bf880b0a16783424cc587dc917c1">CommitLink</a></td><td></td>
-<td>Merge Parameter [board_cards : Any, pocket_cards : Any] to oc : Any in method package get_gut_shot_two_overcards_draw(self Outs_Calculator, oc Any) : void from class org.decisionmaker.outs_calculator.Outs_Calculator</td>
-<td>decisionmaker/outs_calculator.py</td>
-</tr>
-<tr><td>autorope/donkeycar</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/autorope/donkeycar/commit/acfacb59670d3a49faf7068efa4fecdcd246a3ce#diff-d827938a53157e676ebbf92975dc5af127587a54ba0c11d612124476cd63577cL12">RefactoringLink</a></td><td><a href="https://github.com/autorope/donkeycar/commit/acfacb59670d3a49faf7068efa4fecdcd246a3ce">CommitLink</a></td><td></td>
-<td>Merge Parameter [sim_path : Any, host : Any, port : Any] to conf : Any in method package __init__(self DonkeyGymEnv, sim_path Any, host Any, port Any, headless Any, env_name Any, sync Any, conf Any, delay Any) : void from class org.donkeycar.parts.dgym.DonkeyGymEnv</td>
-<td>donkeycar/parts/dgym.py</td>
-</tr>
 <tr><td>theislab/scanpy</td>
 <td>Merge Parameter</td>
 <td><a href="https://github.com/theislab/scanpy/commit/d9f23678352d025ce0c98941f023c77bfac9fdef#diff-98c5fc01b67752f5e67806fb9a0bc74e306b8509551e1d904ab4f110abaa51c2L132">RefactoringLink</a></td><td><a href="https://github.com/theislab/scanpy/commit/d9f23678352d025ce0c98941f023c77bfac9fdef">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter [counts_per_cell : Any, copy : Any] to inplace : Any in method package normalize_total(data Any, cell_sum_after Any, counts_per_cell Any, key_n_counts Any, inplace Any, layers Any, layer_norm Any, min_counts Any) : void from class org.scanpy.preprocessing.normalization.PyDummyClass1</td>
 <td>scanpy/preprocessing/normalization.py</td>
-</tr>
-<tr><td>osmr/imgclsmob</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/osmr/imgclsmob/commit/076bbcef7c8ddf77dfe750f31b0c410855a90359#diff-7c1e5592f44f9158abd7a3d41a485e87d38d55dfc212b7b2ff13295a8b541d4fL67">RefactoringLink</a></td><td><a href="https://github.com/osmr/imgclsmob/commit/076bbcef7c8ddf77dfe750f31b0c410855a90359">CommitLink</a></td><td></td>
-<td>Merge Parameter [act_layer : Any, drop : Any] to dropout_rate : Any in method package __init__(self Block, dim Any, num_heads Any, mlp_ratio Any, qkv_bias Any, qk_scale Any, dropout_rate Any, att_dropout_rate Any, norm_layer Any) : void from class org.pytorch.pytorchcv.models.others.oth_vit.Block</td>
-<td>pytorch/pytorchcv/models/others/oth_vit.py</td>
 </tr>
 <tr><td>osmr/imgclsmob</td>
 <td>Merge Parameter</td>
@@ -474,12 +360,6 @@
 <td><a href="https://github.com/Kamnitsask/deepmedic/commit/70cf20f6cf5e21c3b6165067483b925db61c161c#diff-a02065722ddac3a7a28c2bfdab09dbe200ca0f95ecc6c2f38c7d8613ffdb0e6aL153">RefactoringLink</a></td><td><a href="https://github.com/Kamnitsask/deepmedic/commit/70cf20f6cf5e21c3b6165067483b925db61c161c">CommitLink</a></td><td>Yes</td>
 <td>Merge Parameter [residConnAtLayersNormal : Any, lowerRankLayersNormal : Any, residConnAtLayersSubsampled : Any, lowerRankLayersSubsampled : Any] to self : ModelParameters in method package __init__(self ModelParameters, log Any, cfg Any) : void from class org.deepmedic.frontEnd.configParsing.modelParams.ModelParameters</td>
 <td>deepmedic/frontEndModules/frontEndHelpers/createModelParametersClass.py</td>
-</tr>
-<tr><td>dmlc/dgl</td>
-<td>Merge Parameter</td>
-<td><a href="https://github.com/dmlc/dgl/commit/5dd35580f7918faa1de551cd80a0ce90a143c434#diff-97f9f9cd1ee00a7ede2130321e7404d0ef124ca2761b574f59030b930c68f2a6L194">RefactoringLink</a></td><td><a href="https://github.com/dmlc/dgl/commit/5dd35580f7918faa1de551cd80a0ce90a143c434">CommitLink</a></td><td></td>
-<td>Merge Parameter [ntypes : Any, etypes : Any] to self : DGLHeteroGraph in method package _init(self DGLHeteroGraph, gidx Any, ntypes Any, etypes Any, node_frames Any, edge_frames Any) : void from class org.python.dgl.heterograph.DGLHeteroGraph</td>
-<td>python/dgl/heterograph.py</td>
 </tr>
 </table>
 
